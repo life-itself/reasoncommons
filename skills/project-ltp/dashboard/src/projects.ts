@@ -23,21 +23,35 @@ export interface ProjectSummary {
 }
 
 /**
+ * One source-project → target-project alignment pilot shown alongside the
+ * project picker. Suggestions live in `projects/<file>` (default
+ * `alignments/<slug>.yaml`) and reference entity IDs in both projects' models.
+ */
+export interface AlignmentSummary {
+  slug: string;
+  name: string;
+  blurb?: string;
+  source_project: string;
+  target_project: string;
+  file?: string;
+}
+
+/**
  * Where the dashboard gets its projects:
  * - "static": a published `projects/manifest.json` (the site, or `vite dev`).
  * - "live":  the local read-only server (serve_dashboard.py), a single project
  *            served at /api/model — the manifest is absent, so we fall back.
  */
 export type ProjectSource =
-  | { mode: "static"; projects: ProjectSummary[] }
-  | { mode: "live"; projects: ProjectSummary[] };
+  | { mode: "static"; projects: ProjectSummary[]; alignments: AlignmentSummary[] }
+  | { mode: "live"; projects: ProjectSummary[]; alignments: AlignmentSummary[] };
 
 export interface LoadedModel {
   model: LtpModel;
   throughput: ThroughputData | null;
 }
 
-async function fetchText(url: string): Promise<string | null> {
+export async function fetchText(url: string): Promise<string | null> {
   const response = await fetch(url, { cache: "no-store" });
   if (response.status === 204 || response.status === 404) return null;
   if (!response.ok) throw new Error(`${url} returned ${response.status}`);
@@ -66,16 +80,23 @@ export async function resolveProjectSource(): Promise<ProjectSource> {
   }
   if (manifestText) {
     try {
-      const parsed = JSON.parse(manifestText) as { projects?: ProjectSummary[] };
+      const parsed = JSON.parse(manifestText) as {
+        projects?: ProjectSummary[];
+        alignments?: AlignmentSummary[];
+      };
       const projects = (parsed.projects ?? []).filter(
         (project) => project && project.slug && project.name,
       );
-      if (projects.length) return { mode: "static", projects };
+      const alignments = (parsed.alignments ?? []).filter(
+        (alignment) =>
+          alignment && alignment.slug && alignment.name && alignment.source_project && alignment.target_project,
+      );
+      if (projects.length) return { mode: "static", projects, alignments };
     } catch {
       // Malformed manifest — fall through to the live server.
     }
   }
-  return { mode: "live", projects: [{ slug: "__live__", name: "Live model" }] };
+  return { mode: "live", projects: [{ slug: "__live__", name: "Live model" }], alignments: [] };
 }
 
 export async function loadProjectModel(

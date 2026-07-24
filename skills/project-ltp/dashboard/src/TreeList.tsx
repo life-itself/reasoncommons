@@ -1,4 +1,5 @@
 import { useMemo, type CSSProperties } from "react";
+import type { AlignmentBadge } from "./alignment";
 import type {
   Confidence,
   EntityStatus,
@@ -17,6 +18,7 @@ interface TreeListProps {
   expandedIds: Set<string>;
   collapsingIds: Set<string>;
   selectedId: string | null;
+  alignmentBadges?: Map<string, AlignmentBadge>;
   onToggle: (entityId: string) => void;
   onSelect: (entityId: string | null) => void;
 }
@@ -30,6 +32,7 @@ export function TreeList({
   expandedIds,
   collapsingIds,
   selectedId,
+  alignmentBadges,
   onToggle,
   onSelect,
 }: TreeListProps) {
@@ -130,7 +133,15 @@ export function TreeList({
                   }}
                 >
                   <span className="tree-list-identity">
-                    <strong>{entity.id}</strong>
+                    <strong>
+                      {entity.id}
+                      {alignmentBadges?.has(entity.id) && (
+                        <i
+                          className={`alignment-node-badge alignment-node-badge--${alignmentBadges.get(entity.id)}`}
+                          title="Has an alignment suggestion"
+                        />
+                      )}
+                    </strong>
                     <small>{entity.type.replaceAll("_", " ")}</small>
                   </span>
                   <span className="tree-list-statement">{entity.statement}</span>

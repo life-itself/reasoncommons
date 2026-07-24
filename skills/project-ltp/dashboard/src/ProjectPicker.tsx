@@ -1,13 +1,20 @@
-import type { ProjectSummary } from "./projects";
+import type { AlignmentSummary, ProjectSummary } from "./projects";
 
 interface ProjectPickerProps {
   projects: ProjectSummary[];
+  alignments?: AlignmentSummary[];
   onOpen: (project: ProjectSummary) => void;
   loadingSlug?: string | null;
   error?: string | null;
 }
 
-export function ProjectPicker({ projects, onOpen, loadingSlug, error }: ProjectPickerProps) {
+export function ProjectPicker({
+  projects,
+  alignments = [],
+  onOpen,
+  loadingSlug,
+  error,
+}: ProjectPickerProps) {
   return (
     <main className="overview project-picker">
       <section className="overview-hero">
@@ -25,7 +32,7 @@ export function ProjectPicker({ projects, onOpen, loadingSlug, error }: ProjectP
         <div className="empty-panel" role="alert">
           <span aria-hidden="true">!</span>
           <div>
-            <strong>That project could not be opened.</strong>
+            <strong>That could not be opened.</strong>
             <p>{error}</p>
           </div>
         </div>
@@ -34,6 +41,7 @@ export function ProjectPicker({ projects, onOpen, loadingSlug, error }: ProjectP
       <section className="project-grid" aria-label="Projects">
         {projects.map((project) => {
           const isLoading = loadingSlug === project.slug;
+          const alignment = alignments.find((a) => a.source_project === project.slug);
           return (
             <button
               type="button"
@@ -46,6 +54,9 @@ export function ProjectPicker({ projects, onOpen, loadingSlug, error }: ProjectP
               {project.analysis_mode && <span className="project-card__mode">{project.analysis_mode}</span>}
               <strong>{project.name}</strong>
               {project.blurb && <p>{project.blurb}</p>}
+              {alignment && (
+                <span className="project-card__alignment-tag">◆ Has alignment suggestions</span>
+              )}
               <span className="project-card__cta">{isLoading ? "Opening…" : "Open"} <span aria-hidden="true">→</span></span>
             </button>
           );

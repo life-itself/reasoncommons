@@ -5,6 +5,16 @@ import { ProjectPicker } from "./ProjectPicker";
 import { TreeCanvas } from "./TreeCanvas";
 import { TreeList } from "./TreeList";
 import {
+  initAlignmentDecisions,
+  isEntityFullyConfirmed,
+  isEntityFullyRejected,
+  loadAlignment,
+  type AlignmentBadge,
+  type AlignmentDecision,
+  type AlignmentStatus,
+  type LoadedAlignment,
+} from "./alignment";
+import {
   indexModel,
   viewLabels,
   viewOrder,
@@ -27,6 +37,7 @@ type TreeMode = "graph" | "list";
 const allStatuses: EntityStatus[] = ["observed", "confirmed", "inferred", "provisional", "disputed"];
 const allConfidences: Confidence[] = ["high", "medium", "low"];
 const noExpandedNodes = new Set<string>();
+const noAlignmentBadges = new Map<string, AlignmentBadge>();
 const COLLAPSE_DURATION = 240;
 
 type ViewTransitionDocument = Document & {
@@ -61,6 +72,8 @@ export default function App() {
   const [activeProject, setActiveProject] = useState<ProjectSummary | null>(null);
   const [model, setModel] = useState<LtpModel | null>(null);
   const [throughput, setThroughput] = useState<ThroughputData | null>(null);
+  const [alignment, setAlignment] = useState<LoadedAlignment | null>(null);
+  const [alignmentDecisions, setAlignmentDecisions] = useState<Record<string, AlignmentDecision>>({});
   const [screen, setScreen] = useState<Screen>("overview");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [treeMode, setTreeMode] = useState<TreeMode>("graph");
@@ -130,6 +143,32 @@ export default function App() {
         if (cancelled) return;
         setError(caught instanceof Error ? caught.message : "Could not load the model");
         setSyncState("error");
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [source, activeProject]);
+
+  // If this project has a pilot alignment to a collective tree, load it in the
+  // background — its suggestions surface as badges on tree nodes, not as a
+  // separate screen. Missing or broken alignment data never blocks the tree.
+  useEffect(() => {
+    setAlignment(null);
+    setAlignmentDecisions({});
+    if (!source || source.mode !== "static" || !activeProject) return;
+    const summary = source.alignments.find((a) => a.source_project === activeProject.slug);
+    if (!summary) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const loaded = await loadAlignment(summary);
+        if (cancelled) return;
+        setAlignment(loaded);
+        setAlignmentDecisions(initAlignmentDecisions(loaded.doc));
+      } catch {
+        // No alignment pilot for this project, or it failed to load — the
+        // tree still works fine without it.
       }
     })();
     return () => {
@@ -208,6 +247,46 @@ export default function App() {
     setSelectedId(null);
   };
 
+  const jumpToEntity = useCallback(
+    (entityId: string) => {
+      if (!model) return;
+      const targetView = viewOrder.find((view) => model.views[view]?.entities.includes(entityId));
+      setScreen(targetView ?? "goal-tree");
+      setSelectedId(entityId);
+    },
+    [model],
+  );
+
+  const setAlignmentStatus = useCallback((suggestionId: string, status: AlignmentStatus) => {
+    setAlignmentDecisions((current) => ({
+      ...current,
+      [suggestionId]: { ...current[suggestionId], status },
+    }));
+  }, []);
+
+  const setAlignmentNote = useCallback((suggestionId: string, note: string) => {
+    setAlignmentDecisions((current) => ({
+      ...current,
+      [suggestionId]: { ...current[suggestionId], note },
+    }));
+  }, []);
+
+  const alignmentBadges = useMemo(() => {
+    if (!alignment) return noAlignmentBadges;
+    const map = new Map<string, AlignmentBadge>();
+    for (const suggestion of alignment.doc.suggestions) {
+      if (map.has(suggestion.source_entity)) continue;
+      if (isEntityFullyConfirmed(suggestion.source_entity, alignment.doc, alignmentDecisions)) {
+        map.set(suggestion.source_entity, "confirmed");
+      } else if (isEntityFullyRejected(suggestion.source_entity, alignment.doc, alignmentDecisions)) {
+        map.set(suggestion.source_entity, "rejected");
+      } else {
+        map.set(suggestion.source_entity, "open");
+      }
+    }
+    return map;
+  }, [alignment, alignmentDecisions]);
+
   const toggleExpanded = useCallback(
     (view: TreeView, entityId: string, expanded: boolean) => {
       const updateExpanded = () => {
@@ -273,6 +352,7 @@ export default function App() {
     return (
       <ProjectPicker
         projects={source.projects}
+        alignments={source.alignments}
         onOpen={openProject}
         loadingSlug={activeProject && !error ? activeProject.slug : null}
         error={error}
@@ -305,6 +385,9 @@ export default function App() {
       toggleExpanded(activeView, entityId, expandedIds.has(entityId));
     }
   };
+  const selectedSuggestions = selected
+    ? alignment?.doc.suggestions.filter((s) => s.source_entity === selected.id) ?? []
+    : [];
 
   return (
     <div className={`app-shell ${selected ? "has-details" : ""}`}>
@@ -356,8 +439,11 @@ export default function App() {
             model={model}
             index={index}
             throughput={throughput}
+            alignment={alignment}
+            alignmentDecisions={alignmentDecisions}
             onSelect={setSelectedId}
             onExplore={() => chooseScreen("goal-tree")}
+            onJumpToEntity={jumpToEntity}
           />
         ) : (
           <main className="tree-screen">
@@ -436,6 +522,7 @@ export default function App() {
                   expandedIds={expandedIds}
                   collapsingIds={collapsingIds}
                   selectedId={selectedId}
+                  alignmentBadges={alignmentBadges}
                   onToggle={onToggleActiveNode}
                   onSelect={setSelectedId}
                 />
@@ -449,6 +536,7 @@ export default function App() {
                   expandedIds={expandedIds}
                   collapsingIds={collapsingIds}
                   selectedId={selectedId}
+                  alignmentBadges={alignmentBadges}
                   onToggle={onToggleActiveNode}
                   onSelect={setSelectedId}
                 />
@@ -459,6 +547,7 @@ export default function App() {
                   <span><i className="status-mark status-mark--observed" />Observed or confirmed</span>
                   <span><i className="status-mark status-mark--inferred" />Inferred or provisional</span>
                   <span><i className="status-mark status-mark--disputed" />Disputed</span>
+                  {alignment && <span><i className="alignment-node-badge" />Has alignment suggestions</span>}
                   <small>Use + and −, or select a parent node, to reveal and hide its upstream logic. Selecting a node also opens its evidence and assumptions.</small>
                 </div>
               </details>
@@ -467,7 +556,17 @@ export default function App() {
         )}
       </div>
 
-      <DetailsPanel entity={selected} model={model} index={index} onClose={() => setSelectedId(null)} />
+      <DetailsPanel
+        entity={selected}
+        model={model}
+        index={index}
+        alignment={alignment}
+        alignmentSuggestions={selectedSuggestions}
+        alignmentDecisions={alignmentDecisions}
+        onSetAlignmentStatus={setAlignmentStatus}
+        onSetAlignmentNote={setAlignmentNote}
+        onClose={() => setSelectedId(null)}
+      />
     </div>
   );
 }

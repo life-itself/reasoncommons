@@ -1,0 +1,387 @@
+project:
+  name: Individual Contributor — Software Engineer (example)
+  analyzed_path: examples/individual-swe-notes
+  analysis_mode: reverse
+  provisional_goal: G-1
+
+analysis:
+  current_constraint: RC-1
+  recommended_next_action: ACT-1
+  expected_effect: TR-1
+  updated_at: "2026-07-24T00:00:00Z"
+
+entities:
+  - id: G-1
+    type: goal
+    statement: Make personal and team-level learning durable — decisions, mentoring, and technical contributions leave something others can build on, not just completed activity
+    status: inferred
+    confidence: medium
+    evidence: [EVD-1, EVD-9]
+    assumptions:
+      - "ASM-1 — The recurring durable-vs-evaporating pattern across work and non-work notes reflects a real personal priority, not incidental phrasing."
+    reasoning: The journal names the same "conversation shifts something, then it evaporates" pattern in three unrelated groups and explicitly generalizes it; the TODO and project notes are all instances of trying to make some form of group progress durable.
+
+  - id: CSF-1
+    type: critical_success_factor
+    statement: Team decisions have a durable, findable rationale instead of only chat history
+    status: inferred
+    confidence: high
+    evidence: [EVD-2, EVD-3]
+
+  - id: CSF-2
+    type: critical_success_factor
+    statement: Team knowledge lives in a structured, findable place instead of scattered pages
+    status: observed
+    confidence: medium
+    evidence: [EVD-4]
+
+  - id: CSF-3
+    type: critical_success_factor
+    statement: Mentoring effort compounds through deliberate repetition instead of happening ad hoc
+    status: inferred
+    confidence: medium
+    evidence: [EVD-5, EVD-6]
+
+  - id: RC-1
+    type: root_cause
+    statement: Nobody owns writing a decision's rationale down, so it defaults to being skipped
+    status: inferred
+    confidence: high
+    evidence: [EVD-2, EVD-3]
+    assumptions:
+      - "ASM-2 — Missing decision rationale, not missing information, is what causes re-litigation."
+    reasoning: The notes attribute relitigating to being unable to find *why* a decision was made, not to the decision itself being wrong or forgotten.
+
+  - id: RC-2
+    type: root_cause
+    statement: Team notes are scattered across pages with no shared structure, so existing knowledge isn't findable later
+    status: observed
+    confidence: medium
+    evidence: [EVD-4]
+
+  - id: UDE-1
+    type: undesirable_effect
+    statement: The same three or four decisions get relitigated every few months
+    status: observed
+    confidence: high
+    evidence: [EVD-2]
+
+  - id: UDE-2
+    type: undesirable_effect
+    statement: Knowledge that already exists gets rediscovered or re-asked instead of found
+    status: inferred
+    confidence: medium
+    evidence: [EVD-4]
+
+  - id: INJ-1
+    type: injection
+    statement: Give every decision a stable ID, a one-paragraph rationale, alternatives considered, and a status, designed so writing it down is the fast path rather than the slow one
+    status: inferred
+    confidence: high
+    evidence: [EVD-3]
+    assumptions:
+      - "ASM-4 — A five-minute-habit rationale format gets adopted widely enough to change the team norm, not just used by its author."
+    reasoning: The plan explicitly names the friction as ownership, not tooling, and designs the format around that.
+
+  - id: INJ-2
+    type: injection
+    statement: Migrate scattered team notes into one structured, versioned place
+    status: provisional
+    confidence: medium
+    evidence: [EVD-4]
+    assumptions:
+      - "ASM-5 — A structured migration stays maintained rather than decaying back into scattered pages."
+
+  - id: DE-1
+    type: desirable_effect
+    statement: Next time someone asks "didn't we already talk about this," the answer is a link, not a shrug
+    status: inferred
+    confidence: high
+    evidence: [EVD-11]
+
+  - id: DE-2
+    type: desirable_effect
+    statement: Team knowledge that already exists stops being rediscovered or re-asked
+    status: inferred
+    confidence: medium
+    evidence: [EVD-4]
+
+  - id: ACT-1
+    type: action
+    statement: Ship v2 of the decision-log tool
+    status: inferred
+    confidence: high
+    evidence: [EVD-7]
+    reasoning: The smallest next step that turns the already-designed injection into something teammates can actually use.
+
+  - id: ACT-2
+    type: action
+    statement: Write an internal post on why the team keeps re-deciding the same thing
+    status: inferred
+    confidence: medium
+    evidence: [EVD-8]
+
+  - id: ACT-3
+    type: action
+    statement: Migrate the team wiki into a structured format
+    status: provisional
+    confidence: medium
+    evidence: [EVD-4]
+
+  - id: ACT-4
+    type: action
+    statement: Mentor Sam and Dev through a first design doc each
+    status: inferred
+    confidence: high
+    evidence: [EVD-5, EVD-6]
+
+  - id: TR-1
+    type: expected_effect
+    statement: The decision-log tool reaches v2 and the team starts giving new decisions stable IDs and rationale
+    status: inferred
+    confidence: high
+    evidence: [EVD-7]
+
+  - id: TR-2
+    type: expected_effect
+    statement: Teammates recognize the re-deciding pattern as a shared, named problem rather than individual déjà vu
+    status: inferred
+    confidence: medium
+    evidence: [EVD-8]
+    reasoning: Writing an internal post is only useful if its effect is shared recognition, not just documentation.
+
+  - id: TR-3
+    type: expected_effect
+    statement: Team knowledge lives in one structured place instead of scattered pages
+    status: inferred
+    confidence: medium
+    evidence: [EVD-4]
+
+  - id: TR-4
+    type: expected_effect
+    statement: Sam and Dev each practice structuring and defending a real design decision, not just observing one
+    status: inferred
+    confidence: high
+    evidence: [EVD-5, EVD-6]
+
+  - id: ACT-5
+    type: action
+    statement: Send a small PR upstream to the CRDT library the team depends on (tombstone garbage-collection edge case)
+    status: observed
+    confidence: high
+    evidence: [EVD-10]
+    reasoning: Real, routine open-source maintenance work — deliberately left unconnected to G-1 or any CSF, since no evidenced mechanism ties it to the durable-learning goal. Kept in the model as an honest control case rather than omitted.
+
+links:
+  - id: L-001
+    from: CSF-1
+    to: G-1
+    relation: necessary_for
+    confidence: high
+  - id: L-002
+    from: CSF-2
+    to: G-1
+    relation: necessary_for
+    confidence: medium
+  - id: L-003
+    from: CSF-3
+    to: G-1
+    relation: necessary_for
+    confidence: medium
+
+  - id: L-004
+    from: RC-1
+    to: UDE-1
+    relation: causes
+    logic: contributory
+    assumption: ASM-2
+    confidence: high
+  - id: L-005
+    from: RC-2
+    to: UDE-2
+    relation: causes
+    logic: contributory
+    assumption: ASM-3
+    confidence: medium
+
+  - id: L-006
+    from: INJ-1
+    to: DE-1
+    relation: causes
+    assumption: ASM-4
+    confidence: high
+  - id: L-007
+    from: INJ-2
+    to: DE-2
+    relation: causes
+    assumption: ASM-5
+    confidence: medium
+  - id: L-008
+    from: DE-1
+    to: CSF-1
+    relation: enables
+    confidence: high
+  - id: L-009
+    from: DE-2
+    to: CSF-2
+    relation: enables
+    confidence: medium
+  - id: L-018
+    from: INJ-1
+    to: RC-1
+    relation: addresses
+    confidence: high
+  - id: L-019
+    from: INJ-2
+    to: RC-2
+    relation: addresses
+    confidence: medium
+
+  - id: L-010
+    from: ACT-1
+    to: TR-1
+    relation: produces
+    confidence: high
+  - id: L-011
+    from: ACT-2
+    to: TR-2
+    relation: produces
+    confidence: medium
+  - id: L-012
+    from: ACT-3
+    to: TR-3
+    relation: produces
+    confidence: medium
+  - id: L-013
+    from: ACT-4
+    to: TR-4
+    relation: produces
+    confidence: high
+  - id: L-014
+    from: TR-1
+    to: DE-1
+    relation: achieves
+    confidence: high
+  - id: L-015
+    from: TR-2
+    to: DE-1
+    relation: achieves
+    confidence: medium
+  - id: L-016
+    from: TR-3
+    to: DE-2
+    relation: achieves
+    confidence: medium
+  - id: L-017
+    from: TR-4
+    to: CSF-3
+    relation: achieves
+    confidence: high
+
+evidence:
+  - id: EVD-1
+    source: examples/individual-swe-notes/journal.md
+    lines: "3-8"
+    observation: Outside-work groups (a reading group, an open-source project, the condo board) have real conversations that shift something, then the group's shared position reverts because nothing durable came out of the conversation itself.
+    interpretation: Suggests the durable-vs-evaporating pattern is a general personal concern, not specific to one team.
+  - id: EVD-2
+    source: examples/individual-swe-notes/projects.md
+    lines: "3-6"
+    observation: The team relitigates the same three or four decisions every few months because the rationale, not just the message history, is unfindable.
+    interpretation: Names a concrete undesirable effect and its likely cause — missing rationale, not missing information.
+  - id: EVD-3
+    source: examples/individual-swe-notes/projects.md
+    lines: "8-14"
+    observation: Proposed fix — give each decision a stable ID, a one-paragraph rationale, alternatives considered, and a status, designed so writing it down is the fast path.
+    interpretation: A specific, already-designed injection, not just an aspiration.
+  - id: EVD-4
+    source: examples/individual-swe-notes/todo.md
+    lines: "6"
+    observation: A TODO item to migrate the team wiki off scattered pages into something with real structure.
+    interpretation: A second, related structural fix for team knowledge findability.
+  - id: EVD-5
+    source: examples/individual-swe-notes/journal.md
+    lines: "14-16"
+    observation: Mentoring Sam and Dev this quarter was more energizing than almost anything else, with an explicit wish to do more of it deliberately.
+    interpretation: Signals mentoring as a distinct, valued line of effort, not incidental.
+  - id: EVD-6
+    source: examples/individual-swe-notes/todo.md
+    lines: "7"
+    observation: A TODO item to mentor Sam and Dev through their first design doc each.
+    interpretation: The concrete next mentoring action.
+  - id: EVD-7
+    source: examples/individual-swe-notes/todo.md
+    lines: "3"
+    observation: A TODO item to ship v2 of the decision-log tool.
+    interpretation: The concrete next action on the decision-log injection.
+  - id: EVD-8
+    source: examples/individual-swe-notes/todo.md
+    lines: "4"
+    observation: A TODO item to write an internal post on why the team keeps re-deciding the same thing.
+    interpretation: A communication action meant to build shared recognition of the problem, not just document it.
+  - id: EVD-9
+    source: examples/individual-swe-notes/journal.md
+    lines: "10-12"
+    observation: "An explicit generalization: there might be something more general here about how groups accumulate agreement instead of just accumulating meetings."
+    interpretation: The clearest direct evidence for the inferred personal goal.
+  - id: EVD-10
+    source: examples/individual-swe-notes/todo.md
+    lines: "8"
+    observation: A TODO item to send a small PR upstream to a CRDT library for a tombstone garbage-collection edge case.
+    interpretation: Routine open-source maintenance with no stated connection to the durable-learning theme; kept as a low-relevance control case.
+  - id: EVD-11
+    source: examples/individual-swe-notes/projects.md
+    lines: "16-17"
+    observation: "Success is defined as: three months from now, the answer to 'didn't we already discuss this' is a link, not a shrug."
+    interpretation: The explicit target expected effect for the decision-log injection.
+
+assumptions:
+  - id: ASM-1
+    statement: The recurring durable-vs-evaporating pattern across work and non-work notes reflects a real personal priority, not incidental phrasing.
+    status: inferred
+  - id: ASM-2
+    statement: Missing decision rationale, not missing information, is what causes re-litigation.
+    status: inferred
+  - id: ASM-3
+    statement: Scattered, unstructured team notes cause knowledge to be re-asked rather than found.
+    status: inferred
+  - id: ASM-4
+    statement: A five-minute-habit rationale format gets adopted widely enough to change the team norm, not just used by its author.
+    status: provisional
+  - id: ASM-5
+    statement: A structured migration stays maintained rather than decaying back into scattered pages.
+    status: provisional
+
+views:
+  goal-tree:
+    title: What durable group learning requires
+    purpose: Conditions for personal and team effort to leave something others can build on.
+    entities: [CSF-1, CSF-2, CSF-3, G-1]
+    links: [L-001, L-002, L-003]
+  current-reality:
+    title: Why decisions and knowledge don't stick
+    purpose: The missing ownership and structure behind repeated re-litigation and re-asking.
+    entities: [RC-1, RC-2, UDE-1, UDE-2]
+    links: [L-004, L-005]
+  future-reality:
+    title: A durable decision and knowledge record
+    purpose: The expected effects of a low-friction rationale habit and a structured knowledge migration.
+    entities: [INJ-1, INJ-2, DE-1, DE-2, RC-1, RC-2, CSF-1, CSF-2]
+    links: [L-006, L-007, L-008, L-009, L-018, L-019]
+  transition-tree:
+    title: Four concrete next actions
+    purpose: The specific actions already on the TODO list and the effects each is expected to produce.
+    entities: [ACT-1, TR-1, ACT-2, TR-2, ACT-3, TR-3, ACT-4, TR-4, DE-1, DE-2, CSF-3]
+    links: [L-010, L-011, L-012, L-013, L-014, L-015, L-016, L-017]
+
+open_questions:
+  - Do teammates agree that relitigated decisions, rather than something else, are the real friction, or is this one person's read?
+  - Is the "five-minute path" actually five minutes once alternatives and status are included, or does that estimate not survive a real decision?
+  - Does the decision-log tool need adoption mechanics beyond "ship v2," or is shipping the easy part and adoption the real constraint?
+
+contradictions:
+  - The notes treat relitigated decisions and scattered wiki pages as two separate root causes, but no evidence yet shows whether fixing one changes the other.
+
+coverage_gaps:
+  - Only this person's own TODO, project, and journal notes were available — no teammate interviews, PR history, or usage data on the decision-log tool's v1.
+  - No evidence yet on whether teammates actually adopt the decision log once v2 ships.

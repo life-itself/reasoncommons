@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/goal-alignment/alignment-suggestions.schema.json",
+  "title": "Cross-tree alignment suggestions",
+  "type": "object",
+  "required": ["alignment", "suggestions"],
+  "properties": {
+    "alignment": {
+      "type": "object",
+      "required": ["source_project", "source_model", "target_project", "target_model", "method"],
+      "properties": {
+        "source_project": { "type": "string", "minLength": 1 },
+        "source_model": { "type": "string", "minLength": 1 },
+        "target_project": { "type": "string", "minLength": 1 },
+        "target_model": { "type": "string", "minLength": 1 },
+        "method": {
+          "enum": ["ai-suggested", "ai-vs-steward-pilot", "steward-reviewed"]
+        },
+        "generated_at": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "suggestions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "source_entity",
+          "target_entity",
+          "relation",
+          "rationale",
+          "confidence",
+          "status"
+        ],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "source_entity": { "type": "string", "minLength": 1 },
+          "target_entity": { "type": "string", "minLength": 1 },
+          "relation": {
+            "enum": [
+              "advances",
+              "supports",
+              "provides_evidence_for",
+              "at_risk_of_conflicting_with",
+              "unclear"
+            ]
+          },
+          "rationale": { "type": "string", "minLength": 1 },
+          "confidence": { "enum": ["high", "medium", "low"] },
+          "status": {
+            "enum": ["suggested", "confirmed", "rejected", "edited"]
+          },
+          "reviewer_note": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "open_questions": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

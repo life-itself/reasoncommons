@@ -1,13 +1,47 @@
-import type { LtpEntity, LtpModel, ModelIndex } from "./model";
+import { useMemo } from "react";
+import {
+  type AlignmentDecision,
+  type AlignmentStatus,
+  type AlignmentSuggestion,
+  type LoadedAlignment,
+} from "./alignment";
+import { indexModel, type LtpEntity, type LtpModel, type ModelIndex } from "./model";
+
+const relationLabels: Record<string, string> = {
+  advances: "advances",
+  supports: "supports",
+  provides_evidence_for: "provides evidence for",
+  at_risk_of_conflicting_with: "may conflict with",
+  unclear: "unclear relation to",
+};
 
 interface DetailsPanelProps {
   entity: LtpEntity | null;
   model: LtpModel;
   index: ModelIndex;
+  alignment: LoadedAlignment | null;
+  alignmentSuggestions: AlignmentSuggestion[];
+  alignmentDecisions: Record<string, AlignmentDecision>;
+  onSetAlignmentStatus: (suggestionId: string, status: AlignmentStatus) => void;
+  onSetAlignmentNote: (suggestionId: string, note: string) => void;
   onClose: () => void;
 }
 
-export function DetailsPanel({ entity, model, index, onClose }: DetailsPanelProps) {
+export function DetailsPanel({
+  entity,
+  model,
+  index,
+  alignment,
+  alignmentSuggestions,
+  alignmentDecisions,
+  onSetAlignmentStatus,
+  onSetAlignmentNote,
+  onClose,
+}: DetailsPanelProps) {
+  const targetIndex = useMemo(
+    () => (alignment ? indexModel(alignment.targetModel) : null),
+    [alignment],
+  );
   if (!entity) return null;
   const evidence = (entity.evidence ?? [])
     .map((id) => index.evidence.get(id))
@@ -41,6 +75,75 @@ export function DetailsPanel({ entity, model, index, onClose }: DetailsPanelProp
           <h3>Why this is in the model</h3>
           <p>{entity.reasoning}</p>
         </section>
+      )}
+
+      {alignmentSuggestions.length > 0 && (
+        <details className="detail-disclosure alignment-disclosure" open>
+          <summary>
+            Alignment suggestions <span>{alignmentSuggestions.length}</span>
+          </summary>
+          <div className="disclosure-body">
+            <p className="muted alignment-disclosure__hint">
+              AI-proposed links to <strong>{alignment!.targetModel.project.name}</strong> — suggested,
+              not merged. Review each one below.
+            </p>
+            {alignmentSuggestions.map((suggestion) => {
+              const targetEntity = targetIndex?.entities.get(suggestion.target_entity);
+              const decision = alignmentDecisions[suggestion.id] ?? {
+                status: suggestion.status,
+                note: suggestion.reviewer_note ?? "",
+              };
+              return (
+                <article
+                  key={suggestion.id}
+                  className={`alignment-suggestion-card alignment-suggestion-card--${decision.status}`}
+                >
+                  <div className="alignment-suggestion-card__target">
+                    <span
+                      className={`alignment-relation__badge alignment-relation__badge--${suggestion.relation}`}
+                    >
+                      {relationLabels[suggestion.relation] ?? suggestion.relation}
+                    </span>
+                    <strong>{targetEntity?.id ?? suggestion.target_entity}</strong>
+                    <small>{suggestion.confidence} confidence</small>
+                  </div>
+                  <p>{targetEntity?.statement ?? "Entity not found in target model."}</p>
+                  <p className="muted">{suggestion.rationale}</p>
+                  <div className="alignment-suggestion-card__actions">
+                    <button
+                      type="button"
+                      className={decision.status === "confirmed" ? "is-active" : ""}
+                      onClick={() => onSetAlignmentStatus(suggestion.id, "confirmed")}
+                    >
+                      Confirm
+                    </button>
+                    <button
+                      type="button"
+                      className={decision.status === "rejected" ? "is-active" : ""}
+                      onClick={() => onSetAlignmentStatus(suggestion.id, "rejected")}
+                    >
+                      Reject
+                    </button>
+                    <button
+                      type="button"
+                      disabled={decision.status === "suggested"}
+                      onClick={() => onSetAlignmentStatus(suggestion.id, "suggested")}
+                    >
+                      Reset
+                    </button>
+                  </div>
+                  <input
+                    type="text"
+                    className="alignment-note-input"
+                    placeholder="Reviewer note (optional)"
+                    value={decision.note}
+                    onChange={(event) => onSetAlignmentNote(suggestion.id, event.target.value)}
+                  />
+                </article>
+              );
+            })}
+          </div>
+        </details>
       )}
 
       <details className="detail-disclosure" open={evidence.length > 0}>

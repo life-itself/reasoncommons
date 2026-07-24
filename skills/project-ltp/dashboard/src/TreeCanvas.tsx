@@ -12,6 +12,7 @@ import {
   type NodeProps,
   type ReactFlowInstance,
 } from "@xyflow/react";
+import type { AlignmentBadge } from "./alignment";
 import type {
   Confidence,
   EntityStatus,
@@ -35,6 +36,7 @@ type FlowNodeData = {
   entity: LtpEntity;
   childCount: number;
   expanded: boolean;
+  alignmentBadge?: AlignmentBadge;
   onToggle: (entityId: string) => void;
 };
 
@@ -50,6 +52,18 @@ function LtpNode({ data, selected }: NodeProps<FlowNode>) {
       <Handle type="target" position={Position.Top} className="ltp-handle" />
       <header>
         <span className="node-id">{entity.id}</span>
+        {data.alignmentBadge && (
+          <i
+            className={`alignment-node-badge alignment-node-badge--${data.alignmentBadge}`}
+            title={
+              data.alignmentBadge === "confirmed"
+                ? "Alignment suggestion confirmed"
+                : data.alignmentBadge === "rejected"
+                  ? "Alignment suggestion rejected"
+                  : "Has an alignment suggestion"
+            }
+          />
+        )}
         <span className="node-type">{entity.type.replaceAll("_", " ")}</span>
         {data.childCount > 0 && (
           <button
@@ -124,6 +138,7 @@ interface TreeCanvasProps {
   expandedIds: Set<string>;
   collapsingIds: Set<string>;
   selectedId: string | null;
+  alignmentBadges?: Map<string, AlignmentBadge>;
   onToggle: (entityId: string) => void;
   onSelect: (entityId: string | null) => void;
 }
@@ -137,6 +152,7 @@ export function TreeCanvas({
   expandedIds,
   collapsingIds,
   selectedId,
+  alignmentBadges,
   onToggle,
   onSelect,
 }: TreeCanvasProps) {
@@ -187,6 +203,7 @@ export function TreeCanvas({
         entity,
         childCount: projection.childrenByParent.get(entity.id)?.length ?? 0,
         expanded: expandedIds.has(entity.id),
+        alignmentBadge: alignmentBadges?.get(entity.id),
         onToggle,
       },
       selected: selectedId === entity.id,
@@ -195,6 +212,7 @@ export function TreeCanvas({
     }));
     return { nodes: layout(nodes, edges), edges };
   }, [
+    alignmentBadges,
     confidences,
     collapsingIds,
     expandedIds,

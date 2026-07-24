@@ -18,6 +18,7 @@ Stream 2 (comms)  ─┘
 
 Stream 3 (2R experiment) ── DEFERRED until Stream 1 toy works
 Stream 4 (infra polish)  ── DROPPED this round
+Stream 5 (goal alignment) ── pilot #1 done on a toy tree; real pilot next
 ```
 
 ## Follow-up plans
@@ -37,6 +38,24 @@ Stream 4 (infra polish)  ── DROPPED this round
 
 Skills live in `skills/` (see `skills/README.md`).
 
+## Stream 5 — Goal alignment (individual → collective)
+
+Given an individual's LTP model and a collective one (e.g. Second Renaissance),
+suggest specific, human-confirmed cross-tree links — never auto-merged. Scoped
+directly from the project's own `2r-research-circle` model (`RC-4`, `UDE-5`,
+`NBR-2`, `INJ-5`, `OBS-5`/`IO-5`), which had already diagnosed this exact
+feature and prescribed a manual-pilot-then-AI-vs-steward-comparison order.
+
+- **5a. `goal-alignment` skill** — done, pilot #1 only. Runs on a synthetic
+  toy individual tree (`examples/individual-swe-notes/`) against the real
+  Second Renaissance tree; reviewable in the dashboard's new "Alignment
+  pilots" section. See `skills/goal-alignment/VERIFICATION.md`.
+- **5b. Real pilot** — point `project-ltp` at an actual individual's notes
+  repo (not the toy example) and rerun `goal-alignment` against it.
+- **5c. The actual `IO-5` step** — an independent human/steward mapping on
+  the same pair of trees, compared against the AI-suggested one, with errors
+  and corrections recorded, before trusting the matching further.
+
 ## Stream 2 — Narrative / comms
 
 - **2a. Background post** — synthesise background + personal story. **Blocked on inputs:** Jun 6 transcript/recording, written material shared with David, old issue-tree diagrams. *Gather these first.*
@@ -52,8 +71,11 @@ Skills live in `skills/` (see `skills/README.md`).
 | 1d | Decide the first editable workflow after observing 1c on a real model | evidence from 1c |
 | 2a | Gather Jun 6 transcript + old issue-tree diagrams | find the files |
 | 2b | Draft clean Mermaid 4-step diagram | none — start now |
+| 5b | Run `goal-alignment` on a real individual's notes repo | need a real notes repo, not the toy example |
+| 5c | Run the `IO-5` AI-vs-steward comparison on that real pilot | needs 5b done + a steward reviewer with standing over the target tree |
 
 ## Verification
 
 - **Stream 1** — run each skill on the toy input; diff structured output against the gold data in `claim-tree-annotation.md`. "Good enough" = tree covers the same major sub-questions; annotation-mapping places each of the 3 fragments on the correct node with a sensible relation. For the dashboard, compile the bundled frontend, run the localhost boundary tests, load all model data from YAML, and browser-check overview, tree selection, progressive disclosures, and responsive layout. Then eyeball on one *new* doc/project to check the workflow generalises.
 - **Stream 2** — 2b: render Mermaid, confirm it reads cleanly. 2a: draft reviewed by Rufus, then shared with David for a "does this capture it" check.
+- **Stream 5** — pilot #1 (toy tree) passes on mechanical checks only (schema-valid, all entity IDs resolve, confidence not uniformly high) — see `skills/goal-alignment/VERIFICATION.md`. Not yet run: the real pilot (5b) or the `IO-5` AI-vs-steward comparison (5c); don't treat pilot #1 as evidence the matching works on real data.

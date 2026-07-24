@@ -1,11 +1,20 @@
+import {
+  downloadReviewedAlignment,
+  tallyAlignmentDecisions,
+  type AlignmentDecision,
+  type LoadedAlignment,
+} from "./alignment";
 import type { LtpEntity, LtpModel, ModelIndex, ThroughputData, ThroughputPeriod } from "./model";
 
 interface OverviewProps {
   model: LtpModel;
   index: ModelIndex;
   throughput: ThroughputData | null;
+  alignment: LoadedAlignment | null;
+  alignmentDecisions: Record<string, AlignmentDecision>;
   onSelect: (entityId: string) => void;
   onExplore: () => void;
+  onJumpToEntity: (entityId: string) => void;
 }
 
 function Sparkline({ values }: { values: number[] }) {
@@ -37,7 +46,16 @@ function metricValue(period: ThroughputPeriod, key: keyof ThroughputPeriod): str
   return String(value);
 }
 
-export function Overview({ model, index, throughput, onSelect, onExplore }: OverviewProps) {
+export function Overview({
+  model,
+  index,
+  throughput,
+  alignment,
+  alignmentDecisions,
+  onSelect,
+  onExplore,
+  onJumpToEntity,
+}: OverviewProps) {
   const constraint = model.analysis?.current_constraint
     ? index.entities.get(model.analysis.current_constraint)
     : undefined;
@@ -65,6 +83,8 @@ export function Overview({ model, index, throughput, onSelect, onExplore }: Over
     { key: "work_in_progress", label: "Work in progress" },
     { key: "median_cycle_time_days", label: "Cycle time" },
   ];
+  const alignmentTally = alignment ? tallyAlignmentDecisions(alignment.doc, alignmentDecisions) : null;
+  const firstSuggestion = alignment?.doc.suggestions[0];
 
   return (
     <main className="overview">
@@ -94,6 +114,38 @@ export function Overview({ model, index, throughput, onSelect, onExplore }: Over
           </div>
         ))}
       </section>
+
+      {alignment && alignmentTally && (
+        <section className="overview-alignment" aria-label="Alignment suggestions">
+          <div>
+            <span className="eyebrow">Alignment · suggested, not merged</span>
+            <p>
+              <strong>{alignment.doc.suggestions.length}</strong> suggestions to{" "}
+              <strong>{alignment.targetModel.project.name}</strong> — {alignmentTally.confirmed} confirmed,{" "}
+              {alignmentTally.rejected} rejected, {alignmentTally.suggested + alignmentTally.edited} still open.
+              Look for <i className="alignment-node-badge" /> on nodes in the tree.
+            </p>
+          </div>
+          <div className="overview-alignment__actions">
+            {firstSuggestion && (
+              <button
+                type="button"
+                className="switch-project"
+                onClick={() => onJumpToEntity(firstSuggestion.source_entity)}
+              >
+                Review in the tree <span aria-hidden="true">→</span>
+              </button>
+            )}
+            <button
+              type="button"
+              className="switch-project"
+              onClick={() => downloadReviewedAlignment(alignment.doc, alignmentDecisions)}
+            >
+              Export decisions <span aria-hidden="true">↓</span>
+            </button>
+          </div>
+        </section>
+      )}
 
       <section className="throughput-section">
         <header className="section-heading">
