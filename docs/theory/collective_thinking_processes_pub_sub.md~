@@ -1,0 +1,845 @@
+Yes. The Collective Thinking Process Protocol should include a **typed, dependency-aware publish/subscribe process**.
+
+A failed test should not simply be broadcast as:
+
+> “The test failed.”
+
+That is too ambiguous. A test failure is a consequence. It is not yet a collective verdict about the claim. The next process must preserve the distinction between:
+
+* what happened;
+* what the result means;
+* which claims are affected;
+* which agents must reconsider their conduct;
+* who has authority to change the collective model.
+
+The appropriate subsystem is a **Collective Evidence Bus**.
+
+# Collective Evidence Publication and Subscription Protocol
+
+## 1. Immediate response to a failed test
+
+When the specialist’s test fails, four things happen immediately.
+
+### 1.1 Preserve the raw result
+
+The agent records:
+
+* the Test Contract;
+* exact test conditions;
+* raw traces;
+* environment;
+* deviations from the planned test;
+* timestamp;
+* relevant code, policy, or world-state version;
+* identity and authority of the test operator.
+
+The original result must remain available independently of later interpretations.
+
+### 1.2 Publish an unadjudicated Test Result Event
+
+The first publication says:
+
+> A result occurred that may bear on these claims.
+
+It does not yet say:
+
+> These claims are false.
+
+### 1.3 Apply any pre-registered stop conditions
+
+Some failures require immediate suspension before full interpretation.
+
+Examples:
+
+* a protected safety floor was crossed;
+* irreversible data loss occurred;
+* the probe produced a prohibited consequence;
+* continuing action would contaminate further evidence;
+* downstream agents are about to rely on the tested claim.
+
+### 1.4 Calculate the potential impact radius
+
+The shared dependency graph identifies:
+
+* the target claim;
+* downstream claims;
+* tree branches;
+* interventions;
+* commitments;
+* actions;
+* measurements;
+* affected stakeholders;
+* other agents whose plans rely on the claim.
+
+This produces a provisional **blast radius**.
+
+---
+
+# 2. The publication sequence
+
+The bus should distinguish five event types.
+
+## 2.1 Test Execution Event
+
+This records that the test was run.
+
+```yaml
+event_type: test_execution
+event_id: TE-104
+test_id: T-27
+target_claims:
+  - C-41
+executed_by: agent-specialist-7
+test_contract_version: 3
+environment_version: E-18
+started_at: 2026-07-13T10:00:00Z
+completed_at: 2026-07-13T10:04:00Z
+result_state: completed
+raw_trace_refs:
+  - X-991
+  - X-992
+```
+
+## 2.2 Test Result Event
+
+This records the observed mismatch.
+
+```yaml
+event_type: test_result
+event_id: TR-104
+test_id: T-27
+target_claims:
+  - C-41
+observed_result:
+  expected: "regional state remains consistent"
+  observed: "three regions produced conflicting authority states"
+preliminary_status: unadjudicated
+stop_condition_triggered: true
+possible_interpretations:
+  - target_claim_weakened
+  - implementation_failure
+  - measurement_invalid
+  - missing_boundary_condition
+published_by: agent-specialist-7
+provenance:
+  raw_trace_refs:
+    - X-991
+    - X-992
+```
+
+## 2.3 Evidence Event
+
+After selection, classification, attribution, and registration are reviewed, the result becomes an Evidence Event.
+
+A world-state does not become evidence automatically. The passage from consequence to evidence requires explicit uptake, and that process can preserve, distort, or erase relevant differences. 
+
+```yaml
+event_type: evidence
+event_id: EV-104
+derived_from:
+  - TR-104
+uptake:
+  selection:
+    included: all_pilot_regions
+    exclusions: none
+  classification:
+    result_class: harmful_state_divergence
+    alternatives:
+      - temporary_recoverable_variation
+  attribution:
+    current_assessment: shared_state_replication_delay
+    confidence: provisional
+  registration:
+    evidence_store: collective-ledger
+    version: 1
+epistemic_status: provisional
+```
+
+## 2.4 Verdict Event
+
+An authorized adjudicator or adjudicating group determines what the evidence does to the claims.
+
+```yaml
+event_type: verdict
+event_id: VE-104
+evidence_ids:
+  - EV-104
+target_claim: C-41
+verdict: qualified
+reason: >
+  The claim holds only when shared-state propagation latency remains below
+  the action-window threshold.
+claim_revision:
+  old: >
+    Bounded local authority preserves coordinated state.
+  new: >
+    Bounded local authority preserves coordinated state when propagation
+    latency is below 500 ms or local actions are conflict-checked before execution.
+authority:
+  adjudicator: collective-review-panel
+```
+
+## 2.5 Revision and Obligation Events
+
+The verdict then produces explicit changes.
+
+```yaml
+event_type: revision
+event_id: RE-104
+revised_claims:
+  - C-41
+suspended_claims:
+  - C-52
+affected_tree_nodes:
+  - FRT-E17
+  - TT-A9
+new_version: collective-model-v38
+```
+
+```yaml
+event_type: obligation
+event_id: OB-104
+assigned_to: platform-coordination-agent
+required_action: >
+  Suspend rollout to additional regions and evaluate conflict-checking options.
+due_at: 2026-07-14T12:00:00Z
+acknowledgement_required: true
+```
+
+---
+
+# 3. What agents subscribe to
+
+Agents should not subscribe only to other agents.
+
+They should primarily subscribe to **objects and responsibilities**.
+
+## 3.1 Claim subscriptions
+
+An agent subscribes to claims it:
+
+* owns;
+* relies upon;
+* tests;
+* challenges;
+* uses as a precondition.
+
+Example:
+
+```text
+claim.C-41
+```
+
+## 3.2 Tree-branch subscriptions
+
+An agent may subscribe to a causal branch.
+
+```text
+tree.FRT.failover-authority
+tree.CRT.incident-response
+```
+
+## 3.3 Goal-condition subscriptions
+
+Agents subscribe to Goal Tree conditions they help protect.
+
+```text
+goal.safety
+goal.service-continuity
+goal.local-autonomy
+```
+
+## 3.4 Commitment subscriptions
+
+An agent subscribes to changes that may alter its promises, resources, or assigned actions.
+
+```text
+commitment.K-18
+agent.A-7.obligations
+```
+
+## 3.5 Risk subscriptions
+
+Security, safety, legal, compliance, or affected-party agents may subscribe to risk classes.
+
+```text
+risk.data-loss
+risk.security-boundary
+risk.protected-floor
+```
+
+## 3.6 Constituency subscriptions
+
+A stakeholder representative subscribes to consequences borne by its constituency.
+
+```text
+affected.region-west
+affected.end-users
+affected.operations-team
+```
+
+## 3.7 Gate subscriptions
+
+Agents responsible for translation between scales subscribe to cross-scale evidence gates.
+
+```text
+gate.local-to-central
+gate.production-to-governance
+```
+
+The formal theory treats gates as the mechanisms through which consequences move between regimes of semiosis; provenance and distinctions can be lost at these boundaries. 
+
+---
+
+# 4. Dependency-based routing
+
+The publication system should maintain a graph containing:
+
+```text
+claim
+measurement
+test
+tree node
+action
+commitment
+agent
+constituency
+protected floor
+ideal condition
+```
+
+Edges include:
+
+```text
+supports
+depends_on
+measures
+tests
+implements
+authorized_by
+committed_by
+affects
+contradicts
+qualifies
+```
+
+When evidence affects claim (C), the system computes the relevant dependency closure.
+
+Conceptually:
+
+[
+Impact(C) =
+Descendants(C)
+\cup Owners(Descendants(C))
+\cup AffectedParties(Descendants(C))
+]
+
+The system should not notify every participant equally.
+
+It assigns an impact level.
+
+| Impact level          | Meaning                                                             |
+| --------------------- | ------------------------------------------------------------------- |
+| **Informational**     | The evidence may be relevant but no response is required            |
+| **Review required**   | A relied-upon claim may have changed                                |
+| **Replan required**   | An active plan depends materially on the claim                      |
+| **Commitment review** | A promise, resource allocation, or responsibility may need revision |
+| **Suspend**           | Dependent action must pause pending adjudication                    |
+| **Stop**              | Protected floor or invalid authority requires immediate cessation   |
+| **Ideal review**      | Evidence may challenge the goal or protected conditions             |
+
+---
+
+# 5. What a subscribed agent receives
+
+The agent should receive an **Impact Package**, not merely the raw failure.
+
+```yaml
+impact_package_id: IP-104
+recipient: agent-A12
+trigger_event: VE-104
+
+summary:
+  tested_claim: C-41
+  verdict: qualified
+  change: >
+    Local authority requires propagation latency below 500 ms or conflict checking.
+
+why_you_received_this:
+  dependency:
+    your_action: TT-A9
+    relies_on: C-41
+
+required_response:
+  type: replan_required
+  deadline: 2026-07-14T12:00:00Z
+
+affected_objects:
+  - TT-A9
+  - commitment-K22
+  - deployment-plan-P4
+
+evidence_refs:
+  - EV-104
+  - X-991
+  - X-992
+
+permitted_responses:
+  - acknowledge
+  - challenge_relevance
+  - challenge_verdict
+  - revise_local_plan
+  - request_clarification
+  - declare_no_impact
+  - escalate
+```
+
+This prevents the receiving agent from having to reconstruct the entire causal route from a terse message.
+
+---
+
+# 6. The receiving agent’s obligations
+
+Receiving an update does not mean silently overwriting the agent’s internal model.
+
+Each relevant agent performs **local uptake**.
+
+## 6.1 Acknowledge receipt
+
+The agent confirms that it has received the event and can access the evidence permitted by its standing.
+
+## 6.2 Verify relevance
+
+The agent checks:
+
+* Is the dependency real?
+* Does the evidence apply within my scope?
+* Is my action based on the revised claim?
+* Does the qualification alter my boundary conditions?
+
+## 6.3 Update local claims
+
+The agent marks local claims as:
+
+* unaffected;
+* review required;
+* suspended;
+* invalidated;
+* qualified.
+
+## 6.4 Review commitments
+
+The agent determines whether it can still:
+
+* perform the promised action;
+* provide the promised resource;
+* accept the risk;
+* meet the expected effect.
+
+## 6.5 Publish a response
+
+```yaml
+event_type: impact_response
+recipient_event: IP-104
+agent: agent-A12
+response: revise_local_plan
+local_changes:
+  suspended_actions:
+    - TT-A9
+  new_claim:
+    - C-77
+  requested_probe:
+    - T-31
+commitment_changes:
+  commitment-K22: conditional
+reason: >
+  Our rollout environment regularly exceeds the newly identified latency threshold.
+```
+
+## 6.6 Escalate disagreement where necessary
+
+The agent may challenge:
+
+* the relevance route;
+* the evidence;
+* the classification;
+* the attribution;
+* the verdict;
+* the authority of the adjudicator;
+* the proposed revision.
+
+This challenge is itself published and becomes part of the collective record.
+
+---
+
+# 7. The specialist’s role after publishing
+
+The specialist who ran the failed test should not unilaterally update every dependent claim.
+
+The specialist is responsible for:
+
+* accurate test execution;
+* raw trace preservation;
+* initial result publication;
+* disclosure of deviations;
+* technical interpretation within its scope;
+* availability for clarification.
+
+The specialist is not automatically authorized to decide:
+
+* the collective verdict;
+* the business or normative meaning;
+* all downstream revisions;
+* whether the ideal should change.
+
+This separates expertise from governance authority.
+
+---
+
+# 8. What should happen before adjudication
+
+A failed test may immediately affect ongoing actions even before its meaning is settled.
+
+The protocol should use provisional states.
+
+| Provisional state          | Consequence                                 |
+| -------------------------- | ------------------------------------------- |
+| **Pending review**         | Continue cautiously; no claim change yet    |
+| **Dependency warning**     | Dependent agents inspect exposure           |
+| **Temporary suspension**   | Pause actions relying directly on the claim |
+| **Emergency stop**         | Protected-floor condition triggered         |
+| **Evidence quarantine**    | Result may be contaminated or invalid       |
+| **Reproduction requested** | Independent or repeated test required       |
+
+The test result event should state which provisional state applies.
+
+---
+
+# 9. Not every failed test defeats the claim
+
+A failed test can mean:
+
+* the claim is false;
+* the claim is too broad;
+* a necessary condition was omitted;
+* the test implementation failed;
+* the intervention was not instantiated;
+* the measurement was invalid;
+* the environment differed;
+* uptake erased a relevant distinction;
+* a rival is favored;
+* no current hypothesis explains the result.
+
+The publication system must therefore transmit both:
+
+```text
+observed failure
+```
+
+and:
+
+```text
+current epistemic interpretation
+```
+
+as separate fields.
+
+Otherwise agents may prematurely rewrite their plans around a misdiagnosed result.
+
+---
+
+# 10. Re-abduction after collective surprise
+
+If the failed result fits no live explanation, the bus should publish a **Second-Order Surprise Event**.
+
+```yaml
+event_type: second_order_surprise
+event_id: SO-18
+evidence:
+  - EV-104
+reason: >
+  None of the registered hypotheses predicts the observed regional divergence pattern.
+affected_model_area:
+  - failover-authority
+required_transition: re_abduction
+requested_contributors:
+  - distributed-systems-specialist
+  - regional-operations
+  - network-observability
+  - affected-party-representative
+```
+
+This event does not ask the same agents merely to try harder.
+
+It explicitly reopens:
+
+* the hypothesis space;
+* the stakeholder set;
+* the scale boundary;
+* the vocabulary;
+* the current system model.
+
+---
+
+# 11. Acknowledgment and convergence
+
+A publication is not complete merely because it was sent.
+
+For high-impact updates, the system tracks:
+
+* delivery;
+* receipt;
+* understanding;
+* local disposition;
+* commitment change;
+* completion of required revision.
+
+Possible acknowledgment states:
+
+```text
+delivered
+received
+understood
+relevance_confirmed
+local_review_complete
+action_revised
+commitment_revised
+challenged
+escalated
+```
+
+The collective should not assume convergence merely because all messages were delivered.
+
+---
+
+# 12. Late-joining and temporarily disconnected agents
+
+The bus should be event-sourced.
+
+A new or returning agent can reconstruct:
+
+* current claim versions;
+* relevant historical evidence;
+* unresolved dissent;
+* superseded decisions;
+* active commitments;
+* pending obligations.
+
+This requires:
+
+* append-only events;
+* stable identifiers;
+* version numbers;
+* timestamps;
+* causal references;
+* replayable subscriptions.
+
+An agent should be able to ask:
+
+> What changed since collective model version 34 that affects my responsibilities?
+
+---
+
+# 13. Privacy, access, and partial disclosure
+
+Not every agent should receive every raw trace.
+
+The system may publish:
+
+* full evidence;
+* redacted evidence;
+* aggregate evidence;
+* proof of review;
+* access-controlled references.
+
+However, redaction itself must be registered because it may affect interpretation.
+
+```yaml
+disclosure:
+  level: redacted
+  reason: personal_data
+  redacted_fields:
+    - user_identity
+  full_record_custodian: independent-evidence-agent
+  challenge_path: privacy-review-panel
+```
+
+Restricted access must not become a way to make claims immune from challenge.
+
+---
+
+# 14. Recommended topics
+
+A practical topic structure might be:
+
+```text
+collective/{collective_id}/test/{test_id}
+collective/{collective_id}/claim/{claim_id}
+collective/{collective_id}/tree/{tree_id}/{branch_id}
+collective/{collective_id}/goal/{goal_condition_id}
+collective/{collective_id}/risk/{risk_class}
+collective/{collective_id}/commitment/{commitment_id}
+collective/{collective_id}/agent/{agent_id}/obligations
+collective/{collective_id}/constituency/{constituency_id}
+collective/{collective_id}/surprise
+collective/{collective_id}/ideal-review
+```
+
+Subscriptions may be:
+
+* explicit;
+* role-derived;
+* dependency-derived;
+* constituency-derived;
+* temporary;
+* mandatory.
+
+---
+
+# 15. Mandatory versus optional subscriptions
+
+Some subscriptions are required by role.
+
+Examples:
+
+* a claim owner must subscribe to verdicts about the claim;
+* an action owner must subscribe to changes in its preconditions;
+* a commitment bearer must subscribe to changes affecting the commitment;
+* a protected-floor steward must subscribe to relevant risk events;
+* an evidence custodian must subscribe to tests requiring its records;
+* an affected-party representative must subscribe to consequences borne by that constituency.
+
+Agents may also create optional exploratory subscriptions.
+
+---
+
+# 16. End-to-end example
+
+A specialist agent tests:
+
+> **C-62:** The shared-state ledger updates rapidly enough to permit conflict-free local emergency action.
+
+The test fails.
+
+## Step 1 — Raw publication
+
+The specialist publishes:
+
+* expected propagation under 500 ms;
+* observed propagation between 900 and 1,800 ms;
+* raw regional timestamps;
+* environment and version;
+* test contract;
+* preliminary stop-condition trigger.
+
+## Step 2 — Provisional routing
+
+The dependency graph finds that C-62 supports:
+
+* FRT effect E-14;
+* Transition Tree action A-9;
+* rollout plan P-4;
+* commitments K-18 and K-19;
+* safety floor B-3.
+
+The bus sends:
+
+* `stop` to the rollout owner;
+* `commitment review` to regional teams;
+* `review required` to the architecture agent;
+* `protected-floor review` to the safety representative;
+* `informational` to unrelated observers.
+
+## Step 3 — Uptake review
+
+The evidence custodian discovers that one region’s clock was unsynchronized.
+
+The result is reclassified:
+
+* two regions show genuine delay;
+* one region’s apparent extreme delay is measurement error.
+
+## Step 4 — Adjudication
+
+Verdict:
+
+> C-62 is qualified, not defeated.
+
+Revised claim:
+
+> The ledger supports conflict-free local action only in regions with synchronized clocks and observed propagation below 800 ms.
+
+## Step 5 — Revision publication
+
+The bus publishes:
+
+* model version change;
+* affected branches;
+* rollout suspension;
+* new prerequisite concerning clock synchronization;
+* new probe concerning propagation under load.
+
+## Step 6 — Agent responses
+
+The rollout agent suspends expansion.
+
+The infrastructure agent commits to clock remediation.
+
+The regional agent challenges the 800 ms threshold.
+
+The safety representative requests a negative-branch test.
+
+The collective therefore continues with a revised model rather than either:
+
+* ignoring the failed test;
+* or globally declaring the original theory false.
+
+---
+
+# 17. The key design rule
+
+The publish/subscribe process should not be a generic notification system.
+
+It should be:
+
+> **typed, claim-centered, dependency-aware, versioned, authority-sensitive, and acknowledgment-tracked.**
+
+Its purpose is not to make every agent know everything.
+
+Its purpose is to ensure that:
+
+* relevant evidence reaches agents whose conduct depends on it;
+* agents know why it is relevant;
+* the distinction between result and verdict is preserved;
+* local models and commitments are reviewed;
+* collective revisions propagate;
+* disagreement remains possible;
+* no failed test disappears inside one specialist’s local context.
+
+The complete sequence is:
+
+```text
+Specialist runs test
+        ↓
+Raw traces are preserved
+        ↓
+Unadjudicated result is published
+        ↓
+Stop conditions and provisional dependencies are evaluated
+        ↓
+Uptake is reviewed
+        ↓
+An authorized verdict is published
+        ↓
+The dependency graph computes affected claims, actions, and commitments
+        ↓
+Subscribed agents receive impact packages
+        ↓
+Each agent acknowledges, revises, challenges, or escalates
+        ↓
+Collective model and Transition Trees are updated
+        ↓
+Outstanding obligations are tracked to completion
+```
+
+That is the publish/subscribe mechanism the Collective Thinking Process Protocol needs.

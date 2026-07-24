@@ -4,7 +4,13 @@ import {
   type AlignmentDecision,
   type LoadedAlignment,
 } from "./alignment";
-import type { LtpEntity, LtpModel, ModelIndex, ThroughputData, ThroughputPeriod } from "./model";
+import type {
+  LtpEntity,
+  LtpModel,
+  ModelIndex,
+  ThroughputData,
+  ThroughputPeriod,
+} from "./model";
 
 interface OverviewProps {
   model: LtpModel;
@@ -39,7 +45,9 @@ function Sparkline({ values }: { values: number[] }) {
   );
 }
 
-function metricValue(period: ThroughputPeriod, key: keyof ThroughputPeriod): string {
+type ThroughputMetric = Exclude<keyof ThroughputPeriod, "date">;
+
+function metricValue(period: ThroughputPeriod, key: ThroughputMetric): string {
   const value = period[key];
   if (value === undefined) return "—";
   if (key === "median_cycle_time_days") return `${value}d`;
@@ -71,18 +79,40 @@ export function Overview({
     { label: "Expected shift", entity: effect, fallback: "Not modelled" },
   ];
   const latest = throughput?.periods.at(-1);
-  const metricCards: Array<{ key: keyof ThroughputPeriod; label: string }> = [
-    { key: "throughput", label: "Throughput" },
-    { key: "work_in_progress", label: "Work in progress" },
-    { key: "blocked", label: "Blocked" },
-    { key: "median_cycle_time_days", label: "Cycle time" },
-    { key: "constraint_queue", label: "Constraint queue" },
-  ];
-  const trends: Array<{ key: keyof ThroughputPeriod; label: string }> = [
-    { key: "throughput", label: "Goal throughput" },
-    { key: "work_in_progress", label: "Work in progress" },
-    { key: "median_cycle_time_days", label: "Cycle time" },
-  ];
+  const countedRevisions = throughput?.revisions ?? [];
+  const hasNodeDeltaBreakdown =
+    latest &&
+    ["created", "updated", "deleted"].some(
+      (key) => typeof latest[key as ThroughputMetric] === "number",
+    );
+  const metricCards: Array<{ key: ThroughputMetric; label: string }> =
+    hasNodeDeltaBreakdown
+      ? [
+          { key: "throughput", label: "Throughput" },
+          { key: "created", label: "Nodes created" },
+          { key: "updated", label: "Nodes updated" },
+          { key: "deleted", label: "Nodes deleted" },
+        ]
+      : [
+          { key: "throughput", label: "Throughput" },
+          { key: "work_in_progress", label: "Work in progress" },
+          { key: "blocked", label: "Blocked" },
+          { key: "median_cycle_time_days", label: "Cycle time" },
+          { key: "constraint_queue", label: "Constraint queue" },
+        ];
+  const trends: Array<{ key: ThroughputMetric; label: string }> =
+    hasNodeDeltaBreakdown
+      ? [
+          { key: "throughput", label: "Goal throughput" },
+          { key: "created", label: "Nodes created" },
+          { key: "updated", label: "Nodes updated" },
+          { key: "deleted", label: "Nodes deleted" },
+        ]
+      : [
+          { key: "throughput", label: "Goal throughput" },
+          { key: "work_in_progress", label: "Work in progress" },
+          { key: "median_cycle_time_days", label: "Cycle time" },
+        ];
   const alignmentTally = alignment ? tallyAlignmentDecisions(alignment.doc, alignmentDecisions) : null;
   const firstSuggestion = alignment?.doc.suggestions[0];
 
@@ -172,7 +202,7 @@ export function Overview({
               ))}
             </div>
             <details className="trend-disclosure">
-              <summary>See trends <span>Three signals over time</span></summary>
+              <summary>See trends <span>{trends.length} signals over time</span></summary>
               <div className="trend-grid">
                 {trends.map(({ key, label }) => {
                   const values = throughput!.periods
@@ -188,6 +218,30 @@ export function Overview({
                 })}
               </div>
             </details>
+            {countedRevisions.length > 0 && (
+              <details className="throughput-revisions">
+                <summary>
+                  Counted revisions <span>{countedRevisions.length} semantic changesets</span>
+                </summary>
+                <ol>
+                  {countedRevisions.map((revision) => (
+                    <li key={revision.revision}>
+                      <div>
+                        <code>{revision.revision.slice(0, 12)}</code>
+                        <time dateTime={revision.date}>{revision.date}</time>
+                        {revision.subject && <strong>{revision.subject}</strong>}
+                      </div>
+                      <span>{revision.throughput} node changes</span>
+                      <dl>
+                        <div><dt>Created</dt><dd>{revision.created.join(", ") || "—"}</dd></div>
+                        <div><dt>Updated</dt><dd>{revision.updated.join(", ") || "—"}</dd></div>
+                        <div><dt>Deleted</dt><dd>{revision.deleted.join(", ") || "—"}</dd></div>
+                      </dl>
+                    </li>
+                  ))}
+                </ol>
+              </details>
+            )}
           </>
         ) : (
           <div className="empty-panel">

@@ -1,0 +1,21 @@
+{
+  "tracks": [
+    {
+      "recipient_project": "2r-research-circle",
+      "source_project": "second-renaissance",
+      "source_model": "ltp/ltp-model.yaml",
+      "published_model": "skills/project-ltp/dashboard/public/projects/second-renaissance/model.yaml",
+      "output": "skills/project-ltp/dashboard/public/projects/2r-research-circle/throughput.yaml",
+      "baseline_revision": "0f637f7e908401f316b533d465d076284492663d",
+      "ref": "HEAD",
+      "definition": {
+        "name": "Second Renaissance tree improvements adopted into the shared model",
+        "unit": "adopted node changes",
+        "period": "week",
+        "goal_entity": "G-1",
+        "constraint_entity": "RC-1",
+        "counting_rule": "Each stable entity ID created, semantically updated, or deleted in a committed mainline revision of the canonical Second Renaissance model counts once per revision."
+      }
+    }
+  ]
+}

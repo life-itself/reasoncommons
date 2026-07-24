@@ -32,6 +32,10 @@ Stream 5 (goal alignment) ── pilot #1 done on a toy tree; real pilot next
 - **1a. Tree-gen skill** — input claim/question → claim tree. Validate against the hand-authored remote-work tree.
 - **1b. Annotation-mapping skill** — source doc + tree → fragments mapped to nodes + relation label (supports / complicates / limits) + link back. Validate against the 3 gold annotations.
 - **1c. Local Project LTP dashboard** — **implemented on the toy fixture**: a localhost-only, read-only viewer for the six LTP views, evidence, assumptions, the current constraint, next action, and optional throughput history.
+- **1c.1. Automatic 2R Research throughput** — **implemented**: the dashboard
+  build semantically diffs committed revisions of the canonical Second
+  Renaissance model and attributes created, updated, and deleted stable nodes
+  to the 2R Research Circle, with a revision-level audit trail.
 - **1d. Editable claim/evidence UI** — after the read-only model contract proves useful on a new case, evolve the scripted demo into a live app that persists a tree, accepts documents, and accumulates confirmed annotations.
 
 **Internal parallelization:** 1a → 1b is the natural order, but **1b can start immediately** against the gold tree. So 1a and 1b run in parallel; 1c waits on both.
@@ -76,6 +80,6 @@ feature and prescribed a manual-pilot-then-AI-vs-steward-comparison order.
 
 ## Verification
 
-- **Stream 1** — run each skill on the toy input; diff structured output against the gold data in `claim-tree-annotation.md`. "Good enough" = tree covers the same major sub-questions; annotation-mapping places each of the 3 fragments on the correct node with a sensible relation. For the dashboard, compile the bundled frontend, run the localhost boundary tests, load all model data from YAML, and browser-check overview, tree selection, progressive disclosures, and responsive layout. Then eyeball on one *new* doc/project to check the workflow generalises.
+- **Stream 1** — run each skill on the toy input; diff structured output against the gold data in `claim-tree-annotation.md`. "Good enough" = tree covers the same major sub-questions; annotation-mapping places each of the 3 fragments on the correct node with a sensible relation. For the dashboard, compile the bundled frontend, run the localhost boundary tests and semantic-throughput generator tests, load all model data from YAML, and browser-check overview, tree selection, progressive disclosures, and responsive layout. Then eyeball on one *new* doc/project to check the workflow generalises.
 - **Stream 2** — 2b: render Mermaid, confirm it reads cleanly. 2a: draft reviewed by Rufus, then shared with David for a "does this capture it" check.
 - **Stream 5** — pilot #1 (toy tree) passes on mechanical checks only (schema-valid, all entity IDs resolve, confidence not uniformly high) — see `skills/goal-alignment/VERIFICATION.md`. Not yet run: the real pilot (5b) or the `IO-5` AI-vs-steward comparison (5c); don't treat pilot #1 as evidence the matching works on real data.

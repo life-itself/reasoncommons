@@ -78,6 +78,48 @@ periods or silently mix different units.
 
 Validate against `references/throughput.schema.json` when possible.
 
+## Automatic Git-derived node throughput
+
+Use Git-derived node throughput only when the recipient project explicitly
+defines adopted changes to another project's LTP model as its goal unit. A
+committed change is treated as adoption into the canonical model; proposed,
+uncommitted, formatting-only, and generated Markdown changes do not count.
+
+The bundled dashboard configures this relationship for the 2R projects:
+
+- source project: `second-renaissance`
+- canonical source: repository-root `ltp/ltp-model.yaml`
+- recipient project: `2r-research-circle`
+- baseline: the initial committed Second Renaissance model
+- unit: one stable entity ID created, semantically updated, or deleted in one
+  first-parent revision
+
+The semantic projection for an entity contains the entity fields, its incident
+causal links, and its tree-view memberships. YAML mapping order and set-like
+list order are normalized away. A stable ID counts at most once per revision,
+even when several of its fields change:
+
+```text
+throughput = created IDs + updated IDs + deleted IDs
+```
+
+`dashboard/throughput.config.json` declares the relationship. Both `npm run
+build` and `npm run dev` generate the recipient's `throughput.yaml` before
+starting. Run it directly with:
+
+```bash
+cd skills/project-ltp/dashboard
+npm run generate:throughput
+```
+
+The generated file contains consecutive weekly aggregates—including observed
+zero-change weeks through the built revision—and a revision ledger with the
+affected IDs. The generator also synchronizes the static source-project model
+from the same Git revision, so the displayed tree and measured tree cannot
+silently diverge. Because the calculation uses repository history, builds must
+have the configured baseline revision available rather than a history truncated
+after that revision.
+
 ## Serve locally
 
 From the skill's repository, run:

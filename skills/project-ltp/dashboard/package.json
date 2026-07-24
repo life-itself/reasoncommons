@@ -4,8 +4,12 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "generate:throughput": "node scripts/generate-throughput.mjs",
+    "prebuild": "npm run generate:throughput",
     "build": "tsc -b && vite build",
+    "predev": "npm run generate:throughput",
     "dev": "vite --host 127.0.0.1",
+    "test": "node --test scripts/*.test.mjs",
     "typecheck": "tsc -b"
   },
   "dependencies": {

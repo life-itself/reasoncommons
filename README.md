@@ -64,7 +64,17 @@ sh skills/project-ltp/scripts/publish_dashboard.sh
 ```
 
 This builds the dashboard and copies it to the repo-root `dashboard/` directory
-that the site serves.
+that the site serves. The build first runs the configured throughput generators
+in `skills/project-ltp/dashboard/throughput.config.json`.
+
+For the bundled 2R projects, committed semantic changes to the canonical
+Second Renaissance model at `ltp/ltp-model.yaml` are automatically attributed
+to the 2R Research Circle. Stable entity IDs created, updated, or deleted count
+once per mainline revision; formatting-only changes do not count. The generated
+weekly totals, operation breakdown, revision hashes, and affected IDs are
+written to
+`public/projects/2r-research-circle/throughput.yaml`. The initial Second
+Renaissance model commit is a zero baseline rather than throughput.
 
 ### Local single-project dashboard
 
@@ -103,8 +113,10 @@ interface, and does not write to the analyzed project.
 5. Open **Refine** to filter nodes by evidence status and confidence. Open
    **How to read this** for the status legend.
 6. When a real `ltp/throughput.yaml` exists, use the Overview metrics and trend
-   disclosure to inspect goal throughput and supporting flow signals. The
-   dashboard intentionally shows no made-up metrics when that file is absent.
+   disclosure to inspect goal throughput and supporting flow signals.
+   Git-derived node throughput also shows created, updated, and deleted totals
+   plus the revisions and entity IDs that produced them. The dashboard
+   intentionally shows no made-up metrics when that file is absent.
 
 The dashboard polls the YAML files and refreshes after changes. To revise the
 analysis, ask Codex to update the canonical files under `ltp/` (or edit them in

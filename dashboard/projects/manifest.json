@@ -13,6 +13,23 @@
       "blurb": "How the Research Circle's inquiry becomes cumulative, plural, and action-guiding through a continually improving shared model.",
       "analysis_mode": "reconciliation",
       "source": "https://github.com/Promise-Foundation/2R-Research"
+    },
+    {
+      "slug": "individual-swe-example",
+      "name": "Individual Contributor — Software Engineer (example)",
+      "blurb": "A synthetic personal-notes example: one engineer's TODOs and journal, reverse-analyzed into a goal tree, for piloting cross-tree alignment suggestions.",
+      "analysis_mode": "reverse",
+      "source": "examples/individual-swe-notes"
+    }
+  ],
+  "alignments": [
+    {
+      "slug": "individual-swe-example__second-renaissance",
+      "name": "Software engineer → Second Renaissance",
+      "blurb": "Where one engineer's personal goal tree could advance 2R's collective goal tree — suggested, not merged.",
+      "source_project": "individual-swe-example",
+      "target_project": "second-renaissance",
+      "file": "alignments/individual-swe-example__second-renaissance.yaml"
     }
   ]
 }

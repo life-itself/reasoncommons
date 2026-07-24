@@ -86,11 +86,18 @@ export interface ThroughputDefinition {
   goal_entity?: string;
   constraint_entity?: string;
   source?: string;
+  source_project?: string;
+  source_model?: string;
+  baseline_revision?: string;
+  counting_rule?: string;
 }
 
 export interface ThroughputPeriod {
   date: string;
   throughput?: number;
+  created?: number;
+  updated?: number;
+  deleted?: number;
   completed?: number;
   work_in_progress?: number;
   blocked?: number;
@@ -98,9 +105,20 @@ export interface ThroughputPeriod {
   constraint_queue?: number;
 }
 
+export interface ThroughputRevision {
+  revision: string;
+  date: string;
+  subject?: string;
+  throughput: number;
+  created: string[];
+  updated: string[];
+  deleted: string[];
+}
+
 export interface ThroughputData {
   definition: ThroughputDefinition;
   periods: ThroughputPeriod[];
+  revisions?: ThroughputRevision[];
 }
 
 export interface DashboardMeta {
@@ -187,6 +205,28 @@ export function validateThroughput(value: unknown): ThroughputData {
   }
   if (!Array.isArray(data.periods)) {
     throw new Error("throughput.periods must be an array");
+  }
+  for (const period of data.periods) {
+    if (!period?.date) {
+      throw new Error("every throughput period needs a date");
+    }
+  }
+  if (data.revisions !== undefined && !Array.isArray(data.revisions)) {
+    throw new Error("throughput.revisions must be an array when present");
+  }
+  for (const revision of data.revisions ?? []) {
+    if (
+      !revision?.revision ||
+      !revision.date ||
+      typeof revision.throughput !== "number" ||
+      !Array.isArray(revision.created) ||
+      !Array.isArray(revision.updated) ||
+      !Array.isArray(revision.deleted)
+    ) {
+      throw new Error(
+        "every throughput revision needs revision, date, throughput, created, updated, and deleted",
+      );
+    }
   }
   return data as ThroughputData;
 }

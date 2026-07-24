@@ -1,0 +1,105 @@
+alignment:
+  source_project: individual-swe-example
+  source_model: projects/individual-swe-example/model.yaml
+  target_project: second-renaissance
+  target_model: projects/second-renaissance/model.yaml
+  method: ai-suggested
+  generated_at: "2026-07-24T00:00:00Z"
+  note: >
+    Pilot run per skills/goal-alignment/SKILL.md. This is the AI-suggested
+    half of the IO-5 comparison the project's own 2r-research-circle model
+    calls for (skills/project-ltp/dashboard/public/projects/2r-research-circle/model.yaml,
+    entities OBS-5/IO-5). No entity here has been reviewed by a human with
+    standing over the Second Renaissance tree; every suggestion is
+    status: suggested until that review happens.
+
+suggestions:
+  - id: AL-001
+    source_entity: ACT-1
+    target_entity: INJ-0
+    relation: advances
+    rationale: >
+      Second Renaissance's own Future Reality Tree already calls for
+      "a lightweight stewardship and revision protocol for the trees"
+      (INJ-0). Shipping v2 of a working stable-ID / rationale / status
+      decision-log tool is a concrete, already-built artifact of exactly
+      that kind, offered at a much smaller scale. If shared with whoever
+      owns INJ-0, it could shortcut design work rather than just being
+      analogous to it.
+    confidence: high
+    status: suggested
+
+  - id: AL-002
+    source_entity: INJ-1
+    target_entity: CSF-2
+    relation: supports
+    rationale: >
+      CSF-2 ("the group learns and revises strategy through evidence,
+      objections, and constraint review") needs some durable record of
+      why a decision was made, not just that it was. INJ-1's stable-ID +
+      rationale + alternatives-considered pattern is a concrete mechanism
+      for exactly that need, tested at team scale.
+    confidence: medium
+    status: suggested
+
+  - id: AL-003
+    source_entity: INJ-1
+    target_entity: NC-6
+    relation: provides_evidence_for
+    rationale: >
+      NC-6 requires strategic maps to be "governed as living, challengeable,
+      versioned commons." A five-minute-habit rationale format that
+      teammates actually keep up is real (if small-scale) evidence that
+      this kind of governance can be made low-friction enough to stick —
+      relevant to whether NC-6 is achievable at all, short of proving it
+      works at Second Renaissance's scale.
+    confidence: medium
+    status: suggested
+
+  - id: AL-004
+    source_entity: ACT-2
+    target_entity: RC-0
+    relation: provides_evidence_for
+    rationale: >
+      RC-0 names "no agreed process for validating and revising strategic
+      maps" as a candidate root cause. The planned internal post's
+      underlying finding — decisions get relitigated when the rationale,
+      not the information, is missing — is a plausible instance of the
+      same mechanism, and could sharpen RC-0 from a hypothesis into a
+      named, evidenced pattern.
+    confidence: medium
+    status: suggested
+
+  - id: AL-005
+    source_entity: ACT-4
+    target_entity: INJ-5
+    relation: supports
+    rationale: >
+      INJ-5 calls for "a graduated contributor, facilitator, and
+      stewardship pathway." Mentoring two engineers through their first
+      design doc is real, direct experience in the same shape of work —
+      taking someone from contributor to independent judgment — though at
+      individual-mentee scale, not pathway-design scale. Treat as
+      transferable experience, not a ready-made pathway.
+    confidence: medium
+    status: suggested
+
+  - id: AL-006
+    source_entity: ACT-5
+    target_entity: G-1
+    relation: unclear
+    rationale: >
+      No evidenced mechanism connects routine CRDT-library maintenance to
+      any Second Renaissance entity. Included deliberately, not omitted,
+      to show the matching doesn't manufacture significance where there
+      isn't any — see NBR-2 in the 2r-research-circle model.
+    confidence: low
+    status: suggested
+
+open_questions:
+  - Does whoever stewards Second Renaissance's INJ-0 (map governance protocol)
+    already have a design in progress that AL-001 would duplicate rather than
+    shortcut?
+  - Is "supports"/"provides_evidence_for" the right relation vocabulary, or
+    should low-stakes team-scale evidence be graded differently from a
+    movement-scale claim?

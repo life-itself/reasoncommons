@@ -14,7 +14,11 @@
         "period": { "type": "string", "minLength": 1 },
         "goal_entity": { "type": "string" },
         "constraint_entity": { "type": "string" },
-        "source": { "type": "string" }
+        "source": { "type": "string" },
+        "source_project": { "type": "string" },
+        "source_model": { "type": "string" },
+        "baseline_revision": { "type": "string" },
+        "counting_rule": { "type": "string" }
       },
       "additionalProperties": false
     },
@@ -26,11 +30,43 @@
         "properties": {
           "date": { "type": "string", "format": "date" },
           "throughput": { "type": "number", "minimum": 0 },
+          "created": { "type": "number", "minimum": 0 },
+          "updated": { "type": "number", "minimum": 0 },
+          "deleted": { "type": "number", "minimum": 0 },
           "completed": { "type": "number", "minimum": 0 },
           "work_in_progress": { "type": "number", "minimum": 0 },
           "blocked": { "type": "number", "minimum": 0 },
           "median_cycle_time_days": { "type": "number", "minimum": 0 },
           "constraint_queue": { "type": "number", "minimum": 0 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "revisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["revision", "date", "throughput", "created", "updated", "deleted"],
+        "properties": {
+          "revision": { "type": "string", "minLength": 1 },
+          "date": { "type": "string", "format": "date" },
+          "subject": { "type": "string" },
+          "throughput": { "type": "number", "minimum": 0 },
+          "created": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
+          "updated": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
+          "deleted": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          }
         },
         "additionalProperties": false
       }
