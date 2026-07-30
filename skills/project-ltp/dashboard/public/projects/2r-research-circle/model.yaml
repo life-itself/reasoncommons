@@ -3,1221 +3,1230 @@ project:
   analyzed_path: /Users/davidjoseph/github/2R-Research
   analysis_mode: reconciliation
   provisional_goal: G-1
+  system_boundary: >-
+    David Joseph and Rufus Pollock, treated for the time being as the same
+    system as the 2R Research Circle. The 2R movement is the environment this
+    system acts on, not part of the system.
+  throughput: >-
+    New users of LTP and its outputs, including people who discover 2R through
+    them.
 
 analysis:
-  current_constraint: RC-1
+  current_constraint: IC-4
   recommended_next_action: ACT-1
   expected_effect: TR-1
-  updated_at: "2026-07-23T14:05:03+02:00"
+  updated_at: "2026-07-30T15:10:00+02:00"
 
 entities:
-  - id: G-1
-    type: goal
-    statement: 2R inquiry becomes cumulative, plural, and action-guiding through a continually improving shared model
+  # --- Above the goal: vision and higher-level outcome (context, not in views) ---
+
+  - id: VIS-1
+    type: vision
+    statement: The world thinks better and collaborates better, using trees and similar structure
     status: confirmed
     confidence: high
-    evidence: [EVD-1, EVD-8]
-    assumptions:
-      - "ASM-1 — Improving the shared model is the Research Circle's distinctive contribution to 2R."
-    reasoning: The prompt explicitly distinguishes research-circle throughput from 2R-wide transformation and records agreement that improving the 2R LTP trees is the research group's throughput.
+    evidence: [EVD-1]
+
+  - id: VIS-2
+    type: vision
+    statement: We are connecting solutions to problems
+    status: confirmed
+    confidence: high
+    evidence: [EVD-1]
+
+  - id: HLO-1
+    type: higher_level_objective
+    statement: A (more) effective and healthy 2R movement
+    status: confirmed
+    confidence: high
+    evidence: [EVD-2]
+    reasoning: >-
+      The whiteboard places this above the goal, reached from adoption by an
+      "if ... then" arrow. It is the outcome the goal serves rather than the
+      goal of this system, because the movement's health is not within David and
+      Rufus's direct control.
+
+  - id: LEARN-1
+    type: higher_level_objective
+    statement: The movement revises what it does in light of what the trees and the results show
+    status: inferred
+    confidence: medium
+    evidence: [EVD-2]
+    reasoning: >-
+      Expanded from a single-word "Learning" box that feeds the arrow into
+      HLO-1. The word is David and Rufus's; the sentence is an interpretation
+      and needs confirming.
+
+  # --- Goal ---
+
+  - id: G-1
+    type: goal
+    statement: The 2R movement adopts LTP and benefits from it
+    status: confirmed
+    confidence: high
+    evidence: [EVD-2, EVD-3]
+    assumptions: [ASM-1, ASM-3, ASM-9]
+    reasoning: >-
+      Stated on the whiteboard in answer to "What is David and Rufus' goal and
+      throughput?". Both halves matter: adoption alone is not the goal, and
+      benefit without use would not be adoption. CSF-1 and CSF-2 carry the two
+      marginal notes that define what "adopts" means here.
+
+  # --- What adoption means (the two asterisked notes) ---
 
   - id: CSF-1
     type: critical_success_factor
-    statement: Individual research contributions can enter a clear path from expression to model impact
-    status: inferred
+    statement: A non-trivial subset of the movement is actively using LTP
+    status: confirmed
     confidence: high
-    evidence: [EVD-5, EVD-8, EVD-9]
+    evidence: [EVD-2]
 
   - id: CSF-2
     type: critical_success_factor
-    statement: Model changes receive legitimate, transparent, and reversible dispositions
-    status: inferred
+    statement: LTP is used in shared spaces such as the forum, so that even people who are not "bought in" benefit from it
+    status: confirmed
     confidence: high
-    evidence: [EVD-4, EVD-14]
+    evidence: [EVD-2]
+    assumptions: [ASM-3]
+
+  # --- What benefiting means (the Results boxes) ---
 
   - id: CSF-3
     type: critical_success_factor
-    statement: The shared model preserves cumulative reasoning, evidence, disagreement, and downstream implications
-    status: inferred
-    confidence: high
-    evidence: [EVD-6, EVD-8]
+    statement: Discussion on the 2R forum is more productive and cumulative
+    status: provisional
+    confidence: medium
+    evidence: [EVD-4]
+    reasoning: >-
+      David wrote this box with a trailing question mark, so it is recorded as a
+      candidate benefit rather than a settled one.
 
   - id: CSF-4
     type: critical_success_factor
-    statement: Individual and group trees can align across scales without erasing autonomy or difference
-    status: inferred
+    statement: The tools help the 2R movement learn and improve by assessing measurable progress toward its goals
+    status: confirmed
     confidence: high
-    evidence: [EVD-10]
+    evidence: [EVD-4]
+
+  # --- What makes adoption possible ---
+
+  - id: CSF-5
+    type: critical_success_factor
+    statement: 2R Research adopts updating the 2R goal tree as its own goal
+    status: confirmed
+    confidence: high
+    evidence: [EVD-6, EVD-14]
+    assumptions: [ASM-2]
+    reasoning: >-
+      Top of the right-hand whiteboard tree, and consistent with the earlier
+      agreement with Rufus that duly improving the 2R LTP trees is the research
+      group's throughput. It is the dogfooding condition: the group that built
+      the method has to run on it.
+
+  - id: CSF-6
+    type: critical_success_factor
+    statement: There are articulated reasons to adopt LTP that land with people
+    status: confirmed
+    confidence: high
+    evidence: [EVD-5]
+    reasoning: >-
+      The "Reasons for adoption ..." box sits on the left-hand CSF line and was
+      left unfinished. The four conditions beneath it are the whiteboard's own
+      candidates for what such reasons would consist of.
+
+  - id: CSF-7
+    type: critical_success_factor
+    statement: LTP is integrated into the forum
+    status: confirmed
+    confidence: high
+    evidence: [EVD-5]
+
+  - id: CSF-8
+    type: critical_success_factor
+    statement: People beyond David and Rufus, and beyond 2R, are discovering the vision and the tools
+    status: confirmed
+    confidence: high
+    evidence: [EVD-7, EVD-16]
+    reasoning: >-
+      The whiteboard names Bluesky as an example, which matches the earlier
+      "empty dancefloor" framing and the Bluesky bridge experiment.
+
+  - id: CSF-9
+    type: critical_success_factor
+    statement: We have funding for this work to build the tools and docs we want
+    status: confirmed
+    confidence: high
+    evidence: [EVD-7]
+
+  # --- Necessary conditions under CSF-5 (the dogfooding chain) ---
 
   - id: NC-1
     type: necessary_condition
-    statement: Conversations, papers, and presentations remain linked to the claims and proposed changes they generate
-    status: inferred
+    statement: We can update the 2R goal tree
+    status: confirmed
     confidence: high
-    evidence: [EVD-5, EVD-8]
+    evidence: [EVD-6, EVD-15]
+    assumptions: [ASM-8]
+    reasoning: >-
+      Second box of the right-hand chain. The June forum exchange shows this is
+      not only a tooling question: who may change a consequential tree, and by
+      what process, is still undecided.
 
   - id: NC-2
     type: necessary_condition
-    statement: Claims, evidence, assumptions, links, and revisions have stable identities and provenance
-    status: inferred
+    statement: We have a tool for building trees and updating them
+    status: confirmed
     confidence: high
-    evidence: [EVD-4, EVD-14]
+    evidence: [EVD-6]
 
   - id: NC-3
     type: necessary_condition
-    statement: Standing, stewardship, review criteria, objection handling, and decision authority are explicit
-    status: inferred
+    statement: We have a way of committing to action and tracking it against the trees
+    status: confirmed
     confidence: high
-    evidence: [EVD-4, EVD-14]
+    evidence: [EVD-9]
+    assumptions: [ASM-4]
 
   - id: NC-4
     type: necessary_condition
-    statement: Contributors can participate naturally without mastering tree formalism
-    status: inferred
+    statement: There is one source of truth for the transition tree
+    status: confirmed
     confidence: high
-    evidence: [EVD-5]
+    evidence: [EVD-9]
+    assumptions: [ASM-5]
 
   - id: NC-5
     type: necessary_condition
-    statement: Research effort is judged by model improvement and downstream relevance rather than activity
-    status: inferred
+    statement: There is a known format for a transition tree in markdown
+    status: confirmed
     confidence: high
-    evidence: [EVD-8]
+    evidence: [EVD-9]
 
   - id: NC-6
     type: necessary_condition
-    statement: Tree boundaries, scale, shared interfaces, and grafting rules are explicit
-    status: inferred
+    statement: There is a way to view the transition tree
+    status: confirmed
     confidence: high
-    evidence: [EVD-10]
+    evidence: [EVD-9]
 
   - id: NC-7
     type: necessary_condition
-    statement: The group regularly reviews uptake failures, model quality, and the current research constraint
-    status: inferred
-    confidence: medium
-    evidence: [EVD-3, EVD-16]
-
-  - id: RC-1
-    type: root_cause
-    statement: No legitimate low-friction uptake loop connects research contributions to versioned shared-model changes
-    status: inferred
+    statement: Tasks and actions are tracked against the tree nodes they serve
+    status: confirmed
     confidence: high
-    evidence: [EVD-4, EVD-5, EVD-8]
-    assumptions:
-      - "ASM-2 — The Research Circle already generates potentially useful contributions."
-      - "ASM-3 — Uptake, not idea generation, is the present constraint."
-    reasoning: The prompt reports revision suggestions without a disposition path, seeks a bridge from natural conversation into trees, and defines research throughput as duly improving the trees.
+    evidence: [EVD-9]
 
-  - id: RC-2
-    type: root_cause
-    statement: Authority and governance for consequential tree revisions are undefined
-    status: observed
+  # --- Necessary conditions under CSF-6 (reasons for adoption) ---
+
+  - id: NC-8
+    type: necessary_condition
+    statement: We have evidence that the method and the tools work
+    status: confirmed
     confidence: high
-    evidence: [EVD-4]
+    evidence: [EVD-7, EVD-8]
+    assumptions: [ASM-6]
 
-  - id: RC-3
-    type: root_cause
-    statement: Contributions have no standard representation as source-linked model change proposals
-    status: inferred
+  - id: NC-9
+    type: necessary_condition
+    statement: We have a convincing story of how and where LTP would help
+    status: confirmed
     confidence: high
-    evidence: [EVD-5, EVD-7]
+    evidence: [EVD-8]
+    reasoning: >-
+      Marked with one flame in the notes, and flagged there as possibly a UDE in
+      its own right rather than a cause.
 
-  - id: RC-4
-    type: root_cause
-    statement: Platform ideas foreground matching and a master tree before the uptake process and model are mature
-    status: observed
+  - id: NC-10
+    type: necessary_condition
+    statement: We have an engaging and accessible vision, for others, of what we are doing
+    status: confirmed
     confidence: high
     evidence: [EVD-7]
 
-  - id: RC-5
-    type: root_cause
-    statement: Individual, group, and everyone-level tree interfaces and grafting semantics are undefined
-    status: observed
+  - id: NC-11
+    type: necessary_condition
+    statement: We have agreed on user needs, offers, and vision
+    status: confirmed
+    confidence: high
+    evidence: [EVD-7]
+
+  # --- Necessary conditions under CSF-7 (integration into the forum) ---
+
+  - id: NC-12
+    type: necessary_condition
+    statement: A finalized 2R goal tree exists that is fit to show
+    status: confirmed
+    confidence: high
+    evidence: [EVD-10, EVD-17]
+
+  - id: NC-13
+    type: necessary_condition
+    statement: It is decided which trees to show and how to present them usefully
+    status: confirmed
     confidence: high
     evidence: [EVD-10]
+
+  - id: NC-14
+    type: necessary_condition
+    statement: There is a process linking the trees to forum posts, so there is a pathway to discovering and enriching the trees
+    status: confirmed
+    confidence: high
+    evidence: [EVD-10]
+
+  # --- Cross-cutting necessary conditions ---
+
+  - id: NC-15
+    type: necessary_condition
+    statement: The most salient information is presented to a viewer when they look at a tree
+    status: confirmed
+    confidence: high
+    evidence: [EVD-12]
+    assumptions: [ASM-7]
+    reasoning: >-
+      The notes call this "bespoke focusing", and the footnote says it is a UX
+      cause sitting behind several other items, so it is attached to more than
+      one success factor.
+
+  - id: NC-16
+    type: necessary_condition
+    statement: Taking part in LTP is light enough that people do not have to master the formalism
+    status: inferred
+    confidence: high
+    evidence: [EVD-12]
+    reasoning: >-
+      The inverse of the common cause "LTP is heavy duty and complex and
+      taxing". Stated as a condition so that it can be tested.
+
+  - id: NC-17
+    type: necessary_condition
+    statement: The trees are used as the source of truth for assessing progress and learning
+    status: confirmed
+    confidence: high
+    evidence: [EVD-11]
+    assumptions: [ASM-6]
+
+  # --- Undesirable effects ---
 
   - id: UDE-1
     type: undesirable_effect
-    statement: Revision suggestions and objections have no reliable disposition
+    statement: Nobody except Rufus and David is using LTP, so there is a lack of buy-in for it
     status: observed
     confidence: high
-    evidence: [EVD-4]
+    evidence: [EVD-8]
 
   - id: UDE-2
     type: undesirable_effect
-    statement: Consequential shared trees remain vulnerable to unilateral judgment or a few points of failure
+    statement: Rufus and David are not using LTP consistently
     status: observed
     confidence: high
-    evidence: [EVD-4]
+    evidence: [EVD-9]
+    reasoning: >-
+      Marked with three flames in the notes, the highest priority of the four
+      undesirable effects.
 
   - id: UDE-3
     type: undesirable_effect
-    statement: Important discussions can recur without the group's shared vision or commitments changing
-    status: inferred
-    confidence: medium
-    evidence: [EVD-6]
+    statement: LTP results and outputs are not showing up where the movement works, such as the forum and our presented materials
+    status: observed
+    confidence: high
+    evidence: [EVD-10]
 
   - id: UDE-4
     type: undesirable_effect
-    statement: Contributors appear forced to choose conversational freedom or structured accumulation
-    status: inferred
-    confidence: high
-    evidence: [EVD-5]
-
-  - id: UDE-5
-    type: undesirable_effect
-    statement: Automated alignment suggestions are not yet poignant or reliable enough to create synergy
+    statement: The trees are not being used as a source of truth for assessing progress and learning
     status: observed
     confidence: high
-    evidence: [EVD-7]
+    evidence: [EVD-11]
 
-  - id: UDE-6
-    type: undesirable_effect
-    statement: Research can be called relevant without producing any durable improvement to the shared model
-    status: inferred
+  # --- Causes ---
+
+  - id: IC-1
+    type: intermediate_cause
+    statement: We do not have evidence that LTP is helping yet
+    status: observed
     confidence: high
     evidence: [EVD-8]
 
-  - id: UDE-7
-    type: undesirable_effect
-    statement: A 2R group-level tree can become an imposed universal frame for differently situated contributors
-    status: inferred
-    confidence: medium
-    evidence: [EVD-7, EVD-10]
-
-  - id: UDE-8
-    type: undesirable_effect
-    statement: Valuable contributions remain hidden, unwitnessed, or disconnected from where they could help
-    status: inferred
-    confidence: medium
-    evidence: [EVD-7, EVD-9]
-
-  - id: CO-1
-    type: common_objective
-    statement: Collective inquiry accumulates into coherent and revisable shared guidance
-    status: inferred
-    confidence: high
-    evidence: [EVD-5, EVD-6]
-
-  - id: NEED-1
-    type: need
-    statement: Preserve spontaneous conversation, intuition, accessibility, and personal learning
+  - id: IC-2
+    type: intermediate_cause
+    statement: People struggle with trees, structured thinking, and complexity
     status: observed
-    confidence: high
-    evidence: [EVD-5, EVD-6]
-
-  - id: NEED-2
-    type: need
-    statement: Preserve logical focus, traceability, cumulative progress, and alignment
-    status: observed
-    confidence: high
-    evidence: [EVD-5, EVD-6]
-
-  - id: OPT-1
-    type: option
-    statement: Keep research conversation outside tree constraints
-    status: provisional
-    confidence: high
-    evidence: [EVD-5]
-
-  - id: OPT-2
-    type: option
-    statement: Require contributors to formulate work directly inside the trees
-    status: provisional
-    confidence: high
-    evidence: [EVD-5]
-
-  - id: CO-2
-    type: common_objective
-    statement: Align inquiry across people and groups without domination
-    status: inferred
-    confidence: high
-    evidence: [EVD-10]
-
-  - id: NEED-3
-    type: need
-    statement: Preserve local goals, language, context, and group autonomy
-    status: inferred
-    confidence: high
-    evidence: [EVD-10]
-
-  - id: NEED-4
-    type: need
-    statement: Discover shared structure that enables coordination across groups
-    status: inferred
-    confidence: high
-    evidence: [EVD-10]
-
-  - id: OPT-3
-    type: option
-    statement: Keep individual and group trees isolated
-    status: provisional
-    confidence: high
-    evidence: [EVD-10]
-
-  - id: OPT-4
-    type: option
-    statement: Merge aligned trees into one authoritative everyone-level tree
-    status: provisional
-    confidence: medium
-    evidence: [EVD-7, EVD-10]
-
-  - id: INJ-1
-    type: injection
-    statement: Use a dual-channel uptake loop from natural contribution to proposed model delta to human disposition
-    status: inferred
-    confidence: high
-    evidence: [EVD-5, EVD-8]
-    reasoning: Contributors keep their natural mode while a mediated layer makes possible tree changes explicit and reviewable.
-
-  - id: INJ-2
-    type: injection
-    statement: Federate trees through provenance-preserving grafts, explicit interfaces, and retained disagreement
-    status: inferred
-    confidence: medium
-    evidence: [EVD-10]
-
-  - id: INJ-3
-    type: injection
-    statement: Establish a bounded stewardship and revision protocol with visible standing and decision rules
-    status: inferred
-    confidence: high
-    evidence: [EVD-4, EVD-14]
-
-  - id: INJ-4
-    type: injection
-    statement: Represent every contribution as a source-linked proposed model delta with evidence, assumptions, and status
-    status: inferred
-    confidence: high
-    evidence: [EVD-5, EVD-14]
-
-  - id: INJ-5
-    type: injection
-    statement: Let AI suggest mappings and deltas while contributors and authorized reviewers retain confirmation authority
-    status: inferred
-    confidence: high
-    evidence: [EVD-7]
-
-  - id: INJ-6
-    type: injection
-    statement: Maintain a versioned contribution ledger and propagate accepted changes to dependent claims and decisions
-    status: inferred
-    confidence: medium
-    evidence: [EVD-6, EVD-8]
-
-  - id: INJ-7
-    type: injection
-    statement: Review uptake flow, model quality, downstream use, and the current constraint on a regular cadence
-    status: inferred
-    confidence: medium
-    evidence: [EVD-3, EVD-16]
-
-  - id: DE-1
-    type: desirable_effect
-    statement: Natural conversations and papers yield visible source-linked change proposals
-    status: inferred
-    confidence: high
-    evidence: [EVD-5]
-
-  - id: DE-2
-    type: desirable_effect
-    statement: Every material proposal receives an accepted, disputed, rejected, or deferred disposition
-    status: inferred
-    confidence: high
-    evidence: [EVD-4]
-
-  - id: DE-3
-    type: desirable_effect
-    statement: Accepted model changes preserve evidence, provenance, assumptions, objections, and version history
-    status: inferred
-    confidence: high
-    evidence: [EVD-4, EVD-14]
-
-  - id: DE-4
-    type: desirable_effect
-    statement: The research circle's shared vision becomes more coherent without suppressing personal development
-    status: inferred
-    confidence: medium
-    evidence: [EVD-6]
-
-  - id: DE-5
-    type: desirable_effect
-    statement: Research effort is steered toward unresolved model gaps and consequential assumptions
-    status: inferred
-    confidence: medium
-    evidence: [EVD-8]
-
-  - id: DE-6
-    type: desirable_effect
-    statement: Aligned groups can coordinate through shared structure while preserving local differences
-    status: inferred
-    confidence: low
-    evidence: [EVD-10]
-
-  - id: DE-7
-    type: desirable_effect
-    statement: 2R acts from a better tested and more complete account of cultural transformation
-    status: inferred
-    confidence: medium
-    evidence: [EVD-1, EVD-8, EVD-11]
-
-  - id: NBR-1
-    type: negative_branch
-    statement: Formal uptake bureaucracy suppresses the spontaneous inquiry it is meant to preserve
-    status: provisional
-    confidence: high
-    evidence: [EVD-5]
-
-  - id: NBR-2
-    type: negative_branch
-    statement: AI mappings misrepresent contributions or manufacture significance
-    status: provisional
-    confidence: high
-    evidence: [EVD-7]
-
-  - id: NBR-3
-    type: negative_branch
-    statement: Stewards or majorities capture the shared narrative and marginalize objections
-    status: provisional
-    confidence: high
-    evidence: [EVD-4]
-
-  - id: NBR-4
-    type: negative_branch
-    statement: Grafting produces false consensus, incoherent mega-trees, or lowest-common-denominator goals
-    status: provisional
-    confidence: high
-    evidence: [EVD-10]
-
-  - id: OBS-1
-    type: obstacle
-    statement: The Research Circle has no explicit charter for goal, throughput, boundary, standing, and protected floors
-    status: inferred
-    confidence: medium
-    evidence: [EVD-8]
-
-  - id: IO-1
-    type: intermediate_objective
-    statement: A provisional Research Circle charter is accepted for one learning cycle
-    status: provisional
     confidence: high
     evidence: [EVD-8]
 
-  - id: OBS-2
-    type: obstacle
-    statement: No accepted protocol decides how tree changes are proposed, reviewed, disputed, or adopted
+  - id: IC-3
+    type: root_cause
+    statement: We do not have a convincing story of how or where LTP would help
     status: observed
-    confidence: high
-    evidence: [EVD-4]
-
-  - id: IO-2
-    type: intermediate_objective
-    statement: A time-bounded governance protocol assigns roles, dispositions, and revision rules
-    status: provisional
-    confidence: high
-    evidence: [EVD-4, EVD-14]
-
-  - id: OBS-3
-    type: obstacle
-    statement: There is no minimal contribution and change-record format
-    status: inferred
-    confidence: high
-    evidence: [EVD-5, EVD-7]
-
-  - id: IO-3
-    type: intermediate_objective
-    statement: A manual template captures source, claim, proposed delta, evidence, rationale, and affected nodes
-    status: provisional
-    confidence: high
-    evidence: [EVD-5]
-
-  - id: OBS-4
-    type: obstacle
-    statement: The group has no end-to-end evidence that the proposed uptake loop improves a real tree
-    status: inferred
-    confidence: high
-    evidence: [EVD-4, EVD-8]
-
-  - id: IO-4
-    type: intermediate_objective
-    statement: One real contribution completes the manual uptake loop with a recorded disposition
-    status: provisional
     confidence: high
     evidence: [EVD-8]
+    reasoning: >-
+      One flame in the notes, with David's own note that this could be an
+      undesirable effect rather than a cause. Kept as a cause here and listed as
+      an open question.
 
-  - id: OBS-5
-    type: obstacle
-    statement: AI matching quality and human confirmation costs are unknown
+  - id: IC-4
+    type: intermediate_cause
+    statement: We have no way of committing to action
     status: observed
     confidence: high
-    evidence: [EVD-7]
+    evidence: [EVD-9]
+    assumptions: [ASM-4]
+    reasoning: >-
+      The named cause of the hottest undesirable effect, and the point every
+      hypothesis in the notes aims at: a transition tree whose items are tracked
+      in a tracker such as GitHub Issues. Treated as the current constraint.
 
-  - id: IO-5
-    type: intermediate_objective
-    statement: AI and steward mappings are compared on real contributions with errors and corrections recorded
-    status: provisional
+  - id: IC-5
+    type: root_cause
+    statement: We have no tracker for tasks and actions
+    status: observed
     confidence: high
-    evidence: [EVD-7]
+    evidence: [EVD-9]
 
-  - id: OBS-6
-    type: obstacle
-    statement: Grafting semantics have not been tested between two actual group trees
+  - id: IC-6
+    type: intermediate_cause
+    statement: We have no source of truth for the transition tree
+    status: observed
+    confidence: high
+    evidence: [EVD-9]
+    assumptions: [ASM-5]
+
+  - id: IC-7
+    type: root_cause
+    statement: We do not know the format for a transition tree in markdown
+    status: observed
+    confidence: high
+    evidence: [EVD-9]
+
+  - id: IC-8
+    type: root_cause
+    statement: We have no way to view a transition tree
+    status: observed
+    confidence: high
+    evidence: [EVD-9]
+
+  - id: IC-9
+    type: intermediate_cause
+    statement: We have not finalized a 2R goal tree
     status: observed
     confidence: high
     evidence: [EVD-10]
 
-  - id: IO-6
-    type: intermediate_objective
-    statement: One pairwise grafting experiment preserves agreement, difference, provenance, and exit
-    status: provisional
-    confidence: medium
+  - id: IC-10
+    type: root_cause
+    statement: It is not decided which trees we want to show
+    status: observed
+    confidence: high
     evidence: [EVD-10]
 
-  - id: OBS-7
-    type: obstacle
-    statement: The group cannot yet see whether accepted revisions influence later research or 2R decisions
-    status: inferred
-    confidence: medium
-    evidence: [EVD-6, EVD-8]
+  - id: IC-11
+    type: intermediate_cause
+    statement: It is not decided how to present the trees usefully
+    status: observed
+    confidence: high
+    evidence: [EVD-10]
 
-  - id: IO-7
-    type: intermediate_objective
-    statement: Accepted changes are traced to dependent questions, research priorities, and decisions
-    status: provisional
-    confidence: medium
-    evidence: [EVD-6]
+  - id: IC-12
+    type: root_cause
+    statement: We have no automated process linking the trees to forum posts, so there is no pathway to discovering or enriching them
+    status: observed
+    confidence: high
+    evidence: [EVD-10]
+
+  - id: IC-13
+    type: root_cause
+    statement: The most salient information is not presented to the viewer when they look at a tree, for example on our website
+    status: observed
+    confidence: high
+    evidence: [EVD-12]
+    assumptions: [ASM-7]
+    reasoning: >-
+      Listed in the notes under causes common to several items, with the footnote
+      that it is a UX cause behind several of them. Modelled as a cause of
+      UDE-1, UDE-3, UDE-4, and of IC-11.
+
+  - id: IC-14
+    type: root_cause
+    statement: LTP is heavy duty, complex, and taxing
+    status: observed
+    confidence: high
+    evidence: [EVD-12]
+    reasoning: >-
+      The second cause common to several items. It bears on both the authors'
+      own inconsistent use and other people's difficulty with the method.
+
+  # --- Actions and expected effects ---
 
   - id: ACT-1
     type: action
-    statement: Run one manual contribution-to-tree pilot using a recent Research Circle paper or session
+    statement: Define a markdown format for a transition tree and commit one filled-in transition tree to the 2R-Research repo as its single source of truth
     status: inferred
     confidence: high
-    evidence: [EVD-4, EVD-5, EVD-8]
-    reasoning: This is the smallest reversible experiment that tests governance, contribution representation, participant burden, and actual model improvement together.
+    evidence: [EVD-9]
+    prerequisites: []
+    likely_scope: "2R-Research: ltp/07-transition-tree.md, ltp/ltp-model.yaml"
+    verification: A named path holds a transition tree whose actions each cite the tree entity they serve, and Rufus can read and comment on it without further explanation.
+    risk: The format is designed once and abandoned because maintaining it is more onerous than the whiteboard it replaces.
+    rollback: The file is text under version control and can be reverted or reduced to a flat action list.
+    reasoning: >-
+      The notes give this as the hypothesis for IC-6 and IC-7 ("use our github
+      repo knowledgebase"). It comes first because tracking and viewing both
+      need something canonical to point at.
 
   - id: TR-1
     type: expected_effect
-    statement: One source-linked model delta receives a recorded disposition and the loop's frictions become visible
+    statement: A canonical transition tree exists in a known format and location, so an action can be written down, found again, and reviewed
     status: inferred
     confidence: high
-    evidence: [EVD-8]
+    evidence: [EVD-9]
 
   - id: ACT-2
     type: action
-    statement: Revise and adopt the charter and governance protocol from the pilot evidence
-    status: provisional
+    statement: Open GitHub Issues linked one-to-one to transition tree nodes, replacing verbal tracking
+    status: inferred
     confidence: high
-    evidence: [EVD-4]
+    evidence: [EVD-9]
+    prerequisites: [ACT-1]
+    likely_scope: "2R-Research issues; issue references written back into the transition tree"
+    verification: Every action in the transition tree has exactly one open or closed issue, and each issue names its tree entity.
+    risk: Issues drift out of step with the tree and a second, contradictory source of truth appears.
+    rollback: Issues are closed and the transition tree remains authoritative on its own.
+    reasoning: >-
+      The notes' hypothesis for IC-5, with its own stated purpose: replace verbal
+      tracking and give a live display of progress as the method is dog-fooded.
 
   - id: TR-2
     type: expected_effect
-    statement: A versioned v0.1 protocol has named roles, standing, dispositions, review timing, and appeal
+    statement: Every committed action has a tracked item traceable to a tree node, and progress becomes visible while the method is dog-fooded
     status: inferred
     confidence: high
-    evidence: [EVD-14]
+    evidence: [EVD-9]
 
   - id: ACT-3
     type: action
-    statement: Compare AI-suggested mappings with independent steward mappings on the pilot contribution
-    status: provisional
-    confidence: medium
-    evidence: [EVD-7]
+    statement: Ship a transition-tree view in the dashboard so current actions can be read without opening YAML
+    status: inferred
+    confidence: high
+    evidence: [EVD-9]
+    prerequisites: [ACT-1]
+    likely_scope: "logical-thought-process-issue-trees-app: skills/project-ltp/dashboard/src"
+    verification: David and Rufus each open the dashboard and correctly say what the current action is and which condition it serves, without help.
+    risk: Effort goes into the viewer while the underlying commitments are still not being kept.
+    rollback: The view is additive; the markdown transition tree stays readable if it is removed.
+    reasoning: The notes' hypothesis for IC-8.
 
   - id: TR-3
     type: expected_effect
-    statement: Mapping accuracy, correction effort, failure modes, and confirmation needs are evidenced
+    statement: David and Rufus can see current actions against the tree, so reviewing progress does not require reading the model source
     status: inferred
-    confidence: medium
-    evidence: [EVD-7]
+    confidence: high
+    evidence: [EVD-9]
 
   - id: ACT-4
     type: action
-    statement: Conduct a pairwise grafting workshop with one aligned external group's tree
-    status: provisional
-    confidence: low
-    evidence: [EVD-10]
+    statement: Decide which 2R trees to show and how, then finalize and publish that version of the 2R goal tree
+    status: inferred
+    confidence: medium
+    evidence: [EVD-10, EVD-17]
+    prerequisites: []
+    likely_scope: "2R-Research: docs/ltp_trees/; the published site"
+    verification: One named, dated version of the 2R goal tree is public and can be linked from a forum post.
+    risk: Finalizing unilaterally repeats the June problem, where revisions had no agreed process and one person decided.
+    rollback: Versions are dated, so a published version can be superseded rather than deleted.
+    reasoning: >-
+      Addresses IC-9, IC-10, and IC-11. It needs an answer to NC-1 first if it is
+      not to be decided unilaterally.
 
   - id: TR-4
     type: expected_effect
-    statement: One graft records shared structure, incompatible assumptions, local-only branches, provenance, and exit conditions
+    statement: One canonical, presentable 2R goal tree exists, so forum posts and presented materials have something stable to point at
     status: inferred
-    confidence: low
+    confidence: medium
+    evidence: [EVD-10]
+
+  - id: ACT-5
+    type: action
+    statement: Link a batch of real forum and WhatsApp posts to tree nodes by hand, then judge from that what is worth automating
+    status: inferred
+    confidence: medium
+    evidence: [EVD-10]
+    prerequisites: [ACT-4]
+    likely_scope: "2R-Research: an annotation log; forum posts"
+    verification: A recorded batch of posts is mapped to tree nodes, with the time taken per post and the share of posts that map to nothing.
+    risk: Manual mapping is done once, reads as busywork, and yields no decision about automation.
+    rollback: The mapping log is an addition; nothing in the forum changes.
+    reasoning: >-
+      The notes raise automation as an open question ("How would we automate this
+      from e.g. whatsapp posts?"). Measuring the manual path first is what makes
+      that question answerable.
+
+  - id: TR-5
+    type: expected_effect
+    statement: A measured manual pathway from discussion to tree exists, with evidence about which part of it is worth automating
+    status: inferred
+    confidence: medium
     evidence: [EVD-10]
 
 links:
+  # Above the goal (recorded; deliberately not part of any view)
   - id: L-001
+    from: G-1
+    to: HLO-1
+    relation: contributes_to
+    logic: contributory
+    assumption: ASM-9
+    confidence: high
+  - id: L-002
+    from: LEARN-1
+    to: HLO-1
+    relation: contributes_to
+    logic: contributory
+    confidence: medium
+  - id: L-003
+    from: CSF-4
+    to: LEARN-1
+    relation: enables
+    confidence: medium
+  - id: L-004
+    from: HLO-1
+    to: VIS-1
+    relation: contributes_to
+    confidence: medium
+  - id: L-005
+    from: HLO-1
+    to: VIS-2
+    relation: contributes_to
+    confidence: medium
+
+  # Goal tree
+  - id: L-010
     from: CSF-1
     to: G-1
     relation: necessary_for
     logic: necessity
-    assumption: ASM-4
     confidence: high
-  - id: L-002
+  - id: L-011
     from: CSF-2
     to: G-1
     relation: necessary_for
     logic: necessity
-    assumption: ASM-5
+    assumption: ASM-3
     confidence: high
-  - id: L-003
+  - id: L-012
     from: CSF-3
     to: G-1
     relation: necessary_for
     logic: necessity
-    assumption: ASM-6
-    confidence: high
-  - id: L-004
+    confidence: medium
+  - id: L-013
     from: CSF-4
     to: G-1
     relation: necessary_for
     logic: necessity
-    assumption: ASM-7
-    confidence: medium
-  - id: L-005
-    from: NC-1
-    to: CSF-1
-    relation: necessary_for
     confidence: high
-  - id: L-006
-    from: NC-4
-    to: CSF-1
+  - id: L-014
+    from: CSF-5
+    to: G-1
     relation: necessary_for
+    logic: necessity
+    assumption: ASM-2
     confidence: high
-  - id: L-007
-    from: NC-3
-    to: CSF-2
+  - id: L-015
+    from: CSF-6
+    to: G-1
     relation: necessary_for
+    logic: necessity
     confidence: high
-  - id: L-008
-    from: NC-2
-    to: CSF-3
+  - id: L-016
+    from: CSF-7
+    to: G-1
     relation: necessary_for
+    logic: necessity
     confidence: high
-  - id: L-009
-    from: NC-5
-    to: CSF-3
+  - id: L-017
+    from: CSF-8
+    to: G-1
     relation: necessary_for
+    logic: necessity
     confidence: high
-  - id: L-010
-    from: NC-6
-    to: CSF-4
+  - id: L-018
+    from: CSF-9
+    to: G-1
     relation: necessary_for
-    confidence: high
-  - id: L-011
-    from: NC-7
-    to: CSF-3
-    relation: necessary_for
+    logic: necessity
     confidence: medium
 
-  - id: L-012
-    from: RC-2
+  - id: L-020
+    from: NC-1
+    to: CSF-5
+    relation: necessary_for
+    logic: necessity
+    assumption: ASM-8
+    confidence: high
+  - id: L-021
+    from: NC-2
+    to: NC-1
+    relation: necessary_for
+    logic: necessity
+    confidence: high
+  - id: L-022
+    from: NC-3
+    to: CSF-5
+    relation: necessary_for
+    logic: necessity
+    assumption: ASM-4
+    confidence: high
+  - id: L-023
+    from: NC-4
+    to: NC-3
+    relation: necessary_for
+    logic: necessity
+    assumption: ASM-5
+    confidence: high
+  - id: L-024
+    from: NC-5
+    to: NC-4
+    relation: necessary_for
+    logic: necessity
+    confidence: high
+  - id: L-025
+    from: NC-6
+    to: NC-4
+    relation: necessary_for
+    logic: necessity
+    confidence: high
+  - id: L-026
+    from: NC-7
+    to: NC-3
+    relation: necessary_for
+    logic: necessity
+    confidence: high
+
+  - id: L-030
+    from: NC-8
+    to: CSF-6
+    relation: necessary_for
+    logic: necessity
+    assumption: ASM-6
+    confidence: high
+  - id: L-031
+    from: NC-9
+    to: CSF-6
+    relation: necessary_for
+    logic: necessity
+    confidence: high
+  - id: L-032
+    from: NC-10
+    to: CSF-6
+    relation: necessary_for
+    logic: necessity
+    confidence: high
+  - id: L-033
+    from: NC-11
+    to: CSF-6
+    relation: necessary_for
+    logic: necessity
+    confidence: high
+  - id: L-034
+    from: NC-11
+    to: CSF-9
+    relation: necessary_for
+    logic: necessity
+    confidence: medium
+
+  - id: L-040
+    from: NC-12
+    to: CSF-7
+    relation: necessary_for
+    logic: necessity
+    confidence: high
+  - id: L-041
+    from: NC-13
+    to: CSF-7
+    relation: necessary_for
+    logic: necessity
+    confidence: high
+  - id: L-042
+    from: NC-14
+    to: CSF-7
+    relation: necessary_for
+    logic: necessity
+    confidence: high
+  - id: L-043
+    from: NC-14
+    to: CSF-8
+    relation: necessary_for
+    logic: necessity
+    confidence: medium
+
+  - id: L-050
+    from: NC-15
+    to: CSF-1
+    relation: necessary_for
+    logic: necessity
+    assumption: ASM-7
+    confidence: high
+  - id: L-051
+    from: NC-15
+    to: NC-13
+    relation: necessary_for
+    logic: necessity
+    confidence: high
+  - id: L-052
+    from: NC-16
+    to: CSF-1
+    relation: necessary_for
+    logic: necessity
+    confidence: high
+  - id: L-053
+    from: NC-16
+    to: CSF-2
+    relation: necessary_for
+    logic: necessity
+    assumption: ASM-3
+    confidence: high
+  - id: L-054
+    from: NC-17
+    to: CSF-4
+    relation: necessary_for
+    logic: necessity
+    assumption: ASM-6
+    confidence: high
+  - id: L-055
+    from: NC-8
+    to: NC-17
+    relation: necessary_for
+    logic: necessity
+    confidence: medium
+
+  # Current reality tree
+  - id: L-100
+    from: IC-1
     to: UDE-1
     relation: causes
     logic: contributory
-    assumption: ASM-8
+    assumption: ASM-6
     confidence: high
-  - id: L-013
-    from: RC-2
+  - id: L-101
+    from: IC-2
+    to: UDE-1
+    relation: causes
+    logic: contributory
+    confidence: high
+  - id: L-102
+    from: IC-3
+    to: UDE-1
+    relation: causes
+    logic: contributory
+    confidence: high
+  - id: L-103
+    from: IC-4
     to: UDE-2
     relation: causes
     logic: contributory
-    assumption: ASM-9
+    assumption: ASM-4
     confidence: high
-  - id: L-014
-    from: RC-3
+  - id: L-104
+    from: IC-5
+    to: IC-4
+    relation: causes
+    logic: contributory
+    confidence: high
+  - id: L-105
+    from: IC-6
+    to: IC-4
+    relation: causes
+    logic: contributory
+    assumption: ASM-5
+    confidence: high
+  - id: L-106
+    from: IC-7
+    to: IC-6
+    relation: causes
+    logic: contributory
+    confidence: high
+  - id: L-107
+    from: IC-8
+    to: IC-6
+    relation: causes
+    logic: contributory
+    confidence: high
+  - id: L-108
+    from: IC-9
+    to: UDE-3
+    relation: causes
+    logic: contributory
+    confidence: high
+  - id: L-109
+    from: IC-10
+    to: IC-9
+    relation: causes
+    logic: contributory
+    confidence: high
+  - id: L-110
+    from: IC-11
+    to: IC-9
+    relation: causes
+    logic: contributory
+    confidence: high
+  - id: L-111
+    from: IC-12
+    to: UDE-3
+    relation: causes
+    logic: contributory
+    confidence: high
+  - id: L-112
+    from: IC-13
+    to: IC-11
+    relation: causes
+    logic: contributory
+    assumption: ASM-7
+    confidence: high
+  - id: L-113
+    from: IC-13
+    to: UDE-1
+    relation: contributes_to
+    logic: contributory
+    assumption: ASM-7
+    confidence: high
+  - id: L-114
+    from: IC-13
+    to: UDE-4
+    relation: contributes_to
+    logic: contributory
+    confidence: medium
+  - id: L-115
+    from: IC-14
+    to: IC-2
+    relation: causes
+    logic: contributory
+    confidence: high
+  - id: L-116
+    from: IC-14
+    to: UDE-2
+    relation: contributes_to
+    logic: contributory
+    confidence: high
+  - id: L-117
+    from: UDE-2
+    to: UDE-1
+    relation: causes
+    logic: contributory
+    assumption: ASM-2
+    confidence: high
+  - id: L-118
+    from: UDE-2
     to: UDE-3
     relation: contributes_to
     logic: contributory
-    assumption: ASM-10
-    confidence: medium
-  - id: L-015
-    from: RC-1
+    confidence: high
+  - id: L-119
+    from: UDE-2
     to: UDE-4
     relation: causes
     logic: contributory
-    assumption: ASM-11
     confidence: high
-  - id: L-016
+  - id: L-120
     from: UDE-4
-    to: UDE-8
-    relation: contributes_to
-    logic: contributory
-    assumption: ASM-12
-    confidence: medium
-  - id: L-017
-    from: RC-4
-    to: UDE-5
+    to: IC-1
     relation: causes
     logic: contributory
-    assumption: ASM-13
+    assumption: ASM-6
     confidence: high
-  - id: L-018
-    from: RC-1
-    to: UDE-6
-    relation: causes
-    logic: contributory
-    assumption: ASM-14
-    confidence: high
-  - id: L-019
-    from: RC-5
-    to: UDE-7
+  - id: L-121
+    from: IC-12
+    to: UDE-4
     relation: contributes_to
     logic: contributory
-    assumption: ASM-15
-    confidence: medium
-  - id: L-020
-    from: UDE-1
-    to: UDE-3
-    relation: contributes_to
-    logic: contributory
-    assumption: ASM-16
-    confidence: medium
-  - id: L-021
-    from: UDE-8
-    to: UDE-6
-    relation: contributes_to
-    logic: contributory
-    assumption: ASM-17
-    confidence: medium
-  - id: L-022
-    from: UDE-6
-    to: UDE-3
-    relation: reinforces
-    logic: contributory
-    assumption: ASM-18
     confidence: medium
 
-  - id: L-023
-    from: NEED-1
-    to: CO-1
-    relation: necessary_for
-    confidence: high
-  - id: L-024
-    from: NEED-2
-    to: CO-1
-    relation: necessary_for
-    confidence: high
-  - id: L-025
-    from: OPT-1
-    to: NEED-1
-    relation: believed_necessary_for
-    assumption: ASM-19
-    confidence: medium
-  - id: L-026
-    from: OPT-2
-    to: NEED-2
-    relation: believed_necessary_for
-    assumption: ASM-20
-    confidence: medium
-  - id: L-027
-    from: OPT-1
-    to: OPT-2
-    relation: conflicts_with
-    assumption: ASM-21
-    confidence: high
-  - id: L-028
-    from: NEED-3
-    to: CO-2
-    relation: necessary_for
-    confidence: high
-  - id: L-029
-    from: NEED-4
-    to: CO-2
-    relation: necessary_for
-    confidence: high
-  - id: L-030
-    from: OPT-3
-    to: NEED-3
-    relation: believed_necessary_for
-    assumption: ASM-22
-    confidence: medium
-  - id: L-031
-    from: OPT-4
-    to: NEED-4
-    relation: believed_necessary_for
-    assumption: ASM-23
-    confidence: medium
-  - id: L-032
-    from: OPT-3
-    to: OPT-4
-    relation: conflicts_with
-    assumption: ASM-24
-    confidence: high
-
-  - id: L-033
-    from: INJ-1
-    to: DE-1
-    relation: causes
-    assumption: ASM-25
-    confidence: high
-  - id: L-034
-    from: INJ-3
-    to: DE-2
-    relation: causes
-    assumption: ASM-26
-    confidence: high
-  - id: L-035
-    from: INJ-4
-    to: DE-3
-    relation: enables
-    assumption: ASM-27
-    confidence: high
-  - id: L-036
-    from: INJ-5
-    to: DE-1
-    relation: enables
-    assumption: ASM-28
-    confidence: medium
-  - id: L-037
-    from: DE-1
-    to: DE-2
-    relation: enables
-    confidence: high
-  - id: L-038
-    from: DE-2
-    to: DE-3
-    relation: enables
-    confidence: high
-  - id: L-039
-    from: INJ-6
-    to: DE-4
-    relation: causes
-    assumption: ASM-29
-    confidence: medium
-  - id: L-040
-    from: DE-3
-    to: DE-4
-    relation: contributes_to
-    confidence: medium
-  - id: L-041
-    from: INJ-7
-    to: DE-5
-    relation: causes
-    assumption: ASM-30
-    confidence: medium
-  - id: L-042
-    from: DE-4
-    to: DE-5
-    relation: enables
-    confidence: medium
-  - id: L-043
-    from: INJ-2
-    to: DE-6
-    relation: causes
-    assumption: ASM-31
-    confidence: low
-  - id: L-044
-    from: DE-5
-    to: DE-7
-    relation: contributes_to
-    confidence: medium
-  - id: L-045
-    from: DE-6
-    to: DE-7
-    relation: contributes_to
-    confidence: low
-  - id: L-046
-    from: DE-7
-    to: G-1
-    relation: contributes_to
-    confidence: medium
-  - id: L-047
-    from: INJ-1
-    to: NBR-1
-    relation: may_cause
-    confidence: high
-  - id: L-048
-    from: INJ-5
-    to: NBR-2
-    relation: may_cause
-    confidence: high
-  - id: L-049
-    from: INJ-3
-    to: NBR-3
-    relation: may_cause
-    confidence: high
-  - id: L-050
-    from: INJ-2
-    to: NBR-4
-    relation: may_cause
-    confidence: high
-  - id: L-051
-    from: INJ-1
-    to: RC-1
-    relation: addresses
-    confidence: high
-  - id: L-052
-    from: INJ-3
-    to: RC-2
-    relation: addresses
-    confidence: high
-  - id: L-053
-    from: INJ-4
-    to: RC-3
-    relation: addresses
-    confidence: high
-  - id: L-054
-    from: INJ-5
-    to: RC-4
-    relation: addresses
-    confidence: medium
-  - id: L-055
-    from: INJ-2
-    to: RC-5
-    relation: addresses
-    confidence: medium
-
-  - id: L-056
-    from: OBS-1
-    to: IO-1
-    relation: overcome_by
-    confidence: high
-  - id: L-057
-    from: IO-1
-    to: IO-2
-    relation: enables
-    confidence: high
-  - id: L-058
-    from: OBS-2
-    to: IO-2
-    relation: overcome_by
-    confidence: high
-  - id: L-059
-    from: IO-2
-    to: IO-3
-    relation: enables
-    confidence: high
-  - id: L-060
-    from: OBS-3
-    to: IO-3
-    relation: overcome_by
-    confidence: high
-  - id: L-061
-    from: IO-3
-    to: IO-4
-    relation: enables
-    confidence: high
-  - id: L-062
-    from: OBS-4
-    to: IO-4
-    relation: overcome_by
-    confidence: high
-  - id: L-063
-    from: IO-4
-    to: IO-5
-    relation: enables
-    confidence: high
-  - id: L-064
-    from: OBS-5
-    to: IO-5
-    relation: overcome_by
-    confidence: high
-  - id: L-065
-    from: IO-5
-    to: IO-6
-    relation: enables
-    confidence: medium
-  - id: L-066
-    from: OBS-6
-    to: IO-6
-    relation: overcome_by
-    confidence: high
-  - id: L-067
-    from: IO-6
-    to: IO-7
-    relation: enables
-    confidence: medium
-  - id: L-068
-    from: OBS-7
-    to: IO-7
-    relation: overcome_by
-    confidence: high
-  - id: L-069
-    from: IO-4
-    to: INJ-1
-    relation: validates
-    confidence: high
-  - id: L-070
-    from: IO-5
-    to: INJ-5
-    relation: validates
-    confidence: medium
-  - id: L-071
-    from: IO-6
-    to: INJ-2
-    relation: validates
-    confidence: medium
-
-  - id: L-072
+  # Transition tree
+  - id: L-200
     from: ACT-1
     to: TR-1
     relation: produces
     confidence: high
-  - id: L-073
+  - id: L-201
     from: TR-1
-    to: IO-4
+    to: NC-5
     relation: achieves
     confidence: high
-  - id: L-074
+  - id: L-202
+    from: TR-1
+    to: NC-4
+    relation: achieves
+    confidence: high
+  - id: L-203
     from: ACT-2
     to: TR-2
     relation: produces
     confidence: high
-  - id: L-075
+  - id: L-204
     from: TR-2
-    to: IO-2
+    to: NC-7
     relation: achieves
     confidence: high
-  - id: L-076
+  - id: L-205
+    from: TR-2
+    to: NC-3
+    relation: achieves
+    confidence: medium
+  - id: L-206
     from: ACT-3
     to: TR-3
     relation: produces
-    confidence: medium
-  - id: L-077
+    confidence: high
+  - id: L-207
     from: TR-3
-    to: IO-5
+    to: NC-6
     relation: achieves
-    confidence: medium
-  - id: L-078
+    confidence: high
+  - id: L-208
     from: ACT-4
     to: TR-4
     relation: produces
-    confidence: low
-  - id: L-079
+    confidence: medium
+  - id: L-209
     from: TR-4
-    to: IO-6
+    to: NC-12
     relation: achieves
-    confidence: low
+    confidence: medium
+  - id: L-210
+    from: TR-4
+    to: NC-13
+    relation: achieves
+    confidence: medium
+  - id: L-211
+    from: ACT-5
+    to: TR-5
+    relation: produces
+    confidence: medium
+  - id: L-212
+    from: TR-5
+    to: NC-14
+    relation: achieves
+    confidence: medium
 
 evidence:
   - id: EVD-1
-    source: docs/prompts/LTP_BACKGROUND_PROMPT.md
-    lines: "5-17"
-    observation: The organization adopted LTP trees to pursue tangible progress toward better collective intelligence for the metacrisis.
-    interpretation: This establishes the broader purpose but not the Research Circle's distinct goal.
+    source: docs/notes/2026-07-24-goal-and-throughput-whiteboard.md
+    lines: "10-13"
+    observation: Two vision boxes — the world thinks better and collaborates better using trees, and we are connecting solutions to problems.
+    interpretation: These sit above the goal and are not conditions this system can be held to.
   - id: EVD-2
-    source: docs/prompts/LTP_BACKGROUND_PROMPT.md
-    lines: "21-23"
-    observation: Initial 2R-wide throughput was defined as durable adoption of real transformation.
-    interpretation: This is organization-level throughput, not research-circle throughput.
+    source: docs/notes/2026-07-24-goal-and-throughput-whiteboard.md
+    lines: "15-28"
+    observation: >-
+      "2R movement adopts LTP and benefits from it" leads by an if-then arrow,
+      through a Learning box, to "A (more) effective and healthy 2R movement".
+      Two marginal notes define adoption: a non-trivial subset of the movement
+      actively using it, and it being used e.g. on the forum so that even people
+      not bought in benefit.
+    interpretation: The goal is adoption plus benefit; the marginal notes are the test for whether adoption has happened.
   - id: EVD-3
-    source: docs/prompts/LTP_BACKGROUND_PROMPT.md
-    lines: "35-49"
-    observation: A participant frames 2R as education, R&D, and training that turns information into workable ideas and people into theorists and practitioners.
-    interpretation: The Research Circle may serve an educational pipeline, but this does not itself define research throughput.
+    source: docs/notes/2026-07-24-goal-and-throughput-whiteboard.md
+    lines: "30"
+    observation: "Throughput: new users of LTP and its outputs (people discover 2R via this)."
+    interpretation: The goal unit is people newly using LTP or its outputs, not trees edited, papers written, or meetings held.
   - id: EVD-4
+    source: docs/notes/2026-07-24-goal-and-throughput-whiteboard.md
+    lines: "25-28"
+    observation: >-
+      Under the Results axis: discussion on the 2R forum is more productive and
+      cumulative (written with a question mark), and these tools help the 2R
+      movement learn and improve by assessing measurable progress towards its
+      goals.
+    interpretation: These are what "benefits from it" means. The question mark makes the first one provisional.
+  - id: EVD-5
+    source: docs/notes/2026-07-24-goal-and-throughput-whiteboard.md
+    lines: "32-35"
+    observation: Below the left CSF line, two unfinished boxes — "Reasons for adoption ..." and "Integrated into forum".
+    interpretation: Two success factors were named but not decomposed on the board.
+  - id: EVD-6
+    source: docs/notes/2026-07-24-goal-and-throughput-whiteboard.md
+    lines: "37-43"
+    observation: A necessity chain — 2RR adopt 2R goal tree updating as their goal, then we can update the 2R goal tree, then we have a tool for building trees and updating them.
+    interpretation: The dogfooding branch. Its top box becomes a success factor once movement-wide adoption is taken as the goal.
+  - id: EVD-7
+    source: docs/notes/2026-07-24-goal-and-throughput-whiteboard.md
+    lines: "45-52"
+    observation: >-
+      Below the right CSF line: evidence this method and tools work; people
+      discovering the vision and tools beyond David and Rufus and beyond 2R, for
+      example Bluesky; an engaging and accessible vision for others; funding to
+      build the tools and docs we want; agreement on user needs, offers, and
+      vision.
+    interpretation: Five success factors stated flat on the board; four of them are treated here as what "reasons for adoption" consists of.
+  - id: EVD-8
+    source: docs/notes/2026-07-30-problem-tree-notes.txt
+    lines: "2-5"
+    observation: >-
+      UDE — people aren't using LTP other than Rufus and David, i.e. a lack of
+      buy-in. Causes: no evidence it's helping yet; people struggle with trees,
+      structured thinking, and complexity; no convincing story of how or where it
+      would help (one flame, flagged as possibly a UDE).
+    interpretation: Buy-in has three named causes, one of which David suspects is itself an effect.
+  - id: EVD-9
+    source: docs/notes/2026-07-30-problem-tree-notes.txt
+    lines: "6-11"
+    observation: >-
+      UDE with three flames — Rufus and David are not using LTP consistently.
+      Cause: no way of committing to action, with the hypothesis of a transition
+      tree tracked in something like GitHub Issues. Beneath it: no tracker for
+      tasks or actions (hypothesis — GitHub Issues or Linear linked 1:1 to
+      transition and prerequisite tree nodes, replacing verbal tracking and
+      giving a live display of progress as the method is dog-fooded); no source
+      of truth for the transition tree (hypothesis — use the GitHub repo
+      knowledgebase); no known markdown format for a transition tree; no way to
+      view it.
+    interpretation: The highest-priority effect, with the most fully specified cause chain and hypotheses in the notes. This is the basis for the transition tree.
+  - id: EVD-10
+    source: docs/notes/2026-07-30-problem-tree-notes.txt
+    lines: "12-17"
+    observation: >-
+      UDE — LTP is not showing up on the forum or in presented materials.
+      Causes: no finalized 2R goal tree, itself caused by undecided questions of
+      which trees to show and how to present them usefully; and no automated
+      process linking the tree to forum posts, so there is no pathway to
+      discovering or enriching it. An open question asks how this could be
+      automated from, for example, WhatsApp posts.
+    interpretation: Output visibility has both a decision cause and a plumbing cause.
+  - id: EVD-11
+    source: docs/notes/2026-07-30-problem-tree-notes.txt
+    lines: "18"
+    observation: UDE — the trees are not being used as a source of truth for assessing progress and learning.
+    interpretation: Stated without causes in the notes; connected here to the authors' inconsistent use and to the presentation cause.
+  - id: EVD-12
+    source: docs/notes/2026-07-30-problem-tree-notes.txt
+    lines: "19-21, 37"
+    observation: >-
+      Causes common to several items — the most salient information is not
+      presented to the viewer when they look at trees, for example on our website
+      (bespoke focusing); and LTP is heavy duty, complex, and taxing. A footnote
+      on the first says it is a UX cause behind several other items.
+    interpretation: Two cross-cutting causes, one of which the notes explicitly mark as multi-effect.
+  - id: EVD-13
+    source: docs/notes/2026-07-30-problem-tree-notes.txt
+    lines: "24-26"
+    observation: A "Conflict Resolution" heading followed by two empty Intermediate Objective bullets.
+    interpretation: The conflict work was started and left blank, so no evaporating cloud is built from these notes.
+  - id: EVD-14
+    source: docs/prompts/LTP_BACKGROUND_PROMPT.md
+    lines: "153-169"
+    observation: Rufus asks whether the focus is research circle throughput; David distinguishes 2R-wide throughput from research group throughput and says the latter is that the 2R LTP trees are duly updated; Rufus agrees.
+    interpretation: Supports the dogfooding success factor, and stands in tension with the whiteboard's throughput unit.
+  - id: EVD-15
     source: docs/prompts/LTP_BACKGROUND_PROMPT.md
     lines: "51-61"
-    observation: Revision suggestions lacked an authority and disposition process; the author identified update governance and provisional validation as prior to throughput.
-    interpretation: Governance is a directly reported prerequisite and current weakness.
-  - id: EVD-5
-    source: docs/prompts/LTP_BACKGROUND_PROMPT.md
-    lines: "69-69"
-    observation: The prompt names a conflict between spontaneous intuitive conversation and tree-enabled focus, clarity, alignment, and cumulative contribution.
-    interpretation: A bridge must preserve both needs instead of forcing one participation mode.
-  - id: EVD-6
-    source: docs/prompts/LTP_BACKGROUND_PROMPT.md
-    lines: "83-107"
-    observation: The exchange distinguishes personal development from group intellectual progress and defines the latter as increasing coherence of shared vision rather than recurring discussion.
-    interpretation: Persistent shared-model change is the relevant research-circle effect.
-  - id: EVD-7
+    observation: Revision suggestions from Rufus and Margaret had no process for disposition; David argued that deciding how the trees get updated must precede defining throughput, and said he would not make further unilateral updates.
+    interpretation: "\"We can update the 2R goal tree\" is a governance condition as much as a tooling one, and it has been open since June."
+  - id: EVD-16
     source: docs/prompts/LTP_BACKGROUND_PROMPT.md
     lines: "115-121"
-    observation: An early platform assumed one authoritative tree, an empty-dancefloor acquisition problem, and automated matching that was limited by immature trees and weak suggestions.
-    interpretation: Interface and matching work may be premature relative to governance and uptake-process validation.
-  - id: EVD-8
-    source: docs/prompts/LTP_BACKGROUND_PROMPT.md
-    lines: "125-167"
-    observation: David distinguishes 2R-wide throughput from Research Circle throughput; David and Rufus agree that duly improving the 2R LTP trees is the latter.
-    interpretation: This is the strongest direct evidence for G-1 and the research throughput unit.
-  - id: EVD-9
-    source: docs/prompts/LTP_BACKGROUND_PROMPT.md
-    lines: "173-173"
-    observation: The prompt concludes that the system should germinate and align individual contributions.
-    interpretation: Contribution development and uptake are central workflows.
-  - id: EVD-10
-    source: docs/prompts/LTP_BACKGROUND_PROMPT.md
-    lines: "177-193"
-    observation: The prompt proposes individual, group, and everyone scales, rejects treating 2R as inherently top-level, and imagines emergent alignment through tree grafting.
-    interpretation: Federation must preserve scale and plurality; the everyone-level model should not be pre-imposed.
-  - id: EVD-11
-    source: docs/ltp_trees/Goal Tree_ Second Renaissance.md
+    observation: A platform experiment framed the central problem as the empty dancefloor, proposed a Bluesky bridge, and noted that suggestions were not poignant enough because the trees were immature and the matching was weak.
+    interpretation: Prior evidence for the discoverability success factor, and a caution that discoverability work outran tree quality.
+  - id: EVD-17
+    source: "docs/ltp_trees/Goal Tree_ Second Renaissance.md"
     lines: "1-24"
-    observation: The organization-level Goal Tree aims at a wiser, weller, regenerative civilization through eight success factors.
-    interpretation: This is the broader model the Research Circle is meant to improve, not the Research Circle's own Goal Tree.
-  - id: EVD-12
-    source: docs/ltp_trees/Current Reality Tree_ Second Renaissance.md
-    lines: "1-13"
-    observation: The pre-existing CRT defines the system as a 2R group and throughput as durable adoption.
-    interpretation: It confirms that the supplied trees operate at organization level.
-  - id: EVD-13
-    source: docs/ltp_trees/Current Reality Tree_ Second Renaissance.md
-    lines: "55-81"
-    observation: The existing CRT lists map governance, throughput, conversion, practice, containers, and learning rhythm as candidate root causes.
-    interpretation: These remain prior hypotheses for 2R proper, not observations about the Research Circle.
-  - id: EVD-14
-    source: docs/ltp_trees/Future Reality Tree_ Second Renaissance.md
-    lines: "17-39"
-    observation: The existing FRT proposes version history, change proposals, objection logging, evidence standards, decision rules, minority reports, cadence, and accountable stewards.
-    interpretation: These elements directly inform the Research Circle governance injection.
-  - id: EVD-15
-    source: docs/ltp_trees/Current Reality Tree_ Second Renaissance.md
-    lines: "321-346"
-    observation: The existing CRT explicitly says its UDEs and causal arrows require validation against lived evidence.
-    interpretation: The Research Circle's first useful work can be a governed model-change pilot rather than accepting the trees wholesale.
-  - id: EVD-16
-    source: docs/ltp_trees/Prerequisite Tree_ Second Renaissance.md
-    lines: "452-482"
-    observation: The pre-existing dependency chain starts with update governance and provisional validation, then proceeds through throughput and implementation.
-    interpretation: A manual uptake loop is prior to platform scaling.
+    observation: A 2R goal tree exists in the repository, aiming at a wiser, weller, regenerative civilization through eight success factors.
+    interpretation: The tree that "we have not finalized a 2R goal tree" refers to exists in draft; what is missing is an agreed, presentable version.
 
 assumptions:
   - id: ASM-1
-    statement: Improving the shared model is the Research Circle's distinctive contribution to 2R.
+    statement: David and Rufus are, for the time being, the same system as the 2R Research Circle.
     status: confirmed
   - id: ASM-2
-    statement: The Research Circle already generates potentially useful contributions.
+    statement: If the two people who built the method do not use it consistently, the rest of the movement will not adopt it.
     status: inferred
   - id: ASM-3
-    statement: Uptake, not idea generation, is the present constraint.
-    status: inferred
+    statement: Adoption requires that people can benefit from LTP outputs without doing tree work themselves.
+    status: confirmed
   - id: ASM-4
-    statement: Contributions must have a path to model impact for inquiry to become cumulative.
-    status: inferred
+    statement: Written, tracked commitments are what turn a tree into consistent practice.
+    status: provisional
   - id: ASM-5
-    statement: Consequential model changes require legitimate and reversible governance.
+    statement: A tree cannot function as a source of truth without one canonical location and format.
     status: inferred
   - id: ASM-6
-    statement: A model without provenance and dependency awareness cannot preserve cumulative reasoning.
+    statement: Evidence that LTP helps can only accumulate if the trees are actually used to assess progress.
     status: inferred
   - id: ASM-7
-    statement: Cross-scale interoperability is necessary for the full collective-intelligence vision, though not for the first research pilot.
+    statement: Presentation, rather than the logic itself, is what currently stops people getting value from a tree.
     status: provisional
   - id: ASM-8
-    statement: Undefined decision authority leaves revision proposals without reliable disposition.
-    status: inferred
+    statement: The 2R goal tree is consequential enough that it must not be revised unilaterally.
+    status: confirmed
   - id: ASM-9
-    statement: Unclear authority concentrates consequential updates in a few hands.
-    status: inferred
-  - id: ASM-10
-    statement: Without durable change records, discussion outcomes do not reliably alter shared vision.
-    status: provisional
-  - id: ASM-11
-    statement: Requiring tree fluency creates participation friction for intuitive conversational contributors.
-    status: inferred
-  - id: ASM-12
-    statement: Participation friction hides or disconnects valuable contributions.
-    status: provisional
-  - id: ASM-13
-    statement: Matching quality cannot exceed the maturity of the target model and review process.
-    status: inferred
-  - id: ASM-14
-    statement: If uptake is absent, research activity can be declared relevant without a goal-relevant effect.
-    status: inferred
-  - id: ASM-15
-    statement: Undefined scale boundaries encourage a group tree to be mistaken for a universal tree.
-    status: provisional
-  - id: ASM-16
-    statement: Undisposed proposals contribute to recurring discussion.
-    status: provisional
-  - id: ASM-17
-    statement: Hidden contributions cannot improve the shared model.
-    status: inferred
-  - id: ASM-18
-    statement: Research that does not improve the model leaves the same questions unresolved.
-    status: inferred
-  - id: ASM-19
-    statement: Conversational freedom requires keeping inquiry outside formal trees.
-    status: provisional
-  - id: ASM-20
-    statement: Cumulative coherence requires every contributor to work directly in tree form.
-    status: provisional
-  - id: ASM-21
-    statement: Natural conversation and formal tree revision cannot be connected by a mediated layer.
-    status: provisional
-  - id: ASM-22
-    statement: Local autonomy requires keeping group trees isolated.
-    status: provisional
-  - id: ASM-23
-    statement: Cross-group alignment requires one authoritative merged tree.
-    status: provisional
-  - id: ASM-24
-    statement: Agreement and disagreement cannot coexist in one federated representation.
-    status: provisional
-  - id: ASM-25
-    statement: A mediated delta proposal preserves low-friction participation while making potential model impact explicit.
-    status: provisional
-  - id: ASM-26
-    statement: Visible standing and dispositions make model revision legitimate enough for provisional use.
-    status: provisional
-  - id: ASM-27
-    statement: A stable change record preserves the reasoning needed for cumulative inquiry.
-    status: inferred
-  - id: ASM-28
-    statement: AI assistance reduces mapping cost without replacing contributor or reviewer judgment.
-    status: provisional
-  - id: ASM-29
-    statement: A versioned ledger helps accepted contributions alter shared vision rather than disappear.
-    status: provisional
-  - id: ASM-30
-    statement: Reviewing uptake and downstream use steers research toward consequential gaps.
-    status: provisional
-  - id: ASM-31
-    statement: Provenance-preserving grafts can create useful shared structure without forced consensus.
-    status: provisional
+    statement: Throughput for this system is new users of LTP and its outputs, not papers, meetings, or tree edits.
+    status: confirmed
 
 views:
   goal-tree:
-    title: What cumulative 2R research requires
-    purpose: Conditions for turning plural contributions into legitimate, action-guiding improvements of the shared model.
-    entities: [NC-1, NC-2, NC-3, NC-4, NC-5, NC-6, NC-7, CSF-1, CSF-2, CSF-3, CSF-4, G-1]
-    links: [L-001, L-002, L-003, L-004, L-005, L-006, L-007, L-008, L-009, L-010, L-011]
+    title: What must be true for the movement to adopt LTP and benefit from it
+    purpose: >-
+      David and Rufus's goal, the two notes that define adoption, the results
+      that count as benefit, and the conditions beneath them. The goal serves a
+      more effective and healthy 2R movement and, beyond that, the two vision
+      statements; those lie above this system's control and are recorded in the
+      model rather than shown here.
+    entities: [G-1, CSF-1, CSF-2, CSF-3, CSF-4, CSF-5, CSF-6, CSF-7, CSF-8, CSF-9,
+      NC-1, NC-2, NC-3, NC-4, NC-5, NC-6, NC-7, NC-8, NC-9, NC-10, NC-11, NC-12,
+      NC-13, NC-14, NC-15, NC-16, NC-17]
+    links: [L-010, L-011, L-012, L-013, L-014, L-015, L-016, L-017, L-018,
+      L-020, L-021, L-022, L-023, L-024, L-025, L-026,
+      L-030, L-031, L-032, L-033, L-034,
+      L-040, L-041, L-042, L-043,
+      L-050, L-051, L-052, L-053, L-054, L-055]
   current-reality:
-    title: Why research conversation does not yet accumulate
-    purpose: The missing uptake, governance, representation, matching, and scale interfaces behind repeated or hidden contributions.
-    entities: [RC-1, RC-2, RC-3, RC-4, RC-5, UDE-1, UDE-2, UDE-3, UDE-4, UDE-5, UDE-6, UDE-7, UDE-8]
-    links: [L-012, L-013, L-014, L-015, L-016, L-017, L-018, L-019, L-020, L-021, L-022]
-  evaporating-cloud:
-    title: Free inquiry, cumulative coherence, and plural alignment
-    purpose: "Two linked conflicts: natural conversation versus tree formalism, and local autonomy versus a universal master tree."
-    entities: [OPT-1, OPT-2, NEED-1, NEED-2, CO-1, OPT-3, OPT-4, NEED-3, NEED-4, CO-2]
-    links: [L-023, L-024, L-025, L-026, L-027, L-028, L-029, L-030, L-031, L-032]
-  future-reality:
-    title: A governed contribution-to-model learning system
-    purpose: Expected effects and risks of mediated uptake, human-confirmed AI assistance, versioned model change, and federated grafting.
-    entities: [INJ-1, INJ-2, INJ-3, INJ-4, INJ-5, INJ-6, INJ-7, DE-1, DE-2, DE-3, DE-4, DE-5, DE-6, DE-7, NBR-1, NBR-2, NBR-3, NBR-4, G-1]
-    links: [L-033, L-034, L-035, L-036, L-037, L-038, L-039, L-040, L-041, L-042, L-043, L-044, L-045, L-046, L-047, L-048, L-049, L-050]
-  prerequisite-tree:
-    title: What must exist before automating or grafting
-    purpose: The dependency chain from charter and governance through a manual pilot, evaluated AI assistance, and one federated-tree experiment.
-    entities: [OBS-1, IO-1, OBS-2, IO-2, OBS-3, IO-3, OBS-4, IO-4, OBS-5, IO-5, OBS-6, IO-6, OBS-7, IO-7, INJ-1, INJ-2, INJ-5]
-    links: [L-056, L-057, L-058, L-059, L-060, L-061, L-062, L-063, L-064, L-065, L-066, L-067, L-068, L-069, L-070, L-071]
+    title: Why LTP is not being used, starting with by us
+    purpose: >-
+      The four undesirable effects from the problem-tree notes and their causes.
+      The hottest effect is that Rufus and David do not use LTP consistently; its
+      named cause, having no way of committing to action, is treated as the
+      current constraint.
+    entities: [UDE-1, UDE-2, UDE-3, UDE-4,
+      IC-1, IC-2, IC-3, IC-4, IC-5, IC-6, IC-7, IC-8, IC-9, IC-10, IC-11, IC-12,
+      IC-13, IC-14]
+    links: [L-100, L-101, L-102, L-103, L-104, L-105, L-106, L-107, L-108, L-109,
+      L-110, L-111, L-112, L-113, L-114, L-115, L-116, L-117, L-118, L-119,
+      L-120, L-121]
   transition-tree:
-    title: Four evidence-producing transitions
-    purpose: Start with one manual uptake pilot, then formalize governance, evaluate AI assistance, and finally test pairwise grafting.
-    entities: [ACT-1, TR-1, IO-4, ACT-2, TR-2, IO-2, ACT-3, TR-3, IO-5, ACT-4, TR-4, IO-6]
-    links: [L-072, L-073, L-074, L-075, L-076, L-077, L-078, L-079]
+    title: The five transitions the notes already point at
+    purpose: >-
+      Each action comes from a hypothesis written in the problem-tree notes, with
+      the effect it should produce and the condition it advances. Order is
+      recorded on each action's prerequisites field: ACT-1 before ACT-2 and
+      ACT-3, ACT-4 before ACT-5.
+    entities: [ACT-1, TR-1, NC-5, NC-4, ACT-2, TR-2, NC-7, NC-3, ACT-3, TR-3,
+      NC-6, ACT-4, TR-4, NC-12, NC-13, ACT-5, TR-5, NC-14]
+    links: [L-200, L-201, L-202, L-203, L-204, L-205, L-206, L-207, L-208, L-209,
+      L-210, L-211, L-212]
 
 open_questions:
-  - Which Research Circle members and affected 2R constituencies have standing to propose, review, object, approve, or appeal model changes?
-  - What kinds of adopted deltas count as improvements rather than mere change?
-  - How should model quality, downstream use, and epistemic significance weight the throughput unit?
-  - Which current 2R tree version is canonical enough for a pilot, and who owns it?
-  - Can a mediated uptake loop preserve conversational flow without feeling extractive or bureaucratic?
-  - What evidence would show that uptake, rather than idea generation or attendance, is the actual constraint?
-  - What are the minimum semantics for a graft that preserves local identity, disagreement, provenance, and exit?
+  - Is "we don't have a convincing story of how or where LTP would help" a cause of low buy-in, or an undesirable effect in its own right? The notes flag it both ways.
+  - "Which is the throughput unit for this system: new users of LTP and its outputs, as the whiteboard says, or duly improved 2R LTP trees, as David and Rufus agreed in July?"
+  - What does the "Learning" box on the whiteboard mean, and is it distinct from the two Results boxes?
+  - Is "discussion on the 2R forum is more productive and cumulative" the benefit to aim at? David wrote it with a question mark.
+  - Who has standing to update the 2R goal tree, and by what process? Open since June and still unanswered.
+  - What counts as a new user of LTP or its outputs, over what period, and how would it be observed?
+  - How could linking forum or WhatsApp posts to tree nodes be automated, and is automation worth it before the manual path has been measured?
+  - What are the intermediate objectives under the notes' "Conflict Resolution" heading, which is still an empty stub?
+  - How much funding is needed, for what specifically, and from whom?
+  - The whiteboard states four of its success factors flat; is nesting them under "reasons for adoption" right, or are they independent conditions?
 
 contradictions:
-  - The early platform assumes one authoritative tree while the later vision rejects treating 2R's group tree as the universal top level.
-  - The organization-level throughput definition concerns durable cultural adoption, whereas the Research Circle's throughput concerns adopted improvements to the shared model.
-  - The prompt values unstructured conversation and tree-based accumulation, but no operational bridge has yet been demonstrated.
-  - The platform imagines automated matching even though the prompt says both the trees and matching quality are not mature enough for poignant synergy.
+  - The whiteboard defines throughput as new users of LTP and its outputs, while the July exchange with Rufus agreed the research group's throughput is duly improved 2R LTP trees. These are different units and imply different priorities.
+  - Having no evidence that LTP is helping yet is given as a cause of low buy-in, but the trees are also not being used to assess progress, so that evidence cannot accumulate. The two reinforce each other and neither is prior.
+  - Adoption is wanted movement-wide, yet the format, tracker, and viewer needed to sustain it do not exist even for the two people who built the method.
+  - Discoverability work such as the Bluesky bridge was attempted while the trees were, by David's own account, not mature enough for the suggestions to be poignant.
+  - Finalizing a presentable 2R goal tree is needed for forum integration, but doing so without an agreed update process would repeat the June problem of unilateral revision.
 
 coverage_gaps:
-  - No actual Research Circle recordings, transcripts, papers, agendas, attendance records, or accepted tree revisions were supplied.
-  - Referenced screenshots and the linked 2R Throughput Google Doc were not present in the repository.
-  - No governance charter, canonical tree version, contributor registry, standing rules, or decision log was supplied.
-  - No external group's tree was supplied for grafting analysis.
-  - The five pre-existing trees describe 2R proper, not the Research Circle; they were treated as prior model context.
-  - No real throughput periods exist, so throughput.yaml was not created.
+  - The "Conflict Resolution" section of the notes is an empty stub (EVD-13), so no evaporating cloud, future reality tree, or prerequisite tree was built. The earlier versions of those three trees were removed rather than left standing on the superseded analysis.
+  - No history exists for "new users of LTP and its outputs", so throughput.yaml was not created.
+  - No forum export, WhatsApp export, or website analytics was supplied, so the claims about the forum and about discoverability rest on the notes alone.
+  - No funding target, budget, or funder conversation was supplied, so CSF-9 has no conditions beneath it beyond agreement on needs and offers.
+  - The whiteboard's "Learning" and "Results" axis labels were transcribed in full but only partly interpreted.
+  - The five prior trees under docs/ltp_trees/ describe 2R proper. They are cited as context and were not re-analysed.
+  - No evidence was supplied about the third and fourth undesirable effects beyond the single lines in the notes.

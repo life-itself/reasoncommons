@@ -3,8 +3,8 @@ definition:
   unit: adopted node changes
   period: week
   goal_entity: G-1
-  constraint_entity: RC-1
-  counting_rule: Each stable entity ID created, semantically updated, or deleted in a committed mainline revision of the canonical Second Renaissance model counts once per revision.
+  constraint_entity: IC-4
+  counting_rule: Each stable entity ID created, semantically updated, or deleted in a committed mainline revision of the canonical Second Renaissance model counts once per revision. This unit follows the July 2026 agreement between David and Rufus that duly improved 2R LTP trees are the research group's throughput. The 2026-07-24 whiteboard proposes a different unit, new users of LTP and its outputs, for which no history exists yet; the two are recorded as a contradiction in the model rather than merged.
   source: Git first-parent history of ltp/ltp-model.yaml
   source_project: second-renaissance
   source_model: ltp/ltp-model.yaml
