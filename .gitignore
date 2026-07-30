@@ -13,3 +13,5 @@ skills/project-ltp/dashboard/vite.config.d.ts
 
 # macOS metadata.
 .DS_Store
+
+drafts
