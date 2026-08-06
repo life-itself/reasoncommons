@@ -31,6 +31,11 @@ import {
   type ProjectSource,
   type ProjectSummary,
 } from "./projects";
+import {
+  buildTrackingBadges,
+  type TrackingBadge,
+  type TrackingLedger,
+} from "./tracking";
 
 type Screen = "overview" | TreeView;
 type TreeMode = "graph" | "list";
@@ -38,6 +43,7 @@ const allStatuses: EntityStatus[] = ["observed", "confirmed", "inferred", "provi
 const allConfidences: Confidence[] = ["high", "medium", "low"];
 const noExpandedNodes = new Set<string>();
 const noAlignmentBadges = new Map<string, AlignmentBadge>();
+const noTrackingBadges = new Map<string, TrackingBadge>();
 const COLLAPSE_DURATION = 240;
 
 type ViewTransitionDocument = Document & {
@@ -64,6 +70,9 @@ function fingerprint(meta: DashboardMeta): string {
     meta.throughput.exists,
     meta.throughput.modified_ns,
     meta.throughput.size,
+    meta.tracking?.exists,
+    meta.tracking?.modified_ns,
+    meta.tracking?.size,
   ]);
 }
 
@@ -72,6 +81,7 @@ export default function App() {
   const [activeProject, setActiveProject] = useState<ProjectSummary | null>(null);
   const [model, setModel] = useState<LtpModel | null>(null);
   const [throughput, setThroughput] = useState<ThroughputData | null>(null);
+  const [tracking, setTracking] = useState<TrackingLedger | null>(null);
   const [alignment, setAlignment] = useState<LoadedAlignment | null>(null);
   const [alignmentDecisions, setAlignmentDecisions] = useState<Record<string, AlignmentDecision>>({});
   const [screen, setScreen] = useState<Screen>("overview");
@@ -130,6 +140,7 @@ export default function App() {
     let cancelled = false;
     setModel(null);
     setThroughput(null);
+    setTracking(null);
     setSyncState("loading");
     (async () => {
       try {
@@ -137,6 +148,7 @@ export default function App() {
         if (cancelled) return;
         setModel(loaded.model);
         setThroughput(loaded.throughput);
+        setTracking(loaded.tracking);
         setError(null);
         setSyncState("ready");
       } catch (caught) {
@@ -192,6 +204,7 @@ export default function App() {
             if (cancelled) return;
             setModel(loaded.model);
             setThroughput(loaded.throughput);
+            setTracking(loaded.tracking);
             setError(null);
             setSyncState("updated");
             window.setTimeout(() => setSyncState("ready"), 1600);
@@ -236,6 +249,7 @@ export default function App() {
     setActiveProject(null);
     setModel(null);
     setThroughput(null);
+    setTracking(null);
     setError(null);
   }, [resetViewState]);
 
@@ -286,6 +300,11 @@ export default function App() {
     }
     return map;
   }, [alignment, alignmentDecisions]);
+
+  const trackingBadges = useMemo(
+    () => (tracking ? buildTrackingBadges(tracking) : noTrackingBadges),
+    [tracking],
+  );
 
   const toggleExpanded = useCallback(
     (view: TreeView, entityId: string, expanded: boolean) => {
@@ -439,6 +458,7 @@ export default function App() {
             model={model}
             index={index}
             throughput={throughput}
+            tracking={tracking}
             alignment={alignment}
             alignmentDecisions={alignmentDecisions}
             onSelect={setSelectedId}
@@ -523,6 +543,7 @@ export default function App() {
                   collapsingIds={collapsingIds}
                   selectedId={selectedId}
                   alignmentBadges={alignmentBadges}
+                  trackingBadges={trackingBadges}
                   onToggle={onToggleActiveNode}
                   onSelect={setSelectedId}
                 />
@@ -537,6 +558,7 @@ export default function App() {
                   collapsingIds={collapsingIds}
                   selectedId={selectedId}
                   alignmentBadges={alignmentBadges}
+                  trackingBadges={trackingBadges}
                   onToggle={onToggleActiveNode}
                   onSelect={setSelectedId}
                 />
@@ -548,6 +570,13 @@ export default function App() {
                   <span><i className="status-mark status-mark--inferred" />Inferred or provisional</span>
                   <span><i className="status-mark status-mark--disputed" />Disputed</span>
                   {alignment && <span><i className="alignment-node-badge" />Has alignment suggestions</span>}
+                  {tracking && (
+                    <>
+                      <span><i className="tracking-node-badge tracking-node-badge--open" />Issue open</span>
+                      <span><i className="tracking-node-badge tracking-node-badge--done" />Issue closed as done</span>
+                      <span><i className="tracking-node-badge tracking-node-badge--drifted" />Issue out of step with the tree</span>
+                    </>
+                  )}
                   <small>Use + and −, or select a parent node, to reveal and hide its upstream logic. Selecting a node also opens its evidence and assumptions.</small>
                 </div>
               </details>
@@ -560,6 +589,7 @@ export default function App() {
         entity={selected}
         model={model}
         index={index}
+        tracking={tracking}
         alignment={alignment}
         alignmentSuggestions={selectedSuggestions}
         alignmentDecisions={alignmentDecisions}

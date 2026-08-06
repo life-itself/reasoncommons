@@ -8,6 +8,7 @@ import type {
   TreeView,
 } from "./model";
 import { buildTreeProjection, orderTreeProjection } from "./treeProjection";
+import { trackingBadgeLabels, type TrackingBadge } from "./tracking";
 
 interface TreeListProps {
   model: LtpModel;
@@ -19,6 +20,7 @@ interface TreeListProps {
   collapsingIds: Set<string>;
   selectedId: string | null;
   alignmentBadges?: Map<string, AlignmentBadge>;
+  trackingBadges?: Map<string, TrackingBadge>;
   onToggle: (entityId: string) => void;
   onSelect: (entityId: string | null) => void;
 }
@@ -33,6 +35,7 @@ export function TreeList({
   collapsingIds,
   selectedId,
   alignmentBadges,
+  trackingBadges,
   onToggle,
   onSelect,
 }: TreeListProps) {
@@ -139,6 +142,12 @@ export function TreeList({
                         <i
                           className={`alignment-node-badge alignment-node-badge--${alignmentBadges.get(entity.id)}`}
                           title="Has an alignment suggestion"
+                        />
+                      )}
+                      {trackingBadges?.has(entity.id) && (
+                        <i
+                          className={`tracking-node-badge tracking-node-badge--${trackingBadges.get(entity.id)}`}
+                          title={trackingBadgeLabels[trackingBadges.get(entity.id)!]}
                         />
                       )}
                     </strong>

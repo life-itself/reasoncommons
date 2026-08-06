@@ -5,6 +5,7 @@ import {
   type LtpModel,
   type ThroughputData,
 } from "./model";
+import { validateTracking, type TrackingLedger } from "./tracking";
 
 /**
  * One project shown in the multi-project picker. Models are loaded from
@@ -20,6 +21,7 @@ export interface ProjectSummary {
   updated?: string;
   model?: string;
   throughput?: string;
+  tracking?: string;
 }
 
 /**
@@ -49,6 +51,7 @@ export type ProjectSource =
 export interface LoadedModel {
   model: LtpModel;
   throughput: ThroughputData | null;
+  tracking: TrackingLedger | null;
 }
 
 export async function fetchText(url: string): Promise<string | null> {
@@ -105,21 +108,35 @@ export async function loadProjectModel(
 ): Promise<LoadedModel> {
   let modelText: string | null;
   let throughputText: string | null;
+  let trackingText: string | null;
   if (source.mode === "live") {
-    [modelText, throughputText] = await Promise.all([
+    [modelText, throughputText, trackingText] = await Promise.all([
       fetchText("/api/model"),
       fetchText("/api/throughput"),
+      fetchText("/api/github-sync"),
     ]);
   } else {
     const base = `projects/${project.slug}/`;
-    [modelText, throughputText] = await Promise.all([
+    [modelText, throughputText, trackingText] = await Promise.all([
       fetchText(project.model ?? `${base}model.yaml`),
       fetchText(project.throughput ?? `${base}throughput.yaml`),
+      fetchText(project.tracking ?? `${base}github-sync.yaml`),
     ]);
   }
   if (!modelText) throw new Error("The project model file could not be loaded.");
   return {
     model: validateModel(parse(modelText)),
     throughput: throughputText ? validateThroughput(parse(throughputText)) : null,
+    // A project with no issue tracking is the normal case, and a malformed
+    // ledger must never stop the tree from rendering.
+    tracking: trackingText ? safeTracking(trackingText) : null,
   };
+}
+
+function safeTracking(text: string): TrackingLedger | null {
+  try {
+    return validateTracking(parse(text));
+  } catch {
+    return null;
+  }
 }

@@ -47,6 +47,7 @@ class DashboardPaths:
     project: Path
     model: Path
     throughput: Path
+    tracking: Path
     static: Path
 
 
@@ -72,6 +73,7 @@ def resolve_paths(project: Path, static: Optional[Path] = None) -> DashboardPath
         raise ValueError(f"Project path is not a directory: {project}")
     model = project / "ltp" / "ltp-model.yaml"
     throughput = project / "ltp" / "throughput.yaml"
+    tracking = project / "ltp" / "github-sync.yaml"
     if not model.is_file():
         raise FileNotFoundError(
             f"Missing {model}. Run Project LTP first or pass a project containing ltp/ltp-model.yaml."
@@ -81,7 +83,13 @@ def resolve_paths(project: Path, static: Optional[Path] = None) -> DashboardPath
     static = static.expanduser().resolve(strict=True)
     if not static.is_dir() or not (static / "index.html").is_file():
         raise FileNotFoundError(f"Dashboard build is missing or incomplete: {static}")
-    return DashboardPaths(project=project, model=model, throughput=throughput, static=static)
+    return DashboardPaths(
+        project=project,
+        model=model,
+        throughput=throughput,
+        tracking=tracking,
+        static=static,
+    )
 
 
 def _file_meta(path: Path) -> dict[str, object]:
@@ -153,11 +161,18 @@ def make_handler(paths: DashboardPaths, quiet: bool = False):
                 else:
                     self._headers(HTTPStatus.NO_CONTENT, "text/yaml; charset=utf-8")
                 return
+            if path == "/api/github-sync":
+                if paths.tracking.is_file():
+                    self._file(paths.tracking, head)
+                else:
+                    self._headers(HTTPStatus.NO_CONTENT, "text/yaml; charset=utf-8")
+                return
             if path == "/api/meta":
                 body = json.dumps(
                     {
                         "model": _file_meta(paths.model),
                         "throughput": _file_meta(paths.throughput),
+                        "tracking": _file_meta(paths.tracking),
                     },
                     separators=(",", ":"),
                 ).encode("utf-8")

@@ -145,6 +145,23 @@ Read `references/validation-and-deliverables.md` for validation checks,
 incremental-update behavior, output requirements, and the final response
 format.
 
+## Track actions as GitHub Issues
+
+When the user wants transition-tree actions tracked, assigned, or closed as
+GitHub Issues, read `references/github-sync.md` and use:
+
+```bash
+python skills/project-ltp/scripts/sync_github_issues.py status --project /path/to/project
+```
+
+`status` and `pull` are safe to run unprompted. `push` writes to GitHub, so run
+it as a dry run first and only pass `--apply` once the user has seen the plan.
+
+Hold the boundary the sync depends on: the model owns what an action is, and
+the issue owns whether it is open, assigned, or done. Never record execution
+state in `ltp-model.yaml`, and never resolve reported drift by inventing an
+answer — say which side changed and let the user decide.
+
 ## Local dashboard
 
 When the user asks for a visual or local interface, read

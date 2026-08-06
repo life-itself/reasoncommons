@@ -71,6 +71,19 @@ class DashboardServerTest(unittest.TestCase):
         status, _, _ = self.request("GET", "/api/throughput")
         self.assertEqual(status, 204)
 
+        status, _, _ = self.request("GET", "/api/github-sync")
+        self.assertEqual(status, 204)
+
+    def test_serves_the_github_sync_ledger_when_present(self) -> None:
+        (self.project / "ltp" / "github-sync.yaml").write_text(
+            "repo: o/r\nactions:\n  ACT-1:\n    issue: 4\n", encoding="utf-8"
+        )
+        status, _, body = self.request("GET", "/api/github-sync")
+        self.assertEqual(status, 200)
+        self.assertIn(b"issue: 4", body)
+        _, _, meta = self.request("GET", "/api/meta")
+        self.assertIn(b'"tracking"', meta)
+
     def test_rejects_traversal_and_unknown_paths(self) -> None:
         for path in ("/assets/%2e%2e/index.html", "/assets/../index.html", "/project/ltp/ltp-model.yaml"):
             status, _, _ = self.request("GET", path)

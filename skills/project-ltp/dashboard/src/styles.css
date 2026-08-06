@@ -447,6 +447,32 @@ summary::-webkit-details-marker { display: none; }
 .alignment-node-badge--rejected { background: var(--color-neutral-400); }
 .tree-list-identity strong { display: inline-flex; align-items: center; }
 
+/* Small ring on an action node showing the state of the GitHub issue that
+   tracks it. Hollow = open work, filled = closed, amber = out of step. */
+.tracking-node-badge {
+  width: 9px; height: 9px; margin-left: 5px; border-radius: 50%;
+  border: 2px solid var(--color-accent-2-600); background: transparent;
+  flex: 0 0 auto; display: inline-block;
+}
+.tracking-node-badge--done { background: var(--color-accent-2-600); }
+.tracking-node-badge--dropped { border-color: var(--color-neutral-400); background: var(--color-neutral-400); }
+.tracking-node-badge--untracked { border-color: var(--color-neutral-400); }
+.tracking-node-badge--drifted { border-color: var(--color-accent); background: var(--color-accent-200); }
+
+/* "Tracked work" block in the node details panel. */
+.tracking-card {
+  margin-top: 18px; padding: 14px 16px; border-radius: 22px;
+  background: var(--color-neutral-100); box-shadow: var(--shadow-sm);
+  border: 1px solid transparent;
+}
+.tracking-card--drifted { border-color: var(--color-accent-400); background: var(--color-accent-100); }
+.tracking-card--done { background: var(--color-accent-2-100); }
+.tracking-card__head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.tracking-card__head strong { font-size: 13px; }
+.tracking-card__head .eyebrow { width: 100%; }
+.tracking-card__line { margin: 8px 0 0; font-size: 13px; }
+.tracking-card p.muted { margin: 6px 0 0; font-size: 12px; line-height: 1.5; }
+
 /* Overview tab — one summary line + actions, not a whole screen. */
 .overview-alignment {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;
@@ -454,6 +480,16 @@ summary::-webkit-details-marker { display: none; }
   background: var(--color-neutral-100); box-shadow: var(--shadow-sm);
 }
 .overview-alignment p { max-width: 62em; margin: 6px 0 0; font-size: 13px; line-height: 1.55; }
+
+/* Tracked-work summary — same shape as the alignment line above it. */
+.overview-tracking {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;
+  margin-top: clamp(28px, 4vw, 44px); padding: 20px 26px; border-radius: 32px;
+  background: var(--color-neutral-100); box-shadow: var(--shadow-sm);
+}
+.overview-tracking p { max-width: 62em; margin: 6px 0 0; font-size: 13px; line-height: 1.55; }
+.overview-tracking .tracking-node-badge { margin: 0 1px; vertical-align: middle; }
+.overview-tracking a.switch-project { text-decoration: none; }
 .overview-alignment .alignment-node-badge { margin: 0 1px; }
 .overview-alignment__actions { display: flex; flex-wrap: wrap; gap: 10px; }
 

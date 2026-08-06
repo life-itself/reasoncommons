@@ -6,6 +6,20 @@ import {
   type LoadedAlignment,
 } from "./alignment";
 import { indexModel, type LtpEntity, type LtpModel, type ModelIndex } from "./model";
+import {
+  trackingBadge,
+  trackingBadgeLabels,
+  type TrackingLedger,
+} from "./tracking";
+
+const syncStatusNotes: Record<string, string> = {
+  "in-sync": "The issue matches this tree node.",
+  update: "This tree node changed after the issue was written. Run a push to update the issue.",
+  create: "No issue tracks this action yet. Run a push to open one.",
+  "issue-edited": "The issue body was edited on GitHub. The tree node still says what it said before.",
+  conflict: "The tree node and the issue body have both changed. Someone has to decide which is right.",
+  "missing-remote": "The recorded issue could not be found — deleted, transferred, or unlabelled.",
+};
 
 const relationLabels: Record<string, string> = {
   advances: "advances",
@@ -19,6 +33,7 @@ interface DetailsPanelProps {
   entity: LtpEntity | null;
   model: LtpModel;
   index: ModelIndex;
+  tracking: TrackingLedger | null;
   alignment: LoadedAlignment | null;
   alignmentSuggestions: AlignmentSuggestion[];
   alignmentDecisions: Record<string, AlignmentDecision>;
@@ -31,6 +46,7 @@ export function DetailsPanel({
   entity,
   model,
   index,
+  tracking,
   alignment,
   alignmentSuggestions,
   alignmentDecisions,
@@ -51,6 +67,9 @@ export function DetailsPanel({
   const views = Object.entries(model.views)
     .filter(([, view]) => view?.entities.includes(entity.id))
     .map(([name]) => name.replaceAll("-", " "));
+  // Only actions are tracked, and only once a sync has run for this project.
+  const tracked = tracking?.actions[entity.id] ?? null;
+  const badge = tracked ? trackingBadge(tracked) : null;
 
   return (
     <aside className="details-panel" aria-label={`Details for ${entity.id}`}>
@@ -69,6 +88,30 @@ export function DetailsPanel({
         <span><i className={`status-mark status-mark--${entity.status}`} />{entity.status}</span>
         <span>{entity.confidence} confidence</span>
       </div>
+
+      {tracked && badge && (
+        <section className={`tracking-card tracking-card--${badge}`}>
+          <div className="tracking-card__head">
+            <span className="eyebrow">Tracked work</span>
+            <span className={`tracking-node-badge tracking-node-badge--${badge}`} aria-hidden="true" />
+            <strong>{trackingBadgeLabels[badge]}</strong>
+          </div>
+          <p className="tracking-card__line">
+            {tracked.url ? (
+              <a href={tracked.url} target="_blank" rel="noreferrer noopener">
+                {tracking?.repo ? `${tracking.repo}#${tracked.issue}` : `#${tracked.issue}`}
+              </a>
+            ) : (
+              <span className="muted">No issue</span>
+            )}
+            {tracked.assignees?.length ? <span> · {tracked.assignees.map((a) => `@${a}`).join(", ")}</span> : null}
+            {tracked.updated_at ? <span> · updated {tracked.updated_at.slice(0, 10)}</span> : null}
+          </p>
+          {tracked.sync_status && syncStatusNotes[tracked.sync_status] && (
+            <p className="muted">{syncStatusNotes[tracked.sync_status]}</p>
+          )}
+        </section>
+      )}
 
       {entity.reasoning && (
         <section className="detail-section">

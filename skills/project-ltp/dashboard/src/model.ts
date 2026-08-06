@@ -124,6 +124,7 @@ export interface ThroughputData {
 export interface DashboardMeta {
   model: FileMeta;
   throughput: FileMeta;
+  tracking?: FileMeta;
 }
 
 interface FileMeta {

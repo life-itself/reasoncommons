@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/project-ltp/github-sync.schema.json",
+  "title": "Project LTP GitHub issue sync ledger",
+  "description": "Derived state written by scripts/sync_github_issues.py. The issue-body marker is the durable action-to-issue link; this file can be rebuilt from GitHub with 'pull'.",
+  "type": "object",
+  "required": ["actions"],
+  "properties": {
+    "repo": { "type": "string", "pattern": "^[^/]+/[^/]+$" },
+    "view": { "type": "string" },
+    "label": { "type": "string" },
+    "synced_at": { "type": "string" },
+    "actions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "issue": { "type": "integer", "minimum": 1 },
+          "url": { "type": "string" },
+          "state": { "enum": ["open", "closed"] },
+          "state_reason": { "type": ["string", "null"] },
+          "assignees": { "type": "array", "items": { "type": "string" } },
+          "updated_at": { "type": "string" },
+          "closed_at": { "type": "string" },
+          "pushed_title_digest": { "type": "string" },
+          "pushed_body_digest": { "type": "string" },
+          "pushed_at": { "type": "string" },
+          "sync_status": {
+            "enum": ["create", "update", "in-sync", "issue-edited", "conflict", "missing-remote"]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "untracked_issues": { "$ref": "#/$defs/issueList" },
+    "orphan_issues": { "$ref": "#/$defs/issueList" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "issueList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["issue"],
+        "properties": {
+          "issue": { "type": "integer" },
+          "url": { "type": "string" },
+          "title": { "type": "string" },
+          "action": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

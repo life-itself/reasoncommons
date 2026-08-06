@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "generate:throughput": "node scripts/generate-throughput.mjs",
+    "sync:github": "python3 ../scripts/sync_github_issues.py pull --model public/projects/2r-research-circle/model.yaml --repo Promise-Foundation/2R-Research",
     "prebuild": "npm run generate:throughput",
     "build": "tsc -b && vite build",
     "predev": "npm run generate:throughput",

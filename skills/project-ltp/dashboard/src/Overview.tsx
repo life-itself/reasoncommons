@@ -11,11 +11,13 @@ import type {
   ThroughputData,
   ThroughputPeriod,
 } from "./model";
+import { tallyTracking, type TrackingLedger } from "./tracking";
 
 interface OverviewProps {
   model: LtpModel;
   index: ModelIndex;
   throughput: ThroughputData | null;
+  tracking: TrackingLedger | null;
   alignment: LoadedAlignment | null;
   alignmentDecisions: Record<string, AlignmentDecision>;
   onSelect: (entityId: string) => void;
@@ -58,6 +60,7 @@ export function Overview({
   model,
   index,
   throughput,
+  tracking,
   alignment,
   alignmentDecisions,
   onSelect,
@@ -115,6 +118,13 @@ export function Overview({
         ];
   const alignmentTally = alignment ? tallyAlignmentDecisions(alignment.doc, alignmentDecisions) : null;
   const firstSuggestion = alignment?.doc.suggestions[0];
+  // Actions of the transition tree, in the order the view lists them — the
+  // same set the sync tracks, so the tally counts untracked nodes too.
+  const actionIds = (model.views["transition-tree"]?.entities ?? []).filter(
+    (id) => index.entities.get(id)?.type === "action",
+  );
+  const trackingTally = tracking ? tallyTracking(tracking, actionIds) : null;
+  const firstUntrackedAction = actionIds.find((id) => !tracking?.actions[id]?.issue);
 
   return (
     <main className="overview">
@@ -173,6 +183,52 @@ export function Overview({
             >
               Export decisions <span aria-hidden="true">↓</span>
             </button>
+          </div>
+        </section>
+      )}
+
+      {tracking && trackingTally && (
+        <section className="overview-tracking" aria-label="Tracked work">
+          <div>
+            <span className="eyebrow">
+              Tracked work{tracking.repo ? ` · ${tracking.repo}` : ""}
+              {tracking.synced_at ? ` · synced ${tracking.synced_at.slice(0, 10)}` : ""}
+            </span>
+            <p>
+              <strong>{trackingTally.tracked}</strong> of {actionIds.length} actions have an issue —{" "}
+              {trackingTally.open} open, {trackingTally.done} done
+              {trackingTally.dropped > 0 && `, ${trackingTally.dropped} dropped`}
+              {trackingTally.untracked > 0 && `, ${trackingTally.untracked} not yet tracked`}
+              {trackingTally.drifted > 0 && `, ${trackingTally.drifted} out of step with the tree`}. Look for{" "}
+              <i className="tracking-node-badge tracking-node-badge--open" /> on action nodes.
+            </p>
+            {trackingTally.loose > 0 && (
+              <p className="muted">
+                {trackingTally.loose} tracked {trackingTally.loose === 1 ? "issue does" : "issues do"} not
+                trace to any node in this tree.
+              </p>
+            )}
+          </div>
+          <div className="overview-alignment__actions">
+            {firstUntrackedAction && (
+              <button
+                type="button"
+                className="switch-project"
+                onClick={() => onJumpToEntity(firstUntrackedAction)}
+              >
+                See what is untracked <span aria-hidden="true">→</span>
+              </button>
+            )}
+            {tracking.repo && (
+              <a
+                className="switch-project"
+                href={`https://github.com/${tracking.repo}/issues?q=is%3Aissue+label%3A${encodeURIComponent(tracking.label ?? "ltp-action")}`}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Open on GitHub <span aria-hidden="true">↗</span>
+              </a>
+            )}
           </div>
         </section>
       )}

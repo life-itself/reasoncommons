@@ -45,6 +45,13 @@ Supported view keys are:
 Validate the contract against `references/ltp-model.schema.json` when a JSON
 Schema validator is available.
 
+## Tracked actions
+
+If the project syncs its transition-tree actions to GitHub Issues, the ledger
+at `ltp/github-sync.yaml` is served alongside the model and adds issue badges to
+action nodes. See `references/github-sync.md`; validate against
+`references/github-sync.schema.json`. The file is generated — never hand-edit it.
+
 ## Throughput versus flow indicators
 
 Do not equate completed tasks with Theory of Constraints throughput unless the
@@ -129,7 +136,7 @@ python skills/project-ltp/scripts/serve_dashboard.py --project /path/to/project 
 ```
 
 The server binds to loopback, prefers `127.0.0.1:8765`, serves only the bundled
-frontend and the two known YAML files, and is read-only. If the preferred port
+frontend and the three known YAML files, and is read-only. If the preferred port
 is occupied and `--port` was not supplied, it tries subsequent ports and prints
 the selected URL. An explicit `--port` remains strict. The dashboard polls file
 metadata so model changes appear without restarting the server.

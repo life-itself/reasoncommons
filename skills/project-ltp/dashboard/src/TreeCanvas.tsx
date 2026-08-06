@@ -22,6 +22,7 @@ import type {
   TreeView,
 } from "./model";
 import { buildTreeProjection } from "./treeProjection";
+import { trackingBadgeLabels, type TrackingBadge } from "./tracking";
 
 const NODE_WIDTH = 280;
 const NODE_HEIGHT = 156;
@@ -37,6 +38,7 @@ type FlowNodeData = {
   childCount: number;
   expanded: boolean;
   alignmentBadge?: AlignmentBadge;
+  trackingBadge?: TrackingBadge;
   onToggle: (entityId: string) => void;
 };
 
@@ -62,6 +64,12 @@ function LtpNode({ data, selected }: NodeProps<FlowNode>) {
                   ? "Alignment suggestion rejected"
                   : "Has an alignment suggestion"
             }
+          />
+        )}
+        {data.trackingBadge && (
+          <i
+            className={`tracking-node-badge tracking-node-badge--${data.trackingBadge}`}
+            title={trackingBadgeLabels[data.trackingBadge]}
           />
         )}
         <span className="node-type">{entity.type.replaceAll("_", " ")}</span>
@@ -139,6 +147,7 @@ interface TreeCanvasProps {
   collapsingIds: Set<string>;
   selectedId: string | null;
   alignmentBadges?: Map<string, AlignmentBadge>;
+  trackingBadges?: Map<string, TrackingBadge>;
   onToggle: (entityId: string) => void;
   onSelect: (entityId: string | null) => void;
 }
@@ -153,6 +162,7 @@ export function TreeCanvas({
   collapsingIds,
   selectedId,
   alignmentBadges,
+  trackingBadges,
   onToggle,
   onSelect,
 }: TreeCanvasProps) {
@@ -204,6 +214,7 @@ export function TreeCanvas({
         childCount: projection.childrenByParent.get(entity.id)?.length ?? 0,
         expanded: expandedIds.has(entity.id),
         alignmentBadge: alignmentBadges?.get(entity.id),
+        trackingBadge: trackingBadges?.get(entity.id),
         onToggle,
       },
       selected: selectedId === entity.id,
@@ -213,6 +224,7 @@ export function TreeCanvas({
     return { nodes: layout(nodes, edges), edges };
   }, [
     alignmentBadges,
+    trackingBadges,
     confidences,
     collapsingIds,
     expandedIds,
