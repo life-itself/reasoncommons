@@ -459,6 +459,36 @@ summary::-webkit-details-marker { display: none; }
 .tracking-node-badge--untracked { border-color: var(--color-neutral-400); }
 .tracking-node-badge--drifted { border-color: var(--color-accent); background: var(--color-accent-200); }
 
+/* Labelled pill on an action node/row — the dot alone reads as decoration;
+   this is what makes "closed as done" legible without a hover or a click. */
+.tracking-chip {
+  display: inline-flex; align-items: center; gap: 5px; margin-left: 2px;
+  padding: 2px 9px 2px 6px; border-radius: 999px; font-size: 10px; font-weight: 700;
+  letter-spacing: .03em; text-transform: uppercase; white-space: nowrap;
+  background: var(--color-neutral-200); color: var(--color-neutral-700);
+}
+.tracking-chip .tracking-node-badge { margin-left: 0; }
+.tracking-chip--open { background: var(--color-accent-100); color: var(--color-accent-800); }
+.tracking-chip--done { background: var(--color-accent-2-100); color: var(--color-accent-2-800); }
+.tracking-chip--dropped { background: var(--color-neutral-200); color: var(--color-neutral-600); }
+.tracking-chip--untracked { background: transparent; color: var(--color-neutral-500); border: 1px dashed var(--color-neutral-400); }
+.tracking-chip--drifted { background: var(--color-accent-200); color: var(--color-accent-800); }
+/* On a graph node the chip sits below the statement, not inside a facts row. */
+.tracking-chip--inline { align-self: flex-start; margin-top: -3px; }
+
+/* On a node that isn't itself an action, summarizes the tracked actions
+   inside its subtree — visible whether or not that subtree is expanded, so a
+   collapsed branch still announces "1/4 actions done" before anyone opens it. */
+.tracking-rollup {
+  display: inline-flex; align-items: center; padding: 2px 9px; border-radius: 999px;
+  font-size: 10px; font-weight: 700; letter-spacing: .02em; white-space: nowrap;
+  background: var(--color-neutral-200); color: var(--color-neutral-600);
+  border: 1px solid transparent;
+}
+.tracking-rollup--done { background: var(--color-accent-2-100); color: var(--color-accent-2-800); }
+.tracking-rollup--attention { background: var(--color-accent-200); color: var(--color-accent-800); border-color: var(--color-accent-400); }
+.tracking-rollup--inline { align-self: flex-start; margin-top: -3px; }
+
 /* "Tracked work" block in the node details panel. */
 .tracking-card {
   margin-top: 18px; padding: 14px 16px; border-radius: 22px;

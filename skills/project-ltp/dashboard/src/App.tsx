@@ -593,9 +593,10 @@ export default function App() {
                   {alignment && <span><i className="alignment-node-badge" />Has alignment suggestions</span>}
                   {tracking && (
                     <>
-                      <span><i className="tracking-node-badge tracking-node-badge--open" />Issue open</span>
-                      <span><i className="tracking-node-badge tracking-node-badge--done" />Issue closed as done</span>
-                      <span><i className="tracking-node-badge tracking-node-badge--drifted" />Issue out of step with the tree</span>
+                      <span><i className="tracking-chip tracking-chip--open"><i className="tracking-node-badge tracking-node-badge--open" />Open</i>on an action node — issue open</span>
+                      <span><i className="tracking-chip tracking-chip--done"><i className="tracking-node-badge tracking-node-badge--done" />Done</i>on an action node — closed as done</span>
+                      <span><i className="tracking-chip tracking-chip--drifted"><i className="tracking-node-badge tracking-node-badge--drifted" />Out of step</i>issue no longer matches the tree</span>
+                      <span><i className="tracking-rollup tracking-rollup--pending">1/3 done</i>on any other node — actions tracked in its branch, expanded or not</span>
                     </>
                   )}
                   <small>Use + and −, or select a parent node, to reveal and hide its upstream logic. Selecting a node also opens its evidence and assumptions.</small>

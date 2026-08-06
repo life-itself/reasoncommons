@@ -22,7 +22,14 @@ import type {
   TreeView,
 } from "./model";
 import { buildTreeProjection } from "./treeProjection";
-import { trackingBadgeLabels, type TrackingBadge } from "./tracking";
+import {
+  buildActionRollups,
+  rollupLabel,
+  rollupTone,
+  trackingBadgeShortLabels,
+  type ActionRollup,
+  type TrackingBadge,
+} from "./tracking";
 
 const NODE_WIDTH = 280;
 const NODE_HEIGHT = 156;
@@ -39,6 +46,7 @@ type FlowNodeData = {
   expanded: boolean;
   alignmentBadge?: AlignmentBadge;
   trackingBadge?: TrackingBadge;
+  actionRollup?: ActionRollup;
   onToggle: (entityId: string) => void;
 };
 
@@ -66,12 +74,6 @@ function LtpNode({ data, selected }: NodeProps<FlowNode>) {
             }
           />
         )}
-        {data.trackingBadge && (
-          <i
-            className={`tracking-node-badge tracking-node-badge--${data.trackingBadge}`}
-            title={trackingBadgeLabels[data.trackingBadge]}
-          />
-        )}
         <span className="node-type">{entity.type.replaceAll("_", " ")}</span>
         {data.childCount > 0 && (
           <button
@@ -89,6 +91,20 @@ function LtpNode({ data, selected }: NodeProps<FlowNode>) {
         )}
       </header>
       <p>{entity.statement}</p>
+      {data.trackingBadge && (
+        <span className={`tracking-chip tracking-chip--${data.trackingBadge} tracking-chip--inline`}>
+          <i className={`tracking-node-badge tracking-node-badge--${data.trackingBadge}`} />
+          {trackingBadgeShortLabels[data.trackingBadge]}
+        </span>
+      )}
+      {data.actionRollup && data.actionRollup.total > 0 && (
+        <span
+          className={`tracking-rollup tracking-rollup--${rollupTone(data.actionRollup)} tracking-rollup--inline`}
+          title="Tracked actions inside this branch, expanded or not"
+        >
+          {rollupLabel(data.actionRollup)}
+        </span>
+      )}
       <footer>
         <span className={`status-mark status-mark--${entity.status}`} aria-hidden="true" />
         <span>{entity.status}</span>
@@ -191,6 +207,7 @@ export function TreeCanvas({
         .filter((entity) => !settledProjection.visibleIds.has(entity.id))
         .map((entity) => entity.id),
     );
+    const rollups = buildActionRollups(projection.childrenByParent, index.entities, trackingBadges);
     const edges: Edge[] = projection.links
       .map((link) => ({
         id: link.id,
@@ -214,7 +231,8 @@ export function TreeCanvas({
         childCount: projection.childrenByParent.get(entity.id)?.length ?? 0,
         expanded: expandedIds.has(entity.id),
         alignmentBadge: alignmentBadges?.get(entity.id),
-        trackingBadge: trackingBadges?.get(entity.id),
+        trackingBadge: entity.type === "action" ? trackingBadges?.get(entity.id) : undefined,
+        actionRollup: entity.type !== "action" ? rollups.get(entity.id) : undefined,
         onToggle,
       },
       selected: selectedId === entity.id,

@@ -117,6 +117,15 @@ export const trackingBadgeLabels: Record<TrackingBadge, string> = {
   drifted: "Issue and tree node are out of step",
 };
 
+/** Short enough to sit inline on a tree node without a hover. */
+export const trackingBadgeShortLabels: Record<TrackingBadge, string> = {
+  open: "Open",
+  done: "Done",
+  dropped: "Dropped",
+  untracked: "Not tracked",
+  drifted: "Out of step",
+};
+
 export function buildTrackingBadges(
   ledger: TrackingLedger | null,
 ): Map<string, TrackingBadge> {
@@ -238,6 +247,93 @@ export async function fetchLiveTracking(
   } catch {
     return null;
   }
+}
+
+export interface ActionRollup {
+  total: number;
+  open: number;
+  done: number;
+  dropped: number;
+  drifted: number;
+  untracked: number;
+}
+
+function emptyRollup(): ActionRollup {
+  return { total: 0, open: 0, done: 0, dropped: 0, drifted: 0, untracked: 0 };
+}
+
+function addRollup(a: ActionRollup, b: ActionRollup): ActionRollup {
+  return {
+    total: a.total + b.total,
+    open: a.open + b.open,
+    done: a.done + b.done,
+    dropped: a.dropped + b.dropped,
+    drifted: a.drifted + b.drifted,
+    untracked: a.untracked + b.untracked,
+  };
+}
+
+/**
+ * Sums tracked-action state over every node's full subtree — including
+ * collapsed, not-yet-rendered branches — so a node can announce "3 actions,
+ * 1 done" before anyone expands it. `childrenByParent` already spans the
+ * whole view regardless of expand state, which is what makes this possible.
+ *
+ * Entities is a plain `{id: {type}}` map rather than the full `LtpEntity` type
+ * so this stays decoupled from model.ts; callers already have `index.entities`
+ * on hand and pass it through as-is.
+ */
+export function buildActionRollups(
+  childrenByParent: Map<string, string[]>,
+  entities: Map<string, { type: string }>,
+  trackingBadges: Map<string, TrackingBadge> | undefined,
+): Map<string, ActionRollup> {
+  const memo = new Map<string, ActionRollup>();
+  const inProgress = new Set<string>();
+
+  const visit = (id: string): ActionRollup => {
+    const cached = memo.get(id);
+    if (cached) return cached;
+    if (inProgress.has(id)) return emptyRollup(); // cycle guard
+    inProgress.add(id);
+
+    let tally = emptyRollup();
+    if (entities.get(id)?.type === "action") {
+      const badge = trackingBadges?.get(id) ?? "untracked";
+      tally = { ...tally, total: 1, [badge]: 1 };
+    }
+    for (const childId of childrenByParent.get(id) ?? []) {
+      tally = addRollup(tally, visit(childId));
+    }
+
+    inProgress.delete(id);
+    memo.set(id, tally);
+    return tally;
+  };
+
+  const allIds = new Set<string>();
+  for (const [parentId, childIds] of childrenByParent) {
+    allIds.add(parentId);
+    for (const childId of childIds) allIds.add(childId);
+  }
+  for (const id of allIds) visit(id);
+  return memo;
+}
+
+export type RollupTone = "done" | "attention" | "pending";
+
+/** How urgently a rollup chip should read, distinct from any single badge. */
+export function rollupTone(rollup: ActionRollup): RollupTone {
+  if (rollup.total === 0) return "pending";
+  if (rollup.drifted > 0) return "attention";
+  if (rollup.done + rollup.dropped === rollup.total) return "done";
+  return "pending";
+}
+
+export function rollupLabel(rollup: ActionRollup): string {
+  const settled = rollup.done + rollup.dropped;
+  const noun = rollup.total === 1 ? "action" : "actions";
+  return `${settled}/${rollup.total} ${noun} done`;
 }
 
 /** `actionIds` is every action in the tree, so nodes with no ledger entry at

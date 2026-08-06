@@ -8,7 +8,13 @@ import type {
   TreeView,
 } from "./model";
 import { buildTreeProjection, orderTreeProjection } from "./treeProjection";
-import { trackingBadgeLabels, type TrackingBadge } from "./tracking";
+import {
+  buildActionRollups,
+  rollupLabel,
+  rollupTone,
+  trackingBadgeShortLabels,
+  type TrackingBadge,
+} from "./tracking";
 
 interface TreeListProps {
   model: LtpModel;
@@ -55,6 +61,12 @@ export function TreeList({
     () => orderTreeProjection(projection, expandedIds),
     [expandedIds, projection],
   );
+  // Built over the whole subtree, not just what's expanded, so a collapsed
+  // ancestor can announce "1/4 actions done" before anyone opens it.
+  const rollups = useMemo(
+    () => buildActionRollups(projection.childrenByParent, index.entities, trackingBadges),
+    [projection, index, trackingBadges],
+  );
   const settledVisibleIds = useMemo(() => {
     const settledExpandedIds = new Set(expandedIds);
     for (const entityId of collapsingIds) settledExpandedIds.delete(entityId);
@@ -99,6 +111,8 @@ export function TreeList({
         {rows.map(({ entity, depth }) => {
           const childCount = projection.childrenByParent.get(entity.id)?.length ?? 0;
           const expanded = expandedIds.has(entity.id);
+          const badge = entity.type === "action" ? trackingBadges?.get(entity.id) : undefined;
+          const rollup = entity.type !== "action" ? rollups.get(entity.id) : undefined;
           const style = {
             "--tree-depth": depth,
             viewTransitionName: `ltp-${entity.id.replaceAll(/[^a-zA-Z0-9_-]/g, "-")}`,
@@ -144,12 +158,6 @@ export function TreeList({
                           title="Has an alignment suggestion"
                         />
                       )}
-                      {trackingBadges?.has(entity.id) && (
-                        <i
-                          className={`tracking-node-badge tracking-node-badge--${trackingBadges.get(entity.id)}`}
-                          title={trackingBadgeLabels[trackingBadges.get(entity.id)!]}
-                        />
-                      )}
                     </strong>
                     <small>{entity.type.replaceAll("_", " ")}</small>
                   </span>
@@ -160,6 +168,20 @@ export function TreeList({
                     <span>{entity.confidence} confidence</span>
                     {childCount > 0 && (
                       <span>{childCount} {childCount === 1 ? "branch" : "branches"}</span>
+                    )}
+                    {badge && (
+                      <span className={`tracking-chip tracking-chip--${badge}`}>
+                        <i className={`tracking-node-badge tracking-node-badge--${badge}`} />
+                        {trackingBadgeShortLabels[badge]}
+                      </span>
+                    )}
+                    {rollup && rollup.total > 0 && (
+                      <span
+                        className={`tracking-rollup tracking-rollup--${rollupTone(rollup)}`}
+                        title="Tracked actions inside this branch, expanded or not"
+                      >
+                        {rollupLabel(rollup)}
+                      </span>
                     )}
                   </span>
                 </button>
