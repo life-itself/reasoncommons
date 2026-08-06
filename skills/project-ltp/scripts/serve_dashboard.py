@@ -29,7 +29,10 @@ SECURITY_HEADERS = {
         "script-src 'self'; "
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
         "img-src 'self' data:; "
-        "connect-src 'self'; "
+        # The dashboard reads issue state for tracked projects straight from
+        # GitHub's public API so a closed issue shows as closed without a
+        # rebuild. Read-only, unauthenticated, and no other origin is allowed.
+        "connect-src 'self' https://api.github.com; "
         "font-src 'self' https://fonts.gstatic.com; "
         "object-src 'none'; "
         "base-uri 'none'; "

@@ -83,12 +83,40 @@ model produces no GitHub writes at all.
 
 ## In the dashboard
 
-`serve_dashboard.py` serves the ledger at `/api/github-sync`, and the published
-dashboard reads `projects/<slug>/github-sync.yaml`. Action nodes gain a ring
-badge — hollow for open, filled for closed as done, grey for closed as not
-planned, amber for out of step — the overview gains a tracked-work summary
-line, and the details panel shows the issue link, assignees, and what the drift
-means. A project with no ledger renders exactly as before.
+Action nodes gain a ring badge — hollow for open, filled for closed as done,
+grey for closed as not planned, amber for out of step — the overview gains a
+tracked-work summary line, and the details panel shows the issue link,
+assignees, and what any drift means. A project with no tracking renders
+exactly as before.
+
+Issue state reaches the page two ways, and the overview says which one it is:
+
+1. **Live from GitHub.** The browser reads the repository's public issues API
+   directly and rebuilds the action↔issue mapping from the body markers. This
+   is what makes an issue closed a minute ago show as closed without anyone
+   rebuilding or republishing the site. Declare the repository in the project
+   manifest to enable it with no snapshot at all:
+
+   ```json
+   { "slug": "2r-research-circle",
+     "github": { "repo": "Promise-Foundation/2R-Research", "label": "ltp-action" } }
+   ```
+
+2. **Snapshot.** `serve_dashboard.py` serves the ledger at `/api/github-sync`
+   and the published dashboard reads `projects/<slug>/github-sync.yaml`. It
+   paints immediately, works offline and for private repositories, and is the
+   only source of *drift*, since deciding whether an issue body still matches
+   its tree node needs the digests recorded at push time.
+
+The snapshot renders first and the live read replaces it when it lands. Any
+failure — offline, rate-limited, private, renamed — silently leaves the
+snapshot on screen rather than emptying the page. Reads are unauthenticated, so
+GitHub's 60-requests-per-hour-per-IP limit applies; the dashboard makes one
+request per project opened.
+
+Local serving needs `connect-src https://api.github.com` in the page's Content
+Security Policy. `serve_dashboard.py` sets that; a host serving the published
+build under a stricter policy would fall back to the snapshot.
 
 ## Publishing issue state for a project in another repository
 

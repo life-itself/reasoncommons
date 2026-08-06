@@ -1,10 +1,18 @@
 /**
  * GitHub issue tracking for transition-tree actions.
  *
- * Reads `ltp/github-sync.yaml`, the ledger written by
- * `scripts/sync_github_issues.py`. The ledger is derived state: the model still
- * owns what an action *is*, and the issue owns whether it is open, assigned, or
- * done. The dashboard only displays the second half — it never writes either.
+ * Two sources, in order of freshness:
+ *
+ * 1. GitHub's public issues API, read straight from the browser. This is what
+ *    makes a closed issue show as closed without anyone rebuilding the site.
+ * 2. `github-sync.yaml`, the ledger written by `scripts/sync_github_issues.py`.
+ *    It paints instantly, works offline and for private repositories, and it
+ *    is the only source for drift — whether the issue body still matches the
+ *    tree node — because that comparison needs the digests recorded at push
+ *    time.
+ *
+ * The model still owns what an action *is*; the issue owns whether it is open,
+ * assigned, or done. The dashboard displays the second half and writes neither.
  */
 
 export type SyncStatus =
@@ -45,6 +53,20 @@ export interface TrackingLedger {
   actions: Record<string, TrackedAction>;
   untracked_issues?: UntrackedIssue[];
   orphan_issues?: UntrackedIssue[];
+  /** Where the issue state on screen came from. Absent means the ledger file. */
+  source?: "live" | "snapshot";
+  /** When the live read happened, for the provenance line in the overview. */
+  checked_at?: string;
+}
+
+export const DEFAULT_TRACKING_LABEL = "ltp-action";
+const MARKER = /<!--\s*project-ltp:action=([A-Za-z0-9][\w.-]*)\s*-->/;
+
+/** Mirrors the marker comment that `sync_github_issues.py` writes into each
+ * issue body. That comment, not the ledger, is the durable action↔issue link,
+ * which is why the browser can rebuild the mapping from the API alone. */
+export function markerAction(body: string | null | undefined): string | null {
+  return MARKER.exec(body ?? "")?.[1] ?? null;
 }
 
 export function validateTracking(value: unknown): TrackingLedger {
@@ -79,8 +101,10 @@ export function trackingBadge(action: TrackedAction | undefined): TrackingBadge 
   if (!action || (!action.issue && !action.sync_status)) return "untracked";
   if (action.sync_status && driftedStatuses.has(action.sync_status)) return "drifted";
   if (!action.issue) return "untracked";
-  if (action.state === "closed") {
-    return action.state_reason === "not_planned" ? "dropped" : "done";
+  // Case-insensitive: the REST API says "not_planned", the gh CLI "NOT_PLANNED",
+  // and older ledgers may hold either.
+  if (action.state?.toLowerCase() === "closed") {
+    return action.state_reason?.toLowerCase() === "not_planned" ? "dropped" : "done";
   }
   return "open";
 }
@@ -112,6 +136,108 @@ export interface TrackingTally {
   drifted: number;
   untracked: number;
   loose: number;
+}
+
+/** One issue as the GitHub REST API returns it, narrowed to what we display. */
+interface ApiIssue {
+  number: number;
+  title: string;
+  body: string | null;
+  state: string;
+  state_reason: string | null;
+  html_url: string;
+  updated_at: string;
+  closed_at: string | null;
+  assignees: Array<{ login: string }> | null;
+  pull_request?: unknown;
+}
+
+/**
+ * Fold live issues into whatever the ledger already said. Execution state
+ * always comes from GitHub; `sync_status` and the push digests stay with the
+ * ledger, because only the ledger knows what was last pushed.
+ */
+export function mergeLiveIssues(
+  base: TrackingLedger | null,
+  issues: ApiIssue[],
+  repo: string,
+  label: string,
+  checkedAt: string,
+): TrackingLedger {
+  const actions: Record<string, TrackedAction> = {};
+  const untracked: UntrackedIssue[] = [];
+  const claimed = new Set<string>();
+
+  for (const issue of issues) {
+    if (issue.pull_request) continue;
+    const actionId = markerAction(issue.body);
+    if (!actionId) {
+      untracked.push({ issue: issue.number, url: issue.html_url, title: issue.title });
+      continue;
+    }
+    // Two issues on one node: keep the lower number, matching the CLI.
+    const existing = actions[actionId];
+    if (existing?.issue !== undefined && existing.issue <= issue.number) continue;
+    claimed.add(actionId);
+    actions[actionId] = {
+      ...base?.actions[actionId],
+      issue: issue.number,
+      url: issue.html_url,
+      state: issue.state,
+      state_reason: issue.state_reason ?? undefined,
+      assignees: (issue.assignees ?? []).map((person) => person.login),
+      updated_at: issue.updated_at,
+      closed_at: issue.closed_at ?? undefined,
+    };
+  }
+
+  // Ledger entries GitHub did not return: keep what the snapshot knew, minus
+  // any issue number it claimed, so a deleted or unlabelled issue does not go
+  // on showing as open.
+  for (const [actionId, entry] of Object.entries(base?.actions ?? {})) {
+    if (claimed.has(actionId)) continue;
+    actions[actionId] = entry.issue
+      ? { ...entry, issue: undefined, url: undefined, state: undefined, sync_status: "missing-remote" }
+      : entry;
+  }
+
+  return {
+    ...base,
+    repo,
+    label,
+    actions,
+    untracked_issues: untracked,
+    orphan_issues: base?.orphan_issues,
+    source: "live",
+    checked_at: checkedAt,
+  };
+}
+
+/**
+ * Read issue state for a public repository straight from the browser. Returns
+ * null on any failure — offline, rate-limited, private, renamed — so the
+ * caller simply keeps the snapshot it already has.
+ */
+export async function fetchLiveTracking(
+  base: TrackingLedger | null,
+  repo: string,
+  label: string = DEFAULT_TRACKING_LABEL,
+): Promise<TrackingLedger | null> {
+  const url =
+    `https://api.github.com/repos/${repo}/issues` +
+    `?state=all&per_page=100&labels=${encodeURIComponent(label)}`;
+  try {
+    const response = await fetch(url, {
+      headers: { Accept: "application/vnd.github+json" },
+      cache: "no-store",
+    });
+    if (!response.ok) return null;
+    const issues = (await response.json()) as ApiIssue[];
+    if (!Array.isArray(issues)) return null;
+    return mergeLiveIssues(base, issues, repo, label, new Date().toISOString());
+  } catch {
+    return null;
+  }
 }
 
 /** `actionIds` is every action in the tree, so nodes with no ledger entry at

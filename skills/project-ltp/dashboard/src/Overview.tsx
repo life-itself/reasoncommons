@@ -192,7 +192,11 @@ export function Overview({
           <div>
             <span className="eyebrow">
               Tracked work{tracking.repo ? ` · ${tracking.repo}` : ""}
-              {tracking.synced_at ? ` · synced ${tracking.synced_at.slice(0, 10)}` : ""}
+              {tracking.source === "live"
+                ? " · live from GitHub"
+                : tracking.synced_at
+                  ? ` · snapshot of ${tracking.synced_at.slice(0, 10)}`
+                  : ""}
             </span>
             <p>
               <strong>{trackingTally.tracked}</strong> of {actionIds.length} actions have an issue —{" "}

@@ -12,7 +12,11 @@
       "name": "2R Research Circle",
       "blurb": "Whether the 2R movement adopts LTP and benefits from it — rebuilt from David and Rufus's own goal tree and problem tree, starting from the fact that the two of them do not yet use it consistently.",
       "analysis_mode": "reconciliation",
-      "source": "https://github.com/Promise-Foundation/2R-Research"
+      "source": "https://github.com/Promise-Foundation/2R-Research",
+      "github": {
+        "repo": "Promise-Foundation/2R-Research",
+        "label": "ltp-action"
+      }
     },
     {
       "slug": "individual-swe-example",

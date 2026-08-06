@@ -459,13 +459,16 @@ class GitHub:
 
 
 def _remote_from_json(item: dict) -> RemoteIssue:
+    # `gh` reports COMPLETED / NOT_PLANNED where the REST API the dashboard
+    # reads says completed / not_planned. Normalize so one vocabulary reaches
+    # the ledger whichever path filled it.
     return RemoteIssue(
         number=int(item["number"]),
         title=item.get("title") or "",
         body=item.get("body") or "",
         state=str(item.get("state") or "").lower(),
         url=item.get("url") or "",
-        state_reason=(item.get("stateReason") or None),
+        state_reason=(str(item["stateReason"]).lower() if item.get("stateReason") else None),
         assignees=tuple(a.get("login", "") for a in item.get("assignees") or []),
         labels=tuple(label.get("name", "") for label in item.get("labels") or []),
         updated_at=item.get("updatedAt"),

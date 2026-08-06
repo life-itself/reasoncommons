@@ -220,6 +220,22 @@ class PlanTest(unittest.TestCase):
         self.assertEqual(plan.actions[0].remote.number, 1)
         self.assertEqual([issue.number for issue in plan.orphans], [5])
 
+    def test_gh_state_reason_is_normalized_to_the_rest_api_vocabulary(self) -> None:
+        """The dashboard also reads issue state from the REST API, which says
+        not_planned where gh says NOT_PLANNED. One vocabulary must reach the
+        ledger, or a dropped action renders as done."""
+        issue = sync._remote_from_json(
+            {
+                "number": 1,
+                "title": "t",
+                "body": "<!-- project-ltp:action=ACT-1 -->",
+                "state": "CLOSED",
+                "stateReason": "NOT_PLANNED",
+                "url": "u",
+            }
+        )
+        self.assertEqual((issue.state, issue.state_reason), ("closed", "not_planned"))
+
     def test_execution_state_lands_in_the_ledger(self) -> None:
         closed = remote(
             1,

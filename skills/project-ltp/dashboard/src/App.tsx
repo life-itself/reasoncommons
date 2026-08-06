@@ -33,6 +33,8 @@ import {
 } from "./projects";
 import {
   buildTrackingBadges,
+  fetchLiveTracking,
+  DEFAULT_TRACKING_LABEL,
   type TrackingBadge,
   type TrackingLedger,
 } from "./tracking";
@@ -161,6 +163,25 @@ export default function App() {
       cancelled = true;
     };
   }, [source, activeProject]);
+
+  // Issue state goes stale the moment someone closes something, so refresh it
+  // from GitHub after the snapshot has painted. Public repositories only; any
+  // failure silently leaves the committed snapshot on screen.
+  useEffect(() => {
+    if (!activeProject) return;
+    const repo = tracking?.repo ?? activeProject.github?.repo;
+    if (!repo) return;
+    if (tracking?.source === "live") return;
+    const label = tracking?.label ?? activeProject.github?.label ?? DEFAULT_TRACKING_LABEL;
+    let cancelled = false;
+    (async () => {
+      const live = await fetchLiveTracking(tracking, repo, label);
+      if (!cancelled && live) setTracking(live);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [activeProject, tracking]);
 
   // If this project has a pilot alignment to a collective tree, load it in the
   // background — its suggestions surface as badges on tree nodes, not as a

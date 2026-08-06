@@ -22,6 +22,9 @@ export interface ProjectSummary {
   model?: string;
   throughput?: string;
   tracking?: string;
+  /** Declaring the repository lets the dashboard read issue state live, even
+   * before any sync has committed a `github-sync.yaml` snapshot. */
+  github?: { repo: string; label?: string };
 }
 
 /**

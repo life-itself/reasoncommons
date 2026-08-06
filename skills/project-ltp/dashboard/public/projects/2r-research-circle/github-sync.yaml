@@ -4,13 +4,15 @@
 repo: Promise-Foundation/2R-Research
 view: transition-tree
 label: ltp-action
-synced_at: '2026-08-06T08:32:25Z'
+synced_at: '2026-08-06T09:57:44Z'
 actions:
   ACT-1:
     issue: 1
     url: https://github.com/Promise-Foundation/2R-Research/issues/1
-    state: open
-    updated_at: '2026-08-06T08:08:04Z'
+    state: closed
+    state_reason: completed
+    updated_at: '2026-08-06T08:51:29Z'
+    closed_at: '2026-08-06T08:51:29Z'
     sync_status: in-sync
   ACT-2:
     sync_status: create
