@@ -4,7 +4,7 @@
 repo: Promise-Foundation/2R-Research
 view: transition-tree
 label: ltp-action
-synced_at: '2026-08-06T10:35:44Z'
+synced_at: '2026-08-06T11:02:18Z'
 actions:
   ACT-1:
     issue: 1
@@ -15,10 +15,30 @@ actions:
     closed_at: '2026-08-06T08:51:29Z'
     sync_status: in-sync
   ACT-2:
-    sync_status: create
+    issue: 2
+    url: https://github.com/Promise-Foundation/2R-Research/issues/2
+    state: closed
+    state_reason: completed
+    updated_at: '2026-08-06T11:01:19Z'
+    closed_at: '2026-08-06T11:01:19Z'
+    sync_status: in-sync
   ACT-3:
-    sync_status: create
+    issue: 3
+    url: https://github.com/Promise-Foundation/2R-Research/issues/3
+    state: closed
+    state_reason: completed
+    updated_at: '2026-08-06T11:01:21Z'
+    closed_at: '2026-08-06T11:01:21Z'
+    sync_status: in-sync
   ACT-4:
-    sync_status: create
+    issue: 4
+    url: https://github.com/Promise-Foundation/2R-Research/issues/4
+    state: open
+    updated_at: '2026-08-06T11:00:56Z'
+    sync_status: in-sync
   ACT-5:
-    sync_status: create
+    issue: 5
+    url: https://github.com/Promise-Foundation/2R-Research/issues/5
+    state: open
+    updated_at: '2026-08-06T11:00:58Z'
+    sync_status: in-sync
