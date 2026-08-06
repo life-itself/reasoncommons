@@ -24,6 +24,7 @@ import type {
 import { buildTreeProjection } from "./treeProjection";
 import {
   buildActionRollups,
+  buildCompletedIds,
   rollupLabel,
   rollupTone,
   trackingBadgeShortLabels,
@@ -47,6 +48,7 @@ type FlowNodeData = {
   alignmentBadge?: AlignmentBadge;
   trackingBadge?: TrackingBadge;
   actionRollup?: ActionRollup;
+  isCompleted: boolean;
   onToggle: (entityId: string) => void;
 };
 
@@ -58,6 +60,7 @@ function LtpNode({ data, selected }: NodeProps<FlowNode>) {
     <article
       className={`ltp-node ltp-node--${entity.type} ${selected ? "is-selected" : ""}`}
       data-status={entity.status}
+      data-completed={data.isCompleted ? "true" : undefined}
     >
       <Handle type="target" position={Position.Top} className="ltp-handle" />
       <header>
@@ -164,6 +167,10 @@ interface TreeCanvasProps {
   selectedId: string | null;
   alignmentBadges?: Map<string, AlignmentBadge>;
   trackingBadges?: Map<string, TrackingBadge>;
+  /** Settled actions and their fully-settled ancestors disappear entirely
+   * rather than sinking, since dagre's layout has no "bottom" to sink to.
+   * Defaults to shown. */
+  showCompleted?: boolean;
   onToggle: (entityId: string) => void;
   onSelect: (entityId: string | null) => void;
 }
@@ -179,6 +186,7 @@ export function TreeCanvas({
   selectedId,
   alignmentBadges,
   trackingBadges,
+  showCompleted = true,
   onToggle,
   onSelect,
 }: TreeCanvasProps) {
@@ -208,7 +216,13 @@ export function TreeCanvas({
         .map((entity) => entity.id),
     );
     const rollups = buildActionRollups(projection.childrenByParent, index.entities, trackingBadges);
+    const completedIds = buildCompletedIds(index.entities, rollups, trackingBadges);
+    const shownEntities = showCompleted
+      ? projection.entities
+      : projection.entities.filter((entity) => !completedIds.has(entity.id));
+    const shownIds = new Set(shownEntities.map((entity) => entity.id));
     const edges: Edge[] = projection.links
+      .filter((link) => shownIds.has(link.from) && shownIds.has(link.to))
       .map((link) => ({
         id: link.id,
         source: link.from,
@@ -223,16 +237,19 @@ export function TreeCanvas({
             : "",
         ].filter(Boolean).join(" "),
       }));
-    const nodes: FlowNode[] = projection.entities.map((entity) => ({
+    const nodes: FlowNode[] = shownEntities.map((entity) => ({
       id: entity.id,
       type: "ltp",
       data: {
         entity,
-        childCount: projection.childrenByParent.get(entity.id)?.length ?? 0,
+        childCount: (projection.childrenByParent.get(entity.id) ?? []).filter(
+          (childId) => showCompleted || !completedIds.has(childId),
+        ).length,
         expanded: expandedIds.has(entity.id),
         alignmentBadge: alignmentBadges?.get(entity.id),
         trackingBadge: entity.type === "action" ? trackingBadges?.get(entity.id) : undefined,
         actionRollup: entity.type !== "action" ? rollups.get(entity.id) : undefined,
+        isCompleted: completedIds.has(entity.id),
         onToggle,
       },
       selected: selectedId === entity.id,
@@ -250,6 +267,7 @@ export function TreeCanvas({
     model,
     onToggle,
     selectedId,
+    showCompleted,
     statuses,
     view,
   ]);

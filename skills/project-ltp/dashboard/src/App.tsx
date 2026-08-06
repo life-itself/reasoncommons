@@ -97,6 +97,7 @@ export default function App() {
   >({});
   const [statuses, setStatuses] = useState<Set<EntityStatus>>(new Set(allStatuses));
   const [confidences, setConfidences] = useState<Set<Confidence>>(new Set(allConfidences));
+  const [showCompleted, setShowCompleted] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [syncState, setSyncState] = useState<"loading" | "ready" | "updated" | "error">("loading");
   const fingerprintRef = useRef<string | null>(null);
@@ -414,6 +415,11 @@ export default function App() {
   const activeView = screen === "overview" ? null : screen;
   const activeViewDefinition = activeView ? model.views[activeView] : null;
   const activeLabel = activeView ? viewLabels[activeView] : null;
+  // The toggle only means anything on a view that actually contains actions —
+  // gating on the view's own membership rather than hardcoding a view name
+  // keeps this correct if a project ever tracks actions somewhere else.
+  const viewHasActions =
+    activeViewDefinition?.entities.some((id) => index.entities.get(id)?.type === "action") ?? false;
   const expandedIds = activeView
     ? expandedByView[activeView] ?? noExpandedNodes
     : noExpandedNodes;
@@ -515,6 +521,16 @@ export default function App() {
                     List
                   </button>
                 </div>
+                {tracking && viewHasActions && (
+                  <label className="completed-toggle">
+                    <input
+                      type="checkbox"
+                      checked={showCompleted}
+                      onChange={(event) => setShowCompleted(event.target.checked)}
+                    />
+                    Show completed
+                  </label>
+                )}
                 <details className="filter-disclosure">
                   <summary>Refine <span>{statuses.size + confidences.size}/{allStatuses.length + allConfidences.length}</span></summary>
                   <div className="filter-panel">
@@ -565,6 +581,7 @@ export default function App() {
                   selectedId={selectedId}
                   alignmentBadges={alignmentBadges}
                   trackingBadges={trackingBadges}
+                  showCompleted={showCompleted}
                   onToggle={onToggleActiveNode}
                   onSelect={setSelectedId}
                 />
@@ -580,6 +597,7 @@ export default function App() {
                   selectedId={selectedId}
                   alignmentBadges={alignmentBadges}
                   trackingBadges={trackingBadges}
+                  showCompleted={showCompleted}
                   onToggle={onToggleActiveNode}
                   onSelect={setSelectedId}
                 />
@@ -597,6 +615,7 @@ export default function App() {
                       <span><i className="tracking-chip tracking-chip--done"><i className="tracking-node-badge tracking-node-badge--done" />Done</i>on an action node — closed as done</span>
                       <span><i className="tracking-chip tracking-chip--drifted"><i className="tracking-node-badge tracking-node-badge--drifted" />Out of step</i>issue no longer matches the tree</span>
                       <span><i className="tracking-rollup tracking-rollup--pending">1/3 done</i>on any other node — actions tracked in its branch, expanded or not</span>
+                      <span>A struck-through label has settled — nothing left to do — and sinks below its unfinished siblings. "Show completed" hides it entirely.</span>
                     </>
                   )}
                   <small>Use + and −, or select a parent node, to reveal and hide its upstream logic. Selecting a node also opens its evidence and assumptions.</small>

@@ -110,9 +110,20 @@ export interface OrderedTreeEntity {
   depth: number;
 }
 
+/** Stable partition: unfinished ids first, completed ones sink to the end,
+ * without disturbing relative order within either group. */
+function sinkCompleted(ids: string[], completedIds?: Set<string>): string[] {
+  if (!completedIds) return ids;
+  const pending: string[] = [];
+  const done: string[] = [];
+  for (const id of ids) (completedIds.has(id) ? done : pending).push(id);
+  return [...pending, ...done];
+}
+
 export function orderTreeProjection(
   projection: TreeProjection,
   expandedIds: Set<string>,
+  completedIds?: Set<string>,
 ): OrderedTreeEntity[] {
   const entitiesById = new Map(
     projection.entities.map((entity) => [entity.id, entity]),
@@ -126,12 +137,15 @@ export function orderTreeProjection(
     visited.add(entityId);
     ordered.push({ entity, depth });
     if (!expandedIds.has(entityId)) return;
-    for (const childId of projection.childrenByParent.get(entityId) ?? []) {
-      if (projection.visibleIds.has(childId)) visit(childId, depth + 1);
+    const children = (projection.childrenByParent.get(entityId) ?? []).filter(
+      (childId) => projection.visibleIds.has(childId),
+    );
+    for (const childId of sinkCompleted(children, completedIds)) {
+      visit(childId, depth + 1);
     }
   };
 
-  for (const rootId of projection.roots) visit(rootId, 0);
+  for (const rootId of sinkCompleted(projection.roots, completedIds)) visit(rootId, 0);
   for (const entity of projection.entities) visit(entity.id, 0);
   return ordered;
 }

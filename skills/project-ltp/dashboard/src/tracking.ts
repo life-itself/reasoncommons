@@ -336,6 +336,40 @@ export function rollupLabel(rollup: ActionRollup): string {
   return `${settled}/${rollup.total} ${noun} done`;
 }
 
+/** Closed and done, or closed as not planned — either way, nothing left to do. */
+export function isActionSettled(badge: TrackingBadge): boolean {
+  return badge === "done" || badge === "dropped";
+}
+
+export function isRollupSettled(rollup: ActionRollup): boolean {
+  return rollup.total > 0 && rollup.done + rollup.dropped === rollup.total;
+}
+
+/**
+ * Every entity — action or not — whose tracked work is fully settled: an
+ * action closed as done or not-planned, or a node whose entire subtree of
+ * actions is. Drives sinking finished work to the bottom of a list and
+ * letting it be hidden outright. A node with no actions under it at all is
+ * never "complete" in this sense — there's nothing to have finished.
+ */
+export function buildCompletedIds(
+  entities: Map<string, { type: string }>,
+  rollups: Map<string, ActionRollup>,
+  trackingBadges: Map<string, TrackingBadge> | undefined,
+): Set<string> {
+  const completed = new Set<string>();
+  for (const [id, entity] of entities) {
+    if (entity.type === "action") {
+      const badge = trackingBadges?.get(id);
+      if (badge && isActionSettled(badge)) completed.add(id);
+    } else {
+      const rollup = rollups.get(id);
+      if (rollup && isRollupSettled(rollup)) completed.add(id);
+    }
+  }
+  return completed;
+}
+
 /** `actionIds` is every action in the tree, so nodes with no ledger entry at
  * all still count as untracked rather than vanishing from the tally. */
 export function tallyTracking(

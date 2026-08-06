@@ -271,6 +271,12 @@ summary::-webkit-details-marker { display: none; }
 .graph-icon i:nth-child(2) { align-self: start; }
 .list-icon { width: 14px; display: flex; flex-direction: column; gap: 2px; }
 .list-icon i { height: 2px; border-radius: 2px; background: currentColor; }
+.completed-toggle {
+  display: flex; align-items: center; gap: 8px; min-height: 36px; padding: 7px 14px;
+  border: 1px solid var(--color-divider); border-radius: 999px; font-size: 13px; cursor: pointer;
+}
+.completed-toggle:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.completed-toggle input { accent-color: var(--color-accent); }
 .filter-disclosure { position: relative; margin: 0; z-index: 20; }
 .filter-disclosure > summary { display: flex; align-items: center; gap: 9px; min-height: 36px; padding: 7px 12px; border: 1px solid var(--color-divider); border-radius: 999px; font: 400 13px var(--font-heading); }
 .filter-disclosure > summary:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
@@ -315,6 +321,11 @@ summary::-webkit-details-marker { display: none; }
 .node-disclosure:hover { background: var(--color-accent-200); color: var(--color-accent-900); }
 .node-disclosure:active, .tree-disclosure-button:active { transform: scale(.9); }
 .ltp-node p { flex: 1; margin: 0; font: 400 15.5px/1.25 var(--font-heading); }
+.ltp-node[data-completed="true"] p {
+  text-decoration: line-through; text-decoration-thickness: 1px;
+  text-decoration-color: var(--color-neutral-500); color: var(--color-neutral-600);
+}
+.ltp-node[data-completed="true"] .node-id { opacity: .65; }
 .ltp-node footer { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 9px; text-transform: capitalize; }
 .node-confidence { margin-left: auto; }
 .node-branches { padding-left: 3px; color: var(--color-accent-700); }
@@ -350,6 +361,12 @@ summary::-webkit-details-marker { display: none; }
 .tree-list-identity strong { width: fit-content; padding: 3px 8px; border-radius: 999px; background: var(--color-accent-100); color: var(--color-accent-800); font-size: 9px; letter-spacing: .06em; }
 .tree-list-identity small { color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
 .tree-list-statement { font: 400 16px/1.3 var(--font-heading); }
+/* Settled work reads as done at a glance: a light strike, not a loud one. */
+.tree-list-row.is-completed .tree-list-statement {
+  text-decoration: line-through; text-decoration-thickness: 1px;
+  text-decoration-color: var(--color-neutral-500); color: var(--color-neutral-600);
+}
+.tree-list-row.is-completed .tree-list-identity strong { opacity: .65; }
 .tree-list-facts { display: flex; align-items: center; justify-content: flex-end; gap: 7px; color: var(--muted); font-size: 9px; text-transform: capitalize; }
 .tree-list-facts > span + span { padding-left: 7px; border-left: 1px solid var(--color-divider); }
 
