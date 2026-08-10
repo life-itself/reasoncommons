@@ -15,11 +15,9 @@
 
 The Logical Thinking Process is composed of logical tools. The emphasis here is on the word “logic” for a good reason. A lot of problem-analysis tools use graphical representations. Flowcharts, “fishbone” diagrams, and tree and affinity diagrams are typical examples. But none of these diagrams are, strictly speaking, logic tools, because they don’t incorporate any rigorous criteria for validating the connections between one element and another. In most cases, they’re somebody’s perception of the relationship.
 
-The most significant difference between the Logical Thinking Process and traditional problem-analysis tools is a series of rules that govern the acceptability of the connections in each of the trees. These rules of logic are called the Categories of Legitimate Reservation—often abbreviated as CLR. The CLR are what differentiate somebody’s perception from an accurate representation of existing reality. A thorough understanding of these logical rules is absolutely essential to your success in using the logic trees. While the rules are not difficult to understand, there are eight of them, and it requires some study and practice to keep them straight in your mind and to know when each one applies. So what, exactly, are these Categories of Legitimate Reservation?
+The most significant difference between the Logical Thinking Process and traditional problem-analysis tools is a series of rules that govern the acceptability of the connections in each of the trees. These rules of logic are called the Categories of Legitimate Reservation—often abbreviated as CLR. The CLR are what differentiate somebody’s perception from an accurate representation of existing reality. A thorough understanding of these logical rules is absolutely essential to your success in using the logic trees. While the rules are not difficult to understand, there are eight of them, and it requires some study and practice to keep them straight in your mind and to know when each one applies. So what, exactly, are these Categories of The CLR constitute a framework of eight specific tests, or proofs, used to verify cause-andeffect logic. The eight proofs consist of: Legitimate Reservation?
 
 ### Definition
-
-The CLR constitute a framework of eight specific tests, or proofs, used to verify cause-andeffect logic. The eight proofs consist of:
 
 1. Clarity
 2. Entity existence
@@ -39,15 +37,12 @@ The Categories of Legitimate Reservation are the foundation upon which logic in 
 - Use by a scrutinizer with subject matter knowledge to review and evaluate a tree built and presented by someone else.
 - Use by a facilitator in a group setting to ensure that both scrutinizers and presenters adhere to the rules of logic.
 - Use by a scrutinizer or facilitator to communicate disagreement with the cause-andeffect logic of a presenter’s tree in a way that fosters consensus and discourages confrontation.
-
 - Use by anyone in interactive discussion, not associated with logic trees, to evaluate and challenge or accept the validity of logic in the statements of others without offending or generating animosity.
 - Use by anyone in evaluating the validity of logic in written text (books, magazines or journals, newspapers, advertising, and the like).
 
 **NOTE:** It would be appropriate here to define some new terms we just introduced. A tree builder is one who uses the procedures of the Logical Thinking Process to construct one of the six trees described at the end of Chapter 1. A scrutinizer is one who did not participate in the construction of the logic tree, but who has content knowledge of the subject matter addressed in the tree and who has been enlisted to critique the work of the tree builder. A scrutinizer does not necessarily need to understand the CLR to provide critique of the content or logical connections, but it helps. A facilitator is one who has been enlisted by a tree builder to ensure that scrutiny is conducted in accordance with the CLR. The facilitator does not necessarily need to have content knowledge of the subject matter of the tree, but must be knowledgeable in the CLR to facilitate scrutiny effectively.
 
 ### Assumptions
-
-The effectiveness of the Categories of Legitimate Reservation in fulfilling their intended purpose is based on the following assumptions:
 
 1. Tree builders want to construct logically sound trees
 2. Tree builders, at some point, will also present their trees to others to communicate and elicit action
@@ -100,49 +95,17 @@ A clarity reservation means that a listener doesn’t comprehend the speaker. Si
 
 > —Thomas Huxley
 
-CLARITY
-
-EXAMPLE #1 Valid? Why?
-
-No
-
-a – yes b – no c – yes
-
-Yes
-
-a – no b – yes c – no
-
-My gasoline mileage deteriorates.
-
-...then... TEST:
-
-If…
-
-a. Is any additional explanation required for the cause or effect, as written?
-
 A tune-up on my car’s engine is complete.
 
 b. Is the connection between cause and effect convincing “at face value”? c. Is this a “long arrow” (that is, are intermediate effects missing)?
 
 EXAMPLE #2 My gasoline mileage deteriorates.
 
-...then... If…
-
-...and...
-
 My car is an older car.
-
-...and...
 
 Older cars tuned for minimum smog emission use more gasoline.
 
 My engine is set to minimize smog emissions.
-
-...then... ...and... If...
-
-Figure 2.1
-
-Tune-ups normally minimize smog emissions.
 
 A tune-up on my car’s engine is complete.
 
@@ -168,32 +131,6 @@ An entity existence reservation based on structure is concerned exclusively with
 
 - No compound entities (see Figure 2.3). A single entity must not contain more than one idea. For example, “The sky is falling” is an entity that contains only one idea.
 
-Figure 2.2
-
-Figure 2.3 Economic
-
-recession.
-
-The country is in an economic recession. INCOMPLETE COMPLETE
-
-Completeness.
-
-The sky is falling and it hits Chicken Little
-
-on the head.
-
-The sky is falling.
-
-Compound entity (not desirable)
-
-NOT a compound entity (desirable)
-
-Structure: compound entity.
-
-The sky hits Chicken Little
-
-on the head.
-
 ![page 37](images/p037.png)
 
 A sentence reading, “The sky is falling and it hits Chicken Little on the head,” would be a compound entity. Two different ideas are expressed here, and each merits its own entity statement.
@@ -202,39 +139,15 @@ A sentence reading, “The sky is falling and it hits Chicken Little on the head
 
 We park the car in the garage in order to avoid damage from the elements.
 
-…then…
-
 We avoid damage from the elements.
 
-If…
-
 We park the car in the garage.
-
-…then…
-
-I earn money.
-
-If…
-
-I go to work.
 
 I go to work to earn money.
 
 …then… I don’t want to go to the event because I will run into someone I don’t want to see.
 
-“If–then” relationship embedded in statement (not desirable)
-
-Figure 2.4
-
-Structure: embedded “if-then.”
-
-If…
-
 I run into someone I don’t want to see.
-
-I go to the event.
-
-“If–then” clearly separated (preferred)
 
 ![page 38](images/p038.png)
 
@@ -245,14 +158,6 @@ I go to the event.
 Once an idea has passed the clarity, completeness, and structure hurdles (that is, do I understand the presenter, and is it a complete, properly constructed statement?), the next test of entity existence is validity (see Figure 2.5). For our purposes, validity means that the content of the statement is sound, or well founded. It must have real meaning in the experience of the listener, or it must be a conclusion that the listener can reasonably accept. Validity is normally established by evidence. Logic tree quality is improved dramatically if documented evidence of cause and/or effect can be produced. This helps avoid unfounded speculation or invalid assumptions about causality. For example, “The sky is falling” doesn’t exist in most people’s reality. Moreover, it’s impossible to find evidence for it. So even though it might be a clear, complete, structurally sound statement, it could nevertheless be questioned based on entity existence. On the other hand, “Most grass is green” is complete, structurally correct, and a valid statement.
 
 **NOTE:** The validity test normally applies only to conditions of reality, not actions. For example, a condition of reality might be, “The sun is overhead at noon.” An action might be, “I drive my car.” In Future Reality and Transition Trees, the completeness and structure of action statements may be challenged, but not their validity, because future actions and their effects don’t yet exist. However, the same action (“I drive my car.”) in a Current Reality Tree is a statement of common practice and thus verifiable.
-
-Figure 2.5
-
-The sky is falling.
-
-Most grass is green. INVALID VALID
-
-Validity.
 
 > Figure 2.6 presents an abbreviated test and example of the entity existence reservation. Beware of half-truths; you may have gotten the wrong half.
 >
@@ -266,85 +171,19 @@ A listener with a causality existence reservation has some doubts about whether 
 
 ![page 39](images/p039.png)
 
-ENTITY EXISTENCE TEST:
-
-EXAMPLE #1
-
-a . Complete sentence? (subject and verb)
-
-Economic recession.
-
-The country is in an Valid? Why?
-
-No
-
-a – no b – n /a c – n /a
-
-Yes
-
-a – yes b – no c – n/a
-
-No
-
-a – yes b – yes c – yes
-
-Yes
-
-a – yes b – no c – yes
-
-No
-
-a – yes b – no c – no
-
-Yes
-
-a – yes b – no c – yes
-
-economic recession.
+a – no b – n /a c – n /a EXAMPLE #3 c. A true statement? Does it exist in reality? Is there evidence to support it?
 
 EXAMPLE #2 b. No embedded “if-then.”
 
 I go to work to earn money .
 
-…then…
-
-I earn money.
-
-If…
-
-I go to work.
-
-EXAMPLE #3 c. A true statement? Does it exist in reality? Is there evidence to support it?
-
-The sky is falling.
-
-Terrorists attacked the World Trade Center on
-
-September 11, 2001.
-
-Figure 2.6
+Terrorists attacked the World Trade Center on September 11, 2001.
 
 A test and example of the entity existence reservation.
 
 We are at risk of an earthquake.
 
-Figure 2.7
-
-Both cars are destoyed.
-
-…then…
-
-…then…
-
-If…
-
-If…
-
-Causality existence.
-
 The weather is hot and humid.
-
-The cars collide at 60 miles per hour. INVALID VALID
 
 ![page 40](images/p040.png)
 
@@ -352,27 +191,9 @@ Caution: Scrutinizers and other listeners must be careful to read or hear only w
 
 - Is the cause intangible? To be “tangible,” a cause must be measurable or observable. Frequently an effect may be directly measurable or observable, but the cause is not (see Figure 2.8). For example, “My boss is dissatisfied with me” is not really observable in and of itself (unless the boss happens to tell you so). But “I stop watering the lawn” is observable. In both cases, the effects are measurable or observable, but in the first case, the cause is not. Verifying the cause-effect relationship in this instance requires identifying the presence of at least one other directly measurable effect attributable to the same cause. Discussion of the CLR “predicted effect existence,” later in this chapter, contains a more detailed discussion of this technique of verification. Figure 2.9 presents an abbreviated test and example of the causality existence reservation.
 
-My performance appraisal is poor.
-
-The grass dies.
-
-Figure 2.8
-
-…then…
-
-…then…
-
-If…
-
 If… I stop watering the lawn.
 
 My boss is dissatisfied with me.
-
-Tangible cause, tangible effect
-
-Intangible cause, tangible effect
-
-Tangible vs. intangible causes.
 
 #### 4. Cause Insufficiency
 
@@ -384,57 +205,15 @@ How are multiple dependent causes expressed in a logic tree? In portraying such 
 
 ![page 41](images/p041.png)
 
-CAUSALITY EXISTENCE
-
-EXAMPLE #1 Valid? Why?
-
-We can expect an earthquake.
-
-No
-
-a – no b – no c – no
-
-Yes
-
-a – yes b – yes c – yes
-
-Yes
-
-a – yes b – yes c – yes
-
-**TEST:** a. Does the cause, in fact, result in the effect? (that is, does an “if-then” connection really exist?)
-
 …then… The weather is hot and humid.
-
-If…
-
-EXAMPLE #2 b. Does it make sense when read aloud exactly using “if-then”?
 
 My performance appraisal is poor. …then… I did not complete my work.
 
-If…
-
 EXAMPLE #3 c. Is the cause intangible? (If so, an additional predicted effect should be identified.) (Observed function is to identify and enclose the major contributing causes that are sufficient in concert but not alone to produce the effect.
-
-tangible effect) (Additional
-
-predicted effect)
-
-Sales are down.
 
 A competitor’s sales of a similar product increase.
 
-Customers don’t like our product. (Intangible cause)
-
-Figure 2.9
-
 A test and example of the causality existence reservation.
-
-We are wet. ...then...
-
-...and...
-
-If... A sudden rainstorm develops.
 
 Figure 2.10 Indicating cause sufficiency with an ellipse.
 
@@ -450,33 +229,13 @@ The idea of relative magnitude in a true dependency has no real meaning. Both (o
 
 Theoretically, there is no limit to how many arrows can pass through an ellipse. But there is a practical limit. At some point it becomes extremely difficult to depict and keep track of an expanding number of component causes. Also, at some point the number of contributors becomes so large that the effect of any one may be considered negligible. How many arrows should you include in the ellipse? This is an individual judgment call. Only you can determine the break point between having enough weight of causes to produce the effect or not. As a rule of thumb, however, try to limit the number of contributing causes to three if possible, or four at most (see Figure 2.11). Beyond four, the relative influence of each contributor becomes so low that it might not be considered “major.” Your objective should be to include only those causes without which the effect would either cease to exist or be of such limited magnitude that it would not be consequential to the larger system relationship. Realistically, most effects are likely to have only a few major causes. If you have to exceed three contributing causes, take a closer look at all the causes. One or more might be an independent, or additional, cause. (The following section discusses additional cause.) The Concept of “Oxygen” One of the most common points of contention concerning cause insufficiency is the exclusion of some cause factor that is so basic to the situation that it is “transparent” to the presenter—but maybe not to the listener or scrutinizer. The best way to illustrate this issue is with an example. Consider the following cause-and-effect statement (see Figure 2.12): “If we have fuel and a sufficient heat source, then we have a fire.” Is there something missing? A physicist might say, “You forgot something very important—oxygen. You can’t have combustion without it.” So in this case, a cause insufficiency reservation might be raised about the example statement.
 
-We are wet. ...then...
-
-If...
-
-…and... A sudden rainstorm develops.
-
 We failed to bring any umbrellas.
-
-Figure 2.11 How many contributing causes?
 
 ...and... There is no other shelter available.
 
 ![page 43](images/p043.png)
 
-We have a fire. ...then...
-
-If...
-
-…and...
-
 We have a source of ignition.
-
-...and...
-
-We have fuel.
-
-We have oxygen.
 
 Figure 2.12 The concept of “oxygen.”
 
@@ -485,33 +244,9 @@ But a presenter might respond, “True, but since oxygen is always present in th
 - The cause factor you omitted is not obvious (“oxygen”) to the audience of a presentation.
 - The cause factor cannot really be assumed, but rather is a significant variable factor that is neither transparent nor constant in the situation. In either case, presenters must be prepared to re-examine their cause-effect relationship. Figure 2.13 presents an abbreviated test and example of the cause insufficiency reservation.
 
-CAUSE INSUFFICIENCY TEST:
-
-EXAMPLE #1
-
 a. Can the cause result in the effect on its own? b. Must it exist in concert with one or more other causes? Valid? Why?
 
-No
-
-a - no b - yes c - yes
-
-Yes
-
-a - yes b - yes c - yes
-
-We have steam power.
-
 ...then... If… We have a heat source.
-
-EXAMPLE #2 c. Is an “AND” gate required?
-
-We have steam power.
-
-...then... If…
-
-...and... We have water.
-
-We have a heat source.
 
 ...and... We contain heated water in a closed vessel.
 
@@ -526,8 +261,6 @@ Sometimes more than one completely independent cause can produce a similar effec
 A gas leak in my house is ignited by an electrical spark.
 
 An airplane crashes into my house.
-
-Figure 2.14 Additional cause.
 
 #### Magnitude
 
@@ -547,47 +280,19 @@ The weather remains sunny and warm the whole week.
 
 My spouse and I send the children to their grandparents’ farm for a week.
 
-(Each ellipsed group is considered an additional cause.)
-
 We all engage in a lot of pleasurable activities separately.
 
 My spouse and I go away to a tropical island resort for a week.
 
-Figure 2.15 Variation of additional cause. ADDITIONAL CAUSE TEST:
-
-EXAMPLE #1
-
-a. Is this the only major cause?
-
-Trash litters the yard.
-
-b. Are there other INDEPENDENT causes that might result in the same effect? Valid? Why?
-
-No
-
-a - no b - yes c - yes
-
-Yes
-
-a - yes b - no c - no
-
 ...then... If… Dogs dumped the trash can.
 
 EXAMPLE #2 c. If the cause in question is eliminated, are there other circumstances under which the effect might still be present? If…
-
-Trash litters the yard.
-
-...then...
-
-Dogs dumped the trash can.
 
 If… The wind blew a trash can over.
 
 Figure 2.16 A test and example of the additional cause reservation.
 
 ![page 46](images/p046.png)
-
-SIDEBAR COMPLEX CAUSALITY
 
 #### What Is It?
 
@@ -603,25 +308,11 @@ The additional cause postulates that several independent causes can produce the 
 
 They scored more points than we did.
 
-Figure 2.17 Simple causality.
-
 ![page 47](images/p047.png)
-
-100% We have steam power.
-
-We have water.
 
 We can heat the water to boiling.
 
 We have a pressure vessel to hold the heated water.
-
-100%
-
-100%
-
-100%
-
-(By virtue of removal of any one.)
 
 Figure 2.18 Conceptual “AND.” 100% The house is destroyed.
 
@@ -631,14 +322,6 @@ An airplane crashes into the house.
 
 A wild fire burns the house.
 
-100%
-
-100%
-
-100%
-
-Figure 2.19 Additional cause.
-
 Magnitudinal “AND” This additional cause situation is fairly common. In a magnitudinal “and” condition, each cause contributes to the effect in an additive way. In other words, each cause adds progressively more to the effect. Conversely, removing one cause neither leaves the effect completely intact nor completely eliminates it. The effect is proportionately reduced (see Figure 2.20). Exclusive “OR” There’s another variation on additional cause—the exclusive “or.” This is a condition in which there are two possible independent causes (or outcomes), but they’re mutually exclusive. In other words, if one of the causes is active, the other won’t be; or if one of the effects happens, the other won’t, and vice-versa. The exclusive “or” condition is not rare, but it’s not an everyday occurrence, either. For example, my house may be destroyed by a tornado or by an electrical fire. But if one causes the destruction, the other won’t. The causes are not additive like the magnitudinal cause—the effect is a “zero-or-one” condition. Nor would alternative effects both be present. One happens, or the other, but not both. But both causality paths must be reflected in the logical depiction so as to account for either eventuality (see Figure 2.21).
 
 ![page 48](images/p048.png)
@@ -647,43 +330,11 @@ Magnitudinal “AND” This additional cause situation is fairly common. In a ma
 
 Because the causes in a magnitudinal “and” situation aren’t completely independent (that is, any one cause producing all of the effect) or completely dependent (that is, removal of any one eliminates the effect), we have a problem graphically representing the magnitudinal “and.” Goldratt established an ellipse to indicate a conceptual “and” (complete dependency). Not using an inclusive symbol at all indicates an additional cause (complete independence). But the independent arrows of the additional cause don’t accurately represent the magnitudinal relationship. Neither does the ellipse of cause sufficiency. So there’s a need for a new symbol to signify that unusual condition—the Magnitudinal “AND.” In this book, we’ll use a “bow-tie” shape to reflect a magnitudinal “and” (refer to Figure 2.20). If we don’t differentiate between the conceptual “and” and magnitudinal “and” somehow, sooner or later we’re likely to have a logic problem with a tree. Like the magnitudinal cause condition, the exclusive “or” is a unique situation requiring a distinctive notation. We’ll do this with a capital “OR” inside two pointed brackets (<OR>) placed between the exclusive cause or effect branches (refer to Figure 2.21). 100% Gasoline mileage improves.
 
-MAG
-
-I increase my tire pressure.
-
-I tune my engine.
-
-I drive at moderate speed.
-
-~10%
-
-~30%
-
-~60%
-
-Figure 2.20 Magnitudinal “AND.”
-
 100% Our opponent loses the match.
-
-<OR>
-
-<OR>
 
 We score more points than the opponent.
 
 The referee disqualifies the opponent (cheating).
-
-The opponent forfeits (withdraws).
-
-100%
-
-100%
-
-100%
-
-(If one of these causes occurs, none of the others can.)
-
-Figure 2.21 Exclusive “OR.”
 
 ![page 49](images/p049.png)
 
@@ -703,8 +354,6 @@ To clarify the difference between why something happens and how we know it happe
 
 “If my body temperature is higher than normal, and I have a pain in my lower abdomen, then I have appendicitis.” Did the fever and the pain cause the appendicitis, or was it the other way around? As you can see, it’s east to go astray on cause-effect reversal.
 
-Fishing is good.
-
 Many fishermen are fishing from the river bank.
 
 The fishermen’s stringers are full of fish.
@@ -713,17 +362,9 @@ Is THIS the reason fishing is good… This example created by Charles M. Johnson
 
 Figure 2.22 The “fishing is good” example.
 
-Fishing is good.
-
 The river was stocked with fish yesterday.
 
-Fishing season opens today.
-
-… or is THIS the reason?
-
 ![page 50](images/p050.png)
-
-We know fishing is good.
 
 Many fishermen are fishing from the river bank.
 
@@ -731,19 +372,9 @@ Avid fishermen are attracted to good fishing conditions.
 
 The fishermen’s stringers are full of fish.
 
-Fishing is good.
-
 The river was stocked with fish yesterday.
 
-There are many avid fishermen.
-
-Fishing season opens today.
-
-A more complete, accurate expression of the situation...that makes logical sense This example created by Charles M. Johnson
-
 Figure 2.23 Combined “fishing is good” example.
-
-Test There are two ways to detect a cause-effect reversal:
 
 - Does it seem that the arrow between cause and effect is pointing in the wrong direction? This is most likely to be a “gut feeling” and the first inkling you have that something is not quite right.
 - Could the stated cause really be an indicator, rather than a source? Figure 2.24 presents an abbreviated test and example of the cause-effect reversal reservation.
@@ -765,37 +396,11 @@ The predicted effect existence reservation recognizes the complex nature of most
 - Expectation. (“Is it there?”) Given the proposed effect, one expects to see another related effect; or, one expects not to see a certain effect. It’s either there or it isn’t, and its presence or absence will either support or refute the proposed cause-effect relationship.
 - Coexistence. (“Is it there at the same time?”) If the predicted effect is present, proposed effects and predicted effects must be able to coexist. If a case can be made that the two effects can’t exist at the same time (or that the cause can’t produce both effects), then the proposed cause-effect relationship is suspect. Or, if the proposed cause can be shown to produce the same effect to differing degrees under the same circumstances, the cause-effect relationship is also called into question. For example, the same cause, under the same circumstances, can’t simultaneously cause a profit and a loss. If you can show that it does, the original cause-effect relationship is refuted.
 
-ADDITIONAL CAUSE TEST:
-
-EXAMPLE #1 Valid? Why?
-
-a. Is this arrow REALLY drawn in the right direction?
-
-Fishing is good.
-
-No
-
-a - no b - yes c - yes
-
-Yes
-
-a - yes b - no c - no
-
-b. Might the depicted CAUSE really be a perceived effect?
-
 Many fishermen are fishing from the river bank.
 
 The fishermen’s stringers are full of fish.
 
-EXAMPLE #2
-
-c. Could the EFFECT statement be an abbreviated version of a more accurate statement?
-
-Fishing is good.
-
 The river was stocked with fish yesterday.
-
-Fishing season opens today.
 
 This example created by Charles M. Johnson.
 
@@ -806,32 +411,12 @@ Figure 2.24 A test and example of the cause-effect reversal reservation.
 #### Support Refute
 
 1. The effect is there, but shouldn’t be.
-
-X
-
 1. The effect is not there, but should be.
-
-X
-
 1. The effect is there, and should be.
-
-X
-
 1. The effect can coexist with the predicted effect.
-
-X
-
 1. The predicted and proposed effects are mutually exclusive.
-
-X
-
 1. The predicted effect is more or less than expected.
-
-X
-
 1. The predicted effect is about the same degree as expected.
-
-X
 
 Figure 2.25 includes several examples showing how the predicted effect existence reservation is used to support or refute causality.
 
@@ -845,51 +430,16 @@ As previously mentioned in “Causality Existence” earlier in this chapter, pr
 
 1. Predicted effect IS there but shouldn’t be.
 
-Proposed Cause and Effect
-
-Car doesn’t start. Predicted Effect
-
-Car doesn’t start.
-
-Starter DOES crank. Starter
-
-doesn’t crank.
-
 (Shouldn’t happen if battery is dead.) Cause refuted.
-
-(Expected)
-
-No smell of gasoline. Obvious
-
-smell of gasoline.
-
-(Should happen if engine is really flooded.) Engine is
-
-flooded with gasoline.
 
 1. Observed effect can’t coexist with the proposed effect.
 
 Exports of existing products to other countries remain the same.
 
-Cause refuted.
-
-Exports of new kinds of products remain the same. (Expected)
-
-Import tariffs have not changed.
-
 1. Predicted effect should have a certain magnitude but is actually more or less than expected.
-
-Total sales revenues increase 20 percent. Actual Condition
-
-(Expected)
-
-Car battery is dead.
-
 1. Predicted effect ISN’T there but should be.
 
 Exports of new products actually decrease. (Shouldn’t happen if import tariffs don’t change.) Cause refuted.
-
-Sales units increase 20 percent. (Expected)
 
 We expand into a new geographic market.
 
@@ -899,10 +449,6 @@ Sales units actually double. (Shouldn’t happen, new geographic market doesn’
 
 ![page 54](images/p054.png)
 
-Sales are decreasing. Customers
-
-don’t like our product.
-
 A competitor’s sales of a comparable product increase.
 
 Customers return our product in great numbers.
@@ -910,14 +456,6 @@ Customers return our product in great numbers.
 If customers really don’t like our product, we might expect to see competitors’ sales increase and increasing returns of our products
 
 Figure 2.26 Predicted effect: verifying an intangible cause.
-
-Sales are decreasing.
-
-Quality has deteriorated.
-
-Customer complaints have increased.
-
-Warranty claims have increased.
 
 Figure 2.27 Another predicted effect: verifying a tangible cause.
 
@@ -927,29 +465,9 @@ To avoid confusion, verbalize a predicted effect existence reservation this way:
 
 ![page 55](images/p055.png)
 
-PREDICTED EFFECT EXISTENCE
-
 **TEST:** a. Is the cause INTANGIBLE? If so, do one or more additional expected effects exist to confirm or validate the proposed intangible cause?
 
-EXAMPLE #1 My abdomen hurts.
-
-I have appendicitis.
-
-My boss doesn’t like me. Why?
-
-Yes
-
-a – yes Valid? Why?
-
-No
-
-a – no
-
-I have a fever.
-
 My white blood cell count is high.
-
-EXAMPLE #2 My performance appraisal is poor. Valid?
 
 My boss counsels me on how to improve.
 
@@ -969,37 +487,15 @@ This example, while not presented in “if–then” format, is typical of tauto
 
 **STATEMENT:** “The Dodgers lost the game because they played poorly.”
 
-**CHALLENGE:** What makes you think they played poorly?
-
 **RATIONALE:** “They lost the game, didn’t they?” In this example, the effect is clearly offered as a rationale for the existence of the cause. Since causality was not more intensively investigated, additional predicted effects such as number of errors, bases on balls, extra-base hits, and so forth were not offered to substantiate the intangible cause. And totally ignored is the fact that the Dodger pitcher may have had a no-hitter going into the 10th inning when he gave up a solo home run.
-
-Vampire Example
 
 Figure 2.30 is an example in an “if–then” format.
 
 **PROPOSED CAUSE:** “I wear garlic around my neck and sleep with a cross.”
 
-**PROPOSED EFFECT:** “Vampires stay away.”
-
-**CHALLENGE:** How do you know that the garlic and cross really work?
-
-**RATIONALE:** “You don’t see any vampires, do you?” Test To avoid the tautology trap, ask the following questions:
-
 - Is the cause intangible?
 - Is the effect offered as a rationale for the existence of the cause?
 - Are there any additional predicted effects that could substantiate the intangible cause? Figure 2.31 presents an abbreviated test and example of the tautology reservation.
-
-The effect is offered as the rationale for the existence of the INTANGIBLE . cause The Dodgers
-
-lost the game. The Dodgers
-
-played poorly.
-
-(Tangible)
-
-(Intangible)
-
-Figure 2.29 Tautology (circular logic).
 
 Q: “How do you know the cause was poor play?” A: “Well, they lost the game, didn’t they?”
 
@@ -1007,31 +503,13 @@ Q: “How do you know the cause was poor play?” A: “Well, they lost the game
 
 The effect is offered as the rationale for the causal connection to the TANGIBLE cause. (Actual observation) Q: “How do you know the garlic and cross were the causes?” Vampires a. Is it circular logic? (i.e., is the effect offered as a rationale for the existence of the cause?) E.g., “You don’t see any bite marks on my neck, do you?” b. Is an additional verifiable effect ordered? Valid? Why?
 
-stay away.
-
 A: “Well, you don’t see any vampires, do you?”
 
 I wear garlic around my neck.
 
-I sleep with a cross.
-
-(Tangible)
-
-(Tangible)
-
-Figure 2.30 Circular logic (tangible cause). CIRCULAR LOGIC TEST:
-
 ### Example
 
-No
-
-a – yes b – no Vampires
-
-stay away.
-
 I wear garlic around my neck.
-
-I sleep with a cross.
 
 Figure 2.31 A test and example of the circular logic reservation.
 
@@ -1053,8 +531,6 @@ When the CLR are understood by all participants, logical scrutiny can proceed ve
 #### CLR Known Only by the Tree Builder
 
 More often than not, the availability of scrutinizers knowledgeable in the CLR is limited. In some organizations, perhaps nobody but the tree builder really understands the CLR. This need not be a problem. In fact, it could be a definite advantage. In most cases, the logic trees are being prepared for an audience that is unfamiliar with the CLR anyway. So scrutinizers who aren’t conversant with the CLR can be extremely helpful, for two reasons. First, they’ll be inclined to explain their concerns about the logic in the same terms as the eventual intended audience. Second, they’ll be better focused on the content of the subject matter and their intuition about what causes what. They’ll be less distracted by trying to categorize their concerns according to a preconceived eight-category taxonomy. Gaining effective scrutiny from people who don’t really know much (if anything) about the CLR puts a larger burden on the tree builder. The person who prepares the logic trees must have such a thorough understanding of the CLR that he or she will instantly know what category of reservation applies, even though the scrutinizer is “talking through it”—in other words, explaining the nature of the deficiency instead of naming it directly. For example, a scrutinizer without knowledge of the CLR might say: “John’s absence from work isn’t enough to keep the engineering review from happening. There would have to be nobody else who could do it, too.” What an experienced tree builder, knowledgeable in the CLR, hears in this statement (even though it’s not explicitly stated this way) is: “I have a cause insufficiency reservation. An ellipse with another entity is required. That new entity reads ‘Nobody else can do the engineering review.’ ” Scrutiny of logic trees does not require people knowledgeable in the CLR. You don’t have to teach them the eight categories as long as you yourself know them frontward and backward. It does require people who are highly knowledgeable in the subject matter that is the topic of the tree they’re scrutinizing.
-
-SUFFICIENCY-BASED VS.
 
 ### Necessity-based Logic Trees
 
@@ -1084,8 +560,6 @@ Another problem I’ve observed in the last decade is that many people, especial
 
 ABC Co. pushes its vendors to meet end-of-quarter targets.
 
-Figure 2.32a
-
 ABC Co. experiences shortages of acceptable quality components.
 
 Quality of material produced is not consistent among different factories.
@@ -1102,9 +576,9 @@ Vendors cut corners on quality to meet delivery schedules.
 
 ABC Co. doesn’t react quickly enough to component quality excursions.
 
-Some factories accept material that others do not. Qualifications of
+Some factories accept material that others do not.
 
-incoming material are inconsistent between consuming factories.
+Qualifications of incoming material are inconsistent between consuming factories.
 
 Thinking Process as an engineering flowchart.
 
@@ -1130,15 +604,11 @@ Vendors cut corners on quality to meet delivery schedules.
 
 Vendors are no better at “surge” production than ABC Co. is.
 
-Figure 2.32b
-
 ABC Co. experiences shortages of acceptable quality components.
 
 ABC Co. doesn't react quickly enough to component quality excursions.
 
-Some factories accept material that others do not. Qualifications of
-
-incoming material are inconsistent between consuming factories Component
+Some factories accept material that others do not.
 
 quality differences are hard to track.
 
@@ -1154,16 +624,6 @@ To facilitate common understanding and communication, I submit the symbology in 
 
 ![page 62](images/p062.png)
 
-INJECTION # Injection/Action/Goal
-
-(IO Map, FRT, PRT, TT) Cause or Effect Entity (CRT, EC, FRT, TT) Sufficiency Ellipse (CRT, FRT, TT) Obstacle (PRT)
-
-MAG Magnitudinal “AND” (CRT, FRT, TT)
-
-<OR> Exclusive “OR” (CRT, FRT, TT) Intermediate Objective
-
-(IO Map, PRT) Sufficiency/ Necessity Arrow (ALL)
-
 Figure 2.33 Standard logic tree symbols.
 
 #### A Standard Convention for Logical Connections
@@ -1174,39 +634,11 @@ One of the characteristics that makes flow-chart-format logic trees difficult to
 
 ![page 63](images/p063.png)
 
-(Three causes combining to produce three effects. Imagine trying to depict this with flow chart conventions.)
-
 Figure 2.34 Standard logical connection conventions.
 
 The one liberty that I’ve taken with Goldratt’s original symbol set is a minor change to the prerequisite tree. Goldratt originally used hexagons to depict obstacles. I offer octagons instead. In many parts of the world, “STOP” signs are octagonal, making the octagon a fitting symbol for an obstacle that stops progress. But the more important reason for using octagons is that they consume less space on a page because word-wrapping is rectangular within them. Using the octagon facilitates another minor improvement: elimination of superfluous, confusing arrows. Goldratt originally configured the prerequisite tree to look like the example in the left side of Figure 2.35. Arrows were drawn from the hexagon to the midpoint of the arrow connecting two intermediate objectives. The surfeit of arrows was confusing to those new to the Thinking Process. The important thing is to assure that an obstacle is effectively associated with the intermediate objective that overcomes it. Using an octagon allows the tree builder to conveniently overlay the intermediate objective on a corner of the obstacle, conveying the idea that the obstacle is “overcome” and closely associating the two entities without the need for additional, confusing arrows. The example in the right side of Figure 2.35 shows how this is done.
 
 ![page 64](images/p064.png)
-
-INJ = Injection OBS = Obstacle IO = Intermediate Objective
-
-INJ
-
-INJ OBS OBS OBS OBS
-
-IO
-
-IO
-
-IO
-
-IO OBS OBS OBS OBS
-
-IO IO
-
-(Note the use of curved lines in the example at right)
-
-Original PRT configuration
-
-IO
-
-IO
-
-New PRT configuration Which is easier to follow?
 
 Figure 2.35 Two versions of a prerequisite tree.
 

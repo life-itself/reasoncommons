@@ -2,24 +2,6 @@
 
 ![page 159](images/p159.png)
 
-Intermediate Objectives
-
-Map Current Reality Tree GOAL Undesirable Effects Critical Success Factors Intermediate Effects Necessary Conditions Root Causes
-
-What is the GOAL and what are the steps to reach it?
-
-WHAT to change?
-
-(Conflict Resolution Diagram) Objective Objective Intermediate Effects Requirements Specific Actions Prerequisites What to
-
-change TO? Prerequisite Tree
-
-Objective (Injection) How to CAUSE
-
-the change? Future Reality Tree Desired Effects Intermediate Effects
-
-Obstacles, Intermediate Objectives Injections
-
 ![page 160](images/p160.png)
 
 > Just as most issues are seldom black or white, so are most good solutions neither black nor white. Beware of the solution that requires one side to be totally the loser and the other side to be totally the winner. The reason there are two sides to begin with usually is because neither side has all the facts.
@@ -34,13 +16,7 @@ Goldratt named this tool an Evaporating Cloud (EC) because of its capacity to �
 
 #1 Objective
 
-(Conflict)
-
-INJECTION Requirement
-
 #2
-
-Figure 5.1 Prerequisite
 
 #1 Prerequisite
 
@@ -50,10 +26,6 @@ The Evaporating Cloud (conflict resolution diagram).
 
 ![page 161](images/p161.png)
 
-PURPOSE
-
-The Evaporating Cloud is intended to achieve the following purposes:
-
 - Confirm that conflict actually exists
 - Identify and articulate the conflict perpetuating a major problem
 - Identify all assumptions underlying problems and conflicting relationships
@@ -62,11 +34,6 @@ The Evaporating Cloud is intended to achieve the following purposes:
 - Create solutions in which both sides win
 - Create new, “breakthrough” solutions to problems
 - Explain in depth why a problem exists
-
-ASSUMPTIONS
-
-The effectiveness of the Evaporating Cloud is based on the following assumptions:
-
 - Problems exist because influential, competing forces perpetuate them.
 - Competition at some point becomes conflict.
 - Conflict within a system is an indication of suboptimization.
@@ -148,29 +115,12 @@ If the conflict isn’t obvious, how do we know we really have one? A principal 
 
 When the problem has you at a standstill, “the way we’ve always done it” probably won’t be good enough anymore. Or, as Goldratt once said, “yesterday’s solution is tomorrow’s historical curiosity.” (“Isn’t that the funniest thing you ever saw? Why on earth do you suppose they did it that way?”) Elements of the Evaporating Cloud
 
-The typical Evaporating Cloud has seven elements, six of them connected by arrows:
-
 - One objective
 - Two necessary, but not sufficient, requirements
 - Two conflicting prerequisites
 - Underlying assumptions
 - One or more injections
-
-Symbology
-
-The symbols used to depict an Evaporating Cloud are relatively straightforward (see Figure 5.2):
-
 - Since objectives, requirements, and prerequisites are essentially conditions of existing or desired reality, a round-cornered rectangle encloses their respective statements. These entities are arranged in a five-sided figure that resembles baseball’s “home plate” lying on its side (refer back to Figure 5.1 on page 160).
-
-Objective, Requirements, Prerequisites Necessary Condition Arrow
-
-(Conflict) Conflict Arrow
-
-Injection
-
-Figure 5.2
-
-Evaporating Cloud symbology.
 
 ![page 166](images/p166.png)
 
@@ -186,53 +136,7 @@ The objective of an Evaporating Cloud is essentially a common purpose. In a nego
 
 A requirement is a necessary condition—something that must be satisfied in order to achieve the objective. Each requirement is necessary but not sufficient alone to achieve the objective. There may be many of these requirements, like spokes in a wheel, and in most cases these requirements don’t conflict with each other. They may even seem so benign that they’re often not noticed (see Figure 5.4). For example, in order to have a profitable company, we might need to maximize sales revenue, control costs, or minimize inventory. We might have to create a popular product or service, lower operating costs, stabilize production, effectively market and sell, or establish other conditions important to profitability. There is no direct conflict here, and each of these requirements can be considered necessary, though not sufficient alone. In the accompanying example, the objective “A profitable company” depends on several requirements, two of which are “increase sales revenue” and “control costs” (see Figure 5.5). Requirements are often the critical success factors from an IO Map.
 
-A profitable company
-
-A desired terminal outcome (usually the GOAL from a system IO Map)
-
-Figure 5.3
-
-An example of an objective.
-
 ![page 167](images/p167.png)
-
-REQUIREMENTS
-
-R5
-
-R1 OBJECTIVE
-
-R4
-
-R2
-
-R3 Conditions Necessary
-
-for Achieving Objectives
-
-Figure 5.4
-
-Requirements.
-
-R1 Increase
-
-sales revenue
-
-R5
-
-A profitable company Control
-
-costs
-
-R4
-
-R3
-
-Figure 5.5
-
-Objectives depend on requirements.
-
-R2
 
 ![page 168](images/p168.png)
 
@@ -240,111 +144,17 @@ R2
 
 Satisfying the necessary conditions, or requirements, usually demands some actions on our part—things that we must do—that are better defined and more specific. The action is prerequisite to satisfying the requirement, so that’s what we call it—a prerequisite. (See Figure 5.6.) In the preceding example, the requirement “increase sales revenue” might require the specific action “spend more money on advertising.” This specific action seems to be a prerequisite for satisfying the requirement “increase sales revenue.” But another requirement, controlling costs, would seem to demand a different prerequisite—not spending more money (see Figure 5.7). Immediately the conflict becomes apparent. On the one hand, we have to spend more money to satisfy one necessary condition. But on the other hand, we have to not spend more money to satisfy another equally necessary condition. Both requirements are necessary conditions—by definition they can’t be in conflict with one another—however, the prerequisites we generate to satisfy them are. So it’s at the prerequisite level that conflict usually occurs, where forces compete. Remember, not all prerequisites conflict; perhaps only two or three do. But these are usually enough to stall progress toward satisfying the requirements—the necessary conditions—that they support. And since all the requirements are necessary to achieve the objective, failure to satisfy any one can prevent achievement of the objective. As few as two prerequisites in conflict with one another can “shortstop” the objective. Even though there may be many requirements and an equal number of prerequisites, it’s the ones in conflict that we’re most interested in. That’s why the “pie” configuration pictured in Figure 5.8, though it effectively illustrates the whole objective/requirement/ prerequisite situation, is not as useful to us in resolving the conflict as is the “slice,” which PREREQUISITES we configure to resemble “home plate” lying on its side (see Figure 5.8). So when you see the Evaporating Cloud, keep in mind that it’s really a piece of a larger structure, most of which we’re not immediately concerned about because it doesn’t pose a problem. We should note at this point that conflict is not always bipolar. There may be three or more prerequisites in conflict with one another (a complicated, vexing situation in the rare instances when it occurs). It may also be that a solution—an injection—to one conflict creates a new conflict that didn’t previously exist with some other prerequisite.* When this happens, the preferred strategy is to deal with one conflict at a time, using the EC. Figure 5.9 shows an example of a particularly difficult tripartite conflict.4
 
-P1
-
-P5 REQUIREMENTS
-
-R1
-
-R5 OBJECTIVE
-
-R4
-
-R2 R3
-
-P4
-
-P2
-
-P3
-
-Prerequisites satisfy Requirements Requirements are Necessary to Achieve Objectives
-
-Figure 5.6
-
-Prerequisites satisfy requirements.
-
 ![page 169](images/p169.png)
 
 How the Evaporating Cloud Relates to the Current Reality Tree We began our examination of the Thinking Process with the Intermediate Objectives Map, which defined the destination we’re trying to reach and the major milestones we must meet to get there. Then we discussed the Current Reality Tree and saw that it defines the magnitude and direction of the gap, or mismatch, between where we currently are and where we’re striving to be. A little earlier in this chapter we learned that the critical root causes in a CRT might result from conflict, and we’re about to delve into the EC in detail to try to resolve the conflicts surrounding those root causes. But before we do that, it’s important to visualize the relationship between the EC and the CRT. In my experience with the Thinking Process over the past decade, I’ve seen a lot of really bad Evaporating Clouds (by bad I mean poorly constructed—the conflicts themselves are usually always inherently bad expressions of the situation). In this edition, I hope to help Thinking Process practitioners eliminate poorly-constructed ECs by offering a more detailed examination of the relationship between the EC and the CRT. P1
-
-Spend more money (on advertising)
-
-R1 Increase
-
-sales revenue
-
-R5
-
-A profitable company Control
-
-costs
-
-R4
-
-R3
-
-R2
-
-P2
-
-Figure 5.7
-
-DON’T spend more money
-
-An example of conflicting prerequisites.
 
 * As Eric Sevareid once observed, “The chief cause of problems is solutions.”
 
 ![page 170](images/p170.png)
 
-R1 Increase
-
-sales revenue
-
-A profitable company
-
-Figure 5.8
-
-P1 Spend more money (on advertising)
-
-(Conflict) Control
-
-costs
-
-DON’T spend more money
-
-R2
-
-P2
-
 The EC: a “slice of the whole pie.”
 
-Requirement #1
-
-Prerequisite #1 Appropriate
-
-treatment is provided
-
-Doctors make the final decisions on patient treatment Objective
-
-Effective health care
-
-Patients are satisfied
-
-Patients make the final decisions on patient treatment
-
-Requirement #2
-
-Prerequisite #2
-
-Health care costs are controlled Requirement #3
-
 Insurance companies make the final decisions on patient treatment Prerequisite #3 Adapted from Roadman, et. al., 1995.
-
-Figure 5.9
-
-Tripartite conflict: who has final authority for medical treatment?
 
 #### Why Do Root Causes of Undesirable Effects Exist?
 
@@ -382,30 +192,10 @@ assumptions we possibly can about the entire prerequisite-requirement-objective 
 
 In some situations it may seem to you that all the assumptions you identify are valid. If you haven’t been able to come up with any invalid assumptions, try evaluating the valid ones you already have. Maybe you can think of a way to make one invalid. Doing so will usually involve finding a substitute for the entity at the tail of the connecting arrow. We SYSTEM GOAL refer to this substitute as an “injection.” More on injections a little later in this chapter. For the moment, let’s return to the intriguing idea of rendering moot an apparently valid assumption. Take a look at the accompanying sidebar. Objective SYSTEM GOAL Requirement
 
-(“Doing just fine, thank you!”) (Failure to
-
-achieve a Critical Success Factor )
-
-(“Doing just fine, thank you!”) (Critical
-
-Success Factor ) (Critical
-
-Success Factor ) [DESIRED EFFECT]
-
-[UNDESIRABLE EFFECT] (“Do something to get rid of this!”)
-
-[DESIRED EFFECT] CURRENT REALITY TREE
-
-( “negative branch” of existing reality) (Critical Root
-
-Cause)
-
 - The CRT is NOT a complete picture of reality
 - It only depicts the causality that produces Undesirable Effects
 - Yet some of that causality may also cause Desired Effects
 - Those Desired Effects are critical in achieving the system’s goal
-
-Figure 5.10
 
 The CRT: a “negative branch” of reality.
 
@@ -413,35 +203,13 @@ The CRT: a “negative branch” of reality.
 
 #1 (Critical Success
 
-Factor) Requirement
-
-#2 (Failure to
-
-achieve a Critical Success Factor) (Critical
-
-Success Factor)
-
-X
-
-[DESIRED EFFECT] [UNDESIRABLE
-
-[DESIRED EFFECT]
-
-EFFECT] (Critical
-
-Success Factor) [DESIRED EFFECT] CURRENT REALITY TREE Prerequisite
+#2
 
 #1 (Change Needed
 
-to Eliminate UDE) Prerequisite
-
 #2 (Critical Root
 
-Cause)
-
 The change needed to convert the UDE to a Desired Effect is in conflict with the original root cause of the UDE, which is needed to satisfy some other Critical Success Factor not depicted in the CRT
-
-Figure 5.11
 
 The EC is partially embedded in the CRT.
 
@@ -465,30 +233,6 @@ Assumptions provide the hidden rationale for why the relationship between the en
 
 ![page 176](images/p176.png)
 
-Potential “break points”
-
-Requirement #1
-
-Prerequisite #1
-
-R1 (CSF-1)
-
-P1 Objective
-
-O (Goal)
-
-R2 (CSF-2)
-
-P2
-
-Requirement #2
-
-Prerequisite #2
-
-Potential “break points”
-
-Figure 5.12
-
 “Break points:” arrows indicate hidden underlying assumptions.
 
 If you’ve properly determined the requirements in the first place, it’s likely that they really are truly necessary for the attainment of the objective. Take another look at Figure 5.11. Notice that it indicates the Desired Effects are really the satisfaction of critical success factors from the IO Map. And the objective of the EC is really a statement of the goal from that same IO Map. If you’ve identified real, verifiable critical success factors in your IO Map, then by definition they are valid requirements (that is, no invalid underlying assumptions). This means that for you to break the conflict at one of those two arrows, you would have to initiate some major change to reality that would render one requirement or the other no longer relevant to achieving the system goal. This is not likely to happen. In the case of the conflict arrow connecting P1 and P2, there’s a slightly greater likelihood of being able to find an invalid assumption there. But the assumptions underlying this arrow have little to do with the content of P1 and P2. Rather, they’re more related to the conflict itself. In other words, the assumptions under this arrow relate to why you can’t have both prerequisites. In almost all ECs, however, the two places where the majority of invalid assumptions lie are between the prerequisites (P1 and P2) and their paired requirements (R1 and R2). This is why it’s usually easiest to begin with the presumption that the conflict will more likely be broken at these two arrows than at any of the others. Only if breaking the conflict between prerequisites and requirements proves difficult or impossible will we contemplate breaking it between the requirements (R) and the objective (O), or between the conflicting prerequisites.
@@ -499,45 +243,16 @@ Let’s look at our continuing example from earlier in this chapter (Figure 5.13
 
 ![page 177](images/p177.png)
 
-**ASSUMPTIONS:**
-
 1. Our markets traditionally respond well to advertising campaigns
 2. Our superior value proposition allows us to avoid competing via price reductions
 3. Spending more money on advertising is the ONLY way to increase sales revenue
 4. Bigger advertising expenditures ALWAYS produce more sales
 5. Bigger advertising expenditures are ALWAYS cost-effective
-
-R1
-
-P1 Increase
-
-sales revenue
-
-Spend more money (on advertising)
-
-O (Conflict)
-
-A profitable company Control
-
-costs
-
-R2 DON’T
-
-spend more money
-
-P2
-
-**ASSUMPTIONS:**
-
 1. Limiting spending is the ONLY way to control costs
 2. Not spending more money ALWAYS provides cost control
 3. Not spending more money NEVER has a negative effect on revenue generation
 4. No other part of the operation is EVER adversely impacted by holding the line on spending
 5. Bigger advertising expenditures are NEVER cost-effective
-
-Figure 5.13
-
-Invalid assumptions: an example.
 
 Five assumptions have been articulated for each side of the conflict. It won’t always be this nicely balanced. Of the five underlying the P1-to-R1 arrow, assumptions 1 and 2 are likely to be valid. But 3, 4 and 5 are questionable. Moving to the other side of the conflict, assumptions 6 and 7 are likely to be valid as well, while numbers 8, 9, and 10 virtually invite challenge to their validity.
 
@@ -551,85 +266,30 @@ In deciding what to do about this conflict, we see that because the argument on 
 
 #### How Are Injections Related to Assumptions?
 
-Remember that the conflict exists because of the assumptions each side makes about reality. The odds are high that some of these assumptions are erroneous—or invalid—in the first place. Yet one or both sides operate as if they were valid. The conflict is rooted in the idea that each side is convinced that “our assumptions are valid and theirs are not.” In reality, there may be invalid assumptions on both sides. To resolve a conflict using the
-
-**ASSUMPTIONS:**
+Remember that the conflict exists because of the assumptions each side makes about reality. The odds are high that some of these assumptions are erroneous—or invalid—in the first place. Yet one or both sides operate as if they were valid. The conflict is rooted in the idea that each side is convinced that “our assumptions are valid and theirs are not.” In reality, there may be invalid assumptions on both sides. To resolve a conflict using the INJECTION #1 Evaluate and rank-order expenditure alternatives for maximum benefit- cost ratio.
 
 1. Our markets traditionally respond well to advertising campaigns
 2. Our superior value proposition allows us to avoid competing via price reductions
 3. Spending more money on advertising is the ONLY way to increase sales revenue
 4. Bigger advertising expenditures ALWAYS produce more sales
 5. Bigger advertising expenditures are ALWAYS cost-effective
-
-R1
-
-P1 Increase
-
-sales revenue
-
-Spend more money (on advertising)
-
-INJECTION #1 Evaluate and rank-order expenditure alternatives for maximum benefit- cost ratio.
-
-O A profitable company
-
-(Conflict)
-
-INJECTION #2 Allocate expenditures against the safest . benefit-cost options Control
-
-costs
-
-= Invalid assumptions
-
-R2 DON’T
-
-spend more money
-
-P2
-
-**ASSUMPTIONS:**
-
 1. Limiting spending is the ONLY way to control costs
 2. Not spending more money ALWAYS provides cost control
 3. Not spending more money NEVER has a negative effect on revenue generation
 4. No other part of the operation is EVER adversely impacted by holding the line on spending
 5. Bigger advertising expenditures are NEVER cost-effective
 
-Figure 5.14
-
-Conflict resolved: an example.
-
 ![page 179](images/p179.png)
 
 Evaporating Cloud, injections—“breakthrough” ideas—must be created that play specifically to the invalid assumptions. An injection is an alternative way—an action or a condition—to achieve the entity at the head of an EC arrow without needing to have, or perform, the entity at the tail. The injection basically bypasses the invalid assumption—that is, makes it not even necessary to consider. For example, take the relationship in the top half of Figure 5.15. When invalid assumptions are clearly identifiable, they virtually point to ways to satisfy the requirement without needing the prerequisite. But when all the assumptions on both sides seem valid, we must find a way to replace a prerequisite in spite of the valid assumptions. Both approaches preserve the requirement while still allowing the replacement of one Using INVALID assumptions to find an injection...
-
-**ASSUMPTIONS:**
 
 1. Spending more money on advertising is the ONLY way to increase sales revenue
 2. Bigger advertising expenditures ALWAYS produce more sales
 3. Bigger advertising expenditures are ALWAYS cost-effective
 
-Invalid
-
-assumptions
-
-Requirement #1
-
-Prerequisite #1 Spend more
-
-Increase sales
-
-money (on
-
-revenue
-
 #### Reading INVALID
 
 assumptions 3, 4, and 5 virtually compels us to ask the question….
-
-advertising )
-
-INJECTION (What OTHER ways can we increase sales revenue besides advertising?)
 
 Finding an injection to make the prerequisite not relevant in spite of VALID assumptions...
 
@@ -637,26 +297,8 @@ Finding an injection to make the prerequisite not relevant in spite of VALID ass
 
 assumptions 6 and 7 irrelevant forces us to answer the question ....
 
-INJECTION (What ways are there to spend more money without sacrificing cost control?)
-
-Control costs
-
-Requirement #2 Valid
-
-assumptions
-
-Figure 5.15
-
-DON’T spend more money
-
-Prerequisite #2
-
-**ASSUMPTIONS:**
-
 1. Limiting spending is the ONLY way to control costs
 2. Not spending more money ALWAYS provides cost control
-
-Injections and invalid assumptions.
 
 assumption or both. Coming up with a way to replace a prerequisite in spite of valid assumptions is a highly creative challenge—but one that must be addressed in some of the most intractable conflicts.
 
@@ -676,54 +318,6 @@ The most challenging, intractable problems usually require some kind of breakthr
 
 In the federal construction example earlier in this chapter, we examined the assumptions underlying just one arrow in the Evaporating Cloud: the one between a prerequisite and a requirement. But remember, there are five arrows in each EC and assumptions underlie them all. You need not confine yourself to trying to break the assumptions between only prerequisites and requirements. The world is constantly changing. It’s possible that an assumed requirement is no longer a valid necessary condition to attaining the objective, but if you never examine the assumptions underlying that arrow, you’ll never know. If the relationship between requirements and the objective turns out to be easier to eliminate than any other, failing to examine it may cost you unnecessary aggravation as you work on a more difficult assumption perpetuating the conflict. And who needs that?
 
-Requirement #1
-
-Prerequisite #1
-
-High return on investment
-
-Buy speculative stocks Objective
-
-INJECTION Invest in balanced mutual funds with a reliable management record Maximize
-
-retirement income
-
-(Action) Maximize
-
-financial security
-
-Buy municipal bonds
-
-Requirement #2
-
-Prerequisite #2
-
-This conflict is resolvable by discrete action , because the prerequisites are specific actions
-
-Requirement #1
-
-Prerequisite #1
-
-Increase longterm throughput
-
-Develop new business lines Objective
-
-Make more money, now and in the future
-
-INJECTION Develop long-term strategy and short-term tactical plans (Condition) Increase shortterm throughput
-
-Expand existing business
-
-Requirement #2
-
-Prerequisite #2
-
-This conflict requires a condition or outcome as an injection, because the prerequisites are themselves complex conditions
-
-Figure 5.16
-
-Injections: actions or conditions?
-
 ![page 182](images/p182.png)
 
 #### Is the Idea Feasible?
@@ -734,31 +328,15 @@ Notice that nowhere in this chapter have we considered the feasibility of our id
 
 At some point, it’s inevitable that we’ll have to verbalize the conflict we’ve depicted in an Evaporating Cloud. Even if it’s your own “Hamlet”-style conflict, eventually you’ll find that you’re talking to yourself.* If you’re working on a conflict between different people, groups, or systems, it’s even more important to be able to verbalize the conflict. At some stage of the game you’ll have to negotiate a resolution among parties, and that means being able to state the conflicting issue succinctly enough that the other side will say, “Yes, that accurately describes the problem.” With this in mind, Goldratt conceived a way to verbalize the EC that remains effective today. We read the EC from left to right, starting with the objective and working toward the conflicting prerequisites. Because the EC uses necessity-type logic rather than sufficiency, we don’t use the “if–then” format of the Current Reality Tree. Necessary
 
-“...we must satisfy…” Requirement
-
 #1 “In order to achieve…”
 
-“...we must DO…” “On the one hand, Prerequisite we must DO…” #1
-
-“In order to satisfy…”
-
 #### Objective
-
-“...we must satisfy…” “On the other hand, we must DO…” Requirement
 
 #2 Prerequisite
 
 #2
 
-“In order to satisfy…”
-
-“...we must DO…”
-
-“We can’t do both.”
-
 “In order to achieve [the Objective], we must satisfy [Requirement #1]. In order to satisfy [Requirement #1], we must do [Prerequisite #1].” “In order to achieve [the Objective], we must satisfy [Requirement #2]. In order to satisfy [Requirement #2], we must do [Prerequisite #2].” “On one hand, we must do [Prerequisite #1]. On the other hand, we must do [Prerequisite #2]. We can’t do both.”
-
-Figure 5.17
 
 How to read an Evaporating Cloud.
 
@@ -774,50 +352,25 @@ conditions are expressed as “In order to…we must…” And instead of readin
 >
 > —Burns’s Balance
 
-**ASSUMPTIONS:**
-
 1. Our markets traditionally respond well to advertising campaigns
 2. Our superior value proposition allows us to avoid competing via price reductions
 3. Spending more money on advertising is the ONLY way to increase sales revenue
 4. Bigger advertising expenditures ALWAYS produce more sales
 5. Bigger advertising expenditures are ALWAYS cost-effective
 
-R1
-
-P1 Increase
-
-sales revenue
-
-Spend more money (on advertising)
-
 “In order to increase sales revenue, we must spend more money (on advertising), BECAUSE…”
-
-...our markets traditionally respond well to advertising campaigns, and BECAUSE…
-
-...our superior value proposition allows us to avoid competing via price reductions, and
 
 ### Because…
 
-...spending money is the only way to increase sales revenue, and...
-
-Figure 5.18
-
-How to verbalize assumptions.
+...our superior value proposition allows us to avoid competing via price reductions, and ...spending money is the only way to increase sales revenue, and... BECAUSE…
 
 ![page 184](images/p184.png)
-
-WHAT TO REMEMBER ABOUT EVAPORATING CLOUDS
-
-Here are the key points to remember about Evaporating Clouds:
 
 - In any conflict situation, there are usually five arrows indicating underlying assumptions.
 - Each arrow implies the existence of at least one, but probably more, assumptions.
 - Expose as many assumptions underlying each arrow as you can to:
-
-> – Improve your chances of finding an easy one to invalidate, and
-
-> – Open the range of potential solutions as wide as possible.
-
+- Improve your chances of finding an easy one to invalidate, and
+- Open the range of potential solutions as wide as possible.
 - The injections you develop to invalidate assumptions are ideas, not solutions. They should not be constrained by premature considerations of feasibility.
 - In complex conflict situations, injections are likely to be conditions you want to create, rather than actions you expect to perform. Many separate actions may be necessary to achieve these conditions. Changing things is central to leadership. Changing them before anyone else does is creativeness.
 
@@ -826,8 +379,6 @@ Here are the key points to remember about Evaporating Clouds:
 ### How to Construct an Evaporating Cloud
 
 Now that we’ve examined the Evaporating Cloud in detail, it’s time to start learning how to build one of your own. A Nine-Step Path to Conflict Resolution
-
-There are three stages in resolving a conflict using an Evaporating Cloud:
 
 - Construct the cloud
 - Expose the underlying assumptions
@@ -840,14 +391,6 @@ There are three stages in resolving a conflict using an Evaporating Cloud:
 1. Construct a Blank Evaporating Cloud This is probably the easiest step in constructing any of the trees in the Logical Thinking Process. It’s as easy as drawing and connecting five empty round-cornered boxes, as shown in Figure 5.19. Label the five boxes Objective, Requirement #1, Requirement #2, Prerequisite #1, and Prerequisite #2.*
 2. Articulate the Conflicting “Wants” of Each Side In most situations, the conflict is relatively easy to state. It’s the issue that you’re contesting with someone else, or, if it’s internal to you alone, the dilemma—the choice—you’re faced with. The two positions in the conflict are recorded in the blanks labeled prerequisites 1 and 2. Sometimes the conflict is between individuals. Other times it’s between courses of action, or between what needs to be done and what a rule, policy, or law mandates. Sometimes it’s a confrontation between what the organization requires and a personal agenda. Whatever the conflicting positions may be, in five words or fewer write each one in a prerequisite box (Figure 5.20). The conflicting prerequisites can be either opposite conditions or different alternatives (see “Two Types of Conflict”). To help articulate the prerequisites, verbalize them using “On one hand… on the other hand… .” Adjust the wording of the prerequisites until they make sense when read this way. Use action verbs (do), not conditions (be or have). Remember from our earlier discussion that conflict normally resides at the level of action perceived necessary to satisfy a higher-level condition (the requirements). If you find that you can define one side of the conflict but have trouble articulating the other, you may need to “come in through a back door.” Starting with the side of the conflict you prefer, ask yourself the question, “What stops me from doing my side?” The answer to this question can form the basis of the other side of the conflict. Requirement #1
 
-Prerequisite #1
-
-Requirement #2
-
-Prerequisite #2 Objective
-
-Figure 5.19
-
 Step 1: Construct a blank Evaporating Cloud.
 
 * The original nomenclature for labeling the five components of the Evaporating Cloud is A, B, C, D, and D’. You are, of course, at liberty to use any labeling convention you like. However, when using the EC with people who are not conversant with the Logical Thinking Process, labels that convey the nature of the contents often enhance communication.
@@ -856,41 +399,7 @@ Step 1: Construct a blank Evaporating Cloud.
 
 #### 3. Determine the “Needs” of Each Side
 
-The needs of each side are non-negotiable necessary conditions, outcomes that must be satisfied to achieve the common objective. What are the necessary conditions that each prerequisite is trying to satisfy? Why does each side think the prerequisites are required? One way to come up with effective wording of the needs is to read the “in-order-to-wemust” statement backwards, and try to fill in the blank (see Figure 5.21). For example: We must do [PREREQUISITE] in order to have/satisfy [REQUIREMENT]. State both requirements succinctly—again, five words or fewer. Assess the validity of each requirement statement: Is this really the reason each side is demanding the prerequisite? Adjust the wording of the requirements until they make sense when read left-to-right in the normal “In order to have…” form. For example: In order to have/satisfy [REQUIREMENT], we must do [PREREQUISITE]. What is the
-
-conflict about? Requirement #1
-
-Prerequisite #1 Buy speculative stocks Objective
-
-(Conflict)
-
-Buy municipal bonds Requirement #2
-
-Figure 5.20
-
-Prerequisite #2
-
-Step 2: Articulate the conflicting “wants” of each side. What is each Prerequisite
-
-intended to achieve? Requirement #1
-
-Prerequisite #1
-
-High return on investment
-
-Buy speculative stocks Objective
-
-(Conflict)
-
-Figure 5.21 Maximum
-
-financial security
-
-Buy municipal bonds
-
-Requirement #2
-
-Prerequisite #2
+The needs of each side are non-negotiable necessary conditions, outcomes that must be satisfied to achieve the common objective. What are the necessary conditions that each prerequisite is trying to satisfy? Why does each side think the prerequisites are required? One way to come up with effective wording of the needs is to read the “in-order-to-wemust” statement backwards, and try to fill in the blank (see Figure 5.21). For example: We must do [PREREQUISITE] in order to have/satisfy [REQUIREMENT]. State both requirements succinctly—again, five words or fewer. Assess the validity of each requirement statement: Is this really the reason each side is demanding the prerequisite? Adjust the wording of the requirements until they make sense when read left-to-right in the normal “In order to have…” form. For example: In order to have/satisfy [REQUIREMENT], we must do [PREREQUISITE]. What is the conflict about? Requirement #1
 
 Step 3: Determine the “needs” of each side.
 
@@ -902,33 +411,7 @@ Write the final requirement statements in the appropriate box (R1 or R2), proper
 
 Personally, I don’t like to work harder than I have to. And from my experience with the Thinking Process (and teaching it), I’ve discovered that zeroing in on the right requirement is often difficult. Strange as it may seem, people usually know what they’re trying to do, but they frequently find it challenging to explain precisely why their actions are necessary—in other words, what they hope to achieve with them. So here’s a kind of short-cut to the requirements. You’ll recall that in our discussion of the Current Reality Tree, we saw that undesirable effects were much easier to articulate when we had a frame of reference with which to compare our situation. And that frame of reference was the Intermediate Objectives (IO) Map, which contains the system goal, critical success factors, and necessary conditions. The IO Map holds the clues to the requirements of the EC (and, eventually, in Step 4, the objective as well). Go back and look at Figure 5.11 on page 174. We’re trying to change undesirable effects that constitute violations of critical success factors or high-level systemic necessary conditions. These CSF and NC are usually found in the IO Map. So it’s reasonable to conclude that one of our prerequisites is a change we’re trying to make to eliminate the undesirable effect—to satisfy that CSF or NC. Thus, a CSF or NC from the IO Map is a natural candidate for a requirement paired with one of the Prerequisites. The same is true of the other requirement and prerequisite. For example, let’s consider an organizational conflict (Figure 5.22). The conflicting prerequisites are intended to satisfy two requirements that would most likely be critical success factors—or at least high-level necessary conditions—taken from the organization’s IO Map. In Chapter 3 we discussed the usefulness of having an IO Map to establish standards, or benchmarks, of system performance. It doesn’t matter whether the system is an organization, a social group, or an individual; the utility of articulated standards is the same. Having these standards pre-determined in an IO Map
 
-R1
-
-P1 Increase
-
-sales revenue
-
-Spend more money (on advertising )
-
-O (Conflict)
-
-A profitable company
-
 R1 and R2 are likely to be Critical Success Factors makes construction of a robust EC on the first attempt much easier and more reliable. If you’re having difficulty coming up with the Requirements for your EC, go back to your IO Map and see which CSF or NC jumps out at you as the ultimate reason the Prerequisite seems to be required. (If you haven’t already prepared an IO Map, it might be a good time to go back to construct one.) It’s worth noting at this point that the requirements are never in conflict with one another. By definition, necessary conditions can’t be in conflict, or one of them isn’t really necessary. If you think that your requirements are in conflict with each other, then you’ve probably misidentified as requirements statements that should really be prerequisites.
-
-from a system -level Intermediate Objectives Map Control
-
-costs
-
-R2
-
-Figure 5.22
-
-Where do requirements come from?
-
-DON’T spend more money
-
-P2
 
 ![page 188](images/p188.png)
 
@@ -940,115 +423,15 @@ Construction of the Evaporating Cloud is complete when a common objective of bot
 
 There are two compelling reasons to use a previously constructed system IO Map to help you determine the objective and requirements of an Evaporating Cloud: speed and quality. In the past 14 years of using the Thinking Process, I’ve seen innumerable “lousy” Evaporating Clouds. Almost all of them had well-thought-out conflict statements (prerequisites) but
 
-What is the common objective each Requirement is
-
-intended to realize?
-
-Requirement #1
-
-Prerequisite #1
-
-High return on investment
-
-Buy speculative stocks Objective Maximize
-
-retirement income
-
-Figure 5.23
-
-(Conflict) Maximum
-
-financial security
-
-Buy municipal bonds
-
-Requirement #2
-
-Prerequisite #2
-
-Step 4: Formulate the objective.
-
 * Frequently, people would insert some meaningless, fluffy statement (for example, “Manage well”) just to come up with something that could be remotely related to each Requirement.
 
 ![page 189](images/p189.png)
 
 poorly formulated objectives and requirements. The most common failing is that the logical connection between at least one requirement and the common objective is weak or non-existent—in other words, one or both of the requirements aren’t really necessary for achieving the objective. I’ve concluded that the reason for this is that without some prior considerations for the goal and critical success factors of the system in question, determining the elements of the left side of the EC becomes a hit-or-miss proposition. Remember that there may be multiple layers of cause and effect implied by the connections between Ps, Rs, and O (see Figure 5.25); in other words, R1 or R2 may not be the next level of outcome. A robust IO Map can make it infinitely easier to identify an objective that aligns with the system goal and requirements that are truly necessary to reaching that goal. The lesson here is worth emphasizing one last time: Use your Intermediate Objectives Map to point you toward the right requirements and common objective. If you haven’t constructed an IO Map, it’s worth taking a few minutes to do so. GOAL IO Map
 
-CSF #1
-
-NC-1-01
-
-CSF #2
-
-NC-1-03
-
-NC-1-02
-
-NC-3-01
-
-NC-2-02
-
-NC-3-03
-
-NC-3-02
-
-NC-2-01
-
-EC #1
-
-EC #2
-
-O
-
-O
-
-R2
-
-R1
-
-R2
-
-R1
-
-P2
-
-P1
-
-P2
-
-P1 Objective and
-
-Requirements come from the system Goal and Critical Success Factors
-
-Figure 5.24
-
-CSF #3
-
-...OR... Objective and
-
-Requirements come from a Critical Success Factor and its supporting Necessary Conditions
-
 Objective and requirements come from the IO Map.
 
 ![page 190](images/p190.png)
-
-O
-
-(System Goal)
-
-R2 (System Critical
-
-Success Factor)
-
-R1
-
-P1
-
-Figure 5.25 (System Critical
-
-Success Factor)
-
-P2
 
 Evaporating Clouds often overlay multiple cause-effect levels.
 
@@ -1064,50 +447,6 @@ No Evaporating Cloud is more than a first draft when you reach the point of havi
 
 The easiest way to validate the whole relationship is to read it from left to right, using the “in-order-to-we-must” form. And read it out loud, not just silently. (You’ll be amazed at how quickly a weak or invalid statement pops out at you.) As a whole, does your construction accurately reflect your intuition on the issue? If not, go back to the parts that seem weak and refine them. Enlist help from others knowledgeable in the issue, if necessary. When you’re satisfied that the EC represents an accurate statement of the situation, move on to the next step.
 
-R1
-
-P1
-
-R2
-
-P2
-
-O
-
-R1
-
-O:
-
-In order to_________________________________________ (O), we must _________________________________ (R1), because:
-
-R2
-
-O:
-
-In order to_________________________________________ (O), we must _________________________________ (R2), because:
-
-P1
-
-R1:
-
-In order to_________________________________________ (R1), we must _________________________________ (P1), because:
-
-P2
-
-R2:
-
-In order to_________________________________________ (R2), we must _________________________________ (P2), because:
-
-P1
-
-P2:
-
-On one hand we must ________________________________ (P1), On the other hand, we must __________________________ (P2). We can’t do both, because:
-
-Figure 5.26
-
-Developing underlying assumptions.
-
 #### 6. Develop Underlying Assumptions
 
 Conflict is inherent in the assumptions that underlie it, and conflict resolution hides in the invalid assumptions of each side. In the 15th century, Michelangelo started with a whole block of marble and progressively chipped away everything that didn’t seem to be part of David. Getting at the invalid assumptions is a little like that. You start with all the assumptions you can muster for each side of the conflict. Eventually, you’ll cull out the valid assumptions and be left with only the invalid ones. But first you have to have a complete list. There’s no hard-and-fast rule about how many assumptions there might be underlying each arrow in an EC. Generally, the arrows between the requirements and the objective have the fewest, and those between the prerequisites and the requirements have the most. All arrows rest on at least one assumption. The most assumptions I’ve ever seen in a single EC is 37, with 16 under one arrow alone. But that’s the exception, rather than the rule. Use your best judgment about when to stop looking, but keep pressing until you run out of ideas. Try using the format in Figure 5.26 to array your assumptions for effective review. Beneath each statement, list all the “becauses” you can think of for each statement. These are the assumptions. When your creative well is dry on one statement, go on to the next.
@@ -1117,8 +456,6 @@ Conflict is inherent in the assumptions that underlie it, and conflict resolutio
 There’s a technique in writing assumption statements that will later help you zero in on the invalid ones—the ones you’ll want to challenge. Instead of writing a fairly bland statement, word the assumption in the most extreme, outrageous way you can think of. For example: Instead of:
 
 “We can’t eat without having money.”
-
-Try:
 
 “Of course, there’s absolutely no way we can eat without having money.”
 
@@ -1141,19 +478,9 @@ Do the same with the drawbacks for each side. The PROs might become assumptions 
 - “They are always mutually exclusive.”
 - “There are never enough resources to do both.” Remember that in organizational settings the most common conflicts are resource shortages (for example, time, material, money, people, and so on), which manifest themselves as different alternatives. After your first pass through all the assumptions, go back through each one again, looking for any you might have missed and possible duplicate entries (that is, the same assumption that might apply to more than one statement). After you think you’ve accounted for all the assumptions, ask another knowledgeable person to review your work and suggest assumptions you might have missed.
 
-O
-
 #### PROs
 
 1 . …. 2 . …. 3 . …. 4 . …. 5 . ….
-
-R2
-
-R1
-
-P2
-
-P1
 
 #### CONs
 
@@ -1163,15 +490,9 @@ P1
 
 1 . …. 2 . …. 3 . …. 4 . …. 5 . ….
 
-(The CONs for doing P2 become additional supporting assumptions for doing P1)
-
-Figure 5.27
-
 #### PROs
 
 1 . …. 2 . …. 3 . …. 4 . …. 5 . ….
-
-(The CONs for doing P1 become additional supporting assumptions for doing P2)
 
 Another way to surface underlying assumptions.
 
@@ -1183,16 +504,6 @@ Another way to surface underlying assumptions.
 
 **NOTE:** Notice in Figure 5.28 that assumptions 1 and 3 are not highlighted as invalid. While a case might be made that they could be invalid, even with the extreme wording there is some validity to these assumptions. After all, increased efficiency is usually the reason most organizations undertake improvement efforts in the first place, so a successful improvement effort could reasonably be expected to mean that the organization really is more efficient. Likewise, a more efficient operation may not need as many people to do the same work afterward. By comparison, the other assumptions are so invalid that they virtually draw attention to themselves.
 
-Requirement #1
-
-Prerequisite #1 Business
-
-improvements enhance profitability
-
-Lay off people in the most improved departments ASSUMPTIONS (P1
-
-R1): “In order for business improvements to enhance profitability, we must lay off people in the most improved departments, because:
-
 1. Improvements ALWAYS mean better efficiency.
 2. Lean organizations are ALWAYS more profitable.
 3. The most improved departments NEVER need as many people afterward.
@@ -1201,8 +512,6 @@ R1): “In order for business improvements to enhance profitability, we must lay
 6. There is NEVER any residual psychological effect on those remaining after layoffs.
 7. “Survivors” will ALWAYS work just as diligently (or more so) than before after seeing their compatriots laid off.
 8. We ALWAYS know EXACTLY how many people to lay off without compromising organizational performance.
-
-Figure 5.28
 
 Finding invalid assumptions (“separating the wheat from the chaff”).
 
@@ -1219,32 +528,6 @@ You may use any method you like as an “idea generator” to create injections.
 ![page 196](images/p196.png)
 
 “In order to eat, I don’t need money. Instead, I can…”
-
-Figure 5.29
-
-Requirement #1
-
-Prerequisite #1
-
-Eat Money Hunt
-
-Grow food
-
-Beg Steal
-
-Try “dumpster diving”
-
-Work for food
-
-“Sponge” from relatives
-
-Get arrested / go to jail
-
-Enlist in the military
-
-Etc.
-
-The alternative environment technique.
 
 Once you’ve compiled all the ways you can think of to satisfy the requirement (R1 or R2) without needing the prerequisite (P1 or P2), you essentially have a list of injections.
 
@@ -1263,24 +546,6 @@ Now you have a list of injections to choose from. If you repeated the alternativ
 
 ![page 197](images/p197.png)
 
-Financial
-
-security in declining years
-
-P1 (replaced by injection)
-
-INJECTION Have a
-
-$1,000,000 retirement fund (Condition)
-
-INJECTION Con Mom and
-
-Dad out of $1,000,000 (Action)
-
-Figure 5.30
-
-The injection: condition or action?
-
 Obviously, some value judgments must be applied here. And you might choose several injections if you can’t make up your mind, if you need redundancy to ensure success, or if it seems clear that more than one will be required to break the conflict. Don’t discard any injections that you decide not to use immediately, for two reasons. First, you might find later that you’ll have to go back to resurrect one or two of them if the original ones you chose don’t do the job you expected. Second, you might find that several injections are required and you might not have originally chosen them all (remember the “silver bullet” warning!) If you’ve retained the injections you didn’t immediately use, you can save a lot of time you might otherwise waste if you had to go back and develop the additional injections from scratch. Your Evaporating Cloud is now complete. You’ve articulated the conflict for all to see by identifying the objective, the requirements, and the opposing prerequisites. You’ve exposed the assumptions and identified the invalid ones. You’ve created injections to break the invalid assumptions. You’re almost ready to think about implementing change, but first there’s one last thing you really should do.
 
 ### Scrutinizing an Evaporating Cloud
@@ -1297,66 +562,13 @@ The Evaporating Cloud is basically a depiction of what is happening now—not wh
 
 Unlike the Current Reality Tree, however, your worst enemy is a “dry,” solid, logical EC. Why? Remember that the purpose of the EC is to reveal faulty logic in an existing situation so as to expose an opportunity to break a conflict, not entrench it. This means that there had better be some faulty logic there to find—if your cloud is “bullet-proof,” you’re likely to find it much more difficult to break. The key to breaking conflict is to recognize that in addition to a heavy dose of verifiable reality, each EC also usually contains perceptions that might be challenged. The entity at the tail of each arrow should be perceived by most people to be necessary to achieve the entity at the barb. The word “perceived” is key. It may not actually be necessary—but if it’s generally accepted as necessary, the EC can be considered acceptable. So as a final check, be sure that your EC actually reflects the consensus of people’s perception of the existing situation. After the EC is complete, you should be able to look at it and ask yourself “Is this what we see?” rather than “Is this what is?” Figure 5.31 provides an example of reward-system conflict. Figure 5.32 provides an abbreviated checklist for building your own ECs. Figure 5.33 contains a sample of a blank form you can reproduce for use in building your ECs. And finally, Figure 5.34 provides an example of a real-world conflict resolved.
 
-**ASSUMPTIONS:**
-
 1. The organization needs to have its objectives realized.
 2. Behavior is motivated.
 3. Success requires behavior motivated toward organizational objectives.
 4. Satisfying organizational objectives naturally motivates behavior.
-
-ASSUMPTION:
-
 1. Satisfying objectives produces productivity.
-
-Objective
-
-Requirement #1
-
-Prerequisite #1 Satisfy
-
-Rewards based
-
-organizational
-
-on meeting
-
-objectives
-
-objectives
-
-INJECTION #1 Identify
-
-individuals’ discrete needs
-
-Productive, motivated work force
-
-INJECTION #2 Customize rewards to satisfy each individual’s needs
-
-**ASSUMPTION:**
-
 1. It’s impossible to do both at the same time. (Conflict)
-
-INJECTION #3 Tie individual rewards to attainment of organizational objectives
-
-**ASSUMPTION:**
-
 1. The expectation of satisfying individual needs motivates people.
-
-Satisfy
-
-Rewards based
-
-individual needs
-
-on individual needs
-
-Requirement #2
-
-Prerequisite #2 = Invalid assumption
-
-Figure 5.31
-
-Evaporating Cloud: reward systems.
 
 ![page 199](images/p199.png)
 
@@ -1368,37 +580,19 @@ Evaporating Cloud: reward systems.
 - Allow space at the top and bottom for Assumptions
 1. Articulate the Conflict (P1 and P2)
 - Succinctly (5 words or less)
-
-> – What does ONE side want?
-
-> – What does the OTHER side want?
-
+- What does ONE side want?
+- What does the OTHER side want?
 - Word the two “want” statements so that the conflict is obvious
-
-> – Use clearly opposing alternatives, or
-
-> – Word one side as “not” the other (e.g., “Don’t…”
-
-or “...is not…”
-
+- Use clearly opposing alternatives, or
+- Word one side as “not” the other (e.g., “Don’t…” or “...is not…”
 - Write the opposing conflict statements in the boxes marked “P1” and “P2”
 1. Determine the Non-negotiable Requirements (R1 and R2) of Each Side
 - These should be high-level needs
 - Refer to your IO Map
-
-> – Consider the system GOAL to be the objective
-
-> (if appropriate)
->
-> – Identify Critical Success Factors (CSF) or key
-
-> Necessary Conditions (NC) that each Prerequisite is attempting to satisfy make that the GOAL and find two supporting NCs below it related to P1 and P2
->
-> – If both P1 and P2 are associated with the same CSF,
-
+- Consider the system GOAL to be the objective (if appropriate)
+- Identify Critical Success Factors (CSF) or key Necessary Conditions (NC) that each Prerequisite is attempting to satisfy
+- If both P1 and P2 are associated with the same CSF, make that the GOAL and find two supporting NCs below it related to P1 and P2
 - Write the CSF or NCs in the appropriate R1 and R2 blocks
-
-Requirement
 
 #1 Prerequisite
 
@@ -1412,10 +606,6 @@ Requirement
 
 #1 Subcontract
 
-services we do now. Objective Objective DON’T
-
-subcontract services. Requirement
-
 #2 Prerequisite
 
 #2 Requirement
@@ -1424,82 +614,38 @@ subcontract services. Requirement
 
 #1 Control
 
-costs. Subcontract
-
-services we do now. Safeguard
-
-future Throughput. DON’T
-
-subcontract services. Requirement
-
 #2 Prerequisite
 
 #2 Objective
 
-Figure 5.32 Procedures for constructing an Evaporating Cloud (EC) – abbreviated checklist. (Continued)
-
 ![page 200](images/p200.png)
-
-(Continued)
 
 1. Formulate the Objective (O)
 - Determine the common objective of both Requirements (R1 and R2)
 - Refer to your IO Map
-
-> – If you used CSF in Step 3, use the GOAL in this step
-
-> – If you used NC in Step 3, use a CSF in this step
-
+- If you used CSF in Step 3, use the GOAL in this step
+- If you used NC in Step 3, use a CSF in this step
 - Write the GOAL or CSF, as appropriate, in the Objective block
 1. Evaluate the Entire Relationship
 - Read the Evaporating Cloud from left to right
-
-> – Verbalize “In order to...we must…”
-
-> – Read the top leg first, then the bottom leg
-
-> – Then read the conflict (P1 and P2) as “On one
-
-hand… on the other hand…”
-
+- Verbalize “In order to...we must…”
+- Read the top leg first, then the bottom leg
+- Then read the conflict (P1 and P2) as “On one hand… on the other hand…”
 - Determine whether the verbalization “sounds right”
-
-> – Adjust the wording as needed
-
+- Adjust the wording as needed
 - Does the entire conflict accurately reflect the perceptions of both sides?
-
-> – If not, adjust the wording as needed
-
+- If not, adjust the wording as needed
 1. Develop Underlying Assumptions
 - Start with the relationship between R1 and P1
-
-> – Re-read it as “In order to...we must…”
-
-> – Add “...because…” and list as many reasons why
-
-> as you can think of (first-order assumptions)
->
-> – For each “why” statement, if practical add
-
-> “...because…” and add to the list as many reasons why (second-order assumptions) as you can think of
->
-> – Use extreme wording where appropriate
-
+- Re-read it as “In order to...we must…”
+- Add “...because…” and list as many reasons why as you can think of (first-order assumptions)
+- For each “why” statement, if practical add “...because…” and add to the list as many reasons why (second-order assumptions) as you can think of
+- Use extreme wording where appropriate
 - List all the assumptions on the EC diagram in the space above the R1-P1 leg
 - Repeat this process for the R2-to-P2 leg
 - Repeat the process again for the O-to-R1 and O-to-R2 legs
 
-Control
-
-costs. Prerequisite
-
 #1 Subcontract
-
-services we do now. Safeguard
-
-future Throughput. DON’T
-
-subcontract services. Requirement
 
 #2 Prerequisite
 
@@ -1507,27 +653,13 @@ subcontract services. Requirement
 
 #1 Control
 
-costs. Prerequisite
-
 #1 Subcontract
-
-services we do now. Safeguard
-
-future Throughput. DON’T
-
-subcontract services. Requirement
 
 #2 Prerequisite
 
 #2 Requirement
 
 #1 Objective Maximize
-
-profitability. Objective Maximize
-
-profitability.
-
-ASSUMPTIONS (R1-to-P1):
 
 1. Services done internally always impose high overhead on the company.
 2. Overhead always includes salary and fringe benefits for full-time employees.
@@ -1536,36 +668,18 @@ ASSUMPTIONS (R1-to-P1):
 5. Savings from headcount reductions always offset the cost of subcontracted services.
 6. Subcontractors always provide equivalent service with never a compromise to reliability, quality, or timeliness.
 
-Objective Maximize
-
-profitability Requirement
-
 #1 Prerequisite
 
 #1 Control
 
-costs. Subcontract
-
-services we do now.
-
 ![page 201](images/p201.png)
-
-(Continued)
 
 1. Evaluate the Assumptions
 - Start with the R1-to-P1 leg
 - Differentiate the VALID assumptions from the INVALID ones
-
-> – Examine each assumption individually
-
-> – Pay close attention to the ones that use
-
-extreme wording
-
+- Examine each assumption individually
+- Pay close attention to the ones that use extreme wording generating work that can be done with the surplus headcount. (Condition)
 - Highlight the INVALID assumptions with a distinctive mark
-
-ASSUMPTIONS (R1-to-P1):
-
 1. Services done internally always impose high overhead on the company.
 2. Overhead always includes salary and fringe benefits for full-time employees.
 3. Subcontracting services always allows significant headcount reductions.
@@ -1573,132 +687,37 @@ ASSUMPTIONS (R1-to-P1):
 5. Savings from headcount reductions always offset the cost of subcontracted services.
 6. Subcontractors always provide equivalent service with never a compromise to reliability, quality, or timeliness.
 7. Create “Injections”
-- For each leg of the conflict, think of alternatives that can satisfy R1 or R2 without having to be committed to P1 or P2
-
-> – Let the INVALID assumptions suggest
-
-> alternatives
->
-> – Use an “idea generation” technique such as
-
-> alternative environment, brainstorming, etc.
->
-> – List as many alternative ideas as you can
-
-> think of
->
-> – Don’t pre-judge or rank-order alternatives
-
-until all are identified
-
+- For each leg of the conflict, think of alternatives that can satisfy R1 or R2 without having to be committed to P1 or P2 generating work that can be done with the surplus headcount
+- Let the INVALID assumptions suggest alternatives
+- Use an “idea generation” technique such as alternative environment, brainstorming, etc.
+- List as many alternative ideas as you can think of
+- Don’t pre-judge or rank-order alternatives until all are identified
 - Determine which Prerequisite each potential injection replaces
-
-> – Annotate the injection with a “P1” or “P2”
-
+- Annotate the injection with a “P1” or “P2”
 - Word the injection as an action or condition, as appropriate
-
-> – Action, if the injection is a simple activity
-
-> or task you know how to do
->
-> – Condition, if the injection is a complex
-
-condition of future reality, or the outcome of a series of component activities generating work that can be done with the surplus headcount. (Condition)
-
+- Action, if the injection is a simple activity or task you know how to do
+- Condition, if the injection is a complex condition of future reality, or the outcome of a series of component activities
 1. Select the Best Injection(s)
 - Decide on a decision rule. E.g., “Select the injection that…”
-
-> – Is easiest to do
-
-> – Is completed the fastest
-
-> – Is least expensive
-
-> – Breaks the most critical assumption
-
-> – Produces the maximum positive
-
-benefit for the system
-
+- Is easiest to do
+- Is completed the fastest
+- Is least expensive
+- Breaks the most critical assumption
+- Produces the maximum positive benefit for the system
 - Recognize that there are no “silver bullets”
-
-> – More than one injection will likely
-
-be required in most cases
-
-INJECTION Hire a subcontractor that guarantees its work. (Action)
-
-INJECTION Identify Throughput Requirement
+- More than one injection will likely be required in most cases
 
 #1 Prerequisite
 
 #1 Control
 
-costs. Subcontract
-
-services we do now.
-
-INJECTION Objective
-
-Hire a subcontractor that guarantees its work . Maximize
-
-profitability
-
-INJECTION Identify Throughput
-
-generating work that can be done with the surplus headcount Safeguard
-
-future Throughput. Requirement
-
 #2
-
-X DON’T
-
-subcontract services Prerequisite
 
 #2
 
 ![page 202](images/p202.png)
 
-In order to have O, we must have R1, because:
-
-In order to have R1, we must do O, because:
-
-**ASSUMPTIONS:** 1. 2. 3. 4. 5.
-
-**ASSUMPTIONS:** 1. 2. 3. 4. 5. Requirement #1
-
-Objective
-
-Prerequisite #1
-
-On one hand, we must do P1; on the other hand, we must do P2. We can’t do both, because:
-
-INJECTION #
-
-**ASSUMPTIONS:** 1. 2. 3.
-
-INJECTION #
-
-Requirement #2
-
-Prerequisite #2
-
-In order to have O, we must have R2, because:
-
-In order to have R2, we must do P2, because:
-
-**ASSUMPTIONS:** 1. 2. 3. 4. 5.
-
-**ASSUMPTIONS:** 1. 2. 3. 4. 5.
-
-Figure 5.33 Evaporating Cloud (EC): master blank form.
-
 ![page 203](images/p203.png)
-
-= Invalid assumption = Valid assumptions that can be invalidated
-
-Assumptions:
 
 1. We know metal stamping well.
 2. We don’t have the capability to learn new skills/technologies.
@@ -1708,53 +727,11 @@ Assumptions:
 6. There is high risk of failure in technologies and markets we don’t know well.
 7. Developing capabilities in new technologies/markets requires money we don’t have.
 8. We are risk averse.
-
-**ASSUMPTION:**
-
 1. We can’t succeed in products/ markets we know nothing about
-
-Objective
-
-Requirement #1 Exploit Wurtzburg’s ONLY
-
-industry knowledge
-
-stamp metal
-
-and strengths
-
-components
-
-INJECTION #1 Obtain state - INCREASE Wurtzburg’s
-
-profitability
-
-**ASSUMPTIONS:**
-
 1. The metal-stamping market offers limited opportunities for expanding business within 100 miles.
 2. Broadening markets offers the best potential for expanding our business.
 
-Prerequisite #1
-
-sponsored business financing for new equipment and training
-
-INJECTION #2 Obtain Manufacturing Extension
-
 Partnership (MEP ) assistance in developing new markets .
-
-(Conflict) Broaden Develop NEW Wurtzburg’s
-
-metal fabrication
-
-market appeal
-
-capabilities
-
-Requirement #2
-
-Prerequisite #2
-
-**ASSUMPTIONS:**
 
 1. Our market for stamped components within 100 miles is limited.
 2. We can’t respond to short-notice new opportunities with stamping.

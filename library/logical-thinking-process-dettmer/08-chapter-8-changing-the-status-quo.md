@@ -2,18 +2,8 @@
 
 ![page 311](images/p311.png)
 
-Desired outcomes achieved
-
 1. Performance
-
-Management Process
-
 1. Subordinate commitment
-
-Subordinate
-
-understanding (mission/task charter)
-
 1. Mission/task charter communicated (leader’s intent)
 2. Leader commitment demonstrated
 3. Modified behavior defined (leader and subordinates)
@@ -31,7 +21,6 @@ In this chapter we’ll address the most frustrating problem attending organizat
 
 - The success of organizational improvement depends on multiple factors, not all of which are technical or economic.
 - The most critical and least understood factors in organizational change are human factors. * “The fault, dear Brutus, is not in our stars, but in ourselves, that we are underlings.” Julius Caesar, Act I, scene 1, line 134.
-
 - Most change agents ignore or give short shrift to the human element.
 - Human behavior is rooted in motivation.
 - Motivation results from unsatisfied needs.
@@ -67,47 +56,13 @@ The problem is that neither the benefits nor the behavior changes needed to real
 - The potential to apply them
 - The self-discipline to act using the methods
 
-My system improves. [DESIRED EFFECT]
-
-Positive
-
 #### Reinforcing
 
 Loop #1 I have, and know how to use, tools/ procedures to improve the system.
 
 ### (Method)
 
-If... I have more and more sufficient understanding of my system, or access to it. (CONTENT KNOWLEDGE)
-
-I am (more and more) determined to act. (SELF-DISCIPLINE)
-
-...then... I am (more and more) empowered to improve the system. (POTENTIAL)
-
-...and...
-
-Figure 8.1
-
-I accept responsibility for action. (ACCOUNTABILITY)
-
-...and...
-
-I have influence in changing my system. (AUTHORITY) Adapted from Dettmer, Breaking the Constraints
-
-to World-Class Performance (1998)
-
-Positive Reinforcing
-
-Loop #2
-
-I desire (more and more) to improve my system. (MOTIVATION)
-
-INJECTION Success is
-
-reinforced/rewarded.
-
 The system improvement Future Reality Tree.
-
-Two of these three factors—potential and self-discipline—in turn, depend on:
 
 - The state of our knowledge about our system
 - Authority (including resources) to do something about it
@@ -158,14 +113,7 @@ The majority of people in most organizations are functioning in levels 3 and 4 o
 2. Esteem – The need for self-esteem and for esteem from others
 3. Belongingness, social, love – The need for friendship, affiliation, interaction, love
 4. Safety and Security – The need for freedom from threat (security from threatening events or surrounds)
-
-Lowest
-
-Figure 8.2
-
 1. Physiological – The need for food, drink, shelter, and relief from pain
-
-Maslow’s hierarchy of needs.
 
 within the organization, which is related to affiliation and esteem needs. Anything that might compromise their acceptance by others or their image in the eyes of others is something to be wary of.
 
@@ -190,29 +138,10 @@ Someone with higher responsibility, or who works longer hours, may be paid more.
 Emotional connections with others and our own ideas are an important part of motivation. Harvey has described the phenomenon of “separation anxiety,” whether it’s estrangement from other people or even being forced out of one’s comfort zone by new ways of doing things, as anaclitic depression. Specifically, it’s …melancholia that we often experience when the individuals, organizations, or belief systems that we lean on or [depend] on for emotional support are withdrawn from us.12:112-113 MOTIVATION (UNFULFILLED NEEDS)
 
 - Physiological
-
-(Hygiene
-
-factors)
-
 - Security/safety
-
-Herzberg’s Two-Factory Theory
-
 - Love/affiliation (Motivators)
-
-Maslow’s Hierarchy
-
-of Needs
-
 - Esteem
 - Self-Actualization (Need for Achievement) (Need for Power)
-
-Adams’ Equity Theory McClelland’s Learned Needs Theory
-
-Figure 8.3
-
-Elements of motivation.
 
 Everybody suffers it—or has suffered from it—at one time or another. It’s not a pleasant feeling. It manifests itself as a general feeling of discouragement—the “blues.” It may not be as debilitating as clinical depression, but it’s an unpleasant experience nonetheless. Everybody who has experienced it (and who has not?) wants to avoid it in the future, even if they don’t fully understand what it is or what’s causing it. In organizations, separation anxiety results not so much from the failure to satisfy the various needs described above. It’s fear of the threat that a new way of doing things might somehow eventually separate us from the people, organization structure, assumptions, or ways of doing things that we’ve grown accustomed to, or comfortable with. In other words, it affects Maslow’s levels 2 and 3. Never mind that the fears may be logically unfounded (Harvey refers to these as “negative fantasies”).13:22 The anaclitic depression blues have little to do with logic and everything to do with emotions. And it’s purely instinctive for people to avoid them.
 
@@ -227,26 +156,6 @@ In consolidating the theories of Maslow, Herzberg, McClelland, Adams, and Harvey
 * I once asked a fighter pilot friend of mine which airplane he preferred flying, the older F-4 Phantom or the newer F-16 Fighting Falcon. Without hesitation, he replied, “I prefer flying the F-4. It’s a tougher airplane to fly, and it’ll ‘bite’ you if you don’t stay on top of it at all times. It takes a really good pilot to do that. Not everybody’s equal to the task. There’s no virtue in doing something that just anybody can do.” That, to me, is the essence of Goldratt’s definition of satisfaction: being able to do what few others can do.
 
 ![page 321](images/p321.png)
-
-Requirement #1
-
-Prerequisite #1 Achieve
-
-satisfaction Embrace
-
-change Preserve
-
-security Resist
-
-change
-
-Requirement #2
-
-Prerequisite #2 Objective Happiness
-
-**SOURCE:** Dettmer, Strategic Navigation (2003)
-
-Figure 8.4
 
 How to achieve happiness: Efrat’s Cloud.
 
@@ -288,10 +197,6 @@ The Germans called this fingerspitzengefühl, which translates literally as “f
 
 Einheit (mutual trust): The confidence among one another that develops from shared experiences over a long period of time (i.e., not just a few discrete events). Mutual trust results in the ability to know what to expect from others in a variety of circumstances and the willingness to assume that others will do what is expected of them at the appropriate time without the need for continual checking. Fingerspitzengefühl (personal professional skill): Literally, “fingertip feel.” Intuitive skill or knowledge born of years of experience, practice, and self-discipline. Permits instinctive action (the sword is an extension of the arm). Auftragstaktik (moral contract): A mutual agreement between leaders and followers wherein the followers voluntarily assume responsibility for an assignment from leaders with the implicit understanding that leaders will not ask the followers to do something beyond their capability or endanger them without an important strategic reason. Once concluded, leaders allow and expect followers to exercise initiative in deciding how the mission is accomplished, within broad parameters specified by the leaders. Followers are expected to challenge the request if they believe they don’t have the resources to complete the mission or if they perceive the directed task to be ill-advised. But once concluded, leaders can assume that the task will be accomplished. An effective moral contract depends on prior establishment of einheit and fingerspitzengefühl. Schwerpunkt (focus point): Any device or concept that gives focus to efforts; the main effort which all other activities of an organization must support (and know they must support it). Subordinates are expected to use their own initiative and set aside previously-issued orders whenever they can advance the focusing-and-directing mission. Effective schwerpunkt effort depends on the establishment of auftragstaktik and einheit. Adapted from Richards, Certain to Win (2004)
 
-Figure 8.5
-
-Elements of the Blitzkrieg.
-
 #### Moral Contract
 
 The German word for this is auftragstaktik. It’s a mutual agreement between leader and follower that implies: “I (the leader) know what you’re capable of, and I trust you to do it if you agree to it. You trust me not to ask you to do something you cannot do or that will endanger you for no important strategic reason.”21:56 This moral contract, combined with mutual trust and an abiding confidence in the subordinate’s personal professional skill, implies that subordinates can exercise initiative in situations when no specific guidance has previously been provided, and they won’t be chastised for it afterward, even if things go awry. In fact, the exercise of such initiative is expected and encouraged. When mutual trust, personal professional skill, and a moral contract are all in play, leaders can lead by intent, not just by specific direction.* They can describe the mission objective in broad strokes and say, “Go make it happen,” with confidence that their subordinates understand what the leader wants and would act as the leader would have them do when the unexpected happens. They do so with full confidence that the outcome will meet with the leader’s approval.
@@ -308,39 +213,7 @@ Level 5 Leadership Perhaps the true test of an effective hypothesis is the abili
 
 The most important contributing factor to the behavior of people in organizations, and thus to the success of organizational change, is the quality of leadership. By “quality of leadership,” I intentionally imply a double meaning. The first meaning of quality is characteristic, and the first meaning of leadership relates to the concept. The second meaning of quality is fineness or excellence, and the second meaning of leadership is the specific people who occupy positions of authority. In other words, are the people in charge really leading, and how good are they at it? The success of any organizational change is a function of the people leading the organization and their skill in leading others to execute it—inspiring them “to march into hell for that heavenly cause.” The implications for the success of change are profound. If it’s to succeed, change can’t be driven from the middle of an organization. It must be driven from the top. The intended outcome of the change constitutes the vision we discussed earlier. Establishing that vision is solely the leader’s responsibility. Leaders must own that vision themselves before they can inspire others to pursue it. The idea for change can originate from anywhere, within the organization or without. But unless leaders embrace it publicly and repeatedly, and demonstrate (communicate) their commitment to it repeatedly with their own visible behavior, “it ain’t a-gonna happen.” The story has been told about W. Edwards Deming’s first visit to Ford Motor Company in 1979. Donald Peterson, chairman and CEO of Ford, convened Ford’s vice presidents—some 400 of them—in the company auditorium and introduced Deming, admonishing them to pay close attention to what the quality guru had to say. Peterson then exited the auditorium and returned to his office (presumably to review financials and read paperwork!). When he turned around, he found Deming standing there in his office with him. Deming’s explanation for why he followed Peterson: “Where you are, I am.” It was a particularly persuasive way of communicating to Peterson that he needed to personally demonstrate by being there his commitment to what Deming would say to the people of Ford.* All I would add to that message is the word repeatedly. So let’s say it once again to make it unmistakably clear: If the organization’s leaders are not committed to a change and don’t visibly demonstrate that commitment repeatedly, it will fail.
 
-* George H.W. Bush, 1987.
-
 ![page 326](images/p326.png)
-
-Coordinated
-
-group action Mission
-
-effectiveness OBJECTIVE
-
-“Good” effective leadership Coordination Collaboration Trust
-
-(by subordinates) Emotional
-
-bond among the led Emotional
-
-bond with the led Inspiration Trust
-
-(of subordinates) Discipline
-
-(self and others) Focus Personal
-
-professional skill (leader) Moral
-
-contract Vision
-
-Figure 8.6 Accountability
-
-(up and down)
-
-Blitzkrieg principle
-
-An Intermediate Objectives Map: the elements of effective leadership.
 
 #### The Leader’s Behavior
 
@@ -374,41 +247,19 @@ In most organizations, behavior is directed by the “carrot-or-stick” approac
 
 ![page 330](images/p330.png)
 
-CONSEQUENCES... INCREASE
-
-behavior if they…
-
 - Get you something you want
-
-THIS IS... Positive reinforcement
-
 - Let you escape or avoid something you don’t want
 
 ### Behavior
 
 - Get you something you don’t want
-
-DECREASE
-
-behavior if they…
-
 - Lose something you have (that you don’t want to lose)
-
-Punishment Penalty
-
-Adapted from Daniels, Bringing out the Best in People (2000)
-
-Figure 8.7
-
-Behavior, consequences, and reinforcement.
 
 The problem lies in the fact that most organizations are really good at the negatives— if they’re seriously concerned about reinforcing behavior at all. They’re usually unaware that negative reinforcement secures a level of performance that is just enough to get by. If you want to maximize performance, you have to reinforce in a positive way.6:43 But even those that strive to positively reinforce behavior are largely clueless on how to do it or don’t do it very well.
 
 #### Rewards or Reinforcement?
 
-One reason leaders are often disappointed when their efforts at positive reinforcement don’t give them the results they expect is that they fail to distinguish between rewards and reinforcement. Basically, rewards are typically delayed in time after the completion of the behavior. Reinforcers are immediate. Rewards may be intended as reinforcers, but they don’t always achieve that expectation. The corporate bonus at the end of the year is a reward and everybody looks forward to receiving it. But it’s ineffective as a behavior reinforcer; it comes too long after the behavior that produced the results that generated the profits that enabled the chief financial officer to calculate how big the bonus should be. However, it comes just long enough after the behavior to take on the characteristics of an “entitlement” in many people’s minds. Or worse—a demotivator: “I didn’t get as big a bonus this year as I did last year…but those executives sure got theirs!” (Adams’ equity theory at work again!) The application of positive reinforcement often doesn’t take place for three possible reasons. First, leaders assume that rewards (delayed) are behavior reinforcers, and sufficient ones, at that. (“We gave them a bonus. What more do they expect?”) Second, they don’t really know what kinds of things positively reinforce behavior (immediately). The third reason is that for many people in positions of authority, the whole business of giving positive reinforcement seems tedious and time consuming. And many managers don’t see that as one of their important responsibilities.* My reaction to that draws on the
-
-* Dr. Jerry Harvey related an exchange he had with an MBA student in one of his classes. The student walked out of his classroom near the beginning of the hour, clearly intending to drop the course after what he’d heard. His parting comment to Dr. Harvey was: “I took this class to learn how to be a manager. I don’t want to waste my time worrying about anyone other than myself.” 12:165 observation my Marine student: You might be well suited to manage things, but never to lead people. The lesson here is that successful change requires effective leadership. Effective leadership is first and foremost about people. Leading people—getting them to do what you want them to do when they are under no obligation to do so—demands deft skill in directing their behavior. This, in turn requires the sometimes tedious practice of positive reinforcement. The astute reader will notice that I avoided a detailed discussion on what kinds of things represent positive reinforcers. For one thing, these will differ from one organization to another and from one person to another, and it’s beyond the scope of this book to do that. For another, there are other sources specifically and entirely devoted to addressing this issue. One is Aubrey Daniels’ book. (See endnotes for citation.) Two others that put reinforcement in a much broader system context are Social Power and the CEO and The Requisite Organization, both by Elliott Jaques.17;18 Anyone searching for “an epiphany on the road to Damascus” is encouraged to read the latter two.
+One reason leaders are often disappointed when their efforts at positive reinforcement don’t give them the results they expect is that they fail to distinguish between rewards and reinforcement. Basically, rewards are typically delayed in time after the completion of the behavior. Reinforcers are immediate. Rewards may be intended as reinforcers, but they don’t always achieve that expectation. The corporate bonus at the end of the year is a reward and everybody looks forward to receiving it. But it’s ineffective as a behavior reinforcer; it comes too long after the behavior that produced the results that generated the profits that enabled the chief financial officer to calculate how big the bonus should be. However, it comes just long enough after the behavior to take on the characteristics of an “entitlement” in many people’s minds. Or worse—a demotivator: “I didn’t get as big a bonus this year as I did last year…but those executives sure got theirs!” (Adams’ equity theory at work again!) The application of positive reinforcement often doesn’t take place for three possible reasons. First, leaders assume that rewards (delayed) are behavior reinforcers, and sufficient ones, at that. (“We gave them a bonus. What more do they expect?”) Second, they don’t really know what kinds of things positively reinforce behavior (immediately). The third reason is that for many people in positions of authority, the whole business of giving positive reinforcement seems tedious and time consuming. And many managers don’t see that as one of their important responsibilities.* My reaction to that draws on the * Dr. Jerry Harvey related an exchange he had with an MBA student in one of his classes. The student walked out of his classroom near the beginning of the hour, clearly intending to drop the course after what he’d heard. His parting comment to Dr. Harvey was: “I took this class to learn how to be a manager. I don’t want to waste my time worrying about anyone other than myself.” 12:165 observation my Marine student: You might be well suited to manage things, but never to lead people. The lesson here is that successful change requires effective leadership. Effective leadership is first and foremost about people. Leading people—getting them to do what you want them to do when they are under no obligation to do so—demands deft skill in directing their behavior. This, in turn requires the sometimes tedious practice of positive reinforcement. The astute reader will notice that I avoided a detailed discussion on what kinds of things represent positive reinforcers. For one thing, these will differ from one organization to another and from one person to another, and it’s beyond the scope of this book to do that. For another, there are other sources specifically and entirely devoted to addressing this issue. One is Aubrey Daniels’ book. (See endnotes for citation.) Two others that put reinforcement in a much broader system context are Social Power and the CEO and The Requisite Organization, both by Elliott Jaques.17;18 Anyone searching for “an epiphany on the road to Damascus” is encouraged to read the latter two.
 
 ### A General Strategy for Implementing Change
 
@@ -417,8 +268,6 @@ It’s time to tie together everything we’ve explored so far. I call what foll
 #### A Common Scenario
 
 Though organizations may differ, most have some elemental factors pertaining to change in common. The creation of a flexible framework that can apply to different kinds of organizations requires a common set of assumptions and a scenario for how change is typically introduced. Assumptions
-
-Here are some change-related underlying assumptions common to most, if not all, human organizations:
 
 - Organizations are hierarchical.
 - Final authority is concentrated in the hands of one leader, that is, everybody knows where “the buck stops.” (You may not always know who’s right, but you always know who’s in charge!)
@@ -430,59 +279,20 @@ How Change “Gets In” Any sort of new idea, methodology, or other change ente
 
 #### The Leader as Change Agent-in-Chief
 
-Regardless of how the idea for change enters the organization, it’s almost axiomatic that if the leader doesn’t want it, it won’t happen. But the converse is not necessarily true, either. Just because a leader does want a change to happen doesn’t mean that it will. Leaders must clearly and visibly demonstrate—by deeds as well as words—their commitment to seeing the change happen. In other words, they must lead the change themselves. This is not the same as day-to-day hands-on management. Leaders may delegate detailed change management to some trusted subordinate, but they can’t put it on autopilot and say, “Report to me when it’s done.” The concept of positive reinforcement mentioned earlier applies here and it requires regular, repeated application. Subordinates notice their leaders’ behavior—and take their cues from it—even if they’re not saying anything. They can tell very quickly if a task or initiative isn’t high on the leader’s agenda, or whether leaders’ behavior is incongruent with their pronouncements. And they’ll behave with the same sense of urgency (or lack of it) themselves. Leaders lead by their own example, whether they’re conscious of it or not. And they have to get involved and stay involved. It’s almost a given that the high rate of failure of change initiatives—perhaps 80 percent by some estimates—occurs primarily because of human behavior, not because the change is technically or economically ineffective. Remember our discussions of human needs and the blitzkrieg principles from earlier in the chapter? It’s time to see how these fit into the change formula. (See Figure 8.8.) Increasing the odds of successful change begins with the leader’s perception of what will satisfy his or her unfulfilled needs (the left side of Figure 8.8). Satisfaction of the leader’s needs normally results from the effective discharge of the organization’s mission (the top-center of Figure 8.8). This, in turn, is the outcome of the coordinated, effectively directed behavior of the leader’s subordinates, from the top of the organization to the bottom. Let’s call this desired behavior (upper right of Figure 8.8). But subordinates’ behavior is the outcome of the perception that their needs will be satisfied by doing what the leader wants them to do (the right side of Figure 8.8). The blitzkrieg principles represent a bridge of trust between the leader’s needs and the subordinates’ needs. To satisfy his or her needs, the leader does the four elements of
-
-* Sometimes in this circumstance the leader’s “defensive antennae” pop up.
+Regardless of how the idea for change enters the organization, it’s almost axiomatic that if the leader doesn’t want it, it won’t happen. But the converse is not necessarily true, either. Just because a leader does want a change to happen doesn’t mean that it will. Leaders must clearly and visibly demonstrate—by deeds as well as words—their commitment to seeing the change happen. In other words, they must lead the change themselves. This is not the same as day-to-day hands-on management. Leaders may delegate detailed change management to some trusted subordinate, but they can’t put it on autopilot and say, “Report to me when it’s done.” The concept of positive reinforcement mentioned earlier applies here and it requires regular, repeated application. Subordinates notice their leaders’ behavior—and take their cues from it—even if they’re not saying anything. They can tell very quickly if a task or initiative isn’t high on the leader’s agenda, or whether leaders’ behavior is incongruent with their pronouncements. And they’ll behave with the same sense of urgency (or lack of it) themselves. Leaders lead by their own example, whether they’re conscious of it or not. And they have to get involved and stay involved. It’s almost a given that the high rate of failure of change initiatives—perhaps 80 percent by some estimates—occurs primarily because of human behavior, not because the change is technically or economically ineffective. Remember our discussions of human needs and the blitzkrieg principles from earlier in the chapter? It’s time to see how these fit into the change formula. (See Figure 8.8.) Increasing the odds of successful change begins with the leader’s perception of what will satisfy his or her unfulfilled needs (the left side of Figure 8.8). Satisfaction of the leader’s needs normally results from the effective discharge of the organization’s mission (the top-center of Figure 8.8). This, in turn, is the outcome of the coordinated, effectively directed behavior of the leader’s subordinates, from the top of the organization to the bottom. Let’s call this desired behavior (upper right of Figure 8.8). But subordinates’ behavior is the outcome of the perception that their needs will be satisfied by doing what the leader wants them to do (the right side of Figure 8.8). The blitzkrieg principles represent a bridge of trust between the leader’s needs and the subordinates’ needs. To satisfy his or her needs, the leader does the four elements of * Sometimes in this circumstance the leader’s “defensive antennae” pop up.
 
 ![page 333](images/p333.png)
 
-Desired results
-
-…achieves… (Desired
-
-behavior) …lead to satisfaction of…
-
-Do LEADERS
-
-(Have) FOLLOWERS
-
-(Have) (Do) Vision Motivation
-
-(unfulfilled needs)
-
 - Physiological
 - Security/safety
 - Love/affiliation
 - Esteem
 - Self-Actualization
-
-Capability
-
-(Competence) Mutual Trust
-
-(Einheit)
-
-“Touch” (Fingerspitzengefühl) Mutual Contract
-
-(Auftragstaktik) Motivation
-
-(unfulfilled needs)
-
 - Physiological
 - Security/safety
 - Love/affiliation
 - Esteem
 - Self-Actualization
-
-Capability
-
-(Competence) Focus
-
-(Schwerpunkt)
-
-Figure 8.8
-
-Leadership and behavior.
 
 the blitzkrieg, which satisfy the needs of subordinates. The subordinates in turn do the behavior that the leader asks them to do, which both expect will produce the results that ultimately satisfy the leader’s needs.
 
@@ -494,53 +304,15 @@ Using the output of a Logical Thinking Process analysis (the topic of the first 
 
 ![page 334](images/p334.png)
 
-Desired outcomes achieved
-
-(Reinforcement)
-
 1. Performance
-
-Management Process See Daniels, Bringing Out the
-
-Best in People, 2000, for details)
-
 1. Subordinate commitment
-
-(Feedback
-
-correction, reinforcement) Subordinate
-
-understanding (mission/task charter)
-
-(Acknowledgement, correction)
-
 1. Mission/task charter communicated (leader’s intent)
 2. Leader commitment demonstrated
-
-(Leadership
-
-coaching, as required)
-
 1. Modified behavior defined (leader and subordinates)
-
-Concept Introduction
-
-(INTERNAL Source)
-
 1. Leader commitment
-
-Concept Introduction
-
-(EXTERNAL Source) ASSUMPTIONS:
-
 - Introducer understands leader’s needs
 - Concept tailored to fulfill leader’s needs
 - Introducer demonstrates leader’s need fulfillment
-
-Figure 8.9
-
-A change implementation model.
-
 1. Leader Commitment As discussed above, if the organizational leader is not actively committed to the change, it won’t happen. For the leaders to commit themselves three things must happen:
 - Whoever introduces the leader to the new idea must understand the leader’s needs, both their needs as leaders and their personal, emotional needs. Leaders probably have an intuitive understanding of their own needs, so if they discover the concept on their own, they should be able to make a direct connection between the benefits it offers and the needs it satisfies.
 - The concept must fit the leader’s needs. If it’s introduced by someone else, either inside or outside the organization, that person must tailor the concept to emphasize the leader’s needs. If the leader discovers the concept personally, he or she will either see its benefits immediately, or not.
@@ -554,46 +326,19 @@ organization, the leader’s job of issuing the charter is significantly simplif
 2. Subordinate Commitment If leaders complete the first four steps of this process, the probability of subordinate commitment improves dramatically. It’s not necessarily guaranteed. The more authoritarian an organization is, the less trust has been established, the more likely it is that subordinates will do the minimum necessary to keep pressure off themselves and will not be personally committed to successful change. This is likely to be the case in most organizations, since very few actually have such trust established. For this reason, the next step is required.
 3. Performance Management Process This is a subject worthy of a separate book all its own. In fact, such a book already exists: Bringing Out the Best in People, by Aubrey C. Daniels.6 It explains “everything you always wanted to know but were afraid to ask” about how to positively reinforce desirable behavior to improve organizational performance. The ultimate result, however, is that the desired behaviors should be realized and sustained, and the desired outcomes achieved.
 
-A Last Thought about Ensuring Effective Change To bring this discussion of organizational change to conclusion, let me offer one other practical tool that leaders can use to ensure the change they’ve chartered will actually happen the way they want it to. This tool is a four-component process called the O-O-D-A loop (pronounced OOH-dah). It was conceived by John Boyd, who derived it from his experiences as a fighter pilot and from his study of military strategy going back to Sun Tzu. Boyd's theories inspired the battlefield strategy that defeated the Iraqi Army in Kuwait in just 96 hours back in 1991, and today they form the basis of the Marine Corps' maneuver warfare doctrine and many of the tactics used by modern special operations forces. (See Figure 8.10) O-O-D-A stands for observe, orient, decide, and act. Somewhat similar to the Shewhart Cycle recommended by Deming, the O-O-D-A loop is designed to facilitate rapid, effective decision making.* Leaders who oversee their organizations with the O-O-D-A loop are not only concerned with shaping or even driving changes in the
-
-* It must be emphasized, however, that Boyd was adamantly opposed to treating the O-O-D-A loop as a rigid cycle. He meant the arrows coming out of the orient stage to imply that one could go anywhere from there: skip over decision directly to action, or feed back to observe. It is a loop, because at some point all paths lead back to observe. But its objective is speed in completing multiple iterations of the loop, not to drive people through the kind of pedagogical cycle that the Shewhart Cycle represents.
+A Last Thought about Ensuring Effective Change To bring this discussion of organizational change to conclusion, let me offer one other practical tool that leaders can use to ensure the change they’ve chartered will actually happen the way they want it to. This tool is a four-component process called the O-O-D-A loop (pronounced OOH-dah). It was conceived by John Boyd, who derived it from his experiences as a fighter pilot and from his study of military strategy going back to Sun Tzu. Boyd's theories inspired the battlefield strategy that defeated the Iraqi Army in Kuwait in just 96 hours back in 1991, and today they form the basis of the Marine Corps' maneuver warfare doctrine and many of the tactics used by modern special operations forces. (See Figure 8.10) O-O-D-A stands for observe, orient, decide, and act. Somewhat similar to the Shewhart Cycle recommended by Deming, the O-O-D-A loop is designed to facilitate rapid, effective decision making.* Leaders who oversee their organizations with the O-O-D-A loop are not only concerned with shaping or even driving changes in the * It must be emphasized, however, that Boyd was adamantly opposed to treating the O-O-D-A loop as a rigid cycle. He meant the arrows coming out of the orient stage to imply that one could go anywhere from there: skip over decision directly to action, or feed back to observe. It is a loop, because at some point all paths lead back to observe. But its objective is speed in completing multiple iterations of the loop, not to drive people through the kind of pedagogical cycle that the Shewhart Cycle represents.
 
 ![page 337](images/p337.png)
-
-Observe Unfolding Circumstances Orient Implicit Guidance
-
-and Control OBSERVATIONS Feed Forward Analyses & Synthesis Genetic Heritage Unfolding Interaction
-
-with Environment
-
-Act Implicit Guidance
-
-and Control Cultural Traditions
-
-New Information Outside Information Decide Feed Forward DECISION
-
-(Hypothesis) Feed Forward Previous Experience ACTION
-
-(Test) Unfolding Interaction
-
-with
 
 #### Environment Feedback Feedback
 
 Note how ORIENTATION shapes OBSERVATION, shapes DECISION, shapes ACTION, and in turn is shaped by the feedback and other phenomena coming into our sensing or observing window. Also note how the enitre “loop” (not just ORIENTATION) is an ongoing, many-sided implicit cross-referencing process of projection, empathy, correlation, and rejection. John R. Boyd, 1992 environment that may affect organizational success, they’re also ready to react with “course corrections” well before any deterioration to the tactical situation can occur. The O-O-D-A loop is an ideal tool for leaders to use in sustaining the inertia of change. However, as with human behavior and needs theory, there are better sources than this book for more information on this valuable tool. (See Richards, Certain to Win, 2004, and Osinga, Science, Strategy, and War, 2006).21;20
-
-Figure 8.10
-
-The O-O-D-A Loop. SUMMARY
-
-If you take nothing else away from this chapter, internalize this:
 
 - Logic is not enough. Emotional commitment is required as well.
 - Creating a solution is not the most challenging part of problem solving; changing the status quo is.
 - No change of any consequence happens without the unswerving participation of a leader who not only provides the organization its focus and direction but who also has the formal and moral authority to lead the change.
 - Leaders and subordinates alike are motivated by the satisfaction of personal needs. The apparent “altruism” of dedication to an organization’s mission is actually connected in some way to the satisfaction of personal needs.
 - Personal needs can be the realization of something positive (esteem, selfactualization) or the avoidance of something negative (loss of security, affiliation— the anaclitic depression blues).
-
 - Successful, sustained implementation of change depends on a combination of Level 5/blitzkrieg-type leadership and a rational system of positive reinforcement that satisfies the needs of leaders and subordinates alike.
 - Consistent, effective application of reinforcement is not a one-time thing; it requires time and continuing personal discipline by leaders.
 - If you don’t have leadership commitment a priori, you’re wasting your time trying to implement the change. If you don’t have consistent, regular positive reinforcement that satisfies individual needs, no change can be sustained for long. You can buy a man's time; you can buy his physical presence at a given place; you can even buy a measured number of his skilled muscular motions per hour. But you cannot buy his enthusiasm...you cannot buy loyalty...you cannot buy the devotion of hearts, minds, or souls. You must earn these.

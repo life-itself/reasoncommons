@@ -2,24 +2,6 @@
 
 ![page 205](images/p205.png)
 
-Intermediate Objectives
-
-Map Current Reality Tree GOAL Undesirable Effects Critical Success Factors Intermediate Effects Necessary Conditions Root Causes
-
-What is the GOAL and what are the steps to reach it?
-
-WHAT to change? Evaporating Cloud Transition Tree
-
-(Conflict Resolution Diagram) Objective Objective Intermediate Effects Requirements Specific Actions Prerequisites Prerequisite Tree
-
-Objective (Injection) What to
-
-change TO? How to CAUSE
-
-the change?
-
-Obstacles, Intermediate Objectives Injections
-
 > To introduce something altogether new would mean to begin all over, to become ignorant again, and to run the old, old risk of failing to learn.
 >
 > —Isaac Asimov
@@ -32,41 +14,16 @@ The Future Reality Tree (FRT) is a sufficiency-type logic structure designed to 
 
 ![page 207](images/p207.png)
 
-DESIRED EFFECT (DE) DESIRED EFFECT (DE)
-
-DESIRED EFFECT (DE)
-
-MAG
-
-Positive Reinforcing
-
-Loop
-
-INJECTION #3
-
-INJECTION #1
-
-Figure 6.1
-
-INJECTION #2
-
-The Future Reality Tree (FRT). PURPOSE
-
-The Future Reality Tree serves eight basic purposes:
-
 - It ensures that any contemplated changes will actually advance the goal and critical success factors of the system.
 - It enables effectiveness testing of new ideas before committing resources (time, money, people, and so on) to implementation.
 - It logically determines whether proposed system changes will, in fact, produce the desired effects without creating devastating new side effects.
 - It reveals, through negative branches, whether (and where) proposed changes will create new or collateral problems as they’re solving old problems.
 - It helps make beneficial effects self-sustaining through the deliberate incorporation of positive reinforcing loops.
-
 - It provides a way to assess the impacts of localized decisions on the entire system.
 - It provides an effective tool for persuading decision makers to support a desired course of action.
 - It serves as an initial planning tool for changing the course of the future.
 
 ### Assumptions
-
-The effectiveness of the Future Reality Tree is based on the these assumptions:
 
 - System components are interdependent. A change in one affects others.
 - A definite progression of cause and effect governs the functioning of all systems.
@@ -88,7 +45,6 @@ The effectiveness of the Future Reality Tree is based on the these assumptions:
 - Read “How to Construct a Future Reality Tree” and the associated examples. This section explains in detail each of the steps in building a Future Reality Tree and why they’re necessary.
 - Read “Scrutinizing a Future Reality Tree.” This section tells how to ensure that your Future Reality Tree is logically sound and that it accurately depicts “the way things will be” after you make a change.
 - Review Figure 6.29, “Future Reality Tree Example: Fordyce Corporation.” This is a complete Future Reality Tree on a real-world start-up company. It illustrates how effective the Future Reality Tree is at mapping the route from proposed changes to the desired effects.
-
 - Review Figure 6.27, “Procedures for Constructing a Future Reality Tree.” This is an abbreviated checklist that you can use to guide you in constructing your own Future Reality Tree. The checklist contains brief instructions and illustrations for each step. Detailed explanations for each step in the checklist are provided in the chapter itself, under “How to Construct a Future Reality Tree.” Repetition does not establish validity.
 
 > —Souder’s Law
@@ -107,31 +63,7 @@ How much of this outcome might have been foreseen and precluded before the fact?
 
 ![page 210](images/p210.png)
 
-Only legal immigrants enter the U.S. (INTENDED OUTCOME )
-
-Illegal entry into the U.S. increases significantly after 1986. [UNDESIRABLE OUTCOME]
-
-This is what
-
-Figure 6.2
-
-was supposed
-
-This is what actually
-
-to happen...
-
-happened ...
-
 Illegal entry of aliens into the U.S. is out of control.
-
-Congress enacts the Immigration Reform and Control
-
-Act of 1986.
-
-(Reality in 1986)
-
-(Corrective action taken)
 
 A real-world example: the Immigration Reform and Control Act of 1986.
 
@@ -142,22 +74,6 @@ A real-world example: the Immigration Reform and Control Act of 1986.
 > —Gattuso’s Extension of Murphy’s Law
 
 ![page 211](images/p211.png)
-
-(Expected outcome) Successful
-
-powered flight is invented . Bernoulli’s Principle
-
-applies. (Element of
-
-existing reality)
-
-Figure 6.3
-
-INJECTION The Wright
-
-brothers create a way to sustain air flow over a wing. (New action “injected” into the situation )
-
-A framework for change.
 
 #### Negative Branches
 
@@ -171,15 +87,9 @@ Another powerful aspect of the Future Reality Tree in designing the future is th
 
 This is what was actually happened... And this would not have happened had the corrective action not been taken ...
 
-Illegal entry into the U.S. increases significantly after 1986. [UNDESIRABLE OUTCOME]
-
-MAG
-
 This is what was supposed to happen...
 
 Medicaid, welfare, and Social Security fraud increases. [UNDESIRABLE OUTCOME] Assumption: The same documents that verify legal residency also enable access to government social services.
-
-Only legal immigrants enter the U.S. (INTENDED OUTCOME)
 
 An underground industry in forging false documents develops.
 
@@ -187,41 +97,17 @@ Employers must verify legal residency. (I-9 Form) Illegals don’t have proof of
 
 Money can be made selling false documents.
 
-Negative Branch
-
 Illegal entry of aliens into the U.S. is out of control.
 
-Congress enacts the immigration Reform and Control
-
-Act of 1986.
-
-(Reality in 1986)
-
-(Corrective action taken)
-
-Figure 6.4
-
-Example of a negative branch.
-
 ![page 213](images/p213.png)
-
-Profitability increases. [DESIRED EFFECT] Positive Reinforcing
-
-Loop
-
-(Several intervening layers of cause and effect)
 
 Product quality and customer service improve (more and more). Employees are (more and more) motivated to behave in ways that improve quality and service.
 
 We are committed to improving product quality and customer service.
 
-Figure 6.5
-
 INJECTION #4 A portion of increased profits is shared with employees.
 
 INJECTION #3 We reward desired new behavior and demonstrably deprive unchanged/ undesirable behavior of rewards.
-
-Employees have the tools and methods to improve product quality and service. Employees
 
 require motivation to change existing behavior.
 
@@ -237,30 +123,6 @@ The symbols used in a Future Reality Tree are similar to those used in a Current
 
 ![page 214](images/p214.png)
 
-DESIRED EFFECT
-
-Desired Effect; outcome toward which all logic in the FRT is directed
-
-Basic entity; cause or effect; existing reality or expected outcome
-
-Causality arrow (implies underlying assumptions) Sufficiency ellipse (indicates dependency)
-
-Figure 6.6
-
-MAG
-
-Magnitudinal “AND” (indicates additive causes)
-
-<OR>
-
-Exclusive “OR” (indicates alternative , mutually exclusive causes)
-
-INJECTION
-
-Injection; condition or action; not naturally occurring, must be initiated
-
-Future Reality Tree symbology.
-
 #### Injections
 
 The entity that gives the Future Reality Tree its flexibility and unlimited potential is the injection. In essence, an injection is a new condition or action that does not exist in current reality. It’s something you must make happen in order for future reality to unfold the way you want it to. The FRT’s flexibility comes from the fact that injections are not fixed or predetermined. You have many choices. By changing injections, you can redesign or revise the way the future develops. Consider, for example, how differently your personal future might turn out if you substitute one of these injections for another:
@@ -274,27 +136,11 @@ The entity that gives the Future Reality Tree its flexibility and unlimited pote
 
 Visualize yourself starting the steps necessary to change current reality into desired future reality. Ideally, you’ll know exactly what you should do and how to do it. If this is the case, consider yourself fortunate and structure your injection as a specific action. For example, let’s say your desired effect is to realize long-term financial independence. But right now you don’t have much money. If you know exactly how to get it, you can make an injection out of the action you’ll need to take (see Figure 6.7). The action injection shown here is to embezzle a large sum of money from a company. (That action might lead to financial independence, but it also has a significant negative branch associated with it!) But as we discussed in Chapter 5, in many cases the changes we need to make represent complex future outcomes—perhaps the result of many component actions, any number of which we might not yet have identified. We also might not know exactly what to do at all—in other words, some creative idea generation might be needed. You might decide to reach financial independence through the more complex process of developing a long-term investment strategy. The establishment of a well-diversified stock portfolio could certainly help you achieve your ultimate goal. But that particular injection would be condition, not an action, because it would represent the culmination of a series of component activities, such as researching investments, identifying a broker, and managing changes in the portfolio over time. In either case, it isn’t necessary (or even desirable) to include such excruciating detail in the FRT. It’s usually sufficient for the purpose of outcome testing to indicate some intermediate result—a condition of some kind—as the injection. Let’s continue our financial independence example. For the purpose of your FRT, you wouldn’t include each individual action in setting up a particular investment (for example, searching out and contacting a financial adviser, researching potential investments, transacting each individual stock purchase, and so on). Rather, you’d consider your injection to be something like, “I have a well-diversified stock portfolio.” (See Figure 6.7.)
 
-I enjoy long-term financial independence. [DESIRED EFFECT] (Possible
-
-negative branch?)
-
-(Several intervening layers of cause and effect )
-
-Figure 6.7
-
 INJECTION #1 I have a welldiversified stock portfolio.
 
 INJECTION #2 I embezzle a million dollars from my company.
 
-(Condition)
-
-(Action)
-
-Injections: actions or conditions?
-
 At this point you may be thinking, “But how do I determine what all those individual steps might be, and in what sequence I should complete them?” The answer is that such details are the stuff of implementation (execution) planning. You certainly can’t ignore them, but it’s not productive to spend time on those details in the FRT, when your purpose in completing this tree is to determine whether that well-diversified stock portfolio will actually advance you toward your ultimately desired effect: financial independence. For that purpose, a condition injection—an intermediate outcome of several discrete steps— is sufficient. We’ll determine what those steps should be, and their appropriate sequence, in the Prerequisite Tree (Chapter 7). If your injections are actions, you can expect to have a substantial number of them. If you limit your injections to conditions (outcomes of component actions), you can expect to see considerably fewer of them. Each new condition or action you introduce into reality constitutes an injection. The Risk of Actions as Injections
-
-There are two potential pitfalls associated with making your injections actions:
 
 - By settling too quickly on a specific action, you may foreclose other possibilities that might turn out to be less expensive, easier to do, or more effective. For example, “Build a central warehouse” forecloses some less expensive options such as renting space. “Have a central warehouse” is a condition, rather than an action, which opens options other than construction. Remember that designing future reality is a creative exercise. Don’t constrain your creativity unnecessarily with preconceived solutions by zeroing in on any specific action too soon.
 - By focusing too soon on a specific action, there’s a tendency to start worrying about implementation before the overall solution is completely and effectively tested for its ability to do the job without creating unacceptable adverse effects. Don’t forget the purpose of the Future Reality Tree: validation of a proposed course of action. If you jump too quickly to specific actions, you risk missing the FRT’s benefits.
@@ -313,27 +159,15 @@ Let’s use the building of a house as an example to see how this works. Your ea
 
 In building a Future Reality Tree, your aim should be to make the simplest change to existing reality that will produce the future conditions you desire. Unfortunately, as we discussed in Chapter 5, because most situations in which you’d need an FRT are complex, it’s not likely that you’ll find a single “mother of all injections” that will do the job for you. Neat, one-shot solutions are rare in the real world. Let’s say, for example, that a major injection in your FRT is to change a broad policy. You may find that several discrete faulty parts of that policy must be addressed separately in order to ensure the elimination of different undesirable effects. Each of these policy changes might constitute a discrete injection. In summary, you’re likely to need several injections in order to realize most conditions of desired future reality. You may start with only one injection, but you’ll undoubtedly add others as you go along.
 
-#### Where Injections Come From
-
-The obvious question now presents itself: How do I determine what these various injections are? Where do they come from? They can come from a number of sources:
+Where Injections Come From The obvious question now presents itself: How do I determine what these various injections are? Where do they come from? They can come from a number of sources:
 
 - The Current Reality Tree. If you’ve begun your analysis with a CRT, it can suggest possible injections. Look for critical root causes in the CRT. They may point to the injection(s) necessary to eliminate them. In any case, they’re likely to be entering arguments in the FRT because they’re conditions of existing reality. If they lead to an undesirable effect in the CRT, they are a starting point that can be combined with an injection in the FRT to favorably modify the future. Though the injection is intended to replace the root cause, in the FRT it’s more likely to be combined with it, as shown in Figure 6.8. Moreover, if the root cause also generates positive effects, you probably won’t want to replace it. Remember our discussion in Chapter 5 and Figure 5.10 about CRTs being negative branches of current reality? Now would be a good time to revisit that illustration.
 
 ![page 218](images/p218.png)
 
-Future Reality Tree Current Reality Tree
-
-(Expected new result)
-
 Many automobile drivers don’t worry about observing speed limits.
 
 More drivers who would normally exceed the speed limit begin to restrict their driving speed.
-
-(Critical Root Cause)
-
-Many automobile drivers don’t worry about observing speed limits. (Existing reality)
-
-Figure 6.8
 
 INJECTION #1 The state highway patrol initiates an aggressive campaign to arrest speeders.
 
@@ -347,51 +181,9 @@ Critical root causes: a “stimulant” for injections.
 
 ![page 219](images/p219.png)
 
-DE
-
-DE
-
-INJ
-
-INJ (From a Current
-
-Reality Tree) (Added for
-
-logical sufficiency)
-
-INJ
-
-INJ
-
-INJ (From an Evaporating
-
-Cloud)
-
-Figure 6.9
-
-Sources of injections.
-
 The Future Reality Tree and Other Thinking Process Trees You can build an FRT from scratch, without the help of the other Logical Thinking Process trees, but that can require some “brute force.” After all, why would you be trying to change the future unless you’re dissatisfied with the present? And if you’re dissatisfied with the present, how will you know what to change about the present—or what to change it to for the future—without some prior problem analysis? The Future Reality Tree and the Current Reality Tree Even if you’re strategically planning the future rather than solving a specific problem, you’ll be starting from a reference point in the present that will need to be clearly expressed. This is the essential function of the Current Reality Tree. Whatever you define as a critical root cause in a CRT, it’s conceivable that your future objective could be the diametric opposite of that situation. If you have undesirable effects in existing circumstances, you probably want them converted into their opposites—desired effects— in your future (see Figure 6.10).
 
 ![page 220](images/p220.png)
-
-(Diametric opposite conditions of undesirable effects become statements of desired effects)
-
-DE DE
-
-UDE UDE Critical Root Cause Critical Root Cause
-
-INJ (Existing
-
-reality) (From Evaporating
-
-Cloud)
-
-(Critical root cause becomes the condition of existing reality that the Injection is intended to change)
-
-Figure 6.10
-
-Undesirable effects determine desired effects.
 
 Moreover, it’s often very difficult to plan the future unless you’re intimately familiar with the causes and effects of the present. The Current Reality Tree can be, in effect, the beginning of the road map to future reality.
 
@@ -401,34 +193,6 @@ If you’ve already constructed a CRT, you’ll find that much of that structure
 
 ![page 221](images/p221.png)
 
-Future Reality Tree Current Reality Tree
-
-UDE
-
-UDE
-
-DE
-
-DE
-
-INJ #2 (Critical Root
-
-Cause) (Critical Root
-
-Cause)
-
-INJ #1 (Additional
-
-Root Cause) (Additional
-
-Root Cause)
-
-The CRT displays two distinct branches…
-
-Figure 6.11
-
-...which also manifest themselves in the FRT
-
 The FRT retains the same basic structure as the CRT.
 
 #### The Future Reality Tree and the Evaporating Cloud
@@ -437,23 +201,7 @@ Effectively changing future reality requires that you know what to change it to.
 
 ![page 222](images/p222.png)
 
-Future Reality Tree
-
-DE
-
 “...it will lead to these desired effects.”
-
-DE Evaporating Cloud
-
-INJ #2
-
-X INJ #1 (Critical Root
-
-Cause)
-
-“If we implement this injection…” INJ #1 (Additional
-
-Root Cause)
 
 Figure 6.12 The FRT logically verifies injections from an Evaporating Cloud.
 
@@ -465,75 +213,13 @@ The FRT occupies a unique position in the Logical Thinking Process. It serves as
 
 ![page 223](images/p223.png)
 
-Current Reality Tree Future Reality Tree
-
-UDE
-
-UDE
-
-DE (O)
-
-DE (Critical Root
-
-Cause) R1
-
-INJ #2 (Additional
-
-Root Cause) INJ # 1
-
-P1
-
-O
-
-R2
-
-R1 INJ #1
-
-P2
-
-X P1 Evaporating Cloud
-
-Figure 6.13 “Connecting the dots.”
-
-(Current reality to be changed by injection)
-
 ![page 224](images/p224.png)
-
-Future Reality Tree
-
-DE
-
-DE
 
 ...and completion of these injections leads to attainment of the Desired Effects.
 
-INJ #2
-
-Prerequisite Tree #2 INJ #1 Injection #2 Prerequisite
-
-Tree #1
-
-Injection #1 Obstacle Intermediate Objective Intermediate Objective Obstacle Intermediate Objective OBS
-
-IO
-
-IO IO
-
-IO IO IO OBS
-
-IO
-
-IO
-
 Execution of these activities leads to the completion of the injections ...
 
-IO
-
 Figure 6.14 The Future Reality Tree as a “bridge” to implementation.
-
-IO
-
-IO
 
 > The Future Reality Tree as a “Safety Net” One of the strengths of the Future Reality Tree is its ability to act as a safety net for the Current Reality Tree and the Evaporating Cloud. What this means is that you don’t have to have a perfect CRT or EC to have an effective FRT. If you don’t precisely identify the critical root cause in the Current Reality Tree, it’s not critical—you only need the CRT to get you into the area of the critical root cause. If you don’t identify all the assumptions that need to be broken in the EC, don’t worry. As long as you have a major invalid assumption to attack, you have enough to get started. The sufficiency characteristic of the FRT will catch any omissions from the EC or the CRT through negative branches. Goldratt once observed, “It’s better to be approximately correct than precisely incorrect.” That observation is still valid today. So don’t agonize over unnecessary precision in the CRT or EC. The FRT is where you must be precise. If you’re thorough and conscientious with your logic in the FRT, you’ll catch any deficiencies overlooked with the other two tools. In our haste to deal with the things that are wrong, let us not upset the things that are right.
 >
@@ -548,35 +234,15 @@ The negative branch is one of the most powerful features of the Future Reality T
 
 ![page 226](images/p226.png)
 
-(Undesirable
-
-predicted effects) My children risk injury. [UNDESIRABLE EFFECT]
-
-You might wreck my car. [UNDESIRABLE EFFECT]
-
-(Expected outcome) My children get to school. [DESIRED EFFECT]
-
 Your driving skills and /or judgment are questionable.
 
 You’ve had four accidents in the last six months.
 
 INJECTION I lend you my car.
 
-(Added existing reality)
-
 I am unable to drive my children to school.
 
 You offer to drive them for me in my car.
-
-(Existing reality)
-
-(Existing reality)
-
-NEGATIVE BRANCH
-
-Figure 6.15
-
-Negative branch: an example.
 
 For example, if you had approached me to borrow my car, I could have begun with the injection “I lend you my car” and developed a negative branch all by itself, without resorting to an FRT. If I really perceive a risk of your wrecking my car, the negative branch might steer me to this response: “If you can wait until lunchtime, I’ll drop you by your appointment on my way out and pick you up on my way back.” The negative branch helps make your response “palatable” for others to accept without incurring ill feelings. Day-to-day decisions can be effectively and analyzed and “unpleasantries” avoided this way. Figure 6.16 shows how a different negative branch might be “trimmed.” Figure 6.28, “Using the Negative Branch as a Stand-Alone Tool,” provides abbreviated steps for using a negative branch without a complete Future Reality Tree.
 
@@ -586,19 +252,11 @@ If your negative branch is a growth on a Future Reality Tree, it’s likely to r
 
 ![page 227](images/p227.png)
 
-Negative Branch Our credit rating suffers. [UNDESIRABLE EFFECT]
-
-The laser-cutting machine is repossessed. [UNDESIRABLE EFFECT]
-
 We’re unable to meet the payment schedule for our legal debt.
 
 The anticipated new market for precision laser cutting does not materialize.
 
-Figure 6.16
-
 Application of a new injection to “trim” the negative branch prevents the undesirable effects from happening.
-
-BRANCH-TRIMMING INJECTION We use the laser cutter to deliver faster (competitive edge) in our existing business. (Desired Effects)
 
 We incur a $200,000 debt for the purchase of the laser-cutting machine.
 
@@ -607,8 +265,6 @@ We have the capability and capacity to develop a new line of business.
 There is a potential new market opportunity in precision laser cutting.
 
 INJECTION We buy a new lasercutting machine for the production department.
-
-“Trimming” a negative branch.
 
 But what if that new market doesn’t develop for some reason? Now we’re left with a capital debt and no way to pay it off. At some point, our bank will repossess the machine, which would adversely affect our credit rating. Both the repossession and the degraded credit rating are undesirable effects that grow out of the injection—the action we plan to take. That action itself is not negative, nor is it negative when considered with the other conditions (expected new market demand) we include in our FRT. It’s only when we add unfavorable conditions of reality that might occur that the causal path turns negative. Is this speculation? Of course! But so is our intended (desirable) future reality. What the negative branch helps us consider, before damage is inflicted on us, is the potential negative outcome of the same decision that’s supposed to deliver good outcomes. Obviously, there are probabilities associated with both the good and bad causal paths. We’ll have to consider these on a case-by-case basis. The negative branch only shows what could happen if an unfavorable probability actually does happen.
 
@@ -642,10 +298,6 @@ We incur a $200,000 debt for the purchase of the laser-cutting machine.
 
 There is a potential new market opportunity in precision laser cutting.
 
-Figure 6.17 (Original Future
-
-Reality Tree, Desired Effects)
-
 We have the capability and capacity to develop a new line of business.
 
 INJECTION We buy a new lasercutting machine for the production department.
@@ -656,20 +308,12 @@ As we’ve previously discussed, this effect is called a positive reinforcing lo
 
 ![page 230](images/p230.png)
 
-214 Profits increase. [DESIRED EFFECT]
-
-Assumptions:
-
 1. Price points are effective.
 2. Price points are competitive .
 
 212 The company’s business volume increases (more and more).
 
 210 Increased customer satisfaction and loyalty normally result in more new and repeat business.
-
-213 Costs are controlled. Positive Reinforcing
-
-Loop #1
 
 211 Customer satisfaction and loyalty increase (more and more).
 
@@ -683,12 +327,6 @@ INJECTION #9 We allocate a share of profits to employees based on favorable cust
 
 INJECTION #8 We train new employees to think and act for themselves in the company’s best interests.
 
-(Lower part of FRT)
-
-Figure 6.18
-
-Positive reinforcing loop: an example.
-
 #### Strategic Planning with a Future Reality Tree
 
 So far we’ve examined the Future Reality Tree in a problem-solving role as a “solution tester”—a way of validating the effectiveness of ideas for solutions and exposing any undesirable collateral effects of these ideas. This is probably the mode in which you’ll most frequently use it. But the FRT’s capability as a strategic planning model is potentially its most valuable application. The FRT can substitute for a traditional strategic plan by visually representing what needs to be done. The subject of strategic planning using the Logical Thinking Process is beyond the scope of this book. However, it is explained in detail in Strategic Navigation: A Systems Approach to Business Strategy.1
@@ -700,33 +338,17 @@ So far we’ve examined the Future Reality Tree in a problem-solving role as a �
 Now you’re ready to begin building a Future Reality Tree. The following procedures will lead you through the process. An abbreviated checklist of these same procedures may be found in Figure 6.27, “Procedures for Constructing a Future Reality Tree.” Now it’s time to start applying what we’ve covered so far on Future Reality Trees.
 
 1. Gather Necessary Information and Materials While it is possible to start building a Future Reality Tree from scratch with no inputs from previous logic trees, it’s not the easiest way to do it. At the very least, you should have an Intermediate Objectives Map to articulate the system-level goal and critical success factors your tree should be trying to achieve. It only takes about 15 minutes to complete an effective IO Map, so if you haven’t already done one, go back and do it now. (Refer to Chapter 3, “Intermediate Objective Map”). If you already have some previous related logic trees, now would be a good time to bring them out. In addition to an IO Map, you might already have a Current Reality Tree and one or more Evaporating Clouds. From the CRT, make a list of undesirable effects and the critical root causes. From the EC, add to your list the objective, the two requirements, and any injections you have developed. Keep the assumptions from your EC close at hand, too. (Figure 6.19)
-
-Information: Goal, CSF, NC (IO Map)
-
-Undesirable Effects (CRT)
-
-Evaporating Cloud(s) Goal
-
-CSF #1 CSF #2 CSF #3 CSF #4 NC NC NC NC
-
 1. .....
 2. .....
 3. .....
 4. .....
 5. .....
-
-Objective
-
-Requirement #1 Requirement #2 Injection Injection Prerequisite #1 and/or #2 Assumptions:
-
 1. .....
 2. .....
 3. .....
 4. ..... Etc. Etc.
 
 Materials: 1 . Flip - chart paper 2 . Post - it Notes 3 . Indelible bold pens 4 . Pencils 5 . Large erasers 6 . Scotch tape
-
-Figure 6.19
 
 Step 1: Gather all necessary information and materials.
 
@@ -742,28 +364,6 @@ Begin your tree by writing, on Post-it Notes, statements of the desired effects 
 
 Be sure the wording you use to express the desired effect, the opposite of the UDE, is truly positive and not merely neutral (that is, be sure it expresses “good,” rather than just “not bad”).
 
-Figure 6.20
-
-(From the CRT)
-
-(In the FRT)
-
-The company loses money. [UNDESIRABLE EFFECT]
-
-Company profits increase. [DESIRED EFFECT]
-
-Employee attrition increases. [UNDESIRABLE EFFECT]
-
-Attrition decreases to nearly equal to retirement rate. [DESIRED EFFECT]
-
-Customer satisfaction is half of what it was last year. [UNDESIRABLE EFFECT]
-
-Customer satisfaction is substantially higher than it was last year. [DESIRED EFFECT]
-
-Total fixed costs increase out of control. [UNDESIRABLE EFFECT]
-
-Total fixed costs are controlled at an acceptable level. [DESIRED EFFECT]
-
 Step 2: Formulate the desired effects.
 
 ![page 233](images/p233.png)
@@ -775,14 +375,6 @@ Avoid future tense in wording all entities in your FRT. Consider it a real-time 
 #### Lay Out Desired Effects
 
 Start by arranging the desired-effect Post-it Notes horizontally across the top of your paper. Remember that future reality will have the same basic branch configuration as current reality, but with opposite “polarity.” Adjust the placement of the desired effects as appropriate to approximate the same structure as the CRT. (See Figure 6.21.) In other words, if your desired effects come from UDEs in a CRT, they will occupy the same relative positions in the FRT. The basic relationships of reality will usually remain the same. DESIRED EFFECT DESIRED EFFECT
-
-UDE DESIRED EFFECT
-
-UDE UDE
-
-If the CRT had three main branches, the FRT will likely have three comparable main branches
-
-Figure 6.21
 
 FRT branch structure is similar to the CRT.
 
@@ -796,19 +388,7 @@ Place your injection Post-it Notes at the bottom of the page (see Figure 6.22). 
 
 If you’re starting your Future Reality Tree without having completed a CRT or Evaporating Cloud, you’ll have to be creative in deciding what to change and what form the changes should take. Idea-generation methods such as brainstorming, nominal group technique, TRIZ, and the Crawford Slip Method can be useful in developing injections. But if you have a CRT or EC, much of the creative work may be already done. The EC, besides helping resolve conflict, is a natural “idea generator.” Chances are, if you’ve constructed an EC, you’ll already have one primary injection and maybe some secondary DESIRED EFFECT DESIRED EFFECT (Objective ones. Write your injections on Post-it Notes. Distinguish them from other entities by using different colored notes or by outlining the edges.
 
-from EC) DESIRED EFFECT
-
-R2 (from EC) R1 (from EC) Critical
-
-root cause (from CRT)
-
-Figure 6.22
-
-INJECTION #1 INJECTION #2
-
 Step 3: Add injection(s) and Evaporating Cloud requirements.
-
-INJECTION #3
 
 #### Injections at the Bottom
 
@@ -830,23 +410,9 @@ Each successive layer of effects should move you progressively closer to your de
 
 ![page 236](images/p236.png)
 
-DE = Desired effect
-
-Our costs are under control. [DE]
-
-Our profitability increases. [DE] (Objective
-
-from EC) Inventory is
-
-reduced. [DE]
-
-R2 (from EC) R1 (from EC)
-
 103 New and existing customers are attracted by our faster delivery times.
 
 101 Our order-todelivery times are longer than our competitors’ times.
-
-Figure 6.23
 
 102 New and existing customers are attracted to short delivery times.
 
@@ -857,8 +423,6 @@ Step 4: Fill in the gaps.
 Having a CRT available makes the job of filling in gaps much easier. If you don’t have a CRT to work from, you may have to “hack your way through the jungle” a bit to reach your desired effects. In any event, continue building upward until you connect with the EC requirements, and on up to the desired effects.
 
 ![page 237](images/p237.png)
-
-(Intermediate outcomes, desired effects)
 
 Each successive layer of effect brings us closer to “filling the gap” between the first injection and the intermediate milestone (R1 or R2)…
 
@@ -875,8 +439,6 @@ INJECTION #2 We ensure that all existing and prospective customers know about ou
 102 New and existing customers are attracted to short delivery times.
 
 INJECTION #1 We optimize production for fast delivery.
-
-Figure 6.24
 
 ...but we’re still not there yet!
 
@@ -900,70 +462,12 @@ Why should we be concerned about negative branches? Other than the obvious reaso
 
 ![page 239](images/p239.png)
 
-(Possible
-
-undesirable outcome?) (Possible
-
-undesirable outcome?) (Possible
-
-undesirable outcome?)
-
-DESIRED EFFECT (DE) DESIRED EFFECT (DE)
-
-DESIRED EFFECT (DE)
-
-MAG (Possible
-
-undesirable outcome?) (Possible
-
-undesirable outcome?)
-
-INJECTION #3
-
-INJECTION #1
-
-Figure 6.25 (Possible
-
-undesirable outcome?)
-
-INJECTION #2
-
-Search for negative branches.
-
 NOTE 2: Remember that, as with any personal creation, you have “pride of authorship” in your tree. To some extent, this can blind you to its deficiencies. Moreover, it’s likely that you’ll be unable to see all the negative possibilities associated with it. Even if you find a few negative branches, you might need the help of “outside eyes” to locate them all. Before acting on your tree, you’d be well advised to have someone else scrutinize your tree—someone with intuitive knowledge of your situation. Even if he or she doesn’t point out any more negative branches, the additional review is likely to help you clarify and strengthen the logic of your FRT.
 
 ![page 240](images/p240.png)
 
 1. Develop Negative Branches If you find possible negative branches, write the entities on Post-it Notes and place them in their proper positions. To preclude confusion, you may want to develop your negative branch on a separate piece of paper. Include additional reality entities and ellipses as required. Continue building the negative branch upward, just as you did with the main FRT, until you reach effects that are undesirable with respect to the goal or critical success factors (see Figure 6.26). Don’t expect your injection to produce an undesirable effect directly. Instead, it’s more likely to lead through some intermediate effects that are neutral, or perhaps slightly negative, before reaching something that is definitely undesirable. The same is true of the relationship between injections and desired effects. So be prepared for your negative branch to be more than just one or two entities—possibly even very complex.
 2. Trim Negative Branches When the negative branch is fully developed, decide how to “trim” it off the FRT. This requires the addition of a “branch-trimming” injection. The first step in trimming a negative branch is similar to the initial step in resolving an Evaporating Cloud: identify the underlying assumptions. And it’s the same for a similar reason. Injections to trim a negative branch are inherent in the underlying assumptions of an associated arrow, just as they are in an Evaporating Cloud. Negative Branch #1 DESIRED EFFECT (DE)
-
-UDE
-
-New effect
-
-INJECTION #3 Added
-
-reality Added
-
-reality Added
-
-reality (Other
-
-branches of the FRT )
-
-(Develop on a separate page) (See Negative
-
-Branch #1)
-
-INJECTION #3
-
-INJECTION #2
-
-Figure 6.26
-
-Develop the negative branch.
-
-UDE = Undesirable effect
 
 We’re not concerned with all the assumptions in a Negative Branch, only the ones associated with the transitional arrow. The transitional arrow is the one that leads into the first clearly negative entity—the place where we can definitely say, “Things are starting to go badly here,” even if we’re not yet to the point of an UDE. We read the connection in this case a little differently. Remember that in the Evaporating Cloud we read the relationship, “In order to…we must…”. To get to the underlying assumptions in a negative branch, we read, “If [cause]…then [effect], because [assumption].” Normally, you won’t find more than a few assumptions associated with a transitional arrow in a negative branch—and sometimes only one. But one is probably enough to suggest an injection, especially if you use the extreme wording technique in your assumptions (see Chapter 5). Once you’ve articulated the underlying assumptions at the transitional arrows, create an injection to trim the branch at that point. This means that such an injection, combined with the causes at the tails of the transitional arrows, will produce a benign or even positive effect, rather than the negative one you started with. Develop this causality on a separate piece of paper (see Figure 6.29 p. 6, for an example). This “trimmed” causality is no more than the projection of the branch-trimming injection to its logical conclusion—and that had better be favorable (or at least neutral), otherwise you’ve chosen the wrong injection. Verify the “trimmed” causality using the Categories of Legitimate Reservation, and be sure that your branch-trimming injection doesn’t create any negative branches of its own. Figure 6.27 includes an abbreviated list of steps for how to trim a negative branch, along with an illustration.
 
@@ -1000,8 +504,6 @@ Take a look at Figure 6.29 (p. 1 through p. 6). It’s the Future Reality Tree, 
 
 > —Frédéric Bastiat (1801-1850)
 
-French economist
-
 ![page 244](images/p244.png)
 
 1. Gather all Necessary Information and Materials
@@ -1021,61 +523,9 @@ French economist
 - Choose one to start the tree; set the others aside
 - Position the EC requirements between the injections and the Desired Effects
 
-> From the EC
->
-> -Objective
-
-> -Requirements
-
-> -Prerequisites
-
-> -Assumptions
-
-> From the IO Map
->
-> -Goal
-
-> -CSF
-
-> -NCs
-
-> From the CRT
->
-> -UDE
-
-UDE
-
-DE
-
-UDE
-
-DE
-
-UDE
-
-DE
-
-DE DE
-
-DE DE
-
-R1
-
-R2
-
-INJ #2 INJ #3 Critical
-
-root cause
-
-INJ #1
-
-INJ #4
-
-Figure 6.27 Procedures for constructing a Future Reality Tree (FRT) – abbreviated checklist. (Continued)
+-UDE
 
 ![page 245](images/p245.png)
-
-(Continued)
 
 1. Fill in the Gaps
 - Build UPWARD from injections to expected effects
@@ -1083,18 +533,9 @@ Figure 6.27 Procedures for constructing a Future Reality Tree (FRT) – abbrevia
 - Include entities from CRT that are still relevant in the future
 - Build upward from one level to the next
 - Work consistently toward:
-
-> – Requirements from EC
-
-> – Desired Effects
-
+- Requirements from EC
+- Desired Effects
 - Add injections as required to maintain progress toward the Desired Effects
-
-DE DE
-
-R1
-
-R2
 
 103 New and existing customers are attracted to our faster delivery times.
 
@@ -1106,95 +547,31 @@ R2
 - Connect the DE to the amplified effect with an arrow
 - Add injections, reality entities, and ellipses as required
 - Check to be sure the re-entry (amplified) entity can withstand an additional cause reservation
-
-> – That is, could some completely
-
-different cause (not previously identified) cause the amplification?
-
-DE
+- That is, could some completely different cause (not previously identified) cause the amplification?
 
 102 New and existing customers are attracted to short delivery times.
 
 INJ #1 We optimize production for fast delivery.
 
-DE DE
-
-DE
-
-R1
-
-INJ Additional
-
-cause?
-
-INJ
-
 ![page 246](images/p246.png)
-
-(Continued)
 
 1. Look for Negative Branches
 - AFTER the FRT is completed to the
-
-Desired Effects
-
 - Solicit outside help if necessary
 - Evaluate each expected effect
 - Besides this effect, what else could result that might be unfavorable?
 - Don’t overlook Negative Branches that might grow out of Desired Effects
-
-NB? NB?
-
-NB?
-
-Negative Branch
-
-DE DE
-
-DE
-
-UDE
-
-NB? R1
-
-NB?
-
-NB?
-
-INJ
-
 1. Develop Negative Branches
 - Use a separate sheet of paper
 - Build upward from the originating injection to the Undesirable Effect(s)
 - Add previously unstated entities, if required
 - Identify the “turning point”
 - Identify all assumptions underlying the transitional arrow; list them to one side of the NB
-
-Negative Branch Main FRT
-
-UDE
-
-“Turning point” (Transitional
-
-arrows)
-
-DE Negative effect Added Reality ASSUMPTIONS:
-
 1. ……
 2. ……
 3. ……
 
-Other
-
-(neutral) effect Expected
-
-effect
-
-INJ Existing Reality
-
 ![page 247](images/p247.png)
-
-(Continued)
 
 1. Trim Negative Branches
 - Develop branch-trimming injection(s) to break key assumptions
@@ -1203,53 +580,18 @@ INJ Existing Reality
 - Combine injection(s) and effects with additional, previously unstated reality entities as required
 - Build upward until you reach the opposite condition of the Negative Branch’s Undesirable Effect
 - Make sure the branch-trimming injection doesn’t create any new UDEs of its own
-
-Negative Branch (“Trimmed”) Neutral
-
-outcome Neutral
-
-effect
-
-Branchtrimming INJ Added Reality Other
-
-(neutral) effect (Main FRT)
-
-INJ
-
-Negative Branch (“Trimmed”)
-
 1. Incorporate the Branch-Trimming Injection into the FRT
 - On the original FRT, combine the branch-trimming Injection with the effect entity from the Injection that caused the Negative Branch
 - Write a reference to the NB beside the branch-trimming Injection
 - Save the supporting NB pages
-
-Neutral
-
-outcome Neutral
-
-effect
-
-Branchtrimming INJ Added Reality Other
-
-(neutral) effect
-
-INJ
-
 1. Scrutinize the Entire FRT
 - Re-read and scrutinize the entire tree
 - Use the Categories of Legitimate Reservation
 - Enlist someone else to assist you
-
-> – Understanding of CLR not required
-
-> – Intuitive knowledge of the content is required
-
+- Understanding of CLR not required
+- Intuitive knowledge of the content is required
 - Identify any parts of the FRT not needed to reach the Desired Effects or trim Negative Branches
 - Trim superfluous entities from the FRT
-
-(Main FRT)
-
-DE
 
 ![page 248](images/p248.png)
 
@@ -1258,18 +600,11 @@ DE
 1. List all the POSITIVES and NEGATIVES On a sheet of paper, in two columns
 - List all potential positive outcomes of the decision
 - List all potential negative outcomes of the decision
-
-> – These become the UDEs
-
-POSITIVES
-
+- These become the UDEs
 1. There is potential to reach a much larger customer base
 2. Market can be international
 3. Sales can be transacted faster through the web site
 4. Costs can be minimized
-
-NEGATIVES
-
 1. Web sites are passive, requiring customers to know you’re there
 2. “Drive by” business (from web surfing) is uncertain
 3. Sales may not offset investment
@@ -1280,41 +615,21 @@ NEGATIVES
 - Write the UDEs on Post-it notes
 - Position the UDEs at the top of the page
 
-We lose money. [UDE]
-
 INJECTION We invest in a web site.
 
 1. Analyze the Decision (Injection) Does an UDE result directly from the Injection?
 - If so, connect the Injection directly to the UDE
-
-> – Include additional entities and
-
-ellipses for sufficiency, if required
-
+- Include additional entities and ellipses for sufficiency, if required
 - If not, begin building the chain of causality upward from the Injection to the UDEs
-
-> – Include additional entities and
-
-ellipses for sufficiency, if required
-
+- Include additional entities and ellipses for sufficiency, if required
 - Stop when you can connect the last effect to the UDE as a direct and unavoidable cause
-
-We lose money. [UDE]
 
 Direct connection? If not , fill in the gaps with sufficient cause and effect .
 
-Our business volume is lagging.
-
 INJECTION We invest in a web site.
-
-Figure 6.28 Using the negative branch (NB) as a stand-alone tool – abbreviated checklist. (Continued)
-
-(Continued)
 
 1. Scrutinize each upward connection
 - Check each connection for cause sufficiency using the CLR
-
-We lose money. [UDE]
 
 The risk of not recovering our investment is high.
 
@@ -1331,29 +646,17 @@ Potential customers don’t find us unless they’re specifically looking for us
 
 Only small numbers of customers find us by “surfing.”
 
-Web sites are “passive.”
-
-We have a web presence.
-
-We need Search Engine
-
 Positioning (SEP) to ensure high numbers of “hits.”
 
 We have an initial financial investment to recoup.
 
 1. Stop when your reach the UDE(s)
 
-Our business volume is lagging.
-
 INJECTION We invest in a web site.
-
-(Continued) We lose money.
 
 1. Find the Transitional Arrow
 - The point at which the “tone” of the tree turns from positive or neutral to decidedly negative
 - The arrow connecting the last positive or neutral entity with the first negative one
-
-Transitional arrows (“turning point”)
 
 The risk of not recovering our investment is high.
 
@@ -1361,27 +664,17 @@ We have a large investment to recoup.
 
 We realize some indeterminate increase in business volume.
 
-**ASSUMPTIONS:**
-
 1. There is absolutely no other way we can make our web presence known.
 2. It’s impossible to collaborate with other commercial web sites.
 3. Expose all Assumptions
 - Underlying the transitional arrow
 - Write them to one side of the Negative Branch
 
-[UDE]
-
 Search engine positioning (SEP) is a significant added expense.
 
 Potential customers don’t find us unless they’re specifically looking for us.
 
-Web sites are “passive.”
-
 Only small numbers of customers find us by “surfing.”
-
-We have a web presence.
-
-Our business volume is lagging.
 
 1. Develop Injections
 - Focus on key assumptions
@@ -1390,8 +683,6 @@ Our business volume is lagging.
 - Choose the “best” injections to trim the Negative Branch
 
 INJECTION #1 We ally (link) our web site with related companies’ web sites that are non-competitors.
-
-We need Search Engine
 
 Positioning (SEP) to ensure high numbers of “hits.”
 
@@ -1405,38 +696,21 @@ INJECTION #3 We obtain preferred placement on the Google search engine.
 
 ![page 251](images/p251.png)
 
-(Continued)
-
 1. Validate the Chosen Injection(s)
 - Rewrite the last entity before the “transitional” arrow
 - Write your chosen Injection beside it
 - Develop the logical chain of cause-effect of combining the two
-
-> – Add other reality entities as necessary
-
-> – Continue building upward until you’re certain the
-
-UDE has been neutralized or turned into a Desirable Effect
-
+- Add other reality entities as necessary
+- Continue building upward until you’re certain the UDE has been neutralized or turned into a Desirable Effect
 - Check to be sure the new Injection doesn’t create any new NBs of its own
 
-We make enough money to recoup our investment. [DESIRED EFFECT]
-
-Our business volume increases significantly.
-
 A high percentage of Internet “surfers” find us .
-
-We are competitive.
 
 INJECTION #3 We obtain preferred listing on the Google search engine..
 
 **NOTE:** Links to related companies (non-competitors) and our industry association.
 
-We achieve higher market awareness.
-
 INJECTION #1 We ally (link) our web site with . related web sites. Web sites are “passive.”
-
-We have a web presence.
 
 1. Take Action to Implement the Injection(s)
 - If you constructed the Negative Branch in response to someone else’s request, meet with that person
@@ -1444,32 +718,18 @@ We have a web presence.
 - Present the Negative Branch completely and without interruption, all the way to the Undesirable Effect
 - DON’T offer YOUR Injection as a remedy. Hold it in reserve and wait for a response from the requestor
 - Allow the requestor to offer a workable alternative (Injection)
-
-> – If the requestor’s solution is as good as or better than yours, accept it (as long as you can live with it)
-
-> – If NOT, steer the discussion toward your alternative, but give the requestor EVERY opportunity
-
-to become part of the solution FIRST
+- If the requestor’s solution is as good as or better than yours, accept it (as long as you can live with it)
+- If NOT, steer the discussion toward your alternative, but give the requestor EVERY opportunity to become part of the solution FIRST
 
 ![page 252](images/p252.png)
 
 This Future Reality Tree (Figure 6.29 p.1 through p. 6) represents a real start-up corporation. The name of the company has been changed to provide anonymity. The company manufactures surgical steel orthopedic appliances used by surgeons to repair bones and spinal problems. (This is a continuation of the Thinking Process analysis that started with the CRT presented in Figure 4.46.)
 
-p. 3
-
-p. 4
-
 109 Contracted doctors become more actively involved in the growth of the company.
 
 Primary marketing is done through a network of recruited orthopedic surgeons who act as an advisory board (suggesting new custom-design appliances). The same surgeons act as a customer base for the company’s new products and as referral agents for new customers (surgeons).
 
-p. 2
-
-p. 2
-
 INJECTION #4 Medical consulting contracts are concluded.
-
-p. 3
 
 107 Production and quality control processes can be verified and validated.
 
@@ -1485,10 +745,6 @@ INJECTION #3 Fordyce buys and configures necessary operations equipment.
 
 101 Fordyce doesn’t have the necessary working capital.
 
-p. 2
-
-p. 2
-
 104 Fordyce has the resources to buy all necessary production equipment and configure it in the facility.
 
 105 Fordyce has the resources to hire necessary personnel.
@@ -1499,39 +755,15 @@ INJECTION #1 Fordyce has $3.5 million in new capital.
 
 Figure 6.29 Future Reality Tree: Fordyce Corporation (p. 1).
 
-(Continued)
-
-(Continued) p. 3
-
-p. 4
-
-**NOTE:** 510K is a Food and Drug Administration certification . 205 The 510K is approved. [DESIRED EFFECT]
-
 NB-1-11 The odds of a competitor “stealing” Fordyce’s sales and marketing manager are significantly reduced.
 
 206 Fordyce has a first-class sales and marketing management capability.
 
-203 QSR documentation is completed.
-
-p. 3
-
-(Negative Branch UDE eliminated)
-
-208 Fordyce has a high level of market knowledge. [DESIRED EFFECT]
-
 207 Products are released to the market.
-
-204 Fordyce can produce parts.
-
-p. 4
 
 INJECTION #8 Fordyce selects a highly qualified sales and marketing manager.
 
 INJECTION #7 The in-house production system is developed.
-
-p. 3
-
-(Required to trim Negative Branch #1) See Figure 30f
 
 210 Quality System Requirements (QSR) procedures and processes can be put into place.
 
@@ -1543,39 +775,13 @@ INJECTION #8a Fordyce creates a unique, difficultto-match compensation package f
 
 202 The initial production work force is in place.
 
-(From p. 1 )
-
-106 A robust operations software suite can be purchased and installed. (From p. 1 )
-
 INJECTION #6 Fordyce hires four qualified production personnel.
 
 Figure 6.29 Future Reality Tree: Fordyce Corporation (p. 2).
 
-105 Fordyce has the resources to hire necessary personnel. (From p. 1 )
-
-(Continued) p. 5 NOTE: Contracted
-
-doctors are Fordyce’s customers.
-
-Positive Reinforcing
-
-Loop #1
-
-p. 5
-
-307 Customers are delighted with Fordyce’s product offerings. [DESIRED EFFECT]
-
-306 Fordyce has an effective management system. [DESIRED EFFECT]
-
-MAG
-
-305 Fordyce introduces the best, most innovative, high-quality products faster than any other competitor. [DESIRED EFFECT]
-
 INJECTION #11 Fordyce institutes critical chain project management.
 
 301 Fordyce has (more) new “cutting edge” product ideas and concepts.
-
-109 Contracted doctors become more (and more) actively involved in the growth of the company. (From p. 1 )
 
 INJECTION #9 Medical advisor board (MAB ) doctors provide development advice.
 
@@ -1587,49 +793,19 @@ INJECTION #12 Fordyce implements an effective human resources system.
 
 207 Products are released to the market.
 
-203 QSR documentation is completed.
-
-(From p. 2 )
-
-(From p. 2 )
-
 302 Fordyce can manage production and inventory control.
-
-106 A robust operations software suite can be purchased and installed. (From p. 1 )
 
 INJECTION #10 Fordyce installs drumbuffer-rope production control.
 
-INJECTION #5 Fordyce identifies, acquires, and installs operations management software. (From p. 2 )
-
 Figure 6.29 Future Reality Tree: Fordyce Corporation (p. 3).
-
-(Continued)
-
-407 Fordyce is highly competitive in the market. [DESIRED EFFECT]
-
-MAG
-
-405 Fordyce has an exceptional sales and marketing program. [DESIRED EFFECT]
-
-208 Fordyce has a high level of market knowledge. [DESIRED EFFECT]
-
-p. 5
-
-406 An active, productive supporting network of doctors develops. [DESIRED EFFECT]
 
 INJECTION #16 Fordyce has an effective selection process for contracting with new doctors.
 
-404 Fordyce has a firstclass distribution/ sales network. [DESIRED EFFECT]
-
 109 Contracted doctors become more actively involved in the growth of the company.
-
-(From p. 2 ) MAG
 
 401 Qualified sales representatives are identified and secured.
 
 206 Fordyce has a first-class sales and marketing management capability.
-
-402 Fordyce has an effective product sales training program. [DESIRED EFFECT]
 
 INJECTION #13 Sales /marketing manager discharges job responsibilities as expected/described.
 
@@ -1637,69 +813,21 @@ INJECTION #13 Sales /marketing manager discharges job responsibilities as expect
 
 INJECTION #14 Sales /marketing manager searches out and identifies super qualified sales force.
 
-(From p. 2 ) ASSUMPTION: Sales /
-
 marketing manager responsibilities include effective training program development.
 
 Figure 6.29 Future Reality Tree: Fordyce Corporation (p. 4).
 
-(From p. 1 )
-
-INJECTION #15 Fordyce’s
-
 compensation scheme “motivates” the sales force.
 
-(Continued)
-
-505 Fordyce generates the necessary capital to continually expand markets and products. [DESIRED EFFECT]
-
-505 R & L’s expectations are exceeded. [DESIRED EFFECT] NOTE: R & L is the
-
-parent company.
-
-504 Fordyce is (more and more) highly profitable. [DESIRED EFFECT]
-
-502 Sales revenue and Throughput increase (more and more). [DESIRED EFFECT]
-
-Positive Reinforcing
-
-Loop #2
+**NOTE:** R & L is the parent company.
 
 503 Inventory and operating expenses are effectively controlled across the system.
 
-501 A large (larger) percentage of the potential customer base demands Fordyce products. [DESIRED EFFECT]
-
-306 Fordyce has an effective management system. [DESIRED EFFECT]
-
-(From p. 3 )
-
 **NOTE:** At some point, Fordyce achieves market dominance.
-
-MAG
-
-407 Fordyce is (more and more) highly competitive in the market. [DESIRED EFFECT]
-
-307 Customers are delighted with Fordyce’s product offerings. [DESIRED EFFECT]
-
-(From p. 4 )
-
-(From p. 3 )
 
 Figure 6.29 Future Reality Tree: Fordyce Corporation (p. 5).
 
-(Continued) NB-1-10 Eventually, Fordyce’s profitability suffers. [UNDESIRABLE EFFECT]
-
-NB-1-10 Fordyce eventually loses customers to competitors. [UNDESIRABLE EFFECT]
-
 NB-1-11 Good sales and marketing managers are key to maintaining customer relationships .
-
-NB-1-10 Fordyce loses it’s highly qualified sales and marketing manager. [UNDESIRABLE EFFECT]
-
-NB-1-07 A competitor makes Fordyce’s sales and marketing manager a highly attractive offer. (Transitional
-
-arrows)
-
-**ASSUMPTIONS:**
 
 1. Typical compensation packages are easily exceeded.
 2. Competitors have extra money to “throw” at prospective candidates.

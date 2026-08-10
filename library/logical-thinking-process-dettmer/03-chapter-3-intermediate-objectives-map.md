@@ -2,22 +2,6 @@
 
 ![page 67](images/p067.png)
 
-Map Current Reality Tree GOAL Undesirable Effects Critical Success Factors Intermediate Effects Necessary Conditions Root Causes
-
-What is the GOAL and what are the steps to reach it?
-
-WHAT to change? Evaporating Cloud Transition Tree
-
-(Conflict Resolution Diagram) Objective Objective Intermediate Effects Requirements Specific Actions Prerequisites What to
-
-change TO? Prerequisite Tree
-
-Objective (Injection) How to CAUSE
-
-the change? Future Reality Tree Desired Effects Intermediate Effects
-
-Obstacles, Intermediate Objectives Injections
-
 > It is more important to know where you are going than to get there quickly. Do not mistake activity for achievement.
 >
 > —Mabel Newcomber
@@ -40,7 +24,6 @@ The IO Map is intended to fix in time and space a firm baseline or standard for 
 - The goal and CSFs exist in an interdependent, hierarchical structure.
 - The goal will be unique to each system.
 - Critical success factors and their interrelationships will be unique to each system and the environment in which the system functions or competes.
-
 - CSFs and NCs are related to each other in a necessity-based configuration that reflects the rule set governing the system's competitive/functional environment.
 - The Goal, CSFs, and NCs can be determined by people within or outside of a system.
 - A robust IO Map will present an accurate picture of a system's goal, CSFs, and their supporting NCs.
@@ -79,25 +62,11 @@ How can we be sure of applying efforts where they'll do the most good? Goldratt 
 
 #### The Goal
 
-Determining what needs changing requires that we first know what we're trying to achieve—where we want to be when all is said and done. Or, as Stephen Covey suggests, “Begin with the end in mind.”2:95 There's a simple reason for doing this. The desire to
-
-* In fact, for some people sphere of influence is all they have. They may not even have unilateral decision authority over something as basic as the television remote control!
+Determining what needs changing requires that we first know what we're trying to achieve—where we want to be when all is said and done. Or, as Stephen Covey suggests, “Begin with the end in mind.”2:95 There's a simple reason for doing this. The desire to * In fact, for some people sphere of influence is all they have. They may not even have unilateral decision authority over something as basic as the television remote control!
 
 ![page 71](images/p071.png)
 
-(Local, state, and national governments)
-
-(Weather) (Current
-
-events) WORK (Social
-
-organizations)
-
-My desk at work HOME SPAN OF CONTROL SPHERE OF INFLUENCE
-
 “My World” A Personal System…Span of Control and Sphere of Influence in Work, Home, and Society change something stems from dissatisfaction with the current situation. Dissatisfaction, in turn, grows from the perception of a gap between what is and what should be. Before we can legitimately criticize what is, it's essential for us to have a clear impression of what should be—in other words, our system's goal. An unequivocal goal statement is the basic starting point. By definition, a goal is an end to which a system's collective efforts are directed.6 To that extent, it might be considered a destination of sorts. A destination naturally implies a journey across the aforementioned gap between where we are and where we want to be. In order to determine the size of the gap and the direction of the correction needed, agreement on the system's goal is essential.
-
-Figure 3.1
 
 System boundary, span of control, and sphere of influence.
 
@@ -115,19 +84,11 @@ In striving for a goal, inevitably we find certain high-level requirements or ne
 
 The relationship among the ultimate system goal, the critical success factors, and their supporting necessary condition hierarchy can be represented in a single logic tree called an Intermediate Objectives (IO) Map (see Figure 3.4). The IO Map is a cascading structure of requirements, from general at the upper level to more specific at the lower level. In its entirety, it represents what ought to be happening—the system's destination, mentioned earlier. Notice, too, that the CSFs in Figure 3.4 are terminal outcomes and that the subordinate NCs are more narrowly focused, detailed efforts. Critical Success Factor Necessary Condition Necessary Condition Necessary Condition
 
-Figure 3.2 Critical Success Factor Critical Success Factor Necessary Condition Necessary Condition Necessary Condition
-
 Necessary conditions: prerequisites to critical success factors.
 
 * I know, I know...when it comes to government agencies, they often seem more like civil masters than civil servants, but it's not supposed to be that way!
 
 ![page 73](images/p073.png)
-
-Critical Success Factor Necessary Condition Necessary Condition
-
-Figure 3.3 Necessary Condition Necessary Condition Necessary Condition Necessary Condition
-
-Necessary conditions: a vertical hierarchy.
 
 #### Strategic Application
 
@@ -139,90 +100,17 @@ There's a little poem that illustrates the nature of complex systems: Big fleas 
 
 ![page 74](images/p074.png)
 
-MAXIMUM PROFITABILITY
-
-(Goal)
-
-High demand for products and services (CSF)
-
-Cost-effective capacity and capability to deliver (CSF) (Critical Success
-
-Factors) Effective
-
-marketing and sales (CSF) Innovative
-
-product and service design (NC) Competitive
-
-advantage (CSF)
-
-“Leading edge” processes (CSF)
-
-Secure, satisfied workforce (NC)
-
-World-class methods (NC) (Necessary
-
-Conditions)
-
-Highly qualified employees (NC)
-
-Figure 3.4
-
-Highly motivated employees (NC)
-
-Strategic Intermediate Objectives (IO) Map.
-
 #### IO Maps Are Unique
 
 An Intermediate Objectives Map for a particular system will be unique to that system and the environment in which it operates. This should not be surprising, since it represents the set of interdependent conditions that any given system must satisfy in order to achieve its goal. That set will differ for Boeing, Microsoft, Archer Daniels Midland, the Los Angeles
 
 ![page 75](images/p075.png)
 
-External Environment External Environment
-
-(Ultimate system boundary)
-
-(Ultimate system boundary) Internal System Internal System
-
-Corporate level
-
-Corporate level Goal CSF CSF
-
-Business division Business division Goal
-
-NC (NC) CSF Directorate Directorate
-
-NC CSF Goal
-
-NC
-
-NC
-
-NC
-
-NC (NC) Division Division Department Department Goal CSF (CSF) CSF Goal CSF (CSF) CSF CSF
-
-NC
-
-NC CSF Branch
-
-NC Organizational Structure
-
-Figure 3.5
-
-NC
-
-NC IO Map Hierarchy
-
-The “nested” hierarchy.
-
 Unified School District, the United Way, the U.S. Department of the Interior, Swain's General Store, the Yankee Candle Company...you get the idea. None of these systems will have the same IO Map as any other. Though there may be common elements among them, each system’s IO Map will reflect the unique, interconnected elements necessary for that system to succeed—to achieve its goal—in its chosen mission and the environment in which it operates. Whether the system in question is a government, a multinational corporation, an army, a family, an individual, or even a plant in a garden, there will be a specific, unique IO Map that identifies the hierarchy of requirements the system must meet in order to realize its goal. Two identical systems operating in the same environment might be the only possible exceptions. Characteristics of the IO Map
-
-Though unique in their content, all IO Maps have some common basic characteristics:
 
 - They terminate in the system goal at the top.
 - A limited number of critical success factors—usually no more than three to five— are the immediately preceding prerequisites to achieving the goal. Normally, these are high-level outcomes of supporting (subordinate) requirements or necessary conditions.
 - A limited number of necessary conditions—milestones—must be attained, sometimes in combination, in order to satisfy each critical success factor.
-
 - Each successive descending layer of necessary conditions is somewhat more specific or detailed than the layer above it. There should not be more than about two layers of necessary conditions below the level of critical success factors.
 - As a whole, the IO Map represents the destination and key intermediate milestones the system is striving for. CSFs and NCs are not a matter of choice or wishful thinking; their existence and necessity is a matter of logic that is governed by the choice of the system mission, the environment in which it functions, and its stated goal.
 
@@ -250,85 +138,9 @@ The first step is to determine the boundary of the system under consideration, y
 
 ![page 77](images/p077.png)
 
-GOAL
-
-A robust, responsive production process CSF CSF CSF Minimum
-
-manufacturing cycle time Maximum
-
-first-time quality Maximum
-
-flexibility (adaptability to customer demand)
-
-NC High-quality raw materials
-
-NC Effective
-
-process quality assurance
-
-NC
-
-NC Meet ISO 9000
-
-requirements
-
-NC
-
-Short raw material orderto-delivery lead times
-
-NC
-
-High quality, fast, reliable supplier Effective
-
-application of flowbased production methods
-
-NC
-
-NC Minimum
-
-production scheduling cycles
-
-Just-in-time work-inprocess flow
-
-NC Effective buffer management
-
-Figure 3.6
-
-Production process IO Map.
-
 An easy way to determine the boundaries of an organizational system is to ask, “Who’s this system analysis for? Who’s the ultimate decision maker in this system or subsystem?” The answers to these questions tell you what the boundaries of the organizational unit will be. Taking this first important step helps us determine what’s within the system—directly within our span of control or sphere of influence. In other words, the components or factors we may be able to work on directly. Determining our span of control and sphere of influence tells us the degree to which we’ll need the assistance of others to effect changes that we ourselves don’t have the authority to make alone. In other words, who else’s “horsepower” must we bring to bear on the situation? Knowing the answer to this question gives us a preliminary sense for the scope of the persuasion task ahead of us.
 
 ![page 78](images/p078.png)
-
-GOAL
-
-All teenage alcohol poisoning deaths in the U.S. are prevented CSF
-
-High visibility (public awareness) CSF CSF
-
-Effective use of multiple media and communication channels CSF Adequate
-
-funding
-
-Flexible, effective organization
-
-NC NC Aggressive
-
-public relations, promotion Organization
-
-optimized for the mission
-
-NC
-
-NC
-
-Compelling, engaging message
-
-Figure 3.7 Preferred
-
-communication channels engaged/activated
-
-Not-for-profit IO Map.
 
 #### 2. Determine the System Goal
 
@@ -342,17 +154,7 @@ Once we know the boundaries of the system we’re working with, the next step is
 
 Once the goal is agreed upon, we must unearth the major critical success factors (CSFs) without which the goal can’t be achieved. Normally, there aren’t more than three to five of these, and there may be fewer. The common characteristic of CSFs is that they’re highlevel terminal events or milestones. Their satisfaction is usually the culmination of more specific, detailed efforts, usually in different functional areas. We might call these major functional outcomes. Remember that this is a complex system we’re talking about, so each of the major system components is likely to be represented in the critical success factors in some way. Also keep in mind that critical success factors, by definition, are high-level “showstoppers.” If they don’t happen, we don’t reach our goal. Figure 3.9 shows typical CSFs for the goals indicated in Figure 3.8.
 
-Figure 3.8 GOAL
-
-Increasing profitability, now and in the future. GOAL
-
 Cost-effective improvement of the overall health of the community.
-
-(Typical goal for a commercial for-profit company)
-
-(Typical goal for a notfor-profit medical center)
-
-Goal statements (examples).
 
 ![page 80](images/p080.png)
 
@@ -362,158 +164,33 @@ Goal statements (examples).
 
 The critical success factors can’t stand alone. They’re high-level outcomes, only slightly less abstract than the goal itself. Their distinguishing characteristic is that they are related to the functional activity of some component of the system. For the commercial company illustrated in Figure 3.9, these functions are revenue generation, cost control, and inventory control. In the case of the medical center, they’re the cost-effective prevention of illness or injury and the remediation of such illness or injury as does occur. Notice that in both cases, the CSFs are functional subsets of the goal they’re supporting, but they’re not “actionable” in and of themselves. In other words, the discrete activities needed to make the CSFs happen lie below the level of the CSFs themselves. These activities are necessary conditions for the satisfaction of the CSFs. We might call them “building blocks.” The CSFs rest on the foundation of these necessary conditions (NCs). The NCs may be quantifiable, measurable outcomes of specific activities, or they may be qualitative outcomes—“yes” or “no” conditions. Their common characteristics are that they are functionally related to the CSFs they support and that they are more specific in their content. GOAL
 
-Increasing profitability, now and in the future. Maximum
-
-revenue Optimum
-
-inventory/ investment
-
-Optimum cost Critical Success Factors – Commercial For-Profit Corporation GOAL
-
 Cost-effective improvement of the overall health of the community.
-
-Prevent illness/ injury affordably
-
-Cure illness/injury affordably in minimum time Critical Success Factors, Not-for-Profit Medical Center
-
-Figure 3.9
-
-Critical success factors (examples).
 
 ![page 81](images/p081.png)
 
 As we saw earlier, NCs are hierarchical, too, just like the goal and the CSFs. Theoretically, we could build such a vertical hierarchy from the goal of an organization all the way down to the day-to-day functions of the lowest-level employee. But for the purposes of establishing an overall destination, that would be far too much detail to include in an IO Map. Let’s not lose sight of the purpose of the IO Map: to define a clearly identifiable benchmark for success of the overall system. Of necessity, then, we can’t allow this IO Map to become too detailed. It’s not likely that any CSFs will need more than three to five NCs. Because these NCs themselves are hierarchical, there could be more than one layer of them below the CSFs, but as an arbitrary rule of thumb, we’ll try to limit the NC to no more than two layers, if possible. Figure 3.10 shows the NCs for the two sets of goals and CSFs from Figures 3.8 and 3.9. GOAL
-
-Increasing profitability, now and in the future. Goal Critical Success Factors Necessary Conditions Maximum
-
-revenue Optimum
-
-inventory/ investment
-
-Optimum cost
-
-World-class marketing & sales Competitive
-
-advantage Efficient
-
-production
-
-Effective inventory management Innovative
-
-products and services Robust
-
-distribution channels
-
-Leading-edge methods
-
-State-of-the-art technology Necessary Conditions – Commercial For-Profit Corporation GOAL
-
-Cost-effective improvement of the overall health of the community. Goal Critical Success Factors
-
-Prevent illness/ injury affordably
-
-Robust health improvement/ maintenance effort Necessary Conditions
-
-High-quality health practitioners
-
-Cure illness/injury affordably in minimum time
-
-Effective community outreach
-
-State-of-the-art diagnostic capability
-
-Effective, efficient management/administrative methodology Necessary Conditions – Not-For-Profit Medical Center
-
-Figure 3.10
-
-Necessary conditions (examples).
-
-Timely, effective first-time treatment
 
 ![page 82](images/p082.png)
 
 1. Arrange the IO Map Components Now it’s time to start constructing the IO Map itself. If you captured your CSFs and NCs as a list on a single sheet of paper (see Figure 3.11), it’s time to convert them to entities for the IO Map. If you created your list of CSFs and NCs on Post-it Notes, you can begin arranging them immediately. Transcribe the goal, CSFs, and NCs onto Post-it Notes or enter them into a computer application that can generate logic tree entities. Then, either on Post-it Notes or in the computer, arrange the logic tree entities in a rough pyramid, with the goal at the top, the CSFs in the middle, and the supporting NCs near the bottom. Figure 3.12 shows the entities listed in Figure 3.11 converted to both forms.
 2. Connect the Goal, Critical Success Factors, and Necessary Conditions The tree is formed when the goal, CSFs and NC are connected in a necessity-logic relationship. Connect each of the CSFs to the goal. If one or more CSFs actually precede and lead to another CSFs, rearrange the entities and connect them with single arrows, as required.
 
-GOAL GOAL Increasing
+profitability, now and in the future.
 
-> profitability, now and in the future.
->
-> - Increasing profitability, now and
-
-> in the future CRITICAL SUCCESS FACTORS
->
-> - Maximum revenue
-
-> - Optimum cost
-
-Maximum
-
-> revenue
->
-> - Optimum inventory/investment
-
-Optimum
-
-cost NECESSARY CONDITIONS Optimum
-
-> inventory/ investment
->
-> - World-class marketing & sales
-
-> - Competitive advantage
-
-> - Efficient production
-
-> - Effective inventory management
-
-> - Etc.
-
-> - Etc.
-
-World-class marketing and sales Competitive
-
-advantage Etc. Effective
-
-inventory management
-
-Figure 3.11
-
-Convert goal, CSF, and NCs to logic tree entities. Efficient below the Critical Success Factors (no more than two layers)
-
-production
+- Increasing profitability, now and in the future
+- Maximum revenue
+- Optimum cost
+- Optimum inventory/investment
+- World-class marketing & sales
+- Competitive advantage
+- Efficient production
+- Effective inventory management
+- Etc.
+- Etc.
 
 ![page 83](images/p083.png)
 
-GOAL Increasing
-
 profitability, now and in the future.
-
-Goal at the top Critical Success
-
-Factors below the Goal Maximum
-
-revenue
-
-World-class marketing and sales Optimum
-
-cost Competitive
-
-advantage Necessary Conditions
-
-Figure 3.12
-
-Etc. Optimum
-
-inventory/ investment Efficient
-
-production Effective
-
-inventory management
-
-Etc.
-
-Arrange logic tree entities.
 
 Connect the NCs to the appropriate CSFs using single arrows. You identified most of these relationships when the NCs were articulated, so connection should be just a formality. Create a second layer of NCs if the situation dictates.
 
@@ -524,52 +201,6 @@ Connect the NCs to the appropriate CSFs using single arrows. You identified most
 Remember, this is not a sufficiency-logic tree, so not all the Categories of Legitimate Reservation apply the way they would to a Current Reality, Future Reality, or Transition Tree. Even though this is a necessity-logic tree, you can check for some of the same logical elements that you find in the CLR.
 
 ![page 84](images/p084.png)
-
-GOAL
-
-Increasing profitability, now and in the future. Goal Critical Success Factors Maximum distribution channels Necessary Conditions – Commercial For-Profit Corporation Goal GOAL
-
-revenue Optimum
-
-cost Competitive
-
-advantage
-
-World-class marketing & sales
-
-Optimum inventory/ investment Efficient
-
-production
-
-Effective inventory management
-
-Leading-edge methods
-
-State-of-the-art technology Necessary Conditions Innovative
-
-products and services Robust
-
-Cost-effective improvement of the overall health of the community.
-
-Cure illness / injury affordably in minimum time
-
-Prevent illness/ injury affordably Critical Success Factors
-
-Robust health improvement/ maintenance effort
-
-Effective community outreach
-
-Timely, effective first-time treatment Necessary Conditions
-
-High-quality health practitioners
-
-State-of-theart diagnostic capability
-
-Effective, efficient management/administrative methodology Necessary Conditions – Not-For-Profit Medical Center
-
-Figure 3.13
-
-Strategic-level IO Maps (examples).
 
 - Consider the CSFs, for example. Are they really indispensable to realizing the goal? If a particular CSF was absent, could the goal still be achieved? If so, then it wasn’t a legitimate CSF in the first place. If it must be there, you can be sure that it’s a legitimate CSF. Repeat this process for each of your proposed CSFs.
 - Is the proposed CSF the last thing that must happen (that is, a terminal outcome) before you can safely say the goal will be achieved? Or does it actually produce some intermediate outcome, which would likely be the real CSF?
@@ -587,9 +218,6 @@ The “10,000-foot test” is only your individual effort to verify the complete
 
 1. Define the System
 - Decide on the system boundary: international, national, state, corporate, division, family, personal, and so on.
-
-GOAL
-
 1. Determine the System Goal
 - What is the single outcome for which the system exists?
 - What would the system’s owners say it is?
@@ -606,9 +234,6 @@ GOAL
 1. Determine the Key Necessary Conditions (NC)
 - What key activities or tasks are required to realize the CSF? (No more than 3-5 per CSF.)
 - Limit your NCs to no more than two layers in the final IO Map. (If you have more, trim some off.)
-
-GOAL
-
 1. Arrange the IO Map Components
 - Goal at the top
 - CSF below the goal
@@ -620,23 +245,6 @@ GOAL
 1. Verify the Connections
 - Necessity logic, not sufficiency
 - Cross-check finished connections with your intuition (“10,000-foot view”)
-
-CSF #1
-
-NC-1a
-
-NC-1b
-
-CSF #3
-
-NC-2a
-
-NC-3a GOAL
-
-CSF #1
-
-NC-1a NC-1b
-
 1. Enlist Outside Scrutiny of the Entire IO Map
 - Identify and insert any missing CSF.
 - Identify and insert any missing NC.
@@ -645,23 +253,7 @@ NC-1a NC-1b
 - “Trim off” any low-level NCs that would be better addressed in execution planning (not “destination determination”).
 - Obtain outside scrutiny when you think its complete and as good as you can make it.
 
-Figure 3.14
-
-CSF #2
-
-CSF #2
-
-NC-2a
-
-CSF #3
-
-NC-3a
-
-NC-3b NC-2b
-
 Procedures for constructing an Intermediate Objectives (IO) Map - abbreviated checklist.
-
-NC-3c
 
 ### Summary and Conclusion
 
@@ -669,53 +261,7 @@ In the Lerner and Lowe Broadway musical play Paint Your Wagon, part of a verse f
 
 ![page 88](images/p088.png)
 
-(Goal) GOAL
-
 Make more money now and in the future.
-
-88 Chapter Three (Critical Success
-
-Factors) Maximum
-
-revenues (Supporting Necessary
-
-Conditions)
-
-Sales fill up production capacity Optimized
-
-cost Sufficient
-
-production capacity
-
-High market demand Optimum
-
-product price Efficient
-
-production operations
-
-World-class production methods Competitive
-
-advantage
-
-High return on investment Optimized
-
-overhead Effective
-
-capital investment Optimized
-
-inventory management
-
-State-of-the-art equipment World-class inventory management methods Effective
-
-marketing and sales Superior
-
-employees
-
-Figure 3.15
-
-**NOTE:** Normally, try to limit Necessary Conditions to the two highest layers immediately below the Critical Success Factors
-
-Example: a real-world IO Map.
 
 ### Endnotes
 

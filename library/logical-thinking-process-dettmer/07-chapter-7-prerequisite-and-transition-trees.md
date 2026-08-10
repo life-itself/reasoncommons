@@ -4,24 +4,6 @@
 
 ![page 261](images/p261.png)
 
-Intermediate Objectives
-
-Map Current Reality Tree GOAL Undesirable Effects Critical Success Factors Intermediate Effects Necessary Conditions Root Causes
-
-What is the GOAL and what are the steps to reach it?
-
-WHAT to change? Evaporating Cloud Transition Tree
-
-(Conflict Resolution Diagram) Objective Objective Intermediate Effects Requirements Specific Actions Prerequisites What to
-
-change TO? Prerequisite Tree
-
-Objective (Injection) How to CAUSE
-
-the change? Future Reality Tree Desired Effects Intermediate Effects
-
-Obstacles, Intermediate Objectives Injections
-
 > The devil is in the details.
 >
 > —Unknown
@@ -46,15 +28,7 @@ The Prerequisite Tree is a logical structure designed to identify all obstacles 
 
 (usually an FRT Injection) Intermediate Objective OBSTACLE Intermediate Objective Intermediate Objective Intermediate Objective Intermediate Objective Intermediate Objective OBSTACLE Intermediate Objective OBSTACLE Intermediate Objective OBSTACLE Intermediate Objective Intermediate Objective
 
-Figure 7.1
-
-Prerequisite Tree. Intermediate Objective
-
 ![page 264](images/p264.png)
-
-PURPOSE
-
-The Prerequisite Tree is intended to do several things:
 
 - Identify all the tasks or activities required to achieve a limited objective.
 - Determine the sequence of these tasks or activities.
@@ -63,11 +37,6 @@ The Prerequisite Tree is intended to do several things:
 - Identify and depict previously undefined steps to an objective end when one does not know precisely how to achieve it.
 - Structure the execution of a Future Reality Tree, which identifies major accomplishments or milestones in complex problem solutions, into a timesequenced “projectized” implementation plan.
 - Array discrete implementation tasks and activities for assignment of accountability for completion.
-
-ASSUMPTIONS
-
-The effectiveness of the Prerequisite Tree is based on the following assumptions:
-
 - Any complex outcome depends on the completion of some determinate number of component tasks or activities.
 - The minimum required component tasks or activities can be identified.
 - Obstacles to a desired outcome actually exist in reality.
@@ -98,43 +67,11 @@ The Prerequisite Tree is not like the Current Reality Tree (CRT) or the Future R
 
 The entities on the LOWER level... are sufficient to produce the entity on the UPPER level...
 
-We have a fire.
-
-...then...
-
-If...
-
-...and...
-
-We have combustible fuel.
-
-Figure 7.2
-
 ...and... The fuel and the ignition source exist in an oxygen-rich environment.
 
 We have a source of ignition in close proximity to the fuel.
 
-Sufficiency.
-
 The entity on the UPPER level is a task or activity… that requires prior completion of the tasks or activities on the LOWER level...
-
-In order to... Commence
-
-construction
-
-We must... Complete
-
-purchase of the property
-
-Figure 7.3
-
-Necessity.
-
-We must... Obtain required construction permits
-
-We must... Obtain
-
-financing
 
 The PRT reflects necessity—the minimum requirements for going ahead to the next step—not sufficiency. To reach the outcome, or result, of having a house built and ready for occupancy, we need much more than just the minimum (a lot, cement, steel, and lumber). We also must provide money, nails, roofing material, drywall, electrical wiring and fixtures, plumbing, flooring, and paint. You must also provide other factors as well (plans, tools, skill, time, and so forth) to be able to say, “This is sufficient to have a house.”
 
@@ -159,51 +96,13 @@ Construction of a PRT is a little like peeling the layers of an onion: we start 
 
 As you can see in Figure 7.1, the PRT’s objective is realized by accomplishing component tasks and activities. We refer to these as intermediate objectives (IO). Visually, they exist in a hierarchical relationship in the PRT, with arrows from the ones that must precede leading to the ones that follow. In the real world, these arrows reflect sequence, or precedence, not really hierarchy. Why do we refer to them to as “intermediate”? It’s because they constitute transitional steps (actions) that must be completed before we can attain our ultimate objective. Desired Effect Future Reality Tree Prerequisite Tree OBJ
 
-(Injection)
-
-IO
-
-IO
-
-IO
-
-IO
-
-IO OBS
-
-IO OBS OBS
-
-IO
-
-IO IO OBS
-
-IO OBJ = Objective OBS = Obstacle IO = Intermediate Objective
-
-Figure 7.4
-
-IO
-
 The Prerequisite Tree and the Future Reality Tree.
 
 ![page 269](images/p269.png)
 
 Most IOs are required tasks that we probably know how to perform. They’re included in the PRT because they’re “enablers” of the next step in the process. There may not be any particular challenge associated with completing them, even though they may be tedious. They’re just known things that must be done and we include them in the PRT because we don’t want to overlook or forget them. But some IOs serve a unique purpose: they’re needed to overcome specific, discrete obstacles that stand in the way of realizing the PRT’s objective. We might consider them problem solutions on a small scale. For example, let’s say that to complete the building of our house, we need to have electrical wiring installed that satisfies local government code requirements. But we face a major obstacle—we don’t have the knowledge or skill to do that kind of work ourselves. The code may actually require someone with an official certification to do the work, and perhaps we don’t have such a certification. What can we do about this obstacle? You’ve probably already figured out a way around it: we hire a certified electrical contractor to wire the house. (See Figure 7.5.)
 
-IO without an obstacle (a task we must not forget to do) Complete
-
-electrical wiring of the house.
-
-An obstacle to the natural progression of activity that would prevent accomplishment of the next task
-
 I don’t have the skill, knowledge, or certification to do electrical work.
-
-Hire a certified electrical contractor.
-
-IO specifically created to overcome an obstacle (in this case, a task we don’t know how to do)
-
-Figure 7.5
-
-Obstacles and intermediate objectives.
 
 #### Different Alternatives
 
@@ -231,51 +130,7 @@ As we just mentioned, most IOs are merely discrete tasks we must perform in a sp
 
 ![page 271](images/p271.png)
 
-Most-Common Configurations
-
-IO
-
-IO OBS
-
-IO
-
-IO
-
-IO
-
-One, two, or more IOs with no Obstacle
-
-IO One Obstacle with one IO
-
-Less-Frequent, but Still-Possible Configurations IO
-
-IO OBS OBS
-
-IO
-
-IO
-
 If three IOs really ARE required, depict them THIS way to minimize visual confusion… requiring two IOs Look for a sequential relationship you may have missed
-
-IO OBS
-
-IO
-
-IO
-
-IO ?
-
-IO
-
-IO IO One Obstacle
-
-IO
-
-One Obstacle requiring more than two IOs
-
-Figure 7.6
-
-Multiple intermediate objectives.
 
 #### Overcome, Not Obliterate
 
@@ -306,34 +161,6 @@ In the CRT and FRT, we tend to see causes and effects primarily as conditions—
 
 Obstacles, however, should always be worded as conditions, using such words as “is” or “have.” For example, the obstacle might be phrased “We don’t have . . .” or “We don’t know…” Obstacles should never be worded as needs (for example, “We need . . .”). A need is not an obstacle. The condition of that need not being satisfied could be an obstacle. For example, “I need to get around traffic jams” is not an obstacle. “Traffic is congested” might be. Notice the difference in the wording: “is” (condition), versus “need.” And the intermediate objective that might overcome that condition-obstacle, “Take an alternate route to work,” is an action. To summarize the action-condition discussion, take a look at Figure 7.7. All the obstacles are conditions. All the IOs that overcome them are actions (activities or tasks). Only the overall objective is a condition. Notice, too, that the arrows are drawn to connect the IOs, not the obstacles. Since not all IOs are likely to have obstacles, this is really the only way it can be done. OBJ = Objective OBS = Obstacle IO = Intermediate Objective
 
-IO (Action) OBS
-
-(Condition) OBJ
-
-(Condition)
-
-IO (Action)
-
-IO (Action)
-
-IO (Action)
-
-IO (Action)
-
-IO (Action)
-
-IO (Action) OBS
-
-(Condition) IO (Action) OBS
-
-(Condition) IO (Action) IO (Action)
-
-Figure 7.7
-
-Actions and conditions: when to use which? OBS
-
-(Condition) IO (Action)
-
 #### Sequence Dependency
 
 In solving any complex problem, one of the critical questions is, “What do we do first?” The Prerequisite Tree answers this question. After identifying obstacles and ways to overcome them, the next most important function a PRT serves is sequencing these ways (intermediate objectives) in the right order. Experience over the last decade has shown that when it comes to deciding in what sequence tasks should be completed, some people have difficulty with the concept of “earlier versus later.” For example, as we’ll see when we get to the procedures for constructing a PRT, at one step in the process we’ll have a collection of individual Obstacles and IOs (that is, not yet connected to one another). We’ll have to decide which ones to place near the bottom of the tree (“earlier”) and which ones go nearer the top (“later”). Here’s an example of sequence dependency. Let’s say your objective is to attend college. Before that can happen, you must be accepted for enrollment (see Figure 7.8). But before a college accepts you, you must apply to the college and you must qualify for their acceptance. Before you can apply, you must decide which college you want to attend. Before you can decide which college to attend, you must know whether it offers the course of study you desire. Before you can determine that, you have to know what field of study you wish to pursue. Before that can happen, it would be nice to have some kind of career goal in mind. A sequence dependency exists among intermediate objectives. The more complex the problem you’re trying to solve, the more important it will be to identify and properly sequence time-dependent events. This will occur as a matter of course as you construct the PRT. The easiest way to make that distinction is to visualize the PRT as the depiction of the flow of project activities. Picture yourself a thousand feet above the activities, which are laid out like a production line. Pose the question to yourself: Which of these IOs must take place closer to the beginning of the process, and which take place nearer to completion? Viewed in this way, the proper sequence usually presents itself with no difficulty. If you’re having difficulty seeing where a particular IO fits into a given sequence, it may well be that it doesn’t fit there at all—it may be part of a different sequence in the tree. Which brings us to the topic of…
@@ -344,81 +171,13 @@ Much as production processes or projects have different activities going on simu
 
 ![page 275](images/p275.png)
 
-OBJECTIVE
-
-Attend college
-
-Be accepted for enrollment
-
-THESE must be completed LATER in the process Apply for
-
-enrollment
-
-Decide which college to attend Qualify for
-
-acceptance
-
 **NOTE:** Some activities require substantially more time to complete than others. Though they may not be completed until very late in the process, they may have to be started very early—maybe even FIRST.
 
-I don’t know which colleges offer my desired field of study. Identify colleges offering my desired field of study
-
-THESE must be completed EARLIER in the process
-
-I don’t know what I want to do for a living. Decide on a
-
-career goal
-
-Figure 7.8
+I don’t know what I want to do for a living.
 
 Sequence dependency in a Prerequisite Tree.
 
 ![page 276](images/p276.png)
-
-IO OBJ OBJ
-
-IO
-
-IO
-
-IO OBS OBS
-
-IO
-
-IO
-
-IO
-
-IO
-
-IO OBS
-
-IO
-
-IO OBS OBS
-
-IO OBS
-
-IO
-
-IO
-
-IO
-
-IO OBS
-
-IO
-
-IO
-
-IO OBS
-
-IO Single linear sequence OBJ = Objective OBS = Obstacle IO = Intermediate Objective
-
-Figure 7.9
-
-IO Multiple parallel branches
-
-Parallelism in a Prerequisite Tree.
 
 #### Reading a Prerequisite Tree
 
@@ -430,27 +189,7 @@ Prerequisite Trees can be read from bottom to top or from top to bottom, dependi
 
 If, like Stephen Covey, you prefer to “start with the end in mind,” begin at the top with the objective and work downward to the earliest intermediate objective. Read the tree this way (see Figure 7.10): In order to…[OBJECTIVE or IO], we need to …[IO]. or In order to…[UPPER IO], we must…[LOWER IO] because…[OBSTACLE]. Another way to read the Prerequisite Tree from top to bottom—one that may “flow” a little more easily for some people—is this: We need to…[UPPER IO], but [OBSTACLE] stands in our way, so we must…[LOWER IO]. No Obstacle?
 
-Verbalize... OBJECTIVE
-
-Attend college
-
-“In order to attend college…
-
-Be accepted for enrollment
-
-...I must be accepted for enrollment.” Obstacle Present?
-
-Verbalize...
-
-Decide which college to attend
-
 “In order to decide which college to attend… “...because I don’t know which colleges offer my desired field of study.
-
-I don’t know which colleges offer my desired field of study Identify colleges offering my desired field of study
-
-Figure 7.10
-
-“...I must identify colleges offering my desired field of study…
 
 Verbalizing Prerequisite Trees: top to bottom.
 
@@ -460,31 +199,9 @@ Verbalizing Prerequisite Trees: top to bottom.
 
 If you’re more comfortable working forward chronologically, start from the bottom, reading the tree this way (see Figure 7.10): We must…[LOWER IO] to be able to…[UPPER IO] or We must…[LOWER IO] to overcome [OBSTACLE] in order to…[UPPER IO]. However, my personal experience leads me to conclude that most people will prefer the top-to-bottom approach. No Obstacle?
 
-Verbalize... Apply for
-
-enrollment
-
 “...in order to be able to apply for enrollment.”
 
-Decide which college to attend
-
-“...I must decide which college to attend…
-
-Verbalize... Obstacle Present?
-
-Identify colleges offering my desired field of study
-
 “…so that I can identify colleges offering my desired field of study.”
-
-“...to overcome the fact that I don’t know what I want to do for a living…
-
-I don’t know what I want to do for a living
-
-Decide on a career goal
-
-Figure 7.11
-
-“I must decide on a career goal…
 
 Verbalizing Prerequisite Trees: bottom to top.
 
@@ -497,19 +214,7 @@ Whether you intend to use the Prerequisite Tree as a stand-alone tool or as part
 1. Determine the Objective The first step is to establish the desired outcome of the effort that the PRT will reflect. This is comparable to determining the system’s goal in the IO Map procedure, but the PRT objective is both finite and limited. It’s the completion of a complex activity, such as a development project or organizational change of some kind. Like the IO Map goal, the PRT implies a time horizon for completion, though the tree itself doesn’t address time, only sequence. In most cases, you’ll use the PRT to determine the specific tasks and activities required to implement a specific injection from a Future Reality Tree. The logical way to begin is to modify the wording of the targeted injection so that it reads as a condition of achievement or completion. (See Figure 7.12.)
 2. Identify All Intermediate Objectives The second step requires some skill at visualization. You need to be able to picture in your mind all the diverse and various tasks and activities that must be completed in order to realize the objective. This is an exercise in “brainstorming.” Don’t limit yourself to only what you can think of. If possible, enlist the assistance of others to brainstorm with you.
 
-INJECTION #4 Open a new geographic market. OBJECTIVE
-
 XYZ Co. is selling and delivering throughout Europe.
-
-(From a Future Reality Tree) Directive Wadsffjccnkjfckeurdsfkjshlsekrjhdlxas
-
-sdfhsefcyusefxjedxjweadxjwaddsfcds zsdilfcjzsdfoidsispfo Tdjfhl;serjhfadwrijfcweroc ,pweoircwp seiruaweirweliudxwoiwexifuxwxweiud awdxhduxhawuxdnawudxnauawxdsx jdfkghleriucvhrnfucsoerfcmewriufcx ,
-
-(From a directive)
-
-Figure 7.12
-
-Step 1: Determine the objective. OBJECTIVE
 
 New information system is fully operational.
 
@@ -517,27 +222,9 @@ New information system is fully operational.
 
 You should strive to identify all the component activities that are required for the attainment of the objective. Some of these may be broader activities that are themselves composed of lesser component tasks. List them all. Use Post-it Notes and stick related notes together. Eventually different discrete functions may become separate branches in the PRT. (See Figure 7.13.)
 
-**NOTE:** The use of Post-it Notes is more useful in the Prerequisite Tree than in any of the other trees. It’s possible to construct any of the other trees sequentially using computer graphics programs, because the Current Reality Tree, Evaporating Cloud, and Future Reality Tree are constructed from top to
-
-OBJECTIVE
+**NOTE:** The use of Post-it Notes is more useful in the Prerequisite Tree than in any of the other trees. It’s possible to construct any of the other trees sequentially using computer graphics programs, because the Current Reality Tree, Evaporating Cloud, and Future Reality Tree are constructed from top to IO #6 IO #6a IO #4 IO #6b IO #4a IO #1 IO #6c IO #4b bottom an entity at a time, or from bottom to top. The PRT is the only one in which you first create a large number of entities, then piece them together, like a jigsaw puzzle. For this reason, the flexibility of being able to move Post-it Notes around is invaluable. It’s possible to build a PRT initially from scratch on a computer, but for most people it’s much more cumbersome (and slower) that way. Once the PRT pieces are in place on Post-it Notes, data entry into a flowcharting program goes much more quickly. When you think you’ve identified all the IOs you can, go on to the next step.
 
 New information system is fully operational.
-
-IO #6 IO #6a IO #4 IO #6b IO #4a IO #1 IO #6c IO #4b bottom an entity at a time, or from bottom to top. The PRT is the only one in which you first create a large number of entities, then piece them together, like a jigsaw puzzle. For this reason, the flexibility of being able to move Post-it Notes around is invaluable. It’s possible to build a PRT initially from scratch on a computer, but for most people it’s much more cumbersome (and slower) that way. Once the PRT pieces are in place on Post-it Notes, data entry into a flowcharting program goes much more quickly. When you think you’ve identified all the IOs you can, go on to the next step.
-
-IO #5
-
-IO #3
-
-IO #7 IO #8 IO #2
-
-No particular configuration… just get them all identified
-
-IO #9
-
-IO #9a
-
-Figure 7.13
 
 Step 2: Identify all intermediate objectives.
 
@@ -554,31 +241,7 @@ Step 2: Identify all intermediate objectives.
 
 ![page 282](images/p282.png)
 
-OBJECTIVE
-
 New information system is fully operational.
-
-IO #6 IO #6a IO #4 OBS
-
-IO #6b
-
-IO #4a IO #1 IO #6c IO #4b OBS OBS
-
-IO #5
-
-IO #3
-
-IO #7 IO #8 OBS
-
-IO #2 OBS
-
-Attach obstacles to the IO they obstruct
-
-IO #9
-
-IO #9a
-
-Figure 7.14
 
 Step 3: Surface all possible obstacles.
 
@@ -586,45 +249,7 @@ What we’re trying to do here is to establish the major structure of branches w
 
 ![page 283](images/p283.png)
 
-OBJECTIVE
-
 New information system is fully operational.
-
-(These relate to training…)
-
-(…these relate to development)…
-
-(…and these relate to installation & test)
-
-IO #6 IO #2
-
-IO #4
-
-IO #6a OBS
-
-IO #4a
-
-IO #6b
-
-IO #4b
-
-IO #6c
-
-IO #5 OBS OBS
-
-IO #3
-
-IO #8
-
-IO #1 OBS
-
-IO #9 IO #7
-
-IO #9a OBS
-
-Group Intermediate Objectives and Obstacles functionally
-
-Figure 7.15
 
 Step 4: Organize the intermediate objectives and obstacles.
 
@@ -638,33 +263,9 @@ Now examine each of your branches (functional categories) individually. Determin
 
 **NOTE:** As you move IOs around, make certain that any Obstacles obstructing an Intermediate Objective remain attached to the IO they obstruct.
 
-OBJECTIVE
-
 New information system is fully operational.
 
-Place the IOs that must happen closer to the end near the top. LATER
-
-IO #8 IO #3 IO #2 OBS
-
-IO #7 OBS
-
-IO #4 IO #4a IO #4b IO #6 OBS
-
-IO #6a OBS
-
-IO #6b
-
-IO #1 IO #9
-
-IO #6c OBS
-
-IO #9a EARLIER
-
-IO #5
-
 Place the IOs that must happen near the beginning of the process close to the bottom.
-
-Figure 7.16
 
 Step 5: Sequence the intermediate objectives within each branch.
 
@@ -687,33 +288,7 @@ Notice that up to this point there are not yet any arrows in the PRT. For now, w
 
 ![page 286](images/p286.png)
 
-OBJECTIVE
-
 New information system is fully operational.
-
-IO #3 LATER (Added in VERTICAL
-
-sequence)
-
-IO #10 NEW
-
-IO #4
-
-IO #4a
-
-IO #4b OBS
-
-IO #9 EARLIER
-
-IO #9a (Added in LATERAL
-
-position)
-
-IO #9b (new) OBS
-
-(new)
-
-Figure 7.17
 
 Step 6: Connect the intermediate objectives within each branch.
 
@@ -721,28 +296,8 @@ Once you’ve decided on an IO (or more than one) to overcome an obstacle, posit
 
 ![page 287](images/p287.png)
 
-IO #4
-
-IO #4b OBS
-
-IO #11 (new)
-
-IO #12 (new)
-
-IO #9
-
 - New IOs to overcome obstacles
 - Obstacles moved from their original positions
-
-IO #9a
-
-IO #9b (new) OBS
-
-(new) IO #13 (new)
-
-Figure 7.18
-
-Step 7: Overcome the obstacles.
 
 #### 8. Integrate the Branches
 
@@ -750,118 +305,16 @@ Once each individual branch is complete, the branches must be connected into a s
 
 ![page 288](images/p288.png)
 
-OBJECTIVE
-
-New information system is fully operational. (Installation &
-
-test branch)
-
-IO #8 OBS
-
-IO #15 (new) (Training
-
-branch) IO #8 IO #2 (Development
-
-branch) IO #6
-
-IO #7
-
-IO #3
-
-IO #6b OBS
-
-IO #14 (new)
-
-IO #6a
-
-IO #10 (new) OBS
-
-IO #16 (new)
-
-IO #4
-
-IO #4a
-
-IO #9
-
-IO #9a OBS
-
-IO #17 (new) IO #4b OBS
-
-IO #11 IO #12 (new) (new)
-
-IO #9b (new) OBS
-
-(new) IO #13 (new)
-
-Figure 7.19
-
-IO #6c
-
-Step 8: Integrate the branches.
-
-IO #1
-
-IO #5
-
 ![page 289](images/p289.png)
 
 9. Connect the Main Body of the Tree to the Objective Now we’re ready to make this a complete Prerequisite Tree. It’s time to connect the integrated branches to the objective. At this point, it’s most likely that this will be just a simple action of drawing an arrow between the top-most intermediate objective and the objective of the PRT. However, if upon examining that connection you discover another sequential activity or task missing, insert the missing element between the two as a new IO. (See Figure 7.20.) OBJECTIVE
 
 New information system is fully operational.
 
-IO #8
-
 - Link the uppermost IO to the Objective
 - Incorporate additional IOs, if required
 
-OBS
-
-IO #15 (new)
-
-IO #8 IO #2
-
-IO #6
-
-IO #7
-
-IO #3
-
-IO #6b OBS
-
-IO #14 (new)
-
-IO #6a
-
-IO #10 (new) OBS
-
-IO #16 (new)
-
-IO #4
-
-IO #4a
-
-IO #9
-
-IO #9a
-
-IO #6c OBS
-
-IO #17 (new) IO #4b OBS
-
-IO #11 IO #12 (new) (new)
-
-IO #9b (new) OBS
-
-(new) IO #13 (new)
-
-Figure 7.20
-
 Step 9: Connect the main body of the PRT to the objective.
-
-IO #1
-
-IO #5
 
 #### 10. Scrutinize the Entire Tree
 
@@ -895,14 +348,6 @@ Each of two vertically connected IOs, and an intervening obstacle if there is on
 - Is C sufficient to block A?
 - Is B sufficient to overcome C? If you can’t answer “yes” to either of these questions, the IO-Obstacle relationship isn’t valid. If you don’t really have an obstacle, you’ll be wasting your time trying to overcome it. If the lower IO is ineffective, you’ll never realize the upper IO.
 
-Upper Intermediate Objective
-
-I make my real opinion known Obstacle
-
-My boss fires me.
-
-Figure 7.21
-
 Entity existence in a Prerequisite Tree.
 
 - Does THIS really exist (that is, is it likely)?
@@ -910,23 +355,13 @@ Entity existence in a Prerequisite Tree.
 
 ![page 292](images/p292.png)
 
-pp Intermediate Objective
-
 I make my real opinion known.
 
 - Is the Obstacle enough to keep me from saying what I really think?
 
-Obstacle
-
-My boss fires me.
-
 I enlist an outside consultant to convey my thinking to the boss.
 
 - Is the lower IO sufficient to overcome the Obstacle?
-
-Lower Intermediate Objective
-
-Figure 7.22
 
 Cause sufficiency in a Prerequisite Tree.
 
@@ -948,29 +383,13 @@ To summarize, Figure 7.24 is a six-question template for validating your PRTs. Y
 - Is there anything else (that is, a second obstacle) that might prevent achieving the higher IO?
 - Is the original lower IO enough to overcome any new secondary obstacle? Is another lower IO needed?
 
-Upper Intermediate Objective
-
 I make my real opinion known.
 
 - Does anything else prevent me from expressing my opinion?
 
-Obstacle
-
-My boss fires me.
-
-???
-
 I enlist an outside consultant to convey my thinking to the boss.
 
-???
-
 - Is another IO required, or will the original one (#1) be sufficient to overcome the new Obstacle?
-
-Figure 7.23 Lower Intermediate
-
-Objective #2? Lower Intermediate
-
-Objective #1
 
 Additional cause in a Prerequisite Tree.
 
@@ -982,15 +401,7 @@ Additional cause in a Prerequisite Tree.
 ### Obs-c Obs-d Io-e
 
 1. Is B enough to overcome D, too, or is something else (i.e., E) needed?
-
-Figure 7.24
-
-The IO-Obstacle validity test.
-
 1. Does C really exist?
-
-IO-B
-
 1. Does B really overcome C?
 2. Is B alone enough to overcome C?
 
@@ -1016,99 +427,7 @@ Goldratt’s original concept for implementing changes (injections) created in a
 
 ![page 296](images/p296.png)
 
-OBJ
-
-IO
-
-IO
-
-IO Prerequisite Tree…
-
-IO IO
-
-IO
-
-IO OBS
-
-IO OBS
-
-IO
-
-IO
-
-IO
-
-IO …Obstacles
-
-removed and rotated 90º to the right… OBS
-
-IO
-
-IO IO OBS
-
-IO
-
-IO IO
-
-IO
-
-IO
-
-IO
-
-IO
-
-IO
-
-IO
-
-IO
-
-IO
-
-IO
-
-IO
-
-IO
-
-IO IO IO Project Delivery
-
-Figure 7.25
-
-Converting a Prerequisite Tree to a PERT chart. OBJ
-
-IO
-
-IO
-
-IO
-
-IO
-
-IO
-
-IO
-
-IO
-
-IO
-
-…and converted to a PERT diagram.
-
 ![page 297](images/p297.png)
-
-Prerequisite Tree Transition Tree
-
-INJECTION Objective
-
-(Injection) Obstacle Obstacle Intermediate Objective Intermediate Objective Obstacle Obstacle Intermediate Objective Intermediate Objective Obstacle Intermediate Objective
-
-Originally, the Prerequisite Tree identified only Obstacles and the Intermediate Objectives that overcame them…
-
-Figure 7.26
-
-...step-by-step detailed actions for execution were left for the Transition Tree
 
 Relationship between Prerequisite and Transition Trees.
 
@@ -1118,57 +437,15 @@ A Transition Tree looks at first glance like a sufficiency-type cause-and-effect
 
 ![page 298](images/p298.png)
 
-OBJECTIVE
-
-[Injection]
-
-A repeating structure of:
-
-- Stated need
-- Existing reality (need deficiency)
-- Action (to satisfy the need)
-
-NEED NEW REALITY ACTION NEED NEW REALITY ACTION NEED NEW REALITY ACTION NEED Statement
-
-of need
-
-Figure 7.27 NEW REALITY
-
-Expected effect of ACTION (a new condition of reality)
-
-Statement about existing situation (reality)
-
-Transition Tree structure (original). ACTION ACTION
-
 ![page 299](images/p299.png)
 
 #### The Five-Element Transition Tree
 
 Sometime around the mid-1990s, Goldratt decided that a Transition Tree could serve an additional purpose besides structuring step-by-step implementation actions: it could provide the rationale for why each particular action was required at that specific point in the process. The repeating structure of the original TT had only four elements. With the addition of a fifth, Goldratt thought the “why do this?” question would be answered. Figure 7.28 shows the differences between the four-element and five-element TTs. By adding this “why” rationale, Goldratt attempted to address the behavioral issue of motivating people to complete the TT actions in sequence. Surely, if people knew why they were being asked to do some specific things in a particular sequence, they would understand and embrace the need to do so and move forward eagerly with it. Unfortunately, the intricacies of human motivation and behavior are a little more complex than that, as we’ll see in Chapter 8. The five-element TT succeeded at one thing, however: it made the Transition Tree even more ponderous and unappetizing to potential users than its predecessor was. For these reasons, I have elected to dispense with a detailed explanation of how to construct a Transition Tree. Instead, I offer a different approach to implementation, one that is a combination of methods.
 
-The modified version of the Transition Tree:
-
 - Added a rationale for further action (why stopping at the expected effect was insufficient)
 - Increased tree complexity by 50 percent
 - Maintained the original rigid “fir tree” structure
-
-NEW REALITY Existing Reality NEED NEW REALITY ACTION NEED EXISTING REALITY ACTION Original Transition Tree
-
-Figure 7.28
-
-The modified Transition Tree. Existing Reality Expected
-
-effect Rationale
-
-for further action
-
-New need ACTION Expected
-
-effect Rationale
-
-for further action Need ACTION
-
-Modified Transition Tree (1995)
 
 ### In Search of Robust Execution
 
@@ -1200,22 +477,12 @@ CCPM was conceived to try to turn that statistic around—to improve the odds of
 
 #### A Three-Phase Change Management Framework
 
-I’m referring to this as a framework because it doesn’t pretend to be prescriptive enough to constitute a procedural process. Once a problem is clearly identified and a potential solution developed and logically tested using the Thinking Process, the solution can be implemented in three phases (see Figure 7.29). PHASE 2 “Projectize” the Prerequisite Trees
-
-(using Critical Chain Project
-
-Management) PHASE 3 Behavior Modification
+I’m referring to this as a framework because it doesn’t pretend to be prescriptive enough to constitute a procedural process. Once a problem is clearly identified and a potential solution developed and logically tested using the Thinking Process, the solution can be implemented in three phases (see Figure 7.29). PHASE 2
 
 - Leaders
 - Middle managers
 - Supervisors
 - Line employees
-
-PHASE 1 Comprehensive Prerequisite Tree Development
-
-Figure 7.29
-
-A three-phase change management framework.
 
 ![page 302](images/p302.png)
 
@@ -1226,11 +493,6 @@ The first is to develop comprehensive Prerequisite Trees—as many as required t
 - In the practices and procedures by which the organization’s mission is discharged
 - In the measurements of success
 - In the behavior reinforcement at all levels This third phase is addressed in somewhat more detail in Chapter 8, but even so the behavioral issue demands more study and leadership attention. Failure to do so is the most prevalent reason why change fails, even changes that seem apparently “bullet-proof” technically and economically.
-
-SUMMARY
-
-Let’s summarize what we’ve covered in this chapter:
-
 - The Prerequisite Tree can help you identify, organize, and sequence all the tasks or activities necessary to achieve an injection in a Future Reality Tree, even when you don’t know ahead of time exactly what they might be or how to do them.
 - The PRT can help you completely expose the obstacles to implementing an FRT injection and develop intermediate objectives to overcome them.
 - The PRT provides the detail needed to start transforming a projection of the future (a Future Reality Tree) into a specific action plan (a project activity network).
@@ -1239,44 +501,6 @@ Let’s summarize what we’ve covered in this chapter:
 - When all is said and done, successful change depends at least as much (if not more) on the effectiveness of leadership and behavioral modification than on the technical and economic merits of the solution. Now it’s time to explore the implications of this last bullet, above, in Chapter 8.
 
 ![page 303](images/p303.png)
-
-INJ #1 Prerequisite Tree
-
-rotated and obstacles deleted…
-
-INJ #1 Prerequisite Tree
-
-converted to CCPM activity network…
-
-FB Feeding Buffer
-
-INJ #1
-
-Project 1 Project Buffer
-
-FB FB
-
-FB
-
-FB
-
-INJ #3 FB
-
-Project 2 Project Buffer
-
-FB
-
-Project 3 FB Multiple PRTs/
-
-projects staggered to avoid “drum” resource contention
-
-INJ #6 FB Project Buffer Feeding Buffer
-
-FB
-
-= “Drum” resource
-
-Figure 7.30
 
 Converting a Prerequisite Tree to a Critical Chain Project Network.
 
@@ -1289,135 +513,39 @@ Converting a Prerequisite Tree to a Critical Chain Project Network.
 - Write it on a Post-it ™ Note
 - Place it at the top of a large sheet of paper (e.g., flipchart)
 
-OBJECTIVE
-
 XYZ Co. is selling and delivering throughout Europe.
-
-INJECTION #4 Open a new geographic market. (From a
-
-Future Reality Tree) Directive OBJECTIVE
-
-New information system is fully operational. Wadsffjccnkjfckeurdsfkjshlsekrjh
-
-lxassdfhsefcyusefxjedxjweadxj waddsfcdszsdilfcjzsdfoidsispfo Tdjfhl;serjhfadwrijfcweroc,pweo seiruaweirweliudxwoiwexifuxw awdxhduxhawuxdnawudxnau jdfkghleriucvhrnfucsoerfcm
-
-(From a directive)
 
 1. Identify All Intermediate Objectives
 - Visualize all the component tasks/ activities (”10,000-foot view”)
 - Brainstorm all the tasks/activities you can
-
-> – Enlist outside help, if needed
-
+- Enlist outside help, if needed
 - Identify all the tasks/activities required for attainment of the objective (in detail)
 - Write the IOs as actions (active verb) on Post-it Notes (different color from Objective)
 - Lay out the IOs randomly within the work space, below the Objective
 - Keep related notes close together (they may eventually become part of the same branch)
 
-OBJECTIVE
-
 New information system is fully operational.
-
-IO #6 IO #6a
-
-IO #4
-
-IO #6b
-
-IO #4a
-
-IO #1
-
-IO #6c
-
-IO #4b IO #5
-
-IO #3
-
-IO #7 IO #8 IO #2 IO #9 IO #9a
 
 1. Surface All Possible Obstacles
 - Review all previously identified IOs
 - Look for IOs that seem obviously difficult:
-
-> – You aren’t sure how to accomplish them
-
-> – External factors might stop or delay progress
-
-> – Required resources not immediately available
-
-> – You don’t know where the resource will
-
-> come from
->
-> – You don’t know all the critical inputs for the IO
-
+- You aren’t sure how to accomplish them
+- External factors might stop or delay progress
+- Required resources not immediately available
+- You don’t know where the resource will come from
+- You don’t know all the critical inputs for the IO
 - Write the Obstacles on Post-it Notes (different color from IOs)
 - DON’T CONTRIVE Obstacles that don’t actually exist
 - Pair any Obstacles identified temporarily with the IO that they obstruct
 
-Figure 7.31
-
-IO #6 IO #6a
-
-IO #4 IO #1 OBS
-
-IO #6b
-
-IO #4a IO #4b
-
-IO #6c OBS OBS
-
-IO #5
-
-IO #3
-
-IO #7 OBS
-
-IO #2 IO #9
-
-IO #8 OBS
-
-IO #9a
-
-Procedures for constructing a Prerequisite Tree (PRT) – abbreviated checklist. (Continued)
-
 ![page 305](images/p305.png)
-
-(Continued) (These relate to training…)
 
 1. Organize the Intermediate Objectives and Obstacles
 - Look at all the IO Post-it Notes collectively
 - Sort them into functional categories
 - Each category/function will become a discrete branch
-
-> – May be linear sequence
-
-> – May be parallel, or converge
-
-IO #2
-
-(…these relate to development)…
-
-(…and these relate to installation & test)
-
-IO #4
-
-IO #6 IO #6a
-
-IO #4a IO #5 OBS
-
-IO #6b
-
-IO #4b
-
-IO #6c OBS OBS
-
-IO #1
-
-IO #3 IO #8 IO #9
-
-IO #7
+- May be linear sequence
+- May be parallel, or converge
 
 ### Obs
 
@@ -1427,163 +555,52 @@ IO #7
 
 - Look at each branch individually IO #7
 - Sort the IOs into “earlier,” “later,” and “in between”
-
-> OBS
->
-> – Position “earlier” near the bottom
-
-> – Position “in between” in the middle
-
-> – Position “later” near the top
-
+- Position “earlier” near the bottom
+- Position “in between” in the middle
+- Position “later” near the top
 - Examine each sub-group (earlier, in between, later) individually
-
-> – Decide on the sequence for the IOs within
-
-> each sub-group IO #1
->
-> – Rearrange IOs within each sub-group
-
-so that the last activity is at the top of the group IO #5
-
+- Decide on the sequence for the IOs within each sub-group IO #1
+- Rearrange IOs within each sub-group so that the last activity is at the top of the group IO #5
 - Do the same for each functional branch
 1. Connect the Intermediate Objectives
 - Start at the top and work downward
 - Connect the top IO with the one below it
 - Evaluate each connection:
-
-> – Is the lower IO the immediately
-
-> preceding task?
->
-> – Are any previously unstated tasks missing?
-
-> – Does nothing else (laterally, on the layer
-
-> below) preclude starting on the IO?
->
-> – Is there a previously unstated Obstacle to
-
-the IO?
-
+- Is the lower IO the immediately preceding task?
+- Are any previously unstated tasks missing?
+- Does nothing else (laterally, on the layer below) preclude starting on the IO?
+- Is there a previously unstated Obstacle to the IO?
 - Repeat this process for every layer of IOs in all branches, from top to bottom
-
-OBS
-
-IO #9a LATER
-
-IO #3 IO #8 OBS
-
-IO #4 IO #4a IO #6
-
-IO #4b
-
-IO #6a OBS OBS
-
-IO #6b IO #6c OBS
-
-IO #9 IO #9a EARLIER LATER
-
-IO #3 IO #10 (new) (Added in VERTICAL
-
-sequence)
-
-IO #4
-
-IO #4a IO #4b IO #9 OBS (Added in
-
-IO #9a EARLIER LATERAL
-
-IO #9b position) (new) OBS
-
-(new)
 
 ![page 306](images/p306.png)
 
-(Continued) 7.Overcome the Obstacles
-
 - Examine the Obstacles you’ve identified (attached to the IO they obstruct)
 - Brainstorm ways around the Obstacle
-
-> – Overcome, don’t obliterate
-
-> – Think of as many different ways as you can
-
+- Overcome, don’t obliterate
+- Think of as many different ways as you can
 - Enlist help if needed to think of IOs to overcome Obstacles
 - Choose one or more IOs that are:
-
-> – Easiest to do
-
-> – Fastest to complete
-
-> – “Best” (by whatever standard you choose)
-
-> – First that comes to mind
-
+- Easiest to do
+- Fastest to complete
+- “Best” (by whatever standard you choose)
+- First that comes to mind
 - Write the new IOs on Post-it Notes
 - Attach the IO to the Obstacle and move the two slightly below the obstructed IO
-
-> – Position the OBS-IO pair between previously
-
-identified IOs as necessary and connect in the chain
-
-(Obstructed IO)
-
-IO #4b OBS
-
-(Move OBS down) OBS
-
-IO #11 (new)
-
-IO #12 (new)
-
-IO #9b (new)
-
-(IOs created to overcome OBS)
-
-(New IO discovered during Step-6)
-
-OBS (New OBS discovered (new) obstructing new IO) IO #13 (new) (New IO created to overcome new OBS) (Installation &
-
-test branch) (Training
-
-branch)
-
+- Position the OBS-IO pair between previously identified IOs as necessary and connect in the chain
 1. Integrate the Branches
 - Look for lateral connections and convergences
-
-> – More likely as you approach the top of the tree
-
+- More likely as you approach the top of the tree
 - Compare entities among branches
-
-> – Look for cross-connections, i.e., an IO in one branch
-
-> that is a prerequisite for an IO in another branch on the page as necessary to facilitate visually simple connections
->
-> – Link branches laterally where they obviously connect
-
-> – Move branches up or down as required and rearrange
-
-9.Connect the Main Body of the Tree to the Objective
-
+- Look for cross-connections, i.e., an IO in one branch that is a prerequisite for an IO in another branch
+- Link branches laterally where they obviously connect
+- Move branches up or down as required and rearrange on the page as necessary to facilitate visually simple connections
 - Complete the final connects
 - Connect the top level of IOs with the Objective
 - Add IOs anywhere it becomes obvious that a step/ task/activity is missing, and connect to the network
 
-(Development
-
-branch) OBJECTIVE
-
 New information system is fully operational.
 
-IO #8
-
 - Link the uppermost IO
-
-OBS
-
-IO #15 to the Objective
-
 1. Scrutinize the Entire Tree
 - Incorporate additional (new)
 - Is the Objective worded as an outcome? IOs, if required
@@ -1591,8 +608,6 @@ IO #15 to the Objective
 - Are all Obstacles worded as conditions? IO #8
 - Are all IOs connected by arrows to other IOs (not to Obstacles)? IO #3 IO #6
 - Check the PRT with the modified CLR (Figure 7.32)
-
-IO #2
 
 ![page 307](images/p307.png)
 
@@ -1605,77 +620,7 @@ IO #2
 5. Additional Cause: Will anything else (i.e., D) prevent A?
 6. Additional Cause: Is B enough to overcome D, too, or is something else (i.e., E) needed?
 
-Figure 7.32
-
-Prerequisite Tree self-scrutiny checklist.
-
 ![page 308](images/p308.png)
-
-INJECTION #6 A successful software user’s conference is concluded. Manage
-
-execution and support on-site Secure
-
-presenters/ guest speakers (including keynote)
-
-Don’t know who the topic experts are
-
-Complete sponsor logistic/ transportation arrangements
-
-Arrange audiovisual support Complete
-
-promotion and advertising Convert to
-
-hard-copy brochure (mailing)
-
-Block out hotel rooms Research
-
-topic experts
-
-Arrange on-site meals
-
-Identify a hotel/ conference room (Facilities) Determine
-
-topics
-
-Figure 7.33 Establish
-
-financial receipt and disbursement process Determine
-
-location Conference
-
-manager has neither time nor skill to handle administration
-
-Determine dates/ duration Appoint
-
-administrative assistant Conference
-
-manager appointed
-
-Prerequisite Tree: conference planning and management. Complete
-
-registration Establish
-
-registration management
-
-(Administration)
-
-(Content) Determine
-
-conference theme
-
-Pay financial obligations Obtain
-
-professionrelated e-mail and address lists
-
-Create brochure (electronic/ e-mailing) Finalize
-
-conference content and agenda Establish
-
-conference structure Complete
-
-facilities negotiations/ commitment Create
-
-attendance data base
 
 > The desire to do something good doesn’t get it done.
 >

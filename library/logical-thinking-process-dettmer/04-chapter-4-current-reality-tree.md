@@ -4,24 +4,6 @@
 
 ![page 91](images/p091.png)
 
-Intermediate Objectives
-
-Map Current Reality Tree GOAL Undesirable Effects Critical Success Factors Intermediate Effects Necessary Conditions Root Causes
-
-What is the GOAL and what are the steps to reach it?
-
-WHAT to change? Evaporating Cloud Transition Tree
-
-(Conflict Resolution Diagram) Objective Objective Intermediate Effects Requirements Specific Actions Prerequisites What to
-
-change TO? Prerequisite Tree
-
-Objective (Injection) How to CAUSE
-
-the change? Future Reality Tree Desired Effects Intermediate Effects
-
-Obstacles, Intermediate Objectives Injections
-
 > If you can keep your head when all about you are losing theirs, then you obviously don’t understand the problem.
 >
 > —Evans’ Law
@@ -34,30 +16,15 @@ A Current Reality Tree (CRT) is a logical structure designed to depict the state
 
 ![page 93](images/p093.png)
 
-UNDESIRABLE EFFECT (UDE) UNDESIRABLE EFFECT (UDE) UNDESIRABLE EFFECT (UDE)
-
-MAG Critical Root Cause
-
-<OR> Critical Root Cause
-
-Figure 4.1 Critical Root Cause
-
-The Current Reality Tree (CRT). PURPOSE
-
-The Current Reality Tree is designed to achieve the following objectives:
-
 - Provide the basis for understanding complex systems.
 - Articulate undesirable effects (UDEs) exhibited by a system. Such effects are undesirable when compared with the system’s goal, critical success factors, or necessary conditions (see Chapter 3).
 - Relate UDEs through a logical chain of cause and effect to root causes (RC).
 - Identify the critical root causes that produce a majority of the system’s UDEs, including the worst ones.
-
 - Determine which of the root causes lie beyond one’s span of control or sphere of influence.
 - Isolate those few causal factors—system constraints—that must be addressed in order to realize the maximum improvement of the system.
 - Identify the simplest potential changes that will have the greatest positive impact on the system.
 
 ### Assumptions
-
-The effectiveness of the Current Reality Tree is based on the following assumptions:
 
 - Cause and effect is not the same as correlation.
 - Interdependencies affect system components. A change in one component will produce collateral changes in one or more other components.
@@ -86,31 +53,11 @@ The effectiveness of the Current Reality Tree is based on the following assumpti
 
 The objective of the Current Reality Tree is to help you isolate what needs changing in any situation. It does this by helping you identify the things that are clearly indicators of system deficiencies and by tracing them back to one or more basic causes. As previously discussed, these visible indicators are called undesirable effects; the factors that originate them are known as root causes. Why do you need a CRT to identify the undesirable effects and root causes? In some cases you may not need one. Some situations are so simple and obvious that the root cause stands out like a sore thumb. But the world is complex, and many (if not most) situations encompass several factors or forces that interact to produce the effects we see around us. In such cases, a complete visual depiction of the situation makes it considerably easier to visualize the interdependencies in the system. Plant growth, for instance, is normally thought to be the result of three necessary conditions: water, nutrition, and light (see Figure 4.2). If a plant fails to grow properly, you must immediately consider deficiencies in one of those three areas. But the failure of a plant to grow may also be the result of factors beyond those three conditions, because while they may be necessary, they may not be sufficient—a favorable temperature range is needed, too. Diagnosing the problem may not be as simple as it looks, as most gardeners can tell you. Because most situations are complex, often with inconspicuous causes driving the results, it can be difficult to decide what to change in order to make the situation right. Combined with effective application of the Categories of Legitimate Reservation, a CRT can help reveal complex relationships. For example, if your house is consistently too hot or cold, a knee-jerk reaction might be to adjust the thermostat in the central heating/air conditioning unit. Seems simple enough. But if the outside temperature fluctuates significantly during the course of a day, you could find yourself making a lot of adjustments. This might make the inside temperature acceptable, but it might also result in higher utility bills. The simple CRT in Figure 4.3 shows how much more complex the situation could be than it actually seems. It also shows some root causes that, if you only adjust the thermostat, remain unaddressed and will allow the problem to continue or surface again at another time.
 
-The plant grows.
-
-The plant has adequate nutrition.
-
-The plant has adequate water. Water is
-
-available.
-
-Figure 4.2 Nutrition is
-
-available.
-
-Water is not polluted.
-
-**CRT:** plant growth (example).
-
-Nutrition is
-
-appropriate for the plant.
+Nutrition is appropriate for the plant.
 
 Ambient temperature range is favorable to the plant.
 
 The plant is exposed to adequate sunlight.
-
-The plant requires direct sunlight.
 
 Direct sunlight is available for the required hours.
 
@@ -122,41 +69,15 @@ The CRT can be used by itself to identify root causes of straightforward problem
 
 The house is too cold inside.
 
-The heater doesn’t come on.
-
 The thermostat setting is too low.
 
-More heat escapes than remains.
-
-Interior heat radiates out.
-
-The house is poorly insulated.
-
-Figure 4.3
-
-Heating costs rise excessively.
-
 **CRT:** temperature in a house (example).
-
-Warm air leaks out.
-
-Cold air leaks in.
-
-The windows are improperly caulked.
 
 ![page 97](images/p097.png)
 
 #### Span of Control and Sphere of Influence
 
 Before we can effectively explain the CRT, it’s necessary to establish the context in which the CRT will be used. In Chapter 3 we discussed the importance of identifying your span of control and sphere of influence. Now we’ll see how this concept applies directly to the use of CRT for deciding which root causes we can reasonably expect to change. As we saw in the last chapter, we all function in complex systems and have varying degrees of control over our environment. In some areas we have a high degree of control. These areas are said to lie within our span of control. We enjoy virtually complete authority to change anything within our span of control. Just outside our span of control lies our sphere of influence, a region of the environment where we can influence things to varying degrees but where we don’t enjoy direct control. Beyond our sphere of influence we have neither control nor influence (review Figure 3.1). Once we understand this concept of reality, a few things about CRT become apparent. In a complex situation, a CRT that accurately depicts reality might conceivably overlap all three regions: our span of control, our sphere of influence, and the outside, or uncontrolled, environment (see Figure 4.4). UNDESIRABLE EFFECT (UDE) UNDESIRABLE EFFECT (UDE) UNDESIRABLE EFFECT (UDE)
-
-MAG Sphere of Influence Span of Control Outside Environment Critical Root Cause
-
-<OR> Critical Root Cause
-
-Figure 4.4
-
-Span of control, sphere of influence, and the CRT. Critical Root Cause
 
 > The most significant ramification of this situation is the effect it has on our decisions about what we can change in a system. If the most significant root causes lie outside our span of control, we must depend on others for help. This means persuading others to do things they might not be obligated to do. If the root causes lie outside our sphere of influence, we may not be able to do anything about them at all. If this is the case, we must become truly creative in finding ways to work around root causes over which we have no control. Keep the concepts of span of control and sphere of influence in mind while you’re building your Current Reality Tree, but don’t let them limit you in its construction. Follow the cause-and-effect chain wherever it may lead. But after the tree is done, and before you select which root causes to attack, revisit the issue of sphere of influence. Use it to help you decide for which problems you can reasonably expect effective results and for which attack might be futile. Solving problems, especially big ones, is a game to see how far toward the outer limits you can stretch your sphere of influence. “Root Causes” and “Core Problems,” later in this section, address this subject in greater detail. Enthusiasm without knowledge is like running in the dark.
 >
@@ -170,29 +91,15 @@ The power of the CRT comes from its basis in cause and effect. Sometimes people 
 
 ![page 99](images/p099.png)
 
-Menza will receive rain.
-
 …then… Menza has experienced drought all summer.
 
 Rains come to where the Americans swim.
 
-If… The Americans
-
 swim in the river near Ukyr each day.
 
-Figure 4.5 Menza
-
-persuades the Americans to
-
-swim nearby.
-
-…and…
-
-(Correlation)
+persuades the Americans to swim nearby.
 
 It rains in the afternoon each day near Ukyr.
-
-Rainfall in Siberia.
 
 A basic assumption in cause and effect is that, under the same circumstances, an expected effect must be replicable from the same cause (see “Assumptions”). It’s not known whether the rain followed the Americans to the Menza end of the river, but most people’s experience will tell them that it’s unlikely to have happened. Fibromyalgia and Myofascial Pain: A Complex Real-World Example Take neuromuscular pain, for example. In the last ten years or so, the medical community has identified a condition known as fibromyalgia syndrome (FMS).2 This is a state of central nervous system sensitization. People with fibromyalgia may be unusually sensitive to pain. They may even find that their bodies translate certain sounds, vibrations, light, and other sensations—even smells—into discomfort or pain. Certain types of sound, such as staccato music or talk, or certain pitches, may be unendurable and may promote increased sensitivity to other stimuli. Diffuse body-wide pain is a part of FMS, but not all of it by any means. Chronic myofascial pain (CMP) is another malady involving body pain. In fact, it’s probably the most common cause of musculoskeletal pain. It is not the same as FMS, though in a substantial percentage of cases (maybe a third or more) they occur at the same time. In fact, a majority of physicians lump them together. But FMS and CMP can occur completely independently, too. The symptoms are difficult to sort out and the treatments are quite different. Consider how easy it might be for a doctor to correlate the observed pain symptoms with either FMS or CMP, or to observe the widespread body pain and misdiagnose it as influenza, which has similar symptoms. Decisions based on correlations are inherently less sound than those based on cause and effect. But how do we ensure that we don’t fall victim to correlation in our Current Reality Trees? The answer is the Categories of Legitimate Reservation (CLR). Effective application of the CLR ensures that correlation is not confused with cause and effect. As you proceed through this chapter, it will be helpful to refer periodically to Chapter 2, “Categories of Legitimate Reservation.” With an understanding of the importance of cause and effect, now let’s look at the elements that make up a Current Reality Tree.
 
@@ -207,32 +114,6 @@ One of the first elements you will encounter in a Current Reality Tree is the un
 #### Undesirable by What Standard?
 
 Undesirable effects are not subjective. The IO Map we discussed earlier in Chapter 3, if properly validated by consensus of decision makers, represents an objective benchmark against which to determine undesirability. So the question of “Undesirable to whom?” is really not relevant. Rather, the question should be, “Undesirable by what standard?” As in any human endeavor, subjectivity is difficult to eliminate completely, but a good
-
-Figure 4.6 Goal or CSF Undesirable
-
-with Respect to Goal/CSF Neutral or Marginally
-
-Negative
-
-Secure, satisfied employees Employees
-
-are laid off. Absenteeism
-
-is rising. Maximize
-
-profitability
-
-Net profit is decreasing. Union and
-
-management can’t agree.
-
-Control costs
-
-The budget is “busted.”
-
-I am late for work.
-
-Undesirable effects.
 
 IO Map should eliminate as much subjectivity about UDEs as is possible under the circumstances.
 
@@ -256,20 +137,6 @@ The second test of a valid UDE is existence. Does it really exist, or is it some
 
 ![page 102](images/p102.png)
 
-Sales
-
-decrease.
-
-My boss fires me.
-
-I speak my mind.
-
-Figure 4.7
-
-(Does this really exist, or is it just a negative fantasy?)
-
-We lay off sales people.
-
 Undesirable effects: do they really exist.
 
 The effect is unarguably undesirable to the tree builder. But does it really exist? Is the boss really unable to deal objectively and non-punitively with something he or she may not like to hear? Or is this a worst-case scenario with very little probability of happening? Here’s a slightly different example: “Sales decrease.” Is that a fact, or is it just somebody’s perception? Are there verifiable data to confirm that this effect really exists?
@@ -291,13 +158,7 @@ In building a Current Reality Tree, we work our way from UDEs back through the c
 1. “The formal reward system doesn’t satisfy important individual needs.”
 2. “People’s behavior is motivated by unsatisfied needs.” The first is a condition of the system itself, which you may have some latitude to change; that is, it lies within your sphere of influence. The second is a condition of human nature, which you are unlikely to have any influence over whatsoever—it clearly lies outside your sphere of influence. Both can be considered root causes. One you may have to live with, the other you don’t. And being able to identify which is which provides your problem-solving flexibility. Every Current Reality Tree will have several root causes—maybe even a lot of them. One root cause in any Current Reality Tree is likely to be the origin of a substantial number of UDEs. The primary objective of the CRT is to work backward from UDEs through a chain of cause and effect to identify the few root causes that account for as many of the system’s UDEs as possible. Your purpose in building a Current Reality Tree is to try to find the very few root causes that, if corrected, will have the greatest positive impact on system improvement—the most “bang for your buck.” Every cause statement that has arrows coming out of it but no arrows going in is technically considered a root cause (see Figure 4.9). It’s worth remembering that a root cause is a point of origin in a CRT—no more, no less. The term does not necessarily connote anything negative.
 
-Sphere of Influence
-
 People seek other avenues to satisfy unmet needs.
-
-THIS you may be able to change…
-
-Figure 4.8
 
 …but THIS you may NOT be able to change.
 
@@ -305,31 +166,11 @@ The formal reward system doesn’t satisfy important individual needs.
 
 People’s behavior is motivated by unsatisfied needs.
 
-(Root Cause)
-
-(Root Cause)
-
-Root causes.
-
 ![page 104](images/p104.png)
 
 > For example, “The sun shines every day” might be a root cause of skin cancer, but it’s not necessarily negative in and of itself—it’s just a fact of life. A root cause may be positive, negative, or neutral, depending on your perception, but most will have no particular significance. A few, however, will. At some time in the life cycle of virtually every organization, its ability to succeed in spite of itself runs out.
 >
 > —Brien’s First Law
-
-UNDESIRABLE EFFECT (UDE) UNDESIRABLE EFFECT (UDE) Root Cause UNDESIRABLE EFFECT (UDE) Root Cause Root Cause
-
-MAG Root Cause Root Cause Root Cause
-
-(Even ONE arrow going in makes this NOT a root cause) Root Cause
-
-<OR> Root Cause Root Cause Root Cause
-
-(No arrows going in)
-
-Figure 4.9
-
-Identifying root causes. Root Cause
 
 #### Core Problems and Root Causes
 
@@ -345,39 +186,11 @@ Goldratt’s original procedure for building a CRT actually called for a concert
 
 To help users of the Thinking Process avoid the morass just described, we need a new way of looking at the whole question. One of the aims of this edition is to provide that new look. The solution is two-fold. First, we must have clear consensus on what is or isn’t an UDE. The Intermediate Objectives (IO) Map (Chapter 2) provides the means to achieve this consensus. And starting a Thinking Process analysis with an IO Map not only achieves consensus on what’s good for the system (that is, what should be happening), by definition it limits what (To UDEs...eventually) Root Cause Root Cause Root Cause Root Cause can be considered an UDE to a very few entities in a CRT—those that are obviously and demonstrably negative with respect to a limited, focused benchmark and not a wide range of subjective opinions. Second, in constructing a CRT, we’ll cease to strive for a single unifying (but vague and over-broad) core problem. Instead, we’ll dig down to a few critical root causes that are both actionable and within the sphere of influence of an accessible decision maker. (We’ll define “critical root cause” in a moment.) This approach will usually produce no more than four or five things to work on, rather than a single core problem (see Figure 4.11). Intermediate Objectives Map GOAL
 
-<OR> Root Cause Root Cause
-
-V-shaped connection
-
-Figure 4.10 Core Problem?
-
-The fallacy of V-shaped connections. Root Cause Root Cause
-
 ![page 107](images/p107.png)
-
-(Undesirable effects represent unacceptable deviations from the Goal or Critical Success Factors in the IO Map ) CSF #1
-
-CSF #2
-
-CSF #3
-
-NC NC Current Reality Tree UNDESIRABLE EFFECT (UDE)
-
-NC
-
-NC UNDESIRABLE EFFECT (UDE) UNDESIRABLE EFFECT (UDE) UNDESIRABLE EFFECT (UDE)
-
-MAG
 
 #### Critical Root Cause
 
 (Critical Root Causes are the very few discrete policies, practices, or behaviors that lie within a decision maker’s sphere of influence)
-
-Figure 4.11
-
-<OR> Critical Root Cause
-
-A new way to conceive of system problems. Critical Root Cause
 
 But as Dr. Ray Hansen once observed, “Silver bullets went out of fashion when the Lone Ranger died.” The chances for most people to find one simplistic solution to cure all the ills of system are but two: slim and none. I myself have seen only two such situations in more than ten years of applying the Thinking Process to complex situations. In both cases, the systems were start-up commercial companies, and in both cases the core problem was the same: insufficient start-up capital—an archetypical core problem if ever there were one! So, avoid “heartburn”: Don’t begin a Current Reality Tree to begin solving system problems without first completing an IO Map for the same system.
 
@@ -411,24 +224,6 @@ With a Current Reality Tree, the issue is simple: An entity is either a cause or
 
 Arrows appear in every Logical Thinking Process tool, but they signify different relationships. In the Current Reality, Future Reality, and Transition Trees, they signify sufficiency in a cause-and-effect relationship. Remember, sufficiency implies that the presence of all the contributing causes will deliver the stated effect. In an Evaporating Cloud and a Prerequisite Tree they represent a necessary—but not necessarily sufficient—condition relationship. Remember, necessity implies a minimum (enabling) requirement. A necessary condition (at the tail of an arrow) enables us to accomplish the next entity (at the head of the arrow). But the entity at the head of a necessary condition arrow is not an effect. Refer to the section in Chapter 2, “Sufficiency-Based vs. Necessity-Based Logic Trees,” p. 59, for more details on this distinction. So, in the Current Reality Tree, the arrow implies a sufficiency relationship. In other words, the cause (entity at the tail of the arrow) is sufficient to produce the effect (entity at the head of the arrow). To read a cause-effect relationship (two entities connected by an arrow), attach “If…” to the beginning of the cause statement and “…then…” to the beginning of the effect statement. Logical Statements Connection Devices
 
-UDE
-
-Undesirable Effect (Cause, Effect) Causality Arrow
-
-(Causal relationship) Tail = Cause Head = Effect Ellipse
-
-(Cause sufficiency) Entity
-
-(Cause, Effect)
-
-MAG Magnitudinal “AND” (Multiple independent causes, additive effect)
-
-<OR> Exclusive “OR” (If one cause occurs, the others will not)
-
-Figure 4.12
-
-CRT symbology.
-
 ![page 111](images/p111.png)
 
 If I turn off the light, then the room is dark. However, you must be careful in using and reading arrows in a Current Reality Tree. The previous example has a catch to it (see Figure 4.13, upper half). It assumes that (a) it’s dark (that is, night) outside the room, or (b) there are no windows or other openings that could admit other light. These assumptions aren’t stated in the cause-effect relationship, but they’re there just the same and they have a direct bearing on the validity of the causeeffect relationship.
@@ -437,21 +232,11 @@ If I turn off the light, then the room is dark. However, you must be careful in 
 
 Every arrow in any Logical Thinking Process tree is based on unstated but underlying assumptions about the situation, environment, or laws of nature. For example, consider this cause-and-effect relationship, depicted with entities and an arrow (see Figure 4.13, lower half): If I push the glass off the table, then it falls to the floor. There’s an unstated underlying assumption here that the law of gravity applies in this situation. “Well, of course,” you’re probably thinking, “that’s obvious. Gravity always applies.” Perhaps. But maybe not. Astronauts in orbit around the earth don’t need to Verbalize:
 
-Depiction:
-
-“…then the room is dark.”
-
-The room is dark.
-
-Underlying (unspoken) Assumptions:
-
 a. It’s dark outside the room. b. The room has no windows.
 
 “If I turn off the light…”
 
 c. The door is closed. I turn off the light.
-
-(Read in the direction of the arrow)
 
 “…then the glass falls to the floor.”
 
@@ -460,8 +245,6 @@ c. The door is closed. I turn off the light.
 The glass falls to the floor.
 
 a. The glass, table, and floor are not in earth orbit (that is, weightless condition). b. Newton’s Second Law of Gravity applies.
-
-I push the glass off the table. (Read in the direction of the arrow)
 
 Figure 4.13 Cause-effect relationships and underlying assumptions.
 
@@ -475,85 +258,23 @@ Ellipses. The ellipse is unique to sufficiency-based logic trees (Current Realit
 
 **REMEMBER:** We live in a complex world. Most effects result from multiple causes, some independent, some contributing. An independent cause is a single entity, sufficient by itself to produce the effect. Sometimes, when several independent causes apply, they are referred to as additional causes (see “Additional Cause,” Chapter 2, for a more detailed explanation). A contributing cause is one of two or more factors that alone can’t produce the effect, but together will. Contributing-cause arrows are always enclosed by an ellipse. You should look at every causality arrow critically and ask yourself the question, “Is an ellipse required?”
 
-Cause A
-
-Figure 4.14
-
-Ellipses.
-
 #### Effect NO Ellipse Cause
-
-This single, INDEPENDENT cause is sufficient to produce that effect. Effect WITH Ellipse Cause B These CONTRIBUTING
 
 causes are sufficient TOGETHER to produce that effect.
 
 ![page 113](images/p113.png)
 
-**NOTE:** It isn’t necessary to include every underlying assumption or potential contributing cause in your Current Reality Tree. It would quickly get out of hand if you did. Your decision rule should be: “For whom am I building this tree?” If it’s for yourself alone and it’s about an environment in which you have good intuitive knowledge, you can leave much more unstated but assumed. If you’re going to present your tree to someone else, you have to consider how much they might know about the situation. Trees presented to others must usually be more detailed (that is, with fewer unstated assumptions and more contributing causes) in order to preclude confusion and embarrassment. Magnitudinal AND. As we saw in Chapter 2, it’s possible to have conditions in which two or more causes can produce an effect independently of one another (that is, no ellipse required to enclose them). In some cases, it’s possible that these two independent causes exist at the same time. What’s more, it’s conceivable that when this occurs, two or more causes, though independent of one another, can act additively to increase the magnitude of the effect. This can only happen when the effect is a condition that admits the possibility of a graduated degree. The preferred symbol for a magnitudinal-AND situation is a “bowtie” with the letters “MAG” inside it. Take a look at Figure 4.16, for example. Notice that the effect—My gasoline mileage improves—is not a “zero-or-one” condition.
-
-#### Sometimes a
-
-contributing cause is important enough to be expressed in the tree.
-
-I turn off the light.
-
-Figure 4.15
-
-The room is dark.
+**NOTE:** It isn’t necessary to include every underlying assumption or potential contributing cause in your Current Reality Tree. It would quickly get out of hand if you did. Your decision rule should be: “For whom am I building this tree?” If it’s for yourself alone and it’s about an environment in which you have good intuitive knowledge, you can leave much more unstated but assumed. If you’re going to present your tree to someone else, you have to consider how much they might know about the situation. Trees presented to others must usually be more detailed (that is, with fewer unstated assumptions and more contributing causes) in order to preclude confusion and embarrassment. Magnitudinal AND. As we saw in Chapter 2, it’s possible to have conditions in which two or more causes can produce an effect independently of one another (that is, no ellipse required to enclose them). In some cases, it’s possible that these two independent causes exist at the same time. What’s more, it’s conceivable that when this occurs, two or more causes, though independent of one another, can act additively to increase the magnitude of the effect. This can only happen when the effect is a condition that admits the possibility of a graduated degree. The preferred symbol for a magnitudinal-AND situation is a “bowtie” with the letters “MAG” inside it. Take a look at Figure 4.16, for example. Notice that the effect—My gasoline mileage improves—is not a “zero-or-one” condition. Sometimes a contributing cause is important enough to be expressed in the tree.
 
 The only door into the room is closed.
 
 Sometimes unspoken, underlying assumptions must be included to solidify the logic.
 
-The room has no windows.
-
 Indicating cause sufficiency with an ellipse.
-
-My gasoline mileage improves.
-
-MAG
-
-Figure 4.16
-
-(10%)
-
-(20%)
-
-(70%)
-
-I increase my tire pressure.
-
-I have my engine tuned.
-
-I drive at moderate speeds.
-
-Indicating magnitudinal effects.
 
 ![page 114](images/p114.png)
 
 Rather, potentially it’s a graduated effect. This will always be the case with magnitudinal causality. Each added independent cause can be expected to increase the magnitude of the effect to some degree, even if not equally. When the effect is a zero-or-one condition (that is, it is present in some fixed amount or completely absent), it’s possible for multiple independent causes to exist simultaneously. But in this case, the removal of just one leaves the entire effect still in place. In order to remove the effect, all independent causes must be neutralized or eliminated. It’s important to recognize the distinction between a zero-or-one effect and a graduated effect. In the former case, you have no choice but to eliminate the entire effect, and all independent causes that produce it must be addressed. In the latter case, removal of a cause may reduce the “pain” of the effect to a tolerable level. That may be all that’s required in a particular situation, especially if resolving the remaining cause poses extreme difficulties. Knowing the difference between these two situations can make a difference in the options we have for eliminating certain undesirable effects. Exclusive ORs. There’s another situation that merits discussion: the exclusive OR. This situation usually occurs when the effect is a zero-or-one condition, but not always. In exclusive-OR causality, there may be multiple independent causes of an effect, but if one cause is operative, the other will not be. Figure 4.17 illustrates an exclusive-OR situation. Notice that the exclusive OR can apply to multiple causes producing a single effect, causality normally only happens when the effect represents a “zero-or-one” (yes-or-no) condition. NOTE: Conditional
-
-The house is destroyed.
-
-<OR>
-
-The house burns uncontrollably.
-
-A contractor bulldozes the house.
-
-Conditional causes (if one happens, the other won’t)
-
-John dies in an accident.
-
-John arrives home safely.
-
-<OR>
-
-John drives home very aggressively. Conditional effects (if one happens, the other won’t)
-
-Figure 4.17
-
-Indicating exclusive causality.
 
 or a single cause producing multiple effects. In either situation, however, the <OR> symbol is used to indicate that if one of the causal connections occurs, it excludes the other.
 
@@ -576,8 +297,6 @@ A tree can have as few as 10 to 20 entities, or it might have a hundred. The U.S
 
 ![page 116](images/p116.png)
 
-Effect Effect Cause
-
 #2 Cause
 
 #1 Cause
@@ -592,39 +311,19 @@ Two or more causes independently can produce the effect. Both must be removed to
 
 #### Basic Cause Sufficiency
 
-Two or more causes required in concert to produce the effect. Removal of any one eliminates the effect. Effect Effect
-
-MAG
-
-<OR> Cause
-
 #1 Cause
 
 #3 Cause
 
 #2
 
-#### Cause Basic Exclusive OR
+#### Cause
 
-Two or more causes independently produce the effect. If one exists, the other will not. Or, one cause produces two possible effects. If one occurs, the other will not.
+Basic Exclusive OR Two or more causes independently produce the effect. If one exists, the other will not. Or, one cause produces two possible effects. If one occurs, the other will not.
 
 #### Basic Magnitudinal Cause
 
 Two or more causes independently produce some degree of the effect. Together they increase the total effect. Removal of any one eliminates some (not all) of the effect.
-
-E
-
-E
-
-C
-
-C C
-
-MAG
-
-C
-
-C C Effect
 
 #2 Effect
 
@@ -636,36 +335,6 @@ C C Effect
 
 #2
 
-C
-
-C
-
-C
-
-C
-
-C Combination of Cause Sufficiency and Magnitudinal Causes Two Cause Sufficiencies
-
-as Independent Causes
-
-E
-
-C
-
-<OR>
-
-C
-
-C
-
-C
-
-C Combination of Cause Sufficiency and Exclusive OR
-
-Figure 4.18
-
-Various causal configurations.
-
 - When a cause on one page leads to an effect on another page, show the “destination entity number” on the cause page, and the “originating entity number” on the effect page (see Figure 4.19). Replicate the cause on the effect page, with a heavy border for emphasis, to draw attention to the fact that it originated on another page. Beside each off-page connection, indicate the page the connection is going to (or the page the entity came from).
 
 ![page 117](images/p117.png)
@@ -674,31 +343,7 @@ Various causal configurations.
 >
 > —Unknown
 
-A Cause-Effect Tree on One Page
-
-p.1
-
-p. 2
-
-p.2
-
-(From p. 1 )
-
-A Cause-Effect Tree on Two or More Pages
-
-Figure 4.19
-
-Cause-effect tree numbering.
-
 ![page 118](images/p118.png)
-
-(Added
-
-entities)
-
-329.5
-
-328.5
 
 (Shading highlight added for emphasis Should not be part of actual tree.) .
 
@@ -720,19 +365,9 @@ There are two major risks associated with long arrows. The most obvious is in co
 
 The U.S. loses 500,000 jobs to Mexico.
 
-...then...
-
 The U.S. loses 500,000 jobs to Mexico.
 
-If...
-
-Congress passes the employment benefit law. Congress passes the employment benefit law. Logically Deficient
-
-( Too many intermediate steps left unstated )
-
 Figure 4.21 The “long arrow” (clarity).
-
-A more accurate picture of the missing layers of cause and effect
 
 ![page 120](images/p120.png)
 
@@ -746,27 +381,13 @@ A typical beginner mistake is failure to acknowledge, and include in a CRT or FR
 - No ellipses
 - More like a flow chart than a logic tree
 
-Figure 4.22 The Insufficient Tree.
-
 ![page 121](images/p121.png)
 
 #### The Concept of “Oxygen” Revisited
 
 In Chapter 2, “Categories of Legitimate Reservation,” we explored the concept of “oxygen” in logic trees. It’s time to reinforce that discussion with a brief review. Figure 4.23 illustrates the oxygen issue. The concept of “oxygen” in logic trees is often used as a rationale for leaving out entities—contributing causes—in a CRT or FRT. The argument usually goes something like this: “Well, of course it’s a factor, but everybody knows it’s there, so there’s no need to include it.”
 
-We have a fire. ...then...
-
-If...
-
-…and...
-
 We have a source of ignition.
-
-We have fuel.
-
-…and...
-
-We have oxygen.
 
 - Oxygen is critical to the causality, but...
 - Oxygen is assumed to be present by everyone who knows anything about the situation, and...
@@ -794,59 +415,17 @@ As with any sufficiency tree, the Current Reality Tree is read from the bottom u
 
 “...and THAT, my friend, is why you always feel smarter after a few beers!” The more beer you drink, the smarter it will make you. [DESIRED EFFECT]
 
-...then...
-
-If...
-
-...then...
-
-...then...
-
-...and...
-
 The human brain operates faster when slower , weaker brain cells are killed off.
 
 Excessive beerdrinking kills off the slowest brain cells.
 
-If...
-
-...and...
-
 The herd is able to move at a faster pace as the slower buffalo are killed off.
 
-If...
-
-...and...
-
 A herd of buffalo can move only as fast as the slowest buffalo.
-
-Buffalo herds are hunted.
 
 The human brain is like a herd of buffalo (it can only operate as fast as the slowest brain cells).
 
 ...and... The slowest, weakest buffalo are killed off first.
-
-Figure 4.24 “The buffalo effect.”
-
-Wor
-
-se
-
-Be tt
-
-er
-
-D A 6 M A G 4 E
-
-Figure 4.25 Regret factor.
-
-.2
-
-.4 .6 PROBABILITY
-
-.8
-
-1.0
 
 ![page 124](images/p124.png)
 
@@ -856,19 +435,7 @@ causes joined by an ellipse, read the “If” only once, with the other contrib
 
 As you begin building your Current Reality Tree, connecting the UDEs and working your way down to root causes, you might occasionally notice a special relationship between an UDE and a cause lower in the tree. Sometimes it’s obvious that an undesirable effect
 
-...then... Odds of an
-
-accident increase.
-
-If...
-
-Drivers don’t stop for red lights. IF - THEN
-
-...then...
-
 People are not likely to be motivated to change as required to successfully implement total quality.
-
-...and..
 
 If... People have little motivation to apply total quality principles.
 
@@ -886,10 +453,6 @@ Reinforcing loops are read a little differently than normal cause and effect. As
 
 ![page 126](images/p126.png)
 
-(Eventually
-
-leads to bankruptcy) Can you find the policy that should have been changed to avoid the ultimate undesirable effect?
-
 111 Each individual product/component costs more [AND MORE] than it did before.
 
 112 IH revenues don’t increase enough to offset costs.
@@ -897,10 +460,6 @@ leads to bankruptcy) Can you find the policy that should have been changed to av
 108 IH stops making thousands [MORE] of products and components.
 
 109 Fixed costs must be allocated over many fewer products and components.
-
-Negative Reinforcing
-
-Loop
 
 105 The total cost of many [MORE] of IH’s components is higher than the industry average.
 
@@ -911,8 +470,6 @@ Loop
 102 IH allocates fixed overhead to each unit of its products.
 
 110 Fixed overhead doesn’t drop much when products are outsourced.
-
-107 IH’s CEO directs operations to outsource components and products that don’t meet the criteria for “world-class.” (Critical Root Cause)
 
 103 IH manufactures thousands of components for its products.
 
@@ -942,8 +499,6 @@ CRTs are normally constructed in two forms, either on paper or on a computer usi
 - Use flip-chart or other large paper
 - Tape multiple pages together on a wall, if required
 
-Figure 4.28 Large paper required.
-
 Make allowances for the fact that you may even have to tape two pieces of flip-chart paper together, as shown in Figure 4.32. You’ll also need a lot of Post-it Notes—the optimum size is 3 inches by 3 inches—and a bold felt-tip pen for writing on the Post-it Notes. Felt-tip pens are preferable to ballpoint, because the mark they make is legible from somewhat farther away.* Your tree will be built from groupings of these notes (entities). Depending on the complexity of your problem, your tree might exceed a hundred entities, so you’ll need an ample supply. I recommend using three different colors: one for UDEs, one for critical root causes, and the third for all the other entities in the tree. Last but not least, you’ll need a few pencils and big erasers. The pencils are for drawing the causality lines on the flip-chart paper. The eraser is for making changes to the routing of these lines, or eliminating some if necessary. As your tree develops, you’ll find yourself moving whole connected clusters of entities from one place to another on the flip-chart paper; the old connecting lines will have to be erased, or they’ll confuse you later.
 
 1. Define the System to be Modeled Your first step should be to identify the boundary of the system you’re concerned about (see Figure 4.29). You need to know what lies within your system and what factors reside outside it, in the external environment. For biological, human, or organizational systems this is usually easy to do. The system is defined as a plant, animal, person, family, or organization (members and assets). For societal systems it may be more difficult. How do you define your “community,” for example? Economic or ecological systems can be extremely challenging. For these, the transition from internal system to external environment is often not clear. This is an essential first step, even if you find that you must go back and refine the definition after your analysis is under way. It might be helpful to ask a few leading questions:
@@ -956,10 +511,6 @@ Make allowances for the fact that you may even have to tape two pieces of flip-c
 * With few exceptions, scrutinizers will view most trees in draft form before they’re rendered into digital form. Two or more people trying to read a handwritten tree on Post-it Notes need the 3”x3” size and bold writing to be able to see the content from distances of three feet or more.
 
 ![page 129](images/p129.png)
-
-(External Environment) SYSTEM System Boundary
-
-(External Environment)
 
 - What kind of system?
 - Who is the system’s “owner”?
@@ -978,25 +529,11 @@ The next part of Step 2 and the first part of Step 3 are more easily and quickly
 
 ![page 130](images/p130.png)
 
-IO Map
-
-G CSF CSF CSF
-
-NC
-
-NC
-
-NC
-
 UDE # 1 Profits are declining.
 
 UDE #2 Costs are too high.
 
 UDE #3 We have high unsold inventory.
-
-UDE #4 We’re short of people. Cause
-
-Layer #1
 
 #### Cause
 
@@ -1021,53 +558,9 @@ UDE # 1 Profits are declining.
 
 UDE #2 Costs are too high.
 
-UDE #3 We have high unsold inventory. Cause
-
-Layer #1 Revenues
-
-are too low.
-
-Costs have increased. Demand and
-
-We lose good supply are people. mismatched. Cause
-
-Layer #2
-
-Sales have dropped.
-
-Fuel prices are up. Forecasts
-
-are wrong.
+Demand and We lose good supply are people. mismatched. Cause a. Create a matrix with UDEs and two layers of causality. b. Transfer UDEs and causes to Post-it Notes.
 
 UDE #4 We’re short of people.
-
-Job security is threatened.
-
-a. Create a matrix with UDEs and two layers of causality. b. Transfer UDEs and causes to Post-it Notes.
-
-UDE #1
-
-UDE #2
-
-UDE #3
-
-UDE #4 Cause
-
-layer #1 Cause
-
-layer #1 Cause
-
-layer #1 Cause
-
-layer #1 Cause
-
-layer #2 Cause
-
-layer #2 Cause
-
-layer #2 Cause
-
-layer #2
 
 Figure 4.31 Step 3: Determine the first two levels of causality.
 
@@ -1091,40 +584,13 @@ Figure 4.32 Step 4: Begin the Current Reality Tree.
 
 ![page 133](images/p133.png)
 
-UDE #1 Cause
-
-layer #1
-
-UDE #3 Cause
-
-layer #1 Cause
-
-layer #2 Cause
-
-layer #2
-
-UDE #2
-
 - Use the CLR to ensure:
-
-> – Clarity
-
-> – Entity Existence
-
-> – Causality Existence
-
-> – Cause Sufficiency
-
-Cause
-
-layer #1
-
+- Clarity
+- Entity Existence
+- Causality Existence
+- Cause Sufficiency
 - Add ellipses and magnitudinal “bowties” as required
 - Position completed related clusters near one another
-
-Cause
-
-layer #2
 
 Figure 4.33 Step 5: Improve the logic of the initial clusters.
 
@@ -1142,17 +608,7 @@ Figure 4.34 Logic trees are like real trees (convergence).
 
 In Chapter 2, “Categories of Legitimate Reservation,” we learned that there are two criteria a proposed cause must meet to be considered a legitimate additional cause. It must be realistic and it must be probable. Realistic means that if the cause were to happen, it would have the “horsepower” to actually produce the effect. Probable means that the likelihood of that cause occurring is not insignificant. An independent cause of the same effect that is both realistic and probable should be included in the tree. If you are able to identify a legitimate additional cause, write it on a Post-It note and connect it to the existing cluster (see Figure 4.35). Take note of a couple of characteristics of the additional cause situation shown in Figure 4.35. Notice first that there are two key assumptions indicated near the causes.
 
-The plant dies. [UDE]
-
-The plant receives insufficient water.
-
-The plant receives insufficient fertilizer.
-
 The plant is shaded from the sun too much.
-
-A gopher eats the plant’s roots. (Additional Cause)
-
-**ASSUMPTIONS:**
 
 1. Plants need water, nutrition, and sunlight in combination to survive.
 2. Plants need an intact, functioning root system to survive.
@@ -1167,12 +623,6 @@ These are clearly “oxygen” to the causality, as discussed in Chapter 2, “T
 
 When your first clusters are thoroughly checked for clarity, entity existence, sufficiency and additional causes, examine the causes and effects among all the clusters for possible lateral connections. A lateral connection is a cause in one cluster that leads to an effect in another cluster. In some cases, such connections will “jump right out at you.” In other words, an existing entity in one cluster connects directly as a cause of an effect in an adjacent cluster. At other times, you will see an entity that will eventually connect to another cluster, but some intermediate effects must be developed first (see Figure 4.37). Draw connecting causality arrows between the entities in the two clusters, from cause to effect. Use the CLR to perfect the logic (refer to Step 5). Reposition or rearrange cluster as required to simplify the visual presentation and eliminate as many “cross-overs” (causal arrows that cross one another) as possible. Though we put related clusters nearby one another, keep in mind that it’s possible for connections to occur between clusters that don’t seem related to each other. For this reason, you must check all clusters for lateral connections. If you don’t find any, don’t be surprised. You will, eventually, because all the clusters in the tree are different aspects of the same integrated system. You’ll just need to dig deeper to find them.
 
-The plant dies. [UDE]
-
-A gopher eats the plant’s roots. Additional Cause Test
-
-(Additional Cause)
-
 - Is it REALISTIC? (If it happens, will it really produce the effect?)
 - Is it PROBABLE? (Is it a remote possibility or a likely occurrence?)
 
@@ -1180,19 +630,7 @@ Figure 4.36 Verify possible additional causes.
 
 ![page 136](images/p136.png)
 
-UDE #3
-
-UDE #1
-
 #### Cause
-
-layer #1 An effect in one cluster causes an effect in another related cluster. Cause
-
-layer #1 Cause
-
-layer #2 Cause
-
-layer #2
 
 Figure 4.37 Step 7: Look for lateral connections.
 
@@ -1207,8 +645,6 @@ Each UDE and its supporting cluster constitute the top of a “branch” in your
 
 ![page 137](images/p137.png)
 
-Repeat this process until you’ve achieved two objectives:
-
 - You reach the lowest level of causation that you or someone within your sphere of influence has the authority to change, and
 - All clusters are cross-connected into a single, logically sound tree. Your finished tree should look like Figure 4.38.
 
@@ -1219,31 +655,7 @@ Now that the tree is complete, at least for the first pass, it must be “scruti
 - Is it complete? Are all the important UDEs and critical root causes of them included?
 - Is the logic “tight,” meaning is each connection sufficient? UDE #3
 
-UDE #1
-
-UDE #4 MAG
-
-<OR> (Added entity)
-
-<OR> UDE #5
-
-(Added entities) (Build
-
-downward) UDE #2
-
-(Build downward, and converge) (Build
-
-downward) (Build
-
-downward)
-
 Figure 4.38 Step 8: Build the cause-and-effect chains downward.
-
-(Converge)
-
-Negative Reinforcing
-
-Loop
 
 - Is the tree, in its entirety, an accurate reflection of reality as people in the system perceive it? If you showed it to others involved in the system, would they agree that it’s an accurate picture of what’s happening? It’s at this point that you get to actually test the last of the preceding bulleted questions. When you think that your CRT is as good as you can possibly make it, it’s time to show it to others and solicit their scrutiny of its details. It isn’t necessary for outside scrutinizers to understand the Categories of Legitimate Reservation, though that can be helpful. It is necessary, however, that they be intimately familiar with the subject matter of the CRT. You need scrutinizers who can tell you when your tree’s Entity Existence and Causality Existence are questionable, and only those familiar with the system can do that. These outsiders will naturally advise you when your logic seems lacking, though you won’t hear such terms from them as “causality existence reservation” or “cause insufficiency.” Instead, as they “talk around” what they perceive as deficiencies, you’ll recognize the words that characterize one or more of the formal reservation categories.* Especially if you are preparing a CRT for a higher decision maker, or in any other careercritical situation, external scrutiny of your work is essential.
 
@@ -1256,28 +668,6 @@ Now it’s time for the fun part: deciding where to focus your improvement effor
 ![page 139](images/p139.png)
 
 Have you ever heard of “the serenity prayer?” God, grant me serenity to accept the things I cannot change, the courage to change the things I can, and the wisdom to know the difference. Well, the CRT may not provide you serenity, but it can certainly help you differentiate the things you can do from those you can’t and give you the wisdom to know the difference. Before we move on to another topic, let me leave you with this thought: Your success or failure in accomplishing what you want in life is, in the final analysis, a game. And the name of the game is “How far am I willing to push the limits of my sphere of influence?” If you think you can do it, you may be right. If you think you can’t do it, you’ll always be right.
-
-UDE #3
-
-UDE #1
-
-UDE #4 MAG
-
-<OR>
-
-<OR> UDE #5 (Critical Root Cause) (Critical
-
-Root Cause) Span of Control
-
-Negative Reinforcing
-
-Loop
-
-UDE #2 Sphere of Influence (Critical
-
-Root Cause) (Critical
-
-Root Cause)
 
 Figure 4.39 The finished Current Reality Tree.
 
@@ -1313,67 +703,13 @@ Qualifying words can save our credibility. Words like “some,” “many,” �
 
 Figure 4.40 All or none: a sliding scale.
 
-100% ALL
-
-75% Most
-
-50%
-
-A majority
-
-33% Many
-
-20% Some
-
-10%
-
-Few
-
-0% NONE
-
 ![page 142](images/p142.png)
 
 #### Too Many Arrows?
 
 A common error in sufficiency trees is too many arrows passing through an ellipse between cause and effect. This normally results when a tree builder fails to question whether some of them might be additional causes rather than contributing sufficient causes. A simple way to avoid this pitfall is to use the number 3 as a starting benchmark. Although there are situations in which a causal connection may have more than three arrows, these are rare. So if you are tempted to run four or more arrows through an ellipse to an effect, consider that a “warning flag.” Evaluate the proposed connections for sufficiency and additional cause. One way to do this is to cover up each cause and its arrow in turn and ask yourself, “Are the remaining causes sufficient to produce the effect?” If the answer is “yes,” then the one you’ve covered up is likely to be an additional cause. If not, then it belongs with the ellipse. If you have more than four arrows passing through an ellipse, you should assume that you’ve embedded an additional cause in the ellipse somewhere and start evaluating each cause individually to determine whether one or more might stand alone.
 
-...then...
-
-...and..
-
-If... A few...
-
-...then...
-
-If... Many...
-
-...then...
-
-Some...
-
-A few...
-
-Most...
-
-Many...
-
 Figure 4.41 Combining “qualifiers” in effects.
-
-...and..
-
-If... Some...
-
-...then... ...and..
-
-Many...
-
-If... Many...
-
-Some...
-
-Most...
-
-...and.. Amajority...
 
 ![page 143](images/p143.png)
 
@@ -1386,8 +722,6 @@ Simple Logical Aid #1: Means, Method, and Motivation A couple of simple aids can
 #### Effect Cause Cause Cause Cause
 
 A rare configuration Anytime you see four or more arrows through an ellipse, look carefully for an additional cause among them Effect Cause Cause Cause Cause
-
-More common configurations One or two represent an additional cause
 
 #### Cause Effect Cause Cause Cause Effect Cause Cause Cause Cause
 
@@ -1409,12 +743,6 @@ Qualified teachers use proven learning techniques.
 
 Students want to learn the subject matter.
 
-(Means)
-
-(Method)
-
-(Motivation)
-
 Assumption #1: Students have no disability that would preclude effective learning. Assumption #2: Materials and techniques are available to accommodate learning- disabled students.
 
 EXAMPLE #2 We produce highquality products.
@@ -1425,12 +753,6 @@ We train our employees to use ISO 9000-compliant best practices.
 
 Our employees are rewarded for achieving high quality.
 
-(Means)
-
-(Method)
-
-(Motivation)
-
 Assumption: Other policies and practices don’t degrade equipment or methods.
 
 Figure 4.43 Means, method, and motivation.
@@ -1439,40 +761,18 @@ Figure 4.43 Means, method, and motivation.
 
 A syllogism is composed of three parts: a major premise, a minor premise, and a conclusion. Here’s an example: MAJOR PREMISE:
 
-Hare Krishna men shave their heads. MINOR PREMISE:
-
-John is a Hare Krishna. CONCLUSION:
-
-John’s head is shaved.
-
 Here’s how that looks in a sufficiency relationship (bottom part of Figure 4.44). From our discussion of entity existence in Chapter 2, we know that each entity must be expressed in a complete sentence. Although a subject and a verb are often enough to comprise a complete, valid sentence, more often we see a subject, verb, and object. For the purposes of this discussion, let’s assume that an effect and the two causes that produce it (the upper part of Figure 4.44) each have a subject, verb, and object. Now if we look at the syllogism (the bottom part of Figure 4.44), we see that the major premise, the minor premise, and the conclusion also have subjects, verbs, and objects. For a causal connection to be valid and sufficient, we must be able to find evidence of the subject, the verb, or the object from each contributing cause somewhere in the effect and a common link with at least one other contributing cause. CONCLUSION
-
-[SUBJECT] [VERB] [OBJECT]
-
-[SUBJECT] [VERB] [OBJECT]
-
-[SUBJECT] [VERB] [OBJECT] MAJOR PREMISE MINOR PREMISE CONCLUSION
-
-John’s head is shaved. Hare Krishna
-
-men have shaved heads.
 
 - Subject from minor premise
 - Verb from minor premise
 - Object from major premise
 - Major premise subject and minor premise object are the same (common link)
 
-John is a
-
-Hare Krishna.
-
 ### Minor Premise Major Premise
 
 - Look for evidence of the major premise in either the subject, verb, or object of the conclusion
 - Look for a common link between the major premise and the minor premise
 - Any entity not providing either of the subject-verb-object or the common link is probably superfluous to this connection
-
-Figure 4.44 The syllogism.
 
 If you find a cause (or are contemplating including one within a sufficiency ellipse) that does not provide part of the subject, verb, or object of the effect and doesn’t link with one of the other causes, then it must be considered a possible additional cause of the effect, separate from the ellipsed contributors and evaluated using the CLR independently.
 
@@ -1498,115 +798,31 @@ What happens instead is some modification, sometimes rather significant, to an e
 
 1. Define the system to be modeled.
 - Is it:
-
-> – A person?
-
-> – An organization?
-
-> – A process?
-
-> – A historical event?
-
+- A person?
+- An organization?
+- A process?
+- A historical event?
 - Create a clear mental image of what lies within the system and what lies in the external environment in which the system operates.
-
-(External Environment) SYSTEM System Boundary
-
-(External Environment)
-
 1. Determine the Undesirable Effects (UDE).
 - Construct an IO Map (if not already done).
 - Identify the system performance benchmarks:
-
-> – Goal
-
-> – Critical Success Factors (CSF)
-
-> – Necessary Conditions (NC)
-
+- Goal
+- Critical Success Factors (CSF)
+- Necessary Conditions (NC)
 - Assess current reality against each benchmark:
-
-> – Is there a deviation?
-
-> – If so, define and articulate it in a complete
-
-sentence.
-
+- Is there a deviation?
+- If so, define and articulate it in a complete sentence.
 - Write and number the deviation as an UDE on a uniquely-colored Post-it Note.
 - Arrange the UDEs horizontally on the workspace.
 1. Determine the Two Preceding Layers of Causes.
 - On a tablet, create a two-layer matrix of causes for each UDE:
-
-> – Determine the two preceding causes of
-
-> each UDE.
->
-> – Enter these as complete sentences in the
-
-appropriate block of the matrix.
-
+- Determine the two preceding causes of each UDE.
+- Enter these as complete sentences in the appropriate block of the matrix.
 - When the matrix is completely filled, transfer the causal statements to Post-it Notes.
 - Position the causal Post-it Notes directly beneath their respective UDEs.
 - Connect the three entities vertically with dotted-line arrows.
 
-IO Map
-
-G
-
-UDE #1 CSF CSF CSF
-
-NC
-
-NC
-
-NC
-
-UDE #2
-
-UDE # Cause
-
-Layer #1 xxxx Cause
-
-Layer #2 xxxx
-
-UDE #3
-
-UDE #4
-
-xxxx
-
-xxxx
-
-xxxx
-
-xxxx
-
-xxxx
-
-xxxx
-
-UDE #1
-
-UDE #2
-
-UDE #3 Cause
-
-layer #1 Cause
-
-layer #1 Cause
-
-layer #1 Cause
-
-layer #2 Cause
-
-layer #2 Cause
-
-layer #2
-
-Figure 4.45 Procedures for constructing a Current Reality Tree (CRT) – abbreviated checklist. (Continued)
-
 ![page 149](images/p149.png)
-
-(Continued)
 
 1. Begin the Current Reality Tree.
 - Transfer the Post-it Notes you created in Step-3 to a large sheet of paper.
@@ -1616,38 +832,22 @@ Figure 4.45 Procedures for constructing a Current Reality Tree (CRT) – abbrevi
 - Allow adequate lateral space between clusters.
 1. Improve the Logic of the Initial Clusters
 - Use the CLR to evaluate and perfect each connection in each cluster:
-
-> – Clarity
-
-> – Entity Existence
-
-> – Causality Existence
-
-> – Cause Insufficiency
-
+- Clarity
+- Entity Existence
+- Causality Existence
+- Cause Insufficiency
 - Add entities, arrows, and ellipses where required.
 - Stop only when you are sure the logic of each cluster individually is “tight.”
 - Reposition as required to place related clusters beside each other.
 1. Identify Possible Additional Causes.
 - Look for other independent causes of the same observed effect.
 - Any proposed additional cause must be:
-
-> – REALISTIC
-
-> – PROBABLE
-
+- REALISTIC
+- PROBABLE
 - Write the additional cause on a Post-it Note.
 - Place it in the tree and connect it to the appropriate effect.
 
-UDE #1
-
-UDE #3 Additional
-
-cause
-
 ![page 150](images/p150.png)
-
-(Continued)
 
 1. Look for lateral connections.
 - Identify causes in one cluster that produce effects in another.
@@ -1657,152 +857,47 @@ cause
 - Re-position the clusters as necessary to eliminate as much as possible arrows that cross over one another.
 1. Build the Cause-and-Effect Chain Downward.
 - Extend the cause-and-effect of each cluster downward:
-
-> – Continue by asking “why?” for each
-
-> lowermost cause.
->
-> – With each new layer of cause, look for
-
-> lateral connections with other clusters.
->
-> – As you add each new layer, look also for
-
-> new additional causes.
->
-> – Look for negative reinforcing loops, label
-
-them where they occur.
-
+- Continue by asking “why?” for each lowermost cause.
+- With each new layer of cause, look for lateral connections with other clusters.
+- As you add each new layer, look also for new additional causes.
+- Look for negative reinforcing loops, label them where they occur.
 - Stop:
-
-> – When you reach the lowest level of cause
-
-> that is within a decision maker’s sphere of influence to change.
->
-> – When all clusters have converged into
-
-a single tree.
-
-UDE #3 UDE #1
-
-U U U <OR> <OR>
-
-U
-
-U
-
+- When you reach the lowest level of cause that is within a decision maker’s sphere of influence to change.
+- When all clusters have converged into a single tree.
 1. Scrutinize the Entire Current Reality Tree.
 - Examine the tree in its entirety:
-
-> – Is it complete? (Are all the important UDEs and critical root causes included?)
-
-> – Is the logic of each connection sufficient?
-
-> – Will it make sense (that is, achieve consensus) for those who did not participate in building
-
-the tree?
-
+- Is it complete? (Are all the important UDEs and critical root causes included?)
+- Is the logic of each connection sufficient?
+- Will it make sense (that is, achieve consensus) for those who did not participate in building the tree?
 - Enlist the aid of others who were not part of the construction process to scrutinize the tree.
 - Their knowledge of the CLR is not required, only subject matter knowledge of the situation.
 
 ![page 151](images/p151.png)
 
-(Continued)
-
 10. Decide Which Root Causes to Attack.
 - Identify critical root causes (those few causes that account for all the UDEs):
-
-> – Trace the chain of dependency from each root cause to each UDE.
-
-> – Determine which root causes are within your sphere of influence.
-
-> – Identify the ones that offer the most potential for improvement as critical root causes.
-
-UDE #3
-
-UDE #1
-
-UDE #4 MAG
-
-<OR>
-
-<OR> UDE #5 (Critical Root Cause) (Critical
-
-Root Cause) Span of Control
-
-Negative Reinforcing
-
-Loop
-
-UDE #2 Sphere of Influence (Critical
-
-Root Cause) (Critical
-
-Root Cause)
+- Trace the chain of dependency from each root cause to each UDE.
+- Determine which root causes are within your sphere of influence.
+- Identify the ones that offer the most potential for improvement as critical root causes.
 
 ![page 152](images/p152.png)
 
-p
-
-pp
-
-y
-
-g
-
-p
-
-p
-
-p
-
 Primary marketing is done through a network of recruited orthopedic surgeons who act as an advisory board suggesting new custom-designed appliances. The same surgeons act as a customer base for the company’s new products and as referral agents for new customers (surgeons). 205 Fordyce can’t get products out the door fast enough.
-
-p. 2
-
-(From p. 2 )
 
 p. 3 113 Fordyce doesn’t have an effective MIS/administrative management system. 112 The FDA-required Quality System Requirements (QSR) data base has not been created and maintained (entry, maintenance, retrieval).
 
-p. 2 Negative Reinforcing
-
-Loop #1
-
 108 Fordyce can’t meet it’s consulting contract obligations with participating doctors.
-
-p. 2
-
-p. 4
 
 109 Fordyce can’t hire the initially required employees (4-5 personnel).
 
 107 Fordyce can’t hire the expertise needed to configure the computer network for effective operations support.
 
-p. 3
-
-p. 2 106 A business management software suite has not been identified, acquired, installed, and configured. p. 3
-
 110 Fordyce facilities can’t be configured for production.
-
-104 Fordyce is cash-limited.
-
-p. 3
-
-p. 2
 
 105 Fordyce doesn’t have the engineering resources needed to complete product drawings. 103 Working capital or sufficient cash flow is required to grow.
 
-Assumptions underlying arrow from 104 to 105, 106, 107, 108, 109, 110, and 111:
-
 1. All of these items are required for a successful operation.
 2. All of these items require cash. 101 Fordyce
-
-doesn’t have working capital.
-
-<OR>
-
-(Critical Root Cause)
 
 Figure 4.46 Current Reality Tree: Fordyce Corporation.
 
@@ -1810,81 +905,29 @@ Figure 4.46 Current Reality Tree: Fordyce Corporation.
 
 102 Cash flow from sales is low (and decreasing).
 
-(Critical Root Cause)
-
-Negative Reinforcing
-
-Loop #2 (from p.5)
-
-(Continued)
-
 ![page 153](images/p153.png)
-
-(Continued)
-
-502 Sales revenue doesn’t increase. [UNDESIRABLE EFFECT]
-
-p. 5
-
-(p. 5 )
-
-208 Fordyce doesn’t have an effective management system. [UNDESIRABLE EFFECT]
-
-501 Customers don’t demand Fordyce products. [UNDESIRABLE EFFECT] (p. 5 )
-
-203 The desired supporting professional network of doctors does not develop. [UNDESIRABLE EFFECT]
 
 201 Fordyce’s ability to quickly establish a favorable reputation among surgeons is limited.
 
 108 Fordyce can’t meet its consulting contract obligations with participating doctors.
 
-MAG
-
 206 Fordyce has system management knowledge and training deficiencies.
 
 204 Doctors don’t do as many surgeries using Fordyce products. 205 Fordyce can’t get products out the door fast enough for customers who submit orders.
 
-(Critical Root Cause)
-
-p. 3 Positive Reinforcing
-
-Loop #1 (102 on p.1)
-
-MAG
-
 202 Workload on personnel is too great (too little time).
-
-113 Fordyce doesn’t have an effective MIS/ administrative management system. (From p. 1 )
-
-(From p. 1 )
-
-109 Fordyce can’t hire the initially required employees (4-5 personnel). (From p. 1 )
 
 110 Fordyce facilities can’t be configured for production.
 
 111 Fordyce can’t purchase production equipment.
 
-(From p. 1 )
-
-(From p. 1 )
-
-(Continued) p. 4
-
-312 510K approval hasn’t been obtained. [UNDESIRABLE EFFECT]
-
 310 Incoming materials can’t be processed.
 
 311 The FDA does not review 501K submissions in a timely manner.
 
-(Root Cause)
-
 309 Fordyce does not have a documented quality assurance system (QSR).
 
 308 Processes have not been qualified (verified). 307 Fordyce can’t buy implants or instruments from suppliers .
-
-112 The FDA-required Quality System
-
-Requirements (QSR) data base has not been created and maintained (entry, maintenance, retrieval). (From p. 1 )
 
 305 Fordyce doesn’t have approved drawings.
 
@@ -1898,31 +941,11 @@ Requirements (QSR) data base has not been created and maintained (entry, mainten
 
 111 Fordyce can’t purchase production equipment.
 
-202 Workload on personnel is too great (too little time). NOTE: Process
-
 definition and approved procedures are required by FDA-QSR.
-
-(From p. 1 )
 
 110 Fordyce facilities can’t be configured for production.
 
-(From p. 1 ) (From p. 1 )
-
-(From p. 2 )
-
 301 Process definition is time consuming.
-
-(Continued) p. 5
-
-410 Customers aren’t satisfied with Fordyce’s product offerings. [UNDESIRABLE EFFECT]
-
-p. 5
-
-409 Fordyce is not competitive in the market. [UNDESIRABLE EFFECT]
-
-p. 5
-
-407 Fordyce can’t provide innovative, high-quality new products in a timely manner. [UNDESIRABLE EFFECT]
 
 408 Fordyce can’t introduce competitive spinal products.
 
@@ -1930,63 +953,15 @@ p. 5
 
 310 Incoming materials can’t be processed.
 
-(Critical Root Cause)
-
-(From p. 3 ) 312 501K approval hasn’t been obtained. [UNDESIRABLE EFFECT]
-
-p. 5
-
-403 Fordyce doesn’t have an exceptional marketing program. [UNDESIRABLE EFFECT]
-
-404 Fordyce doesn’t have comprehensive marketing knowledge. [UNDESIRABLE EFFECT]
-
-405 Fordyce doesn’t have an effective sales/ distribution network. [UNDESIRABLE EFFECT]
-
 401 There is no one to develop an effective marketing/sales effort.
 
-109 Fordyce can’t hire the initially required employees (4-5 personnel). (From p. 1 )
-
-(From p. 3 )
-
-402 An effective sales representative training program doesn’t exist. [UNDESIRABLE EFFECT]
-
 ![page 156](images/p156.png)
-
-(Continued) 506 U&I’s expectations are not met. [UNDESIRABLE EFFECT]
 
 503 U&I expects Fordyce to introduce non-spine-related products this year.
 
 504 Fordyce can’t realize $10M in revenue in 2002.
 
-505 U&I expects Fordyce to generate $10M in revenue this year. (Critical Root Cause)
-
-(Critical Root Cause)
-
-502 Sales revenue doesn’t increase. [UNDESIRABLE EFFECT]
-
-Negative Reinforcing
-
-Loop #2
-
-p.1 501 Customers don’t demand Fordyce products. [UNDESIRABLE EFFECT]
-
-205 Fordyce can’t get products out the door fast enough for customers that submit orders. (From p. 2 )
-
-410 Customers aren’t satisfied with Fordyce’s product offerings. [UNDESIRABLE EFFECT] (From p. 4 )
-
-407 Fordyce can’t provide innovative, high-quality new products in a timely manner. [UNDESIRABLE EFFECT] (From p. 4 )
-
-405 Fordyce doesn’t have an effective sales/ distribution network. [UNDESIRABLE EFFECT] (From p. 4 )
-
-409 Fordyce is not competitive in the market. [UNDESIRABLE EFFECT] (From p. 4 )
-
-(Continued) No. Subject Type Possible Disposition
-
-Fordyce doesn’t have working capital.
-
 ### Critical Root Cause
-
-Resolve in Future Reality Tree.
 
 Cash flow from sales is low (and decreasing).
 
@@ -1998,8 +973,6 @@ Fordyce has system management knowledge and training deficiencies.
 
 ### Critical Root Cause
 
-Resolve in Future Reality Tree.
-
 The FDA does not review 501K submissions in a timely manner.
 
 ### Critical Root Cause
@@ -2009,8 +982,6 @@ Federal government issue; probably outside sphere of influence.
 Fordyce doesn’t have a proven product development management methodology.
 
 ### Critical Root Cause
-
-Resolve in Future Reality Tree.
 
 U&I expects Fordyce to introduce non-spine-related products this year.
 

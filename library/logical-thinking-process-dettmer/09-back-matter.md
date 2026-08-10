@@ -10,9 +10,7 @@ We’re at the end. There’s considerably more “richness” to the Thinking P
 - A Future Reality Tree can provide a robust “bench test” of proposed solutions, complete with consideration of potentially undesirable outcomes—unintended consequences—that might be associated with them.
 - Prerequisite Trees are the bridge between logically constructed solutions and their implementation.
 - Using the Thinking Process, you can start with an ill-defined problem and end with an implementation plan for a solution that offers a high probability of success.
-- Logical solutions are not enough. Implementation requires effective leadership and careful consideration of human psychology. From here on, it’s up to you to decide what you do with the Thinking Process. After you’ve taken opportunities to practice and apply the trees, individually or in concert, I urge you to reread selected chapters, particularly Chapter 3 (Intermediate Objective Map) and Chapter 4 (Current Reality Tree). I think you’ll find that what you read earlier
-
-will take on new meaning as you reread it through the clarifying lens of experience. And ultimately, your subsequent efforts will be more rewarding for doing so. In closing, let me remind you of the message implicit in the O-O-D-A loop (Figure 8.10): Even good solutions deteriorate over time as the external environment and circumstances change. Or, as an anonymous farmer once said…
+- Logical solutions are not enough. Implementation requires effective leadership and careful consideration of human psychology. From here on, it’s up to you to decide what you do with the Thinking Process. After you’ve taken opportunities to practice and apply the trees, individually or in concert, I urge you to reread selected chapters, particularly Chapter 3 (Intermediate Objective Map) and Chapter 4 (Current Reality Tree). I think you’ll find that what you read earlier will take on new meaning as you reread it through the clarifying lens of experience. And ultimately, your subsequent efforts will be more rewarding for doing so. In closing, let me remind you of the message implicit in the O-O-D-A loop (Figure 8.10): Even good solutions deteriorate over time as the external environment and circumstances change. Or, as an anonymous farmer once said…
 
 > The hardest thing about milking cows is that they never stay milked.
 >
@@ -31,58 +29,6 @@ will take on new meaning as you reread it through the clarifying lens of experie
 The Intermediate Objectives Map that follows was created to be more than a problem-solving tool. It was conceived as the foundation for the strategy of a not-for-profit foundation formed in 2005. The Sam Spady Foundation (http://www.samspadyfoundation.org) was created by Samantha Spady’s parents following her tragic death by alcohol poisoning at Colorado State University in Fort Collins, Colorado, in September 2004. The Spadys were determined that they would do everything they possibly could to prevent other young people from losing their lives in this way—and spare other parents from the inconsolable grief that they endured. The Sam Spady Foundation Strategic Intermediate Objectives Map is actually more detailed than the one shown here, which has been abbreviated for illustration purposes. The original is actually two pages long and runs to about four levels of necessary conditions below the critical success factors. Not every IO Map needs to be that detailed, but because this was a start-up organization, the extra detail gave the Spadys a greater sense of confidence that they had all the required bases covered. If anything, this is an excellent example of the flexibility of the IO Map—it can incorporate as much or as little detail as the user needs. It should be clear from reading the content of this IO Map that the goal, critical success factors, and necessary conditions for an educational foundation differ dramatically from those one would see in the IO Map of a commercial company or government agency. Each type of organization can expect to have an IO Map of different structure. And within similar types of organizations, content will differ, reflecting the unique characteristics of each foundation, company, or agency.
 
 ![page 342](images/p342.png)
-
-GOAL
-
-Maximum prevention GOAL
-
-of student alcohol poisoning deaths. CRITICAL SUCCESS FACTORS
-
-High visibility (public awareness)
-
-Use multiple media and communication channels effectively Necessary Conditions Organization
-
-optimized for the mission
-
-Compelling, engaging message Optimize
-
-message for medium/ communication channel
-
-Identify all feasible communication channels
-
-Effective day-today operating organization is established Establish
-
-foundation board of directors Aggressive
-
-public relations, promotion
-
-Engage/activate preferred communication channels Develop
-
-Comprehensive, logical, persuasive content Identify
-
-target audiences Hire a
-
-qualified executive director Define
-
-foundation officers’ and board’s responsibilities Complete an
-
-effective public relations plan
-
-We are not experienced in public relations Engage highly qualified public relations management Insufficient
-
-funds to sustain operations Secure
-
-adequate funding
-
-Figure A.1
-
-Sam Spady Foundation strategic Intermediate Objectives Map. Create an
-
-effective staff Build a
-
-volunteer network Hire
-
-required full-time services
 
 ## Appendix B: Executive Summary Trees
 
@@ -113,43 +59,11 @@ If you’ve followed the approach recommended in this book, you will have only a
 
 ![page 345](images/p345.png)
 
-Executive Summary Trees
-
-UDE
-
-UDE
-
-UDE
-
-MAG Critical Root Cause Critical Root Cause
-
-Figure B.1
-
-Complete your Current or Future Reality Tree. Critical Root Cause
-
 ![page 346](images/p346.png)
 
 3. Identify the Critical Root Causes or Injections Producing the UDEs/DEs From your full CRT or FRT, locate the critical root causes or injections that will lead to the UDEs/DEs you plan to present. Replicate these root causes or injections on the same page near the bottom. CRT
 
-(Top level only) UDE
-
-Figure B.2
-
-(Not of pressing interest to the executive) UDE
-
-UDE
-
 Isolate the most important UDEs/DEs to the executive.
-
-UDE
-
-UDE (Selected UDEs
-
-near the top) (Critical Root Causes
-
-near the bottom) Critical Root Cause
-
-Figure B.3
 
 #### Critical Root Cause Critical Root Cause
 
@@ -157,21 +71,9 @@ Replicate the UDEs and Critical Root Causes on a Blank Sheet.
 
 ![page 347](images/p347.png)
 
-Executive Summary Trees
+#### Executive Summary Trees
 
-4. Identify the Major Paths Between the Root Causes/Injections and
-
-#### UDEs/DEs
-
-Refer to your full CRT or FRT. By eye, trace the path of causality from the critical root causes you want to fix or the injections you want to implement to the UDEs/DEs. (See Figure B.4.)
-
-UDE
-
-UDE
-
-MAG Critical Root Cause Critical Root Cause
-
-Figure B.4
+4. Identify the Major Paths Between the Root Causes/Injections and Refer to your full CRT or FRT. By eye, trace the path of causality from the critical root causes you want to fix or the injections you want to implement to the UDEs/DEs. (See Figure B.4.) UDEs/DEs
 
 #### Critical Root Cause
 
@@ -181,19 +83,9 @@ Identify the major paths between critical root causes or injections and UDEs/DEs
 
 5. Replicate the Causal Paths on the Executive Summary Tree In pencil, replicate these paths as smooth lines on the flip-chart paper. Connect the lines to the UDEs/DEs and critical root causes/injections. (See Figure B.5.)
 
-UDE
-
-UDE Critical Root Cause Critical Root Cause
-
-Figure B.5
-
-Replicate the causal paths on the Executive Summary Tree. Critical Root Cause
-
 #### Executive Summary Trees 6. Transfer Convergence/Divergence Entities from the CRT/FRT to the Executive Summary Tree
 
 On the original CRT/FRT, identify the entities where major branches either converge or diverge. Replicate these entities in the Executive Summary Tree, and position them at the appropriate positions on the lines. (See Figure B.6.) Critical Root Cause Critical Root Cause
-
-Figure B.6
 
 #### Critical Root Cause
 
@@ -202,14 +94,6 @@ Transfer convergence/divergence entities from the CRT/FRT to the Executive Summa
 ![page 350](images/p350.png)
 
 7. Identify Key Intermediate Entities in Each Branch of the CRT/FRT In Chapters 4 and 6, I exerted considerable effort to convince you to avoid logically “long” arrows. Now I’m going to ask you to do just the opposite: create them! How long (logically) to make these arrows will be a judgment call on your part. You must take your decision-maker’s understanding of the system into consideration. If he or she is thoroughly familiar with all the detailed workings of the system, you can make longer leaps of logic. If not, you’ll have to make shorter leaps. When you have a sense for how much your executive knows about the situation, examine your original CRT/FRT carefully for key entities. These will be intermediate effects lying between the critical root causes/injections and the UDEs/DEs. You must ask yourself, “If I include only these intermediate entities, will the executive be able to follow,
-
-UDE
-
-UDE
-
-MAG Critical Root Cause Critical Root Cause
-
-Figure B.7
 
 #### Critical Root Cause
 
@@ -223,12 +107,6 @@ and accept, my causality logic?” You can make that leap personally, because yo
 
 8. Replicate the Intermediate Entities in the Executive Summary Tree Once you’re certain you’ve identified enough “stepping stones” for the decision maker, replicate these intermediate entities in their respective positions in the Executive Summary Tree. (See Figure B.8.)
 
-UDE
-
-UDE Critical Root Cause Critical Root Cause
-
-Figure B.8 Critical Root Cause
-
 Replicate the intermediate entities in the Executive Summary Tree.
 
 ![page 352](images/p352.png)
@@ -236,43 +114,15 @@ Replicate the intermediate entities in the Executive Summary Tree.
 1. Finalize the Executive Summary Tree On the Executive Summary Tree, replace “soft” or dotted pencil lines with “hard” connections (arrows). Don’t include ellipses. Do include magnitudinal “AND” symbols as required. The tree is now ready to be converted to digital format. When you do so, try to retain the smooth configuration, or tree shape, of the original CRT or FRT. You’ll find that this is easier for your audience to absorb visually. (See Figure B.9.)
 2. Divide Both Trees into Page-Sized Segments Partition both your original CRT/FRT and your Executive Summary Tree into page-sized “bites.” Your CRT or FRT may already be segmented that way, but if not, now is a good time to do it. The size of the segments for the Executive Summary Tree should be determined by how many entities of the original CRT/FRT you can comfortably fit on
 
-UDE
-
-UDE
-
-Convert “soft” (pencil) connections to “hard” (solid) ones. Critical Root Cause Critical Root Cause one presentation page (paper copy or digital projection). It’s your choice whether or not you show these segment divisions on the Executive Summary Tree you present to the decision maker. However, it would be advisable for you to have a paper copy of the Summary Tree with these dividing lines shown. (See Figure B.10.) Why should you do this? Remember that you will be presenting a very streamlined tree. You do not want to force feed anymore detail than is required for executives to “make the logical leap” with you. But if you’ve guessed wrong and your executives want to know how you made that leap, you need to be prepared to walk them through the stepby-step CRT/FRT logic—but only for that particular segment that represents the “leap.” If a question like this arises in the middle of your presentation, you want to be able to
-
-Figure B.9
-
-Finalize the Executive Summary Tree. Critical Root Cause
+Convert “soft” (pencil) connections to “hard” (solid) ones. Critical Root Cause Critical Root Cause one presentation page (paper copy or digital projection). It’s your choice whether or not you show these segment divisions on the Executive Summary Tree you present to the decision maker. However, it would be advisable for you to have a paper copy of the Summary Tree with these dividing lines shown. (See Figure B.10.) Why should you do this? Remember that you will be presenting a very streamlined tree. You do not want to force feed anymore detail than is required for executives to “make the logical leap” with you. But if you’ve guessed wrong and your executives want to know how you made that leap, you need to be prepared to walk them through the stepby-step CRT/FRT logic—but only for that particular segment that represents the “leap.” If a question like this arises in the middle of your presentation, you want to be able to FRT into pages, and map the pages on the Executive Summary Tree)
 
 ![page 353](images/p353.png)
 
 #### Executive Summary Trees
 
-Page 3 UDE
-
-UDE (Break the CRT/
-
-FRT into pages, and map the pages on the Executive Summary Tree)
-
-Page 1
-
-Page 2 Critical Root Cause Critical Root Cause
-
-Figure B.10
-
 Paginate the original CRT or FRT—create a map of pages. Critical Root Cause display only that part of the CRT/FRT that answers that particular question. Having the CRT/FRT paginated for quick reference makes responding to challenges smoother. (See Figure B.11.) Once you’ve answered the decision maker’s question satisfactorily with step-by-step logic, go back to the Executive Summary Tree with its “long arrows.” UDE
 
 ![page 354](images/p354.png)
-
-UDE
-
-Page 1 Critical Root Cause Critical Root Cause
-
-Figure B.11
-
-Bring out only the segments required. Critical Root Cause Critical Root Cause
 
 #### Executive Summary Trees
 
@@ -303,8 +153,6 @@ Assume that you’re employed by a corporation. You’ve been with the company f
 
 ### Your Assignment
 
-Use this new conflict-resolution tool, the Evaporating Cloud, to work out your Hamletlike dilemma. Consider the following questions:
-
 - What are the opposing positions (actions) about which you feel conflicted?
 - Why does each side appeal to you? What “itch” will you be scratching by following each path?
 - What’s your overall goal?
@@ -312,8 +160,6 @@ Use this new conflict-resolution tool, the Evaporating Cloud, to work out your H
 - What can you do to relieve yourself of all “itches?”
 
 ### Create an Evaporating Cloud
-
-When you’ve thought about these questions for a while, proceed with your Evaporating Cloud:
 
 1. State your opposing prerequisites.
 2. State the non-negotiable requirements each prerequisite satisfies for you.
@@ -323,13 +169,9 @@ When you’ve thought about these questions for a while, proceed with your Evapo
 
 ## Appendix E: The 3-UDE Cloud
 
-The 3-UDE Cloud
-
 At some point in your experience with the Thinking Process, some of you will undoubtedly encounter a way of attacking the problem-solving phase known as the 3-UDE Cloud, sometimes called the Core Problem Cloud. Some of you reading this book may have elsewhere learned this as the preferred way of doing problem analysis. In both cases, it's worth exploring the differences between the 3-UDE Cloud method and the way described in this book—what I call the modified traditional approach. As the name implies, the traditional approach preceded the 3-UDE Cloud method by about six years.
 
 ### The Basic Differences
-
-The differences between the two approaches (traditional and 3-UDE Cloud) can be summarized this way:
 
 #### Traditional
 
@@ -350,8 +192,6 @@ If I interpret this line of reasoning correctly, Button finds two faults with tr
 #### Core Problems and Core Conflicts
 
 Both Button and Lepore and Cohen explain the 3-UDE approach in some detail, though there are some minor procedural differences between the two. (Scheinkopf addresses “communication” Current Reality Trees, but doesn’t mention the 3-UDE Cloud idea.) Button's explanation is also more pedagogical while Lepore's and Cohen's is more conceptual. Lepore and Cohen begin with the introduction of something called the Core Problem Cloud. The presumption in their discussion of the CRT4:124 is that a Core Problem Cloud can be used to explain the existence of the UDEs in a CRT: One of the popular ways to construct a CRT is to base it on the Core CRT that is using the Core Problem Cloud.4:124
-
-The 3-UDE Cloud
 
 Now we have two apparently different terms: CRT and core CRT. Unfortunately, Lepore and Cohen don't make clear the distinction between the two. They do, however, address the concept of a Core Problem Cloud in some detail.4:122-124 According to Lepore and Cohen: The Core Problem Cloud describes the conflict that prevents us from finding a solution to the core problem. There are three major types of Core Problem Clouds:
 
@@ -382,13 +222,9 @@ Why is a conclusion arrived at inductively not logically sound? The answer lies 
 
 * “Generic,” in its intended use here, is a bit of a misnomer. A thesaurus lists the following synonyms for the word: all-encompassing, blanket, collective, comprehensive, general, inclusive, nonexclusive, sweeping, universal, wide. The more appropriate term in this circumstance would be “inductive.”
 
-The 3-UDE Cloud
-
 Induction or inductive reasoning, sometimes called inductive logic, is the process of reasoning in which the premises of an argument are believed to support the conclusion but do not ensure it. It's used to ascribe properties or relations to broader types based on tokens (that is, on one or a small number of observations or experiences), or to formulate laws based on limited observations of recurring phenomenal patterns.3 Basically, it induces the universal from the particular. However, the conclusion is far from certain. What, then, is the process of "genericizing" three discrete clouds into a single consolidated one, inducing a universal conclusion from particular details? It’s inductive reasoning. And why is this a problem? The answer is that conclusions drawn in this manner are usually over-generalizations. Consider, for example: I always hang pictures on nails; therefore, all pictures hang from nails. or Teenagers are given many speeding tickets; therefore, all teenagers speed.3
 
 As mentioned earlier, Lepore and Cohen don't offer any specific examples, only conceptual directions. But Button does. Here's an example of generic cloud elements (in this case, the conflicting prerequisites) induced from particular, specific ones:1
-
-Specific cloud #1 Specific cloud #2 Specific cloud #3 Generic cloud
 
 P1 (or D) Don't work overtime. Buy a component. Build only on demand. Take action for good department performance.
 
@@ -406,13 +242,7 @@ What’s the problem with this, logically speaking? It’s the proposed conclusi
 
 #### Transitioning to the CRT
 
-Setting aside for a moment the argument about whether the inductive (generic) cloud is valid or not, let's move ahead to what practitioners of the 3-UDE/Core Problem Cloud do with it. Since one of the underlying assumptions behind the 3-UDE/Core Problem Cloud is that a core conflict underlies all UDEs—in other words, the idea that an ultimate root cause of an UDE might not have a conflict associated with it is excluded—a conflict of some kind, no matter how logically supportable, must be incorporated somewhere in the bottom of the CRT. The procedure described by both Lepore and Cohen and Button calls for the generic Evaporating Cloud elements to be rotated 90 degrees counterclockwise, placing the objective of the cloud at the bottom and the conflicting prerequisites at the top. The arrows are then reversed, the wording is modified to support an “if-then” (sufficiency) verbalization, and additional entities (assumptions) are incorporated with ellipses to translate the former generic cloud into the bottom portion of a CRT.* Additional layers of cause-and-effect are then extrapolated upward from there until broader system-level UDEs are reached. (Remember, though, that consistent with one of
-
-* Lepore and Cohen describe this process only in conceptual terms, using no examples. Button provides an example of a CCRT (call it “core” or “communication,” it’s your choice...“You say po-TAY-to, I say po-TAH-to...") that makes understanding the process considerably easier. Unfortunately, that particular CRT is logically deficient to the point that its content is not persuasive.
-
-The 3-UDE Cloud
-
-the assumptions underlying the3-UDE Cloud method, UDE determination is highly subjective.)1,4
+Setting aside for a moment the argument about whether the inductive (generic) cloud is valid or not, let's move ahead to what practitioners of the 3-UDE/Core Problem Cloud do with it. Since one of the underlying assumptions behind the 3-UDE/Core Problem Cloud is that a core conflict underlies all UDEs—in other words, the idea that an ultimate root cause of an UDE might not have a conflict associated with it is excluded—a conflict of some kind, no matter how logically supportable, must be incorporated somewhere in the bottom of the CRT. The procedure described by both Lepore and Cohen and Button calls for the generic Evaporating Cloud elements to be rotated 90 degrees counterclockwise, placing the objective of the cloud at the bottom and the conflicting prerequisites at the top. The arrows are then reversed, the wording is modified to support an “if-then” (sufficiency) verbalization, and additional entities (assumptions) are incorporated with ellipses to translate the former generic cloud into the bottom portion of a CRT.* Additional layers of cause-and-effect are then extrapolated upward from there until broader system-level UDEs are reached. (Remember, though, that consistent with one of * Lepore and Cohen describe this process only in conceptual terms, using no examples. Button provides an example of a CCRT (call it “core” or “communication,” it’s your choice...“You say po-TAY-to, I say po-TAH-to...") that makes understanding the process considerably easier. Unfortunately, that particular CRT is logically deficient to the point that its content is not persuasive.
 
 #### Bottom-Up Versus Top-Down
 
@@ -429,11 +259,7 @@ In other words, the CCRT is a way of avoiding a negative reaction to “bad news
 This distinction is important, and it’s relevant to what apparently happened later. It implies that the use of a CCRT for persuasion does not relieve one of the responsibility to conclude a thorough, deductively logical analysis first by the traditional approach: a CRT followed by an Evaporating Cloud. The use of the CCRT comes afterward, only when the traditional analysis is complete, and only for the purpose of making that analysis persuasive and non-threatening. In a video tape in 1995 (no longer widely available), Goldratt himself confirms this line of thinking. So the second half of the 3-UDE/Core Problem Cloud method has a firm basis in rationality. As originally conceived, it applied the only aspect of inductive logic that is admitted to be valid: It is, however, possible to derive a true statement using inductive reasoning if you already know the conclusion...3 The CCRT, as originally conceived, does this, that is, it operates from an already known conclusion. The traditional CRT and Evaporating Cloud on which it should be based were developed using sound deductive logic; thus, the conclusion is known in advance. And this is not only okay, it’s required for efficient inductive reasoning! The disconnect came later, when someone decided that the traditional CRT and Evaporating Cloud could be dispensed with. Instead the process could be “short-cut” by inducing a generic cloud from three discrete ones. Then using that generic cloud as the basis for a CCRT would be a good idea. In other words, they eliminated the only thing that made the bottom-to-top logical construction of the CCRT a logically robust process! From our earlier examination, we know that the 3-UDE Cloud part of this process is fatally flawed because it depends on inductive reasoning for the analysis in the first place, rather than having the induction follow from a verified, validated deductive analysis. Button’s second observation above (takes too long and too much effort) provides a clue to why this “shortcut” was adopted. Why would someone seek a shortcut in the first place? Two possible reasons:
 
 - They aren’t adept enough at constructing the deductive logic of the CRT to do it any faster. This could be a deficiency in teaching or just intellectual laziness.
-- The traditional method wasn’t complete or logically “tight” enough to be easily translatable to the real world by most people—in other words, a deficient method. The latter difficulty is an acknowledged problem with the original method of constructing a CRT as initially taught by the A.Y. Goldratt Institute. I encountered the problem with
-
-The 3-UDE Cloud
-
-clients of my own repeatedly over the first six years of applying the Thinking Process. The CRT was difficult to construct well and expeditiously. But that isn’t the case anymore. Readers of this book know that Chapters 3 and 4 explain in detail how to construct a sound, logical CRT by starting with an Intermediate Objective Map first. CRTs may have taken up to 10 hours when Button and others first learned them. There’s no reason that most of them should take longer than about four hours now. Unfortunately, rather than refining and perfecting the traditional method of CRT construction, people looked for an easy way out. A general deterioration in the quality of CRTs and problem analyses has resulted. Yes, there are those who would say that they have been successful using the 3-UDE/Core Problem Cloud approach. I don’t deny this. Rather I would observe that even a blind pig finds an acorn once in a while. Even with a faulty method, some level of success can be expected, though it may not be consistent or always optimal.
+- The traditional method wasn’t complete or logically “tight” enough to be easily translatable to the real world by most people—in other words, a deficient method. The latter difficulty is an acknowledged problem with the original method of constructing a CRT as initially taught by the A.Y. Goldratt Institute. I encountered the problem with clients of my own repeatedly over the first six years of applying the Thinking Process. The CRT was difficult to construct well and expeditiously. But that isn’t the case anymore. Readers of this book know that Chapters 3 and 4 explain in detail how to construct a sound, logical CRT by starting with an Intermediate Objective Map first. CRTs may have taken up to 10 hours when Button and others first learned them. There’s no reason that most of them should take longer than about four hours now. Unfortunately, rather than refining and perfecting the traditional method of CRT construction, people looked for an easy way out. A general deterioration in the quality of CRTs and problem analyses has resulted. Yes, there are those who would say that they have been successful using the 3-UDE/Core Problem Cloud approach. I don’t deny this. Rather I would observe that even a blind pig finds an acorn once in a while. Even with a faulty method, some level of success can be expected, though it may not be consistent or always optimal.
 
 ### Predetermined Causes to Preconceived Problems
 
@@ -442,8 +268,6 @@ How many times have you heard the expression, “When your only tool is a hammer
 ### Summary and Conclusion
 
 As Lepore and Cohen said, the 3-UDE/Core Problem Cloud is one of the popular ways of constructing a CRT. The other one is the traditional method, as originally conceived by Goldratt and modified in this book.
-
-The traditional method:
 
 - Starts with a few objectively determined system-level UDEs
 - Is deductive, and therefore its validity is logically verified
@@ -478,37 +302,9 @@ MTC was faced with a dilemma: redesign the assembly equipment so that the booste
 
 The Logical Thinking Process did not exist when MTC experienced their SRB design dilemma. In fact, the Challenger accident itself predated the creation of the Thinking Process by more than five years. But it’s interesting to consider how history might have changed had the MTC personnel been able to apply an Evaporating Cloud to their engineering dilemma. With the luxury of hindsight, we can do that now.* Construction of an Evaporating Cloud actually begins with the articulation of the two conflicting prerequisites. In the case of the Space Shuttle SRB design, these two prerequisites would be completely redesign the SRB versus don’t redesign the SRB. Remember that MTC management foreclosed the option of assembling the booster vertically. (See Figure F.1.) Once the opposing sides are stated, the requirements each side is intended to satisfy are determined. In the SRB situation, one requirement was to assure functionality and safety. The other was to adhere to the NASA budget. Notice that there is no inherent conflict between these two requirements. (See Figure F.2.)
 
-* Application of the Thinking Process to the Challenger accident was the subject of a paper delivered at the APICS Constraints Management Special Interest Group Symposium in 1999.2 functionality and safety Redesign the Space Shuttle Solid Rocket Booster Adhere to NASA
+* Application of the Thinking Process to the Challenger accident was the subject of a paper delivered at the APICS Constraints Management Special Interest Group Symposium in 1999.2
 
 ![page 371](images/p371.png)
-
-The Challenger Conflict
-
-Prerequisite #1 Redesign the Space Shuttle Solid Rocket Booster
-
-DON’T redesign the Space Shuttle Solid Rocket Booster
-
-Prerequisite #2
-
-Figure F.1
-
-Figure F.2
-
-Articulate the conflict.
-
-Requirement #1
-
-Prerequisite #1 Assure
-
-budget
-
-DON’T redesign the Space Shuttle Solid Rocket Booster
-
-Requirement #2
-
-Prerequisite #2
-
-Determine the requirements.
 
 ![page 372](images/p372.png)
 
@@ -522,123 +318,33 @@ After the Evaporating Cloud is constructed, the next step is to develop the assu
 
 This particular conflict is clearly an engineering challenge as much as it is a political or financial one. It boils down to how to solve a technical problem within financial constraints. The injection stated in Figure F.5 characterizes the solution to this challenge.
 
-Requirement #1
-
-Prerequisite #1 Assure
-
-functionality and safety Redesign the Space Shuttle Solid Rocket Booster Adhere to NASA functionality and safety Redesign the Space Shuttle Solid Rocket Booster Objective
-
-budget
-
-DON’T redesign the Space Shuttle Solid Rocket Booster
-
-Requirement #2
-
-Prerequisite #2 Objective
-
-A cost-effective Space Transportation System
-
-Figure F.3
-
-Formulate the common objective.
-
 ![page 373](images/p373.png)
-
-The Challenger Conflict
-
-**ASSUMPTIONS:**
 
 1. SRB redesign is the only way to assure safety and functionality.
 2. Redesign requires vertical assembly or complete booster redesign.
 3. Maximum safety requires the SRB design to function as intended.
-
-**ASSUMPTIONS:**
-
 1. An effective STS is one that functions as intended.
 2. Effectiveness implies acceptable safety risk.
-
-Requirement #1
-
-Prerequisite #1 Assure
-
-**ASSUMPTIONS:**
-
 1. We can’t redesign and not redesign at the same time.
-
-A cost-effective Space Transportation System
-
-**ASSUMPTIONS:**
-
 1. Costs must be reasonable (politically acceptable).
 2. The NASA budget was approved by Congress.
 3. Congress will likely be intolerant of excessive cost overruns.
-
-= Invalid assumption
-
-Figure F.4 Adhere to NASA
-
-budget
-
-DON’T redesign the Space Shuttle Solid Rocket Booster
-
-Requirement #2
-
-Prerequisite #2
-
-**ASSUMPTIONS:**
-
 1. Retaining existing design keeps the project within budget.
 2. Retaining horizontal assembly keeps the project within budget.
 3. Safety and functionality are not adversely impacted by relaxing tolerances.
 
-Develop underlying assumptions.
-
-Remember that in Chapter 5 we learned that sometimes when we’re not sure how to do something, we write the injection as an outcome condition we want to achieve. Our injection in Figure F.5 is just such a statement: Maintain the circular integrity of the two booster segments in a horizontal orientation while they’re being mated. Fortunately, there are a number of ways to generate creative ideas for solutions. One that particularly lends itself to the engineering environment is TRIZ (a Russian acronym for the theory of inventive problem solving). One of the precepts of TRIZ is to start by defining the ideal final result, the IFR. Our injection is such a statement. As an exercise at a conference in 1999, TRIZ was demonstrated as an “idea generator” to resolve the Space Shuttle SRB conflict.2:12 Two components of TRIZ are a set of 40 principles of problem solving and a contradiction matrix.3 The contradiction matrix suggests a number of different possible principles to apply, depending on what you’re trying to achieve (the entering arguments of the matrix). Not all principles suggested will functionality and safety Redesign the Space Shuttle Solid Rocket Booster Objective
+Remember that in Chapter 5 we learned that sometimes when we’re not sure how to do something, we write the injection as an outcome condition we want to achieve. Our injection in Figure F.5 is just such a statement: Maintain the circular integrity of the two booster segments in a horizontal orientation while they’re being mated. Fortunately, there are a number of ways to generate creative ideas for solutions. One that particularly lends itself to the engineering environment is TRIZ (a Russian acronym for the theory of inventive problem solving). One of the precepts of TRIZ is to start by defining the ideal final result, the IFR. Our injection is such a statement. As an exercise at a conference in 1999, TRIZ was demonstrated as an “idea generator” to resolve the Space Shuttle SRB conflict.2:12 Two components of TRIZ are a set of 40 principles of problem solving and a contradiction matrix.3 The contradiction matrix suggests a number of different possible principles to apply, depending on what you’re trying to achieve (the entering arguments of the matrix). Not all principles suggested will
 
 ![page 374](images/p374.png)
 
-Requirement #1
-
-Prerequisite #1 Assure
-
-A cost-effective Space Transportation System
-
-Figure F.5
-
-X
-
 INJECTION Maintain circular integrity of booster segments in a horizontal orientation apply to every situation, but they represent things to consider first. Two did help preserve shape and ease of manufacture when trying to hold cross-sectional area constant: Principle 24 Use a mediator (an intermediary object to transfer or carry out action) that can be temporarily connected and removed easily. Principle 34 After it has completed its function, remove an element of an object. The creative result of these principles was the jig arrangement depicted in Figure F.6. It’s one of several solutions proposed by exercise participants at the 1999 conference, and it’s a powerful demonstration of the potential to integrate other tools with the Thinking Process. Unfortunately, TRIZ was not known in the United States in 1976, and the Evaporating Cloud as a conflict resolution tool didn’t exist. Ultimately, MTC and NASA jointly decided to trade off clevis-tang tolerances in the interest of making booster assembly of the existing design work. They accepted the degradation that came with it, applied “band-aid” solutions (bigger O-rings, shims, and zinc chromate), and the rest, as they say, is history. Adhere to NASA
 
-budget
-
-DON’T redesign the Space Shuttle Solid Rocket Booster
-
-Requirement #2
-
-Prerequisite #2
-
-Create injections.
-
 ![page 375](images/p375.png)
-
-The Challenger Conflict
-
-p.
-
-Cradle to hold SRB segment
-
-Curved flanges fold over SRB segment Rollers on
-
-aligned rails
 
 #### Tang Clevis
 
 - Jigs enclose booster segments to retain round shape
 - Rollers on rails facilitate mating of segments
-
-Figure F.6
-
-An engineered solution.
 
 ### Endnotes
 
@@ -647,10 +353,6 @@ An engineered solution.
 3. http://www.triz-journal.com/archives/contradiction_matrix/
 
 ## Appendix G: Correlation Versus Cause and Effect
-
-Correlation vs. Cause and Effect
-
-Baked bread may be a health hazard. Research shows that…
 
 - More than 98 percent of convicted felons are bread eaters.
 - Fully half of all children who grow up in bread-consuming households score below average on standardized tests.
@@ -724,8 +426,6 @@ Unlike the theories of Maslow and McClelland (but like Herzberg), J. Stacey Adam
 
 ### ____ = Orp
 
-____ IP
-
 ### Irp
 
 In this equation, the left side represents the outcomes of the individual doing the perceiving divided by the inputs of that same person. The right side of the equation represents the same outcomes and inputs for some reference person selected by the perceiving person. As long as the ratio of the observing or perceiving person remains relatively comparable to that of the person observed, the original observer perceives equity and no adverse behavioral consequence results. However, when a person observes that someone else realizes more or better outcomes with equal or less effort than they themselves expend, inequity is perceived. Adams then assumes that if the inequity persists over time, rewards are based on favoritism, luck, or some factor other that individual merit or effort. Basic behavioral theory (positive/negative motivation, reward, punishment, and so on) suggests that over time, motivation to do more than the minimum necessary to avoid adverse consequences will be extinguished. Adams suggested that if management identifies the perceived inequity, they can act to restore equity by changing inputs, outcomes, or attitudes. However, if management does not identify the perceived inequity (and most probably don’t), the observing person will act to change his or her inputs, outcomes, or attitudes. Changing inputs may be indicated by putting in less time or effort, having less concern for reliability, cooperating less with others, losing their sense of initiative, or having less inclination to accept responsibility. Changing outputs might show up as a direct confrontation with a boss asking for a raise in pay, more time off, or better assignments. A change in attitude may show itself as an individual deciding for himself or herself “I’ve put in enough time.”
@@ -769,39 +469,9 @@ The CRT provides a complete, systemic picture of what actually happened. It show
 
 ![page 384](images/p384.png)
 
-100 Judgment for or against REQUIREMENTS OF THE LAW
-
-101 Damages Sec. 3426.3 (a)
-
-103 Loss Sec. 3426.3 (a)
-
-102 Violation of trade secret
-
-105 Misappropriation has occurred 3426.1 (b)
-
-110 Acquisition by one who knows/has reason to know trade secret was acquired by improper means. Sec. 3426.1 (b) (1)
-
-Figure I.1
-
-106 Trade secret exists Sec. 3426.1 (d)
-
-104 Unjust enrichment Sec. 3426.3 (b)
-
 108 Derives independent economic value (actual or potential) from not being generally known to the public or to others who can obtain economic value from disclosure or use. Sec. 3426.1 (d) (1)
 
-111 Disclosure without consent by a person who: (see below) Sec. 3426.1 (b) (2)
-
-109 Is subject of reasonable efforts under circumstances to maintain secrecy. Sec. 3426.1 (d) (2)
-
-115 Knowledge of the trade secret had been acquired by accident or mistake. Sec. 3426.1 (b) (2) (C)
-
-112 Used improper means to acquire. Sec. 3426.1 (b) (2) (A)
-
-113 Had knowledge, or reason to know his/her knowledge of the trade secret was: (see below) Sec. 3426.1 (b) (2)
-
 114 Before a material change in his/her position, knew/had reason to know was a trade secret. Sec. 3426.1 (b) (2) (C)
-
-116 Derived from/ through a person who used improper means to acquire. Sec. 3426.1 (b) (2) (B) (i)
 
 117 Acquired under circumstances giving rise to a duty to maintain secrecy or limit use. Sec. 3426.1 (b) (2) (B) (ii)
 
@@ -809,39 +479,9 @@ Figure I.1
 
 Prerequisite Tree: Uniform Trade Secrets Act.
 
-107 Person Sec. 3426.1 (c)
-
 ![page 385](images/p385.png)
 
-Legal Application of the Thinking Process
-
-(Predicted effect) bbb p. 8
-
-119 Creditors kept calling for payment. [Lowell: (59)] [Voorhees: (37-40)] Cash Flow, Finances
-
-p. 2
-
-p. 3
-
-p. 2
-
-118 Marston Oil had trouble obtaining credit due to its financial losses. [Hickman-2: (61)]
-
 117 Sale of part of the company had no significant effect on cash availability.
-
-116 Cash flow was insufficient to satisfy creditors. [Lowell: (59)]
-
-(Predicted effect)
-
-112 Marston Oil’s financial problems led Hickman to sell part of the company to GP Resources. [Lowell: (59060)]
-
-113 Even after part of the company was sold to GP Resources, bills were past due. [Lowell: (22-23)]
-
-p. 3
-
-111 Marston Oil experienced financial trouble prior to March, 1993. [Hickman-2: (60)]
-
-115 Rita Voorhees noticed Marston’s financial difficulties in 1992. [Voorhees: (32)]
 
 114 Starting around 1992, Rita Voorhees (bookkeeper) ran financial statements for the controller showing consistently negative bottom lines (losses). [Voorhees: (35-36)]
 
@@ -851,45 +491,19 @@ p. 3
 
 106 Alan Hickman spent substantial tine away from Marston Oil during the Congressional campaign.
 
-102 Alan Hickman ran for Congress in 1992. [Hickman-2: (71-72)]
-
 103 Running political campaigns requires significant time and money.
-
-104 Marston Oil’s Long Beach facility required money [Lowell: (73)]
 
 101 Marston Oil’s Long Beach facility needed infrastructure upgrades.
 
-Figure I.2a
-
-Current Reality Tree: Marston vs. Wilson (1)
-
 107 Financial performance of small, privatelyowned companies often deteriorates when the owner is absent for significant periods.
 
-Negative Reinforcing Loop #2 p. 3
-
 216 Marston Oil’s income stream declines (more and more).
-
-Cash Flow, Finances
-
-(continued)
 
 412 Benson did not complete TF&H oil deals as big as those Wilson had done. [Lowell: (81)] (From p. 4 ) p. 3
 
 213 Marston Oil must subsequently resell purchases of TF&H oil to realize profit.
 
-214 Funds were insufficient to transact some purchases. [Lowell: (63-64)]
-
-211 Marston obtained a limited line of new credit from Celtic Capital at significantly higher interest rates. [Lowell: (66)]
-
 210 Marston Oil needed a new source of credit.
-
-208 At some point, Marston Oil’s regular line of credit was canceled, or expired and was not renewed. [Lowell: (66)]
-
-118 Marston Oil had (more and more) trouble obtaining credit due to its financial losses. [Hickman-2: (61)]
-
-215 Marston’s expenses increased.
-
-212 Cash flow was insufficient to make up the difference demanded by suppliers. [Lowell: (59)]
 
 209 Marston Oil relied on commercial lines of credit to make TF&H oil purchases.
 
@@ -899,107 +513,29 @@ Cash Flow, Finances
 
 207 Marston Oil had insufficient cash reserves to transact most TF&H oil purchases.
 
-(From p. 1 )
-
-202 Suppliers required payment in advance. [Lowell: (59)]
-
-203 Chevron was Marston’s main supplier of transmix oil. [Hickman-1: (550-551)]
-
-204 WITCO was Marston’s main supplier of transmix oil. [Hickman-1: (550-551)]
-
-201 Suppliers would not extend credit to Marston Oil [Lowell: (59)]
-
-Figure I.2b Current Reality Tree: Marston vs. Wilson (2)
-
-117 Sale of part of the company had no significant effect on cash availability. (From p. 1 )
-
-Legal Application of the Thinking Process
-
-Cash Flow, Finances
-
-(continued)
-
-xxx p. 8
-
 216 Marston Oil’s income stream declines (more and more).
-
-313 Marston Oil’s profits decreased.
-
-215 Marston’s expenses increased. Negative Reinforcing
-
-Loop #1
-
-311 Near the end of Wilson’s tenure at Marston, the volume of transmix sales decreased. [Lowell: (93)]
-
-305 Wilson had to turn down some deals for lack of financing. [Lowell: (63-64)]
-
-303 Wilson had trouble conducting business. [Lowell: (59), (71)]
-
-312 Wilson’s part of Marston’s business had always been profitable. [Voorhees: (64-65)]
-
-(From p. 1 )
-
-Figure I.2c
-
-p. 4
 
 310 After Wilson left, Marston was unable to obtain transmix or heavy oils from its former suppliers [Hickman-1: (379, 433-435, 438439, 440, 485)]
 
 308 Wilson’s income derived from commissions on TF&H oil transactions.
 
-306 It became impossible for Marston to conduct much business especially TF&H oil trading. [Hickman-2: (62-63)]
-
-302 Marston’s limited credit caused some suppliers to cease doing business with the company. [Hickman-2: (83-84)]
-
-301 Every year the amount of credit available to Marston Oil would go down. [Lowell: (68-69)]
-
 109 Marston Oil’s expenses were rising (more and more).
 
-(From p. 2 )
-
-p. 4
-
-309 Marston Oil’s lack of credit cost Wilson many income opportunities. (Establish entity existence on 308 by direct testimony)
-
 118 Marston Oil had (more and more) trouble obtaining credit due to its financial losses. [Hickman-2: (61)] (From p. 1 )
-
-Current Reality Tree: Marston vs. Wilson (3)
 
 307 Chevron didn’t want to sell Marston more transmix oil until Marston’s debt was cleared. 304 Marston owed Chevron money when their contract was due for renewal. [Lowell: (109)]
 
 ![page 388](images/p388.png)
 
-412 Benson did not complete TF&H oil deals as big as those Wilson had done. [Lowell: (81)] Wilson’s Departure
-
-Negative Reinforcing
-
-Loop #2
-
-408 Benson did not have the TF&H oil industry knowledge that Wilson had. [Lowell: (81)]
-
-409 Benson started at Marston Oil about a month after Wilson’s departure. [Lowell: (78-79)]
-
 405 Marston Oil needed a replacement for Wilson to sustain income.
 
-403 Wilson left Marston Oil in
-
-March, 1993.
+403 Wilson left Marston Oil in March, 1993.
 
 Marston Oil had TF&H oil trading opportunities after Wilson left.
 
 411 Benson’s potential to close large TF&H oil deals was less than Wilson’s.
 
-p. 2
-
-404 Wilson said he was leaving Marston Oil because of the company’s inability to close TF&H oil deals. [Lowell: (71)]
-
-yyy p. 8
-
-410 Benson has the same (or less) financial credit to work with than Wilson did. [Lowell: (81)]
-
 406 Alan Hickman hires Rick Benson to trade in TF&H oil.
-
-411 Requests for bids continued to come in after Wilson left Marston Oil. [Lowell: (101-102)]
 
 407 Marston Oil was on suppliers’ bid lists. [Lowell: (101-102)] 312 Wilson’s part of Marston’s business had always been profitable [Voorhees: (64-65)] (From p. 3 )
 
@@ -1009,14 +545,6 @@ yyy p. 8
 
 402 Wilson had no control over the solution to the credit problem.
 
-(From p. 3 )
-
-(Establish this in direct testimony)
-
-(Establish this in direct testimony)
-
-Figure I.2d Current Reality Tree: Marston vs. Wilson (4)
-
 ![page 389](images/p389.png)
 
 #### Legal Application of the Thinking Process
@@ -1025,45 +553,21 @@ Figure I.2d Current Reality Tree: Marston vs. Wilson (4)
 
 715 Marston Oil took no reasonable physical measures to safeguard any information they considered company confidential.
 
-zzz p. 8 Administrative Security
-
-(Establish entity existence on 510 by Lowell’s courtroom testimony)
-
 512 Martson Oil had no administrative procedures in place to safeguard confidential material.
 
-p. 6
-
 510 Marston Oil had no document control system to track, account for, and protect confidential material.
-
-(From p. 7 )
-
-509 No employees except
 
 #### Geoffrey and Alan Hickman
 
 would have any way of knowing what Marston Oil information was confidential.
 
-MAG
-
-504 Rita Voorhees (bookkeeper) doesn’t recall ever being told that any Marston information was confidential. [Voorhees: (24-25)]
-
 501 Marston Oil’s confidential information includes financial records, customer lists, pricing information, contracts, and formulae to determine product prices. [Hickman-1: (230-232)]
-
-Figure I.2e
-
-507 Marston Oil did not have an employee manual at any time. [Hickman-1: (155)]
 
 508 Employee manuals typically identify material or information considered company confidential.
 
-505 Lowell was never told by anybody that she would be working with confidential information. [Lowell: (38)]
-
 506 Other employees, including Wilson, would not know what Marston Oil considered confidential.
 
-502 Geoffrey Hickman gave no specific instructions or warnings to employees that any information was secret. [Hickman-2: (79-80)]
-
 503 Marston Oil never told employees which information was confidential. [Hickman-1: (255)] manuals normally provide guidance on safeguarding and handling of confidential material.
-
-Current Reality Tree: Marston vs. Wilson (5) Employee
 
 ![page 390](images/p390.png)
 
@@ -1071,25 +575,9 @@ Current Reality Tree: Marston vs. Wilson (5) Employee
 
 610 No one involved with administration at Marston Oil could confirm that Wilson had misappropriated any company confidential information.
 
-aaa p. 8
-
 609 Lowell had no reason to believe that Wilson had any Marston Oil information that might be considered confidential. 606 Alan Hickman could not tell whether any contents of Wilson’s desk were missing. [Hickman-1: (517-518)]
 
 607 Wilson did not have a Rolodex. Lowell: (84-85)][ 608 Wilson never contacted Lowell after he left to obtain any information. [Lowell: (72)]
-
-603 Contracts were still in Wilson’s former office after he left Marston Oil. [Lowell: (517-518)]
-
-604 Wilson returned his desk contents after requested by Alan Hickman. [Hickman-1: (314, 517-518)]
-
-510 Marston Oil had no document control system to track, account for, and protect confidential material. (From p. 5 )
-
-Figure I.2f
-
-601 Alan Hickman asked Wilson by letter to return the contents of his desk after he left. [Hickman-1: (313)]
-
-Current Reality Tree: Marston vs. Wilson (6)
-
-605 Wilson never asked Lowell to copy any records for him before he left Marston Oil. [Lowell: (71-72)]
 
 602 Wilson kept track of everything in his head, except for some information that may have been contained in a book. [Lowell: (85-86)]
 
@@ -1097,25 +585,13 @@ Current Reality Tree: Marston vs. Wilson (6)
 
 715 Marston Oil did not take reasonable physical measures to safeguard any information the company considered confidential.
 
-p. 5
-
 #### Physical Security
 
 714 There were almost no physical barriers preventing access of anyone at Marston Oil to the company’s files and business information.
 
-MAG
-
-711 Most of the office employees, except dispatchers, had access to the computer network and customer information. [Hickman-2: (58-59)]
-
 712 Financial records at Marston Oil were not secured during business hours.
 
-708 Lowell kept copies of TF&H oil contracts in an unlocked file cabinet in her office. [Lowell: (50-51)]
-
 (Predicted effect) 706 Geoffrey Hickman had access to Wilson’s office and would go in when Wilson was not there. [Hickman-2: (94-95)]
-
-713 Everyone at Marston Oil had access to the files except the drivers. [Hickman-1: (153-154)]
-
-710 Lowell never found the financial file cabinets locked when she needed access. [Lowell: (53)]
 
 709 Accounts receivable, accounts payable, and bank records were stored in file cabinets in the hallway at Marston Oil’s offices. [Lowell: (44-46)]
 
@@ -1123,79 +599,28 @@ MAG
 
 705 Martson Oil’s contract records and information were not secured during business hours.
 
-701 Marston Oil took no steps to prevent any employee from getting something from the desk of another. [Voorhees: (28)]
-
-Figure I.2g Current Reality Tree: Marston vs. Wilson (7)
-
 702 Wilson kept some records in his desk (unlocked), including contracts he was currently working on. [Hickman-1: (203); [Lowell: (209, 52)]
 
-Summary
-
 810 No judgment against Wilson is possible.
-
-808 Damage has not been proved. Sec. 3426.3 (a)
-
-809 There is no violation of the trade secret law. (Leg. H. 1984 ch. 1724, 1994 ch. 1010)
 
 806 There is no proof that any Marston Oil confidential information was lost by any act of Wilson’s. Sec. 3426.3 (a)
 
 610 No one involved with administration at Marston Oil could confirm that Wilson had misappropriated any company confidential information.
 
-807 A trade secret did not exist in this case. Sec. 3426.1 (d)
-
 804 Wilson was not the only person with access to Marston Oil’s information.
-
-805 Marston Oil made no reasonable efforts under the circumstances to maintain secrecy. Sec. 3426.1 (d) (2)
-
-(From p. 6 )
 
 803 Possible damage from potential loss of confidential information cannot be distinguished from Marston’s broader financial problems.
 
-706 Geoffrey Hickman had access to Wilson’s office and would go in when Wilson was not there. [Hickman-2: (94-95)]
-
 513 Access to Marston Oil’s files and business information was virtually unrestricted.
 
-(From p. 7 )
+802 Marston Oil’s financial problems were already severe notwithstanding the value of any possible lost confidential information.
 
-(From p. 5 )
-
-> 802 Marston Oil’s financial problems were already severe notwithstanding the value of any possible lost confidential information.
->
-> - Doors to offices never locked
-
-> - Files stored in common areas
-
-> (hallway)
->
-> - Proprietary material/trade secrets
-
-> never identified for any employees
->
-> - No administrative measures to
-
-prevent access to any information
-
-MAG
+- Doors to offices never locked
+- Files stored in common areas (hallway)
+- Proprietary material/trade secrets never identified for any employees
+- No administrative measures to prevent access to any information
 
 801 Marston Oil was in financial difficulty well before Wilson left.
-
-313 Marston Oil’s profits decreased.
-
-412 Benson did not complete TF&H oil deals as big as those Wilson had done. [Lowell: (81)]
-
-(From p. 3 )
-
-(From p. 4 )
-
-119 Creditors kept calling for payment Lowell: (59)] Voorhees: (37-40)]
-
-115 Rita Voorhees noticed Marston’s financial difficulties in 1992. [Voorhees: (32)]
-
-(From p. 1 )
-
-(From p. 1 )
-
-Figure I.2h Current Reality Tree: Marston vs. Wilson (8)
 
 #### Legal Application of the Thinking Process Highlights Gaps
 
@@ -1219,8 +644,6 @@ Outcome of Marston Oil v. Wilson For those who are interested, the Marston Oil v
 
 Included with this book is a unique software application—the Transformation Logic Tree v.1.0 (TLT) for personal computers (PCs). It’s the first software application designed specifically to build the trees of the Logical Thinking Process explained in this book. See Figure J.1 for a screen shot. Developed by Professor Mark Van Oyen, University of Michigan College of Engineering, and his partners at Transformation Logic Tree, Inc., the TLT was created to make it easier for people to use the Logical Thinking Process and capture the results in an easily stored, easily printed form that can also be readily introduced into presentation programs such as Microsoft PowerPoint. FEATURES OF THE TLT SOFTWARE
 
-Here are some of the handy features of the TLT included on the accompanying disk:
-
 - Fast installation (approximately a minute).
 - Can be run from the CD itself, without installation (how many applications do you know that can do that?).
 - Facilitates classroom teaching by Thinking Process instructors and exchange of trees for review and scrutiny.
@@ -1233,12 +656,6 @@ Here are some of the handy features of the TLT included on the accompanying disk
 
 ![page 395](images/p395.png)
 
-Transformation Logic Tree Software
-
-Figure J.1
-
-TLT software – screen shot.
-
 - Automatically generated glossary and list of all entities used in a worksheet/ workbook. You can even put a “story” behind each entity.
 - Provides a “document explorer” with hyperlink (“jump to”) capability.
 - Tutorials included on the CD (in PowerPoint form) and on the TLT website for users without access to PowerPoint.
@@ -1246,7 +663,6 @@ TLT software – screen shot.
 - Database driven. The same entity can appear on multiple pages, all of them linked. Make one change to the original, and it changes all copies throughout the document.
 - “User friendly.” Designed to minimize the number of mouse-clicks and knowledge of software details needed to create effective diagrams quickly.
 - Auto-numbering and customizable labels.
-
 - Automatic sizing of entities, based on content.
 - Customize your connection lines. Select a default for line boldness, solid or dashed, or number of arrowheads (selected values will be applied to all newly created connectors). Double-clicking existing lines allows their style to be changed. Supported Lines: One Segment Line, Two Segment Line, Three Segment Line, Bezier Curve.
 - Shade an entity, or several entities simultaneously. These are only a few of the features of this new Thinking Process application program.
@@ -1267,8 +683,6 @@ The full-featured Version 1.0 is included at no extra cost on the CD accompanyin
 4. In the event that you encounter problems, contact the software authors at http://www.transformation-logictree.com/
 
 ### For More Information on Transformation Logictree Software
-
-http://www.transformation-logictree.com/
 
 # Glossary of Thinking Process Terms
 
@@ -1310,7 +724,7 @@ http://www.transformation-logictree.com/
 
 **intermediate objective (IO)** — A lower-level necessary condition or requirement that must be accomplished to realize some higher-level necessary condition. An element of the Prerequisite Tree (PRT) and the Intermediate Objectives (IO) Map.
 
-**intermediate objectives (IO) map** — A system-level logic tree based on necessary condition relationships. Identifies the system Goal (G), the limited set of Critical Success Factors (CSF), and supporting Necessary Conditions (NC) required to realize the Goal.
+**map** — A system-level logic tree based on necessary condition relationships. Identifies the system Goal (G), the limited set of Critical Success Factors (CSF), and supporting Necessary Conditions (NC) required to realize the Goal.
 
 **intuition** — The ability to recognize and understand patterns and interactions of a system. The ability to see or connect patterns out of a few data points. Not “flying by the seat of your pants.” Rather, the convergence of knowledge and experience.
 

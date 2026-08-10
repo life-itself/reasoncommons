@@ -170,6 +170,12 @@ def is_titlecase_heading(line):
         return False
     if s.endswith((".", ",", ";", ":", "!", ")", '"', "”")):
         return False
+    if ENDS_WITH_CONNECTIVE_RE.search(s):
+        # A real heading doesn't dangle on "...a" / "...the" / "...of" --
+        # this is a body sentence that happens to line-wrap right after a
+        # short word, not a heading (e.g. "Sometimes a" wrapping before
+        # "contributing cause is...").
+        return False
     words = re.findall(r"[A-Za-z'’]+", s)
     if not (1 <= len(words) <= 8):
         return False
@@ -313,12 +319,17 @@ def classify_and_reflow(body_text):
                 buf_type = "p"
                 buf.append(s)
                 continue
-        if s.startswith("•") or s.startswith("●"):
+        if s.startswith("•") or s.startswith("●") or re.match(r"^[–-]\s+\S", s):
+            # "•"/"●" are the book's usual bullet glyphs; a leading en dash
+            # or hyphen ("– Determine the two preceding causes of...") is
+            # this book's alternate bullet style for procedural checklists
+            # -- NOT an em-dash ("—") epigraph attribution, which is a
+            # different character handled separately below.
             flush()
             buf_type = "bullet"
-            buf.append(re.sub(r"^[•●]\s*", "", s))
+            buf.append(re.sub(r"^[•●–-]\s*", "", s))
             continue
-        if re.match(r"^[—–-]\s*\S", s):
+        if re.match(r"^—\s*\S", s):
             flush()
             items.append(("attrib", s))
             continue
@@ -349,6 +360,18 @@ def classify_and_reflow(body_text):
     return merge_split_sentences(merged)
 
 
+# A real English sentence never ends on one of these -- if the extracted
+# text does, it's a strong, case-independent signal of a genuine mid-word
+# cut (e.g. "...associated with" / "the sum of all the"), stronger than
+# just "no terminal punctuation". Used to allow stitching even when the
+# continuation happens to start with a capitalized term (e.g. "Throughput",
+# a term this book always capitalizes).
+ENDS_WITH_CONNECTIVE_RE = re.compile(
+    r"\b(of|the|a|an|to|and|or|in|on|for|with|is|are|by|from|that|which|as|at)$",
+    re.IGNORECASE,
+)
+
+
 def merge_split_sentences(items):
     """Stitch a paragraph back together when a sidebar figure interrupts it
     mid-sentence in the source PDF's linear reading order (body text wraps
@@ -356,19 +379,27 @@ def merge_split_sentences(items):
     between the two halves of the sentence). Detected as: a 'p' paragraph
     with no terminal punctuation, followed (after any intervening
     headings/bullets/labels from the figure) by another 'p' paragraph that
-    starts with a lowercase word -- i.e. a continuation, not a new sentence.
+    starts with a lowercase word -- i.e. a continuation, not a new sentence
+    -- or, regardless of case, when the cut paragraph ends on a preposition
+    or article (a stronger, unambiguous truncation signal).
     """
     out = list(items)
     i = 0
     while i < len(out):
         typ, text = out[i]
-        if typ in ("p", "label") and word_count(text) >= 10 and not text.rstrip().endswith((".", "!", "?", "”", '"', ":", ";", ")")):
+        if typ in ("p", "label", "bullet") and word_count(text) >= 10 and not text.rstrip().endswith((".", "!", "?", "”", '"', ":", ";", ")")):
+            # Bullets legitimately end on a stranded preposition/conjunction
+            # a lot ("...as you can think of", "...to invalidate, and") so
+            # the case-independent connective bypass is unsafe for them --
+            # only merge a bullet when the next paragraph unambiguously
+            # starts lowercase (a real continuation, not a coincidence).
+            definitely_cut = typ != "bullet" and bool(ENDS_WITH_CONNECTIVE_RE.search(text.rstrip()))
             for j in range(i + 1, len(out)):
                 jtyp, jtext = out[j]
                 if jtyp in ("p", "label"):
                     if word_count(jtext) < 10:
                         continue  # too short to be a real paragraph (e.g. a figure caption) -- keep scanning
-                    if jtext[:1].islower():
+                    if definitely_cut or jtext[:1].islower():
                         out[i] = (typ, text.rstrip() + " " + jtext)
                         del out[j]
                     break
@@ -528,6 +559,22 @@ def _is_plain_paragraph_line(s):
     return True
 
 
+def drop_residual_fragments(buf):
+    """Final cleanup pass, run after both stitchers: any plain-paragraph
+    line that's still short and unpunctuated at this point had no
+    reachable continuation anywhere nearby, so it's not a truncated real
+    sentence -- it's diagram-label debris (box labels, Yes/No decision
+    branches, lettered checklist fragments) that the embedded page image
+    already shows. Headings, bullets, quotes and images are untouched.
+    """
+    out = []
+    for s in buf:
+        if _is_plain_paragraph_line(s) and para_is_fragment(s):
+            continue
+        out.append(s)
+    return out
+
+
 def stitch_cross_page_sentences(buf, window=40):
     """Same problem as merge_split_sentences, but for splits that land on
     either side of a page boundary: a sentence cut off by a sidebar figure
@@ -538,7 +585,13 @@ def stitch_cross_page_sentences(buf, window=40):
     i = 0
     while i < len(out):
         s = out[i]
-        if _is_plain_paragraph_line(s) and word_count(s) >= 10 and not s.rstrip().endswith((".", "!", "?", "”", '"', ":", ";", ")")):
+        is_bullet_source = s.startswith("- ")
+        if (_is_plain_paragraph_line(s) or is_bullet_source) and word_count(s) >= 10 and not s.rstrip().endswith((".", "!", "?", "”", '"', ":", ";", ")")):
+            # Same reasoning as merge_split_sentences: bullets often
+            # legitimately end on a stranded preposition, so only merge a
+            # bullet source when the continuation unambiguously starts
+            # lowercase; the case-independent bypass is plain-paragraph-only.
+            definitely_cut = (not is_bullet_source) and bool(ENDS_WITH_CONNECTIVE_RE.search(s.rstrip()))
             for j in range(i + 1, min(i + 1 + window, len(out))):
                 t = out[j]
                 if t == "":
@@ -546,7 +599,7 @@ def stitch_cross_page_sentences(buf, window=40):
                 if _is_plain_paragraph_line(t):
                     if word_count(t) < 10:
                         continue  # too short to be a real paragraph (e.g. a figure caption) -- keep scanning
-                    if t[:1].islower():
+                    if definitely_cut or t[:1].islower():
                         out[i] = s.rstrip() + " " + t
                         del out[j]
                     break
@@ -555,6 +608,24 @@ def stitch_cross_page_sentences(buf, window=40):
 
 
 LIST_ITEM_RE = re.compile(r"^(-|\d+\.)\s")
+
+
+def collapse_list_page_breaks(buf):
+    """Each page's rendered content is followed by a blank-line spacer in
+    buf (so unrelated blocks stay visually separated). If a list happens
+    to continue right across that page boundary, the spacer lands between
+    two list items and produces a loose (blank-line-separated) list even
+    though join_blocks tight-joins adjacent list items everywhere else.
+    Drop exactly those spacers.
+    """
+    out = list(buf)
+    i = 1
+    while i < len(out) - 1:
+        if out[i] == "" and LIST_ITEM_RE.match(out[i - 1] or "") and LIST_ITEM_RE.match(out[i + 1] or ""):
+            del out[i]
+            continue
+        i += 1
+    return out
 
 
 def join_blocks(blocks):
@@ -616,6 +687,16 @@ def main():
             img_name = f"p{printed:03d}.png" if printed > 0 else None
             has_img = img_name in available_images
             items = drop_orphan_headings(items, has_img)
+            if has_img and items and not any(_is_substantial(it) for it in items):
+                # No item on this page reads as real prose (>=10 words,
+                # ends in terminal punctuation) -- the whole page is almost
+                # certainly a flowchart/decision-tree figure (labels,
+                # Yes/No branches, lettered checklist items), and the
+                # embedded image already shows it. Unlike the bulk
+                # drop_all_p heuristic this replaced, this only fires when
+                # there is no substantial paragraph to protect anywhere on
+                # the page, so it can't eat a real sentence.
+                items = []
             rendered = render_items(items, has_img)
             if 397 <= printed <= 400:
                 new_rendered = []
@@ -639,6 +720,8 @@ def main():
             buf.append("")
         out_path = os.path.join(OUT_DIR, fname + ".md")
         buf = stitch_cross_page_sentences([x for x in buf if x is not None])
+        buf = drop_residual_fragments(buf)
+        buf = collapse_list_page_breaks(buf)
         text = join_blocks(buf)
         text = re.sub(r"\n{3,}", "\n\n", text)
         text = text.replace(

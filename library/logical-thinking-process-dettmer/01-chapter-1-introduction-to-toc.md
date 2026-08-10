@@ -4,20 +4,6 @@
 
 ![page 3](images/p003.png)
 
-Introduction to the Theory of Constraints
-
-My system improves (more and more). [DESIRED EFFECT]
-
-Positive Reinforcing
-
-Loop #1
-
-I am (more and more) determined to act. (SELF-DISCIPLINE)
-
-Positive Reinforcing
-
-Loop #2
-
 ...then... I have, and know how to use, tools/procedures to improve the system.
 
 ### (Method)
@@ -26,46 +12,18 @@ I am (more and more) empowered to improve my system. (POTENTIAL) I accept respon
 
 ### (Accountability)
 
-If... I have (more and more) sufficient understanding of my system, or access to it. (CONTENT KNOWLEDGE)
-
-...and...
-
-...and...
-
-I have influence in changing my system. (AUTHORITY) Adapted from Dettmer, Breaking the Constraints
-
-to World-Class Performance (1998)
-
-I desire (more and more) to improve my system. (MOTIVATION)
-
-INJECTION Success is
-
-reinforced/rewarded.
-
 ![page 4](images/p004.png)
 
 > Profound knowledge must come from outside the system, and by invitation.
 >
 > —W. Edwards Deming
 
-SYSTEMS AND “PROFOUND KNOWLEDGE”
-
-W. Edwards Deming maintained that real quality improvement isn’t possible without profound knowledge.7:94-98 According to Deming, profound knowledge comes from:
-
 - An understanding of the theory of knowledge
 - Knowledge of variation
 - An understanding of psychology
 - Appreciation for systems
 
-En
-
-al t rn en te m Ex iron v En Ex
-
-vi ter ro n nm al en t
-
 “Appreciation for systems”—what does that mean? A system might be generally defined as a collection of interrelated, interdependent components or processes that act in concert to turn inputs into some kind of outputs in pursuit of some goal (see Figure 1.1). Systems influence—and are influenced by—their external environment. Obviously, quality (or lack of it) doesn’t exist in a vacuum. It can only be considered in the context of the system in which it resides. So, to follow Deming’s line of reasoning, it’s not possible to improve quality without a thorough understanding of how that system works. Moreover, the Logical Thinking Process that is the subject of this book also provides a solid foundation of understanding of the theory of knowledge: how we know what we know. System INPUTS OUTPUTS Feedback
-
-Figure 1.1
 
 A basic system and its environment.
 
@@ -110,16 +68,6 @@ If you’re a manager, how do you know what the system’s goal is? Frequently a
 >
 > —B. F. Skinner
 
-CRITICAL SUCCESS FACTOR CUSTOMER SATISFACTION CRITICAL SUCCESS FACTOR HIGH DEMAND (PRODUCT OR SERVICE) GOAL PROFITS
-
-Which is which? Does it matter?
-
-Figure 1.2
-
-Goal or critical success factor?
-
-SECURE, SATISFIED WORKFORCE CRITICAL SUCCESS FACTOR
-
 ![page 8](images/p008.png)
 
 ### The Concept of System Constraints
@@ -132,10 +80,6 @@ Goldratt likens systems to chains, or to networks of chains. Let’s consider th
 
 The “Weakest Link” Let’s say you keep increasing the force you apply to this chain. Can you do this indefinitely? Of course not. If you do, eventually the chain will break. But where will it break—at what point? The chain will fail at its weakest link (see Figure 1.3). How many “weakest links” does a chain like this have? One—only one. There may be another link or two that are very close in “weakness,” but there is only one weakest link. The chain will fail first at only one point, and that weakest link is the constraint that prevents the chain (system) from doing any better at achieving its goal (transmission of force).
 
-Figure 1.3
-
-A system: the “chain” concept.
-
 ![page 9](images/p009.png)
 
 Constraints and Non-constraints So we can conclude that our chain has only one link constraining its current performance. How many non-constraints does it have? An indeterminate number, but equal to the number of remaining links in the chain. Goldratt contended that there is usually only one constraint in a system at any given time. Like the narrow neck of an hourglass, that one constraint limits the output of the entire system. Everything else in the system, at that exact time, is a non-constraint. Let’s say we want to strengthen this chain (improve the system). Where would be the most logical place to focus our efforts? Right—the weakest link. Would it do us any good to strengthen anything except the weakest link (that is, a non-constraint)? Of course not. The chain would still break at the weakest link, no matter how strong we made the others. In other words, efforts on non-constraints—nearly all of a system—will not produce immediate, measurable improvement in system capability. Now let’s assume we’re smart enough to figure out which link is the weakest, and let’s say we double its strength. It’s not the weakest link anymore. What has happened to the chain? It has become stronger, but is it twice as strong? No. Some other link is now the weakest, and the chain’s capability is now limited by the strength of that link. It’s stronger than it was, but still not as strong as it could be. The system is still constrained, but the constraint has migrated to a different component.
@@ -144,34 +88,10 @@ Constraints and Non-constraints So we can conclude that our chain has only one l
 
 Here’s a different look at the chain concept (see Figure 1.4). This is a simple production system that takes raw materials, runs them through five component processes, and turns them into finished products. Each process constitutes a link in the production chain. The system’s goal is to make as much money as possible from the sale of its products. Each of the component processes has a daily capacity as indicated. The market demand is 15 units per day. Where is the constraint in this chain, and why? The answer is Step C, because it can never produce more than six units per day, no matter how many the rest of the components produce. Where are the non-constraints? Everywhere else. What happens if we improve the C process so that its daily capacity is now tripled, to 18 units per day? What constrains the system now, and why? The answer is Step D, because it can produce only eight units per day. Where are the non-constraints? Everywhere else. INPUTS Step
 
-A Step
-
-B Step
-
-C Step
-
-D Step
-
-E
-
-Capacity: Units/Day
-
-Capacity: Units/Day
-
-Capacity: Units/Day
-
-Capacity: Units/Day
-
-Capacity:
-
 #### Units/Day
 
 - What is the maximum system output per day?
 - Where is the weakest link? Why?
-
-Figure 1.4
-
-A production example. OUTPUTS MARKET DEMAND:
 
 ![page 10](images/p010.png)
 
@@ -181,42 +101,12 @@ Let’s continue this improvement process, until Steps D, E, and A are all much 
 
 Deming developed 14 points that he offered as a kind of “road map to quality.”5 Most other approaches to continuous improvement have comparable prescriptions for success. Deming’s 14th point is, “Take action to accomplish the transformation.” He amplifies this by urging organizations to get everyone involved, train everybody in the new philosophy, convert a “critical mass” of people, and form process improvement teams.6:86-92 Management in most organizations interprets this point quite literally: Get everyone involved. Employee involvement is a very important element of Deming’s theory, and of most other total quality philosophies, and for good reason: Success is inherently a cooperative effort. Most organizations having formal improvement efforts include employees, in the process usually in teams. Let’s assume that these improvement teams are working on things that “everybody knows” need improving. If we accept Goldratt’s contentions about constraints and nonconstraints, how many of these team efforts are likely to be working on non-constraints? Answer: probably all but one (see Figure 1.6). How many of us know for sure exactly where in our organizations the constraint lies? If our management isn’t thinking in terms of system constraints, yet they’re putting everybody to work on the transformation, how much effort do you think might actually be unproductive? “Wait a minute,” you’re probably thinking. “Continuous improvement is a long-term process; it can take years to produce results. We have to be patient and persevere. We’ll need all of these improvements someday.” That’s true. The way most organizations approach it, continuous improvement is a longterm process that may take years to show results. Limited time, energy, and resources are spread across the entire system, instead of focused on the one part of it that has the potential to produce immediate system improvement: the constraint. Impatience, lack of perseverance, and failure to see progress quickly enough are all reasons why many organizations give up on methods such as TQM and Six Sigma. People—including managers—soon get INPUTS Step
 
-A Step
-
-B Step
-
-C Step
-
-D Step
-
-E
-
-Capacity: Units/Day
-
-Capacity: Units/Day
-
-Capacity: Units/Day
-
-Capacity: Units/Day
-
-Capacity:
-
 #### Units/Day
 
 - Now what’s the maximum system output per day?
 - Now where’s the weakest link? Why?
 
-Figure 1.5
-
-Another version of the production example. OUTPUTS MARKET DEMAND:
-
 ![page 11](images/p011.png)
-
-“Put Everybody to Work...” Process Improvement Teams
-
-Figure 1.6
-
-Who is working on a non-constraint?
 
 > discouraged when they see no tangible system results from the dedicated efforts they’ve put into process improvement. So interest, motivation, and eventually commitment to continuous improvement die from a lack of intrinsic reinforcement. Everybody might be working diligently, but only a few have the potential to really make a difference quickly. For most organizations, the real question is: Will our business environment allow us the luxury of time? Can we wait for the long term to see results? Does it have to be this way? No. Goldratt developed the approach to continuous improvement called the Theory of Constraints. He even wrote a book describing this theory, called The Goal.11 Another, entitled It’s Not Luck,10 demonstrates how the logical tools of the theory might be applied. The Theory of Constraints (TOC) is a prescriptive theory, which means it tells you not only what’s holding your system back, but also what to do about it and how to do it. A lot of theories answer the first question—what’s wrong. Some even tell you what to do about it, but those that do usually focus on processes rather than the system as a whole. And they’re completely oblivious to the concept of system constraints. There is no such thing as staying the same. You are either striving to make yourself better or allowing yourself to get worse.
 >
@@ -263,10 +153,6 @@ Because of the interdependence of system components and the effects of entropy, 
 - Inertia is the worst enemy of a process of ongoing improvement. Solutions tend to assume a mass of their own that resists further change.
 - Ideas are not solutions.
 
-Figure 1.7
-
-Partial list of TOC principles.
-
 #### Cause and Effect
 
 All systems operate in an environment of cause and effect. Something causes something else to happen. This cause-and-effect phenomenon can be very complicated, especially in complex systems.
@@ -312,18 +198,6 @@ A burning question we must address is, “How do we know whether our constraintb
 >
 > —William McFee
 
-$$$ Throughput
-
-$$$ Inventory Operating Expense $$$
-
-(Money coming IN)
-
-(Money tied up INSIDE)
-
-(Money going OUT)
-
-Figure 1.8
-
 Definitions of Throughput, Inventory and Operating Expense.
 
 Inventory/Investment (I) Inventory and Investment are all the money the system invests in things it intends to sell, or all the money tied up within the system.12:58-62 Inventory includes the acquisition cost of raw materials, unfinished goods, purchased parts, and other “hard” items intended for sale to a customer. Investment includes the expenditures an organization makes in equipment and facilities. Eventually, obsolescent equipment and facilities will be sold, too, even if only at their scrap value. As these assets depreciate, their depreciated value remains in the “I” column, but the depreciation is added to Operating Expense (see the next section).
@@ -340,50 +214,16 @@ To improve your system, where should you focus your efforts? On T, I, or OE? Con
 
 ![page 18](images/p018.png)
 
-∞ (Theoretical
-
-Limit)
-
-z
-
-x y (Theoretical
-
-Limit)
-
-OE
-
-I
-
-T
-
-- Decreasing OE and I reaches a practical limit LONG before the limit of increased T
+- Decreasing OE and I reaches a practical limit LONG before the limit of increased T sense to expend as much effort as possible on activities that tend to increase T, and make reduction of I and OE a secondary priority (see Figure 1.10). But what’s the normal priority of most companies in a competitive environment? Cut costs (Operating Expense) first. Then, maybe, reduce physical inventory (often without considering how far it can be reduced without hurting Throughput). And finally, try to increase throughput directly.
 - Decreasing OE and I below practical limits degrades ability to generate T
 
-Figure 1.9
-
 Limits to T, I, and OE.
-
-sense to expend as much effort as possible on activities that tend to increase T, and make reduction of I and OE a secondary priority (see Figure 1.10). But what’s the normal priority of most companies in a competitive environment? Cut costs (Operating Expense) first. Then, maybe, reduce physical inventory (often without considering how far it can be reduced without hurting Throughput). And finally, try to increase throughput directly.
 
 #### T, I, and OE: An Example
 
 A classic example is the American aerospace defense industry. Traditionally, these companies have depended on huge government contracts to keep them going. As the defense budget dramatically declined in the early 1990s, fewer contracts were awarded, and for much smaller production runs. In most cases, the remaining defense business of these companies was not enough to keep the organization, as originally structured, afloat. So what was the response of these companies? Most took the traditional approach to some extent: cut fixed costs (Operating Expense). They laid off thousands of workers. Some even reduced Investment by selling off plants, warehouses, or other physical assets. But even that wasn’t enough for certain companies, so they merged with others to “strengthen” their capacity to bid for whatever defense business remained. A few companies, however, have seen the handwriting on the wall. With the bottom not yet in sight, they couldn’t continue to cut physical inventory or Operating Expense, so they opted to do what they probably should have done in the first place: look for ways to increase Throughput. How? By finding new market segments for their core competencies, markets that don’t depend on government contracts. One satellite builder found a market for its data technology in credit reporting and for its electronic technology in the automotive industry. Another defense electronics firm diversified into consumer communications: home satellite television and data communication. In both cases, the companies found new ways to increase Throughput, rather than just reducing Operating Expense and Inventory.*
 
-Figure 1.10
-
-T
-
-I Maximize
-
-T Minimize
-
-I
-
 Management priorities with T, I, and OE.
-
-OE Minimize
-
-OE
 
 T, I, and OE in Not-for-Profit Organizations A common question often asked is, “What about organizations in which ‘making more money, now and in the future’ isn’t the goal—as with charitable foundations, government agencies, and some hospitals? How do T, I, and OE apply to them?” It’s true that Goldratt conceived of Throughput, Inventory (or Investment), and Operating Expense as ways to measure an organization’s progress toward its goal. However, when he created these measures, he was focusing exclusively on for-profit companies. In such organizations, money is an effective surrogate measure for almost all critical aspects of system-level performance, especially those pertaining to the organization’s goal. But it’s clearly different in the case of a not-for-profit or government agency. Since that kind of organization’s goal is not to “make more money, now and in the future,” the financial expression of Throughput loses significance. So, how can we measure progress toward our goal if we’re a not-for-profit organization? A variety of alternatives has been suggested to modify expressions of T, and the variable elements of I, so that they accurately reflect progress toward a non-monetary goal. The problem with almost all of these alternatives is that they’re contrived—an attempt to fit not-for-profits into a “metrics box” they were never intended to occupy. Goldratt himself has offered what may be the best solution to the problem of assessing the progress of not-for-profits toward their goals. In July of 1995 he made the following observations.18 Figure 1.11 illustrates his concept.
 
@@ -395,24 +235,6 @@ In recorded history, money has been the closest thing to a universal measure of 
 
 ![page 20](images/p020.png)
 
-Operating Budget
-
-T ♥♥♥ ♥
-
-$$ $$
-
-$ $ OE
-
-$ $$$
-
-Ip
-
-Ia = Value Customers
-
-Figure 1.11
-
-♥
-
 T, I, and OE in a not-for-profit organization.
 
 #### Passive Inventory
@@ -423,9 +245,7 @@ Active Inventory (Investment) Active inventory might actually be better defined 
 
 #### Managing T Through Undesirable Effects
 
-Without a universal non-monetary measure of value, Goldratt maintained that measuring T and passive I in not-for-profits isn’t ever likely to be practical. So, he says, don’t bother trying to do it. Instead, work on eliminating the undesirable effects (UDE) associated with
-
-Throughput. (Refer to Chapter 4, “Current Reality Trees,” for a thorough discussion of undesirable effects and their relationship to root causes.) Use UDEs as your indicators of progress. As you eliminate them, progress toward the organization’s goal can be assumed. In summary, a not-for-profit should search out and correct the causes of UDEs affecting Throughput, while keeping the costs of Investment and Operating Expense down (refer to Figure 1.11). But the primary emphasis should always be on the former, not the latter.
+Without a universal non-monetary measure of value, Goldratt maintained that measuring T and passive I in not-for-profits isn’t ever likely to be practical. So, he says, don’t bother trying to do it. Instead, work on eliminating the undesirable effects (UDE) associated with Throughput. (Refer to Chapter 4, “Current Reality Trees,” for a thorough discussion of undesirable effects and their relationship to root causes.) Use UDEs as your indicators of progress. As you eliminate them, progress toward the organization’s goal can be assumed. In summary, a not-for-profit should search out and correct the causes of UDEs affecting Throughput, while keeping the costs of Investment and Operating Expense down (refer to Figure 1.11). But the primary emphasis should always be on the former, not the latter.
 
 **NOTE:** Many people will inevitably ask, “What about the operating budget of a not-for-profit? Where does that fit into the T, I, and OE formulation?” It isn’t in Throughput, because production efforts aren’t aimed at increasing it. And it isn’t really an Operating Expense alone, because some part of it is spent on capital improvements, which are really Inventory (Investment). The answer, according to Goldratt, is that the annual operating budget should be considered a necessary condition. Efforts to reduce active Inventory and Operating Expense will naturally have a beneficial effect on the annual budget. But the budget is the means to an end—a necessary condition—not the goal.
 
@@ -465,24 +285,6 @@ The Intermediate Objectives (IO) Map is a “destination finder.” Stephen R. C
 
 ![page 23](images/p023.png)
 
-GOAL CSF
-
-NC CSF CSF
-
-NC
-
-NC
-
-NC
-
-NC
-
-GOAL = System goal CSF = Critical success factor NC = Subordinate necessary condition
-
-Figure 1.12
-
-The Intermediate Objectives Map.
-
 It begins with a clear, unequivocal goal statement and the few critical success factors that are required to realize it. It then provides a level or two of detailed necessary conditions for achieving those critical success factors. These elements are structured in a tree that represents the normative situation for the system—what should be happening, or what we want to be happening. The IO Map provides the benchmark for determining how big the deviation is between what is happening in the system and what should be happening. Chapter 3 describes the IO Map in detail and provides comprehensive instructions for constructing one.
 
 ### The Current Reality Tree
@@ -491,39 +293,17 @@ The Current Reality Tree (CRT) is a gap-analysis tool (see Figure 1.13). It help
 
 ![page 24](images/p024.png)
 
-THE EVAPORATING CLOUD:
-
 ### A Conflict Resolution Diagram
 
 Goldratt designed the Evaporating Cloud (EC), which amounts to a conflict resolution diagram, to resolve hidden conflicts that usually perpetuate chronic problems (see Figure 1.14). The EC is predicated on the idea that most core problems exist because some underlying tug-of-war, or conflict, prevents straightforward solution of the problem; otherwise, the problem would have been solved long ago. The EC can also be a “creative engine,” an idea generator that allows us to invent new, “breakthrough” solutions to such nagging problems. Consequently, the EC answers the first part of the question, what to change to. Chapter 5 describes the Evaporating Cloud in detail. UNDESIRABLE EFFECT
 
-(UDE) UNDESIRABLE EFFECT
-
-(UDE) UNDESIRABLE EFFECT
-
-(UDE) UNDESIRABLE EFFECT
-
-(UDE) Critical Root Cause
-
-Figure 1.13
-
-The Current Reality Tree.
-
 ![page 25](images/p025.png)
-
-Prerequisite
 
 #2 Requirement
 
 #2 Objective
 
-INJECTION Requirement
-
 #2
-
-Figure 1.14
-
-(Conflict) Prerequisite
 
 #2
 
@@ -539,33 +319,7 @@ Once we’ve decided on a course of action, the Prerequisite Tree (PRT) helps im
 
 ![page 26](images/p026.png)
 
-DESIRED EFFECT
-
-(DE) DESIRED EFFECT
-
-(DE) DESIRED EFFECT
-
-(DE) DESIRED EFFECT
-
-(DE) INJECTION #3
-
-INJECTION #2
-
-INJECTION #1
-
-Figure 1.15
-
-The Future Reality Tree.
-
 ![page 27](images/p027.png)
-
-OBJECTIVE
-
-(INJECTION) Obstacle Obstacle Intermediate Objective Intermediate Objective Intermediate Objective Obstacle Obstacle Intermediate Objective Intermediate Objective Intermediate Objective Obstacle Intermediate Objective
-
-Figure 1.16 Obstacle Intermediate Objective
-
-The Prerequisite Tree.
 
 ### The Transition Tree
 
@@ -575,37 +329,13 @@ The last of the six logical tools is the Transition Tree (TT) (see Figure 1.17).
 
 ![page 28](images/p028.png)
 
-OBJECTIVE
-
-(INJECTION)
-
-Figure 1.17 Unfulfilled
-
-need Expected
-
-effect Action
-
 #4 Unfulfilled
-
-need Expected
-
-effect Action
 
 #3 Unfulfilled
 
-need Expected
-
-effect Action
-
 #2 Existing
 
-condition Unfulfilled
-
-need Action
-
 #1
-
-The Transition Tree.
 
 ### The Categories of Legitimate Reservation
 
@@ -628,16 +358,6 @@ We use the CLR as we construct our trees to ensure that our initial relationship
 
 Each of the six logical tools can be used individually or they can be used in concert, as an integrated “thinking process.” Recall that earlier we discussed TOC as a methodology for managing change. The four basic questions a manager must answer about change (what is the standard, what to change, what to change to, and how to cause the change) can be answered using the logical tools as an integrated package. Figure 1.18 shows the relationship of the logical tools to the four management questions about change. State of Change Applicable Logic Tree
 
-What’s the desired standard? Intermediate Objectives Map
-
-What to change? Current Reality Tree
-
-What to change to? Evaporating Cloud, Future Reality Tree
-
-How to cause the change? Prerequisite Tree, Transition Tree
-
-Figure 1.18
-
 How the logic trees relate to four management questions about change.
 
 Figure 1.19 shows a general overview of how each tool fits together with the others to produce an integrated thinking process. Non-quantifiable problems of broad scope and complexity are particularly prime candidates for a complete thinking process analysis. The rest of this book is devoted to explaining how the six logic trees and the Categories of Legitimate Reservation are used.
@@ -649,12 +369,6 @@ Figure 1.19 shows a general overview of how each tool fits together with the oth
 ![page 30](images/p030.png)
 
 Intermediate Objectives Map Current Reality Tree Evaporating Cloud Goal Undesirable Effects Objective Critical Success Factors Intermediate Effects Requirements Supporting Necessary Conditions Root Causes Prerequisites Transition Tree Prerequisite Tree Future Reality Tree
-
-Objective (Injection)
-
-Objective (Injection) Desired Effects Intermediate Effects Obstacles, Intermediate Objectives Intermediate Effects Action
-
-Figure 1.19 Injections
 
 The six logical tools as an integrated thinking process.
 
