@@ -6,9 +6,7 @@ showHero: true
 syntaxMode: mdx
 ---
 
-<!-- Draft: Markdown conversion of index.html, for comparison. Prose/headings as Markdown; diagrams and the interactive widget kept as embedded HTML/SVG/JS only where needed. Not wired to the design-system stylesheet — for evaluating feel only. -->
-
-*Reconstructed from the 2R forum and research-circle messages, June 8 – July 12 · Quotes lightly condensed · [Methodology](#method)*
+*Reconstructed from the 2R forum and research-circle messages, June 8 – July 12 · Quotes lightly condensed · [Methodology](#methodology)*
 
 ## Prologue — a goal with no gauge
 
@@ -225,7 +223,7 @@ A month ago the question was *what is our throughput?* It has become: *by what p
 
 ---
 
-## Methodology {#method}
+## Methodology
 
 Reconstructed from the 2R forum (June 8–9) and research-circle messages (June 30 – July 2), with the events of July 12 reported by a participant. Quotes lightly condensed for length; emphasis added. Diagrams are redrawn; the conflict cloud and the composer are reconstructions of working documents. This page is itself a first draft of a node — object to it, and watch what happens.
 
