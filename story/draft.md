@@ -3,6 +3,7 @@ title: What Counts
 description: A movement set out to renew civilization — then tried to measure whether it was working. What it found instead was its real bottleneck — the way it thinks together.
 date: 2026-07-12
 showHero: true
+syntaxMode: mdx
 ---
 
 <!-- Draft: Markdown conversion of index.html, for comparison. Prose/headings as Markdown; diagrams and the interactive widget kept as embedded HTML/SVG/JS only where needed. Not wired to the design-system stylesheet — for evaluating feel only. -->
