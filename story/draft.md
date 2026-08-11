@@ -75,7 +75,6 @@ Read that again, because the whole investigation turns on it: the author of the 
   <polygon points="114,88 120,98 126,88" fill="#999"/>
   <rect x="10" y="98" width="220" height="40" rx="20" fill="none" stroke="#999" stroke-dasharray="4 4"/>
   <text x="120" y="122" font-size="12" text-anchor="middle" fill="#777">…the rest of the chain</text>
-
   <text x="330" y="20" font-size="11" font-weight="700" fill="#a86b1a">AS AMENDED · JUNE 8</text>
   <rect x="330" y="34" width="280" height="34" rx="17" fill="#fde9d9" stroke="#e0a860"/>
   <text x="470" y="55" font-size="12" text-anchor="middle" font-weight="600">Decide how the trees get updated (new)</text>
