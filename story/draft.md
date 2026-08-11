@@ -3,7 +3,6 @@ title: What Counts
 description: A movement set out to renew civilization — then tried to measure whether it was working. What it found instead was its real bottleneck — the way it thinks together.
 date: 2026-07-12
 showHero: true
-syntaxMode: mdx
 ---
 
 *Reconstructed from the 2R forum and research-circle messages, June 8 – July 12 · Quotes lightly condensed · [Methodology](#methodology)*
@@ -67,19 +66,34 @@ David — who had built the trees — began drafting a defense of his definition
 
 Read that again, because the whole investigation turns on it: the author of the map had discovered he had no legitimate way to change his own map. That afternoon, the prerequisite tree was amended — with a promise attached to make no further updates unilaterally.
 
-```mermaid
-flowchart TB
-  subgraph before["The prerequisite tree · early June"]
-    direction TB
-    A1["Define throughput"] --> A2["…the rest of the chain"]
-  end
-  subgraph after["As amended · June 8"]
-    direction TB
-    B1["Decide how the trees get updated (new)"] --> B2["Validate & revise the trees for provisional use (new)"] --> B3["Define throughput"] --> B4["…the rest of the chain"]
-  end
-```
+<figure>
+<svg viewBox="0 0 620 210" style="width:100%;max-width:620px;height:auto;display:block;margin:0 auto;" role="img" aria-label="Prerequisite tree before and after the June 8 amendment">
+  <text x="10" y="20" font-size="11" font-weight="700" fill="#666">THE PREREQUISITE TREE · EARLY JUNE</text>
+  <rect x="10" y="34" width="220" height="40" rx="20" fill="#f0f0f0" stroke="#999"/>
+  <text x="120" y="58" font-size="13" text-anchor="middle">Define throughput</text>
+  <line x1="120" y1="74" x2="120" y2="94" stroke="#999" stroke-width="2"/>
+  <polygon points="114,88 120,98 126,88" fill="#999"/>
+  <rect x="10" y="98" width="220" height="40" rx="20" fill="none" stroke="#999" stroke-dasharray="4 4"/>
+  <text x="120" y="122" font-size="12" text-anchor="middle" fill="#777">…the rest of the chain</text>
 
-*Figure 2 · The amendment of June 8: two prerequisites spliced above the root of the chain.*
+  <text x="330" y="20" font-size="11" font-weight="700" fill="#a86b1a">AS AMENDED · JUNE 8</text>
+  <rect x="330" y="34" width="280" height="34" rx="17" fill="#fde9d9" stroke="#e0a860"/>
+  <text x="470" y="55" font-size="12" text-anchor="middle" font-weight="600">Decide how the trees get updated (new)</text>
+  <line x1="470" y1="68" x2="470" y2="82" stroke="#e0a860" stroke-width="2"/>
+  <polygon points="464,76 470,86 476,76" fill="#e0a860"/>
+  <rect x="330" y="82" width="280" height="34" rx="17" fill="#fde9d9" stroke="#e0a860"/>
+  <text x="470" y="103" font-size="12" text-anchor="middle">Validate &amp; revise the trees for provisional use (new)</text>
+  <line x1="470" y1="116" x2="470" y2="130" stroke="#e0a860" stroke-width="2"/>
+  <polygon points="464,124 470,134 476,124" fill="#e0a860"/>
+  <rect x="330" y="130" width="280" height="34" rx="17" fill="#f0f0f0" stroke="#999"/>
+  <text x="470" y="151" font-size="12" text-anchor="middle">Define throughput</text>
+  <line x1="470" y1="164" x2="470" y2="178" stroke="#999" stroke-width="2"/>
+  <polygon points="464,172 470,182 476,172" fill="#999"/>
+  <rect x="330" y="178" width="280" height="30" rx="15" fill="none" stroke="#999" stroke-dasharray="4 4"/>
+  <text x="470" y="198" font-size="11" text-anchor="middle" fill="#777">…the rest of the chain</text>
+</svg>
+<figcaption>Figure 2 · The amendment of June 8: two prerequisites spliced above the root of the chain.</figcaption>
+</figure>
 
 It is worth being precise about what the method just did. A strategy deck absorbs objections silently; whoever holds the pen wins. The tree failed *in public*, and the failure was legible — everyone could see exactly which link Robert's objection attacked, and exactly what got spliced in response. The trees' first real product was the discovery that they could not yet be legitimately updated.
 
@@ -160,19 +174,44 @@ Why was the floor empty in the first place? Beneath the overhead sits an older c
 
 The method has a ritual for exactly this moment: draw the conflict until the assumption holding it together becomes visible.
 
-```mermaid
-flowchart LR
-  OBJ["Shared objective:<br/>A group whose thinking<br/>compounds toward its goal"]
-  N1["Need:<br/>Open, spontaneous, intuitive,<br/>relational conversation"]
-  N2["Need:<br/>Focus, clarity, efforts<br/>that align and add up"]
-  W1["Want:<br/>Keep contribution<br/>unstructured — just talk"]
-  W2["Want:<br/>Structure every contribution<br/>into the trees"]
-  OBJ --> N1 --> W1
-  OBJ --> N2 --> W2
-  W1 -. conflict .- W2
-```
-
-*Figure 5 · The conflict cloud, redrawn from David's working diagram. Both wants serve real needs; both needs serve one objective. The clash between the two wants survives on one assumption: that structure must be added by the contributor, at the moment of contribution.*
+<figure>
+<svg viewBox="0 0 880 400" style="width:100%;height:auto;display:block;" role="img" aria-label="Conflict resolution diagram: spontaneity versus structure, held together by one assumption">
+  <path d="M300,88 L256,88 L256,190 L242,190" fill="none" stroke="#666" stroke-width="2.25"/>
+  <polygon points="232,190 244,184 244,196" fill="#666"/>
+  <path d="M300,312 L256,312 L256,214 L242,214" fill="none" stroke="#666" stroke-width="2.25"/>
+  <polygon points="232,214 244,208 244,220" fill="#666"/>
+  <path d="M620,88 L562,88" fill="none" stroke="#666" stroke-width="2.25"/>
+  <polygon points="552,88 564,82 564,94" fill="#666"/>
+  <path d="M620,312 L562,312" fill="none" stroke="#666" stroke-width="2.25"/>
+  <polygon points="552,312 564,306 564,318" fill="#666"/>
+  <path d="M740,152 L722,190 L758,214 L740,250" fill="none" stroke="#b5651d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="20" y="150" width="212" height="104" rx="26" fill="#f0f0f0" stroke="#999" stroke-width="1.5"/>
+  <text x="126" y="176" font-size="9.5" font-weight="700" fill="#666" text-anchor="middle">SHARED OBJECTIVE</text>
+  <text x="126" y="200" font-size="15" text-anchor="middle">A group whose thinking</text>
+  <text x="126" y="221" font-size="15" text-anchor="middle">compounds toward its goal</text>
+  <rect x="300" y="40" width="252" height="96" rx="26" fill="#fde9d9" stroke="#e0a860" stroke-width="1.5"/>
+  <text x="426" y="64" font-size="9.5" font-weight="700" fill="#a86b1a" text-anchor="middle">NEED</text>
+  <text x="426" y="87" font-size="15" text-anchor="middle">Open, spontaneous, intuitive,</text>
+  <text x="426" y="108" font-size="15" text-anchor="middle">relational conversation</text>
+  <rect x="300" y="264" width="252" height="96" rx="26" fill="#fde3e3" stroke="#e08a8a" stroke-width="1.5"/>
+  <text x="426" y="288" font-size="9.5" font-weight="700" fill="#a83030" text-anchor="middle">NEED</text>
+  <text x="426" y="311" font-size="15" text-anchor="middle">Focus, clarity, efforts</text>
+  <text x="426" y="332" font-size="15" text-anchor="middle">that align and add up</text>
+  <rect x="620" y="40" width="240" height="96" rx="26" fill="#fde9d9" stroke="#e0a860" stroke-width="1.5"/>
+  <text x="740" y="64" font-size="9.5" font-weight="700" fill="#a86b1a" text-anchor="middle">WANT</text>
+  <text x="740" y="87" font-size="15" text-anchor="middle">Keep contribution</text>
+  <text x="740" y="108" font-size="15" text-anchor="middle">unstructured — just talk</text>
+  <rect x="620" y="264" width="240" height="96" rx="26" fill="#fde3e3" stroke="#e08a8a" stroke-width="1.5"/>
+  <text x="740" y="288" font-size="9.5" font-weight="700" fill="#a83030" text-anchor="middle">WANT</text>
+  <text x="740" y="311" font-size="15" text-anchor="middle">Structure every contribution</text>
+  <text x="740" y="332" font-size="15" text-anchor="middle">into the trees</text>
+  <rect x="304" y="168" width="244" height="72" rx="18" fill="none" stroke="#a83030" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <text x="426" y="189" font-size="9.5" font-weight="700" fill="#a83030" text-anchor="middle">THE ASSUMPTION</text>
+  <text x="426" y="208" font-size="12.5" text-anchor="middle">structure must be added by the</text>
+  <text x="426" y="225" font-size="12.5" text-anchor="middle">contributor, at the moment of contribution</text>
+</svg>
+<figcaption>Figure 5 · The conflict cloud, redrawn from David's working diagram. Both wants serve real needs; both needs serve one objective. The lightning survives on the assumption in the dashed box.</figcaption>
+</figure>
 
 Interrupt the dance to update the map, or keep dancing and let the map rot — that is the choice only if structuring must be done *by the contributor, at the moment of contribution*. Break that assumption, and the cloud evaporates.
 
