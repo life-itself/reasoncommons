@@ -1,14 +1,13 @@
-<!-- Draft: Markdown conversion of index.html, for comparison. Prose/headings as Markdown; diagrams and the interactive widget kept as embedded HTML/SVG/JS. Not wired up (no design-system stylesheet, no gtag, no cut-b link parity) — for evaluating feel only. -->
+---
+title: What Counts
+description: A movement set out to renew civilization — then tried to measure whether it was working. What it found instead was its real bottleneck — the way it thinks together.
+date: 2026-07-12
+showHero: true
+---
 
-# What Counts
-
-*A visual investigation · June – July 2026*
-
-A movement set out to renew civilization — then tried to measure whether it was working. What it found instead was its real bottleneck: the way it thinks together.
+<!-- Draft: Markdown conversion of index.html, for comparison. Prose/headings as Markdown; diagrams and the interactive widget kept as embedded HTML/SVG/JS only where needed. Not wired to the design-system stylesheet — for evaluating feel only. -->
 
 *Reconstructed from the 2R forum and research-circle messages, June 8 – July 12 · Quotes lightly condensed · [Methodology](#method)*
-
-*[Masthead photograph placeholder — a research-circle call, a gathering, a whiteboard]*
 
 ## Prologue — a goal with no gauge
 
@@ -18,8 +17,7 @@ Lofty goals have a particular failure mode: nothing can count against them. "Res
 
 So in early June, the group tried something unusual for its corner of the world: it translated its written corpus into the five trees of the Logical Thinking Process.
 
-> **The method, in one breath**
->
+> [!note] The method, in one breath
 > The **Logical Thinking Process** descends from Eliyahu Goldratt's theory of constraints: at any moment a system has one bottleneck that governs its output — its **throughput** — and the fastest way to improve the whole is to find that constraint and aim everything at it. The LTP maps a system as five linked cause-and-effect trees, so any claim can be located, challenged, and improved. The catch: the method only works on a system that can say what it produces.
 
 **The five instruments of the Logical Thinking Process**, as adopted in early June:
@@ -70,23 +68,19 @@ David — who had built the trees — began drafting a defense of his definition
 
 Read that again, because the whole investigation turns on it: the author of the map had discovered he had no legitimate way to change his own map. That afternoon, the prerequisite tree was amended — with a promise attached to make no further updates unilaterally.
 
-<figure>
-
-```
-The prerequisite tree · early June          As amended · June 8
-────────────────────────────────────        ────────────────────────────────────
-  Define throughput                            Decide how the trees get updated [new]
-        ↓                                              ↓
-  …the rest of the chain                        Validate & revise the trees for
-                                                 provisional use [new]
-                                                         ↓
-                                                 Define throughput
-                                                         ↓
-                                                 …the rest of the chain
+```mermaid
+flowchart TB
+  subgraph before["The prerequisite tree · early June"]
+    direction TB
+    A1["Define throughput"] --> A2["…the rest of the chain"]
+  end
+  subgraph after["As amended · June 8"]
+    direction TB
+    B1["Decide how the trees get updated (new)"] --> B2["Validate & revise the trees for provisional use (new)"] --> B3["Define throughput"] --> B4["…the rest of the chain"]
+  end
 ```
 
-<figcaption>Figure 2 · The amendment of June 8: two prerequisites spliced above the root of the chain.</figcaption>
-</figure>
+*Figure 2 · The amendment of June 8: two prerequisites spliced above the root of the chain.*
 
 It is worth being precise about what the method just did. A strategy deck absorbs objections silently; whoever holds the pen wins. The tree failed *in public*, and the failure was legible — everyone could see exactly which link Robert's objection attacked, and exactly what got spliced in response. The trees' first real product was the discovery that they could not yet be legitimately updated.
 
@@ -134,9 +128,7 @@ With that, the picture snapped into two scales, each with its own throughput. Fo
 
 Consider what touching the trees actually required that week. Read five diagrams. Learn a grammar — sufficiency, necessity, the etiquette of legitimate reservations. Locate your point among a hundred nodes. Then defend it to the people who wrote them. Every step is reasonable. The stack is fatal.
 
-Rufus put a name to where this was heading: the empty dancefloor. Every organizer knows the scene — the venue is booked, the music is right, everyone came. And the floor stays empty, because the first dancer pays a cost no one after them pays.
-
-*Figure 3 · The floor, three weeks in: a structure everyone admires and no one touches, ringed by its own prerequisites (read five trees → learn the grammar → find your node → survive scrutiny), with the trees' author alone at the center.*
+Rufus put a name to where this was heading: the empty dancefloor. Every organizer knows the scene — the venue is booked, the music is right, everyone came. And the floor stays empty, because the first dancer pays a cost no one after them pays. Three weeks in, that is exactly the shape of it: a structure everyone admires and no one touches, ringed by its own prerequisites — read five trees, learn the grammar, find your node, survive scrutiny — with the trees' author alone at the center.
 
 David had already begun prototyping against it: a bridge to where people already are. People post tree-adjacent thoughts in public all the time — on Bluesky, in threads — with no idea that a structure exists which could receive them. The prototype watches for them, and answers with an invitation that arrives *pre-placed*:
 
@@ -169,44 +161,19 @@ Why was the floor empty in the first place? Beneath the overhead sits an older c
 
 The method has a ritual for exactly this moment: draw the conflict until the assumption holding it together becomes visible.
 
-<figure>
-<svg viewBox="0 0 880 400" style="width:100%;height:auto;display:block;" role="img" aria-label="Conflict resolution diagram: spontaneity versus structure, held together by one assumption">
-  <path d="M300,88 L256,88 L256,190 L242,190" fill="none" stroke="#666" stroke-width="2.25"/>
-  <polygon points="232,190 244,184 244,196" fill="#666"/>
-  <path d="M300,312 L256,312 L256,214 L242,214" fill="none" stroke="#666" stroke-width="2.25"/>
-  <polygon points="232,214 244,208 244,220" fill="#666"/>
-  <path d="M620,88 L562,88" fill="none" stroke="#666" stroke-width="2.25"/>
-  <polygon points="552,88 564,82 564,94" fill="#666"/>
-  <path d="M620,312 L562,312" fill="none" stroke="#666" stroke-width="2.25"/>
-  <polygon points="552,312 564,306 564,318" fill="#666"/>
-  <path d="M740,152 L722,190 L758,214 L740,250" fill="none" stroke="#b5651d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="20" y="150" width="212" height="104" rx="26" fill="#f0f0f0" stroke="#999" stroke-width="1.5"/>
-  <text x="126" y="176" font-size="9.5" font-weight="700" fill="#666" text-anchor="middle">SHARED OBJECTIVE</text>
-  <text x="126" y="200" font-size="15" text-anchor="middle">A group whose thinking</text>
-  <text x="126" y="221" font-size="15" text-anchor="middle">compounds toward its goal</text>
-  <rect x="300" y="40" width="252" height="96" rx="26" fill="#fde9d9" stroke="#e0a860" stroke-width="1.5"/>
-  <text x="426" y="64" font-size="9.5" font-weight="700" fill="#a86b1a" text-anchor="middle">NEED</text>
-  <text x="426" y="87" font-size="15" text-anchor="middle">Open, spontaneous, intuitive,</text>
-  <text x="426" y="108" font-size="15" text-anchor="middle">relational conversation</text>
-  <rect x="300" y="264" width="252" height="96" rx="26" fill="#fde3e3" stroke="#e08a8a" stroke-width="1.5"/>
-  <text x="426" y="288" font-size="9.5" font-weight="700" fill="#a83030" text-anchor="middle">NEED</text>
-  <text x="426" y="311" font-size="15" text-anchor="middle">Focus, clarity, efforts</text>
-  <text x="426" y="332" font-size="15" text-anchor="middle">that align and add up</text>
-  <rect x="620" y="40" width="240" height="96" rx="26" fill="#fde9d9" stroke="#e0a860" stroke-width="1.5"/>
-  <text x="740" y="64" font-size="9.5" font-weight="700" fill="#a86b1a" text-anchor="middle">WANT</text>
-  <text x="740" y="87" font-size="15" text-anchor="middle">Keep contribution</text>
-  <text x="740" y="108" font-size="15" text-anchor="middle">unstructured — just talk</text>
-  <rect x="620" y="264" width="240" height="96" rx="26" fill="#fde3e3" stroke="#e08a8a" stroke-width="1.5"/>
-  <text x="740" y="288" font-size="9.5" font-weight="700" fill="#a83030" text-anchor="middle">WANT</text>
-  <text x="740" y="311" font-size="15" text-anchor="middle">Structure every contribution</text>
-  <text x="740" y="332" font-size="15" text-anchor="middle">into the trees</text>
-  <rect x="304" y="168" width="244" height="72" rx="18" fill="none" stroke="#a83030" stroke-width="1.5" stroke-dasharray="5 5"/>
-  <text x="426" y="189" font-size="9.5" font-weight="700" fill="#a83030" text-anchor="middle">THE ASSUMPTION</text>
-  <text x="426" y="208" font-size="12.5" text-anchor="middle">structure must be added by the</text>
-  <text x="426" y="225" font-size="12.5" text-anchor="middle">contributor, at the moment of contribution</text>
-</svg>
-<figcaption>Figure 5 · The conflict cloud, redrawn from David's working diagram. Both wants serve real needs; both needs serve one objective. The lightning survives on the assumption in the dashed box.</figcaption>
-</figure>
+```mermaid
+flowchart LR
+  OBJ["Shared objective:<br/>A group whose thinking<br/>compounds toward its goal"]
+  N1["Need:<br/>Open, spontaneous, intuitive,<br/>relational conversation"]
+  N2["Need:<br/>Focus, clarity, efforts<br/>that align and add up"]
+  W1["Want:<br/>Keep contribution<br/>unstructured — just talk"]
+  W2["Want:<br/>Structure every contribution<br/>into the trees"]
+  OBJ --> N1 --> W1
+  OBJ --> N2 --> W2
+  W1 -. conflict .- W2
+```
+
+*Figure 5 · The conflict cloud, redrawn from David's working diagram. Both wants serve real needs; both needs serve one objective. The clash between the two wants survives on one assumption: that structure must be added by the contributor, at the moment of contribution.*
 
 Interrupt the dance to update the map, or keep dancing and let the map rot — that is the choice only if structuring must be done *by the contributor, at the moment of contribution*. Break that assumption, and the cloud evaporates.
 
@@ -254,42 +221,6 @@ That demotion is the exciting part. Another circle with an aligned but different
 A month ago the question was *what is our throughput?* It has become: *by what process does any group of people keep a shared map of their thinking true?* That is a better constraint — the kind you can build against.
 
 > The trees were never the product. The tree-building is.
-
-## Align your goal
-
-*The onramp, demonstrated*
-
-Everything above reduces to one move: say one true sentence about a goal you care about, and let the structure catch up to you. Try the move itself —
-
-<div style="border:1px solid #ccc;border-radius:12px;padding:20px;max-width:600px;">
-<input type="text" placeholder="A goal you care about — one sentence" style="width:70%;padding:8px;" id="goal-input">
-<button id="goal-go">See where it lands</button>
-<div id="goal-result" style="margin-top:16px;display:none;"></div>
-</div>
-
-<script>
-(function(){
-  function match(t){
-    var low = (t||'').toLowerCase();
-    if (!t) return {tag:'The whole cost of entry', title:'One sentence', body:'That box is the onramp. One true sentence about a goal you care about is the entire prerequisite — that is the point.'};
-    if (/(climat|ecolog|bioregion|land|place|soil|water|nature|regen|food|farm)/.test(low)) return {tag:'Extends the current reality tree', title:'Near: "Our maps of the crisis underweight place"', body:'You have landed on the bioregionalism gap — the canonical example, raised on July 2, of something the trees neglect.'};
-    if (/(educat|school|learn|teach|train|student|curricul)/.test(low)) return {tag:'Rhymes with Robert’s reframe', title:'Near: the goal tree’s education branch — "2R is a school"', body:'On June 8, two definitions of throughput met in a forum thread. Yours would have been a third voice.'};
-    if (/(communit|relation|practice|local|neighbo|belong|together|circle)/.test(low)) return {tag:'Supports the future reality tree', title:'Near: "Transformation is adopted durably by groups"', body:'This is the branch the whole throughput definition hangs from.'};
-    if (/(measur|metric|progress|goal|throughput|account|evaluat)/.test(low)) return {tag:'Lands in the prerequisite tree', title:'Near: "Decide how the trees get updated"', body:'You are standing on the exact node this investigation is about.'};
-    if (/(conflict|stuck|burn|overwhelm|tension|disagree|fight)/.test(low)) return {tag:'Belongs in a conflict cloud', title:'Near: the spontaneity–structure cloud of Act V', body:'Name the two wants, find the needs underneath them, and hunt the assumption holding the lightning in place.'};
-    return {tag:'A goal-tree alignment', title:'Near the root: what success is, and what it requires', body:'Every graft begins as one sentence held against the goal tree.'};
-  }
-  document.getElementById('goal-go').addEventListener('click', function(){
-    var t = document.getElementById('goal-input').value;
-    var s = match(t);
-    var r = document.getElementById('goal-result');
-    r.style.display = 'block';
-    r.innerHTML = '<strong>'+s.tag+'</strong><br>'+s.title+'<br><span style="font-size:.9em;color:#555;">'+s.body+'</span>';
-  });
-})();
-</script>
-
-Then bring the sentence where it counts: **Thursday's research circle**, or the throughput thread on the forum.
 
 ---
 
