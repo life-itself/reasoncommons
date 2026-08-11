@@ -2,9 +2,9 @@
 
 Reference material for this project — books and other source texts.
 
-| Title | Author | Local Copy | Notes |
+| Title | Author | Local | Notes |
 |---|---|---|---|
 | [*From Symptoms to Causes*](https://openlibrary.org/works/OL30487334W) | [Thorsteinn Siglaugsson](https://openlibrary.org/authors/OL11163372A) | | Short overview of the LTP. Good first exposure. |
 | [*The Logical Thinking Process: An Executive Summary*](https://openlibrary.org/works/OL20554680W) | [H. William Dettmer](https://openlibrary.org/authors/OL218939A) | | Good short overview, good first book. |
-| [*The Logical Thinking Process: A Systems Approach to Complex Problem Solving*](https://openlibrary.org/works/OL1827621W) | [H. William Dettmer](https://openlibrary.org/authors/OL218939A) | [link](logical-thinking-process-dettmer/) | The definitive reference. |
+| [*The Logical Thinking Process: A Systems Approach to Complex Problem Solving*](https://openlibrary.org/works/OL1827621W) | [H. William Dettmer](https://openlibrary.org/authors/OL218939A) | [Link](logical-thinking-process-dettmer/) | The definitive reference. |
 | [*The Goal*](https://openlibrary.org/works/OL2463051W) | [Eliyahu M. Goldratt](https://openlibrary.org/authors/OL2794070A) and [Jeff Cox](https://openlibrary.org/authors/OL2710924A) | | The book that started it all — an engaging business novel. Good starting point if the other two are too abstract. |
