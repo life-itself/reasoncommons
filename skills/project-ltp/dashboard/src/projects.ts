@@ -6,6 +6,7 @@ import {
   type ThroughputData,
 } from "./model";
 import { validateTracking, type TrackingLedger } from "./tracking";
+import embeddedProjectFiles from "virtual:embedded-project-files";
 
 /**
  * One project shown in the multi-project picker. Models are loaded from
@@ -58,6 +59,14 @@ export interface LoadedModel {
 }
 
 export async function fetchText(url: string): Promise<string | null> {
+  // Production builds carry the static catalog in index.html because the
+  // published host redirects repository assets to a CORS-incompatible origin.
+  // API URLs deliberately miss this map and continue to use the local server.
+  const normalizedUrl = url.replace(/^\.\//, "");
+  if (normalizedUrl.startsWith("projects/")) {
+    return embeddedProjectFiles[normalizedUrl] ?? null;
+  }
+
   const response = await fetch(url, { cache: "no-store" });
   if (response.status === 204 || response.status === 404) return null;
   if (!response.ok) throw new Error(`${url} returned ${response.status}`);

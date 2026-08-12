@@ -8,6 +8,7 @@
     "sync:github": "python3 ../scripts/sync_github_issues.py pull --model public/projects/2r-research-circle/model.yaml --repo Promise-Foundation/2R-Research",
     "prebuild": "npm run generate:throughput",
     "build": "tsc -b && vite build",
+    "postbuild": "node scripts/check-build.mjs",
     "predev": "npm run generate:throughput",
     "dev": "vite --host 127.0.0.1",
     "test": "node --test scripts/*.test.mjs",
@@ -21,6 +22,7 @@
     "yaml": "^2.8.1"
   },
   "devDependencies": {
+    "@types/node": "^26.2.0",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
     "@vitejs/plugin-react": "^5.0.2",
