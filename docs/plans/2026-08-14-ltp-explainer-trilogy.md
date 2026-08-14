@@ -12,10 +12,10 @@ a checkbox pipeline below, and a position marker for resumable (loop-mode) work.
 
 ## Position
 
-> **Currently on:** 1.3c — rebuilding draft v1 as a **shot list** in the ProPublica form:
-> 2,819 words of paragraphs → ~1,200 words in ~50 blocks of ~16 words, each over one
-> drawing, zero interactions. Beat sheet is the substrate; v1 draft kept as `draft-v1-prose.md`.
-> Then 1.4 Rufus review gate, then 1.5 drawing specs.
+> **Currently on:** 1.4 — Rufus review gate on `explainers/01-bottleneck/shotlist.md` (57 blocks, ~1,020 body words, 0 interactions). Next: 1.5 drawing production.
+
+
+
 
 Update this line at the end of every work unit.
 
@@ -108,10 +108,11 @@ beat sheet → markdown draft → figure specs → SVG/HTML build → publish
 
 - [x] **1.1** Read Dettmer ch1 + front matter; read existing synthesis in full
 - [x] **1.2** Beat sheet — `explainers/01-bottleneck/beats.md`
-- [x] **1.3** Markdown draft — `explainers/01-bottleneck/draft.md` (~2,400 words)
+- [x] **1.3** Draft v1 (essay form) → `draft-v1-prose.md`
+- [x] **1.3c** Converted to shot list — `shotlist.md` (57 blocks, ~1,020 body words, 0 interactions)
 - [ ] **1.4** Rufus review gate — redirect here, not later
-- [ ] **1.5** Figure specs (incl. the 2–3 interactive beats)
-- [ ] **1.6** Build `explainers/01-bottleneck/index.html` on the Organic DS
+- [ ] **1.5** Drawing production — 57 drawings, hand-drawn/ink register, one shared paper ground
+- [ ] **1.6** Build `explainers/01-bottleneck/index.html` — pinned-stage pattern, CSS `position: sticky`, IntersectionObserver steps
 - [ ] **1.7** Verify (see below) and publish
 
 ### Piece 2 — Thinking Made Visible
