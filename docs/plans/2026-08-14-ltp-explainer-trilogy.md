@@ -12,7 +12,7 @@ a checkbox pipeline below, and a position marker for resumable (loop-mode) work.
 
 ## Position
 
-> **Currently on:** 1.4 — Rufus review gate on `explainers/01-bottleneck/shotlist.md` (57 blocks, ~1,020 body words, 0 interactions). Next: 1.5 drawing production.
+> **Currently on:** 1.6 in progress — working prototype at `explainers/01-bottleneck/index.html` covers Cold Open + title + nut graphs + §1 (five stations). Drawing register proven. Next: §2–§9 drawings.
 
 
 
