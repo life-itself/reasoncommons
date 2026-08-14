@@ -16,6 +16,8 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
 | Process spec + **gold-standard toy fixture** (tree, doc, annotations) | `claim-tree-annotation.md` |
 | Static animated demo of the 4-step vision | `claim-tree-annotation-demo/` |
 | AI skills (tree-gen, annotation-mapping, project-ltp) | `skills/` (see `skills/README.md`) |
+| **Writing a scrolling visual explainer** — principles, patterns, worked teardown | `skills/scrollable-explainer/SKILL.md` — **read before drafting anything in `explainers/`** |
+| The explainer series itself (drafts, beat sheets) | `explainers/` · plan in `docs/plans/2026-08-14-ltp-explainer-trilogy.md` |
 
 ## Conventions
 
