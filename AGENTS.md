@@ -87,6 +87,11 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
   needs to publish previews, they'll need their own `--name` rather than this
   shared one. Especially worth doing for
   anything that changes URLs or link structure.
+  Note `fl` **only adds and updates — it never deletes**. Files removed from the
+  repo, or newly covered by `contentExclude`, stay on the preview site from an
+  earlier run, so a preview can show pages the live build correctly omits. When
+  a preview disagrees with expectations about deleted or excluded content,
+  `fl delete` the site and republish before believing it.
 - Root docs are lowercase (`motivation.md`, `changelog.md`) so Flowershow gives them clean published URLs — except `README.md` and `AGENTS.md`, which keep their exact uppercase names because tooling (GitHub, Flowershow's homepage, Claude Code/Codex) looks them up by that literal filename.
 
 ## Changelog
