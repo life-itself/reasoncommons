@@ -37,3 +37,13 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
 - **Toy example first.** Validate any AI skill against the gold data in `claim-tree-annotation.md` before touching real applications (e.g. Second Renaissance).
 - Keep `motivation.md` (why + SCQH) current; it's referenced from `README.md`. Plan-of-work tracking (streams, next actions) lives in GitHub issues, not a repo file.
 - Root docs are lowercase (`motivation.md`, `changelog.md`) so Flowershow gives them clean published URLs — except `README.md` and `AGENTS.md`, which keep their exact uppercase names because tooling (GitHub, Flowershow's homepage, Claude Code/Codex) looks them up by that literal filename.
+
+## Changelog
+
+This repo keeps a `changelog.md` (dated entries, newest first). At the end
+of a work session, if something worth recording actually shipped — skip
+trivial sessions (typo fixes, dead ends, no visible outcome) — draft a
+dated entry. Screenshots go in `changelog/images/`, embedded inline, if
+something visual shipped. First time writing an entry in this repo, or if
+the format is unclear: fetch and follow
+https://raw.githubusercontent.com/life-itself/changelog/main/CONVENTION.md
