@@ -5,7 +5,7 @@ date: 2026-08-15
 showHero: true
 ---
 
-*Part two of three · [Thinking in Systems](../index.html) · [scrolling version →](index.html)*
+*Part two of three · [Thinking in Systems](../) · [scrolling version →](scrolling.html)*
 
 ## The Arrows Nobody Checks
 
@@ -163,7 +163,7 @@ Though it does raise the question of what, exactly, you should be mapping. *Why 
 
 ---
 
-**Next → [Five Shapes](../03-five-shapes/article.md)**
+**Next → [Five Shapes](../03-five-shapes/)**
 *What the Logical Thinking Process actually is — and why its author quietly retired one of his own tools.*
 
 ## Notes on sources

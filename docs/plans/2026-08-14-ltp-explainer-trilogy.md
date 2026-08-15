@@ -12,7 +12,7 @@ a checkbox pipeline below, and a position marker for resumable (loop-mode) work.
 
 ## Position
 
-> **Done, 2026-08-15.** All three pieces shipped in both markdown and HTML forms — see [`changelog.md`](../../changelog.md). Open questions and next steps now live in [`explainers/NEXT.md`](../../explainers/NEXT.md) and [issue #6](https://github.com/life-itself/reasoncommons/issues/6).
+> **Done, 2026-08-15.** All three pieces shipped in both markdown and HTML forms — see [`changelog.md`](../../changelog.md). Open questions and next steps now live in [`NEXT.md`](../../NEXT.md) and [issue #6](https://github.com/life-itself/reasoncommons/issues/6).
 
 
 

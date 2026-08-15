@@ -17,7 +17,7 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
 | Static animated demo of the 4-step vision | `claim-tree-annotation-demo/` |
 | AI skills (tree-gen, annotation-mapping, project-ltp) | `skills/` (see `skills/README.md`) |
 | **Writing a scrolling visual explainer** — principles, patterns, worked teardown | `skills/scrollable-explainer/SKILL.md` — **read before drafting anything in `explainers/`** |
-| The explainer series itself (drafts, beat sheets) | `explainers/` · plan in `docs/plans/2026-08-14-ltp-explainer-trilogy.md` |
+| The explainer series itself | `explainers/` — see its layout under Conventions below |
 
 ## Conventions
 
@@ -36,6 +36,20 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
   does not appear in the Skills sidebar.
 - **Toy example first.** Validate any AI skill against the gold data in `claim-tree-annotation.md` before touching real applications (e.g. Second Renaissance).
 - Keep `motivation.md` (why + SCQH) current; it's referenced from `README.md`. Plan-of-work tracking (streams, next actions) lives in GitHub issues, not a repo file.
+- **`explainers/` layout.** Only finished, readable pieces live at the top level;
+  everything else is process material and stays out of the way:
+  ```
+  explainers/
+    index.md                     series landing page
+    <nn>-<slug>/
+      index.md                   the article — the canonical published piece
+      scrolling.html             scroll-driven version of the same piece
+    _process/<nn>-<slug>/        scripts, critiques, superseded drafts, stills
+    scroller.css, scroller.js    shared assets for the scrolling versions
+  ```
+  `_process/` is in `config.json` > `contentHide` so Flowershow doesn't publish
+  it. Drafts and critiques go there, never next to the article.
+- There is exactly one `NEXT.md`, at the repo root. Don't create per-folder ones.
 - Root docs are lowercase (`motivation.md`, `changelog.md`) so Flowershow gives them clean published URLs — except `README.md` and `AGENTS.md`, which keep their exact uppercase names because tooling (GitHub, Flowershow's homepage, Claude Code/Codex) looks them up by that literal filename.
 
 ## Changelog

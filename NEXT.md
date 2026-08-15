@@ -8,7 +8,7 @@ status: checkpoint
 
 Checkpoint for review after shipping the explainer trilogy in both markdown and HTML.
 
-- **What shipped:** see [`changelog.md`](../changelog.md).
+- **What shipped:** see [`changelog.md`](changelog.md).
 - **Open questions + follow-up work:** tracked in
   [issue #6](https://github.com/life-itself/reasoncommons/issues/6).
 

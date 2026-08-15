@@ -5,7 +5,7 @@ date: 2026-08-15
 showHero: true
 ---
 
-*Part three of three · [Thinking in Systems](../index.html) · [scrolling version →](index.html)*
+*Part three of three · [Thinking in Systems](../) · [scrolling version →](scrolling.html)*
 
 ## Five Shapes
 
@@ -164,7 +164,7 @@ For the first time, they can find out.
 
 ---
 
-**← [The Wrong Queue](../01-bottleneck/article.md)** · **[The Arrows Nobody Checks](../02-thinking-made-visible/article.md)** · **[See it working: the claim-tree annotation demo →](../../claim-tree-annotation-demo/index.html)**
+**← [The Wrong Queue](../01-bottleneck/)** · **[The Arrows Nobody Checks](../02-thinking-made-visible/)** · **[See it working: the claim-tree annotation demo →](../../claim-tree-annotation-demo/index.html)**
 
 ## Notes on sources
 

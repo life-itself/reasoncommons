@@ -5,7 +5,7 @@ date: 2026-08-15
 showHero: true
 ---
 
-*Part one of three · [Thinking in Systems](../index.html) · [scrolling version →](index.html)*
+*Part one of three · [Thinking in Systems](../) · [scrolling version →](scrolling.html)*
 
 ## The Wrong Queue
 
@@ -211,7 +211,7 @@ And so, somewhere in that building, someone is working through lunch on somethin
 
 ---
 
-**Next → [The Arrows Nobody Checks](../02-thinking-made-visible/article.md)**
+**Next → [The Arrows Nobody Checks](../02-thinking-made-visible/)**
 *Why you would ever draw your reasoning as a tree — and what happens to an argument when you do.*
 
 ## Methodology

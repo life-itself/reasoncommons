@@ -12,7 +12,7 @@ Public argument is badly structured: claims are vague, debate doesn't accumulate
 That's what we're exploring here: not one person's argument, but claims and evidence held in common — open to challenge, open to revision.
 
 <div class="demo-cta">
-  <a href="explainers/index.html" class="btn-primary btn-primary-lg">
+  <a href="explainers/" class="btn-primary btn-primary-lg">
     Read the series
   </a>
   <a href="dashboard/index.html" class="btn-primary btn-primary-lg">
