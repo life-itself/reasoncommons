@@ -102,11 +102,24 @@ body::before{
 .seriesnav .t{font-size:1.2rem}
 
 @media (max-width:640px){
-  .step{max-width:min(84vw,20rem);font-size:1.02rem}
-  .step.lead,.step.tl,.step.tr{left:6vw;right:auto;top:11vh}
-  .step.bl,.step.br{left:6vw;right:auto;bottom:12vh}
+  .step{max-width:min(86vw,22rem);font-size:1.02rem}
+  /* In portrait the drawing needs the upper area; captions go to the foot
+     of the screen and get an opaque ground so nothing shows through. */
+  .step.lead{left:6vw;right:auto;top:auto;bottom:8vh}
+  .step.tl,.step.tr,.step.bl,.step.br{left:6vw;right:auto;top:auto;bottom:6vh}
+  .step p{background:var(--paper-2)}
+  .step.mid{bottom:auto;top:50%}
+  /* Wide diagrams shrink to a ribbon in portrait. Where a drawing has a
+     portrait variant (see data-portrait-viewbox), the page swaps its
+     viewBox and re-lays it out; the rest simply centre. */
+  .stage{padding:0 3vw}
+  .flow{padding:10vh 1.25rem}
+  .sources{padding:9vh 1.25rem}
 }
 
 @media (prefers-reduced-motion:reduce){
   .layer,.step,.progress{transition:none}
 }
+
+/* landscape-only annotations: hidden where a portrait layout carries the point */
+@media (max-width:640px){ .wide-only{display:none} }

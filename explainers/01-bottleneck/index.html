@@ -81,7 +81,7 @@
         <text id="out" x="895" y="290" text-anchor="middle" font-family="var(--sans)" font-size="70" font-weight="700" fill="var(--mark)">0</text>
         <text x="895" y="318" text-anchor="middle" font-family="var(--sans)" font-size="11" fill="var(--ink-soft)" letter-spacing="1.4">PER DAY</text>
       </g>
-      <g class="layer" data-layer="s8" font-family="var(--sans)" text-anchor="middle">
+      <g class="layer wide-only" data-layer="s8" font-family="var(--sans)" text-anchor="middle">
         <text x="500" y="405" font-size="13" fill="var(--ink-soft)">If the doctor matched the next tightest station, this would read</text>
         <text x="500" y="440" font-size="30" font-weight="700" fill="var(--ink-faint)">40</text>
       </g>
@@ -314,15 +314,46 @@
 
   var S=[{n:'CHECK-IN',c:60},{n:'TRIAGE',c:45},{n:'DOCTOR',c:20},{n:'PHARMACY',c:50},{n:'FOLLOW-UP',c:40}];
 
+  /* Portrait phones turn a five-across row into an unreadable ribbon, so the
+     stations stack vertically instead. Layout numbers live in one place. */
+  var PORTRAIT = window.matchMedia('(max-width: 640px)').matches;
+  var L = PORTRAIT
+    ? {box:{x:60,w:180,h:90}, step:140, top:40, viewBox:'0 0 430 920',
+       capDX:90, capDY:58, nameX:258, nameDY:54, nameAnchor:'start',
+       outX:385, outY:392, outSub:416, outSize:42}
+    : {box:{x:null,w:110,h:110}, step:150, top:170, viewBox:null,
+       capDX:55, capDY:68, nameX:null, nameDY:135, nameAnchor:'middle',
+       outX:895, outY:290, outSub:318, outSize:70};
+
+  function pos(i){
+    return PORTRAIT ? {x:L.box.x, y:L.top+i*L.step} : {x:110+i*L.step, y:L.top};
+  }
+
   function stations(boxId,nameId,capId){
     var b=document.getElementById(boxId),nm=document.getElementById(nameId),
         cp=capId?document.getElementById(capId):null;
+    var svg=b.closest('svg');
+    if(L.viewBox) svg.setAttribute('viewBox', L.viewBox);
     S.forEach(function(s,i){
-      var x=110+i*150;
-      b.appendChild(el('rect',{x:x,y:170,width:110,height:110,'data-box':i}));
-      var t=el('text',{x:x+55,y:305}); t.textContent=s.n; nm.appendChild(t);
-      if(cp){var c=el('text',{x:x+55,y:238,'data-cap':i,opacity:0}); c.textContent=s.c; cp.appendChild(c);}
+      var p=pos(i);
+      b.appendChild(el('rect',{x:p.x,y:p.y,width:L.box.w,height:L.box.h,'data-box':i}));
+      var t=el('text',{x:PORTRAIT?L.nameX:p.x+L.capDX, y:p.y+L.nameDY,
+                       'text-anchor':L.nameAnchor});
+      t.textContent=s.n; nm.appendChild(t);
+      if(cp){
+        var c=el('text',{x:p.x+L.capDX,y:p.y+L.capDY,'data-cap':i,opacity:0});
+        c.textContent=s.c; cp.appendChild(c);
+      }
     });
+    /* the output counter travels with the layout */
+    [['out','PER DAY'],['hout','PER DAY']].forEach(function(){});
+    var o=svg.querySelector('#out, #hout');
+    if(o && PORTRAIT){
+      o.setAttribute('x',L.outX); o.setAttribute('y',L.outY);
+      o.setAttribute('font-size',L.outSize);
+      var sub=o.nextElementSibling;
+      if(sub){ sub.setAttribute('x',L.outX); sub.setAttribute('y',L.outSub); }
+    }
     return b;
   }
   var boxes=stations('boxes','names','caps');
@@ -331,8 +362,13 @@
 
   /* the pile that backs up in front of the doctor */
   var pool=document.getElementById('pool'),poolDots=[];
-  for(var p=0;p<34;p++){
-    var c=el('circle',{r:5.5,cx:401-(p%3)*13,cy:274-Math.floor(p/3)*13,opacity:0});
+  var doc=pos(2);
+  for(var p=0;p<36;p++){
+    var c = PORTRAIT
+      /* a band of waiting people sitting just above the doctor's room */
+      ? el('circle',{r:4.6,cx:72+(p%12)*14,cy:doc.y-14-Math.floor(p/12)*12,opacity:0})
+      /* a pile backing up in the gap before the doctor's room */
+      : el('circle',{r:5.5,cx:doc.x-9-(p%3)*13,cy:doc.y+104-Math.floor(p/3)*13,opacity:0});
     pool.appendChild(c); poolDots.push(c);
   }
 
@@ -383,16 +419,18 @@
       for(var i=0;i<capEls.length;i++) capEls[i].setAttribute('opacity', i<reveal?1:0);
       docBox.setAttribute('stroke', idx>=3?'var(--mark)':'var(--ink)');
       docBox.setAttribute('stroke-width', idx>=3?'4':'2.6');
-      var n = idx>=3 ? Math.min(34,(idx-2)*9) : 0;
+      var n = idx>=3 ? Math.min(36,(idx-2)*10) : 0;
       poolDots.forEach(function(d,j){ d.setAttribute('opacity', j<n?0.55:0); });
       if(idx>=6) window.countUp(out,20,800);
     }
     /* the one hire */
     var hpos={h2:0,h3:3,h4:2,h5:0};
     if(id in hpos){
-      var x=110+hpos[id]*150+55;
+      var hp=pos(hpos[id]);
       hire.setAttribute('opacity',1);
-      hire.setAttribute('transform','translate('+x+',150)');
+      hire.setAttribute('transform', PORTRAIT
+        ? 'translate('+(hp.x+L.box.w+34)+','+(hp.y+30)+')'
+        : 'translate('+(hp.x+L.capDX)+',150)');
       document.getElementById('hout').textContent = (id==='h4') ? '26' : '20';
     } else if(id==='h1'){ hire.setAttribute('opacity',0); }
     /* the doctor's day */
