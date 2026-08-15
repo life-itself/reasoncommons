@@ -5,13 +5,16 @@ status: in-progress
 
 # Reason Commons
 
-*Logical Thinking Process (LTP) / Issue Tree tooling — see [docs/brand-and-domain-naming.md](docs/brand-and-domain-naming.md) for the naming decision.*
+*Structure claims into trees. Map evidence to them. Grow shared understanding — together.*
 
-Collaboration of Rufus Pollock with David Joseph to build tooling for structured thinking — specifically a Logical Thinking Process (LTP) / Issue Tree app. Both David and Rufus share a long-standing desire to improve public discourse and improve collaboration: aligning efforts to goals, making claims or hypotheses and their logical structure clearer (claim-trees), allowing debate to accumulate, mapping evidence clearly to specific sub-claims.
+Public argument is badly structured: claims are vague, debate doesn't accumulate, and evidence rarely maps to the specific point it bears on. What if a claim were instead a tree — broken into the sub-claims it actually depends on, with evidence for, against, or complicating each one attached directly to it? The tree becomes a shared, inspectable scaffold that outlives any one document, so a group reasoning about the same question can see where things stand and build on each other's work instead of talking past each other.
 
-**Core shared vision:** Patterns and tooling where you take a top-level claim, recursively decompose it into sub-claims, and build a directed graph (DAG) of claims + evidence. Enables "cathedral building" where discourse actually accumulates rather than being scattered across forum posts.
+That's what we're exploring here: not one person's argument, but claims and evidence held in common — open to challenge, open to revision.
 
 <div class="demo-cta">
+  <a href="explainers/index.html" class="btn-primary btn-primary-lg">
+    Read the series
+  </a>
   <a href="dashboard/index.html" class="btn-primary btn-primary-lg">
     Open the Project LTP dashboard
   </a>
@@ -26,7 +29,7 @@ Collaboration of Rufus Pollock with David Joseph to build tooling for structured
   </a>
 </div>
 
-**Key docs:** [MOTIVATION.md](MOTIVATION.md) — why this matters + problem framing (SCQH) · [AGENTS.md](AGENTS.md) — guide for AI agents. Planning (streams, next actions) now happens in [GitHub issues](https://github.com/life-itself/reasoncommons/issues).
+**Key docs:** [motivation.md](motivation.md) — why this matters + problem framing (SCQH) · [AGENTS.md](AGENTS.md) — guide for AI agents. Planning (streams, next actions) happens in [GitHub issues](https://github.com/life-itself/reasoncommons/issues).
 
 ## Use Project LTP with Codex
 
@@ -126,48 +129,8 @@ analysis, ask Codex to update the canonical files under `ltp/` (or edit them in
 an editor); the browser itself remains read-only. Stop the server with
 `Ctrl+C` in the terminal that launched it.
 
-David's angle: his "Abductio" process for proposition decomposition — takes any claim, breaks into subclaims until confidence threshold is met. Built into his Promise Protocol framework.
+## About
 
-Rufus's angle: issue trees / SCQH / Minto pyramids — wanted an app for this for 10+ years. Previously almost built one 3–4 years ago.
+Reason Commons is a collaboration between **Rufus Pollock** and **David Joseph**. Rufus's thread: issue trees, SCQH, Minto pyramids — wanted a tool like this for 10+ years. David's thread: "Abductio," a proposition-decomposition process inside his Promise Protocol framework.
 
-**First shared experiment:** Create a LTP for Second Renaissance (theory of constraints / prerequisite tree).
-
-**Communication channel:** Second Renaissance Discord sub-channel.
-
-## References
-
-- Meeting notes (Jun 6, 2026): https://docs.google.com/document/d/1UEEZSlEMlOlsDxiQOR5WIfxbiQ7Mlw7nw060j_1jqcM/edit
-- David's LTP project: https://stitch.withgoogle.com/projects/3568286358932959093
-- David's "Signs of Change": https://drive.google.com/file/d/1hAKIH8aCyS_xk5mFlFWNZ_cvF4yteF30/view
-- Promise Foundation: https://www.promise.foundation/how-it-works
-- Provisio (David's AI risk/promise app): https://praevisio.promise.foundation/
-- issuetrees.com (Rufus's site): https://issuetrees.com
-
-## Next Steps
-
-- [x] Create Discord channel for LTP collaboration **✅2026-06-06 - new channel in 2R server**
-- [x] Begin with AI skill development for claim tree generation
-- [x] Build a minimal local Project LTP tree and throughput viewer on the toy fixture
-- [ ] Test with Life Itself research group as initial use case
-
-### 1. Write up background post on Rufus's interest in structured thinking
-- [ ] Get transcript / recording from Jun 6 conversation with David
-- [ ] Locate written material shared with David in that session
-- [ ] Find old issue tree diagrams
-- [ ] Draft post synthesising background + personal story
-
-### 2. Create diagram of four steps for the app
-- [ ] Sketch the four-step process Rufus has in mind for the app
-- [ ] Produce clean diagram (Mermaid or similar) to share with David
-
-### 3. Create shared repo for ideas collaboration
-- [ ] Set up GitHub repo for LTP / issue tree app ideas
-- [ ] Invite David as collaborator
-
-### 4. Setup Discord bot for Second Renaissance channel
-- [x] Set up bot to monitor the LTP collaboration Discord sub-channel **✅2026-06-23 - setup done, not doing anything yet**
-- [ ] Configure summaries / updates to feed into workplan
-
-### 5. Sketch simple website demo (4 steps)
-- [x] Rufus to produce sketch of demo site showing the four-step flow: **[claim tree annotation demo](claim-tree-annotation-demo/index.html)**
-  1. Material (input) → 2. Tree (claim decomposition) → 3. Related doc → 4. Annotation
+Related: [Promise Foundation](https://www.promise.foundation/how-it-works) · [Provisio](https://praevisio.promise.foundation/) · [issuetrees.com](https://issuetrees.com)

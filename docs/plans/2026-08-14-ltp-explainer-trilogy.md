@@ -12,7 +12,7 @@ a checkbox pipeline below, and a position marker for resumable (loop-mode) work.
 
 ## Position
 
-> **Done, 2026-08-15.** All three pieces shipped in both markdown and HTML forms — see [`CHANGELOG.md`](../../CHANGELOG.md). Open questions and next steps now live in [`explainers/NEXT.md`](../../explainers/NEXT.md) and [issue #6](https://github.com/life-itself/reasoncommons/issues/6).
+> **Done, 2026-08-15.** All three pieces shipped in both markdown and HTML forms — see [`changelog.md`](../../changelog.md). Open questions and next steps now live in [`explainers/NEXT.md`](../../explainers/NEXT.md) and [issue #6](https://github.com/life-itself/reasoncommons/issues/6).
 
 
 
@@ -75,7 +75,7 @@ trees."
 Source spine: Dettmer ch2 (CLR); existing synthesis Part 4. **This is the most
 original piece relative to Goldratt** — it is where this project's own thesis
 lives (claims get addresses; debate accumulates against a stable scaffold; see
-`MOTIVATION.md`).
+`motivation.md`).
 
 ### Piece 3 — *The Six Trees* (working title)
 

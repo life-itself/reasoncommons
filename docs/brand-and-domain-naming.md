@@ -59,5 +59,5 @@ David has proposed candidate names for the underlying *methodology* (not yet the
 
 ## References
 
-- Project definition: [`README.md`](../README.md), [`MOTIVATION.md`](../MOTIVATION.md), and [`claim-tree-annotation.md`](../claim-tree-annotation.md).
+- Project definition: [`README.md`](../README.md), [`motivation.md`](../motivation.md), and [`claim-tree-annotation.md`](../claim-tree-annotation.md).
 - Discord discussion with David (20–23 July 2026): [`drafts/from-discord.md`](../drafts/from-discord.md).

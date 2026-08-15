@@ -11,7 +11,7 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
 | Need | File |
 |------|------|
 | Project overview + references | `README.md` |
-| Why this matters + problem framing (SCQH) | `MOTIVATION.md` |
+| Why this matters + problem framing (SCQH) | `motivation.md` |
 | Planning — streams, next actions | [GitHub issues](https://github.com/life-itself/reasoncommons/issues) |
 | Process spec + **gold-standard toy fixture** (tree, doc, annotations) | `claim-tree-annotation.md` |
 | Static animated demo of the 4-step vision | `claim-tree-annotation-demo/` |
@@ -35,4 +35,5 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
   description trigger it automatically. Restart Codex if a newly added skill
   does not appear in the Skills sidebar.
 - **Toy example first.** Validate any AI skill against the gold data in `claim-tree-annotation.md` before touching real applications (e.g. Second Renaissance).
-- Keep `MOTIVATION.md` (why + SCQH) current; it's referenced from `README.md`. Plan-of-work tracking (streams, next actions) lives in GitHub issues, not a repo file.
+- Keep `motivation.md` (why + SCQH) current; it's referenced from `README.md`. Plan-of-work tracking (streams, next actions) lives in GitHub issues, not a repo file.
+- Root docs are lowercase (`motivation.md`, `changelog.md`) so Flowershow gives them clean published URLs — except `README.md` and `AGENTS.md`, which keep their exact uppercase names because tooling (GitHub, Flowershow's homepage, Claude Code/Codex) looks them up by that literal filename.
