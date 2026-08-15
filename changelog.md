@@ -7,7 +7,8 @@ format, but same spirit — human-readable, most recent first.
 
 Rebranded to Reason Commons, turned the README into a real landing page, and tidied
 the explainers folder and docs — no new content, but the site now reads as a
-finished project rather than a workspace.
+finished project rather than a workspace. Also fixed the diagrams in *The Wrong
+Queue*, which had been rendering as raw markup instead of pictures.
 
 ## 2026-08-15 — Explainer trilogy: drafted, built, and shipped in two formats
 
