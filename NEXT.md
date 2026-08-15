@@ -42,11 +42,6 @@ piece 1 until someone looked at the page.
 
 ## Sequencing
 
-Start both at once. Two constraints:
-
-1. **Rufus decides the diagram register** (current clean style vs a paper-collage
-   art-direction pass) *before* the Organic token wiring in #6 — changing the
-   register changes the styling that work depends on.
-2. **#7 stage 3 comes after #6's token work lands**, so the new piece inherits
-   the final look rather than being restyled twice. Stages 1–2 of #7 have no
-   such dependency and should start immediately.
+Start both at once. One constraint: **#7 stage 3 comes after #6's token work
+lands**, so the new piece inherits the final look rather than being restyled
+twice. Stages 1–2 of #7 have no such dependency and should start immediately.

@@ -61,6 +61,23 @@ Pieces ship as scrolling HTML only. If you ever write markdown with inline SVG,
 turns the rest of the figure into a code block on the published page. See
 AGENTS.md > Conventions.
 
+### The visual register (settled for this repo)
+
+**Hand-drawn on paper.** Warm paper ground (`--paper: #efe9dd`), never white.
+Plain SVG geometry run through `feTurbulence` + `feDisplacementMap` so edges
+wobble and read as drawn rather than machine-ruled. Serif body type, small sans
+caps for labels. Quantity shown as repeated marks, not bars.
+
+**One accent with a job.** Terracotta (`--mark: #c25c34`) is reserved for *the
+constraint — the thing at issue*. Everything else is ink or grey. This is not
+decoration: it means the eye finds the bottleneck before reading a word. Don't
+spend the accent on anything else.
+
+A fuller paper-collage direction (torn edges, layered stock, photographic
+fragments) was considered and set aside — it costs legibility on diagrams
+carrying real numbers and makes each one bespoke rather than composed from
+shared primitives.
+
 ### Stage 1 is the one that matters
 
 Write it as prose that stands alone. Read it aloud; if a sentence is hard to say, it is
