@@ -32,24 +32,19 @@ It treats twenty patients a day. It has treated twenty patients a day for four y
     <rect x="20" y="60" width="90" height="90" rx="4" fill="none" stroke="#333" stroke-width="2.5"/>
     <text x="65" y="112" font-size="26" font-weight="700" text-anchor="middle" fill="#333">60</text>
     <text x="65" y="168" font-size="10" text-anchor="middle" fill="#777" letter-spacing="1">CHECK-IN</text>
-
     <rect x="140" y="60" width="90" height="90" rx="4" fill="none" stroke="#333" stroke-width="2.5"/>
     <text x="185" y="112" font-size="26" font-weight="700" text-anchor="middle" fill="#333">45</text>
     <text x="185" y="168" font-size="10" text-anchor="middle" fill="#777" letter-spacing="1">TRIAGE</text>
-
     <circle cx="270" cy="70" r="3" fill="#999"/><circle cx="270" cy="80" r="3" fill="#999"/>
     <circle cx="278" cy="70" r="3" fill="#999"/><circle cx="278" cy="80" r="3" fill="#999"/>
     <circle cx="286" cy="70" r="3" fill="#999"/><circle cx="286" cy="80" r="3" fill="#999"/>
     <circle cx="270" cy="90" r="3" fill="#999"/><circle cx="278" cy="90" r="3" fill="#999"/>
-
     <rect x="260" y="60" width="90" height="90" rx="4" fill="none" stroke="#c25c34" stroke-width="3.5"/>
     <text x="305" y="112" font-size="26" font-weight="700" text-anchor="middle" fill="#c25c34">20</text>
     <text x="305" y="168" font-size="10" text-anchor="middle" fill="#c25c34" letter-spacing="1">DOCTOR</text>
-
     <rect x="380" y="60" width="90" height="90" rx="4" fill="none" stroke="#333" stroke-width="2.5"/>
     <text x="425" y="112" font-size="26" font-weight="700" text-anchor="middle" fill="#333">50</text>
     <text x="425" y="168" font-size="10" text-anchor="middle" fill="#777" letter-spacing="1">PHARMACY</text>
-
     <rect x="500" y="60" width="90" height="90" rx="4" fill="none" stroke="#333" stroke-width="2.5"/>
     <text x="545" y="112" font-size="26" font-weight="700" text-anchor="middle" fill="#333">40</text>
     <text x="545" y="168" font-size="10" text-anchor="middle" fill="#777" letter-spacing="1">FOLLOW-UP</text>
