@@ -24,6 +24,12 @@
       letter-spacing:-.015em}
   .cd{font-family:var(--sans);font-size:.97rem;line-height:1.5;color:var(--ink-soft);
       max-width:30rem}
+  .fmts{display:flex;gap:.6em;margin-top:.8em}
+  .fmt{font-family:var(--sans);font-size:.78rem;text-decoration:none;
+       padding:.4em .85em;border:1px solid rgba(34,32,29,.28);color:var(--ink-soft)}
+  .fmt:hover{border-color:var(--mark);color:var(--mark)}
+  .fmt.primary{border-color:var(--ink);color:var(--ink)}
+  .fmt.primary:hover{border-color:var(--mark);color:var(--mark)}
 </style>
 </head>
 <body>
@@ -40,27 +46,44 @@
 
 <section class="cards">
   <div class="wrap">
-    <a class="card" href="01-bottleneck/index.html">
+    <p style="font-family:var(--sans);font-size:.85rem;color:var(--ink-soft);margin:0 0 2em">
+      Each part exists in two forms: a plain illustrated <strong>article</strong> (static,
+      works anywhere) and a <strong>scrolling</strong> version where the drawings animate as
+      you read. Same words, same figures — pick whichever reads better on your device.
+    </p>
+    <div class="card">
       <span class="cn">Part one</span>
       <div class="ct">The Wrong Queue</div>
       <p class="cd">A clinic where sixty people are waiting and everybody knows where the
       problem is. They are all wrong — and what they get wrong is the most reliably
       counterintuitive thing about how systems behave.</p>
-    </a>
-    <a class="card" href="02-thinking-made-visible/index.html">
+      <div class="fmts">
+        <a class="fmt primary" href="01-bottleneck/article.md">Article</a>
+        <a class="fmt" href="01-bottleneck/index.html">Scrolling ↗</a>
+      </div>
+    </div>
+    <div class="card">
       <span class="cn">Part two</span>
       <div class="ct">The Arrows Nobody Checks</div>
       <p class="cd">Five intelligent people, five confident and incompatible answers. Why
       arguing doesn't settle it, why most diagrams are decoration, and the eight questions
       that turn a picture into an argument.</p>
-    </a>
-    <a class="card" href="03-five-shapes/index.html">
+      <div class="fmts">
+        <a class="fmt primary" href="02-thinking-made-visible/article.md">Article</a>
+        <a class="fmt" href="02-thinking-made-visible/index.html">Scrolling ↗</a>
+      </div>
+    </div>
+    <div class="card">
       <span class="cn">Part three</span>
       <div class="ct">Five Shapes</div>
       <p class="cd">The method itself: five questions any real change has to answer, the
       differently shaped answers they need, and why its author quietly retired one of his
       own tools.</p>
-    </a>
+      <div class="fmts">
+        <a class="fmt primary" href="03-five-shapes/article.md">Article</a>
+        <a class="fmt" href="03-five-shapes/index.html">Scrolling ↗</a>
+      </div>
+    </div>
   </div>
 </section>
 
