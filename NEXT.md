@@ -22,5 +22,3 @@ keep.
 
 - Extend the 2026-08-16 changelog entry — it predates the explainers restructure.
 - Anything from [issue #6](https://github.com/life-itself/reasoncommons/issues/6).
-
-Conventions before editing: [`AGENTS.md`](AGENTS.md).
