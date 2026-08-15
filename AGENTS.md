@@ -47,8 +47,10 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
     _process/<nn>-<slug>/        scripts, critiques, superseded drafts, stills
     scroller.css, scroller.js    shared assets for the scrolling versions
   ```
-  `_process/` is in `config.json` > `contentHide` so Flowershow doesn't publish
-  it. Drafts and critiques go there, never next to the article.
+  `_process/` is in `config.json` > `contentExclude` so Flowershow doesn't
+  publish it. Drafts and critiques go there, never next to the article. Use
+  `contentExclude`, not `contentHide` — `contentHide` only drops pages from the
+  nav, and the URLs still resolve for anyone who guesses them.
 - **No blank lines inside raw HTML in Markdown.** A blank line ends the raw HTML
   block as far as the Markdown parser is concerned. Anything after it that's
   indented four spaces or more — which inline SVG almost always is — then parses
@@ -92,7 +94,12 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
 This repo keeps a `changelog.md` (dated entries, newest first). At the end
 of a work session, if something worth recording actually shipped — skip
 trivial sessions (typo fixes, dead ends, no visible outcome) — draft a
-dated entry. Screenshots go in `changelog/images/`, embedded inline, if
-something visual shipped. First time writing an entry in this repo, or if
-the format is unclear: fetch and follow
+dated entry. Match the entry's weight to what a reader would actually care
+about: a real feature/fix/content gets a title, one or two sentences, and a
+screenshot if something visual shipped; small stuff (cleanup, rename,
+reorg, tidying) gets one plain sentence, no bullets, no screenshot — even
+if several small things happened, that's still one combined sentence, not
+a bullet per thing. Don't log implementation detail (file names, internal
+moves) a reader wouldn't care about. First time writing an entry in this
+repo, or if the format is unclear: fetch and follow
 https://raw.githubusercontent.com/life-itself/changelog/main/CONVENTION.md
