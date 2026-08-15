@@ -83,15 +83,12 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
   changed files to https://reasoncommons-preview-rufuspollock.flowershow.me and
   the loop stays cheap: edit → `fl .` → look → repeat, landing on `main` only
   once it's right. `fl list` shows existing sites, `fl delete` removes one.
-  The preview site is owned by one Flowershow account; if a second person ever
-  needs to publish previews, they'll need their own `--name` rather than this
-  shared one. Especially worth doing for
-  anything that changes URLs or link structure.
-  Note `fl` **only adds and updates — it never deletes**. Files removed from the
-  repo, or newly covered by `contentExclude`, stay on the preview site from an
-  earlier run, so a preview can show pages the live build correctly omits. When
-  a preview disagrees with expectations about deleted or excluded content,
-  `fl delete` the site and republish before believing it.
+  Especially worth doing for anything that changes URLs or link structure.
+  Two caveats. `fl` aborts on the tracked `.agents/skills/project-ltp` symlink,
+  so move `.agents` aside for the publish and put it back after. And a preview
+  is only reliable about content that *exists* — it ignores `contentExclude` and
+  never deletes, so it shows pages production correctly omits. Check those
+  against the live site, not the preview.
 - Root docs are lowercase (`motivation.md`, `changelog.md`) so Flowershow gives them clean published URLs — except `README.md` and `AGENTS.md`, which keep their exact uppercase names because tooling (GitHub, Flowershow's homepage, Claude Code/Codex) looks them up by that literal filename.
 
 ## Changelog
