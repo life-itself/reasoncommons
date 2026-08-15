@@ -47,19 +47,19 @@ never judged as writing. Weak prose gets carried into production because it was 
 looked at on its own.
 
 Stage files live in `explainers/_process/<piece>/`, never beside the finished
-article — only `index.md` (the article) and `scrolling.html` sit in the piece's
-own folder. See AGENTS.md > Conventions for the layout.
+piece — only `index.html` sits in the piece's own folder. See AGENTS.md >
+Conventions for the layout.
 
 | Stage | File | What it is | Gate |
 |---|---|---|---|
 | **1 · Script** | `_process/<piece>/01-script.md` → `03-script-v2.md` | Pure narrative. **No figure slots, no block numbers, no visual direction of any kind.** | Must survive a hard editorial critique before anything else starts |
 | **2 · Visual script** | `_process/<piece>/04-visual-script.md` | The approved script, unchanged, with visuals annotated against it | Reviewed before a line of code |
-| **3 · Build** | `<piece>/index.md` + `<piece>/scrolling.html` | Implementation | — |
+| **3 · Build** | `<piece>/index.html` | Implementation | — |
 
-Building the Markdown article: **never leave a blank line inside a `<figure>` or
-`<svg>` block** — it silently turns the rest of the figure into a code block on
-the published page. AGENTS.md > Conventions has the full explanation and the
-check to run afterwards.
+Pieces ship as scrolling HTML only. If you ever write markdown with inline SVG,
+**never leave a blank line inside a `<figure>` or `<svg>` block** — it silently
+turns the rest of the figure into a code block on the published page. See
+AGENTS.md > Conventions.
 
 ### Stage 1 is the one that matters
 

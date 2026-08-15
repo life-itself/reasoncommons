@@ -42,13 +42,17 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
   explainers/
     index.md                     series landing page
     <nn>-<slug>/
-      index.md                   the article — the canonical published piece
-      scrolling.html             scroll-driven version of the same piece
-    _process/<nn>-<slug>/        scripts, critiques, superseded drafts, stills
+      index.html                 the piece — scroll-driven, the published form
+                                 (link to it as `<nn>-<slug>/index.html`; bare
+                                 folder URLs only resolve for markdown)
+    _process/<nn>-<slug>/        scripts, critiques, article.md, stills
     scroller.css, scroller.js    shared assets for the scrolling versions
   ```
   `_process/` is in `config.json` > `contentExclude` so Flowershow doesn't
-  publish it. Drafts and critiques go there, never next to the article. Use
+  publish it. Drafts and critiques go there, never next to the piece.
+  Explainers ship as scrolling HTML only — the markdown articles were retired on
+  2026-08-16 and kept in `_process/<piece>/article.md` as final prose, which is
+  the source to render from if a static or no-JS version is ever wanted. Use
   `contentExclude`, not `contentHide` — `contentHide` only drops pages from the
   nav, and the URLs still resolve for anyone who guesses them.
 - **No blank lines inside raw HTML in Markdown.** A blank line ends the raw HTML
@@ -86,9 +90,8 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
   Especially worth doing for anything that changes URLs or link structure.
   Two caveats. `fl` aborts on the tracked `.agents/skills/project-ltp` symlink,
   so move `.agents` aside for the publish and put it back after. And a preview
-  is only reliable about content that *exists* — it ignores `contentExclude` and
-  never deletes, so it shows pages production correctly omits. Check those
-  against the live site, not the preview.
+  ignores `contentExclude`, so `_process/` shows up there but not in production.
+  Check anything about *excluded* content against the live site, not the preview.
 - Root docs are lowercase (`motivation.md`, `changelog.md`) so Flowershow gives them clean published URLs — except `README.md` and `AGENTS.md`, which keep their exact uppercase names because tooling (GitHub, Flowershow's homepage, Claude Code/Codex) looks them up by that literal filename.
 
 ## Changelog
