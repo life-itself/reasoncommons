@@ -12,6 +12,10 @@
         "href": "/alignment/index.html"
       },
       {
+        "name": "The Series",
+        "href": "/explainers/index.html"
+      },
+      {
         "name": "Story",
         "href": "/story/index.html"
       },
@@ -31,6 +35,7 @@
     "/alignment/uploads"
   ],
   "contentHide": [
+    "/explainers/01-bottleneck/_archive",
     "/story/_ds",
     "/dashboard/assets",
     "/dashboard/projects"

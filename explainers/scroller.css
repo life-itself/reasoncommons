@@ -1,0 +1,112 @@
+/* ============================================================
+   Shared scroller engine — the LTP explainer series
+   Form reference: skills/scrollable-explainer/SKILL.md
+   Pinned stages via CSS position:sticky. No scrolljacking.
+   ============================================================ */
+
+:root{
+  --paper:#efe9dd;
+  --paper-2:#e6dfd0;
+  --ink:#22201d;
+  --ink-soft:#6b6459;
+  --ink-faint:#a89f91;
+  --mark:#c25c34;            /* the constraint / the thing at issue */
+  --mark-2:#7a8a5e;
+  --hl:rgba(228,212,201,.85); /* text highlight block */
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--serif);font-size:17px;line-height:1.5;
+  overflow-x:clip;-webkit-font-smoothing:antialiased;text-wrap:pretty;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  opacity:.5;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='220' height='220' filter='url(%23n)' opacity='0.32'/></svg>");
+}
+
+/* ---------- progress ---------- */
+.progress{position:fixed;top:0;left:0;height:2px;background:var(--mark);
+          width:0;z-index:50;transition:width .1s linear}
+
+/* ---------- pinned stage ---------- */
+.scroll-item{position:relative}
+.sticky-item{position:sticky;top:0;height:100svh;overflow:hidden;z-index:1}
+.stage{position:relative;width:100%;height:100%;display:grid;place-items:center}
+.stage svg{width:min(100%,1100px);height:100%;display:block}
+.trigger{height:100svh}
+
+.layer{opacity:0;transition:opacity .55s ease}
+.layer.on{opacity:1}
+
+/* ---------- text steps ---------- */
+.steps{position:absolute;inset:0;z-index:3;pointer-events:none}
+.step{position:absolute;max-width:23rem;opacity:0;transition:opacity .5s ease;
+      font-size:clamp(1.05rem,1.5vw,1.32rem);line-height:1.42}
+.step.on{opacity:1}
+.step p{margin:0;background:var(--hl);padding:.6em .8em;
+        box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.step.plain p{background:none;padding:0}
+.step.lead{left:8vw;top:34vh}
+.step.tl{left:8vw;top:14vh}   .step.tr{right:8vw;top:14vh}
+.step.bl{left:8vw;bottom:16vh} .step.br{right:8vw;bottom:16vh}
+.step.mid{left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;max-width:34rem}
+.step.big p{font-size:clamp(1.7rem,4.2vw,2.9rem);line-height:1.14}
+
+/* ---------- flow (prose) sections ---------- */
+.flow{position:relative;z-index:2;background:var(--paper);padding:13vh 1.25rem}
+.wrap{max-width:34rem;margin:0 auto}
+.flow p{font-size:1.1rem;line-height:1.62;margin:0 0 1.15em}
+.flow p:last-child{margin-bottom:0}
+
+.kicker{font-family:var(--sans);text-transform:uppercase;letter-spacing:.14em;
+        font-size:.72rem;color:var(--ink-faint);margin:0 0 2.2em !important}
+.title{font-family:var(--serif);font-weight:700;letter-spacing:-.02em;
+       font-size:clamp(3rem,10vw,7.5rem);line-height:.94;margin:0 0 .28em}
+.dek{font-family:var(--sans);font-size:1.02rem;color:var(--ink-soft);
+     max-width:26rem;line-height:1.45;margin:0 !important}
+
+/* big statement screens */
+.statement{min-height:100svh;display:grid;place-items:center;text-align:center;
+           padding:0 1.25rem;position:relative;z-index:2}
+.statement p{max-width:22ch;font-size:clamp(1.85rem,4.8vw,3.2rem);
+             line-height:1.13;margin:0;letter-spacing:-.015em}
+.statement.sm p{max-width:30ch;font-size:clamp(1.3rem,3vw,2rem)}
+
+/* pull number */
+.figure-num{font-family:var(--sans);font-weight:700;font-variant-numeric:tabular-nums;
+            font-size:clamp(3rem,9vw,6rem);color:var(--mark);line-height:1}
+.figure-cap{font-family:var(--sans);font-size:.78rem;letter-spacing:.1em;
+            text-transform:uppercase;color:var(--ink-soft);margin-top:.5em}
+
+/* ---------- sources ---------- */
+.sources{position:relative;z-index:2;background:var(--paper-2);padding:11vh 1.25rem}
+.sources .wrap{max-width:38rem}
+.sources h2{font-family:var(--sans);font-size:.8rem;letter-spacing:.14em;
+            text-transform:uppercase;color:var(--ink-soft);margin:0 0 1.6em;font-weight:600}
+.sources p{font-size:.94rem;line-height:1.6;color:var(--ink-soft)}
+
+/* ---------- series nav ---------- */
+.seriesnav{position:relative;z-index:2;background:var(--paper);
+           padding:9vh 1.25rem 14vh;border-top:1px solid rgba(34,32,29,.14)}
+.seriesnav .wrap{max-width:34rem}
+.seriesnav a{display:block;text-decoration:none;color:var(--ink);
+             border:1px solid rgba(34,32,29,.2);padding:1.15em 1.3em;margin-bottom:.8em}
+.seriesnav a:hover{border-color:var(--mark);color:var(--mark)}
+.seriesnav .n{font-family:var(--sans);font-size:.7rem;letter-spacing:.14em;
+              text-transform:uppercase;color:var(--ink-faint);display:block;margin-bottom:.3em}
+.seriesnav .t{font-size:1.2rem}
+
+@media (max-width:640px){
+  .step{max-width:min(84vw,20rem);font-size:1.02rem}
+  .step.lead,.step.tl,.step.tr{left:6vw;right:auto;top:11vh}
+  .step.bl,.step.br{left:6vw;right:auto;bottom:12vh}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .layer,.step,.progress{transition:none}
+}
