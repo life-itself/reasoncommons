@@ -15,3 +15,6 @@ skills/project-ltp/dashboard/vite.config.d.ts
 .DS_Store
 
 drafts
+
+# Flowershow CLI local state (preview site sync).
+.flowershow/

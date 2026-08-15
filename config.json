@@ -32,10 +32,10 @@
   "contentExclude": [
     "/alignment/export",
     "/alignment/extracted",
-    "/alignment/uploads"
+    "/alignment/uploads",
+    "/explainers/_process"
   ],
   "contentHide": [
-    "/explainers/_process",
     "/story/_ds",
     "/dashboard/assets",
     "/dashboard/projects"

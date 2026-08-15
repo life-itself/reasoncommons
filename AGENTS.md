@@ -50,14 +50,18 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
   `_process/` is in `config.json` > `contentHide` so Flowershow doesn't publish
   it. Drafts and critiques go there, never next to the article.
 - There is exactly one `NEXT.md`, at the repo root. Don't create per-folder ones.
-- **Preview before pushing to live.** Don't push to `main` just to see how
-  something renders — `main` is the live site. Use the Flowershow CLI (`fl`) to
-  publish the working tree to your own preview site and look at it there. Once a
-  preview site is set up you can keep pushing to the same one, so the loop is
-  cheap: edit → `fl` push → look → repeat, and only land on `main` when it's
-  right. Especially worth doing for anything that changes URLs or link
-  structure. (The `fl` CLI isn't installed in every checkout — install it
-  first if the command isn't found.)
+- **Preview before pushing to live.** `main` is the live site
+  (`reasoncommons.com`, Flowershow site `ltp-issue-trees`) — never push to it
+  just to see how something renders. Publish the working tree to a separate
+  preview site instead:
+  ```sh
+  fl . --name reasoncommons-preview --yes
+  ```
+  First run creates the site and prints its URL; later runs sync only changed
+  files, so keep reusing the same `--name` and the loop stays cheap: edit →
+  `fl .` → look → repeat, landing on `main` only once it's right. `fl list`
+  shows existing sites, `fl delete` removes one. Especially worth doing for
+  anything that changes URLs or link structure.
 - Root docs are lowercase (`motivation.md`, `changelog.md`) so Flowershow gives them clean published URLs — except `README.md` and `AGENTS.md`, which keep their exact uppercase names because tooling (GitHub, Flowershow's homepage, Claude Code/Codex) looks them up by that literal filename.
 
 ## Changelog
