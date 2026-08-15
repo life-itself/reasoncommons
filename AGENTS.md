@@ -50,6 +50,14 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
   `_process/` is in `config.json` > `contentHide` so Flowershow doesn't publish
   it. Drafts and critiques go there, never next to the article.
 - There is exactly one `NEXT.md`, at the repo root. Don't create per-folder ones.
+- **Preview before pushing to live.** Don't push to `main` just to see how
+  something renders — `main` is the live site. Use the Flowershow CLI (`fl`) to
+  publish the working tree to your own preview site and look at it there. Once a
+  preview site is set up you can keep pushing to the same one, so the loop is
+  cheap: edit → `fl` push → look → repeat, and only land on `main` when it's
+  right. Especially worth doing for anything that changes URLs or link
+  structure. (The `fl` CLI isn't installed in every checkout — install it
+  first if the command isn't found.)
 - Root docs are lowercase (`motivation.md`, `changelog.md`) so Flowershow gives them clean published URLs — except `README.md` and `AGENTS.md`, which keep their exact uppercase names because tooling (GitHub, Flowershow's homepage, Claude Code/Codex) looks them up by that literal filename.
 
 ## Changelog
