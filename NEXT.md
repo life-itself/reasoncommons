@@ -7,17 +7,19 @@ status: checkpoint
 
 # Next steps
 
-Checkpoint after shipping the explainer trilogy and tidying the repo around it.
-What shipped is in [`changelog.md`](changelog.md); follow-up work is in
-[issue #6](https://github.com/life-itself/reasoncommons/issues/6).
+The **Thinking in Systems** trilogy is written and built, and ships as scrolling
+HTML only (decided 2026-08-16 — the scroller is much the better read, and
+maintaining each piece twice cost a sync on every edit). What shipped is in
+[`changelog.md`](changelog.md).
 
-## The decision waiting on you
+Two streams, both tracked as issues:
 
-**Keep both explainer formats, or pick one?** Each piece exists twice — a
-markdown article and a scroll-driven version — so every edit means keeping two
-files in sync. Read piece 1 and piece 3 in both forms and say which earns its
-keep.
+- **[#6 — Finalise the trilogy](https://github.com/life-itself/reasoncommons/issues/6).**
+  Polish on the three existing pieces. The main item is a browser bug pass:
+  there are a fair few bugs that only show up by driving the pages for real.
+- **[#7 — Second Renaissance explainer](https://github.com/life-itself/reasoncommons/issues/7).**
+  A sibling piece applying the LTP to SR itself, readable cold, that we can hand
+  to someone in the SR initiative to motivate them. Built on the real SR trees
+  in `docs/ltp_trees/` and the `story/draft.md` forum reconstruction.
 
-## Ready to pick up
-
-- Anything from [issue #6](https://github.com/life-itself/reasoncommons/issues/6).
+#7 is the bigger and more valuable of the two. #6 is finishing work.
