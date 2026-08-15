@@ -46,17 +46,26 @@ real and easy to fall into: if you write text and visual direction together, the
 never judged as writing. Weak prose gets carried into production because it was never
 looked at on its own.
 
+Stage files live in `explainers/_process/<piece>/`, never beside the finished
+article — only `index.md` (the article) and `scrolling.html` sit in the piece's
+own folder. See AGENTS.md > Conventions for the layout.
+
 | Stage | File | What it is | Gate |
 |---|---|---|---|
-| **1 · Script** | `01-script.md` → `03-script-v2.md` | Pure narrative. **No figure slots, no block numbers, no visual direction of any kind.** | Must survive a hard editorial critique before anything else starts |
-| **2 · Visual script** | `04-visual-script.md` | The approved script, unchanged, with visuals annotated against it | Reviewed before a line of code |
-| **3 · Build** | `index.html` | Implementation | — |
+| **1 · Script** | `_process/<piece>/01-script.md` → `03-script-v2.md` | Pure narrative. **No figure slots, no block numbers, no visual direction of any kind.** | Must survive a hard editorial critique before anything else starts |
+| **2 · Visual script** | `_process/<piece>/04-visual-script.md` | The approved script, unchanged, with visuals annotated against it | Reviewed before a line of code |
+| **3 · Build** | `<piece>/index.md` + `<piece>/scrolling.html` | Implementation | — |
+
+Building the Markdown article: **never leave a blank line inside a `<figure>` or
+`<svg>` block** — it silently turns the rest of the figure into a code block on
+the published page. AGENTS.md > Conventions has the full explanation and the
+check to run afterwards.
 
 ### Stage 1 is the one that matters
 
 Write it as prose that stands alone. Read it aloud; if a sentence is hard to say, it is
 wrong. Then — and this step is not optional — **critique it as a world-class non-fiction
-editor would**, in a separate file (`02-critique.md`), and revise.
+editor would**, in a separate file (`_process/<piece>/02-critique.md`), and revise.
 
 The critique must be adversarial or it is worthless. Ask specifically:
 

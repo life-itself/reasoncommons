@@ -49,6 +49,26 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
   ```
   `_process/` is in `config.json` > `contentHide` so Flowershow doesn't publish
   it. Drafts and critiques go there, never next to the article.
+- **No blank lines inside raw HTML in Markdown.** A blank line ends the raw HTML
+  block as far as the Markdown parser is concerned. Anything after it that's
+  indented four spaces or more — which inline SVG almost always is — then parses
+  as an *indented code block*, and the figure renders on the page as literal
+  markup. Keep `<figure>`…`</figure>` and `<svg>`…`</svg>` unbroken:
+  ```html
+  <figure>
+  <svg viewBox="0 0 640 260" role="img" aria-label="…">
+    <rect x="20" y="60" width="90" height="90"/>
+    <rect x="140" y="60" width="90" height="90"/>   <!-- no blank line above -->
+  </svg>
+  <figcaption>Figure 1 · …</figcaption>
+  </figure>
+  ```
+  Group the SVG with comments or `<g>` elements if you want visual separation.
+  This bites silently: the page still returns 200, so it only shows up if you
+  look at it. After changing any Markdown that embeds HTML, check the rendered
+  output for escaped markup — `curl -s <url> | grep '&lt;rect\|&lt;svg'` should
+  come back empty. Allow a moment after `fl` for the rebuild; a fetch made
+  mid-rebuild can return a stale page and mislead you either way.
 - There is exactly one `NEXT.md`, at the repo root. Don't create per-folder ones.
 - **Preview before pushing to live.** `main` is the live site
   (`reasoncommons.com`, Flowershow site `ltp-issue-trees`) — never push to it
