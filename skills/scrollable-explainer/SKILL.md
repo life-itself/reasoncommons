@@ -39,6 +39,46 @@ deliberately never states.
 
 ---
 
+## 1.5 · The three stages — do not collapse them
+
+**Build in three separate, separately-committed stages.** The failure mode this prevents is
+real and easy to fall into: if you write text and visual direction together, the script is
+never judged as writing. Weak prose gets carried into production because it was never
+looked at on its own.
+
+| Stage | File | What it is | Gate |
+|---|---|---|---|
+| **1 · Script** | `01-script.md` → `03-script-v2.md` | Pure narrative. **No figure slots, no block numbers, no visual direction of any kind.** | Must survive a hard editorial critique before anything else starts |
+| **2 · Visual script** | `04-visual-script.md` | The approved script, unchanged, with visuals annotated against it | Reviewed before a line of code |
+| **3 · Build** | `index.html` | Implementation | — |
+
+### Stage 1 is the one that matters
+
+Write it as prose that stands alone. Read it aloud; if a sentence is hard to say, it is
+wrong. Then — and this step is not optional — **critique it as a world-class non-fiction
+editor would**, in a separate file (`02-critique.md`), and revise.
+
+The critique must be adversarial or it is worthless. Ask specifically:
+
+- **Where are the stakes?** Who is harmed, by how much, and does the reader meet them? An explanation with no one in it is a maths problem with a roof on.
+- **Is there a person?** Named, specific, present.
+- **Does the title match the spine**, or a section you liked?
+- **Which paragraphs tell the reader what to conclude** instead of letting them conclude it?
+- **Where does it enumerate rather than argue?** Three examples in a row is a list; lists kill momentum. Two read as a pattern.
+- **Are the concepts named** — will the reader finish with a *word* they can use, or only a feeling?
+- **How many signposts** ("Now the question is…", "Back to the…", "You may have noticed…")? Each costs a screen. Cut most; let the hard cut do the work.
+- **Is the ending an ending**, or a trailer for the next piece?
+- **What is working** — name it explicitly, so revision doesn't destroy it.
+
+Finish the critique with a **ranked** fix list. Then write v2 against it.
+
+### Stage 2 only begins once the script is approved
+
+Do not adjust the prose to suit a drawing. If a visual won't fit the script, that is
+information about the visual. The script's job is done.
+
+---
+
 ## 2 · The patterns
 
 Nine named patterns. Use them as a vocabulary — "this section needs a Comparison Ladder",

@@ -12,7 +12,7 @@ a checkbox pipeline below, and a position marker for resumable (loop-mode) work.
 
 ## Position
 
-> **Currently on:** 1.6 in progress — working prototype at `explainers/01-bottleneck/index.html` covers Cold Open + title + nut graphs + §1 (five stations). Drawing register proven. Next: §2–§9 drawings.
+> **Currently on:** Stage 1 complete for Piece 1 — script v2 at `explainers/01-bottleneck/03-script-v2.md`, critique at `02-critique.md`. Next: stage 2, visual script. Prototype `index.html` predates the restructure and will be rebuilt from the stage-2 output.
 
 
 
