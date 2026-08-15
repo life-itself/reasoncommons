@@ -3,333 +3,426 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Everybody's Busy</title>
-<meta name="description" content="Why the thing you can see is almost never the thing that's stuck.">
-<style>
-:root{
-  --paper:#efe9dd;
-  --paper-2:#e6dfd0;
-  --ink:#22201d;
-  --ink-soft:#6b6459;
-  --ink-faint:#a89f91;
-  --mark:#c25c34;          /* the constraint */
-  --mark-2:#7a8a5e;
-  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
-  --sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --step-w:23rem;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:auto}
-body{
-  margin:0;background:var(--paper);color:var(--ink);
-  font-family:var(--serif);font-size:17px;line-height:1.5;
-  overflow-x:clip;-webkit-font-smoothing:antialiased;
-}
-/* paper grain */
-body::before{
-  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-  opacity:.5;mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='220' height='220' filter='url(%23n)' opacity='0.32'/></svg>");
-}
-
-/* ---------- the pinned stage ---------- */
-.scroll-item{position:relative}
-.sticky-item{position:sticky;top:0;height:100svh;overflow:hidden;z-index:1}
-.stage{position:relative;width:100%;height:100%;display:grid;place-items:center}
-.stage svg{width:min(100%,1100px);height:100%;display:block}
-
-/* drawing layers fade between steps */
-.layer{opacity:0;transition:opacity .55s ease}
-.layer.on{opacity:1}
-@media (prefers-reduced-motion:reduce){.layer{transition:none}}
-
-/* ---------- text steps ---------- */
-.steps{position:absolute;inset:0;z-index:3;pointer-events:none}
-.step{
-  position:absolute;max-width:var(--step-w);
-  opacity:0;transition:opacity .5s ease;
-  font-size:clamp(1.05rem,1.5vw,1.35rem);line-height:1.42;
-}
-.step.on{opacity:1}
-.step p{margin:0;background:rgba(230,215,205,.82);padding:.6em .8em;
-        box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.step.plain p{background:none;padding:0}
-.step.lead{left:8vw;top:34vh}
-.step.tl{left:8vw;top:16vh}  .step.tr{right:8vw;top:16vh}
-.step.bl{left:8vw;bottom:16vh} .step.br{right:8vw;bottom:16vh}
-.step.mid{left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;max-width:34rem}
-@media (prefers-reduced-motion:reduce){.step{transition:none}}
-
-/* spacer that drives each step */
-.trigger{height:100svh}
-
-/* ---------- flow sections ---------- */
-.flow{position:relative;z-index:2;background:var(--paper);
-      padding:14vh 1.25rem;}
-.wrap{max-width:34rem;margin:0 auto}
-.title{
-  font-family:var(--serif);font-weight:700;
-  font-size:clamp(3.2rem,11vw,8.5rem);line-height:.92;
-  letter-spacing:-.02em;margin:0 0 .3em;
-}
-.dek{font-family:var(--sans);font-size:1.05rem;color:var(--ink-soft);
-     max-width:26rem;line-height:1.45;margin:0}
-.nut p{font-size:1.12rem;line-height:1.62;margin:0 0 1.15em}
-.kicker{font-family:var(--sans);text-transform:uppercase;letter-spacing:.14em;
-        font-size:.72rem;color:var(--ink-faint);margin:0 0 2.5em}
-
-/* big statement screens */
-.statement{min-height:100svh;display:grid;place-items:center;text-align:center;
-           padding:0 1.25rem;position:relative;z-index:2}
-.statement p{max-width:22ch;font-size:clamp(1.9rem,5vw,3.4rem);
-             line-height:1.12;margin:0;letter-spacing:-.015em}
-
-.counter{font-family:var(--sans);font-variant-numeric:tabular-nums;font-weight:700}
-</style>
+<title>The Wrong Queue</title>
+<meta name="description" content="Sixty people are waiting and everybody knows where the problem is. They are all wrong.">
+<link rel="stylesheet" href="../scroller.css">
 </head>
 <body>
+<div class="progress"></div>
 
-<!-- ============ COLD OPEN ============ -->
-<section class="scroll-item" id="open" style="height:500svh">
-  <div class="sticky-item">
-    <div class="stage">
-      <svg viewBox="60 70 880 425" role="img" aria-label="A clinic with a lengthening queue; everyone points at the front desk, but the constraint is elsewhere.">
-        <defs>
-          <filter id="rough" x="-8%" y="-8%" width="116%" height="116%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="7" result="n"/>
-            <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G"/>
-          </filter>
-          <filter id="rough2" x="-8%" y="-8%" width="116%" height="116%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="19" result="n"/>
-            <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
-          </filter>
-        </defs>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="rough" x="-8%" y="-8%" width="116%" height="116%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="7" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <filter id="rough2" x="-8%" y="-8%" width="116%" height="116%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="23" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</defs></svg>
 
-        <!-- L1 : clinic exterior + growing queue -->
-        <g class="layer on" data-layer="1" filter="url(#rough)">
-          <rect x="300" y="180" width="400" height="250" fill="none" stroke="var(--ink)" stroke-width="3"/>
-          <path d="M290 180 L500 90 L710 180" fill="none" stroke="var(--ink)" stroke-width="3"/>
-          <rect x="465" y="330" width="70" height="100" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
-          <rect x="340" y="230" width="60" height="55" fill="none" stroke="var(--ink)" stroke-width="2"/>
-          <rect x="600" y="230" width="60" height="55" fill="none" stroke="var(--ink)" stroke-width="2"/>
-          <text x="500" y="150" text-anchor="middle" font-family="var(--sans)" font-size="19" fill="var(--ink)" letter-spacing="2">CLINIC</text>
-          <g id="queue" stroke="var(--ink)" stroke-width="2.4" fill="none"></g>
-        </g>
-
-        <!-- L2 : cutaway, five rooms -->
-        <g class="layer" data-layer="2" filter="url(#rough)">
-          <rect x="150" y="170" width="700" height="270" fill="none" stroke="var(--ink)" stroke-width="3"/>
-          <g stroke="var(--ink)" stroke-width="2" opacity=".8">
-            <line x1="290" y1="170" x2="290" y2="440"/>
-            <line x1="430" y1="170" x2="430" y2="440"/>
-            <line x1="570" y1="170" x2="570" y2="440"/>
-            <line x1="710" y1="170" x2="710" y2="440"/>
-          </g>
-          <g font-family="var(--sans)" font-size="12.5" fill="var(--ink-soft)" text-anchor="middle" letter-spacing="1">
-            <text x="220" y="420">CHECK-IN</text><text x="360" y="420">TRIAGE</text>
-            <text x="500" y="420">DOCTOR</text><text x="640" y="420">PHARMACY</text>
-            <text x="780" y="420">FOLLOW-UP</text>
-          </g>
-          <g stroke="var(--ink)" stroke-width="2.2" fill="none" opacity=".85">
-            <circle cx="220" cy="250" r="11"/><path d="M209 292c0-14 22-14 22 0"/>
-            <circle cx="360" cy="250" r="11"/><path d="M349 292c0-14 22-14 22 0"/>
-            <circle cx="500" cy="250" r="11"/><path d="M489 292c0-14 22-14 22 0"/>
-            <circle cx="640" cy="250" r="11"/><path d="M629 292c0-14 22-14 22 0"/>
-            <circle cx="780" cy="250" r="11"/><path d="M769 292c0-14 22-14 22 0"/>
-          </g>
-        </g>
-
-        <!-- L3 : everyone points at the desk -->
-        <g class="layer" data-layer="3">
-          <g filter="url(#rough2)" stroke="var(--ink-soft)" stroke-width="2.2" fill="none">
-            <path d="M355 250 L275 250" marker-end="url(#a)"/>
-            <path d="M495 262 L280 262"/>
-            <path d="M635 274 L285 274"/>
-            <path d="M775 286 L290 286"/>
-            <path d="M500 350 L280 300"/>
-          </g>
-          <g filter="url(#rough)">
-            <rect x="178" y="222" width="86" height="82" fill="var(--mark)" opacity=".22"/>
-            <rect x="178" y="222" width="86" height="82" fill="none" stroke="var(--mark)" stroke-width="3"/>
-          </g>
-        </g>
-
-        <!-- L4 : the reveal -->
-        <g class="layer" data-layer="4" filter="url(#rough)">
-          <rect x="458" y="222" width="86" height="82" fill="var(--mark)" opacity=".25"/>
-          <rect x="458" y="222" width="86" height="82" fill="none" stroke="var(--mark)" stroke-width="3.5"/>
-          <text x="500" y="196" text-anchor="middle" font-family="var(--sans)" font-size="13" fill="var(--mark)" letter-spacing="1.5">HERE</text>
-        </g>
-      </svg>
-    </div>
-
-    <div class="steps">
-      <div class="step lead" data-step="1"><p>A clinic opens at eight. By noon, sixty people are waiting.</p></div>
-      <div class="step lead" data-step="2"><p>Everyone who works there can tell you exactly where the problem is.</p></div>
-      <div class="step lead" data-step="3"><p>They are all pointing at the same desk.</p></div>
-      <div class="step mid plain" data-step="4"><p style="font-size:clamp(1.8rem,4.5vw,3rem);line-height:1.1"><strong>They are all wrong.</strong></p></div>
-    </div>
+<!-- ================= COLD OPEN ================= -->
+<section class="scroll-item">
+  <div class="sticky-item"><div class="stage">
+    <svg viewBox="60 70 880 430" role="img" aria-label="A clinic with a queue trailing from the door; everyone points at the front desk, but the constraint is the doctor's room.">
+      <g class="layer on" data-layer="c1 c2 c3 c4" filter="url(#rough)">
+        <rect x="300" y="180" width="400" height="250" fill="none" stroke="var(--ink)" stroke-width="3"/>
+        <path d="M290 180 L500 90 L710 180" fill="none" stroke="var(--ink)" stroke-width="3"/>
+        <rect x="465" y="330" width="70" height="100" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+        <rect x="340" y="230" width="60" height="55" fill="none" stroke="var(--ink)" stroke-width="2"/>
+        <rect x="600" y="230" width="60" height="55" fill="none" stroke="var(--ink)" stroke-width="2"/>
+        <text x="500" y="150" text-anchor="middle" font-family="var(--sans)" font-size="18" letter-spacing="2.5">CLINIC</text>
+        <g id="queue" stroke="var(--ink)" stroke-width="2.4" fill="none"></g>
+      </g>
+      <g class="layer" data-layer="c3" filter="url(#rough2)" stroke="var(--ink-soft)" stroke-width="2" fill="none">
+        <path d="M420 260 L360 250"/><path d="M560 300 L370 262"/>
+        <path d="M640 250 L378 272"/><path d="M470 390 L372 288"/>
+        <circle cx="345" cy="268" r="26" stroke="var(--mark)" stroke-width="3"/>
+      </g>
+      <g class="layer" data-layer="c4" filter="url(#rough)">
+        <circle cx="630" cy="262" r="30" fill="var(--mark)" opacity=".2"/>
+        <circle cx="630" cy="262" r="30" fill="none" stroke="var(--mark)" stroke-width="3.5"/>
+      </g>
+    </svg>
   </div>
-  <div class="trigger" data-t="1"></div><div class="trigger" data-t="2"></div>
-  <div class="trigger" data-t="3"></div><div class="trigger" data-t="4"></div>
-  <div class="trigger" data-t="4"></div>
+  <div class="steps">
+    <div class="step lead" data-step="c1"><p>A clinic opens at eight. By noon, sixty people are waiting.</p></div>
+    <div class="step lead" data-step="c2"><p>Everyone who works there can tell you exactly where the problem is.</p></div>
+    <div class="step lead" data-step="c3"><p>They are all pointing at the same desk.</p></div>
+    <div class="step mid plain big" data-step="c4"><p><strong>They are all wrong.</strong></p></div>
+  </div></div>
+  <div class="trigger" data-t="c1"></div><div class="trigger" data-t="c2"></div>
+  <div class="trigger" data-t="c3"></div><div class="trigger" data-t="c4"></div>
 </section>
 
-<!-- ============ TITLE ============ -->
-<section class="flow">
-  <div class="wrap">
-    <p class="kicker">Part one of three</p>
-    <h1 class="title">Everybody's&nbsp;Busy</h1>
-    <p class="dek">Why the thing you can see is almost never the thing that's stuck.</p>
-  </div>
-</section>
+<!-- ================= TITLE ================= -->
+<section class="flow"><div class="wrap">
+  <p class="kicker">Part one of three · Thinking in Systems</p>
+  <h1 class="title">The Wrong Queue</h1>
+  <p class="dek">Why the thing you can see is almost never the thing that's stuck.</p>
+</div></section>
 
-<!-- ============ NUT GRAPHS ============ -->
-<section class="flow nut">
-  <div class="wrap">
-    <p>The receptionist at this clinic works through lunch most days. The phone starts before the lights are on. Every complaint letter names her desk. She is, visibly and unarguably, the hardest-working person in the building.</p>
-    <p>She is also irrelevant to the clinic's output. It treats twenty patients a day, and it has treated twenty patients a day for four years — a number set entirely by something almost nobody in the building is looking at.</p>
-    <p>This is not a story about a clinic. It is the most reliably counterintuitive idea in management, and once you have seen it you will see it in your work, your team and your week.</p>
-  </div>
-</section>
+<section class="flow"><div class="wrap">
+  <p>Maria runs the front desk. She works through lunch most days. The phone starts before the lights are on and there is a queue at her window from opening until close. When patients write in to complain, and they do, they complain about her desk.</p>
+  <p>She is, visibly and unarguably, the hardest-working person in the building.</p>
+  <p>She is also irrelevant to how many people this clinic helps.</p>
+  <p>It treats twenty patients a day. It has treated twenty patients a day for four years.</p>
+</div></section>
 
-<!-- ============ §1 FIVE STATIONS ============ -->
-<section class="scroll-item" id="stations" style="height:800svh">
-  <div class="sticky-item">
-    <div class="stage">
-      <svg viewBox="55 115 910 335" role="img" aria-label="Five stations with daily capacities; work pools in front of the doctor and output stops at twenty.">
-        <g filter="url(#rough)">
-          <g id="boxes" stroke="var(--ink)" stroke-width="2.6" fill="none"></g>
-        </g>
-        <g id="caps" font-family="var(--sans)" font-size="30" font-weight="700" text-anchor="middle" fill="var(--ink)"></g>
-        <g id="names" font-family="var(--sans)" font-size="12" text-anchor="middle" fill="var(--ink-soft)" letter-spacing="1.2"></g>
-        <g id="pool" fill="var(--ink)" opacity=".62"></g>
-
-        <!-- output counter -->
-        <g class="layer" data-layer="s7">
-          <text x="890" y="300" text-anchor="middle" font-family="var(--sans)" font-size="72" font-weight="700" fill="var(--mark)" class="counter" id="out">0</text>
-          <text x="890" y="330" text-anchor="middle" font-family="var(--sans)" font-size="12" fill="var(--ink-soft)" letter-spacing="1.4">PER DAY</text>
-        </g>
-        <!-- 85 vs 20 -->
-        <g class="layer" data-layer="s8" font-family="var(--sans)" text-anchor="middle">
-          <text x="360" y="392" font-size="54" font-weight="700" fill="var(--ink-faint)">85</text>
-          <text x="360" y="418" font-size="11.5" fill="var(--ink-soft)" letter-spacing="1.2">WHAT THE PARTS COULD DO</text>
-          <text x="640" y="392" font-size="54" font-weight="700" fill="var(--mark)">20</text>
-          <text x="640" y="418" font-size="11.5" fill="var(--ink-soft)" letter-spacing="1.2">WHAT THE SYSTEM DOES</text>
-        </g>
-      </svg>
-    </div>
-    <div class="steps">
-      <div class="step tl" data-step="s1"><p>Everyone who comes through the clinic passes five stations, in order, and every one has a limit.</p></div>
-      <div class="step tl" data-step="s2"><p>Check-in can process sixty people a day.</p></div>
-      <div class="step tl" data-step="s3"><p>Triage, forty-five.</p></div>
-      <div class="step tl" data-step="s4"><p>The doctor, twenty.</p></div>
-      <div class="step tl" data-step="s5"><p>Pharmacy, fifty. Follow-up booking, forty.</p></div>
-      <div class="step tl" data-step="s6"><p>Four of the five stations can handle more than twice what the doctor can.</p></div>
-      <div class="step tl" data-step="s7"><p>So the clinic treats twenty people a day.</p></div>
-      <div class="step tl" data-step="s8"><p>Not eighty-five, which is what its five stations could manage between them. Twenty.</p></div>
-    </div>
+<!-- ================= FIVE STATIONS ================= -->
+<section class="scroll-item">
+  <div class="sticky-item"><div class="stage">
+    <svg viewBox="55 115 910 340" role="img" aria-label="Five stations with daily capacities; work backs up in front of the doctor and output stops at twenty.">
+      <g filter="url(#rough)"><g id="boxes" stroke="var(--ink)" stroke-width="2.6" fill="none"></g></g>
+      <g id="caps" font-family="var(--sans)" font-size="30" font-weight="700" text-anchor="middle" fill="var(--ink)"></g>
+      <g id="names" font-family="var(--sans)" font-size="11.5" text-anchor="middle" fill="var(--ink-soft)" letter-spacing="1.2"></g>
+      <g id="pool" fill="var(--ink)" opacity=".55"></g>
+      <g class="layer" data-layer="s7 s8">
+        <text id="out" x="895" y="290" text-anchor="middle" font-family="var(--sans)" font-size="70" font-weight="700" fill="var(--mark)">0</text>
+        <text x="895" y="318" text-anchor="middle" font-family="var(--sans)" font-size="11" fill="var(--ink-soft)" letter-spacing="1.4">PER DAY</text>
+      </g>
+      <g class="layer" data-layer="s8" font-family="var(--sans)" text-anchor="middle">
+        <text x="500" y="405" font-size="13" fill="var(--ink-soft)">If the doctor matched the next tightest station, this would read</text>
+        <text x="500" y="440" font-size="30" font-weight="700" fill="var(--ink-faint)">40</text>
+      </g>
+    </svg>
   </div>
+  <div class="steps">
+    <div class="step tl" data-step="s1"><p>Everyone who comes through passes five stations, in order, and every one has a limit.</p></div>
+    <div class="step tl" data-step="s2"><p>Check-in can process sixty people a day.</p></div>
+    <div class="step tl" data-step="s3"><p>Triage, forty-five.</p></div>
+    <div class="step tl" data-step="s4"><p>The doctor, twenty.</p></div>
+    <div class="step tl" data-step="s5"><p>Pharmacy, fifty. Follow-up booking, forty.</p></div>
+    <div class="step tl" data-step="s6"><p>Every other station can handle at least twice what the doctor can.</p></div>
+    <div class="step tl" data-step="s7"><p>So the clinic treats twenty people a day.</p></div>
+    <div class="step tl" data-step="s8"><p>Not forty — which is what it would manage if the doctor's station matched the next tightest one. Twenty.</p></div>
+  </div></div>
   <div class="trigger" data-t="s1"></div><div class="trigger" data-t="s2"></div>
   <div class="trigger" data-t="s3"></div><div class="trigger" data-t="s4"></div>
   <div class="trigger" data-t="s5"></div><div class="trigger" data-t="s6"></div>
   <div class="trigger" data-t="s7"></div><div class="trigger" data-t="s8"></div>
 </section>
 
-<section class="statement"><p>The rest of the piece continues from here.</p></section>
+<section class="statement"><p>The other forty go home.</p></section>
 
+<section class="flow"><div class="wrap">
+  <p>One of them is a man in his sixties who has now come twice about a cough he has had since March. He waited three hours on Tuesday and left at four to collect his grandson. He will try again next week.</p>
+</div></section>
+
+<section class="statement">
+  <div>
+    <div class="figure-num">10,000</div>
+    <p class="figure-cap" style="max-width:26ch;margin:1.2em auto 0">people a year who came to a clinic where everybody was working flat out, and did not get seen</p>
+  </div>
+</section>
+
+<!-- ================= THE ONE HIRE ================= -->
+<section class="scroll-item">
+  <div class="sticky-item"><div class="stage">
+    <svg viewBox="55 115 910 300" role="img" aria-label="Placing one new hire at each station in turn; output stays at twenty until the doctor.">
+      <g filter="url(#rough)"><g id="hboxes" stroke="var(--ink)" stroke-width="2.6" fill="none"></g></g>
+      <g id="hnames" font-family="var(--sans)" font-size="11.5" text-anchor="middle" fill="var(--ink-soft)" letter-spacing="1.2"></g>
+      <g id="hire" filter="url(#rough)" stroke="var(--mark)" stroke-width="2.6" fill="none" opacity="0">
+        <circle cx="0" cy="0" r="10"/><path d="M-10 26c0-13 20-13 20 0"/>
+      </g>
+      <text id="hout" x="895" y="290" text-anchor="middle" font-family="var(--sans)" font-size="70" font-weight="700" fill="var(--mark)">20</text>
+      <text x="895" y="318" text-anchor="middle" font-family="var(--sans)" font-size="11" fill="var(--ink-soft)" letter-spacing="1.4">PER DAY</text>
+    </svg>
+  </div>
+  <div class="steps">
+    <div class="step tl" data-step="h1"><p>The clinic has just been given enough money to hire one more person.</p></div>
+    <div class="step tl" data-step="h2"><p>Put them on the front desk, where the queue is: still twenty.</p></div>
+    <div class="step tl" data-step="h3"><p>Triage: still twenty. Pharmacy: twenty. Follow-up: twenty.</p></div>
+    <div class="step tl" data-step="h4"><p>There is exactly one place that changes the number, and it is not where the queue is.</p></div>
+    <div class="step tl" data-step="h5"><p>Hire at the front desk and check-in gets faster, so patients reach the waiting room sooner. You will have spent the entire budget to make people frustrated sitting down instead of standing up.</p></div>
+  </div></div>
+  <div class="trigger" data-t="h1"></div><div class="trigger" data-t="h2"></div>
+  <div class="trigger" data-t="h3"></div><div class="trigger" data-t="h4"></div>
+  <div class="trigger" data-t="h5"></div>
+</section>
+
+<section class="flow"><div class="wrap">
+  <p>Maria was never the problem. She was busy absorbing the anger that something else was generating.</p>
+</div></section>
+
+<section class="statement"><p>Busy is not the same as stuck.</p></section>
+
+<section class="flow"><div class="wrap">
+  <p>The station that sets the number — the one every other station is waiting on, whether it knows it or not — has a name. It is the <strong>constraint</strong>. Every system has one. Almost no system knows where its own is.</p>
+</div></section>
+
+<!-- ================= THE BUSY TRAP ================= -->
+<section class="statement"><p>Every single person in an organisation is working flat out, all day. Is that organisation running at its best?</p></section>
+
+<section class="flow"><div class="wrap">
+  <p>Almost everyone says yes.</p>
+  <p>But look at what full effort at the front desk actually produces. Sixty people checked in, against twenty the doctor can see. The other forty do not vanish. They sit in the waiting room — and a waiting room is not output. It is forty afternoons, spent.</p>
+  <p>A station that isn't the constraint, running at maximum, manufactures work the constraint cannot absorb. In a factory that work is inventory, stacked and going stale. Here it is people.</p>
+  <p>So a well-run system needs most of its parts to have slack — deliberately running below their maximum — so the one part that governs everything can run flat out.</p>
+  <p>When everybody is at full stretch, the honest reading is not that the place is well run. It is that nobody has found the constraint, so everyone is compensating for it at once.</p>
+</div></section>
+
+<!-- ================= DON'T SPEND YET ================= -->
+<section class="flow"><div class="wrap">
+  <p>We know it is the doctor. So hire another doctor.</p>
+  <p>Not yet. Watch her day first.</p>
+  <p>Dr Adeyemi has been here nine years. She stays until seven most evenings writing up notes she had no time to write in the room.</p>
+</div></section>
+
+<section class="scroll-item">
+  <div class="sticky-item"><div class="stage">
+    <svg viewBox="80 150 840 260" role="img" aria-label="Dr Adeyemi's eight-hour day: six hours with patients, two lost to admin; recovering the two hours raises output from twenty to twenty-six.">
+      <g id="dayrow"></g>
+      <text id="dcount" x="500" y="360" text-anchor="middle" font-family="var(--sans)" font-size="58" font-weight="700" fill="var(--mark)">20</text>
+      <text x="500" y="388" text-anchor="middle" font-family="var(--sans)" font-size="11" fill="var(--ink-soft)" letter-spacing="1.4">PATIENTS PER DAY</text>
+    </svg>
+  </div>
+  <div class="steps">
+    <div class="step tl" data-step="d1"><p>Of her eight-hour day, she sees patients for about six.</p></div>
+    <div class="step tl" data-step="d2"><p>The other two go on things that do not need a medical degree — re-taking a history the triage nurse already took, hunting for notes, printing forms.</p></div>
+    <div class="step tl" data-step="d3"><p>Six hours, twenty patients: a shade under eighteen minutes each.</p></div>
+    <div class="step tl" data-step="d4"><p>Give her back the two hours and the same eighteen minutes gets you twenty-six.</p></div>
+  </div></div>
+  <div class="trigger" data-t="d1"></div><div class="trigger" data-t="d2"></div>
+  <div class="trigger" data-t="d3"></div><div class="trigger" data-t="d4"></div>
+</section>
+
+<section class="flow"><div class="wrap">
+  <p>Six more people a day. Around fifteen hundred a year. The man with the cough is one of them. The cost of this is nothing.</p>
+  <p>That is the step almost everyone skips — and it is the same move as the hiring decision, made smaller. You are not adding capacity to the system. You are moving capacity <em>toward the constraint</em>. It just happens that the cheapest place to find some was already inside it.</p>
+  <p>The next step is harder, because it looks like failure. Everyone else now runs at whatever pace keeps Dr Adeyemi working. Reception deliberately slows down. Every local number you have will show those people getting worse while the clinic gets better. If you cannot tolerate that on a dashboard, none of this is available to you.</p>
+  <p>Only then do you spend money — and you spend it on the doctor, not on the loudest queue.</p>
+</div></section>
+
+<!-- ================= THE LEAP, NAMED ================= -->
+<section class="flow"><div class="wrap">
+  <p>Now, a clinic is a tidy example: five stations, one line, one direction. Almost no real work looks like that. There are loops and parallel paths and jobs that come back half-finished, and you cannot draw most organisations as a row of boxes.</p>
+  <p>The messiness changes the arithmetic. It does not change the property underneath it. In anything where the parts depend on each other, a very small number of places govern what the whole thing produces — and they are almost never where the noise is.</p>
+</div></section>
+
+<section class="flow"><div class="wrap">
+  <p>A parent getting older. There are a dozen things to worry about — the stairs, the medication, the driving, whether the money lasts — and you are working on all of them, badly, in the evenings, and getting nowhere. It feels like there is simply too much.</p>
+  <p>There isn't. There is one thing. The assessment that unlocks the funding that pays for the help, and it needs a referral nobody has requested, and until that happens every other thing you do gets undone by Wednesday.</p>
+  <p>It is not the biggest problem on the list. It is the stuck one. You can work extremely hard on a system for years without ever once touching the thing that governs it.</p>
+</div></section>
+
+<!-- ================= IT MOVES ================= -->
+<section class="scroll-item">
+  <div class="sticky-item"><div class="stage">
+    <svg viewBox="55 115 910 300" role="img" aria-label="As each station is improved, the constraint moves along the line and eventually outside the clinic.">
+      <g filter="url(#rough)"><g id="mboxes" stroke="var(--ink)" stroke-width="2.6" fill="none"></g></g>
+      <g id="mnames" font-family="var(--sans)" font-size="11.5" text-anchor="middle" fill="var(--ink-soft)" letter-spacing="1.2"></g>
+      <g class="layer" data-layer="m4" filter="url(#rough)">
+        <rect x="820" y="180" width="130" height="110" fill="none" stroke="var(--mark)" stroke-width="3.5" stroke-dasharray="7 5"/>
+        <text x="885" y="310" text-anchor="middle" font-family="var(--sans)" font-size="11" fill="var(--mark)" letter-spacing="1.2">THE HOSPITAL</text>
+      </g>
+    </svg>
+  </div>
+  <div class="steps">
+    <div class="step tl" data-step="m1"><p>Fix the doctor and the clinic does not become fixed.</p></div>
+    <div class="step tl" data-step="m2"><p>Get her to fifty a day and follow-up booking, at forty, becomes the constraint.</p></div>
+    <div class="step tl" data-step="m3"><p>Fix that and it moves to pharmacy.</p></div>
+    <div class="step tl" data-step="m4"><p>Push far enough and the constraint has moved outside the walls, to the hospital that won't take referrals any faster.</p></div>
+  </div></div>
+  <div class="trigger" data-t="m1"></div><div class="trigger" data-t="m2"></div>
+  <div class="trigger" data-t="m3"></div><div class="trigger" data-t="m4"></div>
+</section>
+
+<section class="flow"><div class="wrap">
+  <p>It is still a constraint. It just now needs an entirely different set of skills to attack.</p>
+  <p>Which is why this work never finishes, and why the most expensive sentence anyone in that clinic can say is <em>we solved that one</em>.</p>
+</div></section>
+
+<!-- ================= INVISIBLE RULES ================= -->
+<section class="flow"><div class="wrap">
+  <p>All of this was easy. Five boxes, five numbers, find the smallest.</p>
+  <p>Real organisations do not hand you the numbers. And the constraint is usually not a person or a machine at all. It is a rule.</p>
+</div></section>
+
+<section class="scroll-item">
+  <div class="sticky-item"><div class="stage">
+    <svg viewBox="150 100 720 340" role="img" aria-label="Rules pinned to a noticeboard, layering into sediment and then into a coral reef.">
+      <g class="layer on" data-layer="r1 r2 r3" id="notes"></g>
+      <g class="layer" data-layer="r3" filter="url(#rough2)" id="reef" stroke="var(--ink-soft)" stroke-width="2" fill="none" opacity=".85"></g>
+    </svg>
+  </div>
+  <div class="steps">
+    <div class="step tr" data-step="r1"><p><em>Every prescription needs the doctor's countersignature. No appointment longer than ten minutes. Referrals are reviewed on Thursdays.</em></p></div>
+    <div class="step tr" data-step="r2"><p>Every one was introduced for a good reason, usually to solve a problem nobody now remembers.</p></div>
+    <div class="step tr" data-step="r3"><p>Organisations accumulate procedures the way a reef accumulates coral — laid down in layers, each for a purpose, long after the purpose has gone.</p></div>
+  </div></div>
+  <div class="trigger" data-t="r1"></div><div class="trigger" data-t="r2"></div><div class="trigger" data-t="r3"></div>
+</section>
+
+<section class="flow"><div class="wrap">
+  <p>Breaking one is nearly free. A rule costs nothing to change, next to hiring a doctor. And it usually improves things more than any purchase would.</p>
+  <p>But you will not find it, because everybody experiences it as normal. A bottleneck machine announces itself: there is a pile of work in front of it. A bottleneck rule has no pile. It hides inside <em>that's just how it's done</em>, and it is defended, sincerely, by good people whose own numbers depend on it.</p>
+</div></section>
+
+<!-- ================= THE GUESS ================= -->
+<section class="flow"><div class="wrap">
+  <p>So: find the constraint. Put nearly everything into it. Ignore, for now, almost everything else.</p>
+  <p>But the constraint is usually a rule. Rules are invisible. They look normal. They are defended in good faith by people who are not wrong to defend them.</p>
+  <p>And they connect to the symptoms you can actually see through long chains of cause and effect that cross every boundary on the org chart.</p>
+</div></section>
+
+<section class="statement"><p>So how would you ever find one?</p></section>
+
+<section class="flow"><div class="wrap">
+  <p>Ask five colleagues what the most limiting thing about your organisation is. You will get five confident, different answers.</p>
+  <p>On what basis do you decide who is right? Seniority? Confidence? Volume?</p>
+  <p>Most organisations settle it with some blend of authority, anecdote and whoever tells the best story — which is to say they don't settle it.</p>
+</div></section>
+
+<section class="statement"><p>They guess.</p></section>
+
+<section class="flow"><div class="wrap">
+  <p>Then they spend a year, a budget and a great deal of everyone's goodwill finding out whether the guess was right.</p>
+  <p>That is not a management problem. It is a thinking problem — which is a more hopeful thing to be, because thinking problems have techniques. This one has had a technique for forty years. Hardly anybody is taught it.</p>
+  <p>And so, somewhere in that building, someone is working through lunch on something that was never going to matter.</p>
+</div></section>
+
+<section class="sources"><div class="wrap">
+  <h2>Notes on sources</h2>
+  <p>The argument comes from H. William Dettmer, <em>The Logical Thinking Process: A Systems Approach to Complex Problem Solving</em> (ASQ Quality Press, 2007), chapter 1, and behind it Eliyahu Goldratt's Theory of Constraints, set out in <em>The Goal</em> (1984). The chain-and-weakest-link argument, the claim that a system performing at its best cannot have all its parts performing at theirs, the five focusing steps (identify, exploit, subordinate, elevate, repeat), and the observation that most constraints are policies rather than physical things are all Dettmer's, from that chapter.</p>
+  <p>The Ashfield clinic is a composite and its numbers are illustrative, chosen so the arithmetic can be checked: five stations at 60, 45, 20, 50 and 40 patients a day; output is set by the smallest, and the next-tightest is 40. Dr Adeyemi's day is eight hours, six of them clinical, twenty patients — a shade under eighteen minutes each; returning the two administrative hours at the same rate gives twenty-six.</p>
+  <p>Dettmer's own worked example of a non-profit system is, as it happens, a hospital: people in, healthier people out. The coral-reef image is adapted from John Gardner, quoted in the same chapter.</p>
+</div></section>
+
+<section class="seriesnav"><div class="wrap">
+  <a href="../02-thinking-made-visible/index.html">
+    <span class="n">Next · part two</span>
+    <span class="t">The Arrows Nobody Checks →</span>
+  </a>
+  <a href="../index.html"><span class="n">Series</span><span class="t">All three parts</span></a>
+</div></section>
+
+<script src="../scroller.js"></script>
 <script>
 (function(){
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
 
-  /* ---- build the queue (cold open) ---- */
-  const q = document.getElementById('queue');
-  for(let i=0;i<26;i++){
-    const x = 500 + (i<6 ? 0 : (i-6)*26) , y = 470 + (i<6 ? i*0 : 0);
-    const g = document.createElementNS('http://www.w3.org/2000/svg','g');
-    // curl out of the doorway and trail off to the left along the ground
-    g.setAttribute('transform',`translate(${486 - i*16.5},${446 + Math.sin(i*0.55)*9})`);
-    g.setAttribute('opacity','0'); g.dataset.qi = i;
-    g.innerHTML = '<circle cx="0" cy="0" r="7"/><path d="M-7 28c0-11 14-11 14 0"/>';
+  /* cold-open queue trailing from the door */
+  var q=document.getElementById('queue');
+  for(var i=0;i<26;i++){
+    var g=el('g',{transform:'translate('+(486-i*16.5)+','+(446+Math.sin(i*0.55)*9)+')'});
+    g.appendChild(el('circle',{cx:0,cy:0,r:7}));
+    g.appendChild(el('path',{d:'M-7 28c0-11 14-11 14 0'}));
     q.appendChild(g);
   }
-  const queueDots = [...q.children];
 
-  /* ---- build the five stations ---- */
-  const S = [
-    {n:'CHECK-IN',c:60},{n:'TRIAGE',c:45},{n:'DOCTOR',c:20},
-    {n:'PHARMACY',c:50},{n:'FOLLOW-UP',c:40}
-  ];
-  const boxes=document.getElementById('boxes'), caps=document.getElementById('caps'),
-        names=document.getElementById('names'), pool=document.getElementById('pool');
-  const NS='http://www.w3.org/2000/svg';
-  S.forEach((s,i)=>{
-    const x = 110 + i*150;
-    const r=document.createElementNS(NS,'rect');
-    r.setAttribute('x',x); r.setAttribute('y',170); r.setAttribute('width',110);
-    r.setAttribute('height',110); r.dataset.box=i; boxes.appendChild(r);
-    const t=document.createElementNS(NS,'text');
-    t.setAttribute('x',x+55); t.setAttribute('y',238); t.dataset.cap=i;
-    t.setAttribute('opacity','0'); t.textContent=s.c; caps.appendChild(t);
-    const nm=document.createElementNS(NS,'text');
-    nm.setAttribute('x',x+55); nm.setAttribute('y',305); nm.textContent=s.n; names.appendChild(nm);
-  });
-  for(let i=0;i<34;i++){
-    const c=document.createElementNS(NS,'circle');
-    c.setAttribute('r',5.5);
-    // the pile waiting in front of the doctor: stacks leftward from the box edge
-    c.setAttribute('cx', 401 - (i%3)*13);
-    c.setAttribute('cy', 274 - Math.floor(i/3)*13);
-    c.setAttribute('opacity','0'); c.dataset.pi=i; pool.appendChild(c);
-  }
-  const poolDots=[...pool.children];
-  const docBox = boxes.querySelector('[data-box="2"]');
+  var S=[{n:'CHECK-IN',c:60},{n:'TRIAGE',c:45},{n:'DOCTOR',c:20},{n:'PHARMACY',c:50},{n:'FOLLOW-UP',c:40}];
 
-  /* ---- step machinery ---- */
-  const layers=[...document.querySelectorAll('.layer')];
-  const steps=[...document.querySelectorAll('.step')];
-  const outEl=document.getElementById('out');
-
-  function show(id){
-    steps.forEach(s=>s.classList.toggle('on', s.dataset.step===id));
-    layers.forEach(l=>{
-      const k=l.dataset.layer;
-      l.classList.toggle('on', k===id || (k==='1'&&['1','2','3','4'].indexOf(id)===0));
+  function stations(boxId,nameId,capId){
+    var b=document.getElementById(boxId),nm=document.getElementById(nameId),
+        cp=capId?document.getElementById(capId):null;
+    S.forEach(function(s,i){
+      var x=110+i*150;
+      b.appendChild(el('rect',{x:x,y:170,width:110,height:110,'data-box':i}));
+      var t=el('text',{x:x+55,y:305}); t.textContent=s.n; nm.appendChild(t);
+      if(cp){var c=el('text',{x:x+55,y:238,'data-cap':i,opacity:0}); c.textContent=s.c; cp.appendChild(c);}
     });
+    return b;
+  }
+  var boxes=stations('boxes','names','caps');
+  var hboxes=stations('hboxes','hnames',null);
+  var mboxes=stations('mboxes','mnames',null);
 
-    // cold open
-    if(['1','2','3','4'].includes(id)){
-      document.querySelector('[data-layer="1"]').classList.toggle('on', id==='1');
-      queueDots.forEach((d,i)=>d.setAttribute('opacity', id==='1' ? (i<26?1:0) : 0));
-    }
-    // stations
-    const order=['s1','s2','s3','s4','s5','s6','s7','s8'];
-    const idx=order.indexOf(id);
+  /* the pile that backs up in front of the doctor */
+  var pool=document.getElementById('pool'),poolDots=[];
+  for(var p=0;p<34;p++){
+    var c=el('circle',{r:5.5,cx:401-(p%3)*13,cy:274-Math.floor(p/3)*13,opacity:0});
+    pool.appendChild(c); poolDots.push(c);
+  }
+
+  /* Dr Adeyemi's eight-hour day */
+  var row=document.getElementById('dayrow');
+  for(var h=0;h<8;h++){
+    row.appendChild(el('rect',{x:220+h*72,y:210,width:60,height:70,fill:'none',
+      stroke:'var(--ink)','stroke-width':2.4,filter:'url(#rough)','data-hour':h}));
+  }
+  var hours=[].slice.call(row.children);
+
+  /* the noticeboard that becomes a reef */
+  var notes=document.getElementById('notes');
+  var RULES=['COUNTERSIGN ALL SCRIPTS','10 MIN MAX','REFERRALS: THURS',
+             'NO SAME-DAY BOOKING','FORMS IN TRIPLICATE','STOCK ORDERED MONTHLY',
+             'LOCK UP AT SIX','SIGN THE DAYBOOK','ASK THE MANAGER FIRST'];
+  var noteEls=[];
+  for(var k=0;k<9;k++){
+    var nx=190+(k%3)*185, ny=130+Math.floor(k/3)*100;
+    var gnote=el('g',{'data-note':k,opacity:0});
+    gnote.appendChild(el('rect',{x:nx,y:ny,width:158,height:78,fill:'var(--paper-2)',
+      stroke:'var(--ink)','stroke-width':2,filter:'url(#rough2)'}));
+    var lbl=el('text',{x:nx+79,y:ny+45,'text-anchor':'middle',
+      'font-family':'var(--sans)','font-size':10.5,fill:'var(--ink-soft)','letter-spacing':.8});
+    lbl.textContent=RULES[k];
+    gnote.appendChild(lbl);
+    notes.appendChild(gnote); noteEls.push(gnote);
+  }
+  var reef=document.getElementById('reef');
+  for(var r=0;r<26;r++){
+    reef.appendChild(el('path',{d:'M'+(180+(r%13)*50)+' '+(415-Math.floor(r/13)*44)+
+      ' q 14 -30 28 0', opacity:0,'data-reef':r}));
+  }
+  var reefEls=[].slice.call(reef.children);
+
+  var capEls=document.querySelectorAll('#caps [data-cap]');
+  var docBox=boxes.querySelector('[data-box="2"]');
+  var out=document.getElementById('out');
+  var hire=document.getElementById('hire');
+  var mBoxEls=mboxes.querySelectorAll('[data-box]');
+  var dcount=document.getElementById('dcount');
+
+  window.onStep=function(id){
+    /* five stations */
+    var order=['s1','s2','s3','s4','s5','s6','s7','s8'], idx=order.indexOf(id);
     if(idx>=0){
-      const reveal=[0,1,2,3,5,5,5,5][idx];
-      caps.querySelectorAll('[data-cap]').forEach((t,i)=>
-        t.setAttribute('opacity', i<reveal ? 1 : 0));
-      docBox.setAttribute('stroke', idx>=3 ? 'var(--mark)' : 'var(--ink)');
-      docBox.setAttribute('stroke-width', idx>=3 ? '4' : '2.6');
-      const pooled = idx>=3 ? Math.min(34, (idx-2)*9) : 0;
-      poolDots.forEach((d,i)=>d.setAttribute('opacity', i<pooled ? .62 : 0));
-      if(idx>=6){ countTo(20); } else { outEl.textContent='0'; }
+      var reveal=[0,1,2,3,5,5,5,5][idx];
+      for(var i=0;i<capEls.length;i++) capEls[i].setAttribute('opacity', i<reveal?1:0);
+      docBox.setAttribute('stroke', idx>=3?'var(--mark)':'var(--ink)');
+      docBox.setAttribute('stroke-width', idx>=3?'4':'2.6');
+      var n = idx>=3 ? Math.min(34,(idx-2)*9) : 0;
+      poolDots.forEach(function(d,j){ d.setAttribute('opacity', j<n?0.55:0); });
+      if(idx>=6) window.countUp(out,20,800);
     }
-  }
-  let ctimer=null;
-  function countTo(n){
-    if(outEl.dataset.done==='1') return;
-    outEl.dataset.done='1';
-    if(reduce){ outEl.textContent=n; return; }
-    let v=0; clearInterval(ctimer);
-    ctimer=setInterval(()=>{ v++; outEl.textContent=v; if(v>=n) clearInterval(ctimer); },38);
-  }
-
-  const io=new IntersectionObserver(es=>{
-    es.forEach(e=>{ if(e.isIntersecting) show(e.target.dataset.t); });
-  },{rootMargin:'-45% 0px -45% 0px'});
-  document.querySelectorAll('.trigger').forEach(t=>io.observe(t));
-  show('1');
+    /* the one hire */
+    var hpos={h2:0,h3:3,h4:2,h5:0};
+    if(id in hpos){
+      var x=110+hpos[id]*150+55;
+      hire.setAttribute('opacity',1);
+      hire.setAttribute('transform','translate('+x+',150)');
+      document.getElementById('hout').textContent = (id==='h4') ? '26' : '20';
+    } else if(id==='h1'){ hire.setAttribute('opacity',0); }
+    /* the doctor's day */
+    if(id==='d1'||id==='d2'||id==='d3'||id==='d4'){
+      hours.forEach(function(b,j){
+        var admin = j>=6;
+        var recovered = (id==='d4');
+        b.setAttribute('fill', (admin && !recovered) ? 'var(--ink-faint)' : 'none');
+        b.setAttribute('stroke', (admin && !recovered) ? 'var(--ink-faint)' :
+                        (recovered ? 'var(--mark)' : 'var(--ink)'));
+      });
+      dcount.textContent = (id==='d4') ? '26' : '20';
+      dcount.setAttribute('fill', (id==='d4') ? 'var(--mark)' : 'var(--ink)');
+    }
+    /* the constraint migrating */
+    var mpos={m1:2,m2:4,m3:3,m4:-1};
+    if(id in mpos){
+      for(var b2=0;b2<mBoxEls.length;b2++){
+        var on = (b2===mpos[id]);
+        mBoxEls[b2].setAttribute('stroke', on?'var(--mark)':'var(--ink)');
+        mBoxEls[b2].setAttribute('stroke-width', on?'4':'2.6');
+      }
+    }
+    /* the reef */
+    var rn={r1:3,r2:9,r3:9}[id];
+    if(rn!==undefined){
+      noteEls.forEach(function(n2,j){ n2.setAttribute('opacity', j<rn?1:0); });
+      reefEls.forEach(function(p2){ p2.setAttribute('opacity', id==='r3'?0.85:0); });
+    }
+  };
 })();
 </script>
 </body>

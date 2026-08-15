@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Five Shapes</title>
+<meta name="description" content="Five questions any real change has to answer, and the differently shaped answers they need.">
+<link rel="stylesheet" href="../scroller.css">
+</head>
+<body>
+<div class="progress"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="rough" x="-8%" y="-8%" width="116%" height="116%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="17" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <filter id="rough2" x="-8%" y="-8%" width="116%" height="116%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="3" seed="41" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0 0 L10 5 L0 10 z" fill="var(--ink-soft)"/>
+  </marker>
+  <marker id="arm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0 0 L10 5 L0 10 z" fill="var(--mark)"/>
+  </marker>
+</defs></svg>
+
+<section class="flow"><div class="wrap">
+  <p class="kicker">Part three of three · Thinking in Systems</p>
+  <h1 class="title">Five Shapes</h1>
+  <p class="dek">Five questions any real change has to answer — and why they need differently shaped answers.</p>
+</div></section>
+
+<section class="flow"><div class="wrap">
+  <p>The clinic now has something it didn't have: a map of why it is stuck, that five people built and none of them could break.</p>
+  <p>It says the ten-minute appointment rule is doing most of the damage. Ten minutes was introduced to see more people. It means histories get re-taken, notes go unwritten, and a third of patients return with the same complaint — consuming the very appointments the rule was created to protect.</p>
+  <p>Good. Now what?</p>
+  <p>Because <em>why are we stuck</em> is only one of the questions you need answered, and it isn't even the first one.</p>
+</div></section>
+
+<!-- ============ 1 · THE GOAL ============ -->
+<section class="scroll-item">
+  <div class="sticky-item"><div class="stage">
+    <svg viewBox="120 80 760 400" role="img" aria-label="A goal at the top of a hierarchy, resting on the few conditions that are non-negotiable for reaching it.">
+      <g class="layer" data-layer="g2 g3" id="goaltree"></g>
+      <g class="layer" data-layer="g3" id="goalclash"></g>
+    </svg>
+  </div>
+  <div class="steps">
+    <div class="step tl" data-step="g1"><p><strong>What should be happening?</strong> Not what's wrong. What does success actually look like — and what has to be true for it to be possible at all?</p></div>
+    <div class="step tl" data-step="g2"><p>Pushed hard, the clinic wrote: <em>every person in this catchment who needs to be seen is seen, and does not need to come back for the same thing.</em></p></div>
+    <div class="step tl" data-step="g3"><p>Read it again. It rules out seeing more people faster if they return. It says the ten-minute rule is not a policy but a <em>bet</em> — and one the clinic had never checked.</p></div>
+  </div></div>
+  <div class="trigger" data-t="g1"></div><div class="trigger" data-t="g2"></div><div class="trigger" data-t="g3"></div>
+</section>
+
+<section class="flow"><div class="wrap">
+  <p>Until that sentence exists, "the problem" is whatever irritates whoever is talking. Everyone measures the place against a private, unstated idea of what it should be, and then argues about the gap.</p>
+</div></section>
+
+<section class="statement sm"><p>You cannot have a useful argument about a gap when nobody has agreed where the far side is.</p></section>
+
+<!-- ============ 2 · WHY NOT ============ -->
+<section class="scroll-item">
+  <div class="sticky-item"><div class="stage">
+    <svg viewBox="120 70 760 420" role="img" aria-label="Four symptoms converging backwards onto two root causes.">
+      <g id="ude"></g>
+      <g class="layer" data-layer="u2 u3" id="udearrows"></g>
+      <g class="layer" data-layer="u3" id="roots"></g>
+    </svg>
+  </div>
+  <div class="steps">
+    <div class="step br" data-step="u1"><p><strong>Why isn't it happening?</strong> Waits too long. Staff exhausted. Same patients returning. Referrals late.</p></div>
+    <div class="step br" data-step="u2"><p>The instinct is to fix these one by one, and that instinct is the trap.</p></div>
+    <div class="step br" data-step="u3"><p>They aren't four problems. They are four fingerprints — and if you treat the fingerprints you will be back here in a year with the same four.</p></div>
+  </div></div>
+  <div class="trigger" data-t="u1"></div><div class="trigger" data-t="u2"></div><div class="trigger" data-t="u3"></div>
+</section>
+
+<section class="flow"><div class="wrap">
+  <p>So you work backwards instead. What would have to be true for waits to be this long? And for <em>that</em>? Keep going, and the symptoms start converging on a much smaller number of causes — often one or two, sitting somewhere nobody was looking.</p>
+  <p>If a dozen complaints trace back to two causes, then most of what is wrong is fixable with two changes rather than a dozen. The tangle was never as big as it looked.</p>
+</div></section>
+
+<!-- ============ 3 · THE CONFLICT ============ -->
+<section class="flow"><div class="wrap">
+  <p><strong>So why hasn't somebody already fixed it?</strong></p>
+  <p>The ten-minute rule has been unpopular for years. Everyone can see the damage. Nobody has changed it. When a problem is well known, obviously harmful and <em>still there</em>, that is information. Something is holding it in place.</p>
+  <p>Usually a conflict. Not a personality clash — a structural one, where the thing hurting you is protecting something else you also need.</p>
+</div></section>
+
+<section class="scroll-item">
+  <div class="sticky-item"><div class="stage">
+    <svg viewBox="60 90 880 340" role="img" aria-label="A conflict diagram: one objective, two real requirements, two opposed actions, and the assumption holding them apart.">
+      <g id="cloud"></g>
+      <g class="layer" data-layer="v3 v4" id="assume"></g>
+      <g class="layer" data-layer="v4" id="broken"></g>
+    </svg>
+  </div>
+  <div class="steps">
+    <div class="step bl" data-step="v1"><p>The clinic needs to see enough people to serve its catchment. It also needs each consultation to be good enough that people don't come back.</p></div>
+    <div class="step bl" data-step="v2"><p>Ten-minute slots serve the first. Longer slots serve the second. Both requirements are real. Both actions are reasonable. They point in opposite directions, and so nothing moves.</p></div>
+    <div class="step bl" data-step="v3"><p>You do not pick a side. You ask what would have to be true for these two to be genuinely opposed — and you write those assumptions down.</p></div>
+    <div class="step bl" data-step="v4"><p><em>Consultation length is the only lever on quality.</em> Is that true? Or does a consultation overrun because the history was taken twice and the notes weren't there?</p></div>
+  </div></div>
+  <div class="trigger" data-t="v1"></div><div class="trigger" data-t="v2"></div>
+  <div class="trigger" data-t="v3"></div><div class="trigger" data-t="v4"></div>
+</section>
+
+<section class="statement sm"><p>Break one assumption and the conflict doesn't get resolved. It stops existing.</p></section>
+
+<section class="flow"><div class="wrap">
+  <p>Which is why Goldratt called this one an evaporating cloud.</p>
+</div></section>
+
+<!-- ============ 4 · WILL IT WORK ============ -->
+<section class="scroll-item">
+  <div class="sticky-item"><div class="stage">
+    <svg viewBox="120 90 760 380" role="img" aria-label="The proposed fix walked forwards step by step, and the side effect it produces.">
+      <g id="frt"></g>
+      <g class="layer" data-layer="f4" id="side"></g>
+    </svg>
+  </div>
+  <div class="steps">
+    <div class="step br" data-step="f1"><p><strong>Will it actually work?</strong> You have an idea: fix the notes, leave the ten minutes alone.</p></div>
+    <div class="step br" data-step="f2"><p>If the notes are ready, the history isn't re-taken. If the history isn't re-taken, the consultation fits.</p></div>
+    <div class="step br" data-step="f3"><p>If it fits, Dr Adeyemi isn't writing up at seven — so tomorrow's notes are ready too. The thing compounds.</p></div>
+    <div class="step br" data-step="f4"><p>Then the question people skip because they don't want the answer: <strong>what else does it do?</strong></p></div>
+  </div></div>
+  <div class="trigger" data-t="f1"></div><div class="trigger" data-t="f2"></div>
+  <div class="trigger" data-t="f3"></div><div class="trigger" data-t="f4"></div>
+</section>
+
+<section class="flow"><div class="wrap">
+  <p>Ready notes mean someone has to prepare them. That is forty minutes of somebody's morning, and the obvious somebody is Maria, who has no forty minutes.</p>
+  <p>Find that now, while it is hypothetical and costs nothing, rather than in March when it quietly kills the whole thing.</p>
+  <p>Quite a lot of good ideas die right here instead, on paper, for free.</p>
+</div></section>
+
+<!-- ============ 5 · MONDAY ============ -->
+<section class="flow"><div class="wrap">
+  <p><strong>What do we do on Monday, and in what order?</strong></p>
+  <p>An idea becomes a solution when it is implemented and doing what it was meant to do. The road between those two states is where most good ideas are buried.</p>
+  <p>So: what stands in the way? Not a list of tasks — a list of <em>obstacles</em>, honestly stated.</p>
+</div></section>
+
+<section class="scroll-item">
+  <div class="sticky-item"><div class="stage">
+    <svg viewBox="120 80 760 400" role="img" aria-label="Three obstacles, each with the thing that would have to exist to get past it, in forced order.">
+      <g id="prt"></g>
+    </svg>
+  </div>
+  <div class="steps">
+    <div class="step tr" data-step="p1"><p>The real obstacle isn't technical. The summarising has to happen before eight.</p></div>
+    <div class="step tr" data-step="p2"><p>The person who could do it is already the busiest in the building.</p></div>
+    <div class="step tr" data-step="p3"><p>And the clinic has just been told there is money for one hire.</p></div>
+    <div class="step tr" data-step="p4"><p>So this change is not "improve the notes." It is: <em>hire the person, and put them on notes rather than on the front desk where every instinct says they belong.</em></p></div>
+  </div></div>
+  <div class="trigger" data-t="p1"></div><div class="trigger" data-t="p2"></div>
+  <div class="trigger" data-t="p3"></div><div class="trigger" data-t="p4"></div>
+</section>
+
+<section class="flow"><div class="wrap">
+  <p>Against each obstacle, the thing that would have to exist to get past it. Then the order — which is forced, because you cannot train someone on a summarising standard that hasn't been written yet.</p>
+</div></section>
+
+<!-- ============ THE FIVE ============ -->
+<section class="flow"><div class="wrap">
+  <p>Five questions, and each needs a differently shaped answer: a hierarchy for the goal, a web of cause and effect for the diagnosis, a small diagram of opposing needs for the conflict, the same causal logic run forwards for the test, and a chain of obstacles for the plan.</p>
+  <p>Together they are called the Logical Thinking Process. Goldratt built them; Dettmer spent decades teaching and refining them.</p>
+  <p>That is the method. It has a reputation for being forbidding. It is five questions asked in order, with the arrows checked.</p>
+</div></section>
+
+<!-- ============ THE SIXTH ============ -->
+<section class="flow"><div class="wrap">
+  <p>There used to be a sixth.</p>
+  <p>Not the plan-of-obstacles above — that one survives. The sixth was a further tool below it: a step-by-step script for each individual action, the rationale for every move spelled out.</p>
+  <p>In the 2007 edition Dettmer largely removed it, writing that over ten years of teaching he had found it the least valuable of the tools for nearly all practitioners. He replaced it with ordinary project management and a chapter on the human side of change.</p>
+</div></section>
+
+<section class="statement sm"><p>The man spent his career on this method and took a tool out of his own kit.</p></section>
+
+<!-- ============ THE POINT ============ -->
+<section class="flow"><div class="wrap">
+  <p>One last thing, and it is the thing that actually matters.</p>
+  <p>The diagrams are not the product. Nobody needs more diagrams.</p>
+  <p>What they do is move reasoning out of a private head and onto a table, where it can be read, disagreed with in a specific place, and repaired. And because it is an object rather than an afternoon, it is still there in March — when someone new asks why appointments are ten minutes, and instead of relitigating it from the beginning, four people point at the same node and say: <em>because of that, and here's what we checked.</em></p>
+</div></section>
+
+<section class="statement sm"><p>That is the whole promise. Not better diagrams. Claims with addresses — so a disagreement can be found, and settled, and stay settled.</p></section>
+
+<!-- ============ MARIA ============ -->
+<section class="flow"><div class="wrap">
+  <p>Which is roughly what happens next at Ashfield.</p>
+  <p>It is Maria who spots it. She has been saying for two years that the referral backlog is the problem, and looking at the map she realises her backlog and Dr Adeyemi's countersignature are the same jam seen from two ends of the corridor — and that if the notes were ready by eight, neither would exist.</p>
+  <p>The practice manager thinks she's wrong.</p>
+</div></section>
+
+<section class="statement"><p>For the first time, they can find out.</p></section>
+
+<section class="sources"><div class="wrap">
+  <h2>Notes on sources</h2>
+  <p>The five tools are H. William Dettmer's, in <em>The Logical Thinking Process: A Systems Approach to Complex Problem Solving</em> (ASQ Quality Press, 2007): the Intermediate Objectives Map (chapter 3), the Current Reality Tree (chapter 4), the Evaporating Cloud (chapter 5), the Future Reality Tree (chapter 6) and the Prerequisite Tree (chapter 7). Their names are omitted here in favour of the questions they answer; anyone going on to use the method will meet the terms soon enough.</p>
+  <p>The retired sixth tool is the Transition Tree. Dettmer writes in chapter 7 that over ten years of teaching he found it "the least valuable of the Thinking Process tools for nearly all practitioners," and replaces it with a more detailed Prerequisite Tree, critical-chain project management, and a chapter on the human element in change. The observation that an unstated goal reduces the question of what to change to "a matter of opinion and speculation" is from chapter 3; that conflict is "generally rooted in the hidden, underlying assumptions operating on each side" is from chapter 5; "ideas are not solutions" is from chapter 1.</p>
+  <p>The Ashfield clinic is a composite, continued from parts one and two. Its goal statement, obstacles and the notes fix are illustrative — chosen to be the kind of thing these tools actually produce, not drawn from a real clinic.</p>
+</div></section>
+
+<section class="seriesnav"><div class="wrap">
+  <a href="../01-bottleneck/index.html"><span class="n">Start again · part one</span><span class="t">The Wrong Queue</span></a>
+  <a href="../02-thinking-made-visible/index.html"><span class="n">Previous · part two</span><span class="t">← The Arrows Nobody Checks</span></a>
+  <a href="../../claim-tree-annotation-demo/index.html"><span class="n">See it working</span><span class="t">The claim-tree annotation demo →</span></a>
+</div></section>
+
+<script src="../scroller.js"></script>
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  function box(g,x,y,w,h,txt,stroke,size){
+    g.appendChild(el('rect',{x:x,y:y,width:w,height:h,fill:'none',
+      stroke:stroke||'var(--ink)','stroke-width':2.4,filter:'url(#rough2)'}));
+    var lines=txt.split('|');
+    lines.forEach(function(l,i){
+      var t=el('text',{x:x+w/2,y:y+h/2+5-(lines.length-1)*8+i*16,'text-anchor':'middle',
+        'font-family':'var(--sans)','font-size':size||12.5,fill:stroke==='var(--mark)'?'var(--mark)':'var(--ink)'});
+      t.textContent=l; g.appendChild(t);
+    });
+  }
+  function arrow(g,x1,y1,x2,y2,mark){
+    g.appendChild(el('path',{d:'M'+x1+' '+y1+' L'+x2+' '+y2,fill:'none',
+      stroke:mark?'var(--mark)':'var(--ink-soft)','stroke-width':2,
+      'marker-end':mark?'url(#arm)':'url(#ar)'}));
+  }
+
+  /* 1 · goal hierarchy */
+  var gt=document.getElementById('goaltree');
+  box(gt,330,110,340,66,'everyone who needs to be seen|is seen, and does not come back','var(--mark)');
+  box(gt,180,280,200,60,'enough appointments');
+  box(gt,420,280,200,60,'consultations good|enough to not repeat');
+  box(gt,660,280,200,60,'staff who stay');
+  arrow(gt,280,280,440,180); arrow(gt,520,280,510,180); arrow(gt,760,280,570,180);
+  var gc=document.getElementById('goalclash');
+  gc.appendChild(el('text',{x:520,y:400,'text-anchor':'middle','font-family':'var(--sans)',
+    'font-size':13,fill:'var(--mark)'})).textContent='the ten-minute rule serves one of these and damages another';
+
+  /* 2 · symptoms converging */
+  var ude=document.getElementById('ude');
+  ['waits too long','staff exhausted','same patients return','referrals late']
+    .forEach(function(t,i){ box(ude,150+i*190,100,170,58,t); });
+  var ua=document.getElementById('udearrows');
+  var rt=document.getElementById('roots');
+  box(rt,250,380,220,62,'the ten-minute rule','var(--mark)');
+  box(rt,560,380,220,62,'notes written after clinic','var(--mark)');
+  [[235,380,320,442],[425,380,340,442],[615,380,400,442],[805,380,420,442]].forEach(function(a,i){
+    ua.appendChild(el('path',{d:'M'+a[0]+' 158 L'+(i<2?360:670)+' 378',fill:'none',
+      stroke:'var(--ink-soft)','stroke-width':1.8,'marker-end':'url(#ar)'}));
+  });
+
+  /* 3 · the cloud */
+  var cl=document.getElementById('cloud');
+  box(cl,110,230,190,74,'serve the|catchment','var(--ink)',13);
+  box(cl,380,130,200,66,'see enough people');
+  box(cl,380,340,200,66,'consultations that|hold up');
+  box(cl,680,130,200,66,'ten-minute slots','var(--mark)');
+  box(cl,680,340,200,66,'longer slots','var(--mark)');
+  arrow(cl,380,163,300,250); arrow(cl,380,373,300,290);
+  arrow(cl,680,163,580,163); arrow(cl,680,373,580,373);
+  var asm=document.getElementById('assume');
+  asm.appendChild(el('rect',{x:600,y:225,width:280,height:76,fill:'none',
+    stroke:'var(--mark)','stroke-width':2,'stroke-dasharray':'6 5',filter:'url(#rough2)'}));
+  ['THE ASSUMPTION','consultation length is the only','lever on quality'].forEach(function(t,i){
+    var e=el('text',{x:740,y:250+i*20,'text-anchor':'middle','font-family':'var(--sans)',
+      'font-size':i===0?10:12.5,fill:'var(--mark)','letter-spacing':i===0?1.4:0});
+    e.textContent=t; asm.appendChild(e);
+  });
+  var brk=document.getElementById('broken');
+  brk.appendChild(el('path',{d:'M780 150 L800 200 L760 240 L790 290',fill:'none',
+    stroke:'var(--mark)','stroke-width':3.4,'stroke-linecap':'round','stroke-linejoin':'round'}));
+
+  /* 4 · walk it forwards */
+  var frt=document.getElementById('frt');
+  var STEPS=['notes ready by eight','history not re-taken','consultation fits',
+             'no writing up at seven','tomorrow’s notes ready'];
+  var frtNodes=[];
+  STEPS.forEach(function(t,i){
+    var g=el('g',{opacity:0,'data-f':i});
+    box(g,250+((i%2)*230),120+i*66,330,54,t, i===0?'var(--mark)':'var(--ink)');
+    if(i>0) arrow(g,415+((i-1)%2)*230,174+(i-1)*66,415+((i%2)*230),120+i*66);
+    frt.appendChild(g); frtNodes.push(g);
+  });
+  var side=document.getElementById('side');
+  box(side,520,420,340,62,'…but someone must prepare them|40 minutes of Maria’s morning','var(--mark)');
+
+  /* 5 · obstacles */
+  var prt=document.getElementById('prt');
+  var OBS=[['summarising must happen before eight','write a summarising standard'],
+           ['the only person who could is the busiest','free that time, or find another'],
+           ['there is money for exactly one hire','spend it on notes, not the desk']];
+  var obsNodes=[];
+  OBS.forEach(function(o,i){
+    var g=el('g',{opacity:0});
+    box(g,160,110+i*116,300,64,o[0],'var(--ink-faint)');
+    box(g,560,110+i*116,300,64,o[1],'var(--mark)');
+    arrow(g,460,142+i*116,550,142+i*116,true);
+    prt.appendChild(g); obsNodes.push(g);
+  });
+  var final=el('g',{opacity:0});
+  box(final,360,440,320,60,'hire onto notes, not the front desk','var(--mark)');
+  prt.appendChild(final); obsNodes.push(final);
+
+  window.onStep=function(id){
+    var f={f1:1,f2:3,f3:5,f4:5}[id];
+    if(f!==undefined) frtNodes.forEach(function(g,i){ g.setAttribute('opacity', i<f?1:0); });
+    var p={p1:1,p2:2,p3:3,p4:4}[id];
+    if(p!==undefined) obsNodes.forEach(function(g,i){ g.setAttribute('opacity', i<p?1:0); });
+  };
+})();
+</script>
+</body>
+</html>
