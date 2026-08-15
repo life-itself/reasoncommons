@@ -57,10 +57,11 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
   ```sh
   fl . --name reasoncommons-preview --yes
   ```
-  First run creates the site and prints its URL; later runs sync only changed
-  files, so keep reusing the same `--name` and the loop stays cheap: edit →
-  `fl .` → look → repeat, landing on `main` only once it's right. `fl list`
-  shows existing sites, `fl delete` removes one. Especially worth doing for
+  First run creates the site and prints its URL, and records the name in a
+  local `.flowershow` file (gitignored — each person gets their own preview).
+  After that plain `fl .` syncs only the changed files to the same site, so the
+  loop is cheap: edit → `fl .` → look → repeat, landing on `main` only once
+  it's right. `fl list` shows existing sites, `fl delete` removes one. Especially worth doing for
   anything that changes URLs or link structure.
 - Root docs are lowercase (`motivation.md`, `changelog.md`) so Flowershow gives them clean published URLs — except `README.md` and `AGENTS.md`, which keep their exact uppercase names because tooling (GitHub, Flowershow's homepage, Claude Code/Codex) looks them up by that literal filename.
 
