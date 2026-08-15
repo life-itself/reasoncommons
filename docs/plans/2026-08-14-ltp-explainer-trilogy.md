@@ -1,6 +1,6 @@
 ---
 created: 2026-08-14
-status: in-progress
+status: done
 owner: Rufus
 ---
 
@@ -12,7 +12,7 @@ a checkbox pipeline below, and a position marker for resumable (loop-mode) work.
 
 ## Position
 
-> **Currently on:** Stage 1 complete for Piece 1 — script v2 at `explainers/01-bottleneck/03-script-v2.md`, critique at `02-critique.md`. Next: stage 2, visual script. Prototype `index.html` predates the restructure and will be rebuilt from the stage-2 output.
+> **Done, 2026-08-15.** All three pieces shipped in both markdown and HTML forms — see [`CHANGELOG.md`](../../CHANGELOG.md). Open questions and next steps now live in [`explainers/NEXT.md`](../../explainers/NEXT.md) and [issue #6](https://github.com/life-itself/reasoncommons/issues/6).
 
 
 

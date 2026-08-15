@@ -4,7 +4,7 @@
 
 Primary analysis scope: the five supplied files under `docs/ltp_trees/`, treated as one provisional Second Renaissance causal model.
 
-Supporting implementation scope: the Project LTP skill contract, model schema, local-dashboard source, server, tests, fixture, `README.md`, `MOTIVATION.md`, and `PLAN.md`. These files determine how the supplied trees are normalized and rendered; they are not evidence that the Second Renaissance group behaves as described.
+Supporting implementation scope: the Project LTP skill contract, model schema, local-dashboard source, server, tests, fixture, `README.md`, and `MOTIVATION.md`. These files determine how the supplied trees are normalized and rendered; they are not evidence that the Second Renaissance group behaves as described.
 
 Analysis mode: reconciliation. The documents already contain a Goal Tree, Current Reality Tree, conflict diagrams, Future Reality Tree, and Prerequisite Tree. This run reconciles them into one stable-ID model and infers the missing Transition Tree.
 

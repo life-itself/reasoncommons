@@ -1,11 +1,11 @@
 {
-  "title": "Issue Trees & Logical Thinking Process",
+  "title": "Reason Commons — Issue Trees & Logical Thinking Process",
   "analytics": "G-VWH8D9GCYV",
   "theme": "lessflowery",
   "favicon": "🌳",
   "logo": "🌳",
   "nav": {
-    "title": "Issue Trees & Logical Thinking Process",
+    "title": "Reason Commons",
     "links": [
       {
         "name": "Goal Aligner",
@@ -43,7 +43,7 @@
   "social": [
     {
       "label": "github",
-      "href": "https://github.com/life-itself/logical-thought-process-issue-trees-app"
+      "href": "https://github.com/life-itself/reasoncommons"
     }
   ],
   "showEditLink": true

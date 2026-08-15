@@ -5,7 +5,7 @@ description: Generate a claim tree (structured decomposition of a top-level clai
 
 # tree-gen — claim tree generation
 
-Decompose a top-level **claim or question** into a hierarchical tree of sub-claims / sub-questions and emit it as canonical JSON (schema below). This is Stream 1a of the LTP / Issue Tree app — see `../../PLAN.md`.
+Decompose a top-level **claim or question** into a hierarchical tree of sub-claims / sub-questions and emit it as canonical JSON (schema below). This is Stream 1a of the LTP / Issue Tree app.
 
 **Structure only.** The tree carries no scoring, no evidence, no attribution — those are added later by annotation-mapping (Stream 1b). Keep nodes to the decomposition itself.
 

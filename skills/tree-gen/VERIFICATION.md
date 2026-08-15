@@ -18,6 +18,6 @@ Mechanical checks (python): valid JSON, unique kebab-case ids, root id `q-root`,
 
 ## Verdict
 
-**Pass** by the PLAN.md criterion — the generated tree covers all four gold major sub-questions (for whom / what tasks / what horizon / what conditions) with equivalent leaf distinctions. One extra branch (`measure`) beyond gold; acceptable per SKILL.md ("rephrasing is fine — coverage of the major distinctions is what matters").
+**Pass** — the generated tree covers all four gold major sub-questions (for whom / what tasks / what horizon / what conditions) with equivalent leaf distinctions. One extra branch (`measure`) beyond gold; acceptable per SKILL.md ("rephrasing is fine — coverage of the major distinctions is what matters").
 
 Still to do per SKILL.md: try one *new* claim to check generalisation.

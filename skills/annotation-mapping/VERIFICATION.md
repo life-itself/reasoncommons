@@ -22,6 +22,6 @@ Mechanical checks (python): every `nodeId` exists in the tree, every `relation` 
 
 ## Verdict
 
-**Pass** by the PLAN.md criterion — each of the 3 gold fragments lands on the correct node with the gold relation (5/5 (passage, node) pairs matched).
+**Pass** — each of the 3 gold fragments lands on the correct node with the gold relation (5/5 (passage, node) pairs matched).
 
 Still to do per SKILL.md: try one *new* doc against the same tree to check generalisation.

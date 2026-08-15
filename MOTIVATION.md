@@ -10,7 +10,7 @@ Rufus's thread: issue trees / SCQH / Minto pyramids — wanted this tool for 10+
 
 ## Problem framing (SCQH per active stream)
 
-We use **SCQH** — Situation, Complication, Question, Hypothesis — to sharpen each stream into a crisp problem statement. Stream definitions and the plan of work live in [PLAN.md](PLAN.md).
+We use **SCQH** — Situation, Complication, Question, Hypothesis — to sharpen each stream into a crisp problem statement. Planning (streams, next actions) now happens in [GitHub issues](https://github.com/life-itself/reasoncommons/issues).
 
 ### Stream 1 — Product / prototype
 - **S** — Static demo makes the vision resonate; the process is well specified.

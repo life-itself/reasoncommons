@@ -906,7 +906,7 @@ evidence:
     observation: The key dependency chain starts with update governance and provisional validation, then moves through throughput, entry, practice, stewardship, pockets, documentation, and replication; a Transition Tree is explicitly missing.
     interpretation: The first executable transition should establish a trusted provisional model before downstream implementation.
   - id: EVD-19
-    source: PLAN.md
+    source: PLAN.md (removed 2026-08-15; planning moved to GitHub issues — see git history for the file as of 2026-07-24)
     lines: "29-58"
     observation: The repository dashboard is implemented on a toy fixture and is intended to be checked on a new model.
     interpretation: This normalization is also the first documented non-toy dashboard use in the repository.

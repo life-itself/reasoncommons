@@ -12,7 +12,7 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
 |------|------|
 | Project overview + references | `README.md` |
 | Why this matters + problem framing (SCQH) | `MOTIVATION.md` |
-| Plan of work — streams, next actions, verification | `PLAN.md` |
+| Planning — streams, next actions | [GitHub issues](https://github.com/life-itself/reasoncommons/issues) |
 | Process spec + **gold-standard toy fixture** (tree, doc, annotations) | `claim-tree-annotation.md` |
 | Static animated demo of the 4-step vision | `claim-tree-annotation-demo/` |
 | AI skills (tree-gen, annotation-mapping, project-ltp) | `skills/` (see `skills/README.md`) |
@@ -35,4 +35,4 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
   description trigger it automatically. Restart Codex if a newly added skill
   does not appear in the Skills sidebar.
 - **Toy example first.** Validate any AI skill against the gold data in `claim-tree-annotation.md` before touching real applications (e.g. Second Renaissance).
-- Keep `MOTIVATION.md` (why + SCQH) and `PLAN.md` (plan of work) current; both are referenced from `README.md`.
+- Keep `MOTIVATION.md` (why + SCQH) current; it's referenced from `README.md`. Plan-of-work tracking (streams, next actions) lives in GitHub issues, not a repo file.

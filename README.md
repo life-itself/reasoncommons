@@ -3,7 +3,9 @@ created: 2026-06-06
 status: in-progress
 ---
 
-# Logical Thinking Process (LTP) / Issue Tree App and Exploration
+# Reason Commons
+
+*Logical Thinking Process (LTP) / Issue Tree tooling — see [docs/brand-and-domain-naming.md](docs/brand-and-domain-naming.md) for the naming decision.*
 
 Collaboration of Rufus Pollock with David Joseph to build tooling for structured thinking — specifically a Logical Thinking Process (LTP) / Issue Tree app. Both David and Rufus share a long-standing desire to improve public discourse and improve collaboration: aligning efforts to goals, making claims or hypotheses and their logical structure clearer (claim-trees), allowing debate to accumulate, mapping evidence clearly to specific sub-claims.
 
@@ -24,7 +26,7 @@ Collaboration of Rufus Pollock with David Joseph to build tooling for structured
   </a>
 </div>
 
-**Key docs:** [MOTIVATION.md](MOTIVATION.md) — why this matters + problem framing (SCQH) · [PLAN.md](PLAN.md) — plan of work, streams, next actions · [AGENTS.md](AGENTS.md) — guide for AI agents.
+**Key docs:** [MOTIVATION.md](MOTIVATION.md) — why this matters + problem framing (SCQH) · [AGENTS.md](AGENTS.md) — guide for AI agents. Planning (streams, next actions) now happens in [GitHub issues](https://github.com/life-itself/reasoncommons/issues).
 
 ## Use Project LTP with Codex
 
@@ -35,8 +37,9 @@ through `.agents/skills/project-ltp`. Open the repository in Codex, then either:
 - mention it in a prompt, for example:
 
   ```text
-  Use $project-ltp to reconcile this repository with PLAN.md, recommend the
-  single highest-leverage next action, and open the local dashboard.
+  Use $project-ltp to reconcile this repository with its open GitHub issues,
+  recommend the single highest-leverage next action, and open the local
+  dashboard.
   ```
 
 Codex may also select the skill automatically for requests about LTP trees,

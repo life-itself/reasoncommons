@@ -19,8 +19,7 @@ not as an accepted alignment.
 
 It also runs on a synthetic toy tree, not a real person's actual notes
 repo — per this project's own convention of validating a new skill against
-a toy example before pointing it at real data (`PLAN.md`, "Decisions
-locked"). The individual model was hand-authored to include one
+a toy example before pointing it at real data. The individual model was hand-authored to include one
 deliberately unrelated action (`ACT-5`, a routine CRDT-library PR) as a
 control case.
 

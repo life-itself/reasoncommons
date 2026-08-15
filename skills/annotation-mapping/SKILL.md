@@ -5,7 +5,7 @@ description: Map fragments of a source document onto the nodes of an existing cl
 
 # annotation-mapping — map a source doc onto a claim tree
 
-Given a **claim tree** (canonical JSON from `tree-gen`) and a **source document**, extract the passages of the document that bear on specific nodes, and emit them as annotations: each a verbatim quote, the node it lands on, a relation label, and a note. This is Stream 1b of the LTP / Issue Tree app — see `../../PLAN.md`.
+Given a **claim tree** (canonical JSON from `tree-gen`) and a **source document**, extract the passages of the document that bear on specific nodes, and emit them as annotations: each a verbatim quote, the node it lands on, a relation label, and a note. This is Stream 1b of the LTP / Issue Tree app.
 
 The tree is the **stable scaffold**; the document is incoming world. AI proposes the mapping; a human confirms/corrects.
 
