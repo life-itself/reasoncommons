@@ -21,6 +21,7 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
 
 ## Conventions
 
+- **Never line-wrap Markdown.** One paragraph is one line, however long. This holds everywhere — files in this repo, GitHub issue and PR bodies, and comments. Hard-wrapped prose makes diffs useless (change three words and the whole paragraph re-flows), makes editing in a browser textarea miserable, and buys nothing: every renderer and editor soft-wraps already. Wrap only where the line break is content — list items, table rows, code blocks, and deliberate `<br>`-style breaks in verse or address blocks. If you are reflowing a paragraph you are about to edit anyway, unwrap it; do not reflow whole files just to convert them, because that buries the real change.
 - **Skills** live in top-level `skills/<name>/` so they're usable outside Claude Code (e.g. Codex). `.claude/` is gitignored (local-only, see `.gitignore`), so to let Claude Code discover them, wire the symlinks locally:
   ```sh
   mkdir -p .claude/skills
