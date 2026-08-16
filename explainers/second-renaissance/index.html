@@ -45,7 +45,7 @@
     <div class="step tl" data-step="a1"><p>Call her Maren. Eleven years on a smallholding in Devon, and she reads more theory than most of the people who write it.</p></div>
     <div class="step tl" data-step="a2"><p>She joins the Second Renaissance forum and posts one paragraph: all of this floats free of any actual place, and none of it survives a bad harvest.</p></div>
     <div class="step tl" data-step="a3"><p>Nine people reply. It is a genuinely good conversation.</p></div>
-    <div class="step mid plain big" data-step="a4"><p><strong>A year later, not one sentence of it has changed what the project believes.</strong></p></div>
+    <div class="step tl" data-step="a4"><p><strong>A year later, not one sentence of it has changed what the project believes.</strong></p></div>
   </div></div>
   <div class="trigger" data-t="a1"></div><div class="trigger" data-t="a2"></div>
   <div class="trigger" data-t="a3"></div><div class="trigger" data-t="a4"></div>
@@ -389,24 +389,44 @@
     return {s:s,gx:gx,gy:gy,gw:gw,gh:gh,cw:cw,ch:ch,pos:pos,
             gcx:gx+gw/2, gby:gy+gh};
   }
-  /* boxes only */
-  function mapBoxes(g,m,t,words){
-    box(g,m.gx,m.gy,m.gw,m.gh,'a Second Renaissance|that is more than an idea',t||'ink',
-        (P?11:12.5)*m.s);
+  /* boxes only. `mute` drops the goal's words — for the thumbnail versions,
+     where 12.5px of type scaled to a third reads as a defect rather than a label */
+  function mapBoxes(g,m,t,words,mute){
+    box(g,m.gx,m.gy,m.gw,m.gh,mute?'':'a Second Renaissance|that is more than an idea',
+        t||'ink',(P?11:12.5)*m.s);
     m.pos.forEach(function(p,i){
       var lbl = words&&COND[i] ? COND[i] : '';
       box(g,p[0],p[1],m.cw,m.ch,lbl,t||'soft',(P?9:9.5)*m.s);
     });
   }
-  /* the arrows, which are claims too */
+  /* The arrows, which are claims too. Landscape fans them into distinct points
+     along the goal's lower edge — converging on one point makes a smudge of
+     eight arrowheads. Portrait can't fan at all without drawing lines straight
+     through the boxes, so it carries the relationship on a spine instead. */
+  function mapArrowPath(m,i){
+    var p=m.pos[i];
+    if(P){
+      /* box → spine: the arrow has to point the way the claim points */
+      var y=p[1]+m.ch/2, inner=(i%2)?p[0]:p[0]+m.cw;
+      return 'M'+inner+' '+y+' L'+m.gcx+' '+y;
+    }
+    return 'M'+(p[0]+m.cw/2)+' '+p[1]+' L'+(m.gx+m.gw*(0.12+0.76*(i/7)))+' '+(m.gby+4);
+  }
   function mapArrows(g,m,t,label){
-    m.pos.forEach(function(p){
-      link(g,'M'+(p[0]+m.cw/2)+' '+p[1]+' L'+m.gcx+' '+(m.gby+4),t||'faint');
-    });
+    if(P){
+      var foot=m.pos[m.pos.length-1][1]+m.ch/2;
+      line(g,'M'+m.gcx+' '+(m.gby+4)+' L'+m.gcx+' '+foot,'faint',1.8);
+    }
+    m.pos.forEach(function(p,i){ link(g,mapArrowPath(m,i),t||'faint'); });
     if(label){
-      var p=m.pos[P?1:5];
-      txt(g,p[0]+m.cw/2+(P?6:34),(p[1]+m.gby)/2,'is necessary for',
-          (P?9.5:10.5)*m.s,'var(--ink-faint)',P?'start':'start',1.2);
+      var p=m.pos[P?5:6], tx=m.gx+m.gw*(0.12+0.76*((P?5:6)/7));
+      var lx=P?(p[0]+m.cw+10):((p[0]+m.cw/2+tx)/2+30);
+      var ly=P?(p[1]+m.ch/2-12):((p[1]+m.gby)/2-6);
+      var fs=(P?9.5:10.5)*m.s;
+      /* on its own patch of paper, or the arrow it names runs through it */
+      g.appendChild(el('rect',{x:lx-4,y:ly-fs,width:fs*9,height:fs*1.6,
+        fill:'var(--paper)'}));
+      txt(g,lx,ly,'is necessary for',fs,'var(--ink-faint)','start',1.2);
     }
   }
 
@@ -420,7 +440,7 @@
     var cm=document.getElementById('cardmark');
     var rp=document.getElementById('replies');
     var cg=document.getElementById('cardgone');
-    var X=P?86:400, W=P?300:340, CX=X+W/2;
+    var X=P?86:440, W=P?300:340, CX=X+W/2;
     var DATES=['MAR 3','MAR 9','MAR 14'];
 
     /* the thread: bars filed by date, before and after her post */
@@ -472,7 +492,7 @@
     txt(tl,AT[0],BASE+(P?52:62),'the weekly circle',P?10:11,'var(--ink-faint)');
     txt(tl,AT[2],BASE+(P?52:62),'Maren',P?10:11,'var(--ink-faint)');
 
-    var CW=P?150:210, CH=P?58:62;
+    var CW=P?150:210, CH=P?70:78;
     AT.forEach(function(x,k){
       var g=G[k], w=(X1-X0)*0.16;
       line(g,'M'+(x-w)+' '+BASE+' L'+x+' '+(TOP+CH+8)+
@@ -513,7 +533,9 @@
       }
       g.appendChild(el('path',{d:d,stroke:tone(t),'stroke-width':2.8,fill:'none',
         filter:'url(#rough2)'}));
-      txt(g,T.X0+(P?4:8),T.BASE-(P?96:120),'what a person takes away',P?10.5:12,tone(t),'start');
+      /* above the drawing, not beside it: every gap at mid-height is crossed by
+         a tooth, and a label sitting in one reads as part of the chart */
+      txt(g,T.X0+(P?4:8),T.TOP-(P?18:22),'what a person takes away',P?10.5:12,tone(t),'start');
     }
     stairs(st,'ink'); stairs(sf,'faint');
   })();
@@ -529,7 +551,7 @@
     var DATES=['MAR 3','MAR 9','MAR 14','APR 2','APR 8'];
 
     /* left: the thread, filed by date */
-    var CX0=P?96:110, CW=P?250:230, CY0=P?70:150;
+    var CX0=P?96:110, CW=P?250:230, CY0=P?56:150;
     DATES.forEach(function(d,i){
       co.appendChild(el('rect',{x:CX0,y:CY0+i*42,width:CW*(0.7+(i%3)*0.15),height:22,
         fill:'none',stroke:'var(--ink-faint)','stroke-width':2,filter:'url(#rough2)'}));
@@ -538,7 +560,7 @@
     txt(co,CX0+CW/2,CY0-(P?18:24),'THE THREAD · BY DATE',P?9:10,'var(--ink-faint)','middle',1.5);
 
     /* right: a page of prose, with one claim inside it */
-    var PX=P?96:620, PY=P?430:120, PW=P?250:300, PH=P?200:400;
+    var PX=P?96:620, PY=P?466:120, PW=P?250:300, PH=P?190:400;
     pg.appendChild(el('rect',{x:PX,y:PY,width:PW,height:PH,fill:'var(--paper-2)',
       stroke:'var(--ink)','stroke-width':2.4,filter:'url(#rough)'}));
     var rows=Math.floor((PH-40)/(P?18:22));
@@ -554,13 +576,13 @@
     txt(cl,PX+PW/2,PY+PH+(P?24:30),'a claim, with nothing to point at',P?10.5:11.5,'var(--mark)');
 
     /* her card, stranded between them */
-    var SX=P?96:400, SY=P?250:300, SW=P?250:190, SH=P?76:74;
+    var SX=P?96:400, SY=P?296:300, SW=P?250:190, SH=P?76:74;
     card(sd,SX,SY,SW,SH,CARD,'ink',P?10.5:11);
 
     /* two pointers that arrive nowhere */
     if(P){
-      line(m1,'M'+(SX+SW/2)+' '+SY+' L'+(SX+SW/2)+' '+(CY0+5*42+16),'faint',2,'5 6');
-      line(m2,'M'+(SX+SW/2)+' '+(SY+SH)+' L'+(SX+SW/2)+' '+(PY-8),'faint',2,'5 6');
+      line(m1,'M'+(SX+SW/2)+' '+SY+' L'+(SX+SW/2)+' '+(CY0+4*42+30),'faint',2,'5 6');
+      line(m2,'M'+(SX+SW/2)+' '+(SY+SH)+' L'+(SX+SW/2)+' '+(PY-42),'faint',2,'5 6');
     } else {
       line(m1,'M'+SX+' '+(SY+SH/2)+' L'+(CX0+CW+30)+' '+(SY+SH/2),'faint',2,'5 6');
       line(m2,'M'+(SX+SW)+' '+(SY+SH/2)+' L'+(PX-30)+' '+(SY+SH/2),'faint',2,'5 6');
@@ -569,7 +591,7 @@
       line(g,'M'+(x-8)+' '+(y-8)+' L'+(x+8)+' '+(y+8)+
             ' M'+(x+8)+' '+(y-8)+' L'+(x-8)+' '+(y+8),'faint',2.4);
     }
-    if(P){ cross(m1,SX+SW/2,CY0+5*42+26); cross(m2,SX+SW/2,PY-18); }
+    if(P){ cross(m1,SX+SW/2,CY0+4*42+40); cross(m2,SX+SW/2,PY-52); }
     else  { cross(m1,CX0+CW+20,SY+SH/2);  cross(m2,PX-20,SY+SH/2); }
   })();
 
@@ -592,7 +614,7 @@
           stroke:'var(--ink-faint)','stroke-width':1.6}));
         txt(fs,53+i*74,(P?600:0)+27,t,7.5,'var(--ink-faint)','middle',1);
       } else {
-        var X=110+i*160, Y=200+(i%2?18:0);
+        var X=110+i*160, Y=160+(i%2?18:0);
         fb.appendChild(el('rect',{x:X,y:Y,width:140,height:200,fill:'var(--paper-2)',
           stroke:'var(--ink-soft)','stroke-width':2,filter:'url(#rough2)'}));
         txt(fb,X+70,Y+108,t,12,'var(--ink-soft)','middle',1.4);
@@ -625,8 +647,9 @@
     line(at,'M'+cx+' '+cy+' L'+cx+' '+(p[1]+m.ch),'mark',2.2,'5 5');
 
     /* the one arrow she attacks — and the goal that leans on it */
-    line(sk,'M'+(p[0]+m.cw/2)+' '+p[1]+' L'+m.gcx+' '+(m.gby+4),'mark',3);
-    var mx=(p[0]+m.cw/2+m.gcx)/2, my=(p[1]+m.gby)/2;
+    var ap=mapArrowPath(m,MARKED).match(/-?[\d.]+/g);
+    line(sk,mapArrowPath(m,MARKED),'mark',3);
+    var mx=(+ap[0]+ +ap[2])/2, my=(+ap[1]+ +ap[3])/2;
     line(sk,'M'+(mx-14)+' '+(my-14)+' L'+(mx+14)+' '+(my+14)+
            ' M'+(mx+14)+' '+(my-14)+' L'+(mx-14)+' '+(my+14),'mark',3.2);
     box(sk,m.gx,m.gy,m.gw,m.gh,'a Second Renaissance|that is more than an idea','faint',P?11:12.5);
@@ -644,15 +667,17 @@
 
     person(ft,P?42:150,Y0+(P?42:50),P?0.9:1.15);
     line(ft,'M'+(P?20:130)+' '+Y0+' L'+(X0+2)+' '+Y0,'faint',1.6);
-    /* the map, at the top of the stairs and out of reach */
-    var m=mapGeom(P?0.38:0.42,P?(180):(700),P?(20):(60));
-    mapBoxes(ft,m,'soft',false); mapArrows(ft,m,'faint',false);
+    /* the map, at the top of the stairs and out of reach. A thumbnail: no words,
+       because at a third scale they render as smudges rather than labels. */
+    var m=mapGeom(P?0.34:0.34,P?(150):(650),P?(20):(40));
+    mapBoxes(ft,m,'soft',false,true); mapArrows(ft,m,'faint',false);
+    txt(ft,m.gcx,m.gy-(P?14:16),'THE MAP',P?9.5:10.5,'var(--ink-faint)','middle',1.5);
 
     RISERS.forEach(function(t,i){
       var g=(i<2?r12:r34), x=X0+i*W, y=Y0-(i+1)*H;
       g.appendChild(el('path',{d:'M'+x+' '+(y+H)+' L'+x+' '+y+' L'+(x+W)+' '+y,
         fill:'none',stroke:'var(--ink)','stroke-width':2.6,filter:'url(#rough2)'}));
-      txt(g,x+W/2,y-10,t,P?9:10.5,'var(--ink-soft)');
+      txt(g,x+W/2,y-10,t,P?8.5:10.5,'var(--ink-soft)');
       line(rm,'M'+x+' '+(y+H)+' L'+x+' '+y+' L'+(x+W)+' '+y,'mark',3);
     });
 
@@ -698,12 +723,13 @@
       box(O,60,265,220,140,'a group whose|thinking compounds|toward its goal','ink',13);
       link(O,'M340 162 L310 162 L310 311'); link(O,'M340 492 L310 492 L310 359');
       line(bo,'M805 204 L778 244 L818 268 L790 450','mark',3.2);
-      as.appendChild(el('rect',{x:340,y:257,width:340,height:100,fill:'none',stroke:'var(--mark)',
+      /* the box runs wider than its words so the crack has a margin to fall in */
+      as.appendChild(el('rect',{x:340,y:257,width:390,height:100,fill:'none',stroke:'var(--mark)',
         'stroke-width':2,'stroke-dasharray':'6 5',filter:'url(#rough2)'}));
-      txt(as,510,285,'THE ASSUMPTION',10,'var(--mark)','middle',1.5);
-      txt(as,510,313,'structure has to be added by the',12.5,'var(--mark)');
-      txt(as,510,335,'contributor, at the moment of contributing',12.5,'var(--mark)');
-      line(ck,'M356 263 L390 291 L358 305 L392 351','mark',3.4);
+      txt(as,552,285,'THE ASSUMPTION',10,'var(--mark)','middle',1.5);
+      txt(as,552,313,'structure has to be added by the',12.5,'var(--mark)');
+      txt(as,552,335,'contributor, at the moment of contributing',12.5,'var(--mark)');
+      line(ck,'M354 263 L386 291 L356 305 L388 351','mark',3.4);
     }
   })();
 
@@ -744,11 +770,13 @@
     ld.appendChild(el('rect',{x:p[0],y:p[1],width:m.cw,height:m.ch,fill:'var(--paper)',
       stroke:'var(--mark)','stroke-width':2.8,filter:'url(#rough2)'}));
     txt(ld,p[0]+m.cw/2,p[1]+m.ch/2+4,'her sentence',P?9:10,'var(--mark)');
+    /* the line back to the contributor — approaching from her left, so the
+       arrowhead does not land on top of her name */
     var px=LX+(P?26:44), py=YT+(P?60:66);
-    ld.appendChild(el('path',{d:'M'+p[0]+' '+(p[1]+m.ch/2)+' Q '+(LX-20)+' '+(p[1]+m.ch/2)+
-      ' '+px+' '+(py+(P?30:34)),stroke:'var(--mark)','stroke-width':2,
+    ld.appendChild(el('path',{d:'M'+p[0]+' '+(p[1]+m.ch/2)+' Q '+(LX-60)+' '+(p[1]+m.ch/2)+
+      ' '+(px-(P?18:24))+' '+(py-(P?4:6)),stroke:'var(--mark)','stroke-width':2,
       'stroke-dasharray':'6 5',fill:'none','marker-end':'url(#arm)'}));
-    txt(ld,px+(P?16:18),py+(P?128:142),'and watches it land',P?11:11,'var(--mark)','start');
+    txt(ld,px+(P?18:20),py+(P?66:142),'and watches it land',11,'var(--mark)','start');
   })();
 
   /* =============== S10 · BOTH DIRECTIONS =============== */

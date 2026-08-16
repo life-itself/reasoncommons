@@ -3,17 +3,24 @@
 Notable changes to this project. Not strictly [Keep a Changelog](https://keepachangelog.com/)
 format, but same spirit — human-readable, most recent first.
 
-## 2026-08-16 — Whose Map Is It
+## 2026-08-16 — Somewhere to Put It
 
-![Two rival definitions of throughput, drawn side by side at equal weight, with an empty dashed box above them where a way of choosing between them would be](changelog/images/2026-08-16-whose-map-is-it.png)
+![The map of the eight conditions, with one contributor's objection attached to a single condition and the arrow above it struck through](changelog/images/2026-08-16-somewhere-to-put-it.png)
 
 A fourth scrolling explainer, and the first that applies the method to a real
-problem rather than an invented clinic: the Second Renaissance sat down to define
-what counts as progress, could not, and discovered that its binding constraint was
-not its strategy but its inability to change its own mind. It is a sibling to the
-trilogy, not a part four — someone handed only this link, with no series behind
-them, still gets a complete read. Every diagram comes from the group's actual five
-trees.
+problem rather than an invented clinic. Somebody posts the best paragraph they
+have written in a year to the Second Renaissance forum, nine people reply, and a
+year later nothing they said has changed what the project believes — not for want
+of intelligence or goodwill, but because there is nowhere to put a good thought.
+The piece is the case for giving every claim in the project's strategy an address,
+and for letting a machine do the filing so that contributing costs one sentence
+rather than five diagrams. It is a sibling to the trilogy, not a part four —
+someone handed only this link, with no series behind them, still gets a complete
+read. Every diagram comes from the group's actual five trees.
+
+An earlier version of this piece, *Whose Map Is It*, retold a single internal
+argument about the word "throughput". It was replaced the same day: it assumed a
+reader already inside the trees, and never made the case a newcomer needed.
 
 ## 2026-08-16 — The explainer trilogy, finished
 
