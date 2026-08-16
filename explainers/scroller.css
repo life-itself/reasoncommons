@@ -90,6 +90,12 @@ body::before{
 .wrap{max-width:34rem;margin:0 auto}
 .flow p{font-size:1.1rem;line-height:1.62;margin:0 0 1.15em}
 .flow p:last-child{margin-bottom:0}
+.flow a{color:var(--ink);text-decoration-color:var(--mark);text-underline-offset:.18em}
+.flow a:hover{color:var(--mark)}
+/* A quoted voice, not a figure: a rule at the left rather than a box. Used by
+   the Second Renaissance piece, where the quotes are the evidence. */
+.flow blockquote{margin:0 0 1.3em;padding:.1em 0 .1em 1.2rem;
+  border-left:2px solid var(--mark);font-size:1.14rem;line-height:1.56}
 
 .kicker{font-family:var(--sans);text-transform:uppercase;letter-spacing:.14em;
         font-size:.72rem;color:var(--ink-faint);margin:0 0 2.2em !important}

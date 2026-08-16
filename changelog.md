@@ -3,6 +3,18 @@
 Notable changes to this project. Not strictly [Keep a Changelog](https://keepachangelog.com/)
 format, but same spirit — human-readable, most recent first.
 
+## 2026-08-16 — Whose Map Is It
+
+![Two rival definitions of throughput, drawn side by side at equal weight, with an empty dashed box above them where a way of choosing between them would be](changelog/images/2026-08-16-whose-map-is-it.png)
+
+A fourth scrolling explainer, and the first that applies the method to a real
+problem rather than an invented clinic: the Second Renaissance sat down to define
+what counts as progress, could not, and discovered that its binding constraint was
+not its strategy but its inability to change its own mind. It is a sibling to the
+trilogy, not a part four — someone handed only this link, with no series behind
+them, still gets a complete read. Every diagram comes from the group's actual five
+trees.
+
 ## 2026-08-16 — The explainer trilogy, finished
 
 ![Five Shapes read on a phone: the obstacles and what gets past each one, stacked and legible](changelog/images/2026-08-16-trilogy-polish.png)

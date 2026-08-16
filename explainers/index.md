@@ -42,4 +42,15 @@ his own tools.
 
 ---
 
+## The method on a real problem
+
+### [Whose Map Is It](second-renaissance/index.html)
+
+A sibling to the trilogy rather than a fourth part, and readable entirely on its
+own. A movement sat down to define what counts as progress, could not, and found
+in failing that its real constraint was not its strategy but its inability to
+change its own mind. Every diagram in it comes from that group's actual analysis.
+
+---
+
 Then: [see it working — the claim-tree annotation demo →](../claim-tree-annotation-demo/index.html)
