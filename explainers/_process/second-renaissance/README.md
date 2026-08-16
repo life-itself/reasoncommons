@@ -30,14 +30,14 @@ piece, and its material may yet become one (see `NEXT.md`).
 | `02-critique.md` | the adversarial read of it |
 | `03-script-v2.md` | stage 1, final |
 | `04-visual-script.md` | stage 2 |
-| built | `whose-map-is-it.html` — the page exactly as it shipped, restored from `e45a2bb^` |
+| built | [`../../whose-map-is-it/index.html`](../../whose-map-is-it/index.html) — live, as the deeper cut |
 
-`whose-map-is-it.html` is the real thing and still works: open it from the
-filesystem and it renders and scrolls. Its asset paths were repointed one level up
-(`../../scroller.css`) to survive the move into `_process/`; nothing else changed.
-It is **not published** — `_process/` is in `config.json` > `contentExclude` — so it
-has no URL on reasoncommons.com. To give it one, copy it back out to
-`explainers/<slug>/index.html` and restore the original single-`../` paths.
+The built page is **published**, at `explainers/whose-map-is-it/`, and linked from
+the series index and from *Somewhere to Put It* as the more advanced telling of the
+same subject. It is the page as it shipped, recovered from `e45a2bb^`; the only
+changes are wayfinding — the dek and the series nav now say what it is and point at
+the accessible version — and nothing in the argument or the drawings was touched.
 
-It contains condensed quotes from real forum posts by Robert and David, who have
-**not** seen it. That is the reason to think before giving it a public URL.
+It contains condensed quotes from real forum posts by **Robert and David, who have
+not seen it**. That is still open in `NEXT.md`. It is now at a public URL, so the
+conversation with them is more urgent, not less.

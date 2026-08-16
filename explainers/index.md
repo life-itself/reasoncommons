@@ -49,8 +49,16 @@ his own tools.
 A sibling to the trilogy rather than a fourth part, and readable entirely on its
 own. Somebody posts the best paragraph they have written in a year to the Second
 Renaissance forum, and a year later not one sentence of it has changed what the
-project believes. Not for want of goodwill — for want of anywhere to put a good
+movement believes. Not for want of goodwill — for want of anywhere to put a good
 thought. Every diagram in it comes from that group's actual analysis.
+
+### [Whose Map Is It](whose-map-is-it/index.html) · the deeper cut
+
+The same subject taken further, for a reader who already knows what the trees are.
+The movement sat down to define what counts as progress, could not, and found in
+failing that its real constraint was not its strategy but its inability to change
+its own mind. Written first, and superseded as the way in — it opens on an argument
+about a word — but it goes somewhere the accessible version deliberately does not.
 
 ---
 

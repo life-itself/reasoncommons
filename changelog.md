@@ -19,8 +19,11 @@ someone handed only this link, with no series behind them, still gets a complete
 read. Every diagram comes from the group's actual five trees.
 
 An earlier version of this piece, *Whose Map Is It*, retold a single internal
-argument about the word "throughput". It was replaced the same day: it assumed a
-reader already inside the trees, and never made the case a newcomer needed.
+argument about the word "throughput". It was replaced as the way in — it assumed a
+reader already inside the trees — but it goes somewhere the accessible version
+deliberately does not, so it now stands on its own at
+[`explainers/whose-map-is-it/`](explainers/whose-map-is-it/index.html) as the
+deeper cut, linked from the series index and from *Somewhere to Put It*.
 
 All four explainers also had their running text reset — larger, at the size of the
 annotations inside the drawings rather than a size below them, and in Literata, so
