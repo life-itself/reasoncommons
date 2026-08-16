@@ -17,9 +17,20 @@ three stage files in `explainers/_process/second-renaissance/`. What shipped is 
 
 ## Open — Whose Map Is It
 
-**Read it end to end and decide whether to hand it to anyone.** It was written to
-be given to someone inside the Second Renaissance, and it quotes Robert and David
-at length from the forum. Nobody outside this repo has seen it. Two things first:
+**The narrative is being rewritten from a plan — see
+[#9](https://github.com/life-itself/reasoncommons/issues/9), which points at
+[`docs/plans/2026-08-16-second-renaissance-narrative.md`](docs/plans/2026-08-16-second-renaissance-narrative.md).**
+The built page follows `story/draft.md`'s "define throughput" episode too closely: too
+technical too fast for a cold reader, and the hook is inward-facing (an argument about
+a word) rather than the real one. The plan works out the replacement brief in full —
+one thesis (why LTP matters to Second Renaissance), answered two ways: a structured,
+evolving theory of change the group can actually align around, and forum discourse
+that accumulates instead of repeating. Don't extend `03-script-v2.md` — the rewrite
+starts from a blank page, per the plan.
+
+The current page is a first pass superseded by that decision, not yet ready to hand to
+anyone. Its own open questions, if the new narrative still draws on the same forum
+exchange:
 
 1. **The quotes.** Condensed from real posts. Robert and David should see it
    before an SR-wide link does — the piece is *about* not changing a shared map
