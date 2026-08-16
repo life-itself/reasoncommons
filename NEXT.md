@@ -29,11 +29,14 @@ kept for the record. What shipped is in [`changelog.md`](changelog.md).
    clearance — nothing in it is quoted — but because it makes a public argument about
    how the group should change its mind, and springing that on people would be a poor
    opening move for a piece about not acting unilaterally.
-3. **The deeper "define throughput" piece is unscheduled.** The real June episode
-   (Robert, David, the two rival definitions) is out of scope here by design, and is
-   still a candidate for a separate, more advanced piece. If it is ever written, the
-   quotes are condensed from real posts and **Robert and David need to see it first**.
-   That open item now belongs to that hypothetical piece, not to this one.
+3. **Robert and David have not seen *Whose Map Is It*, and it is now live.** The
+   first pass at this material — the real June episode, the two rival definitions —
+   is published at `explainers/whose-map-is-it/` as the deeper cut, linked from the
+   series index and from *Somewhere to Put It*. It condenses quotes from their actual
+   forum posts. **This is the most pressing open item on the page**, and it got more
+   pressing when the piece acquired a URL: show it to them. If they object to being
+   quoted, the fix is small — unpublish or paraphrase — but it should not wait for
+   them to find it.
 
 **The fate of `story/`.** #7 said shipping this piece supersedes `story/draft.md` —
 same material, better form. The rewrite has moved further away from `story/draft.md`
