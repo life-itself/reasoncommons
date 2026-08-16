@@ -42,12 +42,6 @@ exchange:
 **The fate of `story/`.** #7 said shipping this piece supersedes
 `story/draft.md` — same material, better form. Now live, still undecided.
 
-## Carried over
-
-- **Read part one cold**, as a reader rather than an author, to check the prose
-  still lands. `explainers/_process/01-bottleneck/article.md` is the final prose.
-  This one is Rufus's, not an agent's.
-
 ## Worth knowing for any further work on these pages
 
 They are checked by driving them in a real browser at 1280×800 and 390×844,
@@ -56,8 +50,3 @@ wrong — captions covering the thing they pointed at, boxes running off the edg
 their own drawing, a whole stage letterboxed into the middle third of the frame —
 was invisible from the source. Do the same before calling any change finished.
 
-## Not started
-
-- The update protocol itself — the thing the explainer ends by asking for.
-- Applying `skills/tree-gen` and `skills/annotation-mapping` to the real SR trees,
-  which the toy fixture in `claim-tree-annotation.md` was validating for.
