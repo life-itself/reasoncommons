@@ -43,6 +43,16 @@ looking at the result. Most of what was wrong — captions covering the thing th
 pointed at, boxes running off the edge of their own drawing — was invisible from
 the source. Do the same before calling any change to them finished.
 
+## Carried over from #6
+
+Two things that were never build work and outlived the issue:
+
+- **Read part one cold**, as a reader rather than an author, to check the prose
+  still lands. `explainers/_process/01-bottleneck/article.md` is the final
+  prose. This one is Rufus's, not an agent's.
+- **The fate of `story/`.** Left in place. #7 supersedes `story/draft.md`, so
+  decide it there rather than here.
+
 ## Sequencing
 
 **#7 stage 3 is now unblocked** — the token work has landed, so a new piece
