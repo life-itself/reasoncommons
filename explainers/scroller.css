@@ -4,15 +4,36 @@
    Pinned stages via CSS position:sticky. No scrolljacking.
    ============================================================ */
 
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&display=swap');
+
+/* Colour and the sans face come from the Organic design system that the rest
+   of the site runs on — the styles.css under story/_ds/organic-… . Its tokens
+   are restated here rather than imported, because these pages are standalone
+   and don't pull in the system's stylesheet; the values below are copied from
+   it, and the names beneath them are what the drawings actually use.
+
+   The serif is deliberately not the system's display face. The register for
+   this series was settled as hand-drawn-on-paper, which wants a book serif for
+   running text; Caprasimo is a poster face and fights it. */
 :root{
-  --paper:#efe9dd;
-  --paper-2:#e6dfd0;
-  --ink:#22201d;
-  --ink-soft:#6b6459;
-  --ink-faint:#a89f91;
-  --mark:#c25c34;            /* the constraint / the thing at issue */
-  --mark-2:#7a8a5e;
-  --hl:rgba(228,212,201,.85); /* text highlight block */
+  --color-bg:#f5ead8;
+  --color-surface:#ebddc5;
+  --color-text:#201e1d;
+  --color-accent:#c67139;
+  --color-accent-2:#7a8a5e;
+  --color-accent-200:#ffe1d0;
+  --color-neutral-500:#a19786;
+  --color-neutral-700:#645c50;
+
+  --paper:var(--color-bg);
+  --paper-2:var(--color-surface);
+  --ink:var(--color-text);
+  --ink-soft:var(--color-neutral-700);
+  --ink-faint:var(--color-neutral-500);
+  --mark:var(--color-accent);  /* the constraint / the thing at issue */
+  --mark-2:var(--color-accent-2);
+  /* text highlight block: the accent's lightest tint, dropped onto the paper */
+  --hl:color-mix(in srgb, var(--color-accent-200) 62%, var(--color-surface));
   --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
   --sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
@@ -54,6 +75,13 @@ body::before{
 .step.lead{left:8vw;top:34vh}
 .step.tl{left:8vw;top:14vh}   .step.tr{right:8vw;top:14vh}
 .step.bl{left:8vw;bottom:16vh} .step.br{right:8vw;bottom:16vh}
+/* Vertically centred in the side gutter, and centred at the top or foot of the
+   frame. Between them, every drawing has somewhere to put a caption that isn't
+   on top of the thing the caption is about. */
+.step.cl{left:8vw;top:50%;transform:translateY(-50%)}
+.step.cr{right:8vw;top:50%;transform:translateY(-50%)}
+.step.tc{left:50%;top:7vh;transform:translateX(-50%);text-align:center;max-width:32rem}
+.step.bc{left:50%;bottom:7vh;transform:translateX(-50%);text-align:center;max-width:32rem}
 .step.mid{left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;max-width:34rem}
 .step.big p{font-size:clamp(1.7rem,4.2vw,2.9rem);line-height:1.14}
 
@@ -106,12 +134,18 @@ body::before{
   /* In portrait the drawing needs the upper area; captions go to the foot
      of the screen and get an opaque ground so nothing shows through. */
   .step.lead{left:6vw;right:auto;top:auto;bottom:8vh}
-  .step.tl,.step.tr,.step.bl,.step.br{left:6vw;right:auto;top:auto;bottom:6vh}
+  .step.tl,.step.tr,.step.bl,.step.br,
+  .step.cl,.step.cr,.step.tc,.step.bc{
+    left:6vw;right:auto;top:auto;bottom:6vh;transform:none;text-align:left;
+    max-width:min(88vw,22rem)}
   .step p{background:var(--paper-2)}
-  .step.mid{bottom:auto;top:50%}
-  /* Wide diagrams shrink to a ribbon in portrait. Where a drawing has a
-     portrait variant (see data-portrait-viewbox), the page swaps its
-     viewBox and re-lays it out; the rest simply centre. */
+  /* The full-screen statement steps stay centred horizontally but drop below
+     the drawing band; dead centre put them straight across the drawing. */
+  .step.mid{top:auto;bottom:24vh;transform:translateX(-50%)}
+  /* Wide diagrams shrink to an unreadable ribbon in portrait, because a
+     drawing 800 units across is squeezed into 390px and its 13px labels come
+     out at 6px. scroller.js re-fits each stage's viewBox to its own content
+     and parks it in the upper band, clear of the caption at the foot. */
   .stage{padding:0 3vw}
   .flow{padding:10vh 1.25rem}
   .sources{padding:9vh 1.25rem}

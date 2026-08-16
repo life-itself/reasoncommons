@@ -122,7 +122,9 @@
     <svg viewBox="55 115 910 300" role="img" aria-label="Placing one new hire at each station in turn; output stays at twenty until the doctor.">
       <g filter="url(#rough)"><g id="hboxes" stroke="var(--ink)" stroke-width="2.6" fill="none"></g></g>
       <g id="hnames" font-family="var(--sans)" font-size="11.5" text-anchor="middle" fill="var(--ink-soft)" letter-spacing="1.2"></g>
-      <g id="hire" filter="url(#rough)" stroke="var(--mark)" stroke-width="2.6" fill="none" opacity="0">
+      <!-- parked over check-in rather than at the origin, where its bounding
+           box hung off the top-left corner of the drawing -->
+      <g id="hire" filter="url(#rough)" stroke="var(--mark)" stroke-width="2.6" fill="none" opacity="0" transform="translate(165,150)">
         <circle cx="0" cy="0" r="10"/><path d="M-10 26c0-13 20-13 20 0"/>
       </g>
       <text id="hout" x="895" y="290" text-anchor="middle" font-family="var(--sans)" font-size="70" font-weight="700" fill="var(--mark)">20</text>
@@ -212,7 +214,7 @@
     <svg viewBox="55 115 910 300" role="img" aria-label="As each station is improved, the constraint moves along the line and eventually outside the clinic.">
       <g filter="url(#rough)"><g id="mboxes" stroke="var(--ink)" stroke-width="2.6" fill="none"></g></g>
       <g id="mnames" font-family="var(--sans)" font-size="11.5" text-anchor="middle" fill="var(--ink-soft)" letter-spacing="1.2"></g>
-      <g class="layer" data-layer="m4" filter="url(#rough)">
+      <g class="layer" data-layer="m4" id="hospital" filter="url(#rough)">
         <rect x="820" y="180" width="130" height="110" fill="none" stroke="var(--mark)" stroke-width="3.5" stroke-dasharray="7 5"/>
         <text x="885" y="310" text-anchor="middle" font-family="var(--sans)" font-size="11" fill="var(--mark)" letter-spacing="1.2">THE HOSPITAL</text>
       </g>
@@ -241,7 +243,7 @@
 
 <section class="scroll-item">
   <div class="sticky-item"><div class="stage">
-    <svg viewBox="150 100 720 340" role="img" aria-label="Rules pinned to a noticeboard, layering into sediment and then into a coral reef.">
+    <svg viewBox="140 100 730 390" role="img" aria-label="Rules pinned to a noticeboard, layering into sediment and then into a coral reef.">
       <g class="layer on" data-layer="r1 r2 r3" id="notes"></g>
       <g class="layer" data-layer="r3" filter="url(#rough2)" id="reef" stroke="var(--ink-soft)" stroke-width="2" fill="none" opacity=".85"></g>
     </svg>
@@ -303,20 +305,24 @@
   var NS='http://www.w3.org/2000/svg';
   function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
 
-  /* cold-open queue trailing from the door */
-  var q=document.getElementById('queue');
-  for(var i=0;i<26;i++){
-    var g=el('g',{transform:'translate('+(486-i*16.5)+','+(446+Math.sin(i*0.55)*9)+')'});
-    g.appendChild(el('circle',{cx:0,cy:0,r:7}));
-    g.appendChild(el('path',{d:'M-7 28c0-11 14-11 14 0'}));
-    q.appendChild(g);
-  }
-
   var S=[{n:'CHECK-IN',c:60},{n:'TRIAGE',c:45},{n:'DOCTOR',c:20},{n:'PHARMACY',c:50},{n:'FOLLOW-UP',c:40}];
 
   /* Portrait phones turn a five-across row into an unreadable ribbon, so the
      stations stack vertically instead. Layout numbers live in one place. */
   var PORTRAIT = window.matchMedia('(max-width: 640px)').matches;
+
+  /* cold-open queue trailing from the door. In portrait it doubles back on
+     itself rather than trailing off to the left, which stretched the drawing
+     to two-thirds wider than the building and shrank the whole thing. */
+  var q=document.getElementById('queue');
+  for(var i=0;i<26;i++){
+    var qx = PORTRAIT ? 486-(i%9)*17 : 486-i*16.5;
+    var qy = PORTRAIT ? 446+Math.floor(i/9)*44 : 446+Math.sin(i*0.55)*9;
+    var g=el('g',{transform:'translate('+qx+','+qy+')'});
+    g.appendChild(el('circle',{cx:0,cy:0,r:7}));
+    g.appendChild(el('path',{d:'M-7 28c0-11 14-11 14 0'}));
+    q.appendChild(g);
+  }
   var L = PORTRAIT
     ? {box:{x:60,w:180,h:90}, step:140, top:40, viewBox:'0 0 430 920',
        capDX:90, capDY:58, nameX:258, nameDY:54, nameAnchor:'start',
@@ -367,42 +373,70 @@
     var c = PORTRAIT
       /* a band of waiting people sitting just above the doctor's room */
       ? el('circle',{r:4.6,cx:72+(p%12)*14,cy:doc.y-14-Math.floor(p/12)*12,opacity:0})
-      /* a pile backing up in the gap before the doctor's room */
-      : el('circle',{r:5.5,cx:doc.x-9-(p%3)*13,cy:doc.y+104-Math.floor(p/3)*13,opacity:0});
+      /* a pile backing up in the gap before the doctor's room, kept clear of
+         the triage box on its other side */
+      : el('circle',{r:5,cx:doc.x-14-(p%3)*11,cy:doc.y+104-Math.floor(p/3)*13,opacity:0});
     pool.appendChild(c); poolDots.push(c);
   }
 
   /* Dr Adeyemi's eight-hour day */
+  /* Eight hours in a row is 570 units wide; in portrait they go four and
+     four, and the count moves below them. */
   var row=document.getElementById('dayrow');
   for(var h=0;h<8;h++){
-    row.appendChild(el('rect',{x:220+h*72,y:210,width:60,height:70,fill:'none',
+    row.appendChild(el('rect',{
+      x: PORTRAIT ? 250+(h%4)*82 : 220+h*72,
+      y: PORTRAIT ? 200+Math.floor(h/4)*86 : 210,
+      width:60,height:70,fill:'none',
       stroke:'var(--ink)','stroke-width':2.4,filter:'url(#rough)','data-hour':h}));
   }
   var hours=[].slice.call(row.children);
 
   /* the noticeboard that becomes a reef */
+  /* The rules are set two lines to a card: on one line the longer ones ran
+     straight out through the sides of their own card. */
   var notes=document.getElementById('notes');
-  var RULES=['COUNTERSIGN ALL SCRIPTS','10 MIN MAX','REFERRALS: THURS',
-             'NO SAME-DAY BOOKING','FORMS IN TRIPLICATE','STOCK ORDERED MONTHLY',
-             'LOCK UP AT SIX','SIGN THE DAYBOOK','ASK THE MANAGER FIRST'];
+  var RULES=[['COUNTERSIGN','ALL SCRIPTS'],['10 MIN','MAX'],['REFERRALS:','THURSDAYS'],
+             ['NO SAME-DAY','BOOKING'],['FORMS IN','TRIPLICATE'],['STOCK ORDERED','MONTHLY'],
+             ['LOCK UP','AT SIX'],['SIGN THE','DAYBOOK'],['ASK THE','MANAGER FIRST']];
   var noteEls=[];
   for(var k=0;k<9;k++){
-    var nx=190+(k%3)*185, ny=130+Math.floor(k/3)*100;
+    var nx=158+(k%3)*158, ny=130+Math.floor(k/3)*92;
     var gnote=el('g',{'data-note':k,opacity:0});
-    gnote.appendChild(el('rect',{x:nx,y:ny,width:158,height:78,fill:'var(--paper-2)',
+    gnote.appendChild(el('rect',{x:nx,y:ny,width:140,height:72,fill:'var(--paper-2)',
       stroke:'var(--ink)','stroke-width':2,filter:'url(#rough2)'}));
-    var lbl=el('text',{x:nx+79,y:ny+45,'text-anchor':'middle',
-      'font-family':'var(--sans)','font-size':10.5,fill:'var(--ink-soft)','letter-spacing':.8});
-    lbl.textContent=RULES[k];
-    gnote.appendChild(lbl);
+    RULES[k].forEach(function(line,li){
+      var lbl=el('text',{x:nx+70,y:ny+33+li*17,'text-anchor':'middle',
+        'font-family':'var(--sans)','font-size':10.5,fill:'var(--ink-soft)','letter-spacing':.8});
+      lbl.textContent=line;
+      gnote.appendChild(lbl);
+    });
     notes.appendChild(gnote); noteEls.push(gnote);
   }
+  /* The reef grows up from under the bottom row of cards rather than across
+     their faces, where it was cutting through the rules themselves. */
   var reef=document.getElementById('reef');
-  for(var r=0;r<26;r++){
-    reef.appendChild(el('path',{d:'M'+(180+(r%13)*50)+' '+(415-Math.floor(r/13)*44)+
-      ' q 14 -30 28 0', opacity:0,'data-reef':r}));
+  for(var r=0;r<24;r++){
+    reef.appendChild(el('path',{d:'M'+(152+(r%12)*39)+' '+(460-Math.floor(r/12)*30)+
+      ' q 12 -26 24 0', opacity:0,'data-reef':r}));
   }
   var reefEls=[].slice.call(reef.children);
+
+  if(PORTRAIT){
+    /* the hospital goes at the foot of the stack, not off to its right,
+       where it was dragging the whole drawing down to a third of its size */
+    var hosp=document.getElementById('hospital');
+    var hr=hosp.querySelector('rect'), hl=hosp.querySelector('text');
+    hr.setAttribute('x',60); hr.setAttribute('y',740);
+    hr.setAttribute('width',180); hr.setAttribute('height',90);
+    hl.setAttribute('x',258); hl.setAttribute('y',792);
+    hl.setAttribute('text-anchor','start');
+
+    var dc=document.getElementById('dcount');
+    dc.setAttribute('x',405); dc.setAttribute('y',430); dc.setAttribute('font-size',48);
+    var dsub=dc.nextElementSibling;
+    if(dsub){ dsub.setAttribute('x',405); dsub.setAttribute('y',456); }
+  }
 
   var capEls=document.querySelectorAll('#caps [data-cap]');
   var docBox=boxes.querySelector('[data-box="2"]');
@@ -428,9 +462,12 @@
     if(id in hpos){
       var hp=pos(hpos[id]);
       hire.setAttribute('opacity',1);
+      /* the new hire stands *in* the station. At y 150 the figure straddled
+         the top edge of the box and came out cut in half; in portrait it
+         landed on top of the station's own name. */
       hire.setAttribute('transform', PORTRAIT
-        ? 'translate('+(hp.x+L.box.w+34)+','+(hp.y+30)+')'
-        : 'translate('+(hp.x+L.capDX)+',150)');
+        ? 'translate('+(hp.x+L.box.w-38)+','+(hp.y+28)+')'
+        : 'translate('+(hp.x+L.capDX)+','+(hp.y+42)+')');
       document.getElementById('hout').textContent = (id==='h4') ? '26' : '20';
     } else if(id==='h1'){ hire.setAttribute('opacity',0); }
     /* the doctor's day */

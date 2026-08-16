@@ -153,10 +153,10 @@
     </svg>
   </div>
   <div class="steps">
-    <div class="step tr" data-step="p1"><p>The real obstacle isn't technical. The summarising has to happen before eight.</p></div>
-    <div class="step tr" data-step="p2"><p>The person who could do it is already the busiest in the building.</p></div>
-    <div class="step tr" data-step="p3"><p>And the clinic has just been told there is money for one hire.</p></div>
-    <div class="step tr" data-step="p4"><p>So this change is not "improve the notes." It is: <em>hire the person, and put them on notes rather than on the front desk where every instinct says they belong.</em></p></div>
+    <div class="step bl" data-step="p1"><p>The real obstacle isn't technical. The summarising has to happen before eight.</p></div>
+    <div class="step bl" data-step="p2"><p>The person who could do it is already the busiest in the building.</p></div>
+    <div class="step bl" data-step="p3"><p>And the clinic has just been told there is money for one hire.</p></div>
+    <div class="step bl" data-step="p4"><p>So this change is not "improve the notes." It is: <em>hire the person, and put them on notes rather than on the front desk where every instinct says they belong.</em></p></div>
   </div></div>
   <div class="trigger" data-t="p1"></div><div class="trigger" data-t="p2"></div>
   <div class="trigger" data-t="p3"></div><div class="trigger" data-t="p4"></div>
@@ -233,65 +233,157 @@
       stroke:mark?'var(--mark)':'var(--ink-soft)','stroke-width':2,
       'marker-end':mark?'url(#arm)':'url(#ar)'}));
   }
+  function link(g,d,mark){
+    g.appendChild(el('path',{d:d,fill:'none',
+      stroke:mark?'var(--mark)':'var(--ink-soft)','stroke-width':2,
+      'marker-end':mark?'url(#arm)':'url(#ar)'}));
+  }
+
+  /* Every drawing here is laid out across: three or five things in a row, or
+     two columns with arrows between them. On a phone that row becomes a
+     ribbon three millimetres tall. So each one has a portrait arrangement
+     too — stacked down the screen, with the sideways relationships carried by
+     a spine down the left instead of by horizontal distance. */
+  var P = window.matchMedia('(max-width: 640px)').matches;
 
   /* 1 · goal hierarchy */
+  /* Landscape: set to the right of centre, because at x 330 the goal
+     statement — the one thing this panel exists to show — sat underneath the
+     caption in the left gutter. */
   var gt=document.getElementById('goaltree');
-  box(gt,330,110,340,66,'everyone who needs to be seen|is seen, and does not come back','var(--mark)');
-  box(gt,180,280,200,60,'enough appointments');
-  box(gt,420,280,200,60,'consultations good|enough to not repeat');
-  box(gt,660,280,200,60,'staff who stay');
-  arrow(gt,280,280,440,180); arrow(gt,520,280,510,180); arrow(gt,760,280,570,180);
   var gc=document.getElementById('goalclash');
-  gc.appendChild(el('text',{x:520,y:400,'text-anchor':'middle','font-family':'var(--sans)',
-    'font-size':13,fill:'var(--mark)'})).textContent='the ten-minute rule serves one of these and damages another';
+  if(P){
+    box(gt,20,20,340,64,'everyone who needs to be seen|is seen, and does not come back','var(--mark)',11.5);
+    ['enough appointments','consultations good|enough to not repeat','staff who stay']
+      .forEach(function(t,i){
+        var y=140+i*84;
+        box(gt,86,y,274,58,t,'var(--ink)',11.5);
+        link(gt,'M86 '+(y+29)+' L52 '+(y+29)+' L52 92');
+      });
+    ['the ten-minute rule serves one of these','and damages another'].forEach(function(t,i){
+      gc.appendChild(el('text',{x:190,y:420+i*20,'text-anchor':'middle',
+        'font-family':'var(--sans)','font-size':11.5,fill:'var(--mark)'})).textContent=t;
+    });
+  } else {
+    box(gt,390,110,340,66,'everyone who needs to be seen|is seen, and does not come back','var(--mark)');
+    box(gt,250,280,180,60,'enough appointments');
+    box(gt,470,280,180,60,'consultations good|enough to not repeat');
+    box(gt,690,280,180,60,'staff who stay');
+    arrow(gt,340,280,480,180); arrow(gt,560,280,560,180); arrow(gt,780,280,640,180);
+    gc.appendChild(el('text',{x:560,y:400,'text-anchor':'middle','font-family':'var(--sans)',
+      'font-size':13,fill:'var(--mark)'})).textContent='the ten-minute rule serves one of these and damages another';
+  }
 
-  /* 2 · symptoms converging */
+  /* 2 · symptoms converging.
+     Landscape: four symptoms across the top, two root causes below them. The
+     roots sit high enough that the bottom-right caption lands on empty paper
+     rather than on the second root cause, which is the point of the panel.
+     Portrait: two pairs, each stacked above the cause it traces back to. */
   var ude=document.getElementById('ude');
-  ['waits too long','staff exhausted','same patients return','referrals late']
-    .forEach(function(t,i){ box(ude,150+i*190,100,170,58,t); });
   var ua=document.getElementById('udearrows');
   var rt=document.getElementById('roots');
-  box(rt,250,380,220,62,'the ten-minute rule','var(--mark)');
-  box(rt,560,380,220,62,'notes written after clinic','var(--mark)');
-  [[235,380,320,442],[425,380,340,442],[615,380,400,442],[805,380,420,442]].forEach(function(a,i){
-    ua.appendChild(el('path',{d:'M'+a[0]+' 158 L'+(i<2?360:670)+' 378',fill:'none',
-      stroke:'var(--ink-soft)','stroke-width':1.8,'marker-end':'url(#ar)'}));
-  });
+  var SYMPTOMS=['waits too long','staff exhausted','same patients return','referrals late'];
+  if(P){
+    SYMPTOMS.forEach(function(t,i){
+      box(ude,80,20+Math.floor(i/2)*250+(i%2)*52,280,44,t,'var(--ink)',11.5);
+    });
+    [['the ten-minute rule',132],['notes written after clinic',382]].forEach(function(r,i){
+      box(rt,80,r[1],280,48,r[0],'var(--mark)',11.5);
+      [0,1].forEach(function(k){
+        var y=42+i*250+k*52;
+        link(ua,'M80 '+y+' L50 '+y+' L50 '+(r[1]+24)+' L76 '+(r[1]+24));
+      });
+    });
+  } else {
+    SYMPTOMS.forEach(function(t,i){ box(ude,150+i*185,100,165,58,t); });
+    box(rt,250,290,220,62,'the ten-minute rule','var(--mark)');
+    box(rt,560,290,220,62,'notes written after clinic','var(--mark)');
+    [232,417,602,787].forEach(function(x,i){
+      ua.appendChild(el('path',{d:'M'+x+' 158 L'+(i<2?360:670)+' 288',fill:'none',
+        stroke:'var(--ink-soft)','stroke-width':1.8,'marker-end':'url(#ar)'}));
+    });
+  }
 
   /* 3 · the cloud */
   var cl=document.getElementById('cloud');
-  box(cl,110,230,190,74,'serve the|catchment','var(--ink)',13);
-  box(cl,380,130,200,66,'see enough people');
-  box(cl,380,340,200,66,'consultations that|hold up');
-  box(cl,680,130,200,66,'ten-minute slots','var(--mark)');
-  box(cl,680,340,200,66,'longer slots','var(--mark)');
-  arrow(cl,380,163,300,250); arrow(cl,380,373,300,290);
-  arrow(cl,680,163,580,163); arrow(cl,680,373,580,373);
   var asm=document.getElementById('assume');
-  asm.appendChild(el('rect',{x:600,y:225,width:280,height:76,fill:'none',
-    stroke:'var(--mark)','stroke-width':2,'stroke-dasharray':'6 5',filter:'url(#rough2)'}));
-  ['THE ASSUMPTION','consultation length is the only','lever on quality'].forEach(function(t,i){
-    var e=el('text',{x:740,y:250+i*20,'text-anchor':'middle','font-family':'var(--sans)',
-      'font-size':i===0?10:12.5,fill:'var(--mark)','letter-spacing':i===0?1.4:0});
-    e.textContent=t; asm.appendChild(e);
-  });
   var brk=document.getElementById('broken');
-  brk.appendChild(el('path',{d:'M780 150 L800 200 L760 240 L790 290',fill:'none',
-    stroke:'var(--mark)','stroke-width':3.4,'stroke-linecap':'round','stroke-linejoin':'round'}));
+  var ASM=['THE ASSUMPTION','consultation length is the only','lever on quality'];
+  if(P){
+    /* the cloud read top-down: objective, its two requirements, the two
+       actions that serve them */
+    box(cl,80,20,240,56,'serve the|catchment','var(--ink)',12);
+    box(cl,20,130,170,58,'see enough|people','var(--ink)',11.5);
+    box(cl,210,130,170,58,'consultations|that hold up','var(--ink)',11.5);
+    box(cl,20,240,170,52,'ten-minute slots','var(--mark)',11.5);
+    box(cl,210,240,170,52,'longer slots','var(--mark)',11.5);
+    arrow(cl,105,130,160,80); arrow(cl,295,130,250,80);
+    arrow(cl,105,240,105,194); arrow(cl,295,240,295,194);
+    asm.appendChild(el('rect',{x:20,y:330,width:360,height:76,fill:'none',
+      stroke:'var(--mark)','stroke-width':2,'stroke-dasharray':'6 5',filter:'url(#rough2)'}));
+    ASM.forEach(function(t,i){
+      var e=el('text',{x:222,y:355+i*20,'text-anchor':'middle','font-family':'var(--sans)',
+        'font-size':i===0?10:12,fill:'var(--mark)','letter-spacing':i===0?1.4:0});
+      e.textContent=t; asm.appendChild(e);
+    });
+    brk.appendChild(el('path',{d:'M44 336 L74 362 L50 376 L80 400',fill:'none',
+      stroke:'var(--mark)','stroke-width':3.4,'stroke-linecap':'round','stroke-linejoin':'round'}));
+  } else {
+    box(cl,110,230,190,74,'serve the|catchment','var(--ink)',13);
+    box(cl,380,130,200,66,'see enough people');
+    box(cl,380,340,200,66,'consultations that|hold up');
+    box(cl,680,130,200,66,'ten-minute slots','var(--mark)');
+    box(cl,680,340,200,66,'longer slots','var(--mark)');
+    arrow(cl,380,163,300,250); arrow(cl,380,373,300,290);
+    arrow(cl,680,163,580,163); arrow(cl,680,373,580,373);
+    /* Widened leftwards to open a margin for the crack, which otherwise had
+       nowhere to fall but across the words it is breaking. */
+    asm.appendChild(el('rect',{x:560,y:225,width:320,height:76,fill:'none',
+      stroke:'var(--mark)','stroke-width':2,'stroke-dasharray':'6 5',filter:'url(#rough2)'}));
+    ASM.forEach(function(t,i){
+      var e=el('text',{x:748,y:250+i*20,'text-anchor':'middle','font-family':'var(--sans)',
+        'font-size':i===0?10:12.5,fill:'var(--mark)','letter-spacing':i===0?1.4:0});
+      e.textContent=t; asm.appendChild(e);
+    });
+    /* the crack, struck through the assumption itself rather than through the
+       box above it */
+    brk.appendChild(el('path',{d:'M582 230 L612 256 L588 270 L618 296',fill:'none',
+      stroke:'var(--mark)','stroke-width':3.4,'stroke-linecap':'round','stroke-linejoin':'round'}));
+  }
 
-  /* 4 · walk it forwards */
+  /* 4 · walk it forwards.
+     A left-to-right run across the top. The earlier layout stepped each box
+     230 units sideways but only 12 down, so the links came out as long
+     near-horizontal arrows that read as crossings rather than as a sequence.
+     Keeping the chain high leaves the foot of the frame free for the
+     side effect and for the caption that announces it. */
   var frt=document.getElementById('frt');
-  var STEPS=['notes ready by eight','history not re-taken','consultation fits',
-             'no writing up at seven','tomorrow’s notes ready'];
+  var STEPS=['notes ready|by eight','history not|re-taken','consultation|fits',
+             'no writing up|at seven','tomorrow’s|notes ready'];
   var frtNodes=[];
   STEPS.forEach(function(t,i){
     var g=el('g',{opacity:0,'data-f':i});
-    box(g,250+((i%2)*230),120+i*66,330,54,t, i===0?'var(--mark)':'var(--ink)');
-    if(i>0) arrow(g,415+((i-1)%2)*230,174+(i-1)*66,415+((i%2)*230),120+i*66);
+    if(P){
+      box(g,60,20+i*70,280,54,t, i===0?'var(--mark)':'var(--ink)',11.5);
+      if(i>0) arrow(g,200,4+i*70,200,20+i*70);
+    } else {
+      box(g,122+i*154,150,138,90,t, i===0?'var(--mark)':'var(--ink)',11.5);
+      if(i>0) arrow(g,106+i*154,195,120+i*154,195);
+    }
     frt.appendChild(g); frtNodes.push(g);
   });
   var side=document.getElementById('side');
-  box(side,520,420,340,62,'…but someone must prepare them|40 minutes of Maria’s morning','var(--mark)');
+  if(P){
+    side.appendChild(el('path',{d:'M60 47 L32 47 L32 412 L58 412',fill:'none',
+      stroke:'var(--mark)','stroke-width':2,'stroke-dasharray':'6 5',
+      'marker-end':'url(#arm)'}));
+    box(side,62,382,300,60,'…but someone must prepare them|40 minutes of Maria’s morning','var(--mark)',11.5);
+  } else {
+    side.appendChild(el('path',{d:'M191 240 Q191 280 285 296',fill:'none',
+      stroke:'var(--mark)','stroke-width':2,'stroke-dasharray':'6 5',
+      'marker-end':'url(#arm)'}));
+    box(side,290,300,300,72,'…but someone must prepare them|40 minutes of Maria’s morning','var(--mark)');
+  }
 
   /* 5 · obstacles */
   var prt=document.getElementById('prt');
@@ -299,15 +391,26 @@
            ['the only person who could is the busiest','free that time, or find another'],
            ['there is money for exactly one hire','spend it on notes, not the desk']];
   var obsNodes=[];
+  /* Rows tightened from a 116 pitch to 100 so the conclusion below them lands
+     inside the viewBox, and the conclusion narrowed so the bottom-right
+     caption doesn't sit on top of it. */
   OBS.forEach(function(o,i){
     var g=el('g',{opacity:0});
-    box(g,160,110+i*116,300,64,o[0],'var(--ink-faint)');
-    box(g,560,110+i*116,300,64,o[1],'var(--mark)');
-    arrow(g,460,142+i*116,550,142+i*116,true);
+    if(P){
+      /* obstacle above, and directly below it the thing that gets you past */
+      box(g,25,20+i*130,330,48,o[0],'var(--ink-faint)',11.5);
+      box(g,25,90+i*130,330,48,o[1],'var(--mark)',11.5);
+      arrow(g,190,68+i*130,190,90+i*130,true);
+    } else {
+      box(g,160,100+i*100,300,64,o[0],'var(--ink-faint)');
+      box(g,560,100+i*100,300,64,o[1],'var(--mark)');
+      arrow(g,460,132+i*100,550,132+i*100,true);
+    }
     prt.appendChild(g); obsNodes.push(g);
   });
   var final=el('g',{opacity:0});
-  box(final,360,440,320,60,'hire onto notes, not the front desk','var(--mark)');
+  if(P) box(final,50,430,280,56,'hire onto notes,|not the front desk','var(--mark)',11.5);
+  else  box(final,400,400,220,60,'hire onto notes,|not the front desk','var(--mark)');
   prt.appendChild(final); obsNodes.push(final);
 
   window.onStep=function(id){

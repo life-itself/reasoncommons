@@ -32,16 +32,19 @@ work against the approved visual script.
 
 ## Sonnet work
 
-**[#6 — Finalise the trilogy](https://github.com/life-itself/reasoncommons/issues/6).**
-Polish on the three existing pieces: a browser bug pass, portrait mobile layouts
-for pieces 2–3, and wiring the real Organic design tokens into the scroller.
+**[#6 — Finalise the trilogy](https://github.com/life-itself/reasoncommons/issues/6)
+— done 2026-08-16.** All four remaining items are in: the browser bug pass,
+portrait layouts for pieces 2–3, the Organic design tokens, and the stale
+position marker in the plan doc. See [`changelog.md`](changelog.md).
 
-The browser bug pass is the main item and genuinely needs a browser — reading
-source and checking HTTP responses is how the raw-markup figure bug survived in
-piece 1 until someone looked at the page.
+Worth knowing for future work on these pages: they were checked by driving them
+in a real browser at 1280×800 and 390×844, stepping through every trigger and
+looking at the result. Most of what was wrong — captions covering the thing they
+pointed at, boxes running off the edge of their own drawing — was invisible from
+the source. Do the same before calling any change to them finished.
 
 ## Sequencing
 
-Start both at once. One constraint: **#7 stage 3 comes after #6's token work
-lands**, so the new piece inherits the final look rather than being restyled
-twice. Stages 1–2 of #7 have no such dependency and should start immediately.
+**#7 stage 3 is now unblocked** — the token work has landed, so a new piece
+built against `explainers/scroller.css` inherits the final look. Stages 1–2 of
+#7 are the remaining work.

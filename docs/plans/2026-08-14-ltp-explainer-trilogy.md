@@ -8,16 +8,20 @@ owner: Rufus
 
 Three NYT-style scrolling visual explainers that make the case for thinking in
 trees, built in sequence. This file is the working ledger: decisions at the top,
-a checkbox pipeline below, and a position marker for resumable (loop-mode) work.
+a checkbox pipeline below, and a position marker for resumable (loop-mode)
+work. The work is finished — see Position — so this is now a record rather
+than a working file.
 
 ## Position
 
-> **Done, 2026-08-15.** All three pieces shipped in both markdown and HTML forms — see [`changelog.md`](../../changelog.md). Open questions and next steps now live in [`NEXT.md`](../../NEXT.md) and [issue #6](https://github.com/life-itself/reasoncommons/issues/6).
-
-
-
-
-Update this line at the end of every work unit.
+> **Closed, 2026-08-16.** All three pieces shipped, and now ship as scrolling
+> HTML only — the markdown articles were retired to
+> `explainers/_process/<piece>/article.md`. This file is a record of how the
+> trilogy was planned and is no longer a live ledger; nothing here needs
+> updating. Remaining polish is tracked in
+> [issue #6](https://github.com/life-itself/reasoncommons/issues/6), next steps
+> in [`NEXT.md`](../../NEXT.md), and what shipped in
+> [`changelog.md`](../../changelog.md).
 
 ## Why this exists
 

@@ -27,7 +27,7 @@
 <!-- ============ COLD OPEN: ONE CHAIN ============ -->
 <section class="scroll-item">
   <div class="sticky-item"><div class="stage">
-    <svg viewBox="90 60 820 440" role="img" aria-label="Dr Adeyemi's chain of reasoning, drawn as linked statements, then four other people's chains arriving elsewhere.">
+    <svg viewBox="60 60 900 520" role="img" aria-label="Dr Adeyemi's chain of reasoning, drawn as linked statements, then four other people's chains arriving elsewhere.">
       <g id="chain"></g>
       <g id="others"></g>
     </svg>
@@ -82,15 +82,15 @@
 <!-- ============ DIAGRAMS AREN'T ENOUGH ============ -->
 <section class="scroll-item">
   <div class="sticky-item"><div class="stage">
-    <svg viewBox="100 70 800 420" role="img" aria-label="A mind map whose arrows are contested but cannot be checked, because no rule says what makes an arrow right.">
+    <svg viewBox="100 70 850 420" role="img" aria-label="A mind map whose arrows are contested but cannot be checked, because no rule says what makes an arrow right.">
       <g id="mind"></g>
       <g class="layer" data-layer="w2 w3" id="objections"></g>
     </svg>
   </div>
   <div class="steps">
-    <div class="step tl" data-step="w1"><p>Now — plenty of people already draw diagrams. Flowcharts. Mind maps. Boxes on a whiteboard with arrows between them.</p></div>
-    <div class="step tl" data-step="w2"><p>And people do argue with them. <em>That shouldn't come before this. That box is wrong.</em></p></div>
-    <div class="step tl" data-step="w3"><p>But watch what happens next. Nothing says what would make an arrow correct — so the objection is one more opinion, resolved the same way everything else in the room is.</p></div>
+    <div class="step tr" data-step="w1"><p>Now — plenty of people already draw diagrams. Flowcharts. Mind maps. Boxes on a whiteboard with arrows between them.</p></div>
+    <div class="step tr" data-step="w2"><p>And people do argue with them. <em>That shouldn't come before this. That box is wrong.</em></p></div>
+    <div class="step tr" data-step="w3"><p>But watch what happens next. Nothing says what would make an arrow correct — so the objection is one more opinion, resolved the same way everything else in the room is.</p></div>
   </div></div>
   <div class="trigger" data-t="w1"></div><div class="trigger" data-t="w2"></div><div class="trigger" data-t="w3"></div>
 </section>
@@ -197,9 +197,9 @@
   <div class="steps">
     <div class="step bl" data-step="q1"><p><strong>Do I understand you?</strong> Not do I agree — do I know what you mean. A great many arguments that look like disagreement are two people using one word differently and getting steadily angrier about it.</p></div>
     <div class="step bl" data-step="q2"><p><strong>Is that a claim at all?</strong> A complete thought, one idea, that could be true or false. "Funding" is not a claim.</p></div>
-    <div class="step bl" data-step="q3"><p><strong>Is that cause enough on its own?</strong> <em>If we have fuel and a heat source, then we have fire.</em> True? No. You forgot oxygen — because it is always there.</p></div>
-    <div class="step bl" data-step="q4"><p><strong>Could something else have done it?</strong> Remove your stated cause. Would the effect have happened anyway? If so, you haven't explained anything yet.</p></div>
-    <div class="step bl" data-step="q5"><p><strong>Have you got it backwards?</strong> Anglers on the bank did not <em>cause</em> good fishing. They are how you know it. The cause is that the river was stocked on Tuesday.</p></div>
+    <div class="step tr" data-step="q3"><p><strong>Is that cause enough on its own?</strong> <em>If we have fuel and a heat source, then we have fire.</em> True? No. You forgot oxygen — because it is always there.</p></div>
+    <div class="step tr" data-step="q4"><p><strong>Could something else have done it?</strong> Remove your stated cause. Would the effect have happened anyway? If so, you haven't explained anything yet.</p></div>
+    <div class="step tr" data-step="q5"><p><strong>Have you got it backwards?</strong> Anglers on the bank did not <em>cause</em> good fishing. They are how you know it. The cause is that the river was stocked on Tuesday.</p></div>
     <div class="step bl" data-step="q6"><p><strong>If you're right, what else would be true?</strong> If it's appendicitis, expect a fever and a raised white cell count. If they aren't there, it isn't — however confident you were.</p></div>
     <div class="step bl" data-step="q7"><p><strong>And are you going in a circle?</strong></p></div>
   </div></div>
@@ -267,70 +267,197 @@
 (function(){
   var NS='http://www.w3.org/2000/svg';
   function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
-  function node(g,x,y,w,txt,cls){
-    var box=el('rect',{x:x,y:y,width:w,height:56,fill:'none',stroke:'var(--ink)',
+  function node(g,x,y,w,h,txt,size){
+    var box=el('rect',{x:x,y:y,width:w,height:h,fill:'none',stroke:'var(--ink)',
       'stroke-width':2.4,filter:'url(#rough2)'});
     g.appendChild(box);
-    var t=el('text',{x:x+w/2,y:y+34,'text-anchor':'middle','font-family':'var(--sans)','font-size':13});
+    var t=el('text',{x:x+w/2,y:y+h/2+5,'text-anchor':'middle','font-family':'var(--sans)',
+      'font-size':size||13});
     t.textContent=txt; g.appendChild(t);
     return {box:box,text:t};
   }
+
+  /* The chain runs down the page either way, but the four other people's
+     conclusions are a row across the foot, which on a phone squeezes the whole
+     drawing to a third of its legible size. In portrait they go two-by-two. */
+  var P = window.matchMedia('(max-width: 640px)').matches;
 
   /* Dr Adeyemi's chain */
   var chain=document.getElementById('chain');
   var LINKS=['countersignature required','pharmacist interrupts, 11× a morning',
              'consultations overrun','notes written after seven',
              'next patient’s notes not ready','history taken twice'];
+  /* The chain sits in the left two-thirds of the frame so the caption in the
+     right gutter has somewhere to land that isn't on top of it. */
   var chainNodes=[];
   LINKS.forEach(function(txt,i){
     var g=el('g',{'data-link':i,opacity:0});
-    node(g,300,90+i*66,400,txt);
-    if(i>0) g.appendChild(el('path',{d:'M500 '+(84+i*66)+' L500 '+(90+i*66),
-      stroke:'var(--ink-soft)','stroke-width':2,'marker-end':'url(#ar)'}));
+    if(P){
+      node(g,20,20+i*62,350,48,txt,10.5);
+      if(i>0) g.appendChild(el('path',{d:'M195 '+(6+i*62)+' L195 '+(20+i*62),
+        stroke:'var(--ink-soft)','stroke-width':2,'marker-end':'url(#ar)'}));
+    } else {
+      node(g,100,90+i*66,420,56,txt);
+      if(i>0) g.appendChild(el('path',{d:'M310 '+(84+i*66)+' L310 '+(90+i*66),
+        stroke:'var(--ink-soft)','stroke-width':2,'marker-end':'url(#ar)'}));
+    }
     chain.appendChild(g); chainNodes.push(g);
   });
 
-  /* four other chains, arriving elsewhere */
+  /* four other chains, arriving elsewhere. They sit below the chain rather
+     than across it — at y 420 they landed directly on top of its last link. */
   var others=document.getElementById('others');
-  var OTHER=[{x:110,t:'funding'},{x:250,t:'the ten-minute rule'},
-             {x:640,t:'referral backlog'},{x:790,t:'nobody asks us'}];
+  var OTHER=[{x:140,t:'funding'},{x:310,t:'the ten-minute rule'},
+             {x:480,t:'referral backlog'},{x:650,t:'nobody asks us'}];
   var otherNodes=[];
-  OTHER.forEach(function(o){
+  OTHER.forEach(function(o,i){
     var g=el('g',{opacity:0});
-    var b=el('rect',{x:o.x-60,y:420,width:120,height:52,fill:'none',
-      stroke:'var(--ink-faint)','stroke-width':2.2,filter:'url(#rough2)'});
-    g.appendChild(b);
-    var t=el('text',{x:o.x,y:451,'text-anchor':'middle','font-family':'var(--sans)',
-      'font-size':11.5,fill:'var(--ink-soft)'});
+    var bx = P ? 20+(i%2)*180 : o.x-75, by = P ? 420+Math.floor(i/2)*62 : 500,
+        bw = P ? 170 : 150, bh = P ? 50 : 52;
+    g.appendChild(el('rect',{x:bx,y:by,width:bw,height:bh,fill:'none',
+      stroke:'var(--ink-faint)','stroke-width':2.2,filter:'url(#rough2)'}));
+    var t=el('text',{x:bx+bw/2,y:by+bh/2+4,'text-anchor':'middle','font-family':'var(--sans)',
+      'font-size':P?10:11.5,fill:'var(--ink-soft)'});
     t.textContent=o.t; g.appendChild(t);
     others.appendChild(g); otherNodes.push(g);
   });
 
   /* the mind map */
   var mind=document.getElementById('mind');
-  var MP=[[500,120,'the clinic'],[250,240,'staffing'],[750,240,'demand'],
-          [200,400,'rotas'],[400,400,'training'],[650,400,'referrals'],[850,400,'funding']];
-  MP.forEach(function(m,i){
+  var MP = P
+    ? [[195,40,'the clinic',80,26],[100,145,'staffing',72,24],[290,145,'demand',72,24],
+       [50,255,'rotas',44,22],[140,255,'training',44,22],
+       [250,255,'referrals',44,22],[340,255,'funding',44,22]]
+    : [[500,120,'the clinic',78,34],[250,240,'staffing',78,34],[750,240,'demand',78,34],
+       [200,400,'rotas',78,34],[400,400,'training',78,34],
+       [650,400,'referrals',78,34],[850,400,'funding',78,34]];
+  MP.forEach(function(m){
     var g=el('g',{filter:'url(#rough2)'});
-    g.appendChild(el('ellipse',{cx:m[0],cy:m[1],rx:78,ry:34,fill:'none',
+    g.appendChild(el('ellipse',{cx:m[0],cy:m[1],rx:m[3],ry:m[4],fill:'none',
       stroke:'var(--ink)','stroke-width':2.2}));
-    var t=el('text',{x:m[0],y:m[1]+5,'text-anchor':'middle','font-family':'var(--sans)','font-size':13});
+    var t=el('text',{x:m[0],y:m[1]+5,'text-anchor':'middle','font-family':'var(--sans)',
+      'font-size':P?11:13});
     t.textContent=m[2]; g.appendChild(t);
     mind.appendChild(g);
   });
-  [[500,154,250,206],[500,154,750,206],[250,274,200,366],[250,274,400,366],
-   [750,274,650,366],[750,274,850,366]].forEach(function(l){
+  (P ? [[195,66,110,119],[195,66,280,119],[100,169,55,233],[100,169,135,233],
+        [290,169,255,233],[290,169,335,233]]
+     : [[500,154,250,206],[500,154,750,206],[250,274,200,366],[250,274,400,366],
+        [750,274,650,366],[750,274,850,366]]).forEach(function(l){
     mind.appendChild(el('path',{d:'M'+l[0]+' '+l[1]+' L'+l[2]+' '+l[3],
       stroke:'var(--ink-soft)','stroke-width':2,fill:'none','marker-end':'url(#ar)'}));
   });
 
   /* the objections that go nowhere */
+  /* Set just off each arrow's midpoint — at 196 the right-hand one sat on top
+     of its own arrowhead. */
   var obj=document.getElementById('objections');
-  [[330,196,'?'],[620,196,'?'],[300,330,'?']].forEach(function(o){
+  (P ? [[128,104,'?'],[262,104,'?'],[122,208,'?']]
+     : [[375,170,'?'],[625,170,'?'],[298,322,'?']]).forEach(function(o){
     var t=el('text',{x:o[0],y:o[1],'text-anchor':'middle','font-family':'var(--sans)',
-      'font-size':30,'font-weight':700,fill:'var(--mark)'});
+      'font-size':P?22:30,'font-weight':700,fill:'var(--mark)'});
     t.textContent=o[2]; obj.appendChild(t);
   });
+
+  /* ---- the seven tests, in portrait ----
+     Each of these is drawn in the markup as two columns with the causal
+     arrows running left to right. That is 500–600 units across, which on a
+     phone lands at nine-pixel type. The landscape drawings stay exactly as
+     they are; in portrait each layer is emptied and drawn again vertically. */
+  if(P){
+    var MARK='var(--mark)', INK='var(--ink)', SOFT='var(--ink-soft)', FAINT='var(--ink-faint)';
+    function qr(g,x,y,w,h,stroke,dash){
+      g.appendChild(el('rect',{x:x,y:y,width:w,height:h,fill:'none',stroke:stroke,
+        'stroke-width':dash?2.2:2.4,'stroke-dasharray':dash||'none'}));
+    }
+    function qt(g,x,y,txt,size,fill,ls){
+      var t=el('text',{x:x,y:y,'text-anchor':'middle','font-family':'var(--sans)',
+        'font-size':size,fill:fill||INK});
+      if(ls) t.setAttribute('letter-spacing',ls);
+      t.textContent=txt; g.appendChild(t);
+    }
+    function qp(g,d,stroke,dash){
+      g.appendChild(el('path',{d:d,fill:'none',stroke:stroke,'stroke-width':2,
+        'stroke-dasharray':dash||'none','marker-end':'url(#ar)'}));
+    }
+    var Q={
+      /* do I understand you — one word, two different meanings */
+      q1:function(g){
+        qt(g,190,40,'"funding"',16,MARK);
+        [[105,'you'],[275,'me']].forEach(function(c){
+          g.appendChild(el('circle',{cx:c[0],cy:150,r:52,fill:'none',stroke:INK,'stroke-width':2.6}));
+          qt(g,c[0],156,c[1],14,SOFT);
+        });
+        qp(g,'M168 55 L120 92',SOFT); qp(g,'M212 55 L260 92',SOFT);
+      },
+      /* is that a claim at all */
+      q2:function(g){
+        qr(g,20,20,340,66,FAINT,'6 5');
+        qt(g,190,60,'Funding',17,FAINT);
+        qt(g,190,106,'NOT A CLAIM',10,FAINT,1.2);
+        qr(g,20,140,340,72,INK);
+        qt(g,190,170,'Our budget fell 12%',13);
+        qt(g,190,192,'in real terms since 2019',13);
+        qt(g,190,232,'CHECKABLE',10,SOFT,1.2);
+      },
+      /* is that cause enough on its own — the oxygen nobody names */
+      q3:function(g){
+        [[20,'fuel',INK,null],[86,'heat',INK,null],[152,'oxygen?',MARK,'7 5']].forEach(function(r){
+          qr(g,30,r[0],150,52,r[2],r[3]);
+          qt(g,105,r[0]+32,r[1],14,r[2]===MARK?MARK:INK);
+        });
+        g.appendChild(el('ellipse',{cx:255,cy:112,rx:30,ry:78,fill:'none',stroke:SOFT,'stroke-width':2}));
+        qp(g,'M180 46 L226 90',SOFT); qp(g,'M180 112 L221 112',SOFT);
+        qp(g,'M180 178 L226 148',MARK,'5 4');
+        qr(g,180,290,150,52,INK); qt(g,255,322,'fire',14);
+        qp(g,'M255 192 L255 284',SOFT);
+      },
+      /* could something else have done it */
+      q4:function(g){
+        qr(g,20,20,200,52,INK); qt(g,120,52,'an infection',13);
+        qr(g,20,108,200,62,INK);
+        qt(g,120,134,'an afternoon',13); qt(g,120,156,'in the sun',13);
+        qr(g,100,250,200,56,MARK); qt(g,200,284,'a fever',14,MARK);
+        qp(g,'M220 46 L245 46 L245 244',SOFT);
+        qp(g,'M220 139 L245 139 L245 244',SOFT);
+      },
+      /* have you got it backwards — the sign is not the cause */
+      q5:function(g){
+        qr(g,95,20,200,56,INK); qt(g,195,54,'fishing is good',14);
+        qr(g,20,160,170,52,FAINT,'6 5'); qt(g,105,192,'anglers on the bank',11.5,FAINT);
+        qt(g,105,236,'HOW YOU KNOW',9.5,FAINT,1);
+        qr(g,205,160,170,52,MARK); qt(g,290,192,'the river was stocked',11.5,MARK);
+        qt(g,290,236,'WHY IT IS SO',9.5,MARK,1);
+        qp(g,'M160 78 L118 154',FAINT,'5 4');
+        qp(g,'M282 156 L232 80',MARK);
+      },
+      /* if you're right, what else would be true */
+      q6:function(g){
+        qr(g,110,20,170,56,INK); qt(g,195,54,'appendicitis',14);
+        [[150,'abdominal pain',INK,null],[208,'a fever',MARK,'7 5'],
+         [266,'raised white cells',MARK,'7 5']].forEach(function(r){
+          qr(g,20,r[0],320,46,r[2],r[3]);
+          qt(g,180,r[0]+29,r[1],13,r[2]===MARK?MARK:INK);
+        });
+        [173,231,289].forEach(function(y){
+          qp(g,'M280 48 L370 48 L370 '+y+' L344 '+y,SOFT);
+        });
+      },
+      /* and are you going in a circle */
+      q7:function(g){
+        qr(g,20,20,190,56,INK); qt(g,115,54,'we’re behind',14);
+        qr(g,170,170,190,56,INK); qt(g,265,204,'we’re slow',14);
+        qp(g,'M210 48 Q285 56 292 164',MARK);
+        qp(g,'M170 198 Q45 206 50 82',MARK);
+      }
+    };
+    Object.keys(Q).forEach(function(k){
+      var g=document.querySelector('[data-layer="'+k+'"]');
+      if(!g) return;
+      while(g.firstChild) g.removeChild(g.firstChild);
+      Q[k](g);
+    });
+  }
 
   window.onStep=function(id){
     var reveal={k1:1,k2:3,k3:6,k4:6,k5:6}[id];
