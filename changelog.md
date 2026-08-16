@@ -22,6 +22,11 @@ An earlier version of this piece, *Whose Map Is It*, retold a single internal
 argument about the word "throughput". It was replaced the same day: it assumed a
 reader already inside the trees, and never made the case a newcomer needed.
 
+All four explainers also had their running text reset — larger, at the size of the
+annotations inside the drawings rather than a size below them, and in Literata, so
+prose and graphics read as one voice and the page looks the same on every machine
+instead of picking a different serif on each.
+
 ## 2026-08-16 — The explainer trilogy, finished
 
 ![Five Shapes read on a phone: the obstacles and what gets past each one, stacked and legible](changelog/images/2026-08-16-trilogy-polish.png)

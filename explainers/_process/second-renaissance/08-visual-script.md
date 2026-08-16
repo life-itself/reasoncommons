@@ -60,15 +60,15 @@ Step 1 puts Maren at the left of it. Step 2 drops her card into the column in
 her card restrikes in `--ink-faint`, indistinguishable from the rest, and a faint
 date label a year later appears at the foot of the column.
 
-> Call her Maren. Eleven years on a smallholding in Devon, and she reads more theory
+> Call her Maren. Twenty-three, a student in Gothenburg, and she reads more theory
 > than most of the people who write it.
 >
 > She joins the Second Renaissance forum and posts one paragraph: all of this floats
-> free of any actual place, and none of it survives a bad harvest.
+> free of any actual place. Start in a neighbourhood somebody actually lives in.
 >
 > Nine people reply. It is a genuinely good conversation.
 >
-> A year later, not one sentence of it has changed what the project believes.
+> A year later, not one sentence of it has changed what the movement believes.
 
 ### Title card — flow
 
@@ -78,7 +78,7 @@ Dek: the script's italic line.
 ### Nut-graph island — flow, three paragraphs
 
 The only region of ordinary prose density in the piece, per the form. Runs from *The
-Second Renaissance is a project for civilizational renewal* to *…or of ideas.*
+Second Renaissance is a movement for civilizational renewal* to *…or of ideas.*
 
 ### Statement — full screen
 
@@ -92,16 +92,16 @@ to the line and greys — twice for the circle, the third being Maren's post. St
 build the three risings; step 4 draws a dashed span beneath all three, labelled *the
 same conversation, three times*.
 
-> Maren's objection was not new. A research circle meets every week, and twice in three
-> years it has arrived at her point on its own.
+> Her suggestion — start somewhere real, with the people who actually live there — was
+> not new.
 >
-> Both times the room agreed. The work has been too abstract; it has to be rooted in
-> actual places, with actual watersheds and neighbours.
+> A research circle meets every week, and twice in three years it has arrived at the
+> same point on its own. Both times the room agreed.
 >
 > Both times, two weeks later, the agreement had nobody's name on it and nothing had
 > changed.
 >
-> Anyone who has been in this project more than a year has had that conversation three
+> Anyone who has been around this movement more than a year has had that conversation three
 > times.
 
 ### S3 · What compounds and what doesn't — pinned, 3 steps
@@ -145,7 +145,7 @@ ends in nothing. Step 4 leaves the card stranded between two dead pointers.
 > nobody makes it.
 >
 > Which means the most valuable thing a newcomer brings, a precise disagreement, is
-> the thing the project is least able to receive.
+> the thing the movement is least able to receive.
 
 ### S5 · Five diagrams, and what a claim gets — pinned, 4 steps
 
@@ -187,8 +187,8 @@ open. Step 2: the single arrow feeding that condition is struck through in `--ma
 and the two nodes downstream of it drop to `--ink-faint` — what else moves if the
 arrow gives way.
 
-> Maren's objection now has a destination. Rooted in an actual place is not a mood she
-> shares with the project; it is a condition sitting under one of those eight, and if
+> Maren’s suggestion now has a destination. Rooted in an actual place is not a mood she
+> shares with the movement; it is a condition sitting under one of those eight, and if
 > it is missing, it is missing at a spot you can put your finger on.
 >
 > And her disagreement gets smaller as it gets sharper. She does not have to reject the
@@ -213,10 +213,10 @@ ground behind her with three rows of faint figures, none of them climbing.
 > Every one of those steps is reasonable. The stack is fatal.
 >
 > The maps fix the forum's problem by importing a worse one. They ask the person
-> contributing to do the filing, and Maren is not going to do the filing. She has four
-> acres.
+> contributing to do the filing, and Maren is not going to do the filing. She has a
+> dissertation to write.
 >
-> The project's own list of symptoms already has the line for it: *many people resonate
+> The movement’s own list of symptoms already has the line for it: *many people resonate
 > with the ideas; few enter sustained practice.*
 
 ### S8 · The conflict — pinned, 6 steps
@@ -271,17 +271,17 @@ Maren, labelled *and watches it land*.
 > how the thinking changes.
 >
 > Maren's sentence ends up hanging off the claim about small dense groups as a standing
-> objection with her name on it. She has not joined a committee or learned a notation.
-> She has changed what the project believes, at an address anyone can find.
+> suggestion with her name on it. She has not joined a committee or learned a notation.
+> She has changed what the movement believes, at an address anyone can find.
 
 ### S10 · Both directions — pinned, 2 steps
 
-The eight conditions in a row, her objection attached beneath one of them. Step 2 puts
+The eight conditions in a row, her suggestion attached beneath one of them. Step 2 puts
 a small figure under seven of the eight. The eighth stays empty and takes `--mark`.
 Nothing labels it. The caption is the script's line and the absence does the argument.
 
 > And the map reads in both directions. The eight conditions that tell her where her
-> objection belongs tell everybody else which of the eight nobody is currently holding.
+> suggestion belongs tell everybody else which of the eight nobody is currently holding.
 
 ### Close — flow, then two statements
 

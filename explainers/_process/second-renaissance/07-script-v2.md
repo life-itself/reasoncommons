@@ -17,11 +17,11 @@ Changes from v1, per the critique:
 
 - **There is a person.** Maren — a declared composite, flagged in the first line so
   the reader is never misled — with a place, a history and one specific sentence.
-- **One idea travels the whole piece.** Her objection is the same objection the
+- **One idea travels the whole piece.** Her suggestion is the same suggestion the
   research circle has reached and lost twice already, and it is the thing that finally
   lands at the end. Three separate illustrations became one plot.
-- **Stakes are concrete.** A correct, specific objection has been made three times and
-  dissolved three times; the project has spent a year not knowing something it was
+- **Stakes are concrete.** A correct, specific suggestion has been made three times and
+  dissolved three times; the movement has spent a year not knowing something it was
   told a year ago.
 - Two signposts cut; two told conclusions cut; the eight conditions reduced from a
   list to two named plus the shape of the rest.
@@ -33,17 +33,25 @@ Changes from v1, per the critique:
 
 **~1,340 words**, inside the 1,100–1,400 baseline.
 
+**Revised after review, 2026-08-16.** Maren became a 23-year-old student in
+Gothenburg rather than a Devon smallholder of eleven years; her contribution is a
+*suggestion* throughout rather than an *objection*; the piece says what that
+suggestion is the moment it first calls it old, instead of a beat later; Second
+Renaissance is a *movement* rather than a *project*, with no Life Itself framing; and
+the volunteer line now says that many people are showing up and that the vision and
+theory of change are solid but still evolving.
+
 ---
 
-Call her Maren. Eleven years on a smallholding in Devon, and she reads more theory
+Call her Maren. Twenty-three, a student in Gothenburg, and she reads more theory
 than most of the people who write it.
 
 She joins the Second Renaissance forum and posts one paragraph: all of this floats
-free of any actual place, and none of it survives a bad harvest.
+free of any actual place. Start in a neighbourhood somebody actually lives in.
 
 Nine people reply. It is a genuinely good conversation.
 
-A year later, not one sentence of it has changed what the project believes.
+A year later, not one sentence of it has changed what the movement believes.
 
 ---
 
@@ -53,14 +61,14 @@ A year later, not one sentence of it has changed what the project believes.
 
 ---
 
-The Second Renaissance is a project for civilizational renewal, gathered around the
-Life Itself collective. Its claim is that our crises are not separate cracks but
+The Second Renaissance is a movement for civilizational renewal. Its claim is that our crises are not separate cracks but
 symptoms of a paradigm in decline, and that a wiser one has to be consciously built
 rather than waited for.
 
-It is largely volunteer, and its thinking is not finished. It is not supposed to be —
-the whole premise is that it gets better as more people work on it. But everything
-the project holds in common is either a document somebody wrote or a conversation
+Many people are showing up to help. And while there is a solid vision and a theory
+of change behind it, there is a great deal still to refine and evolve — which is the
+premise, not a defect. It is supposed to get better as more people work on it. But
+everything the movement holds in common is either a document somebody wrote or a conversation
 somebody remembers.
 
 That is a shortage of a particular kind. Not of intelligence, or of goodwill, or of
@@ -70,11 +78,11 @@ A shortage of somewhere to put them.
 
 ---
 
-Maren's objection was not new. A research circle meets every week, and twice in three
-years it has arrived at her point on its own.
+Her suggestion — start somewhere real, with the people who actually live there — was
+not new.
 
-Both times the room agreed. The work has been too abstract; it has to be rooted in
-actual places, with actual watersheds and neighbours.
+A research circle meets every week, and twice in three years it has arrived at the
+same point on its own. Both times the room agreed.
 
 Both times, two weeks later, the agreement had nobody's name on it and nothing had
 changed.
@@ -82,7 +90,7 @@ changed.
 Months later it came round again from the beginning, because the conditions that
 produced it were exactly where they had been.
 
-Anyone who has been in this project more than a year has had that conversation three
+Anyone who has been around this movement more than a year has had that conversation three
 times.
 
 ---
@@ -111,7 +119,7 @@ a vague objection to a long document is one nobody can act on, so in the end nob
 makes it.
 
 Which means the most valuable thing a newcomer brings, a precise disagreement, is the
-thing the project is least able to receive.
+thing the movement is least able to receive.
 
 ---
 
@@ -135,14 +143,13 @@ A companion piece covers it properly. Nothing here depends on it.*
 
 ---
 
-Maren's objection now has a destination. Rooted in an actual place is not a mood she
-shares with the project; it is a condition sitting under one of those eight, and if
+Maren’s suggestion now has a destination. Rooted in an actual place is not a mood she
+shares with the movement; it is a condition sitting under one of those eight, and if
 it is missing, it is missing at a spot you can put your finger on.
 
-And her disagreement gets smaller as it gets sharper. She does not have to reject the
-Second Renaissance in order to think it is wrong about how those small dense groups
-form. She can attack one arrow and leave the rest standing, and everyone can see what
-else moves if the arrow gives way.
+And her disagreement gets smaller as it gets sharper. She does not have to reject the whole
+thing to think it is wrong about how those small dense groups form. She can attack
+one arrow and leave the rest standing.
 
 ---
 
@@ -155,10 +162,10 @@ hundred boxes. Then defend it to the people who drew them.
 Every one of those steps is reasonable. The stack is fatal.
 
 The maps fix the forum's problem by importing a worse one. They ask the person
-contributing to do the filing, and Maren is not going to do the filing. She has four
-acres.
+contributing to do the filing, and Maren is not going to do the filing. She has a
+dissertation to write.
 
-The project's own list of symptoms already has the line for it: *many people resonate
+The movement’s own list of symptoms already has the line for it: *many people resonate
 with the ideas; few enter sustained practice.*
 
 ---
@@ -200,11 +207,11 @@ Then the thread is doing two things at once. It is still a conversation. It is a
 how the thinking changes.
 
 Maren's sentence ends up hanging off the claim about small dense groups as a standing
-objection with her name on it. She has not joined a committee or learned a notation.
-She has changed what the project believes, at an address anyone can find.
+suggestion with her name on it. She has not joined a committee or learned a notation.
+She has changed what the movement believes, at an address anyone can find.
 
 And the map reads in both directions. The eight conditions that tell her where her
-objection belongs tell everybody else which of the eight nobody is currently holding.
+suggestion belongs tell everybody else which of the eight nobody is currently holding.
 
 ---
 
@@ -234,7 +241,7 @@ the working conflict-resolution diagram.
 
 Maren is a composite, written for this piece and flagged as one in its first three
 words. She is not a member of the community and her paragraph is not a quotation; both
-are drawn from the kind of objection the maps are least able to receive. The research
+are drawn from the kind of suggestion the maps are least able to receive. The research
 circle is real and meets weekly; the two occasions described are a pattern rather than
 two dated events.
 

@@ -4,7 +4,7 @@
    Pinned stages via CSS position:sticky. No scrolljacking.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&display=swap');
 
 /* Colour and the sans face come from the Organic design system that the rest
    of the site runs on — the styles.css under story/_ds/organic-… . Its tokens
@@ -34,7 +34,12 @@
   --mark-2:var(--color-accent-2);
   /* text highlight block: the accent's lightest tint, dropped onto the paper */
   --hl:color-mix(in srgb, var(--color-accent-200) 62%, var(--color-surface));
-  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  /* Literata is a book serif built for long-form reading: warmer and rounder
+     than the Iowan/Palatino stack this used to fall back through, and — the
+     real reason — the same on every machine. That stack rendered as Iowan on a
+     Mac, Georgia on Windows and Noto on Android, which is three different
+     pieces. Local faces stay as the fallback. */
+  --serif:"Literata","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
   --sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 
@@ -87,15 +92,19 @@ body::before{
 
 /* ---------- flow (prose) sections ---------- */
 .flow{position:relative;z-index:2;background:var(--paper);padding:13vh 1.25rem}
-.wrap{max-width:34rem;margin:0 auto}
-.flow p{font-size:1.1rem;line-height:1.62;margin:0 0 1.15em}
+.wrap{max-width:37rem;margin:0 auto}
+/* Set to match the annotation captions inside the drawings rather than a
+   default article size — the piece reads as one voice that way, and the
+   running text stops feeling like the small print between the graphics.
+   The measure widens with it to hold ~68 characters a line. */
+.flow p{font-size:clamp(1.12rem,1.5vw,1.3rem);line-height:1.6;margin:0 0 1.1em}
 .flow p:last-child{margin-bottom:0}
 .flow a{color:var(--ink);text-decoration-color:var(--mark);text-underline-offset:.18em}
 .flow a:hover{color:var(--mark)}
 /* A quoted voice, not a figure: a rule at the left rather than a box. Used by
    the Second Renaissance piece, where the quotes are the evidence. */
 .flow blockquote{margin:0 0 1.3em;padding:.1em 0 .1em 1.2rem;
-  border-left:2px solid var(--mark);font-size:1.14rem;line-height:1.56}
+  border-left:2px solid var(--mark);font-size:clamp(1.16rem,1.6vw,1.36rem);line-height:1.54}
 
 .kicker{font-family:var(--sans);text-transform:uppercase;letter-spacing:.14em;
         font-size:.72rem;color:var(--ink-faint);margin:0 0 2.2em !important}
@@ -119,10 +128,10 @@ body::before{
 
 /* ---------- sources ---------- */
 .sources{position:relative;z-index:2;background:var(--paper-2);padding:11vh 1.25rem}
-.sources .wrap{max-width:38rem}
+.sources .wrap{max-width:40rem}
 .sources h2{font-family:var(--sans);font-size:.8rem;letter-spacing:.14em;
             text-transform:uppercase;color:var(--ink-soft);margin:0 0 1.6em;font-weight:600}
-.sources p{font-size:.94rem;line-height:1.6;color:var(--ink-soft)}
+.sources p{font-size:1.02rem;line-height:1.62;color:var(--ink-soft)}
 
 /* ---------- series nav ---------- */
 .seriesnav{position:relative;z-index:2;background:var(--paper);
