@@ -89,10 +89,23 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
   the loop stays cheap: edit → `fl .` → look → repeat, landing on `main` only
   once it's right. `fl list` shows existing sites, `fl delete` removes one.
   Especially worth doing for anything that changes URLs or link structure.
-  Two caveats. `fl` aborts on the tracked `.agents/skills/project-ltp` symlink,
-  so move `.agents` aside for the publish and put it back after. And a preview
-  ignores `contentExclude`, so `_process/` shows up there but not in production.
-  Check anything about *excluded* content against the live site, not the preview.
+  Three caveats. `fl` aborts on the tracked `.agents/skills/project-ltp` symlink,
+  so move `.agents` aside for the publish and put it back after — and move it
+  outside the repo, because `fl` still walks it if you merely rename it in place.
+  A preview ignores `contentExclude`, so `_process/` shows up there but not in
+  production; check anything about *excluded* content against the live site.
+  And the preview's asset delivery lags: on 2026-08-20 it served a `scroller.css`
+  several generations old for over an hour, through the edge *and* cache-busted,
+  while `fl` reported the site in sync and production had the correct file. So
+  before concluding a CSS or JS change is broken on the preview, check which
+  bytes you are actually looking at:
+  ```sh
+  md5 -q explainers/scroller.css
+  curl -sL https://reasoncommons-preview-rufuspollock.flowershow.me/explainers/scroller.css | md5 -q
+  ```
+  If they differ, the preview is stale, not the code. Markup updates promptly;
+  it is the shared assets that lag, which is the worst case — the page looks
+  wrong in a way that implicates your change.
 - Root docs are lowercase (`motivation.md`, `changelog.md`) so Flowershow gives them clean published URLs — except `README.md` and `AGENTS.md`, which keep their exact uppercase names because tooling (GitHub, Flowershow's homepage, Claude Code/Codex) looks them up by that literal filename.
 
 ## Changelog
