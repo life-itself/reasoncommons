@@ -87,9 +87,9 @@
     nav.classList.add('on');
   }
 
-  /* A piece that lands on a drawing has to say that it scrolls. Once it has
-     been scrolled, it has made its point and gets out of the way. */
-  var cue = document.querySelector('.scrollcue.float');
+  /* The page has to say that it scrolls. Once it has been scrolled, it has
+     made its point and gets out of the way. */
+  var cue = document.querySelector('.scrollcue');
   if (cue) {
     window.addEventListener('scroll', function () {
       if (window.scrollY > window.innerHeight * 0.3) cue.classList.add('gone');

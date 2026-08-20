@@ -11,6 +11,8 @@ format, but same spirit — human-readable, most recent first.
 
 *The Wrong Queue* keeps its opening — a drawn clinic with a queue out of the door is a better landing than any title card, so it gets no hero — but it now carries the same bar, saying which part of three it is, and a scroll cue at the foot of the first screen that retires itself once you have scrolled. A piece that lands you on a drawing still has to tell you that it moves.
 
+*The Arrows Nobody Checks* had the worst landing of the five — a lone box reading "countersignature required" on an otherwise empty screen, beside a sentence about a doctor and a clinic that only part one introduces. It now opens on its title, with a line saying where the clinic comes from and a link to part one, and the chain of reasoning follows. Its five beats deliberately do *not* stack: the drawing already piles its boxes up and keeps them, so the sequence is on screen either way.
+
 Every explainer also got faster to respond. The second beat of each section used to need a screen and a half of scrolling before anything moved; it now arrives in under half a screen, and the last beat of a section holds twice as long before it slides away.
 
 ## 2026-08-16 — Somewhere to Put It
