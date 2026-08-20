@@ -89,6 +89,11 @@ body::before{
 .step p{margin:0;background:var(--hl);padding:.6em .8em;
         box-decoration-break:clone;-webkit-box-decoration-break:clone}
 .step.plain p{background:none;padding:0}
+/* A full-screen statement that lands on top of the drawing rather than on
+   empty paper. The highlight tint is for annotations; at display size across
+   34rem it reads as a slab, so this one takes the paper itself as its ground
+   and the drawing goes quiet behind it. */
+.step.onpaper p{background:var(--paper);padding:.5em .7em}
 .step.lead{left:8vw;top:34vh}
 .step.tl{left:8vw;top:14vh}   .step.tr{right:8vw;top:14vh}
 .step.bl{left:8vw;bottom:16vh} .step.br{right:8vw;bottom:16vh}

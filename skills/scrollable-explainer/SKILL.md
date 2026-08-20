@@ -144,7 +144,11 @@ same effect.
 and no reversal at the end. If sentence four isn't a genuine turn, you've just written a
 slow headline.
 
-**What we found in practice: a cold link needs a landing first.** The pattern assumes a reader who arrived from a homepage or a headline and already knows they are in a story. Ours mostly arrive on a bare link, and a reader who lands *inside* a pinned stage sees a drawing, one sentence, no title and no sign that scrolling is the interaction — so they leave without scrolling. Give the piece a hero screen: kicker, title, dek, a line saying it is a scrolling piece, and a visible scroll cue. That does cost the withheld headline, so let the dek carry a compressed version of the turn. *Somewhere to Put It* was rebuilt this way on 2026-08-20 and its cold open moved down to follow the framing.
+**What we found in practice: a cold link needs a landing first.** The pattern assumes a reader who arrived from a homepage or a headline and already knows they are in a story. Ours mostly arrive on a bare link, and a reader who lands *inside* a pinned stage sees a drawing, one sentence, no title and no sign that scrolling is the interaction — so they leave without scrolling. Give the piece a hero screen: kicker, title, dek, a line saying it is a scrolling piece, and a visible scroll cue. That does cost the withheld headline, so let the dek carry a compressed version of the turn. *Somewhere to Put It* was rebuilt this way on 2026-08-20 and its cold open moved down to follow the framing; the rest of the series followed.
+
+**Not every piece needs the hero, though — check what the reader actually lands on.** *The Wrong Queue* opens on a drawn clinic with a queue out of the door and one concrete sentence, which tells you where you are in a second; giving it a hero would have spent the reversal for nothing. It kept its cold open and took only the bar and the cue. The diagnostic is whether the first screen is *legible as a story* without the title: a drawn place and a specific sentence, yes; an abstract shape and an unintroduced name, no.
+
+**A piece that is part of a series needs one line of routing in the hero.** *The Arrows Nobody Checks* opens on a name and a clinic that only part one introduces, so its standfirst says where the clinic comes from and links back. Cheaper than rewriting an opening that works for readers arriving in order.
 
 ### 2.1b · The Stacked Column
 

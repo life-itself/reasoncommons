@@ -13,6 +13,8 @@ format, but same spirit — human-readable, most recent first.
 
 *The Arrows Nobody Checks* had the worst landing of the five — a lone box reading "countersignature required" on an otherwise empty screen, beside a sentence about a doctor and a clinic that only part one introduces. It now opens on its title, with a line saying where the clinic comes from and a link to part one, and the chain of reasoning follows. Its five beats deliberately do *not* stack: the drawing already piles its boxes up and keeps them, so the sequence is on screen either way.
 
+*Five Shapes* and *Whose Map Is It* got the same landing, each with a line saying which pieces they follow from and a link to them, so all five now open on a title, a bar and an arrow. Tidying *Whose Map Is It* also turned up four places where a caption had been sitting on top of the thing it was describing — three long ones at the left of the frame that grew up into the diagram, and a full-screen statement landing across the row of trees. They now sit at the foot of the frame, and the statement takes the paper as its ground.
+
 Every explainer also got faster to respond. The second beat of each section used to need a screen and a half of scrolling before anything moved; it now arrives in under half a screen, and the last beat of a section holds twice as long before it slides away.
 
 ## 2026-08-16 — Somewhere to Put It
