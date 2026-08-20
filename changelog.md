@@ -9,6 +9,8 @@ format, but same spirit — human-readable, most recent first.
 
 *Somewhere to Put It* now opens on a title screen that says what it is and points down, instead of dropping the reader straight into a pinned drawing with no headline and no sign that scrolling is the interaction. People were landing on it and leaving without scrolling. Maren's story moves down to follow the framing, and her four beats now stack down the left of the drawing rather than each one wiping out the last, so the sequence stays readable as it builds. A thin bar appears once the title screen has gone, with a way back to the rest of the site.
 
+*The Wrong Queue* keeps its opening — a drawn clinic with a queue out of the door is a better landing than any title card, so it gets no hero — but it now carries the same bar, saying which part of three it is, and a scroll cue at the foot of the first screen that retires itself once you have scrolled. A piece that lands you on a drawing still has to tell you that it moves.
+
 Every explainer also got faster to respond. The second beat of each section used to need a screen and a half of scrolling before anything moved; it now arrives in under half a screen, and the last beat of a section holds twice as long before it slides away.
 
 ## 2026-08-16 — Somewhere to Put It

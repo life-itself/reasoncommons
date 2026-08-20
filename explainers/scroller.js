@@ -87,6 +87,15 @@
     nav.classList.add('on');
   }
 
+  /* A piece that lands on a drawing has to say that it scrolls. Once it has
+     been scrolled, it has made its point and gets out of the way. */
+  var cue = document.querySelector('.scrollcue.float');
+  if (cue) {
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > window.innerHeight * 0.3) cue.classList.add('gone');
+    }, { passive: true });
+  }
+
   /* Count a number up as it lands. Respects reduced motion. */
   window.countUp = function (el, to, ms) {
     if (!el || el.dataset.counted === '1') return;

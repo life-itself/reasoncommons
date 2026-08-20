@@ -173,6 +173,17 @@ body::before{
 .scrollcue svg{display:block;animation:cuebob 2.1s ease-in-out infinite}
 @keyframes cuebob{0%,100%{transform:translateY(-2px)}50%{transform:translateY(4px)}}
 
+/* The cue on a piece that has no hero to put it in — one that lands the reader
+   straight on a drawing. Fixed at the foot of the first screen, over whatever
+   is behind it, and gone for good once they have scrolled a third of a screen:
+   by then they know the page moves and it has nothing left to say. The word
+   goes on a phone, where the caption is already at the foot and the arrow on
+   its own carries it. */
+.scrollcue.float{position:fixed;left:50%;bottom:4.5vh;z-index:35;width:auto;
+                 transform:translateX(-50%);pointer-events:none;
+                 transition:opacity .45s ease}
+.scrollcue.float.gone{opacity:0}
+
 /* ---------- top bar ----------
    Nothing over the hero; it fades in once the hero has gone, so there is
    always a way back to the site and always a name for where you are. */
@@ -194,6 +205,9 @@ body::before{
   .topnav{font-size:.68rem;padding:.5rem .9rem}
   .topnav .up{display:none}
   .topnav .here{letter-spacing:.1em}
+  .topnav .part{display:none}
+  .scrollcue.float{bottom:2vh}
+  .scrollcue.float span{display:none}
 }
 
 /* big statement screens */
