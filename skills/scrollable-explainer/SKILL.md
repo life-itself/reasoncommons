@@ -267,6 +267,19 @@ accessibility and readers hate it.
 
 ---
 
+## 4.5 · Check it in a browser before calling it finished
+
+Most of what has been wrong with these pages was invisible from the source: captions covering the thing they pointed at, boxes running off the edge of their own drawing, a whole stage letterboxed into the middle third of the frame, a crack drawn through its own label, portrait arrows pointing the wrong way. Drive the built page at 1440×900, 1280×720 and 390×844, step through every trigger, and look at the result.
+
+Script the stepping — it is cheap. The Playwright browsers are already cached in `~/Library/Caches/ms-playwright`, so `npm i playwright` into a scratch directory plus `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1` is the whole setup. Two details that cost time to work out:
+
+- **Park at `triggerTop + 0.3 × viewport`** to land on a given step. The observer fires a step when its trigger crosses the middle band, so `+0.6` overshoots into the next one and you photograph the wrong beat.
+- **Assemble the shots into a contact sheet** — a grid of twelve screens at a glance. That is how the collisions actually get spotted; reading them one at a time, you stop paying attention by the fifth.
+
+Two measurements are worth automating on top of looking: the union of visible SVG elements against the `<svg>` box, which catches drawings running off their own canvas, and each visible element against the active caption's rect, which catches captions sitting on ink. Neither replaces looking — a fan of arrowheads converging into a smudge, and 5px labels in a thumbnail, only ever showed up in the screenshots.
+
+Verify against **production**, not the preview: see AGENTS.md on the preview's stale assets.
+
 ## 5 · Checklist
 
 1. **~1,100–1,400 words of body prose.** More argument means more *drawings*, not more sentences.
