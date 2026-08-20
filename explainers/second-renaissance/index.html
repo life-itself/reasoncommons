@@ -8,6 +8,10 @@
 <link rel="stylesheet" href="../scroller.css">
 </head>
 <body>
+<nav class="topnav">
+  <span class="crumb"><a href="/">Reason Commons</a><span class="up"> · <a href="../">Explainers</a></span></span>
+  <span class="here">Somewhere to Put It</span>
+</nav>
 <div class="progress"></div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -30,6 +34,28 @@
   </marker>
 </defs></svg>
 
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+    <p class="kicker">The Second Renaissance · why any of this matters</p>
+    <h1 class="title">Somewhere to Put It</h1>
+    <p class="dek">The Second Renaissance produces more good thinking than it can hold on to. This is about giving it a place to go.</p>
+    <p class="note">A scrolling piece: the drawings build as you read. Best on a reasonably wide screen.</p>
+  </div>
+  <div class="scrollcue">
+    <svg width="14" height="26" viewBox="0 0 14 26" aria-hidden="true"><path d="M7 1 L7 21 M1 15 L7 22 L13 15" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<section class="flow"><div class="wrap">
+  <p>The Second Renaissance is a movement for civilizational renewal. Its claim is that our crises are not separate cracks but symptoms of a paradigm in decline, and that a wiser one has to be consciously built rather than waited for.</p>
+  <p>Many people are showing up to help. And while there is a solid vision and a theory of change behind it, there is a great deal still to refine and evolve — which is the premise, not a defect. It is supposed to get better as more people work on it. But everything the movement holds in common is either a document somebody wrote or a conversation somebody remembers.</p>
+  <p>That is a shortage of a particular kind. Not of intelligence, or of goodwill, or of ideas.</p>
+</div></section>
+
+<section class="statement"><p>A shortage of somewhere to put them.</p></section>
+
 <!-- ================= COLD OPEN ================= -->
 <section class="scroll-item">
   <div class="sticky-item"><div class="stage">
@@ -41,7 +67,7 @@
       <g class="layer" data-layer="a4" id="cardgone"></g>
     </svg>
   </div>
-  <div class="steps">
+  <div class="steps stack">
     <div class="step tl" data-step="a1"><p>Call her Maren. Twenty-three, a student in Gothenburg, and she reads more theory than most of the people who write it.</p></div>
     <div class="step tl" data-step="a2"><p>She joins the Second Renaissance forum and posts one paragraph: all of this floats free of any actual place. Start in a neighbourhood somebody actually lives in.</p></div>
     <div class="step tl" data-step="a3"><p>Nine people reply. It is a genuinely good conversation.</p></div>
@@ -50,21 +76,6 @@
   <div class="trigger" data-t="a1"></div><div class="trigger" data-t="a2"></div>
   <div class="trigger" data-t="a3"></div><div class="trigger" data-t="a4"></div>
 </section>
-
-<!-- ================= TITLE ================= -->
-<section class="flow"><div class="wrap">
-  <p class="kicker">The Second Renaissance · why any of this matters</p>
-  <h1 class="title">Somewhere to Put It</h1>
-  <p class="dek">The Second Renaissance produces more good thinking than it can hold on to.</p>
-</div></section>
-
-<section class="flow"><div class="wrap">
-  <p>The Second Renaissance is a movement for civilizational renewal. Its claim is that our crises are not separate cracks but symptoms of a paradigm in decline, and that a wiser one has to be consciously built rather than waited for.</p>
-  <p>Many people are showing up to help. And while there is a solid vision and a theory of change behind it, there is a great deal still to refine and evolve — which is the premise, not a defect. It is supposed to get better as more people work on it. But everything the movement holds in common is either a document somebody wrote or a conversation somebody remembers.</p>
-  <p>That is a shortage of a particular kind. Not of intelligence, or of goodwill, or of ideas.</p>
-</div></section>
-
-<section class="statement"><p>A shortage of somewhere to put them.</p></section>
 
 <!-- ================= 2 · THREE TIMES ================= -->
 <section class="scroll-item">
@@ -441,7 +452,11 @@
     var cm=document.getElementById('cardmark');
     var rp=document.getElementById('replies');
     var cg=document.getElementById('cardgone');
-    var X=P?86:440, W=P?300:340, CX=X+W/2;
+    /* Landscape sits this one left of where the drawing would naturally
+       centre: the stacked caption column takes the left third of the frame,
+       and the stage is padded clear of it, so an unshifted composition leaves
+       a hole between the two. */
+    var X=P?86:330, W=P?300:340, CX=X+W/2;
     var DATES=['MAR 3','MAR 9','MAR 14'];
 
     /* the thread: bars filed by date, before and after her post */
@@ -462,8 +477,8 @@
     txt(th,CX,RY+(P?170:180)+3*44+(P?30:34),'a year of the thread, filed by date',
         P?10.5:11.5,'var(--ink-faint)');
 
-    person(mn,P?36:250,CY+(P?40:44),P?0.8:1.05);
-    txt(mn,P?36:250,CY+(P?86:96),'Maren',P?10:11,'var(--ink-soft)');
+    person(mn,P?36:140,CY+(P?40:44),P?0.8:1.05);
+    txt(mn,P?36:140,CY+(P?86:96),'Maren',P?10:11,'var(--ink-soft)');
 
     card(cm,X,CY,W,P?76:80,CARD,'mark',P?11:12.5,'HER POST');
     card(cg,X,CY,W,P?76:80,CARD,'faint',P?11:12.5,'HER POST');

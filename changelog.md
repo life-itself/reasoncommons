@@ -3,6 +3,14 @@
 Notable changes to this project. Not strictly [Keep a Changelog](https://keepachangelog.com/)
 format, but same spirit — human-readable, most recent first.
 
+## 2026-08-20 — A way in, and a story that stays on screen
+
+![Maren's story unfolding down the left of the drawing: four blocks stacked in order, the earlier ones dimmed, the live one bright](changelog/images/2026-08-20-landing-and-stacked-steps.png)
+
+*Somewhere to Put It* now opens on a title screen that says what it is and points down, instead of dropping the reader straight into a pinned drawing with no headline and no sign that scrolling is the interaction. People were landing on it and leaving without scrolling. Maren's story moves down to follow the framing, and her four beats now stack down the left of the drawing rather than each one wiping out the last, so the sequence stays readable as it builds. A thin bar appears once the title screen has gone, with a way back to the rest of the site.
+
+Every explainer also got faster to respond. The second beat of each section used to need a screen and a half of scrolling before anything moved; it now arrives in under half a screen, and the last beat of a section holds twice as long before it slides away.
+
 ## 2026-08-16 — Somewhere to Put It
 
 ![The map of the eight conditions, with one contributor's objection attached to a single condition and the arrow above it struck through](changelog/images/2026-08-16-somewhere-to-put-it.png)

@@ -144,6 +144,14 @@ same effect.
 and no reversal at the end. If sentence four isn't a genuine turn, you've just written a
 slow headline.
 
+**What we found in practice: a cold link needs a landing first.** The pattern assumes a reader who arrived from a homepage or a headline and already knows they are in a story. Ours mostly arrive on a bare link, and a reader who lands *inside* a pinned stage sees a drawing, one sentence, no title and no sign that scrolling is the interaction — so they leave without scrolling. Give the piece a hero screen: kicker, title, dek, a line saying it is a scrolling piece, and a visible scroll cue. That does cost the withheld headline, so let the dek carry a compressed version of the turn. *Somewhere to Put It* was rebuilt this way on 2026-08-20 and its cold open moved down to follow the framing.
+
+### 2.1b · The Stacked Column
+
+Where a pinned stage is telling a **story** rather than captioning one drawing, let the text blocks accumulate down a column instead of each replacing the last. The reader can see the sequence it has built and read back over it, rather than trusting their memory of a sentence that has now vanished. Opt in with `<div class="steps stack">`; `scroller.js` keeps every block up to the live one on screen, dims the ones already read, and marks the live one `.cur`.
+
+It costs a third of the frame, so it is only on above 1200px — narrower than that, the drawing's labels start rendering below 10px and an unreadable diagram costs more than the sequence gains, so the group falls back to one block at a time. Keep the ordinary position classes (`tl`, `bc`, …) on stacked steps; that fallback is what uses them. Use it for the narrative stretches, not for a stage where each caption points at a different part of the same picture.
+
 ### 2.2 · The Pinned Stage
 The structural workhorse. A tall container holds a viewport-height child that sticks while
 the container scrolls past. Text steps fade in and out over the pinned graphic.
@@ -261,7 +269,7 @@ accessibility and readers hate it.
 2. **Median ~16 words per block**; hard ceiling ~45, and only in the Nut-Graph Island.
 3. **One screen of graphic per sentence** through the body.
 4. **Zero interactions.** The reveal is the scroll.
-5. **Cold Open of 3–5 sentences** ending on the thesis, before the title.
+5. **A hero screen first** — title, dek, scroll cue — then the Cold Open's 3–5 sentences ending on the thesis. See 2.1.
 6. **Every significant number gets a Comparison Ladder.**
 7. **One continuous illustrated world**, not a set of unrelated figures.
 8. **Pre-rendered frame sequences**, not canvas or video.

@@ -59,9 +59,21 @@ body::before{
 .progress{position:fixed;top:0;left:0;height:2px;background:var(--mark);
           width:0;z-index:50;transition:width .1s linear}
 
-/* ---------- pinned stage ---------- */
-.scroll-item{position:relative}
-.sticky-item{position:sticky;top:0;height:100svh;overflow:hidden;z-index:1}
+/* ---------- pinned stage ----------
+   The sticky child would otherwise take a screen of document flow of its own
+   *before* the first trigger begins, and a step only fires when its trigger
+   crosses the middle band of the viewport — so the second beat of a section
+   did not arrive until about 1.45 screens of scrolling. The reader scrolls a
+   screen and a half of an already-finished drawing and concludes the page is
+   broken. The negative margin takes that screen back, so the triggers start at
+   the section's own top and the first change lands at about 0.45 screens.
+   The padding then extends the sticky's travel past the last trigger, so the
+   final beat is not unpinning at the moment it appears: the dead screen moves
+   from the head of the section, where it reads as broken, to the tail, where
+   it reads as a hold on a finished drawing. */
+.scroll-item{position:relative;padding-bottom:55svh}
+.sticky-item{position:sticky;top:0;height:100svh;overflow:hidden;z-index:1;
+             margin-bottom:-100svh}
 .stage{position:relative;width:100%;height:100%;display:grid;place-items:center}
 .stage svg{width:min(100%,1100px);height:100%;display:block}
 .trigger{height:100svh}
@@ -90,6 +102,35 @@ body::before{
 .step.mid{left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;max-width:34rem}
 .step.big p{font-size:clamp(1.7rem,4.2vw,2.9rem);line-height:1.14}
 
+/* ---------- stacked steps ----------
+   Opt-in with <div class="steps stack">. Instead of each beat replacing the
+   last in the same spot, the blocks accumulate down a column, so the reader
+   can see a sequence unfolding and read back over it rather than trusting
+   their memory of a sentence that has now vanished. The ones already read
+   stay, dimmed; scroller.js marks the live one .cur.
+
+   Only wide screens get the column. A 20rem column beside a drawing that is
+   1000 units across needs about 1200px before the drawing's 12.5px labels
+   start rendering below 10px, and an unreadable diagram costs more than the
+   sequence gains. Below that the group falls back to one block at a time, in
+   whatever position its own class asks for — so keep the tl/bc/etc. classes on
+   stacked steps too, they are what the narrow layout uses.
+
+   The stage is padded out of the column's way rather than the drawings being
+   redrawn around it, so any section can opt in without moving coordinates. */
+.steps.stack .step{opacity:0}
+.steps.stack .step.cur{opacity:1}
+
+@media (min-width:1200px){
+  .steps.stack{display:flex;flex-direction:column;align-items:flex-start;gap:.5rem;
+               inset:10vh auto auto 6vw;width:min(20rem,26vw)}
+  .steps.stack .step{position:static;transform:none;width:100%;max-width:100%;
+                     text-align:left;font-size:clamp(1rem,1.2vw,1.16rem)}
+  .steps.stack .step.on{opacity:.5}
+  .steps.stack .step.cur{opacity:1}
+  .sticky-item:has(.steps.stack) .stage{padding-left:calc(6vw + min(20rem,26vw) + 2vw)}
+}
+
 /* ---------- flow (prose) sections ---------- */
 .flow{position:relative;z-index:2;background:var(--paper);padding:13vh 1.25rem}
 .wrap{max-width:37rem;margin:0 auto}
@@ -112,6 +153,48 @@ body::before{
        font-size:clamp(3rem,10vw,7.5rem);line-height:.94;margin:0 0 .28em}
 .dek{font-family:var(--sans);font-size:1.02rem;color:var(--ink-soft);
      max-width:26rem;line-height:1.45;margin:0 !important}
+
+/* ---------- hero ----------
+   These pieces get linked to cold, and a reader who lands inside a pinned
+   stage has no title, no orientation and no way of knowing that scrolling is
+   the interaction — they arrive, nothing happens, and they leave. The hero is
+   the cost of that: a screen that says what this is and points down. */
+.hero{position:relative;z-index:2;min-height:100svh;display:grid;place-items:center;
+      padding:16vh 1.25rem 18vh}
+.hero .wrap{max-width:37rem;margin:0 auto;width:100%}
+.hero .dek{font-size:1.16rem;max-width:30rem;line-height:1.5}
+.hero .note{font-family:var(--sans);font-size:.84rem;color:var(--ink-faint);
+            margin:2.4em 0 0;max-width:26rem;line-height:1.5}
+.scrollcue{position:absolute;left:50%;transform:translateX(-50%);bottom:6vh;
+           width:min(37rem,100% - 2.5rem);
+           display:flex;align-items:center;gap:.6rem;
+           font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;
+           text-transform:uppercase;color:var(--ink-faint)}
+.scrollcue svg{display:block;animation:cuebob 2.1s ease-in-out infinite}
+@keyframes cuebob{0%,100%{transform:translateY(-2px)}50%{transform:translateY(4px)}}
+
+/* ---------- top bar ----------
+   Nothing over the hero; it fades in once the hero has gone, so there is
+   always a way back to the site and always a name for where you are. */
+.topnav{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;
+        align-items:center;justify-content:space-between;gap:1rem;
+        padding:.62rem clamp(1rem,4vw,2.2rem);
+        background:var(--paper);border-bottom:1px solid rgba(34,32,29,.14);
+        font-family:var(--sans);font-size:.76rem;letter-spacing:.08em;
+        opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s}
+.topnav.on{opacity:1;visibility:visible}
+.topnav a{color:var(--ink);text-decoration:none}
+.topnav a:hover{color:var(--mark)}
+.topnav .crumb{white-space:nowrap}
+.topnav .here{color:var(--ink-faint);text-transform:uppercase;letter-spacing:.14em;
+              white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* One line, always: a bar that wraps to two eats the top of the drawing
+   underneath it, which on a phone is most of the drawing. */
+@media (max-width:640px){
+  .topnav{font-size:.68rem;padding:.5rem .9rem}
+  .topnav .up{display:none}
+  .topnav .here{letter-spacing:.1em}
+}
 
 /* big statement screens */
 .statement{min-height:100svh;display:grid;place-items:center;text-align:center;
@@ -162,12 +245,15 @@ body::before{
      out at 6px. scroller.js re-fits each stage's viewBox to its own content
      and parks it in the upper band, clear of the caption at the foot. */
   .stage{padding:0 3vw}
+  /* the fixed bar would otherwise sit on the top edge of the drawing */
+  body:has(.topnav) .stage{padding-top:2.2rem}
   .flow{padding:10vh 1.25rem}
   .sources{padding:9vh 1.25rem}
 }
 
 @media (prefers-reduced-motion:reduce){
-  .layer,.step,.progress{transition:none}
+  .layer,.step,.progress,.topnav{transition:none}
+  .scrollcue svg{animation:none}
 }
 
 /* landscape-only annotations: hidden where a portrait layout carries the point */

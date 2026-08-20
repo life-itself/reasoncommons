@@ -22,11 +22,29 @@
   var steps  = [].slice.call(document.querySelectorAll('.step'));
   var layers = [].slice.call(document.querySelectorAll('.layer'));
 
+  var stacks = [].slice.call(document.querySelectorAll('.steps.stack'));
+
+  /* A stacked group accumulates instead of replacing: every block up to and
+     including the live one stays on screen, the live one marked .cur and the
+     rest dimmed by CSS. Membership is read from DOM order, so no bookkeeping
+     against the triggers is needed — if the active id belongs to some other
+     section, the whole group clears. */
+  function stack(group, id) {
+    var kids = group.children, seen = false;
+    for (var i = kids.length - 1; i >= 0; i--) {
+      var k = kids[i];
+      if (k.dataset.step === id) seen = true;
+      k.classList.toggle('on', seen);
+      k.classList.toggle('cur', k.dataset.step === id);
+    }
+  }
+
   function show(id) {
     if (!id) return;
     for (var i = 0; i < steps.length; i++) {
       steps[i].classList.toggle('on', steps[i].dataset.step === id);
     }
+    for (var s = 0; s < stacks.length; s++) stack(stacks[s], id);
     for (var j = 0; j < layers.length; j++) {
       var keys = (layers[j].dataset.layer || '').split(/\s+/);
       layers[j].classList.toggle('on', keys.indexOf(id) !== -1);
@@ -56,6 +74,17 @@
         ticking = false;
       });
     }, { passive: true });
+  }
+
+  /* The bar stays out of the hero's way and appears once the hero has left,
+     so the reader always has a name for where they are and a way back. */
+  var nav = document.querySelector('.topnav'), hero = document.querySelector('.hero');
+  if (nav && hero) {
+    new IntersectionObserver(function (entries) {
+      nav.classList.toggle('on', !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(hero);
+  } else if (nav) {
+    nav.classList.add('on');
   }
 
   /* Count a number up as it lands. Respects reduced motion. */
