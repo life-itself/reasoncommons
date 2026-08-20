@@ -103,9 +103,11 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
   md5 -q explainers/scroller.css
   curl -sL https://reasoncommons-preview-rufuspollock.flowershow.me/explainers/scroller.css | md5 -q
   ```
-  If they differ, the preview is stale, not the code. Markup updates promptly;
-  it is the shared assets that lag, which is the worst case — the page looks
-  wrong in a way that implicates your change.
+  If they differ, the preview is stale, not the code — the response even carries
+  the *correct* ETag alongside the old body, so nothing looks wrong until you
+  hash it. Markup updates promptly; it is the shared assets that lag, which is
+  the worst case: the page looks wrong in a way that implicates your change.
+  Filed upstream as https://github.com/flowershow/flowershow/issues/1363.
 - Root docs are lowercase (`motivation.md`, `changelog.md`) so Flowershow gives them clean published URLs — except `README.md` and `AGENTS.md`, which keep their exact uppercase names because tooling (GitHub, Flowershow's homepage, Claude Code/Codex) looks them up by that literal filename.
 
 ## Changelog
