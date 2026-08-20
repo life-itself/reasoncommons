@@ -3,19 +3,11 @@
 Notable changes to this project. Not strictly [Keep a Changelog](https://keepachangelog.com/)
 format, but same spirit — human-readable, most recent first.
 
-## 2026-08-20 — A way in, and a story that stays on screen
+## 2026-08-21 — A way in to every explainer
 
-![Maren's story unfolding down the left of the drawing: four blocks stacked in order, the earlier ones dimmed, the live one bright](changelog/images/2026-08-20-landing-and-stacked-steps.png)
+![Left, the title screen that now opens Somewhere to Put It, with a scroll cue at the foot. Right, Maren's story stacked down the left of the drawing, four blocks in order with the live one bright.](changelog/images/2026-08-21-explainer-landings.png)
 
-*Somewhere to Put It* now opens on a title screen that says what it is and points down, instead of dropping the reader straight into a pinned drawing with no headline and no sign that scrolling is the interaction. People were landing on it and leaving without scrolling. Maren's story moves down to follow the framing, and her four beats now stack down the left of the drawing rather than each one wiping out the last, so the sequence stays readable as it builds. A thin bar appears once the title screen has gone, with a way back to the rest of the site.
-
-*The Wrong Queue* keeps its opening — a drawn clinic with a queue out of the door is a better landing than any title card, so it gets no hero — but it now carries the same bar, saying which part of three it is, and a scroll cue at the foot of the first screen that retires itself once you have scrolled. A piece that lands you on a drawing still has to tell you that it moves.
-
-*The Arrows Nobody Checks* had the worst landing of the five — a lone box reading "countersignature required" on an otherwise empty screen, beside a sentence about a doctor and a clinic that only part one introduces. It now opens on its title, with a line saying where the clinic comes from and a link to part one, and the chain of reasoning follows. Its five beats deliberately do *not* stack: the drawing already piles its boxes up and keeps them, so the sequence is on screen either way.
-
-*Five Shapes* and *Whose Map Is It* got the same landing, each with a line saying which pieces they follow from and a link to them, so all five now open on a title, a bar and an arrow. Tidying *Whose Map Is It* also turned up four places where a caption had been sitting on top of the thing it was describing — three long ones at the left of the frame that grew up into the diagram, and a full-screen statement landing across the row of trees. They now sit at the foot of the frame, and the statement takes the paper as its ground.
-
-Every explainer also got faster to respond. The second beat of each section used to need a screen and a half of scrolling before anything moved; it now arrives in under half a screen, and the last beat of a section holds twice as long before it slides away.
+All five scrolling explainers now open on a landing — a title, a scroll cue and a thin bar back to the rest of the site — instead of dropping the reader inside a pinned drawing with no headline and no sign that the page moves. They also respond faster: the second beat of a section used to take a screen and a half of scrolling and now arrives in under half a screen. In *Somewhere to Put It*, Maren's story stacks down the left of the drawing rather than each beat wiping out the last.
 
 ## 2026-08-16 — Somewhere to Put It
 
