@@ -6,9 +6,7 @@ date: 2026-08-15
 
 ### *Or* why fixes don't stick, why reasoning needs to be visible, and the method that connects them. A series in three parts.
 
-*A series in three parts*
-
-Almost every enterprise is busy whether its a corporation, a non-profit of a movement. Rather fewer are getting anywhere. This is about the difference — and about a way of thinking, invented for factories, that turns out to apply to almost anything you are responsible for.
+Almost every enterprise is busy whether it’s a corporation, a non-profit or a movement. Rather fewer are getting anywhere. This is about the difference — and about a way of thinking, invented for factories, that turns out to apply to almost anything you are responsible for.
 
 Each part is a scrolling piece: the drawings build as you read. Best on a reasonably wide screen.
 
