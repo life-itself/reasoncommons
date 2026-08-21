@@ -32,9 +32,9 @@ The method itself: five questions any real change has to answer, the differently
 
 ## The method on a real problem
 
-### [Somewhere to Put It](second-renaissance/index.html)
+### [The Forum Doesn't Remember, and Doesn't Cumulate](second-renaissance/index.html)
 
-A sibling to the trilogy rather than a fourth part, and readable entirely on its own. Somebody posts the best paragraph they have written in a year to the Second Renaissance forum, and a year later not one sentence of it has changed what the movement believes. Not for want of goodwill — for want of anywhere to put a good thought. Every diagram in it comes from that group's actual analysis.
+A sibling to the trilogy rather than a fourth part, and readable entirely on its own. Somebody posts the best paragraph they have written in a year to the Second Renaissance forum, and a year later not one sentence of it has changed what the movement believes. Not for want of goodwill — for want of a way to integrate a good thought into what the group knows. Every diagram in it comes from that group's actual analysis.
 
 ### [Whose Map Is It](whose-map-is-it/index.html) · the deeper cut
 
