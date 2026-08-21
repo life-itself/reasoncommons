@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reason Commons &middot; 2R</title>
+<meta name="description" content="A talk that performs the Logical Thinking Process without lecturing about it: why good conversations go nowhere, what better would look like, the conflict in the way, and what a group's reasoning could become if contributions accumulated.">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VWH8D9GCYV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VWH8D9GCYV');
+</script>
+
+<!-- Fonts: Instrument Serif (display), Newsreader (conversation register), IBM Plex Mono (structure register) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ===========================================================================
+   THEME TOKENS
+   The design thesis: THREE REGISTERS on one surface.
+     1. Conversation  - Newsreader italic, low contrast, slightly rotated, warm
+     2. Structure     - IBM Plex Mono + 1px hairlines + nodes, cool green
+     3. Statement     - Instrument Serif, full chalk contrast, the speaker's voice
+   Amber (--signal) is reserved for exactly one thing: what is newly contributed
+   or newly true. Never decorative.
+   =========================================================================== */
+:root{
+  /* Colors */
+  --ink:#131a17;          /* slide ground */
+  --ink-deep:#0c110f;     /* letterbox ground */
+  --ink-lift:#1b2521;     /* raised panel */
+  --chalk:#eae5d9;        /* primary type */
+  --chalk-dim:#8b968f;    /* secondary type */
+  --chalk-faint:#3d4a44;  /* conversation register / inactive marks */
+  --link:#4d7a6b;         /* structure register */
+  --signal:#e9a13b;       /* the one accent: newly contributed / newly true */
+
+  --stage-bg:var(--ink-deep);
+  --slide-bg:var(--ink);
+
+  /* Typography — authored at 1920x1080 stage size */
+  --font-display:'Instrument Serif',serif;
+  --font-body:'Newsreader',serif;
+  --font-mono:'IBM Plex Mono',monospace;
+
+  --size-title:168px;
+  --size-statement:104px;
+  --size-h2:76px;
+  --size-lead:41px;
+  --size-body:37px;
+  --size-label:19px;
+
+  /* Layout */
+  --pad-x:150px;
+  --content-top:132px;
+
+  /* Motion */
+  --ease:cubic-bezier(.2,.75,.25,1);
+  --dur:.85s;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* ===========================================================================
+   FIXED 16:9 STAGE: MANDATORY BASE STYLES (viewport-base.css, in full)
+   Slides are authored at 1920x1080 and the whole stage scales to the window.
+   =========================================================================== */
+
+/* 1. Lock the browser viewport */
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background: var(--stage-bg, #000);
+}
+
+/* 2. Full-window deck viewport */
+.deck-viewport {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background: var(--stage-bg, #000);
+}
+
+/* 3. Fixed 16:9 design canvas.
+   JavaScript sets transform: translate(...) scale(...). */
+.deck-stage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    transform-origin: 0 0;
+    background: var(--slide-bg, #fff);
+}
+
+/* 4. Slides stack inside the fixed stage.
+   Content must be laid out at 1920x1080, not reflowed per device. */
+.slide {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    background: var(--slide-bg, #fff);
+}
+
+.slide.active,
+.slide.visible {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+/* 5. Keep media inside authored slide bounds */
+img,
+video,
+canvas,
+svg {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* 6. Presentation chrome stays outside the slide design system */
+.deck-controls {
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+/* 7. Print one fixed-size slide per page */
+@media print {
+    html,
+    body {
+        width: 1920px;
+        height: auto;
+        overflow: visible;
+        background: #fff;
+    }
+
+    .deck-viewport {
+        position: static;
+        overflow: visible;
+        background: #fff;
+    }
+
+    .deck-stage {
+        position: static;
+        width: auto;
+        height: auto;
+        transform: none !important;
+        background: none;
+    }
+
+    .slide {
+        position: relative;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        width: 1920px;
+        height: 1080px;
+        break-after: page;
+        page-break-after: always;
+    }
+
+    .slide:last-child {
+        break-after: auto;
+        page-break-after: auto;
+    }
+
+    .deck-controls {
+        display: none !important;
+    }
+}
+
+/* 8. Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.2s !important;
+    }
+}
+
+/* ===========================================================================
+   SLIDE GROUND
+   Two soft light sources: cool from the structure side, warm from the
+   conversation side. Gives depth without a flat fill.
+   =========================================================================== */
+.slide{
+  background:
+    radial-gradient(80% 60% at 78% 24%, rgba(77,122,107,.15) 0%, rgba(77,122,107,0) 62%),
+    radial-gradient(90% 70% at 8% 96%, rgba(233,161,59,.065) 0%, rgba(233,161,59,0) 60%),
+    var(--ink);
+  color:var(--chalk);
+}
+
+/* ===========================================================================
+   PERSISTENT STAGE CHROME
+   Lives inside the stage (so it scales) but above the slides, so it is
+   continuous across slide changes rather than re-entering each time.
+   =========================================================================== */
+.chrome{position:absolute;inset:0;z-index:5;pointer-events:none}
+.org{
+  position:absolute;left:var(--pad-x);bottom:92px;
+  font-family:var(--font-mono);font-size:var(--size-label);letter-spacing:.22em;
+  text-transform:uppercase;color:var(--chalk-dim);
+}
+.org span{color:var(--chalk-faint);margin-left:18px}
+
+/* --- THE SILENT SPINE ---------------------------------------------------
+   Five acts. Unlabelled for acts 1-4, so the room registers structure
+   without being told what it is. At the act-5 reveal, .revealed fades the
+   Logical Thinking Process names in beneath the nodes and the deck becomes
+   evidence for the method it never named.
+   ---------------------------------------------------------------------- */
+.spine{position:absolute;right:var(--pad-x);bottom:92px;display:flex;gap:20px;align-items:flex-start}
+.spine .step{position:relative;width:12px;display:flex;justify-content:center}
+.spine .dot{
+  width:12px;height:12px;border-radius:50%;
+  border:1.5px solid var(--chalk-faint);background:transparent;
+  transition:background .55s var(--ease),border-color .55s var(--ease),box-shadow .55s var(--ease);
+}
+.spine .step.on .dot{background:var(--signal);border-color:var(--signal)}
+.spine .step.now .dot{box-shadow:0 0 0 7px rgba(233,161,59,.13),0 0 22px rgba(233,161,59,.42)}
+.spine .name{
+  position:absolute;top:26px;left:50%;transform:translateX(-50%) translateY(-6px);
+  font-family:var(--font-mono);font-size:14px;letter-spacing:.08em;line-height:1.35;
+  color:var(--chalk-dim);text-align:center;white-space:nowrap;
+  opacity:0;transition:opacity .7s var(--ease),transform .7s var(--ease);
+}
+.spine.revealed{gap:78px}
+.spine.revealed .name{opacity:1;transform:translateX(-50%) translateY(0)}
+.spine.revealed .step.on .name{color:var(--signal)}
+
+/* ===========================================================================
+   ENTRANCE ANIMATION
+   One orchestrated reveal per slide. Stagger via inline --d.
+   =========================================================================== */
+.reveal{
+  opacity:0;transform:translateY(26px);
+  transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease);
+  transition-delay:var(--d,0s);
+}
+.slide.visible .reveal{opacity:1;transform:none}
+
+.reveal-soft{opacity:0;transition:opacity 1.2s var(--ease);transition-delay:var(--d,0s)}
+.slide.visible .reveal-soft{opacity:1}
+
+/* Hairline that draws itself left-to-right */
+.reveal-line{transform:scaleX(0);transform-origin:0 50%;transition:transform 1s var(--ease);transition-delay:var(--d,0s)}
+.slide.visible .reveal-line{transform:scaleX(1)}
+
+/* ===========================================================================
+   SHARED TYPE ROLES
+   =========================================================================== */
+.kicker{
+  font-family:var(--font-mono);font-size:var(--size-label);letter-spacing:.3em;
+  text-transform:uppercase;color:var(--link);
+}
+.act-q{
+  font-family:var(--font-display);font-weight:400;font-size:var(--size-h2);
+  line-height:1.06;letter-spacing:-.012em;color:var(--chalk);
+}
+.statement{
+  font-family:var(--font-display);font-weight:400;font-size:var(--size-statement);
+  line-height:1.04;letter-spacing:-.016em;color:var(--chalk);
+}
+.statement i{font-style:italic;color:var(--signal)}
+.lead{
+  font-family:var(--font-body);font-weight:300;font-size:var(--size-lead);
+  line-height:1.46;color:var(--chalk);opacity:.85;
+}
+.lead b{font-weight:500;opacity:1}
+.hair{height:1px;background:var(--link);opacity:.5}
+
+/* Conversation register: what people actually say */
+.said{font-family:var(--font-body);font-style:italic;font-weight:300;color:var(--chalk-faint)}
+
+/* Structure register: what the system knows */
+.struct{font-family:var(--font-mono);font-size:21px;letter-spacing:.06em;color:var(--chalk-dim)}
+.struct.hot{color:var(--signal)}
+
+/* Generic slide body frame.
+   Vertically centred by default: at low density most slides do not fill the
+   frame, and top-aligning them left dead space under every diagram. */
+.frame{
+  position:absolute;left:var(--pad-x);right:var(--pad-x);top:var(--content-top);bottom:170px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+
+/* ===========================================================================
+   COMPONENT: THE FAILURE LOOP  (act 1)
+   A cycle that returns to its own start. Rendered as chips on a hairline
+   ring so the "we had this conversation already" feeling is visible.
+   =========================================================================== */
+.loop{position:relative;width:1180px;height:472px;margin:0 auto}
+.loop .chip{
+  position:absolute;transform:translate(-50%,-50%);
+  font-family:var(--font-mono);font-size:23px;letter-spacing:.04em;
+  color:var(--chalk);background:var(--ink-lift);
+  border:1px solid var(--chalk-faint);border-radius:2px;padding:16px 26px;white-space:nowrap;
+}
+.loop .chip.dim{color:var(--chalk-dim)}
+.loop .chip.again{color:var(--signal);border-color:var(--signal)}
+.loop svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.loop path{fill:none;stroke:var(--link);stroke-width:1.25;opacity:.55}
+.loop path.back{stroke:var(--signal);opacity:.75;stroke-dasharray:5 6}
+.loop .drawn{stroke-dasharray:1400;stroke-dashoffset:1400;transition:stroke-dashoffset 1.8s var(--ease);transition-delay:var(--d,0s)}
+.slide.visible .loop .drawn{stroke-dashoffset:0}
+
+/* ===========================================================================
+   COMPONENT: SIX CRITERIA (act 2) — accumulating nodes, not bullets
+   =========================================================================== */
+.crit{display:grid;grid-template-columns:1fr 1fr;gap:34px 92px;margin-top:56px}
+.crit li{list-style:none;display:flex;gap:24px;align-items:flex-start}
+.crit .n{
+  flex:0 0 auto;width:11px;height:11px;border-radius:50%;
+  background:var(--signal);margin-top:16px;
+  box-shadow:0 0 0 6px rgba(233,161,59,.11);
+}
+.crit p{font-family:var(--font-body);font-weight:300;font-size:36px;line-height:1.34;color:var(--chalk);opacity:.9}
+
+/* ===========================================================================
+   COMPONENT: THE CONFLICT (act 3)
+   The centrepiece. Two registers pulled apart, a strained hairline between.
+   Slide 9 reuses the same two columns with a graph forming BETWEEN them,
+   so the resolution is visually the same object, relaxed.
+   =========================================================================== */
+.conflict{display:grid;grid-template-columns:1fr 168px 1fr;align-items:stretch;height:100%}
+.pole{padding:0 8px;display:grid;grid-template-rows:auto auto 1fr;align-content:start;padding-top:74px}
+.pole .tag{
+  font-family:var(--font-mono);font-size:var(--size-label);letter-spacing:.24em;
+  text-transform:uppercase;margin-bottom:30px;
+}
+.pole.human .tag{color:var(--signal)}
+.pole.form .tag{color:var(--link)}
+.pole h3{
+  font-family:var(--font-display);font-weight:400;font-size:62px;line-height:1.1;
+  letter-spacing:-.01em;color:var(--chalk);margin-bottom:28px;
+}
+.pole.human h3{font-style:italic}
+.pole .why{font-family:var(--font-body);font-weight:300;font-size:32px;line-height:1.42;color:var(--chalk-dim)}
+
+/* the tension: a taut vertical hairline with opposed arrowheads */
+.tension{position:relative;height:330px;align-self:center;display:flex;align-items:center;justify-content:center}
+.tension .bar{width:1px;height:100%;background:linear-gradient(180deg,var(--signal) 0%,var(--chalk-faint) 50%,var(--link) 100%);opacity:.85}
+.tension .head{position:absolute;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:26px;color:var(--chalk-dim)}
+.tension .head.up{top:-8px}
+.tension .head.down{bottom:-8px}
+.tension .word{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  background:var(--ink);padding:12px 0;width:126px;text-align:center;
+  font-family:var(--font-mono);font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--chalk-faint);
+}
+
+/* ===========================================================================
+   COMPONENT: THE PROGRESSION (act 4) — the demo, as a descending chain
+   =========================================================================== */
+.chain{margin-top:8px}
+.chain .rung{display:flex;align-items:center;gap:32px;padding:19px 0}
+.chain .marker{flex:0 0 auto;width:13px;height:13px;border-radius:50%;border:1.5px solid var(--link);position:relative}
+.chain .rung.first .marker{background:var(--signal);border-color:var(--signal);box-shadow:0 0 0 7px rgba(233,161,59,.13)}
+.chain .rung:not(:last-child) .marker::after{
+  content:"";position:absolute;left:50%;top:15px;width:1px;height:calc(19px + 19px + 1.34em);
+  background:var(--link);opacity:.5;transform:translateX(-50%);
+}
+.chain .txt{font-family:var(--font-body);font-weight:300;font-size:38px;line-height:1.34;color:var(--chalk)}
+.chain .rung.first .txt{font-style:italic;color:var(--signal)}
+.chain .note{font-family:var(--font-mono);font-size:18px;letter-spacing:.06em;color:var(--chalk-dim);margin-left:auto;white-space:nowrap}
+
+/* ===========================================================================
+   COMPONENT: THREE ESCALATING QUESTIONS (act 4)
+   =========================================================================== */
+.qs{display:grid;grid-template-columns:repeat(3,1fr);gap:56px;margin-top:74px}
+.qs .q{border-top:1px solid var(--chalk-faint);padding-top:34px}
+.qs .q.last{border-top-color:var(--signal)}
+.qs .idx{font-family:var(--font-mono);font-size:18px;letter-spacing:.2em;color:var(--link);margin-bottom:26px}
+.qs .q.last .idx{color:var(--signal)}
+.qs h4{font-family:var(--font-display);font-weight:400;font-size:56px;line-height:1.08;color:var(--chalk)}
+.qs .q.last h4{font-style:italic;color:var(--signal)}
+.qs .sub{font-family:var(--font-body);font-weight:300;font-size:28px;line-height:1.4;color:var(--chalk-dim);margin-top:22px}
+
+/* ===========================================================================
+   COMPONENT: THE VIRTUOUS CYCLE (act 5) — the pipeline that returns
+   =========================================================================== */
+.cycle{position:relative;width:1620px;height:430px;margin:22px auto 0}
+.cycle .stage-chip{
+  position:absolute;transform:translate(-50%,-50%);
+  font-family:var(--font-mono);font-size:20px;letter-spacing:.05em;color:var(--chalk);
+  background:var(--ink-lift);border:1px solid var(--chalk-faint);border-radius:2px;
+  padding:13px 20px;white-space:nowrap;
+}
+.cycle .stage-chip.key{color:var(--signal);border-color:var(--signal)}
+.cycle svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.cycle path{fill:none;stroke:var(--link);stroke-width:1.25;opacity:.6}
+.cycle .back{stroke:var(--signal);opacity:.7;stroke-dasharray:5 6}
+.cycle .drawn{stroke-dasharray:2600;stroke-dashoffset:2600;transition:stroke-dashoffset 2.2s var(--ease);transition-delay:var(--d,0s)}
+.slide.visible .cycle .drawn{stroke-dashoffset:0}
+.cycle .backlabel{
+  position:absolute;left:50%;transform:translateX(-50%);
+  font-family:var(--font-mono);font-size:18px;letter-spacing:.14em;text-transform:uppercase;color:var(--signal);
+}
+
+/* ===========================================================================
+   COMPONENT: THE REVEAL (act 5) — five acts named at last
+   =========================================================================== */
+.ledger{margin-top:44px}
+.ledger .row{display:grid;grid-template-columns:78px 1fr 300px;gap:40px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--chalk-faint)}
+.ledger .row:first-child{border-top:1px solid var(--chalk-faint)}
+.ledger .num{font-family:var(--font-mono);font-size:20px;color:var(--link)}
+.ledger .did{font-family:var(--font-body);font-weight:300;font-size:32px;line-height:1.3;color:var(--chalk)}
+.ledger .was{font-family:var(--font-mono);font-size:22px;letter-spacing:.05em;color:var(--signal);text-align:right}
+
+/* ===========================================================================
+   COMPONENT: THE ASK (act 5 CTA)
+   =========================================================================== */
+.asks{margin-top:60px}
+.asks .ask{display:flex;gap:34px;align-items:baseline;padding:26px 0}
+.asks .bullet{font-family:var(--font-mono);font-size:22px;color:var(--signal);flex:0 0 auto}
+.asks p{font-family:var(--font-display);font-weight:400;font-size:58px;line-height:1.14;color:var(--chalk)}
+.asks .ask.stress p{font-style:italic;color:var(--signal)}
+
+/* ===========================================================================
+   TITLE SLIDE (the chosen preview, expanded)
+   =========================================================================== */
+.talk{position:absolute;inset:0;pointer-events:none}
+.talk span{position:absolute;white-space:nowrap;font-size:34px;font-family:var(--font-body);font-style:italic;font-weight:300;color:var(--chalk-faint)}
+.talk span:nth-child(1){left:152px;top:782px;transform:rotate(-1.1deg)}
+.talk span:nth-child(2){left:330px;top:838px;transform:rotate(.7deg)}
+.talk span:nth-child(3){left:486px;top:892px;transform:rotate(-.5deg)}
+.talk span:nth-child(4){left:640px;top:158px;transform:rotate(.9deg)}
+
+.graph{position:absolute;right:150px;top:236px;width:604px;height:608px}
+.graph svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.graph .edge{stroke:var(--link);stroke-width:1.25;fill:none;opacity:.62;stroke-dasharray:340;stroke-dashoffset:340;
+  transition:stroke-dashoffset 1.5s var(--ease);transition-delay:var(--d,0s)}
+.slide.visible .graph .edge{stroke-dashoffset:0}
+.node{position:absolute;width:15px;height:15px;border-radius:50%;background:var(--ink);border:1.5px solid var(--link);transform:translate(-50%,-50%)}
+.node.live{border-color:var(--signal);background:var(--signal);box-shadow:0 0 0 8px rgba(233,161,59,.14),0 0 34px rgba(233,161,59,.5)}
+.nlabel{position:absolute;font-family:var(--font-mono);font-size:17px;letter-spacing:.06em;color:var(--chalk-dim);transform:translateY(-50%);white-space:nowrap}
+.nlabel.hot{color:var(--signal)}
+
+.title-wrap{position:absolute;left:150px;top:236px;width:900px}
+.title-wrap h1{font-family:var(--font-display);font-weight:400;font-size:var(--size-title);line-height:.9;letter-spacing:-.018em;margin-bottom:34px}
+.title-wrap h1 i{font-style:italic;color:var(--signal)}
+
+/* ===========================================================================
+   EDIT MODE + DECK UI (outside the slide design system)
+   =========================================================================== */
+.edit-hotzone{position:fixed;top:0;left:0;width:80px;height:80px;z-index:10000;cursor:pointer}
+.edit-toggle{
+  position:fixed;top:18px;left:18px;z-index:10001;
+  opacity:0;pointer-events:none;transition:opacity .3s ease;
+  background:var(--ink-lift);color:var(--chalk);border:1px solid var(--chalk-faint);
+  border-radius:3px;padding:9px 13px;font-size:16px;cursor:pointer;line-height:1;
+}
+.edit-toggle.show,.edit-toggle.active{opacity:1;pointer-events:auto}
+.edit-toggle.active{border-color:var(--signal);color:var(--signal)}
+.edit-banner{
+  position:fixed;top:18px;left:70px;z-index:10001;display:none;
+  font-family:var(--font-mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--signal);background:var(--ink-lift);border:1px solid var(--signal);
+  border-radius:3px;padding:10px 14px;
+}
+.edit-banner.on{display:block}
+body.editing [contenteditable="true"]{outline:1px dashed rgba(233,161,59,.6);outline-offset:5px;cursor:text}
+
+.counter{
+  position:fixed;right:20px;bottom:16px;z-index:1000;
+  font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;color:#4a5550;
+}
+</style>
+</head>
+<body>
+<div class="deck-viewport">
+  <main class="deck-stage" id="deckStage">
+
+    <!-- =====================================================================
+         SLIDE 1 — TITLE
+         Three registers introduced at once: conversation murmuring lower-left,
+         reasoning structure drawing itself right, the statement between them.
+         ===================================================================== -->
+    <section class="slide title-slide" data-act="1">
+      <div class="talk">
+        <span class="reveal-soft" style="--d:.9s">&ldquo;where did that progress go?&rdquo;</span>
+        <span class="reveal-soft" style="--d:1.1s">&ldquo;same conversation again&rdquo;</span>
+        <span class="reveal-soft" style="--d:1.3s">&ldquo;I want to help&rdquo;</span>
+        <span class="reveal-soft" style="--d:.7s">&ldquo;no obvious place to contribute&rdquo;</span>
+      </div>
+
+      <div class="graph">
+        <svg viewBox="0 0 604 608" preserveAspectRatio="none" aria-hidden="true">
+          <path class="edge" style="--d:.55s" d="M300 90 L104 250"/>
+          <path class="edge" style="--d:.75s" d="M300 90 L470 236"/>
+          <path class="edge" style="--d:.95s" d="M104 250 L188 452"/>
+          <path class="edge" style="--d:1.1s" d="M470 236 L188 452"/>
+          <path class="edge" style="--d:1.25s" d="M188 452 L392 556"/>
+        </svg>
+        <div class="node live reveal-soft" style="left:49.7%;top:14.8%;--d:1.15s"></div>
+        <div class="node reveal-soft" style="left:17.2%;top:41.1%;--d:1.15s"></div>
+        <div class="node reveal-soft" style="left:77.8%;top:38.8%;--d:1.15s"></div>
+        <div class="node reveal-soft" style="left:31.1%;top:74.3%;--d:1.45s"></div>
+        <div class="node reveal-soft" style="left:64.9%;top:91.4%;--d:1.45s"></div>
+        <div class="nlabel hot reveal-soft" style="left:53%;top:14.8%;--d:1.15s">your contribution</div>
+        <div class="nlabel reveal-soft" style="left:-3%;top:47.6%;--d:1.45s">connects to</div>
+        <div class="nlabel reveal-soft" style="left:81%;top:38.8%;--d:1.45s">challenges</div>
+        <div class="nlabel reveal-soft" style="left:68.5%;top:91.4%;--d:1.45s">so what?</div>
+      </div>
+
+      <div class="title-wrap">
+        <p class="kicker reveal" style="--d:.08s;margin-bottom:40px">2R &middot; An experiment in collective reasoning</p>
+        <h1 class="reveal" style="--d:.26s">Reason<br><i>Commons</i></h1>
+        <p class="lead reveal" style="--d:.44s;max-width:830px">Contribute normally. The reasoning underneath becomes visible.</p>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         ACT 1 — WHY DO GOOD CONVERSATIONS GO NOWHERE?
+         Start somewhere painfully recognizable. No theory, no product.
+         ===================================================================== -->
+    <section class="slide" data-act="1">
+      <div class="frame">
+        <p class="kicker reveal" style="--d:.05s;margin-bottom:52px">The recognisable part</p>
+        <p class="statement reveal" style="--d:.2s;max-width:1480px">A group has a thoughtful<br>two&#8209;hour conversation.</p>
+        <div class="hair reveal-line" style="--d:.5s;margin:52px 0;max-width:520px"></div>
+        <p class="lead reveal" style="--d:.62s;font-size:52px;opacity:1">Three weeks later: <i style="color:var(--signal);font-style:italic">where did that progress go?</i></p>
+      </div>
+    </section>
+
+    <!-- SLIDE 3 — the failure loop, drawn as a cycle that returns to itself -->
+    <section class="slide" data-act="1">
+      <div class="frame">
+        <p class="kicker reveal" style="--d:.05s">Failure pattern one</p>
+        <p class="act-q reveal" style="--d:.16s;margin-top:26px;margin-bottom:24px">Reasoning does not accumulate.</p>
+
+        <div class="loop">
+          <!-- Rectangle cycle from MEASURED chip widths (231/157/304/304/466,
+               height 64). Corners are the four stages; the amber return edge is
+               the left side; the consequence sits in the void at the centre so
+               nothing is drawn underneath a chip. -->
+          <svg viewBox="0 0 1180 472" preserveAspectRatio="none" aria-hidden="true">
+            <!-- top: conversation -> insight -->
+            <path class="drawn" style="--d:.5s" d="M336 70 L881 70"/>
+            <!-- right: insight -> more conversation -->
+            <path class="drawn" style="--d:.75s" d="M960 112 L960 268"/>
+            <!-- bottom: more conversation -> forgotten context -->
+            <path class="drawn" style="--d:.95s" d="M798 310 L382 310"/>
+            <!-- left: the return. Amber, dashed: this is the loop that hurts. -->
+            <path class="drawn back" style="--d:1.2s" d="M220 278 L220 102"/>
+          </svg>
+          <div class="chip reveal-soft" style="left:220px;top:70px;--d:.35s">conversation</div>
+          <div class="chip reveal-soft" style="left:960px;top:70px;--d:.6s">insight</div>
+          <div class="chip dim reveal-soft" style="left:960px;top:310px;--d:.85s">more conversation</div>
+          <div class="chip dim reveal-soft" style="left:220px;top:310px;--d:1.05s">forgotten context</div>
+          <div class="chip again reveal-soft" style="left:590px;top:190px;--d:1.45s">the same conversation, again</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4 — the sibling failure: willingness with nowhere to go -->
+    <section class="slide" data-act="1">
+      <div class="frame">
+        <p class="kicker reveal" style="--d:.05s;margin-bottom:56px">Failure pattern two</p>
+        <div style="display:flex;align-items:center;gap:56px;flex-wrap:nowrap">
+          <p class="said reveal" style="--d:.2s;font-size:72px">&ldquo;I want to help&rdquo;</p>
+          <span class="struct reveal" style="--d:.4s;font-size:30px">&rarr;</span>
+          <p class="struct reveal" style="--d:.55s;font-size:34px;letter-spacing:.02em">no obvious place to contribute</p>
+          <span class="struct reveal" style="--d:.7s;font-size:30px">&rarr;</span>
+          <p class="reveal" style="--d:.85s;font-family:var(--font-display);font-size:60px;color:var(--signal);font-style:italic">inactivity</p>
+        </div>
+        <p class="lead reveal" style="--d:1.05s;margin-top:76px;max-width:1300px">Willingness is not the scarce resource. Somewhere for willingness to land is.</p>
+      </div>
+    </section>
+
+    <!-- SLIDE 5 — act 1 lands. The point is not that discussion is bad. -->
+    <section class="slide" data-act="1">
+      <div class="frame">
+        <p class="lead reveal" style="--d:.05s;margin-bottom:46px;font-size:36px">The point is not that discussion is bad.</p>
+        <p class="statement reveal" style="--d:.22s;max-width:1560px">Groups are surprisingly bad at<br>accumulating reasoning &mdash; and at<br>converting it into <i>coordinated action</i>.</p>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         ACT 2 — WHAT WOULD BETTER ACTUALLY LOOK LIKE?
+         Invert it. Six criteria, rendered as accumulating nodes rather than
+         bullets, because accumulation is the thing being described.
+         ===================================================================== -->
+    <section class="slide" data-act="2">
+      <div class="frame">
+        <p class="kicker reveal" style="--d:.05s">Imagine a conversation where</p>
+        <ul class="crit">
+          <li class="reveal" style="--d:.18s"><span class="n"></span><p>useful insights accumulate rather than disappear</p></li>
+          <li class="reveal" style="--d:.3s"><span class="n"></span><p>new contributions connect to what has already been learned</p></li>
+          <li class="reveal" style="--d:.42s"><span class="n"></span><p>disagreements become explicit rather than recurring indefinitely</p></li>
+          <li class="reveal" style="--d:.54s"><span class="n"></span><p>you can see what is currently blocking progress</p></li>
+          <li class="reveal" style="--d:.66s"><span class="n"></span><p>offers of effort have somewhere concrete to go</p></li>
+          <li class="reveal" style="--d:.78s"><span class="n"></span><p>action stays traceable to the reasoning that motivated it</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SLIDE 7 — the destination, condensed -->
+    <section class="slide" data-act="2">
+      <div class="frame">
+        <p class="kicker reveal" style="--d:.05s;margin-bottom:50px">The destination</p>
+        <p class="statement reveal" style="--d:.2s;max-width:1520px">A group gets <i>smarter over time</i>,<br>and its thinking increasingly<br>results in action.</p>
+      </div>
+    </section>
+
+    <!-- SLIDE 8 — the hypothesis, stated before any software appears -->
+    <section class="slide" data-act="2">
+      <div class="frame">
+        <p class="kicker reveal" style="--d:.05s;margin-bottom:44px">Our hypothesis</p>
+        <p class="reveal" style="--d:.2s;font-family:var(--font-display);font-size:66px;line-height:1.16;letter-spacing:-.01em;max-width:1560px">
+          Collective intelligence is not primarily a matter of having more intelligent people, or more conversation.
+        </p>
+        <div class="hair reveal-line" style="--d:.5s;margin:50px 0;max-width:420px"></div>
+        <p class="reveal" style="--d:.62s;font-family:var(--font-display);font-style:italic;font-size:60px;line-height:1.2;color:var(--signal);max-width:1520px">
+          It is about the process through which reasoning accumulates, bottlenecks become visible, and action follows.
+        </p>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         ACT 3 — WHY DOESN'T THIS ALREADY HAPPEN?
+         The tension, as one object. Two registers pulled apart.
+         ===================================================================== -->
+    <section class="slide" data-act="3">
+      <div class="frame">
+        <p class="kicker reveal" style="--d:.05s;margin-bottom:12px">Both of these are true</p>
+        <div class="conflict" style="height:calc(100% - 60px)">
+          <div class="pole human reveal" style="--d:.22s">
+            <p class="tag">What people want</p>
+            <h3>Conversation stays natural and open.</h3>
+            <p class="why">Nobody wants every message turned into formal logic. People want spontaneity, ambiguity, intuition, exploration.</p>
+          </div>
+
+          <div class="tension reveal-soft" style="--d:.55s">
+            <span class="head up">&#9650;</span>
+            <div class="bar"></div>
+            <span class="head down">&#9660;</span>
+            <span class="word">versus</span>
+          </div>
+
+          <div class="pole form reveal" style="--d:.38s">
+            <p class="tag">What accumulation needs</p>
+            <h3>Reasoning becomes structured enough to build on.</h3>
+            <p class="why">If everything stays conversational, the important ideas disappear into chronology.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10 — the breakthrough. Same object, tension dissolved. -->
+    <section class="slide" data-act="3">
+      <div class="frame">
+        <p class="kicker reveal" style="--d:.05s;margin-bottom:48px">The move</p>
+        <p class="statement reveal" style="--d:.2s;max-width:1580px">What if people didn&rsquo;t have to<br>think in trees?</p>
+        <p class="reveal" style="--d:.5s;margin-top:54px;font-family:var(--font-display);font-style:italic;font-size:62px;line-height:1.18;color:var(--signal);max-width:1500px">
+          What if they could contribute normally, and the system revealed the structure underneath?
+        </p>
+        <p class="lead reveal" style="--d:.78s;margin-top:60px;max-width:1240px;font-size:34px">
+          Not &ldquo;we built a graph interface.&rdquo; <b>We think this tension can be dissolved.</b>
+        </p>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         ACT 4 — LET THE ROOM EXPERIENCE THE ALTERNATIVE
+         This is the live demo. The slide's job is to hold the prompt and then
+         get out of the way while a real contribution is submitted.
+         ===================================================================== -->
+    <section class="slide" data-act="4">
+      <div class="frame">
+        <p class="kicker reveal" style="--d:.05s;margin-bottom:56px">Now, someone in this room</p>
+        <p class="reveal" style="--d:.2s;font-family:var(--font-display);font-style:italic;font-size:88px;line-height:1.1;letter-spacing:-.014em;max-width:1600px">
+          What is something important 2R may be missing, underestimating, getting wrong &mdash; or could act on?
+        </p>
+        <div class="hair reveal-line" style="--d:.62s;margin-top:64px;max-width:640px"></div>
+        <p class="struct reveal" style="--d:.76s;margin-top:34px">a thousand characters is plenty</p>
+      </div>
+    </section>
+
+    <!-- SLIDE 12 — what happens to those words, as a descending chain -->
+    <section class="slide" data-act="4">
+      <div class="frame">
+        <p class="kicker reveal" style="--d:.05s;margin-bottom:34px">What happens to it</p>
+        <div class="chain">
+          <div class="rung first reveal" style="--d:.16s">
+            <span class="marker"></span>
+            <p class="txt">their words, exactly as written</p>
+          </div>
+          <div class="rung reveal" style="--d:.3s">
+            <span class="marker"></span>
+            <p class="txt">where this connects to existing 2R reasoning</p>
+            <span class="note">situate</span>
+          </div>
+          <div class="rung reveal" style="--d:.44s">
+            <span class="marker"></span>
+            <p class="txt">what it might be adding, or challenging</p>
+            <span class="note">contrast</span>
+          </div>
+          <div class="rung reveal" style="--d:.58s">
+            <span class="marker"></span>
+            <p class="txt">who else here is already thinking about something related</p>
+            <span class="note">connect</span>
+          </div>
+          <div class="rung reveal" style="--d:.72s">
+            <span class="marker"></span>
+            <p class="txt">what could follow from it</p>
+            <span class="note">act</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 13 — three escalating questions. The third is the one that matters. -->
+    <section class="slide" data-act="4">
+      <div class="frame">
+        <p class="kicker reveal" style="--d:.05s">The demo has to answer three questions, in order</p>
+        <div class="qs">
+          <div class="q reveal" style="--d:.2s">
+            <p class="idx">01</p>
+            <h4>Where does this fit?</h4>
+            <p class="sub">Semantic placement. The easy part, and the least interesting.</p>
+          </div>
+          <div class="q reveal" style="--d:.36s">
+            <p class="idx">02</p>
+            <h4>Does it reveal a gap or a disagreement?</h4>
+            <p class="sub">Now the contribution is doing work on the group's reasoning.</p>
+          </div>
+          <div class="q last reveal" style="--d:.52s">
+            <p class="idx">03</p>
+            <h4>So what?</h4>
+            <p class="sub">If 2R is underestimating intergenerational transmission &mdash; what might we actually do?</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 14 — what was just proved. More than semantic matching. -->
+    <section class="slide" data-act="4">
+      <div class="frame">
+        <p class="kicker reveal" style="--d:.05s;margin-bottom:50px">What that demonstrates</p>
+        <p class="statement reveal" style="--d:.2s;max-width:1560px">A thousand characters of unstructured thought became <i>situated reasoning with a path to action</i>.</p>
+        <p class="lead reveal" style="--d:.6s;margin-top:60px;max-width:1240px;font-size:34px">That is considerably more than a semantic matching demo.</p>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         ACT 5 — WHAT HAPPENS NEXT
+         The cycle closes, then the method is named, then the ask.
+         ===================================================================== -->
+    <section class="slide" data-act="5">
+      <div class="frame">
+        <p class="kicker reveal" style="--d:.05s;margin-bottom:6px">This does not end in &ldquo;thanks for your feedback&rdquo;</p>
+        <div class="cycle">
+          <!-- Geometry from MEASURED chip widths (198/198/250/354/146/120 at the
+               authored 1620px width), spaced with an exact 70px gutter. No arrow
+               runs beneath a chip and no two chips touch. -->
+          <svg viewBox="0 0 1620 430" preserveAspectRatio="none" aria-hidden="true">
+            <!-- forward chain, left to right -->
+            <path class="drawn" style="--d:.45s" d="M210 74 L256 74"/>
+            <path class="drawn" style="--d:.55s" d="M478 74 L524 74"/>
+            <path class="drawn" style="--d:.65s" d="M798 74 L844 74"/>
+            <path class="drawn" style="--d:.75s" d="M1222 74 L1268 74"/>
+            <path class="drawn" style="--d:.85s" d="M1438 74 L1484 74"/>
+            <!-- down the right edge, then back along the return row -->
+            <path class="drawn" style="--d:.95s" d="M1556 106 L1556 217"/>
+            <path class="drawn" style="--d:1.05s" d="M1484 248 L1315 248"/>
+            <path class="drawn" style="--d:1.15s" d="M1145 248 L982 248"/>
+            <!-- the return edge: what was learned re-enters the conversation -->
+            <path class="drawn back" style="--d:1.35s" d="M800 280 L800 366 L99 366 L99 104"/>
+          </svg>
+          <div class="stage-chip reveal-soft" style="left:99px;top:74px;--d:.3s">conversation</div>
+          <div class="stage-chip key reveal-soft" style="left:367px;top:74px;--d:.42s">contribution</div>
+          <div class="stage-chip reveal-soft" style="left:661px;top:74px;--d:.55s">shared reasoning</div>
+          <div class="stage-chip reveal-soft" style="left:1033px;top:74px;--d:.68s">bottleneck / opportunity</div>
+          <div class="stage-chip reveal-soft" style="left:1353px;top:74px;--d:.8s">proposal</div>
+          <div class="stage-chip key reveal-soft" style="left:1556px;top:74px;--d:.92s">action</div>
+          <div class="stage-chip reveal-soft" style="left:1556px;top:248px;--d:1.05s">result</div>
+          <div class="stage-chip reveal-soft" style="left:1230px;top:248px;--d:1.18s">evidence</div>
+          <div class="stage-chip key reveal-soft" style="left:800px;top:248px;--d:1.3s">better shared reasoning</div>
+          <div class="backlabel reveal-soft" style="top:386px;--d:1.6s">the outcome travels backward</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SLIDE 16 — THE REVEAL
+         Only now is the method named. The spine gains its labels here, and the
+         presentation retroactively becomes evidence for its own argument.
+         ===================================================================== -->
+    <section class="slide" data-act="5" data-reveal="true">
+      <div class="frame">
+        <p class="reveal" style="--d:.05s;font-family:var(--font-display);font-style:italic;font-size:64px;line-height:1.12;color:var(--signal);max-width:1560px">
+          What you have just experienced is a small example of the Logical Thinking Process.
+        </p>
+
+        <div class="ledger">
+          <div class="row reveal" style="--d:.32s">
+            <span class="num">01</span>
+            <span class="did">We started with current reality &mdash; why conversations fail to accumulate.</span>
+            <span class="was">Current Reality Tree</span>
+          </div>
+          <div class="row reveal" style="--d:.44s">
+            <span class="num">02</span>
+            <span class="did">We defined the goal &mdash; groups that get smarter and act.</span>
+            <span class="was">Goal Tree</span>
+          </div>
+          <div class="row reveal" style="--d:.56s">
+            <span class="num">03</span>
+            <span class="did">We found the conflict &mdash; natural conversation versus necessary structure.</span>
+            <span class="was">Conflict Cloud</span>
+          </div>
+          <div class="row reveal" style="--d:.68s">
+            <span class="num">04</span>
+            <span class="did">We showed a future reality &mdash; contributions becoming cumulative reasoning.</span>
+            <span class="was">Future Reality Tree</span>
+          </div>
+          <div class="row reveal" style="--d:.8s">
+            <span class="num">05</span>
+            <span class="did">And now we ask what gets us from here to there.</span>
+            <span class="was">Prerequisite &amp; Transition</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 17 — the ask. Concrete, and addressed to today. -->
+    <section class="slide" data-act="5">
+      <div class="frame">
+        <p class="kicker reveal" style="--d:.05s">So</p>
+        <div class="asks">
+          <div class="ask reveal" style="--d:.18s"><span class="bullet">01</span><p>Today, contribute something.</p></div>
+          <div class="ask reveal" style="--d:.32s"><span class="bullet">02</span><p>After today, follow what happens to it.</p></div>
+          <div class="ask reveal" style="--d:.46s"><span class="bullet">03</span><p>If there is an action you want to own, take it.</p></div>
+          <div class="ask stress reveal" style="--d:.6s"><span class="bullet">04</span><p>Help us test whether this actually makes 2R better at thinking and doing.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 18 — the framing that stops this being evaluated as a tool -->
+    <section class="slide" data-act="5">
+      <div class="frame">
+        <p class="kicker reveal" style="--d:.05s;margin-bottom:52px">What is actually being tested</p>
+        <p class="statement reveal" style="--d:.2s;max-width:1580px;font-size:88px">The test is not whether the software is clever.</p>
+        <div class="hair reveal-line" style="--d:.55s;margin:54px 0;max-width:560px"></div>
+        <p class="reveal" style="--d:.68s;font-family:var(--font-display);font-style:italic;font-size:74px;line-height:1.16;color:var(--signal);max-width:1560px">
+          It is whether today&rsquo;s contributions improve 2R&rsquo;s reasoning, and cause useful things to happen.
+        </p>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PERSISTENT CHROME — continuous across slides, above them, inside the
+         stage so it scales with everything else.
+         ===================================================================== -->
+    <div class="chrome" aria-hidden="true">
+      <div class="org">2R <span id="actName"></span></div>
+      <div class="spine" id="spine">
+        <div class="step"><span class="dot"></span><span class="name">current<br>reality</span></div>
+        <div class="step"><span class="dot"></span><span class="name">goal</span></div>
+        <div class="step"><span class="dot"></span><span class="name">conflict</span></div>
+        <div class="step"><span class="dot"></span><span class="name">future<br>reality</span></div>
+        <div class="step"><span class="dot"></span><span class="name">next<br>steps</span></div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Deck UI, outside the slide design system -->
+<div class="edit-hotzone" title="Edit mode (E)"></div>
+<button class="edit-toggle" id="editToggle" title="Edit mode (E)">&#9998;</button>
+<div class="edit-banner" id="editBanner">editing &middot; click any text &middot; ctrl+s to save a copy</div>
+<div class="counter" id="counter"></div>
+
+<script>
+/* ===========================================================================
+   SLIDE PRESENTATION CONTROLLER
+   Fixed-stage scaling, keyboard / wheel / touch navigation, and the silent
+   spine that advances by act and only names itself at the reveal.
+   =========================================================================== */
+class SlidePresentation {
+  constructor() {
+    this.slides  = Array.from(document.querySelectorAll('.slide'));
+    this.stage   = document.getElementById('deckStage');
+    this.spine   = document.getElementById('spine');
+    this.steps   = Array.from(this.spine.querySelectorAll('.step'));
+    this.counter = document.getElementById('counter');
+    this.current = 0;
+
+    this.setupStageScale();
+    this.setupKeyboardNav();
+    this.setupWheelNav();
+    this.setupTouchNav();
+
+    /* Deep-linkable: #7 opens on slide 7, and the hash follows navigation,
+       so a specific slide can be shared or reloaded in place. */
+    const fromHash = parseInt((location.hash || '').replace('#', ''), 10);
+    this.showSlide(Number.isFinite(fromHash) && fromHash > 0 ? fromHash - 1 : 0);
+    window.addEventListener('hashchange', () => {
+      const n = parseInt((location.hash || '').replace('#', ''), 10);
+      if (Number.isFinite(n) && n > 0) this.showSlide(n - 1);
+    });
+  }
+
+  /* --- Scale the whole 1920x1080 stage to the window. Letterbox, never
+         reflow. This is the one place layout responds to viewport size. --- */
+  setupStageScale() {
+    const scale = () => {
+      const factor = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+      const x = (window.innerWidth  - 1920 * factor) / 2;
+      const y = (window.innerHeight - 1080 * factor) / 2;
+      this.stage.style.transform = `translate(${x}px, ${y}px) scale(${factor})`;
+    };
+    scale();
+    window.addEventListener('resize', scale);
+  }
+
+  setupKeyboardNav() {
+    document.addEventListener('keydown', (e) => {
+      if (document.body.classList.contains('editing')) return;
+      switch (e.key) {
+        case 'ArrowRight': case 'ArrowDown': case ' ': case 'PageDown':
+          e.preventDefault(); this.next(); break;
+        case 'ArrowLeft': case 'ArrowUp': case 'PageUp':
+          e.preventDefault(); this.prev(); break;
+        case 'Home': e.preventDefault(); this.showSlide(0); break;
+        case 'End':  e.preventDefault(); this.showSlide(this.slides.length - 1); break;
+      }
+    });
+  }
+
+  /* Throttled so one trackpad gesture does not skip several slides. */
+  setupWheelNav() {
+    let locked = false;
+    window.addEventListener('wheel', (e) => {
+      if (document.body.classList.contains('editing')) return;
+      if (locked || Math.abs(e.deltaY) < 18) return;
+      locked = true;
+      e.deltaY > 0 ? this.next() : this.prev();
+      setTimeout(() => { locked = false; }, 560);
+    }, { passive: true });
+  }
+
+  setupTouchNav() {
+    let startX = 0, startY = 0;
+    window.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+    }, { passive: true });
+    window.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - startX;
+      const dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) < 46 || Math.abs(dx) < Math.abs(dy)) return;
+      dx < 0 ? this.next() : this.prev();
+    }, { passive: true });
+  }
+
+  next() { this.showSlide(this.current + 1); }
+  prev() { this.showSlide(this.current - 1); }
+
+  showSlide(index) {
+    this.current = Math.max(0, Math.min(index, this.slides.length - 1));
+
+    this.slides.forEach((slide, i) => {
+      const on = i === this.current;
+      slide.classList.toggle('active', on);
+      slide.classList.toggle('visible', on);
+    });
+
+    const slide = this.slides[this.current];
+    const act = parseInt(slide.dataset.act || '1', 10);
+
+    /* --- The silent spine.
+           Fills up to the current act. Carries no labels until the slide that
+           names the method, at which point .revealed fades them in. --- */
+    this.steps.forEach((step, i) => {
+      step.classList.toggle('on', i < act);
+      step.classList.toggle('now', i === act - 1);
+    });
+    this.spine.classList.toggle('revealed', slide.dataset.reveal === 'true');
+
+    this.counter.textContent =
+      String(this.current + 1).padStart(2, '0') + ' / ' + String(this.slides.length).padStart(2, '0');
+
+    if (history.replaceState) history.replaceState(null, '', '#' + (this.current + 1));
+  }
+}
+
+const deck = new SlidePresentation();
+
+/* ===========================================================================
+   INLINE EDITING
+   Hidden by default. Revealed by hovering the top-left hotzone or pressing E.
+   Hover uses a JS delay timeout, not a CSS sibling selector, because
+   pointer-events:none on the button would otherwise break the hover chain.
+   =========================================================================== */
+class InlineEditor {
+  constructor() {
+    this.isActive = false;
+    this.toggle = document.getElementById('editToggle');
+    this.banner = document.getElementById('editBanner');
+    this.STORE  = 'reason-commons-edits';
+    this.restore();
+    this.wire();
+  }
+
+  /* Every text-bearing element becomes editable in edit mode. */
+  editables() {
+    return document.querySelectorAll(
+      '.slide h1, .slide h3, .slide h4, .slide p, .slide span.did, .slide span.was, ' +
+      '.slide .chip, .slide .stage-chip, .slide .nlabel, .slide .note, .slide .num, .slide .idx'
+    );
+  }
+
+  toggleEditMode() {
+    this.isActive = !this.isActive;
+    document.body.classList.toggle('editing', this.isActive);
+    this.toggle.classList.toggle('active', this.isActive);
+    this.banner.classList.toggle('on', this.isActive);
+    if (this.isActive) this.toggle.classList.add('show');
+
+    this.editables().forEach((el, i) => {
+      if (this.isActive) {
+        el.setAttribute('contenteditable', 'true');
+        el.dataset.editKey = 'e' + i;
+        el.addEventListener('blur', this.save);
+      } else {
+        el.removeAttribute('contenteditable');
+      }
+    });
+  }
+
+  save = () => {
+    const data = {};
+    this.editables().forEach((el, i) => { data['e' + i] = el.innerHTML; });
+    try { localStorage.setItem(this.STORE, JSON.stringify(data)); } catch (err) { /* storage unavailable */ }
+  };
+
+  restore() {
+    let data;
+    try { data = JSON.parse(localStorage.getItem(this.STORE) || 'null'); } catch (err) { return; }
+    if (!data) return;
+    this.editables().forEach((el, i) => {
+      if (data['e' + i] !== undefined) el.innerHTML = data['e' + i];
+    });
+  }
+
+  /* Ctrl/Cmd+S downloads the deck with the current edits baked in. */
+  export() {
+    const clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll('[contenteditable]').forEach((el) => el.removeAttribute('contenteditable'));
+    const blob = new Blob(['<!DOCTYPE html>\n' + clone.outerHTML], { type: 'text/html' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'reason-commons.html';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
+  wire() {
+    const hotzone = document.querySelector('.edit-hotzone');
+    let hideTimeout = null;
+    const hold  = () => clearTimeout(hideTimeout);
+    const drop  = () => {
+      hideTimeout = setTimeout(() => {
+        if (!this.isActive) this.toggle.classList.remove('show');
+      }, 400);
+    };
+
+    hotzone.addEventListener('mouseenter', () => { hold(); this.toggle.classList.add('show'); });
+    hotzone.addEventListener('mouseleave', drop);
+    this.toggle.addEventListener('mouseenter', hold);
+    this.toggle.addEventListener('mouseleave', drop);
+
+    hotzone.addEventListener('click', () => this.toggleEditMode());
+    this.toggle.addEventListener('click', () => this.toggleEditMode());
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.key === 'e' || e.key === 'E') && !e.target.getAttribute('contenteditable')) {
+        this.toggleEditMode();
+      }
+      if ((e.ctrlKey || e.metaKey) && e.key === 's') { e.preventDefault(); this.save(); this.export(); }
+    });
+  }
+}
+
+const editor = new InlineEditor();
+</script>
+</body>
+</html>

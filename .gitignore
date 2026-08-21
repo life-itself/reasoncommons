@@ -15,3 +15,10 @@ skills/project-ltp/dashboard/vite.config.d.ts
 .DS_Store
 
 drafts
+
+# Emacs scratch: autosaves (#file#), lock symlinks (.#file) and backups (file~).
+# The lock files are symlinks to user@host.pid, so committing one leaves a
+# dangling symlink in everyone else's checkout.
+\#*\#
+.\#*
+*~
