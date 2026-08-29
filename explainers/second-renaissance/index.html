@@ -430,7 +430,7 @@
       line(g,'M'+m.gcx+' '+(m.gby+4)+' L'+m.gcx+' '+foot,'faint',1.8);
     }
     m.pos.forEach(function(p,i){ link(g,mapArrowPath(m,i),t||'faint'); });
-    if(label){
+    if(label && !P){
       var p=m.pos[P?5:6], tx=m.gx+m.gw*(0.12+0.76*((P?5:6)/7));
       var lx=P?(p[0]+m.cw+10):((p[0]+m.cw/2+tx)/2+30);
       var ly=P?(p[1]+m.ch/2-12):((p[1]+m.gby)/2-6);
@@ -498,8 +498,8 @@
     var sp=document.getElementById('span');
     var G=[document.getElementById('tooth1'),document.getElementById('tooth2'),
            document.getElementById('tooth3')];
-    var X0=P?30:80, X1=P?380:920, BASE=P?520:560, TOP=P?190:220;
-    var AT=[0.18,0.5,0.82].map(function(f){return X0+(X1-X0)*f;});
+    var X0=P?20:80, X1=P?390:920, BASE=P?520:560, TOP=P?190:220;
+    var AT=(P?[0.16,0.5,0.84]:[0.18,0.5,0.82]).map(function(f){return X0+(X1-X0)*f;});
     TEETH={X0:X0,X1:X1,BASE:BASE,TOP:TOP,AT:AT};
 
     line(tl,'M'+X0+' '+BASE+' L'+X1+' '+BASE,'soft',2);
@@ -508,7 +508,7 @@
     txt(tl,AT[0],BASE+(P?52:62),'the weekly circle',P?10:11,'var(--ink-faint)');
     txt(tl,AT[2],BASE+(P?52:62),'Maren',P?10:11,'var(--ink-faint)');
 
-    var CW=P?150:210, CH=P?70:78;
+    var CW=P?112:210, CH=P?70:78;
     AT.forEach(function(x,k){
       var g=G[k], w=(X1-X0)*0.16;
       line(g,'M'+(x-w)+' '+BASE+' L'+x+' '+(TOP+CH+8)+
@@ -526,7 +526,7 @@
     var te=document.getElementById('teeth');
     var st=document.getElementById('stair');
     var sf=document.getElementById('stairfaint');
-    var T=TEETH, CW=P?140:200, CH=P?50:54;
+    var T=TEETH, CW=P?112:200, CH=P?50:54;
 
     line(tl,'M'+T.X0+' '+T.BASE+' L'+T.X1+' '+T.BASE,'soft',2);
     txt(tl,T.X1,T.BASE+(P?26:30),'time',P?10:11,'var(--ink-faint)','end',1.4);
