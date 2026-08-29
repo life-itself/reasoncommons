@@ -5,7 +5,7 @@ format, but same spirit — human-readable, most recent first.
 
 ## 2026-08-29 — Mobile fixes to The Forum Doesn't Remember
 
-A beat-by-beat browser sweep of [The Forum Doesn't Remember, and Doesn't Cumulate](explainers/second-renaissance/index.html) (formerly *Somewhere to Put It*) turned up three collisions that only appeared on a phone: the three "rooted in an actual place" cards in the two timeline stages sat on top of one another, and the "is necessary for" label on the goal-tree stage ran off the right edge. All three are fixed, with the wide layout untouched. The superseded `story/` draft that this piece replaced has also been removed from the repo.
+A beat-by-beat browser sweep of [The Forum Doesn't Remember, and Doesn't Cumulate](explainers/second-renaissance/index.html) (formerly *Somewhere to Put It*) turned up four collisions. Three were phone-only: the "rooted in an actual place" cards in the two timeline stages sat on top of one another, and the "is necessary for" label on the goal-tree stage ran off the right edge. The fourth was on the desktop layout — a caption grew over the diagram at middling widths — and was fixed by tightening the prose rather than moving it. The superseded `story/` draft that this piece replaced has also been removed from the repo.
 
 ## 2026-08-21 — A talk that performs the method
 
