@@ -16,10 +16,6 @@
         "href": "/explainers"
       },
       {
-        "name": "Story",
-        "href": "/story/index.html"
-      },
-      {
         "name": "Dashboard",
         "href": "/dashboard/index.html"
       },
@@ -36,7 +32,6 @@
     "/explainers/_process"
   ],
   "contentHide": [
-    "/story/_ds",
     "/dashboard/assets",
     "/dashboard/projects"
   ],

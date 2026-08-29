@@ -21,9 +21,6 @@ That's what we're exploring here: not one person's argument, but claims and evid
   <a href="alignment/index.html" class="btn-primary btn-primary-lg">
     Try Goal Aligner
   </a>
-  <a href="story/index.html" class="btn-primary btn-primary-lg">
-    Read “What Counts”
-  </a>
   <a href="claim-tree-annotation-demo/index.html" class="btn-primary btn-primary-lg">
     Explore the claim tree annotation demo
   </a>
