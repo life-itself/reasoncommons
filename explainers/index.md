@@ -16,6 +16,8 @@ Each part is a scrolling piece: the drawings build as you read. Best on a reason
 
 A clinic where sixty people are waiting and everybody knows where the problem is. They are all wrong — and what they get wrong is the most reliably counterintuitive thing about how systems behave.
 
+*Also available as a [plain, non-scrolling version](01-bottleneck-plain/) — same words, static diagrams.*
+
 ---
 
 ### Part two · [The Arrows Nobody Checks](02-thinking-made-visible/index.html)
@@ -35,6 +37,8 @@ The method itself: five questions any real change has to answer, the differently
 ### [The Forum Doesn't Remember, and Doesn't Cumulate](second-renaissance/index.html)
 
 A sibling to the trilogy rather than a fourth part, and readable entirely on its own. Somebody posts the best paragraph they have written in a year to the Second Renaissance forum, and a year later not one sentence of it has changed what the movement believes. Not for want of goodwill — for want of a way to integrate a good thought into what the group knows. Every diagram in it comes from that group's actual analysis.
+
+*Also available as a [plain, non-scrolling version](second-renaissance-plain/) — same words, static diagrams.*
 
 ### [Whose Map Is It](whose-map-is-it/index.html) · the deeper cut
 
