@@ -1,12 +1,10 @@
 ---
 title: The Forum Doesn't Remember, and Doesn't Cumulate — plain version
-description: The forum has more and more contribution. Almost none of it cumulates into insight the movement can use together. A static, non-scrolling telling.
+description: The forum sees more and more contribution. Almost none of it cumulates into insight the movement can use together. A static, non-scrolling telling.
 date: 2026-08-30
 ---
 
 *A plain, non-scrolling version of **[The Forum Doesn't Remember, and Doesn't Cumulate](../second-renaissance/index.html)** — the same words, with the drawings held still instead of built on scroll. Every diagram comes from the Second Renaissance's own analysis. Readable on its own; the method behind it is covered in [the series](../).*
-
-## The Forum Doesn't Remember, and Doesn't Cumulate
 
 The Second Renaissance is a movement for civilizational renewal. Its claim is that our crises are not separate cracks but symptoms of a paradigm in decline, and that a wiser one has to be consciously built rather than waited for.
 
@@ -22,10 +20,12 @@ Call her Maren. Twenty-three, a student in Gothenburg, and she reads more theory
 
 She joins the Second Renaissance forum and posts one paragraph: all of this floats free of any actual place. Start in a neighbourhood somebody actually lives in.
 
-![A forum thread drawn as a column of bars filed by date. Maren stands to the left. Her post sits in the column as a card outlined in orange, captioned "her post: all of this floats free of any actual place".](img/thread-live.png)
-*Her post arrives. Nine people reply. It is a genuinely good conversation.*
+Nine people reply. It is a genuinely good conversation.
 
-![The same column, a year on. Her post is now just another grey bar among the rest; the replies have scrolled up into the run of dated entries.](img/thread-lost.png)
+![A forum thread drawn as a column of bars filed by date. Maren stands to the left. Her post sits in the column as a card outlined and lettered in orange — "her post: all of this floats free of any actual place" — with nine short reply bars indented beneath it.](img/thread-live.png)
+*Her post arrives in the thread, and gathers nine replies.*
+
+![The same column, a year on. Her post is now just another grey bar among the dated run; the replies have merged into it.](img/thread-lost.png)
 *A year later, not one sentence of it has changed what the movement believes.*
 
 ### The same conversation, three times
@@ -73,12 +73,15 @@ Earlier this year it tried something about that.
 
 It took its own written corpus and rewrote the strategy as five linked diagrams: the goal and what it depends on, what is blocking it now, the tensions underneath that, the future being aimed at, and the order things have to happen in.
 
+![Five sheets of paper, labelled GOAL, REALITY, TENSIONS, FUTURE and SEQUENCE.](img/five-sheets.png)
+*The written corpus, sorted into five kinds of question.*
+
 The point is not that they are diagrams. It is that every claim has an address, and the lines between claims are claims too — *this one is necessary for that one* — so the reasoning is exposed and not only the conclusions.
 
 Eight things have to be true at once for a Second Renaissance to be more than an idea. People have to understand the crises as one crisis. Small dense groups have to make the new way of living actually livable. Six more like that, up through institutions and the wise navigation of collapse.
 
-![Five sheets of paper labelled GOAL, REALITY, TENSIONS, FUTURE, SEQUENCE resolve into one map: a goal box at the top and eight condition boxes beneath it, joined by arrows labelled "is necessary for".](img/five-diagrams.png)
-*The written corpus, redrawn as a map where every claim — and every link — is a thing you can point at.*
+![One map: a goal box at the top — "a Second Renaissance that is more than an idea" — and eight condition boxes beneath it, joined by arrows labelled "is necessary for".](img/five-map.png)
+*Redrawn as a map where every claim — and every link between claims — is a thing you can point at.*
 
 *The method behind the five shapes is forty years old and was invented for factories. A companion piece, [Five Shapes](../03-five-shapes/index.html), covers it properly. Nothing here depends on it.*
 

@@ -6,8 +6,6 @@ date: 2026-08-30
 
 *A plain, non-scrolling version of **[The Wrong Queue](../01-bottleneck/index.html)** — the same words, with the drawings held still instead of built on scroll. Part one of the series; [see all three parts](../).*
 
-## The Wrong Queue
-
 A clinic opens at eight. By noon, sixty people are waiting.
 
 Everyone who works there can tell you exactly where the problem is. They are all pointing at the same desk.
@@ -27,6 +25,10 @@ She is also irrelevant to how many people this clinic helps.
 
 It treats twenty patients a day. It has treated twenty patients a day for four years.
 
+### Five stations, one number
+
+Everyone who comes through passes five stations, in order, and every one has a limit. Check-in can process sixty people a day. Triage, forty-five. The doctor, twenty. Pharmacy, fifty. Follow-up booking, forty.
+
 ![Five stations drawn as boxes in a row — CHECK-IN 60, TRIAGE 45, DOCTOR 20, PHARMACY 50, FOLLOW-UP 40. The doctor's box is circled in orange and a pile of dots has backed up in front of it. To the right, a large orange 20 PER DAY.](img/stations-full.png)
 *Every other station can handle at least twice what the doctor can — so the clinic treats twenty a day. Not forty, which is what it would manage if the doctor's station matched the next tightest one. Twenty.*
 
@@ -42,11 +44,11 @@ The clinic has just been given enough money to hire one more person.
 
 Put them on the front desk, where the queue is: still twenty. Put them on triage: still twenty. Pharmacy: twenty. Follow-up: twenty.
 
-![The same five stations. A new orange figure stands inside the CHECK-IN box; the output counter still reads 20 PER DAY.](img/hire-frontdesk.png)
-*A second pair of hands at check-in. Output: still twenty.*
+![The five stations with their capacities. A new figure, in orange, stands at the CHECK-IN box; the output counter still reads 20 PER DAY.](img/hire-frontdesk.png)
+*The one hire, placed at check-in.*
 
-![The same five stations. The new orange figure now stands inside the DOCTOR box; the output counter reads 26 PER DAY.](img/hire-doctor.png)
-*The same hire, placed on the one station that governs the number. Output moves.*
+![The same five stations. The new figure now stands at the DOCTOR box; the output counter reads 26 PER DAY.](img/hire-doctor.png)
+*The same hire, placed at the doctor.*
 
 There is exactly one place that changes the number, and it is not where the queue is.
 
@@ -78,13 +80,13 @@ We know it is the doctor. So hire another doctor.
 
 Not yet. Watch her day first.
 
-Dr Adeyemi has been here nine years. She stays until seven most evenings writing up notes she had no time to write in the room.
+Dr Adeyemi has been here nine years. She stays until seven most evenings writing up notes she had no time to write in the room. Of her eight-hour day, she sees patients for about six. The other two go on things that do not need a medical degree — re-taking a history the triage nurse already took, hunting for notes, printing forms.
 
-![A bar of eight hour-blocks. Six are open and marked "six hours with patients"; the last two are filled and marked "admin". The count beneath reads 20 patients per day.](img/day-admin.png)
-*Of her eight-hour day, six hours are clinical. The other two go on things that do not need a medical degree.*
+![A bar of eight hour-blocks. Six are open; the last two are filled in grey. The count beneath reads 20 patients per day.](img/day-admin.png)
+*Six of the eight hours are clinical (open); two are lost to admin (grey). Twenty patients in six hours is a shade under eighteen minutes each.*
 
-![The same eight hour-blocks, now all open and outlined in orange — "eight hours with patients, none lost to admin". The count beneath reads 26.](img/day-recovered.png)
-*Give back the two admin hours at the same rate and the same day yields twenty-six — for nothing.*
+![The same eight hour-blocks, now all open and outlined in orange. The count beneath reads 26.](img/day-recovered.png)
+*Give the two admin hours back at the same rate and the same day yields twenty-six — for nothing.*
 
 Six more people a day. Around fifteen hundred a year. The man with the cough is one of them. The cost of this is nothing.
 
@@ -108,18 +110,14 @@ It is not the biggest problem on the list. It is the stuck one. You can work ext
 
 ### It moves
 
-Fix the doctor and the clinic does not become fixed.
+Fix the doctor and the clinic does not become fixed. Get her to fifty a day and follow-up booking, at forty, becomes the constraint. Fix that and it moves to pharmacy. Push far enough and every station inside the building outruns the number of people it serves — at which point the constraint has moved outside the walls, to the hospital that won't take referrals any faster.
 
-![The row of stations with the DOCTOR box highlighted in orange as the constraint.](img/moves-1.png)
-*Start: the doctor sets the number.*
+![The row of stations with the DOCTOR box highlighted in orange.](img/moves-1.png)
 
-![The row of stations with the FOLLOW-UP box now highlighted in orange.](img/moves-2.png)
-*Raise the doctor's throughput and follow-up booking, at forty, becomes the tightest station.*
+![The row of stations with the FOLLOW-UP box highlighted in orange instead.](img/moves-2.png)
 
 ![The row of stations, all in plain ink, with a dashed orange box labelled THE HOSPITAL drawn outside them.](img/moves-out.png)
-*Push far enough and every station inside the building outruns its demand — and the constraint has moved outside the walls.*
-
-Get her to fifty a day and follow-up booking, at forty, becomes the constraint. Fix that and it moves to pharmacy. Push far enough and every station inside the building outruns the number of people it serves — at which point the constraint has moved outside the walls, to the hospital that won't take referrals any faster.
+*The constraint does not get solved; it moves — doctor, then follow-up, then out of the building altogether.*
 
 It is still a constraint. It just now needs an entirely different set of skills to attack.
 
@@ -140,7 +138,7 @@ Breaking one is nearly free. A rule costs nothing to change, next to hiring a do
 
 But you will not find it, because everybody experiences it as normal. A bottleneck machine announces itself: there is a pile of work in front of it. A bottleneck rule has no pile. It hides inside *that's just how it's done*, and it is defended, sincerely, by good people whose own numbers depend on it.
 
-### So how would you ever find one?
+### The guess
 
 So: find the constraint. Put nearly everything into it. Ignore, for now, almost everything else.
 
@@ -167,7 +165,7 @@ And so, somewhere in that building, someone is working through lunch on somethin
 ---
 
 **Next → [The Arrows Nobody Checks](../02-thinking-made-visible/index.html)**
-*Why you would ever draw your reasoning as a tree — and what happens to an argument when you do.*
+*Why you would ever draw your reasoning as a tree — and what happens to an argument when you do. (Scrolling version.)*
 
 ## Methodology
 
