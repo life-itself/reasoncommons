@@ -44,10 +44,10 @@ The clinic has just been given enough money to hire one more person.
 
 Put them on the front desk, where the queue is: still twenty. Put them on triage: still twenty. Pharmacy: twenty. Follow-up: twenty.
 
-![The five stations with their capacities. A new figure, in orange, stands at the CHECK-IN box; the output counter still reads 20 PER DAY.](img/hire-frontdesk.png)
+![The five stations with their capacities. A new figure, in orange, stands at the CHECK-IN box; the output counter still reads 20 PER DAY.](img/hire-frontdesk-r.png)
 *The one hire, placed at check-in.*
 
-![The same five stations. The new figure now stands at the DOCTOR box; the output counter reads 26 PER DAY.](img/hire-doctor.png)
+![The same five stations. The new figure now stands at the DOCTOR box; the output counter reads 26 PER DAY.](img/hire-doctor-r.png)
 *The same hire, placed at the doctor.*
 
 There is exactly one place that changes the number, and it is not where the queue is.
@@ -112,11 +112,11 @@ It is not the biggest problem on the list. It is the stuck one. You can work ext
 
 Fix the doctor and the clinic does not become fixed. Get her to fifty a day and follow-up booking, at forty, becomes the constraint. Fix that and it moves to pharmacy. Push far enough and every station inside the building outruns the number of people it serves — at which point the constraint has moved outside the walls, to the hospital that won't take referrals any faster.
 
-![The row of stations with the DOCTOR box highlighted in orange.](img/moves-1.png)
+![The row of stations with the DOCTOR box highlighted in orange.](img/moves-1-r.png)
 
-![The row of stations with the FOLLOW-UP box highlighted in orange instead.](img/moves-2.png)
+![The row of stations with the FOLLOW-UP box highlighted in orange instead.](img/moves-2-r.png)
 
-![The row of stations, all in plain ink, with a dashed orange box labelled THE HOSPITAL drawn outside them.](img/moves-out.png)
+![The row of stations, all in plain ink, with a dashed orange box labelled THE HOSPITAL drawn outside them.](img/moves-out-r.png)
 *The constraint does not get solved; it moves — doctor, then follow-up, then out of the building altogether.*
 
 It is still a constraint. It just now needs an entirely different set of skills to attack.

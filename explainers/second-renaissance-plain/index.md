@@ -22,7 +22,7 @@ She joins the Second Renaissance forum and posts one paragraph: all of this floa
 
 Nine people reply. It is a genuinely good conversation.
 
-![A forum thread drawn as a column of bars filed by date. Maren stands to the left. Her post sits in the column as a card outlined and lettered in orange — "her post: all of this floats free of any actual place" — with nine short reply bars indented beneath it.](img/thread-live.png)
+![A forum thread drawn as a column of bars filed by date. Maren stands to the left. Her post sits in the column as a card outlined and lettered in orange — "her post: all of this floats free of any actual place" — with nine short reply bars indented beneath it.](img/thread-live-r.png)
 *Her post arrives in the thread, and gathers nine replies.*
 
 ![The same column, a year on. Her post is now just another grey bar among the dated run; the replies have merged into it.](img/thread-lost.png)
