@@ -127,6 +127,7 @@ Let the conversation be a conversation. You post your paragraph on the forum the
 Afterwards, separately, a machine reads the thread against the tree and proposes where the parts of it belong.
 
 > **DEMO B: watch it read a thread**
+> *TODO(@David): pick the specific forum thread — real, public, four to six posts, ideally one that supports a condition, one that challenges a link, and one the tree can't place yet.*
 > *On screen: a real Second Renaissance forum thread, four to six posts, the kind of exchange that normally just scrolls away. Trigger the reader. Three or four cards appear next to the tree: "this paragraph supports condition 4, pockets"; "this sentence challenges the link between sangha and movement coherence"; "this is a claim the tree has nowhere to put yet." Each card links back to the exact post it came from. Say: nobody in that thread did anything differently. The structure was recovered afterwards, by something whose whole job is to do the filing. Pre-bake it so it lands in about a minute; narrate what it is doing while it runs.*
 
 Then a rotating handful of people decide what actually merges into the tree. Not one person, and not the machine on its own, because one party quietly deciding what the map says is how you get a map nobody trusts.

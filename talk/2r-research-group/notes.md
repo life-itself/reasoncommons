@@ -52,6 +52,15 @@ Three, spread through the talk so the room sees the thing working before it hear
 
 Logistics to sort before the talk: which forum thread (and whether its authors are okay being shown); is B/C running live or pre-baked with a live-looking reveal; who operates the screen while the speaker talks; fallback when the AI placement is weak (say so, place by hand, move on — that is still the system working).
 
+## Build tasks
+
+- **@David — pick the Demo B forum thread.** Real, public, 4–6 posts, the kind that scrolls away without connecting to anything. Ideal: one post supports one of the eight conditions, one challenges a link, one raises a claim the tree can't place — so the reader has something for each card type. (This is also flagged inline in the script's Demo B block.)
+- **Reverse-view visual** — the tree of change with the least-supported condition highlighted and an annotation count on each of the eight. Needed for the Demo A payoff and Demo C step 4.
+- **Static fallback screenshots** from the tool, captured in advance: full tree; one leaf-path highlighted; one link glossed; the chosen forum thread; the reader's placement cards; the reverse view.
+- **Demo C kit** — shared form for ~1,000-character contributions, QR code + short link, screen operator, 3–4 minutes of quiet write time.
+- **Build the deck** once `slides-brief.md` is signed off — frontend-slides skill, Life Itself warm-earth template (`~/src/life-itself/design/presentations/life-itself-warm-earth-reference.html`).
+- **Image research pass** against the "Assets to source" list in `slides-brief.md`. Not blocking; every slide works type-only.
+
 ## Worth lifting from the orphan `talk/index.html`
 
 Different cut (method-first, "a talk that performs the LTP"), but several lines and beats are strong and reusable:

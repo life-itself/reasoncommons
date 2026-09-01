@@ -102,7 +102,7 @@ Feeds the slide build (frontend-slides skill). This is the slide text, the build
 
 **On slide (hold):** The Second Renaissance tree of change
 **Then:** screen-share the real tool. Speaker does two clicks only: (1) a deep leaf, its path to the goal lights and the rest dims; (2) one link, its "necessary for" gloss appears. ~90 seconds, no full tour.
-**Fallback:** three screenshots — whole tree; one leaf-path highlighted; one link glossed. Capture in advance (see `TODO.md`).
+**Fallback:** three screenshots — whole tree; one leaf-path highlighted; one link glossed. Capture in advance.
 
 ### Two things at once
 
@@ -156,7 +156,7 @@ Feeds the slide build (frontend-slides skill). This is the slide text, the build
 ### [LIVE] Demo B — watch it read a thread
 
 **On slide (hold):** A real forum thread
-**Then:** screen-share. A real public 2R forum thread, 4 to 6 posts (see `TODO.md`, @David to pick). Trigger the reader; 3 to 4 placement cards appear against the tree — supports this / challenges that / can't place yet — each linked to the exact post. Pre-baked for a ~1-minute reveal, narrated live.
+**Then:** screen-share. A real public 2R forum thread, 4 to 6 posts (@David to pick — see `notes.md` build tasks, and the script's Demo B block). Trigger the reader; 3 to 4 placement cards appear against the tree — supports this / challenges that / can't place yet — each linked to the exact post. Pre-baked for a ~1-minute reveal, narrated live.
 **Fallback:** screenshots of the thread and the cards.
 
 ### Who decides
@@ -182,7 +182,7 @@ Feeds the slide build (frontend-slides skill). This is the slide text, the build
 
 **On slide (stays up while people write):** Your turn. ~1,000 characters. / Something important the Second Renaissance may be missing, underestimating, or getting wrong. Or something we could act on. / Your words. Don't tidy them. / [QR code + short link to the shared form]
 **Visual:** a 3 to 4 minute countdown element.
-**Note:** after the write, switch to the tool. Run live if room and tech allow; otherwise the pre-baked mock-up (contributions already collected and processed). Decide on the day; have the mock-up ready regardless (see `TODO.md` and `notes.md`).
+**Note:** after the write, switch to the tool. Run live if room and tech allow; otherwise the pre-baked mock-up (contributions already collected and processed). Decide on the day; have the mock-up ready regardless (see notes.md).
 
 ### The three questions
 
@@ -192,7 +192,7 @@ Feeds the slide build (frontend-slides skill). This is the slide text, the build
 ### The reverse view
 
 **On slide:** The same map tells everyone which condition nobody is currently holding.
-**Visual:** the tree of change with the least-supported condition pulsing in the accent colour; a small annotation count on each of the eight. Payoff visual — build TODO.
+**Visual:** the tree of change with the least-supported condition pulsing in the accent colour; a small annotation count on each of the eight. Payoff visual; build task in notes.md.
 
 ### What just happened
 
