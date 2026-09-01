@@ -22,3 +22,7 @@ drafts
 \#*\#
 .\#*
 *~
+
+# Vim swap files
+*.swp
+*.swo
