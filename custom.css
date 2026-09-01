@@ -187,6 +187,7 @@ a.rc-card:hover {
   line-height: 1.25;
   font-weight: var(--font-weight-headings, 600);
   font-family: var(--font-heading, inherit);
+  color: var(--color-foreground, #252113);
 }
 
 .rc-card p {
