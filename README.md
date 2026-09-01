@@ -7,18 +7,18 @@ status: in-progress
 
 <div class="rc-hero">
 <p class="rc-h1">A better way to think together — and to act on it.</p>
-<p class="rc-lede">Hold your reasoning as living trees — a tree of change, and a tree of action. Map evidence and discussion onto them. Build shared understanding that actually accumulates, with AI doing the heavy lifting.</p>
+<p class="rc-lede">Structure the thinking as trees — a tree of change, and a tree of action — with every claim and every step still connected to the goal it serves. Let ordinary discussion attach where it belongs, and let AI keep the tree current. The point is that our thinking should accumulate.</p>
 <p class="rc-cta-row"><a class="btn-primary btn-primary-lg" href="/explainers">Read the series</a> <a class="btn-secondary" href="/claim-tree-annotation-demo/index.html">See it working</a></p>
 <p class="rc-note">There's no app to log into yet — a way of thinking, and enough built around it to judge whether it's worth adopting.</p>
 </div>
 
-Groups generate more good thinking than they can hold onto. The same questions come round again, new people re-cover old ground, and a good hour of discussion leaves nothing behind — because a 200,000-word document can't be improved one sentence at a time. Reason Commons is a different shape: break a top-level goal or claim into the sub-claims and steps it actually depends on, give every one of them an address, and let ordinary discussion attach to the right node without anyone learning a notation.
+On the questions that matter most, we generate plenty of heat and not much light. There is real discussion — on the forum, in long documents, in calls — but it repeats, it scatters, and it doesn't build; you can't point at a 200,000-word strategy and improve one sentence of it. We never build the cathedral, we just make a bigger mess. Trees are a way out: break a goal into the parts it actually rests on, so the whole and the parts stay connected and you can see how a single step — or a single objection — bears on what you're trying to do. Then the hard part, getting freeform discussion connected back to the tree without anyone doing tedious filing. It has to be close to effortless or it won't happen, and AI is what makes that possible now.
 
 <div class="rc-cards rc-cards-2">
-<a class="rc-card" href="/explainers"><span class="rc-card-title">The idea</span><p>A tree of change — goal, blockers, why — and a tree of action for what to do about it. The whole and the parts stay connected.</p></a>
-<a class="rc-card" href="/about"><span class="rc-card-title">The AI tooling we're building</span><p>AI drafts the trees from material you already have, then folds ongoing forum discussion back into them as annotations — enriching the discussion and improving the tree at once.</p></a>
+<a class="rc-card" href="/explainers"><span class="rc-card-title">The idea</span><p>Break a goal, or a claim, into the parts it rests on — a tree of change, and a tree of action — with the whole and the parts kept connected.</p></a>
+<a class="rc-card" href="/about"><span class="rc-card-title">The AI tooling we're building</span><p>AI drafts the trees from what you already have, and folds ongoing discussion back in — so it enriches the conversation and improves the tree at the same time.</p></a>
 <a class="rc-card" href="/claim-tree-annotation-demo/index.html"><span class="rc-card-title">See it working</span><p>The four steps end to end — claim, tree, sources, evidence — on a worked toy example.</p></a>
-<a class="rc-card" href="/ltp"><span class="rc-card-title">Grounded in the Logical Thinking Process</span><p>A rigorous forty-year-old method from the Theory of Constraints. We keep its rigour without requiring its vocabulary.</p></a>
+<a class="rc-card" href="/ltp"><span class="rc-card-title">Grounded in the Logical Thinking Process</span><p>A rigorous method from the Theory of Constraints, forty years in the making — it came out of industry, but it applies almost anywhere. We use its rigour and drop its vocabulary.</p></a>
 </div>
 
 ## Start here — the three-part series

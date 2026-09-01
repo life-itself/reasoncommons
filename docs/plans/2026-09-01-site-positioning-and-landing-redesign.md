@@ -89,9 +89,9 @@ Dropped from nav: Goal Aligner and Dashboard (both now reached via Demos).
 
 ## Content reorganisation
 
-`contentExclude` additions: `/docs/plans`, `/docs/prompts`, `/docs/notes`, `/examples`, `/talk/2r-research-group`, and the raw 82 KB book summary at `/docs/The Theory of Constraints and the Logical Thinking Process - Learning to Think Better`.
+The site stays a knowledge base — `docs/` is *not* hidden wholesale. `contentExclude` additions are deliberately narrow: `/docs/plans` (planning docs, this one included), `/examples`, `/talk/2r-research-group`, and the raw ~82 KB derivative of Dettmer's book at `/docs/The Theory of Constraints and the Logical Thinking Process - Learning to Think Better` (kept in the repo, not published, as a copyright precaution).
 
-Kept published: `/docs/theory`, `/docs/dashboard.md`, `/docs/brand-and-domain-naming.md`, `/library`, `/ltp`.
+Kept published and linkable: everything else under `docs/` — `docs/theory/` (the concept essays), `docs/ltp_trees/`, `docs/dashboard.md`, `docs/brand-and-domain-naming.md`, `docs/naming-the-tree.md`, `docs/prompts/`, `docs/notes/` — plus `/library`, `/ltp`.
 
 `/examples/individual-swe-notes/` is fixture data for the annotation/goal-alignment skills (a persona's notes), not site content — excluded rather than deleted so it stays available to the skills.
 
