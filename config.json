@@ -30,8 +30,7 @@
     "/alignment/extracted",
     "/alignment/uploads",
     "/explainers/_process",
-    "/talk/_process",
-    "/talk/2r-research-group"
+    "/talk/_process"
   ],
   "contentHide": [
     "/dashboard/assets",

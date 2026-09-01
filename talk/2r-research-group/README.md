@@ -12,7 +12,7 @@ A talk to the Second Renaissance Research Group that presents Reason Commons and
 
 It grew out of a real moment: a sense-making session a few months ago where someone asked *what is the goal of Second Renaissance, and how would we know if we were moving toward it?* Good question, good conversation — and then the conversation went nowhere in particular. That is the thing this talk is about.
 
-The decision to lead with the 2R problem rather than the Reason Commons story, the alternative framing, and the reasoning behind both, are in [`notes.md`](./notes.md). The braindump this was shaped from is in [`../_process/2026-09-01-braindump.md`](../_process/2026-09-01-braindump.md).
+The decision to lead with the 2R problem rather than the Reason Commons story, the alternative framing, and the reasoning behind both, are in [`notes.md`](./notes.md). The raw dictation this was shaped from is kept in the repo at `talk/_process/2026-09-01-braindump.md` (process material, not published).
 
 ## Audience
 
