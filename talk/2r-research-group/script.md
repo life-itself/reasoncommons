@@ -1,61 +1,63 @@
 ---
 title: Script — Reason Commons talk for the 2R Research Group
-status: first full draft
+status: revised draft (dramaturgical pass)
 created: 2026-09-01
 ---
 
 # Script
 
-Second Renaissance first. The room's problem, then trees, then the onramp, then the room tries it, then the ask. Runs about 60 to 75 minutes with the live block, about 35 without.
+Second Renaissance first. The room's own loss, then the idea, then the conflict in the way, then the room tries it, then the ask. One question runs through the whole thing: *where does the thinking go?*
 
-Two layers below. First a skeleton: what each beat has to land. Then the full script: what to actually say. The full script is prose where the wording matters and bullets where it is staging or where the room's input fills the gap.
+Core is about 45 minutes. Section 5, where the room contributes, is elastic: budget 12 minutes if the room is quiet, up to 25 or more if it is not. Plan for 45 to 75 in total.
+
+Two layers below. First a skeleton: what each beat has to land, with timings. Then the full script: what to actually say, in prose where the wording matters and bullets where it is staging. Demos are marked as blocks, with the intended behaviour in italic.
 
 ---
 
 ## Skeleton
 
-**0 · Cold open: the question and where it went (3 min)**
-- A few months ago, in a sense-making session, someone asked: what is the goal of Second Renaissance, and how would we know if we were moving toward it?
-- Good question, and a good hour of discussion. Then nothing downstream. Where did it go?
-- That question, and its disappearance, is what this talk is about. It is also where this work started.
+**0 · Cold open: where does the thinking go? (3 min)**
+- A sense-making session a few months ago ended on a question: what is the goal of Second Renaissance, and how would we know we were moving toward it? Good question. Good hour.
+- A week later it was nowhere. No note, no thread carrying it. The thinking stayed in the room, and people leave rooms.
+- That is close to the normal outcome here. So: where does the thinking go? That question turned into a project.
 
-**1 · What 2R needs, and why it doesn't accumulate (12 min)**
-- 2R is a movement for civilizational renewal. Largely volunteer. Its thesis is real and still evolving on purpose: getting better as more people work on it is the design, not a defect.
-- It needs two things. One, cohering our thinking: better hypotheses about how renewal happens, sharper arguments for why, the detail researched, the theory of change improved. Two, coordinating our action: where do you plug in, how do initiatives move together. Today is about the first. The second is a follow-up talk. I name it again later and then leave it alone.
-- The problem with the first is that our thinking doesn't accumulate. Threads, calls, documents. New people arrive and re-cover old ground. The research circle reaches the same conclusion twice in three years and both times it evaporates. The same conversation, again.
-- Two failure patterns. Reasoning doesn't accumulate. And willingness has nowhere to land: people want to help and there is no obvious place to put the help.
-- This is not a shortage of intelligence, or goodwill, or ideas. It is a shortage of somewhere to put them.
-- Why the obvious fix, writing it up, doesn't work. Six or seven white papers, roughly 200,000 words. A claim in the middle of a paragraph has no address. You can't point at it, so you can't object to it precisely, so you can't suggest a small change, so nothing accumulates against it.
+**1 · The problem: thinking that doesn't accumulate (8 min)**
+- The movement has a real thesis that is meant to keep improving as more people work on it. That only works if the improving adds up.
+- It mostly doesn't. One shape of it: a research circle reaches the same conclusion twice in three years. Both times the room agrees. Both times, weeks later, the agreement has nobody's name on it and nothing has changed.
+- Individual understanding compounds. The group's version doesn't. Agreement that survives only in the people who were present is a rumour.
+- Not a shortage of intelligence, or goodwill, or ideas. A shortage of somewhere to put them.
+- Writing it up doesn't fix it: six or seven white papers, 200,000 words. A claim in the middle of a paragraph has no address. You can't point at it, so you can't argue with it, so nothing builds against it. The precise disagreement a newcomer brings is the thing a long document is least able to receive.
+- Scope note: there are two halves, cohering our thinking and coordinating our action. Today is the first. The second is a talk of its own.
 
-**2 · The idea: trees, and the conflict under them (12 min)**
-- What if the shared thing weren't prose but structure. A top claim broken into sub-claims, all the way down. Every claim has an address. The links between claims are themselves claims: this one is necessary for that one. The reasoning is on show, not only the conclusions.
-- Show the real 2R tree of change: the goal, and the eight things that all have to be true at once. Shared diagnosis, compelling vision, embodied practice, pockets, sangha, movement coherence, institutions, wise transition.
-- It is two things at once. A thesis about what has to hold, and an object we can improve. Whole and part stay connected: every leaf traces back to the goal.
-- One sentence on lineage: this shape is about 40 years old, came out of operations research, and is called the Logical Thinking Process. A companion talk does it properly. Nothing here needs it.
-- The conflict. People want the conversation to stay natural, spontaneous and exploratory. Nobody wants to write in formal logic. Accumulation wants structure. The two look opposed.
-- The false assumption holding them apart: that the structure has to be added by the contributor, at the moment of contributing. That is the only thing making this a dilemma, and it isn't true.
+**2 · The idea, and a look at it (10 min, Demo A)**
+- What if what we hold in common is not a stack of documents but a structure. A top claim, broken into the sub-claims it depends on, all the way down. Every claim sits at an address. The links are claims too: this one is necessary for that one.
+- Demo A: the real 2R tree of change on screen. Click a leaf, its path to the goal lights up. Click a link, see the claim it carries.
+- So the tree is two things at once: a thesis about what has to be true, and an object you can improve one claim at a time. Whole and part stay connected.
+- One-sentence aside on lineage: 40 years old, from operations research, called the Logical Thinking Process. Nothing here depends on it.
 
-**3 · The move: contribute normally, structure revealed underneath (6 min)**
-- Let the conversation be a conversation. Nothing interrupts it.
-- Afterwards a machine reads the thread against the tree and proposes addresses: this supports that condition, this challenges that link, this is a claim the tree can't place yet.
-- A rotating handful of people decide what actually merges, because one person quietly deciding what the map says is how you get a map nobody trusts.
-- Cost of contributing falls back to one sentence, said where you were already saying it. The filing is someone's job now. It is not the contributor's.
-- AI is what makes this newly possible. It builds a first draft of the trees quickly from material that already exists, and it connects live discourse to the tree with almost no manual work. Two years ago this talk would have ended at "nice idea, too much hand work."
+**3 · The conflict, and the turn (6 min)**
+- Why don't we already work this way? A real conflict. People want the conversation to stay quick and human; nobody wants to fill in a form. Accumulation wants structure. Looks like you have to choose.
+- One assumption makes it look like a choice: that the structure has to be added by the contributor, at the moment of contributing.
+- That assumption is not true. That is more or less the whole talk.
 
-**4 · Try it (18 min, live)**
-- Everyone writes about 1,000 characters: something important 2R may be missing, underestimating, or getting wrong, or could act on. Your words.
-- Take one or two live. Three questions in order:
-  1. Where does this fit? (placement, the easy and least interesting part)
-  2. Does it reveal a gap or a disagreement? (now it is working on the group's reasoning)
-  3. So what? (if 2R is underestimating this, what might we actually do?)
-- The outcome travels backward: contribution → shared reasoning → bottleneck or opportunity → proposal → action → evidence → better shared reasoning. It does not stop at "thanks for your feedback."
+**4 · The move, and watch it work (6 min, Demo B)**
+- So don't add the structure at the moment of contributing. Let the conversation be a conversation. Afterwards, separately, a machine reads it against the tree.
+- Demo B: a real forum thread; the reader proposes placements (supports this, challenges that, doesn't fit yet), each linked back to the exact post.
+- A rotating handful of people decide what merges. Not one person, not the machine alone.
+- The cost of contributing falls back to one sentence, where you were already saying it. The filing is someone's job now, and it isn't the contributor's. AI is what makes that affordable.
 
-**5 · Close (6 min)**
-- What you just did is a small instance of a whole method: current reality, goal, the conflict, a future reality, the steps between. Five shapes. Name them, don't teach them.
-- Back to the opening question. A shared, living theory of change is what lets you even ask whether we are cohering and whether we are moving. Ask it carefully: some of us are wary of the question, and that wariness is worth a conversation of its own.
-- The ask: today, contribute something. After today, follow what happens to it. If there is an action you want to own, take it. Help us test whether this makes 2R better at thinking, and later at doing.
-- What is being tested is not whether the software is clever. It is whether today's contributions improve 2R's reasoning and cause useful things to happen.
-- Honest status: the trees are provisional and wrong in places, the reader is a prototype, the merge rules are three sentences and untested. They are public anyway. Find the claim you disagree with, or the one nobody is standing under.
+**5 · You try it (elastic, 12 to 25 min, Demo C)**
+- Everyone writes ~1,000 characters: something 2R may be missing, underestimating, or getting wrong, or could act on.
+- Fair warning that this is a prototype: provisional trees, early reader, untested merge rules.
+- Take one or two live, through three questions: where does it fit; does it reveal a gap or a disagreement; so what, what would we do.
+- Then the reverse view: which of the eight conditions has the least behind it right now.
+- The point: a paragraph of ordinary thinking became a specific claim, at a place, with a path to an action.
+
+**6 · Close: back to the question (4 min)**
+- Back to the goal question from the open. You can only ask it of something you can point at.
+- "Goal" and "progress" are loaded words here. Good. That disagreement should live at an address, with a name on it, not be had again next year.
+- The ask: today, write the thousand characters. After today, follow where it lands. If an action comes out of it, own it.
+- Where does the thinking go? Into the tree. At an address. With your name on it. Find the claim you disagree with, or the one nobody is standing under.
 
 ---
 
@@ -63,120 +65,97 @@ Two layers below. First a skeleton: what each beat has to land. Then the full sc
 
 ### 0 · Cold open
 
-A few months ago, in one of the sense-making sessions, someone asked a simple question. What is the goal of the Second Renaissance, and how would we know if we were moving toward it?
+A few months ago, one of the sense-making sessions ended on a question. What is the goal of the Second Renaissance, and how would we actually know if we were moving toward it?
 
-It was a good question. It got a good hour. People said thoughtful things, some of which I still think about.
+It was a good question. It got a good hour. People said things I still think about.
 
-And then, as far as I can tell, nothing. No note that changed what we do. No thread that picked it up. If you went looking for the answer that hour produced, there is nowhere to go and look.
+A week later it was nowhere. No note that changed what we do. No thread that carried it forward. The thinking stayed in the room, and people leave rooms.
 
-I want to talk about that: the question, and the fact that it evaporated. Partly because it is a pattern most of us would recognise. And partly because trying to work out what happened to that conversation is where the project I am going to show you started.
+I don't think that was unusual. I think it is close to the normal outcome here. This community has a good hour, works something out, and a week later the working-out is gone and the question is open again.
 
-### 1 · What 2R needs, and why it doesn't accumulate
+So that is what this talk is about. Where does the thinking go? I have been trying to answer that in a practical way, and it turned into a project. That is what I want to show you.
 
-You know this part better than I do, so I will go quickly.
+### 1 · The problem: thinking that doesn't accumulate
 
-The Second Renaissance is a movement for civilizational renewal. It is largely volunteer. It has a real vision and a real theory of change, and both are still evolving, on purpose. The premise is that this gets sharper and more defensible as more people work on it.
+To see why the thinking goes nowhere, start with what the movement is trying to be.
 
-So the movement needs two things that are easy to say and hard to do.
+The Second Renaissance is a movement for civilizational renewal. It is largely volunteer. It has a real vision and a real theory of change, and both are meant to keep improving as more people work on them. That only works if the improving adds up.
 
-The first is cohering our thinking: better hypotheses about how a renewal could actually happen, sharper arguments for why it is needed that you could hand to someone who doesn't already agree, the detail researched, the theory of change actually improved over time rather than just restated.
+Mostly it doesn't. Here is the shape of it. A research circle meets every week. Twice in three years it has worked its way to the same conclusion. Both times the room agreed. Both times, a couple of weeks later, the agreement had nobody's name on it and nothing downstream had changed. Months after that it came round again from the beginning, because everything that produced it was still sitting where it had been.
 
-The second is coordinating our action. If I want to help, where do I plug in? How do the different initiatives move together rather than in parallel? How would we know we are getting somewhere?
+The people in that room are not the problem. They learned something and they kept it. Individual understanding compounds. Twenty years of anyone's students will show you that. What does not compound is the group's version. Agreement that survives only in the people who were present is a rumour.
 
-Today is about the first one. The second, call it the tree of action, is a whole talk of its own. I will name it again at the end and then leave it alone.
+So this is not a shortage of intelligence, or goodwill, or ideas. We are not short of ideas. It is a shortage of somewhere to put them.
 
-The problem with the first one is that our thinking doesn't accumulate.
+And the obvious fix does not work. Write it up properly and you get six or seven white papers, something like two hundred thousand words. A claim buried in the middle of a paragraph on page forty has no address. You cannot point at it. If you cannot point at it, you cannot disagree with it precisely, and a vague disagreement with a long document is one nobody can act on, so in the end nobody makes it. The most valuable thing a new person brings, a precise disagreement, is the thing a long document is least able to receive.
 
-It is not that people aren't thinking. There is a forum, there are calls, there are documents. But new people show up and re-cover ground that was covered a year ago. A research circle I know of has reached the same conclusion twice in three years. The room agreed both times. Both times, two weeks later, the agreement had nobody's name on it and nothing had changed. Months later it came round again from the start, because the conditions that produced it were exactly where they had been.
+One scope note before I show you the idea. There are really two halves to this: cohering our thinking, and coordinating our action. What I have just described is the first half. The second, how work gets organised and tracked against all this, is a talk of its own. Today is about the thinking.
 
-Anyone who has been around this more than a year has had that conversation three times.
+### 2 · The idea, and a look at it
 
-There are two shapes to this. One, reasoning doesn't accumulate: an insight leads to more conversation, the context gets lost, and you are back at the same conversation again. Two, willingness has nowhere to land: someone says "I want to help," there is no obvious place to put the help, and the willingness dissipates. Willingness is not our scarce resource. Somewhere for it to land is.
+So here is the idea. What if the thing we hold in common is not a stack of documents but a structure.
 
-None of this is a shortage of intelligence, or goodwill, or ideas. We are not short of ideas.
+You take the top claim. You break it into the sub-claims it depends on. You break those down again, as far as is useful. Now every claim sits at a location. You can point at exactly one. And the lines between claims are themselves claims: this one is necessary for that one. What is on the screen is not just the conclusions. It is the reasoning.
 
-It is a shortage of somewhere to put them.
+Let me show you a real one. This is the Second Renaissance tree of change. I did not build it for the talk. It is generated from the actual written corpus.
 
-And the obvious fix doesn't work. "Write it up properly" gives you six or seven white papers and something like two hundred thousand words. A claim buried in the middle of a paragraph on page forty has no address. You can't point at it. If you can't point at it, you can't disagree with it precisely, and a vague objection to a long document is one nobody can act on, so in the end nobody makes it. You can't suggest a small change to it. Nothing builds against it. The document is a wall, not a scaffold.
+> **DEMO A: see the tree**
+> *On screen: the real 2R tree of change. The goal at the top ("co-initiate a Second Renaissance: a conscious transformation of foundational views, values, practices and institutions toward a wiser, weller, regenerative civilization"), the eight critical success factors below it, sub-claims under those. Do two things and stop. (1) Click one leaf, three levels down, under a condition like "pockets of coherent new culture." Its path up to the goal lights; everything else dims. Say: this claim is not floating in a document, it is at an address, and the address tells you what it is holding up. (2) Click one line between two claims. A one-line gloss appears: "this one is necessary for that one." Say: the links are claims too, so you can disagree with a link without touching the boxes. Ninety seconds. Do not tour the whole tree.*
 
-### 2 · The idea: trees, and the conflict under them
+Two things about that tree at the same time. It is a thesis: a claim that these eight conditions, in this arrangement, are what it takes. And it is an object you can work on, one claim at a time, without rewriting the whole thing. The whole and the parts stay connected, so any leaf, however far down, traces back to the goal.
 
-So here is the idea. What if the thing we hold in common is not prose but structure.
+One aside on where the shape comes from, because it matters and then it doesn't. It is about forty years old, it came out of operations research, and it is called the Logical Thinking Process. There is a separate talk that does it justice. Nothing here depends on knowing any of it.
 
-You take the top-level claim. You break it into the sub-claims it depends on. You break those down again, as far as is useful. Now every claim has an address, so you can point at exactly this one. And the links between claims are themselves claims: this one is necessary for that one. What is on the page is not just the conclusions, it is the reasoning.
+### 3 · The conflict, and the turn
 
-Here is a real one. This is the Second Renaissance tree of change. Not something I invented for the talk; it is built from the actual corpus.
+So why don't we already work like this?
 
-[SHOW: goal tree. Goal at the top: *co-initiate a Second Renaissance: a conscious transformation of foundational views, values, practices and institutions toward a wiser, weller, regenerative civilization.* Then the eight.]
+Because there is a real conflict in the way, and every group that tries to give itself structure hits it. On one side, people want the conversation to stay what it is: quick, exploratory, human. Nobody joined a movement for civilizational renewal in order to fill in a form, and people are right to be wary of anything that interrupts a good exchange to make it tidy. On the other side, accumulation needs structure. If everything stays loose, the good parts dissolve into the scroll and we are back to the same conversation next year.
 
-Eight things all have to be true at once for this to be more than an idea. People have to understand the crises as one crisis, a shared diagnosis. There has to be a compelling picture of the next paradigm. It has to be embodied in actual practice, not just described. There have to be pockets where a new culture is livable. Those pockets need a wider community around them. That community has to cohere into a movement that can transmit itself. The movement has to reshape institutions. And all of it has to navigate collapse and renewal wisely rather than naively.
+It looks like you have to choose. Keep it human, or make it add up.
 
-Two things about this tree at once. It is a thesis: a claim that these eight, in this relationship, are what it takes. And it is an object we can work on: every one of those is arguable, and the arguing is the point. Whole and part stay connected, so every leaf, however far down, traces back to the goal at the top.
+There is exactly one assumption underneath that makes it look like a choice. The assumption is that the structure has to be put there by the person contributing, at the moment they contribute.
 
-One sentence on where this comes from, because it matters and then it doesn't. The method behind this shape is about forty years old. It came out of operations research, the world of factories and throughput and bottlenecks, and it is called the Logical Thinking Process. There is a companion talk that does it justice. Nothing I am saying today depends on you knowing any of that, and if the factory smell puts you off, ignore it.
+That assumption is not true. That is more or less the whole talk.
 
-So why don't we already do this?
+### 4 · The move, and watch it work
 
-There is a real conflict here, and every community that tries to give itself structure runs into it. On one side, people want the conversation to stay natural, spontaneous and exploratory. Nobody joined a movement for civilizational renewal in order to write in formal logic, and people are rightly suspicious of anything that interrupts a good exchange in order to file it. On the other side, accumulation needs structure. If everything stays conversational, the important ideas dissolve into chronology and we are back where we started.
+If the structure does not have to be added at the moment of contributing, then don't.
 
-Those two look opposed. Spontaneity or structure, pick one.
+Let the conversation be a conversation. You post your paragraph on the forum the way you were going to anyway. Nothing interrupts you.
 
-But there is exactly one assumption holding them in opposition. The assumption is that the structure has to be added by the contributor, at the moment of contributing. That is the only thing that makes this a dilemma.
+Afterwards, separately, a machine reads the thread against the tree and proposes where the parts of it belong.
 
-And it is not true.
+> **DEMO B: watch it read a thread**
+> *On screen: a real Second Renaissance forum thread, four to six posts, the kind of exchange that normally just scrolls away. Trigger the reader. Three or four cards appear next to the tree: "this paragraph supports condition 4, pockets"; "this sentence challenges the link between sangha and movement coherence"; "this is a claim the tree has nowhere to put yet." Each card links back to the exact post it came from. Say: nobody in that thread did anything differently. The structure was recovered afterwards, by something whose whole job is to do the filing. Pre-bake it so it lands in about a minute; narrate what it is doing while it runs.*
 
-### 3 · The move: contribute normally, structure revealed underneath
+Then a rotating handful of people decide what actually merges into the tree. Not one person, and not the machine on its own, because one party quietly deciding what the map says is how you get a map nobody trusts.
 
-So don't add the structure at the moment of contributing.
+Look at what happened to the cost of contributing. It fell back to one sentence, said where you were already saying it. The filing still gets done. It is somebody's job now, and that somebody is not the contributor. AI is what makes that affordable. Two years ago this same idea ended at "lovely, far too much hand work, nobody will keep it up."
 
-Let the conversation be a conversation. Nothing interrupts it. You post your paragraph on the forum where you were going to post it anyway.
+### 5 · You try it
 
-Afterwards, separately, a machine reads the thread against the tree and proposes addresses. This sentence supports that condition. This one challenges that link. This one is a claim the tree currently has nowhere to put, which is itself useful information.
+Now you.
 
-Then a rotating handful of people decide what actually merges into the tree. Not one person, and not the machine on its own, because one party quietly deciding what the map says is how you end up with a map nobody trusts.
+> **DEMO C: the room contributes (elastic, 12 to 25 minutes)**
+> *Step 1. Everyone writes about a thousand characters, on a phone or laptop, into a shared form: something important the Second Renaissance may be missing, underestimating, or getting wrong, or something we could act on. Their words, not tidied. Give it three or four minutes of quiet.*
+> *Step 2. Fair warning before anyone leans on this: what you are about to watch is a prototype. The trees are provisional and wrong in places, the reader is early, and the rules for what merges are about three sentences long and have never been tested by anyone genuinely annoyed. That is what today is for.*
+> *Step 3. Pick one or two contributions, ideally one that reads as a gap and one that reads as a disagreement, and run each through three questions on screen. (1) Where does it fit? The tree proposes a location. This is the easy part. (2) Does it reveal a gap or a disagreement? Is it sitting under a condition nobody is currently holding, or is it in tension with a link? Now it is doing work on the group's reasoning. (3) So what? If the room broadly agrees, what is the next action, and who might own it?*
+> *Step 4. Show the reverse view: the tree with the condition that currently has the least attached to it highlighted. Say: the same structure that tells one person where their idea goes tells everyone which part of the goal nobody is holding.*
+> *If the placement is weak on a given contribution, say so, place it by hand, and move on. A wrong first guess that a person corrects in five seconds is still the system working.*
 
-The cost of contributing has fallen back to one sentence, said where you were already saying it. The filing still gets done. It is somebody's job now, and it is not the contributor's.
+What you just did, if it went well, is take a paragraph of ordinary thinking and turn it into a specific claim, at a specific place, with a path to an action. That is a long way past "thanks for your feedback." It is also, more or less, that forty-year-old method from earlier, run without any of its vocabulary.
 
-This next part is what is new. AI can build a first draft of these trees quickly from material that already exists: the white papers, the forum, the meeting transcripts. And it can connect live discourse to the tree with almost no manual work. Without AI, this idea runs into "far too much manual work, nobody will keep it up." With it, that changes.
+### 6 · Close
 
-### 4 · Try it
+Go back to the question the sense-making session ended on. How would we know if we were moving toward what we are trying to do?
 
-Rather than keep asserting it, let's do it.
+You can only ask that about something you can point at. A tree of change, you can point at. Two hundred thousand words, you can't.
 
-[INTERACTIVE: setup]
-- Everyone takes a few minutes and writes about a thousand characters. The prompt: something important the Second Renaissance may be missing, underestimating, or getting wrong, or something we could act on. Your words, exactly as you would say them. No need to make it tidy.
-- [Collect. Pick one or two, ideally one "gap" and one "disagreement".]
+I know "goal" and "progress" and "moving toward" are loaded words in this room, and that some of you think a renewal is not the kind of thing you march at. That is a real disagreement. It is exactly the kind of disagreement that should live at an address, with a name on it, where it can change what the rest of us think, instead of being had again next year.
 
-[INTERACTIVE: walk one or two through, in this order]
+So, the ask. Today, write the thousand characters. After today, follow where it lands. If an action comes out of it that you want to own, take it.
 
-1. Where does this fit? The system places it against the tree. This is the easy part and the least interesting: it is semantic matching. Keep going.
-2. Does it reveal a gap or a disagreement? This is where it starts doing work. Is the contribution pointing at a condition nobody is currently holding? Or is it in tension with a link we have drawn? Either way it is now acting on the group's reasoning, not just sitting next to it.
-3. So what? If the room is right that 2R is underestimating, say, intergenerational transmission, then what do we actually do? What is the next action, and who might own it?
+Where does the thinking go? Into the tree. At an address. With your name on it.
 
-[Then show the shape of the outcome:]
-
-Notice the direction this travels. It starts as a contribution in a conversation. It becomes a piece of shared reasoning at an address. That surfaces a bottleneck or an opportunity, which turns into a proposal, then an action. The action produces evidence, and the evidence improves the shared reasoning.
-
-It does not end with "thanks for your feedback."
-
-### 5 · Close
-
-What you just did is a small instance of a whole method. It has five moves, and I will name them, not teach them. You start from current reality: why conversations don't accumulate. You define the goal: a group that gets smarter and turns thinking into action. You find the conflict: natural conversation versus necessary structure. You describe a future reality: contributions becoming cumulative reasoning. Then you work out the steps from here to there. Current reality, goal, conflict, future, prerequisites. Five shapes.
-
-And it lets me go back to the question from the start of this talk. How would we know if we were moving toward what we are trying to do? A shared, living theory of change is the thing that lets you even ask that, and ask it carefully. I know "goal" and "progress" and "are we moving" are loaded words in this room, and that some of you think a renewal is not the kind of thing you march toward. That is a real disagreement, and I would rather have it out loud than design around it. But you can't have it at all if the thing you would be arguing about only exists as prose nobody can point at.
-
-So, the ask.
-
-Today, contribute something. Actually write the thousand characters.
-
-After today, follow what happens to it. See if it lands anywhere.
-
-If an action comes out of it that you want to own, take it.
-
-And help us test the question that matters, which is not whether the software is clever. It is whether today's contributions improve the movement's reasoning and cause useful things to happen.
-
-One caveat, so I am not overselling. The trees are provisional and wrong in several places. The thing that reads the threads is a prototype. The rules for what merges are about three sentences long and have never been tested by anyone genuinely annoyed. All of it is public anyway.
-
-Find the claim you disagree with, or the one nobody is standing under.
-
-The Second Renaissance has never been short of thinking. It has been short of somewhere to put it.
+Find the claim you disagree with. Or find the one nobody is standing under.

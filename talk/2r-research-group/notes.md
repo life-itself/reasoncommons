@@ -42,17 +42,15 @@ Naming: **tree of change** (the theory-of-change / thesis tree) and **tree of ac
 
 "Once you have an actual, shared, living theory of change, you can start to ask whether the work is moving it" — this is real and worth a beat, but **secondary for this audience**. Put it in the close, framed as *one thing this buys you*, not as the point of the talk. In a business-oriented version it would be front-and-centre.
 
-## Live demo plan (Act 4)
+## Demos
 
-1. Everyone writes ~1,000 characters: *something important 2R may be missing, underestimating, or getting wrong — or could act on.* Their words, exactly as written.
-2. Take one or two live, against the **real** 2R tree of change and, ideally, a **real** forum thread annotated on the spot.
-3. Three questions, always in this order:
-   1. **Where does this fit?** Semantic placement. The easy part, and the least interesting.
-   2. **Does it reveal a gap or a disagreement?** Now the contribution is doing work on the group's reasoning.
-   3. **So what?** If 2R is underestimating X — what might we actually do about it?
-4. Show the outcome travelling backward: contribution → shared reasoning → bottleneck / opportunity → proposal → action → evidence → better shared reasoning. It does **not** end in "thanks for your feedback."
+Three, spread through the talk so the room sees the thing working before it hears the whole argument. Full intended behaviour is in `script.md` as italic blocks; summary here.
 
-Logistics to sort before the talk: which forum thread, is the annotation actually running live or pre-baked with a live-looking reveal, who operates it while the speaker talks, fallback if the AI placement is weak on the day.
+- **Demo A (Act 2) — see the tree.** The real 2R tree of change on screen. Click one deep leaf: its path to the goal lights up. Click one link: the "necessary for" claim it carries shows. ~90 seconds, no full tour. Job: make "every claim has an address" physical.
+- **Demo B (Act 4) — watch it read a thread.** A real forum thread, 4–6 posts. Trigger the reader; 3–4 placement cards appear against the tree (supports this, challenges that, doesn't fit yet), each linked to the exact post. Pre-baked for a ~1-minute reveal, narrated live. Job: show the structure being recovered afterwards, with nobody in the thread doing anything differently.
+- **Demo C (Act 5) — the room contributes.** Everyone writes ~1,000 characters (something 2R may be missing, underestimating, getting wrong, or could act on). Take one or two through three questions, always in order: (1) where does it fit; (2) does it reveal a gap or a disagreement; (3) so what — next action, who owns it. Then the reverse view: which of the eight conditions has the least attached right now. Elastic 12–25 min. The prototype caveat is delivered here, as step 2, so the close doesn't end on disclaimers.
+
+Logistics to sort before the talk: which forum thread (and whether its authors are okay being shown); is B/C running live or pre-baked with a live-looking reveal; who operates the screen while the speaker talks; fallback when the AI placement is weak (say so, place by hand, move on — that is still the system working).
 
 ## Worth lifting from the orphan `talk/index.html`
 

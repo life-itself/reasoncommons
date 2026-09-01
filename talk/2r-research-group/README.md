@@ -26,18 +26,19 @@ Members of the Second Renaissance Research Group — people actively working on 
 
 ## Format and time
 
-30–75 minutes depending on the slot. Target build: ~60–75 min with a live interactive block where the room actually contributes and we annotate a real forum thread against the real 2R tree. Without the interactive block it compresses to ~30–40 min.
+Core is about 45 minutes. Section 5, where the room contributes, is elastic: 12 minutes if the room is quiet, 25 or more if it is not. Plan for 45 to 75 in total. Three demos, placeheld in the script with the intended behaviour in italic: A (see the tree), B (watch it read a forum thread), C (the room contributes).
 
 ## The arc
 
-| Act | Beat | ~min (long version) |
-|-----|------|---------------------|
-| 0 | Cold open — the sense-making question, and where it went | 3 |
-| 1 | What 2R needs: cohering our thinking; why it doesn't currently accumulate; why prose can't hold it | 12 |
-| 2 | The idea: trees — every claim has an address; show the real 2R tree of change; the conflict (spontaneity vs structure) and the false assumption under it | 12 |
-| 3 | The move: contribute normally, the structure is revealed underneath; AI is what makes this newly possible | 6 |
-| 4 | Try it live: the room writes; we take one or two through *fit → gap/disagreement → so what* | 18 |
-| 5 | Close: name the method; back to the opening question; the ask; honest status | 6 |
+| Act | Beat | ~min |
+|-----|------|------|
+| 0 | Cold open: *where does the thinking go?* — the sense-making question, and where it went | 3 |
+| 1 | The problem: a movement whose thinking doesn't accumulate; the group's version is a rumour; prose has no addresses | 8 |
+| 2 | The idea + **Demo A**: the tree of change on screen; every claim has an address; links are claims too | 10 |
+| 3 | The conflict and the turn: spontaneity vs structure, and the one false assumption holding the dilemma together | 6 |
+| 4 | The move + **Demo B**: contribute normally; a machine recovers the structure afterwards; AI makes it affordable | 6 |
+| 5 | **Demo C**: the room writes; one or two taken through *fit → gap/disagreement → so what*; the reverse view | 12–25 (elastic) |
+| 6 | Close: back to the goal question; the ask; where the thinking goes | 4 |
 
 ## Not in this talk
 
