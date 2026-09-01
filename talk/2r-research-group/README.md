@@ -51,9 +51,10 @@ Core is about 45 minutes. Section 5, where the room contributes, is elastic: 12 
 | File | What it holds |
 |------|---------------|
 | `README.md` | this — purpose, audience, arc, scope |
-| `notes.md` | decisions, audience sensitivities, live-demo plan, reuse from the old talk, sources, open questions |
-| `script.md` | skeleton outline, then the spoken script under a heading per section |
-| *(later)* `script-slides.md` | script + slide/what-goes-on-screen direction |
+| `notes.md` | decisions, audience sensitivities, demo plan, reuse from the old talk, sources, open questions |
+| `script.md` | skeleton outline, then the spoken script under a heading per section; demos as italic blocks |
+| `slides-brief.md` | slide-by-slide: on-slide text, builds, image asks. Feeds the deck build |
+| `TODO.md` | open tasks, incl. `@David` to pick the Demo B forum thread |
 | *(later)* `index.html` or slides | the built deck |
 
 The orphan `talk/index.html` was written by someone else, is a different (method-first) cut, and is ignored for this work — see `notes.md` for the parts worth lifting.
