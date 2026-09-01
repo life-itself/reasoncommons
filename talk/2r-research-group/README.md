@@ -6,6 +6,12 @@ created: 2026-09-01
 
 # Talk — Reason Commons for the Second Renaissance Research Group
 
+## Where Does the Thinking Go?
+
+*Trees, forums, and getting Second Renaissance to build on its own ideas.*
+
+A movement for civilizational renewal needs its thinking to compound: better hypotheses about how renewal happens, a theory of change that gets sharper as more people work on it. Right now it mostly doesn't. The same questions come round again, new people re-cover old ground, discussion on the forum repeats itself, and offers of help have nowhere to land. The proposal is to hold the shared thinking as a tree of change rather than a stack of documents, so any point has an address you can argue with. AI is what makes this workable now: it can connect everyday conversation to the tree with almost no extra work. Bring something you think Second Renaissance is missing or getting wrong, and we'll run it through live.
+
 ## What this is
 
 A talk to the Second Renaissance Research Group that presents Reason Commons and the Logical Thinking Process **through the question "what does Second Renaissance actually need?"** — start from the movement's own problem, arrive at claim trees and the AI-assisted onramp as the answer. Second-Renaissance-first, Reason-Commons-second. Roughly two-thirds the 2R problem and the idea, one-third what we've built and what we're asking of the room.

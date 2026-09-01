@@ -34,7 +34,7 @@ Two talks were possible from the same material:
 
 The braindump names two needs: **cohering our thinking** (better hypotheses about how renewal happens, sharper theses for *why*, researching detail, improving the theory of change) and **coordinating our action** (where to plug in, how initiatives move together, checking we are making progress).
 
-This talk is about the first. The second — the "tree of action" — is a follow-up talk. Say so explicitly in Act 1. But note the 2R tree of change we show is itself partly a thesis about *what to do* and is something we can work on to improve, so the tree-of-action idea is present implicitly; we are just choosing to focus on the tree-of-thought question of how it gets updated as people talk on the forum.
+This talk is about the first. The second — the "tree of action" — is a follow-up talk. Say so explicitly in Act 1. But note the 2R tree of change we show is itself partly a thesis about *what to do* and is something we can work on to improve, so the tree-of-action idea is present implicitly; we are just choosing to focus on the tree of change and the question of how it gets updated as people talk on the forum.
 
 Naming: **tree of change** (the theory-of-change / thesis tree) and **tree of action** (the follow-up). Prefer these over "tree of thought" in the talk.
 
