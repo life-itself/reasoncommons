@@ -60,3 +60,177 @@ a.btn-primary-lg {
   height: 2.75rem;
   font-size: 1.15rem;
 }
+
+/* A quieter secondary button, for the co-equal second CTA. */
+.btn-secondary,
+a.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: transparent;
+  color: var(--color-foreground) !important;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--color-foreground-300, #b9b2a0);
+  border-radius: 9999px;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-secondary:hover,
+a.btn-secondary:hover {
+  border-color: var(--color-accent, #327e09);
+  background-color: var(--color-background-surface, #f1ece3);
+  text-decoration: none !important;
+}
+
+/* =======================
+   LANDING PAGE COMPONENTS
+   Scoped .rc-* classes used by README.md. Theme-var driven so light/dark
+   follow the lessflowery theme automatically. No Tailwind utilities —
+   they are not reliably compiled from Markdown content here.
+========================== */
+
+/* Everything here sizes with the border included, so width:100% on a
+   padded button or card never overflows its container. */
+.btn-primary,
+.btn-secondary,
+.rc-hero,
+.rc-cards,
+.rc-card,
+.rc-foot {
+  box-sizing: border-box;
+}
+
+.rc-hero {
+  margin: 1rem 0 2.5rem;
+  max-width: 100%;
+}
+
+.rc-hero h1,
+.rc-hero .rc-h1 {
+  font-size: clamp(1.9rem, 4.5vw, 3rem);
+  line-height: 1.1;
+  margin: 0 0 0.75rem;
+  overflow-wrap: break-word;
+}
+
+.rc-lede {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--color-foreground-700, #4a4534);
+  max-width: 38rem;
+  margin: 0 0 1.5rem;
+}
+
+.rc-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+.rc-note {
+  font-size: 0.9rem;
+  color: var(--color-foreground-500, #7a7360);
+  margin: 0.5rem 0 0;
+}
+
+/* Card grids. min(…, 100%) inside minmax keeps them from forcing
+   horizontal overflow on narrow screens; the media query collapses
+   to a single column below the content width. */
+.rc-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2.5rem;
+  padding: 0;
+  list-style: none;
+  max-width: 100%;
+}
+
+.rc-cards.rc-cards-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 44rem) {
+  .rc-cards,
+  .rc-cards.rc-cards-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.rc-card {
+  display: block;
+  padding: 1.1rem 1.15rem 1.2rem;
+  border: 1px solid var(--color-foreground-100, #e4ded1);
+  border-radius: 0.7rem;
+  background-color: var(--color-background-surface, #f1ece3);
+  text-decoration: none !important;
+  color: inherit;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+a.rc-card:hover {
+  border-color: var(--color-accent, #327e09);
+  transform: translateY(-2px);
+}
+
+.rc-card h3,
+.rc-card .rc-card-title {
+  display: block;
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  font-weight: var(--font-weight-headings, 600);
+  font-family: var(--font-heading, inherit);
+}
+
+.rc-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--color-foreground-600, #5f5947);
+}
+
+.rc-card-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-foreground-500, #7a7360);
+  margin-bottom: 0.5rem;
+}
+
+/* Small section eyebrow label */
+.rc-eyebrow {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-foreground-500, #7a7360);
+  margin: 2.5rem 0 0.25rem;
+}
+
+/* Foot / stay-in-touch block */
+.rc-foot {
+  margin: 3rem 0 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--color-foreground-100, #e4ded1);
+  border-radius: 0.7rem;
+  background-color: var(--color-background-surface, #f1ece3);
+}
+
+.rc-foot h2 {
+  margin-top: 0;
+}
+
+@media (max-width: 44rem) {
+  .rc-cta-row .btn-primary,
+  .rc-cta-row .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}

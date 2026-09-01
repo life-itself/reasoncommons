@@ -8,29 +8,40 @@
     "title": "Reason Commons",
     "links": [
       {
-        "name": "Goal Aligner",
-        "href": "/alignment/index.html"
-      },
-      {
-        "name": "The Series",
+        "name": "Introduction",
         "href": "/explainers"
       },
       {
-        "name": "Dashboard",
-        "href": "/dashboard/index.html"
+        "name": "Demos",
+        "href": "/demos"
+      },
+      {
+        "name": "Guide",
+        "href": "/ltp"
       },
       {
         "name": "Blog",
-        "href": "/blog/how-we-can-argue-better-with-claim-trees"
+        "href": "/blog"
+      },
+      {
+        "name": "About",
+        "href": "/about"
       }
     ]
   },
   "contentExclude": [
-    "/alignment/export",
-    "/alignment/extracted",
-    "/alignment/uploads",
+    "/demos/goal-aligner/export",
+    "/demos/goal-aligner/extracted",
+    "/demos/goal-aligner/uploads",
     "/explainers/_process",
-    "/talk/_process"
+    "/talk/_process",
+    "/talk/2r-research-group",
+    "/docs/plans",
+    "/docs/prompts",
+    "/docs/notes",
+    "/docs/The Theory of Constraints and the Logical Thinking Process - Learning to Think Better",
+    "/examples",
+    "/CLAUDE.md"
   ],
   "contentHide": [
     "/dashboard/assets",
