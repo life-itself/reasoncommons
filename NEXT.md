@@ -7,6 +7,10 @@ updated: 2026-09-03
 
 A concise pointer to open work. Detail lives in the linked issues; history lives in [`changelog.md`](changelog.md).
 
+## Now
+
+- **[#21](https://github.com/life-itself/reasoncommons/issues/21) — re-topic the claim-tree annotation demo to climate change (or AI x-risk), and strengthen the tree.** It's the 2nd homepage CTA ("See it working"); remote-work is dull. Keep the remote-work version as a backup / appendix.
+
 ## Site
 
 Positioning & IA reference: [`docs/plans/2026-09-01-site-positioning-and-landing-redesign.md`](docs/plans/2026-09-01-site-positioning-and-landing-redesign.md).
