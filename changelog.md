@@ -3,6 +3,10 @@
 Notable changes to this project. Not strictly [Keep a Changelog](https://keepachangelog.com/)
 format, but same spirit — human-readable, most recent first.
 
+## 2026-09-04 — Linkable dashboard views
+
+The dashboard now keeps the open project and tree in the URL, so a single view — [the Second Renaissance current reality tree](dashboard/index.html#/second-renaissance/current-reality), say — can be linked to directly instead of "open the dashboard, pick the project, click Reality", and Back and Forward walk the views visited. Stale links degrade rather than break: a tree the project has not modelled opens its overview, and an unknown project lands on the picker. The shape of the links is in [docs/dashboard.md](docs/dashboard.md).
+
 ## 2026-09-01 — Landing page and navigation redesign
 
 ![The redesigned landing page: a large heading "A better way to think together — and to act on it.", a one-line summary, a red "Read the series" button and an outline "See it working" button, then a row of cards — The idea, The AI tooling we're building.](changelog/images/2026-09-01-landing-redesign.png)

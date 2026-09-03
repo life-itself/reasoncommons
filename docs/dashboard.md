@@ -1,6 +1,6 @@
 ---
 title: Running the dashboard
-updated: 2026-08-30
+updated: 2026-09-04
 ---
 
 # Running the dashboard
@@ -18,6 +18,18 @@ sh skills/project-ltp/scripts/publish_dashboard.sh
 This builds the dashboard and copies it to the repo-root `dashboard/` directory that the site serves. The build first runs the configured throughput generators in `skills/project-ltp/dashboard/throughput.config.json`.
 
 For the bundled Second Renaissance projects, committed semantic changes to the canonical model at `ltp/ltp-model.yaml` are automatically attributed to the 2R Research Circle. Stable entity IDs created, updated, or deleted count once per mainline revision; formatting-only changes do not count. The generated weekly totals, operation breakdown, revision hashes, and affected IDs are written to `public/projects/2r-research-circle/throughput.yaml`. The initial model commit is a zero baseline rather than throughput.
+
+## Linking to a project or a tree
+
+The open project and view are held in the URL, so any screen can be linked to directly — in an issue, a talk, or a message that says "look at this branch of the reality tree". The published site serves the dashboard as a single file, so the address is a hash on `/dashboard/index.html`:
+
+| Link | Opens |
+|------|-------|
+| `/dashboard/index.html#/` | the project picker |
+| `/dashboard/index.html#/second-renaissance` | that project's overview |
+| `/dashboard/index.html#/second-renaissance/current-reality` | its Current Reality Tree |
+
+The first segment is the project's `slug` in `projects/manifest.json`; the second is the view id used in `model.yaml` — `goal-tree`, `current-reality`, `evaporating-cloud`, `future-reality`, `prerequisite-tree`, or `transition-tree`. A link to a tree the project has not modelled opens its overview instead, and an unknown project slug lands on the picker, so an out-of-date link degrades rather than breaking. The address bar updates as you move around, so a link can just be copied from it, and Back and Forward walk the views visited.
 
 ## Local single-project dashboard
 

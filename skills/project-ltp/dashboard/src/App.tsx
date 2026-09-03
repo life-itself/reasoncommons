@@ -32,6 +32,13 @@ import {
   type ProjectSummary,
 } from "./projects";
 import {
+  currentRoute,
+  formatRoute,
+  sameRoute,
+  type Route,
+  type Screen,
+} from "./routing";
+import {
   buildTrackingBadges,
   fetchLiveTracking,
   DEFAULT_TRACKING_LABEL,
@@ -39,7 +46,6 @@ import {
   type TrackingLedger,
 } from "./tracking";
 
-type Screen = "overview" | TreeView;
 type TreeMode = "graph" | "list";
 const allStatuses: EntityStatus[] = ["observed", "confirmed", "inferred", "provisional", "disputed"];
 const allConfidences: Confidence[] = ["high", "medium", "low"];
@@ -62,6 +68,17 @@ function runDisclosureTransition(update: () => void) {
     return;
   }
   transitionDocument.startViewTransition(update);
+}
+
+/**
+ * The project a route opens. The live server has a single unnamed model, and a
+ * single static project opens straight away; otherwise only a link that names
+ * a slug skips the picker.
+ */
+function projectForRoute(source: ProjectSource, route: Route): ProjectSummary | null {
+  if (source.mode === "live") return source.projects[0] ?? null;
+  if (route.slug) return source.projects.find((project) => project.slug === route.slug) ?? null;
+  return source.projects.length === 1 ? source.projects[0] : null;
 }
 
 function fingerprint(meta: DashboardMeta): string {
@@ -102,6 +119,7 @@ export default function App() {
   const [syncState, setSyncState] = useState<"loading" | "ready" | "updated" | "error">("loading");
   const fingerprintRef = useRef<string | null>(null);
   const collapseTimersRef = useRef<Map<string, number>>(new Map());
+  const routeWrittenRef = useRef(false);
 
   const isLive = source?.mode === "live";
   const canSwitch = source?.mode === "static" && source.projects.length > 1;
@@ -121,11 +139,13 @@ export default function App() {
         const resolved = await resolveProjectSource();
         if (cancelled) return;
         setSource(resolved);
-        // A single project (or the live server) opens straight away; two or
-        // more static projects land on the picker first.
-        if (resolved.mode === "live" || resolved.projects.length === 1) {
-          setActiveProject(resolved.projects[0]);
-        }
+        // Honour the incoming link: it can name both the project to open and
+        // the tree to land on. Without one, a single project (or the live
+        // server) still opens straight away and two or more land on the picker.
+        const route = currentRoute();
+        const opening = projectForRoute(resolved, route);
+        if (opening) setActiveProject(opening);
+        if (opening && route.screen !== "overview") setScreen(route.screen);
       } catch (caught) {
         if (cancelled) return;
         setError(caught instanceof Error ? caught.message : "Could not load projects");
@@ -274,6 +294,54 @@ export default function App() {
     setTracking(null);
     setError(null);
   }, [resetViewState]);
+
+  // Move to a route that arrived from outside React — currently the back and
+  // forward buttons, which walk the entries the sync effect below pushed.
+  const goToRoute = useCallback(
+    (route: Route) => {
+      if (!source) return;
+      const project = projectForRoute(source, route);
+      if (project?.slug !== activeProject?.slug) {
+        if (project) openProject(project);
+        else backToProjects();
+      }
+      // With no project open there is nothing to show a tree of, and
+      // backToProjects has already returned to the picker.
+      if (project) setScreen(route.screen);
+    },
+    [source, activeProject, openProject, backToProjects],
+  );
+
+  // Mirror the open project and screen in the address bar, so any view can be
+  // linked to directly. The first write replaces the entry the page loaded
+  // with; later ones push, which is what makes Back walk the views visited.
+  useEffect(() => {
+    if (!source) return;
+    const route: Route = {
+      // The live server holds one unnamed model, so its links carry the view only.
+      slug: source.mode === "live" ? null : activeProject?.slug ?? null,
+      screen,
+    };
+    if (!sameRoute(currentRoute(), route)) {
+      const url = formatRoute(route);
+      if (routeWrittenRef.current) window.history.pushState(null, "", url);
+      else window.history.replaceState(null, "", url);
+    }
+    routeWrittenRef.current = true;
+  }, [source, activeProject, screen]);
+
+  useEffect(() => {
+    const onPopState = () => goToRoute(currentRoute());
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, [goToRoute]);
+
+  // A link can name a tree this project has not modelled — the nav disables
+  // those buttons, but a URL bypasses the nav. Fall back to the overview
+  // rather than rendering an empty canvas.
+  useEffect(() => {
+    if (model && screen !== "overview" && !model.views[screen]) setScreen("overview");
+  }, [model, screen]);
 
   const index = useMemo(() => (model ? indexModel(model) : null), [model]);
   const selected = selectedId && index ? index.entities.get(selectedId) ?? null : null;
