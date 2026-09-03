@@ -14,19 +14,21 @@ That is a shortage of a particular kind. Not of intelligence, or of goodwill, or
 
 **A shortage of a way to integrate them.**
 
----
+### Introduction: A Story
 
-Call her Maren. Twenty-three, a student in Gothenburg, and she reads more theory than most of the people who write it.
+Meet Maren: twenty-three, a student in Gothenburg, and she reads a lot of ideas about collapse and transition.
 
-She joins the Second Renaissance forum and posts one paragraph: all of this floats free of any actual place. Start in a neighbourhood somebody actually lives in.
+She joins the Second Renaissance forum and posts a  comment:
 
-Nine people reply. It is a genuinely good conversation.
+> The Second Renaisance theory of change seems to float free of any actual place. You should start in a neighbourhood somebody actually lives in.
+
+Nine people reply. It is a good conversation.
 
 ![A forum thread drawn as a column of bars filed by date. Maren stands to the left. Her post sits in the column as a card outlined and lettered in orange — "her post: all of this floats free of any actual place" — with nine short reply bars indented beneath it.](img/thread-live-r.png)
 *Her post arrives in the thread, and gathers nine replies.*
 
 ![The same column, a year on. Her post is now just another grey bar among the dated run; the replies have merged into it.](img/thread-lost.png)
-*A year later, not one sentence of it has changed what the movement believes.*
+*The same column, a year on. Her post is now just another grey bar among the dated run; the replies have merged into it. Nothing has has changed in the Second Renaissance theory of change.*
 
 ### The same conversation, three times
 
