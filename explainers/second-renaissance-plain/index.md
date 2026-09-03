@@ -4,13 +4,14 @@ description: The forum sees more and more contribution. Almost none of it cumula
 date: 2026-08-30
 ---
 
-*A plain, non-scrolling version of **[The Forum Doesn't Remember, and Doesn't Cumulate](../second-renaissance/index.html)** — the same words, with the drawings held still instead of built on scroll. Every diagram comes from the Second Renaissance's own analysis. Readable on its own; the method behind it is covered in [the series](../).*
-
 The Second Renaissance is a movement for civilizational renewal. Its claim is that our crises are not separate cracks but symptoms of a paradigm in decline, and that a wiser one has to be consciously built rather than waited for.
 
 Many people are showing up to help. And while there is a solid vision and a theory of change behind it, there is a great deal still to refine and evolve. It is supposed to get better as more people work on it. But everything the movement holds in common is either a document somebody wrote or a conversation somebody remembers.
 
 That is a shortage of a particular kind. Not of intelligence, or of goodwill, or of ideas.
+
+> [!note]
+> This is a plain, non-scrolling version of **[The Forum Doesn't Remember, and Doesn't Cumulate](../second-renaissance/index.html)** — the same words, with the drawings held still instead of built on scroll. Every diagram comes from the Second Renaissance's own analysis. Readable on its own; the method behind it is covered in [the series](../).*
 
 **A shortage of a way to integrate them.**
 
