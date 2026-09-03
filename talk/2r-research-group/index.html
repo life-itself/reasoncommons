@@ -1,0 +1,2474 @@
+<title>Where Does the Thinking Go?</title>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap">
+
+<style>
+/*
+ * WHERE DOES THE THINKING GO?
+ * Reason Commons for the Second Renaissance Research Group.
+ *
+ * Slide text and order are `talk/2r-research-group/slides-brief.md`, unchanged.
+ * Everything here is the *illustration* of that brief.
+ *
+ * ── The grammar this deck is drawn in ──────────────────────────────────────
+ *
+ * Taken from the product, not invented for the projector. The normative
+ * sources are in the `reason-commons` application repo rather than this one:
+ * `src/features/essay/field/field.css` and `src/domain/graph.ts` define the
+ * grammar, and `docs/product-redesign/DESIGN_RATIONALE.md` says why.
+ *
+ * A BORDER NEEDS PERMISSION TO EXIST. Four are entitled to one:
+ *   node boundary       this is one proposition
+ *   dashed proposal     offered, not yet relied upon
+ *   commons boundary    this reasoning is governed here
+ *   system boundary     this reasoning is contained here
+ * Everything else separating is typography and space (Bang 12: the movement of
+ * the picture is determined as much by the spaces between the shapes).
+ *
+ * COLOUR IS NEVER DECORATION. Four hues, one meaning each, because Bang 9 says
+ * the reader cannot choose not to associate two things of the same colour:
+ *   sage        held: something wanted, or something observed
+ *   rust        something going wrong or in the way
+ *   accent      only proposed, or newly connected     ← the brief's one signal
+ *   structure   not reasoning at all: a forum, a model, a document
+ *
+ * The six role families are told apart by a glyph, which is preattentive and
+ * costs no hue: ◎ outcome · ▲ trouble · ↳ cause · ⇄ tension · ◆ move · ◉ evidence.
+ *
+ * ARRIVAL IS CONDENSATION. Blur to focus over five pixels of travel. Nothing
+ * slides, scales, bounces or snaps: the sensation has to be clarification
+ * rather than entrance. Two exceptions, where the transition IS the argument —
+ * the opening question evaporating, and the assumption breaking.
+ *
+ * ONE THING RESOLVES PER SLIDE. Squint until the type is unreadable. If nothing
+ * resolves the slide has no key; if two do, it is asserting a tie nobody
+ * believes (Arnheim's hierarchic gradient, DESIGN_RATIONALE §2.1).
+ *
+ * Single-theme on purpose. This is a projected surface, and it borrows the
+ * product's organic palette so the reconstructions sit in the page instead of
+ * floating in it as foreign objects.
+ */
+
+:root {
+  /* Ground and ink — [data-theme="schopenhauer"], src/styles.css */
+  --paper: #f5ead8;
+  --surface: #fdf6ea;
+  --ink: #201e1d;
+  --ink-soft: #474238;
+  --muted: #6e6559;
+  --faint: #c0b6a5;
+  --line: #dcd3c4;
+  --structure: #645c50;
+
+  /* Only proposed, or newly connected. The one signal colour. */
+  --accent: #b2622d;
+  --accent-lift: #d67f48;
+  --accent-wash: #ffe1d0;
+  --accent-deep: #8c491a;
+
+  /* Held: wanted, or observed. */
+  --sage: oklch(0.39 0.07 130);
+  --sage-line: oklch(0.53 0.085 130);
+  --sage-wash: oklch(0.955 0.025 130);
+
+  /* Going wrong, or in the way. */
+  --rust: oklch(0.38 0.13 358);
+  --rust-line: oklch(0.47 0.14 358);
+  --rust-wash: oklch(0.95 0.03 358);
+
+  --display: "Cormorant Garamond", "Cormorant", Georgia, "Times New Roman", serif;
+  --body: "DM Sans", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+
+  /* One type scale, held to. Authored small, projected large. */
+  --t-spine: clamp(3.4rem, 8.6vw, 9rem);
+  --t-huge: clamp(2.6rem, 5.6vw, 5.6rem);
+  --t-big: clamp(1.9rem, 3.5vw, 3.6rem);
+  --t-mid: clamp(1.35rem, 2.15vw, 2.2rem);
+  --t-body: clamp(1.02rem, 1.35vw, 1.4rem);
+  --t-small: clamp(0.8rem, 0.95vw, 1rem);
+  --t-tiny: clamp(0.62rem, 0.72vw, 0.78rem);
+
+  --pad: clamp(2rem, 5vw, 6.5rem);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  overflow: hidden;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   The deck shell.
+
+   Bang 1: smooth, flat, horizontal shapes give a sense of stability and calm.
+   The chrome is a horizontal band and is never the figure — the progress rule
+   is 2px, the act label is 0.72rem, and neither ever competes for the eye.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+#deck {
+  position: fixed;
+  inset: 0;
+  isolation: isolate;
+}
+
+#progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 300ms cubic-bezier(0.22, 0.8, 0.2, 1);
+  z-index: 30;
+}
+
+#act {
+  position: absolute;
+  left: var(--pad);
+  bottom: clamp(1rem, 2.4vh, 2rem);
+  z-index: 30;
+  display: flex;
+  align-items: baseline;
+  gap: 0.7em;
+  font-size: var(--t-tiny);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--faint);
+  pointer-events: none;
+}
+#act b { color: var(--muted); font-weight: 500; }
+
+#count {
+  position: absolute;
+  right: var(--pad);
+  bottom: clamp(1rem, 2.4vh, 2rem);
+  z-index: 30;
+  font-size: var(--t-tiny);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+/* Dark slides invert the chrome in JS, per slide — a `~` selector here would
+   match on every slide after the first dark one. */
+
+/* ── One slide ─────────────────────────────────────────────────────────── */
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(3rem, 7vh, 5.5rem) var(--pad) clamp(3.6rem, 8vh, 5.5rem);
+  background: var(--paper);
+}
+.slide.is-current { display: flex; }
+
+.slide.dark { background: var(--ink); color: var(--paper); }
+.slide.dark .lede { color: rgb(245 234 216 / 0.72); }
+
+/* Full-bleed beat slides centre; slides carrying a drawing do not. */
+.slide.centre { align-items: center; text-align: center; }
+.slide.draw { justify-content: flex-start; gap: clamp(1rem, 2.4vh, 2rem); }
+
+/* ── Words ─────────────────────────────────────────────────────────────── */
+
+.eyebrow {
+  font-size: var(--t-tiny);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 clamp(0.9rem, 2.2vh, 1.8rem);
+}
+.eyebrow.quiet { color: var(--faint); }
+
+h1, h2, h3 { margin: 0; font-weight: 400; text-wrap: balance; }
+
+h1 {
+  font-family: var(--display);
+  font-size: var(--t-huge);
+  line-height: 1.02;
+  letter-spacing: -0.012em;
+}
+
+h2 {
+  font-family: var(--display);
+  font-size: var(--t-big);
+  line-height: 1.1;
+  letter-spacing: -0.008em;
+  max-width: 30ch;
+}
+.slide.centre h2 { max-width: 34ch; }
+
+h3 {
+  font-size: var(--t-mid);
+  font-family: var(--display);
+  line-height: 1.16;
+}
+
+/* The spine. Largest type in the deck, used exactly twice. */
+.spine {
+  font-family: var(--display);
+  font-size: var(--t-spine);
+  font-weight: 300;
+  line-height: 0.96;
+  letter-spacing: -0.022em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.lines {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 1.5vh, 1.1rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: 42ch;
+}
+.slide.centre .lines { max-width: 46ch; align-items: center; }
+
+.lines li {
+  font-family: var(--display);
+  font-size: var(--t-mid);
+  line-height: 1.24;
+  color: var(--ink);
+}
+.lines li.soft { color: var(--muted); }
+
+.lede {
+  font-size: var(--t-body);
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 52ch;
+  margin: clamp(1rem, 2.4vh, 1.8rem) 0 0;
+  text-wrap: pretty;
+}
+
+.aside {
+  font-size: var(--t-small);
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 46ch;
+  margin: clamp(0.8rem, 1.8vh, 1.4rem) 0 0;
+}
+
+/*
+ * Relay, in Barthes' sense (DESIGN_RATIONALE §3.5): the sentence supplies a
+ * meaning the drawing cannot, and without it the drawing is decoration.
+ */
+.relay {
+  font-family: var(--display);
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--ink-soft);
+  max-width: 62ch;
+  margin: 0;
+}
+
+/* A section divider. Nothing but the act, so the room can breathe. */
+.divider .num {
+  font-family: var(--display);
+  font-size: clamp(5rem, 13vw, 14rem);
+  line-height: 0.8;
+  color: var(--accent-wash);
+  margin: 0;
+}
+.divider h1 { margin-top: clamp(-1rem, -1.4vh, -0.4rem); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   The sheet.
+
+   One field, 1200 × 600, and it never changes shape between acts. A field that
+   resized when the argument moved on would say "a different diagram has
+   arrived"; what the room should feel is that the same sheet is still there and
+   something new has condensed onto it. (src/features/talk/compositions/frame.ts)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.sheet {
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: block;
+}
+.sheet svg { width: 100%; height: 100%; overflow: visible; }
+
+/* ── Arrival is condensation ────────────────────────────────────────────── */
+
+.p {
+  opacity: 0;
+  visibility: hidden;
+  filter: blur(5px);
+  transform: translateY(5px);
+  transition:
+    opacity 650ms cubic-bezier(0.22, 0.8, 0.2, 1),
+    filter 750ms ease,
+    transform 700ms cubic-bezier(0.22, 0.8, 0.2, 1),
+    visibility 0s;
+}
+.p.is-shown {
+  opacity: 1;
+  visibility: visible;
+  filter: blur(0);
+  transform: translateY(0);
+}
+/* Still there, no longer what is being discussed. */
+.p.is-receded.is-shown { opacity: 0.3; }
+/* Departure, where departure is the proposition. Further and slower than arrival. */
+.p.is-leaving {
+  opacity: 0;
+  visibility: hidden;
+  filter: blur(7px);
+  transform: translateY(-16px);
+  transition:
+    opacity 900ms ease,
+    filter 900ms ease,
+    transform 1000ms cubic-bezier(0.4, 0, 0.6, 1),
+    visibility 0s linear 900ms;
+}
+
+/* The opening question does not recede. It evaporates, in front of the room. */
+.p.evaporate.is-receded.is-shown {
+  opacity: 0.2;
+  transition: opacity 1700ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .p, .p.is-leaving { transition-duration: 1ms; filter: none; transform: none; }
+  .p.evaporate.is-receded.is-shown { transition-duration: 260ms; }
+  #progress { transition: none; }
+}
+
+/* ── One proposition, in SVG ───────────────────────────────────────────── */
+
+.n rect {
+  fill: color-mix(in srgb, var(--surface) 58%, transparent);
+  stroke: color-mix(in srgb, var(--nline, var(--structure)) 34%, transparent);
+  stroke-width: 1;
+}
+/* The left rule: 2.5px of the family's own hue, which is where the hue lives. */
+.n .edge { stroke: var(--nline, var(--structure)); stroke-width: 2.5; fill: none; }
+
+.n .role {
+  font-family: var(--body);
+  font-size: 10.25px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  fill: var(--nline, var(--structure));
+}
+.n .st {
+  font-family: var(--body);
+  font-size: 13.5px;
+  font-weight: 430;
+  fill: var(--ink);
+}
+.n .st.sm { font-size: 11px; }
+.n .st.xs { font-size: 9.75px; }
+.n .att {
+  font-family: var(--body);
+  font-size: 10.25px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  fill: var(--muted);
+}
+
+/* The six families. Hue says what kind of thing; the glyph says which family. */
+.n--outcome, .n--evidence { --nline: var(--sage); }
+.n--trouble { --nline: var(--rust); }
+.n--tension, .n--move { --nline: var(--accent); }
+.n--cause { --nline: var(--structure); }
+
+/* Offered, not yet relied upon. The only dashed node there is. */
+.n--proposed { --nline: var(--accent); }
+.n--proposed rect {
+  fill: none;
+  stroke: var(--accent);
+  stroke-dasharray: 5 4;
+}
+/* A person decided. The dashed border becomes what the community now holds. */
+.n.is-settled rect {
+  stroke-dasharray: none;
+  fill: color-mix(in srgb, var(--surface) 58%, transparent);
+}
+/* Just landed, or just named. */
+.n .ring { fill: none; stroke: var(--nline, var(--structure)); stroke-width: 3; opacity: 0; transition: opacity 400ms ease; }
+.n.is-held .ring { opacity: 0.18; }
+/* No longer the position. Kept and struck through, never deleted. */
+.n.is-refuted rect { stroke-dasharray: 1.5 3; }
+.n.is-refuted { opacity: 0.62; }
+.n.is-refuted .strike { stroke: var(--rust-line); stroke-width: 1.2; opacity: 1; }
+.n .strike { opacity: 0; transition: opacity 500ms ease; }
+
+/* ── Relationships ─────────────────────────────────────────────────────── */
+
+.l path {
+  fill: none;
+  stroke: var(--lline, var(--structure));
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.l .head { fill: var(--lline, var(--structure)); stroke: none; }
+.l text {
+  font-family: var(--body);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  fill: var(--muted);
+}
+.l--proposed path { stroke: var(--accent); stroke-dasharray: 4 4; }
+.l--proposed { --lline: var(--accent); }
+.l--challenge path { stroke: var(--rust-line); stroke-dasharray: 4 4; }
+.l--challenge { --lline: var(--rust-line); }
+.l--challenge text { fill: var(--rust); }
+.l--quiet path { stroke: color-mix(in srgb, var(--structure) 45%, transparent); stroke-width: 1; }
+
+/*
+ * An assumption. Attached to a link, never a node — which is how the
+ * application stores it (assumptions.edge_id) and why it is drawn as a tick off
+ * the line rather than as another card. It is a thing that can fail, so dashed.
+ */
+.a rect { fill: none; stroke: var(--accent); stroke-width: 1; stroke-dasharray: 3 3; }
+.a .tick { stroke: var(--accent); stroke-width: 0.8; stroke-dasharray: 2 2; fill: none; }
+.a .kind {
+  font-family: var(--body);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  fill: var(--accent);
+}
+.a .st { font-family: var(--body); font-size: 10.5px; font-weight: 430; fill: var(--ink-soft); }
+.a.is-refuted { opacity: 0.7; }
+.a.is-refuted rect { stroke: var(--rust-line); stroke-dasharray: 1.5 3; }
+.a.is-refuted .st { fill: var(--rust); }
+.a .strike { opacity: 0; transition: opacity 600ms ease; }
+.a.is-refuted .strike { opacity: 1; stroke: var(--rust-line); stroke-width: 1.2; }
+
+/* ── Things that are not reasoning ─────────────────────────────────────── */
+/*
+ * A forum, a model, a document. Unboxed: a quiet label over a name, with at
+ * most a hairline. None of the reasoning hues, ever — the whole argument this
+ * grammar serves is that the machine and the reasoning are different objects.
+ */
+.e .kind {
+  font-family: var(--body);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  fill: var(--faint);
+}
+.e .label { font-family: var(--body); font-size: 12.5px; font-weight: 500; fill: var(--structure); }
+.e .body { font-family: var(--body); font-size: 10.75px; font-weight: 400; fill: var(--ink-soft); }
+.e .rule { stroke: color-mix(in srgb, var(--faint) 80%, transparent); stroke-width: 1; fill: none; }
+.e .post { fill: color-mix(in srgb, var(--structure) 4%, transparent); stroke: none; }
+
+/* A boundary is a jurisdiction, not a container. */
+.b rect { fill: none; stroke-width: 1; }
+.b--commons rect { stroke: color-mix(in srgb, var(--sage-line) 48%, transparent); }
+.b--commons .blabel { fill: var(--sage); }
+.b--proposal rect { stroke: color-mix(in srgb, var(--accent) 60%, transparent); stroke-dasharray: 5 4; }
+.b--proposal .blabel { fill: var(--accent); }
+.b .blabel {
+  font-family: var(--body);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  fill: var(--muted);
+}
+.b .plate { fill: var(--paper); }
+
+/* Annotation: words on the sheet that are not a proposition. */
+.ann {
+  font-family: var(--body);
+  font-size: 11px;
+  font-weight: 500;
+  fill: color-mix(in srgb, var(--ink) 74%, transparent);
+}
+.ann.brace, .ann.axis {
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  fill: var(--faint);
+}
+.ann.big { font-family: var(--display); font-size: 17px; fill: var(--ink); font-weight: 400; }
+.ann.count { font-variant-numeric: tabular-nums; }
+
+/* An address. The tag that says a claim has one. */
+.addr rect { fill: var(--accent-wash); stroke: none; }
+.addr text {
+  font-family: var(--body);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  fill: var(--accent-deep);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   The legend.
+
+   On the page. Every page that uses the notation. Not in a modal, not behind a
+   "?", not in onboarding. One step: look down. (Crow §3.1, Dirksen §5.3.)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.9rem;
+  align-items: center;
+  font-size: 11px;
+  color: var(--muted);
+  padding-top: 0.6rem;
+  border-top: 1px solid color-mix(in srgb, var(--line) 90%, transparent);
+  flex: 0 0 auto;
+}
+.legend span { display: inline-flex; align-items: center; gap: 0.42rem; white-space: nowrap; }
+.legend i {
+  display: inline-block;
+  width: 1.6rem;
+  height: 0;
+  border-top-width: 2px;
+  flex: 0 0 auto;
+}
+.legend i.held { border-top-style: solid; border-top-color: var(--sage-line); }
+.legend i.prop { border-top-style: dashed; border-top-color: var(--accent); }
+.legend i.wrong { border-top-style: solid; border-top-color: var(--rust-line); }
+.legend i.mach { border-top-style: solid; border-top-width: 1px; border-top-color: var(--structure); }
+.legend em { font-style: normal; color: var(--faint); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Set pieces
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* A quote at full size. The one dark slide in each stretch. */
+.pull {
+  font-family: var(--display);
+  font-size: clamp(2rem, 4.4vw, 4.4rem);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.014em;
+  margin: 0;
+  max-width: 30ch;
+  text-wrap: balance;
+}
+.pull cite {
+  display: block;
+  margin-top: clamp(1.2rem, 3vh, 2.4rem);
+  font-family: var(--body);
+  font-style: normal;
+  font-size: var(--t-tiny);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgb(245 234 216 / 0.5);
+}
+
+/* Replace-in-place: the same words, in the same spot, saying the opposite. */
+.swap { position: relative; display: grid; }
+.swap > * { grid-area: 1 / 1; }
+
+/* The three questions. Numbered because it is a real sequence, always in order. */
+.qs { display: flex; flex-direction: column; gap: clamp(1rem, 3.2vh, 2.4rem); margin: 0; padding: 0; list-style: none; }
+.qs li {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(1rem, 2.4vw, 2.4rem);
+  font-family: var(--display);
+  font-size: var(--t-big);
+  line-height: 1.1;
+  color: var(--faint);
+  transition: color 420ms ease;
+}
+.qs li b {
+  font-family: var(--body);
+  font-size: var(--t-small);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--faint);
+  transition: color 420ms ease;
+  font-variant-numeric: tabular-nums;
+}
+.qs li.on { color: var(--ink); }
+.qs li.on b { color: var(--accent); }
+
+/* Demo C: the write block. */
+.write { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(1.6rem, 4vw, 4rem); align-items: start; }
+.qr {
+  width: clamp(9rem, 15vw, 15rem);
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--surface);
+  display: grid;
+  place-items: center;
+  padding: 0.9rem;
+}
+.qr svg { width: 100%; height: 100%; }
+.qrnote { font-size: var(--t-tiny); letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); text-align: center; margin: 0.6rem 0 0; }
+.link {
+  font-family: var(--body);
+  font-size: clamp(1.3rem, 2.2vw, 2.2rem);
+  font-weight: 500;
+  color: var(--accent-deep);
+  letter-spacing: -0.01em;
+}
+
+.timer {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  margin-top: clamp(1.2rem, 3vh, 2.2rem);
+  font-variant-numeric: tabular-nums;
+}
+.timer b { font-family: var(--display); font-size: clamp(2.4rem, 4.4vw, 4.4rem); font-weight: 300; line-height: 1; }
+.timer span { font-size: var(--t-tiny); letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); }
+.timer.done b { color: var(--rust); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Presenter layers
+   ══════════════════════════════════════════════════════════════════════════ */
+
+#notes {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  max-height: 42vh;
+  overflow-y: auto;
+  padding: 1.1rem clamp(1.4rem, 4vw, 4rem) 1.4rem;
+  background: rgb(32 30 29 / 0.965);
+  color: rgb(245 234 216 / 0.9);
+  font-size: clamp(0.78rem, 0.95vw, 1rem);
+  line-height: 1.55;
+  display: none;
+}
+#notes.on { display: block; }
+#notes h4 { margin: 0 0 0.4rem; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-lift); font-weight: 700; }
+#notes p { margin: 0 0 0.6rem; max-width: 90ch; }
+#notes p:last-child { margin-bottom: 0; }
+#notes b { color: var(--accent-lift); font-weight: 700; }
+#notes .ask { color: rgb(245 234 216 / 0.62); font-style: italic; }
+.note { display: none; }
+
+#grid {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: none;
+  grid-template-columns: repeat(auto-fill, minmax(min(15rem, 40vw), 1fr));
+  gap: 1px;
+  background: var(--line);
+  overflow-y: auto;
+  align-content: start;
+}
+#grid.on { display: grid; }
+#grid button {
+  appearance: none;
+  border: 0;
+  text-align: left;
+  padding: 0.85rem 1rem 1rem;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-height: 5.2rem;
+}
+#grid button:hover, #grid button:focus-visible { background: var(--accent-wash); outline: none; }
+#grid button.here { background: var(--ink); color: var(--paper); }
+#grid button i { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--faint); font-style: normal; }
+#grid button b { font-family: var(--display); font-size: 1.06rem; font-weight: 400; line-height: 1.2; }
+
+#help {
+  position: absolute;
+  right: var(--pad);
+  top: clamp(1rem, 2.4vh, 2rem);
+  z-index: 30;
+  font-size: var(--t-tiny);
+  letter-spacing: 0.1em;
+  color: var(--faint);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 600ms ease 3.5s;
+}
+#deck.moved #help { opacity: 0; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+</style>
+
+<div id="deck">
+<div id="progress" style="width:0"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     0 · COLD OPEN
+     ═══════════════════════════════════════════════════════════════════════ -->
+
+<section class="slide" data-act="0 · cold open" data-title="Title">
+  <!--
+    Behind the type: a ghosted hand-drawn tree, not a canopy photograph. Very
+    low contrast, so it recedes and the type is the figure (Bang 11 — contrast
+    is not emphasis, it is the precondition of perception). The ghost is the
+    thing the talk is about, which a stock photograph would not be.
+  -->
+  <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true"
+       style="position:absolute;inset:0;width:100%;height:100%;opacity:0.12">
+    <g fill="none" stroke="#645c50" stroke-width="1.1" stroke-linecap="round">
+      <path d="M600 96 V150 M600 150 H300 M600 150 H900 M300 150 V204 M900 150 V204"/>
+      <path d="M300 204 H180 M300 204 H420 M180 204 V258 M420 204 V258"/>
+      <path d="M900 204 H780 M900 204 H1020 M780 204 V258 M1020 204 V258"/>
+      <path d="M180 258 H110 M180 258 H250 M110 258 V312 M250 258 V312"/>
+      <path d="M420 258 H360 M420 258 H500 M360 258 V312 M500 258 V312"/>
+      <path d="M780 258 H720 M780 258 H860 M720 258 V312 M860 258 V312"/>
+      <path d="M1020 258 H960 M1020 258 H1100 M960 258 V312 M1100 258 V312"/>
+      <rect x="516" y="66" width="168" height="30" rx="2"/>
+      <rect x="238" y="120" width="124" height="30" rx="2"/><rect x="838" y="120" width="124" height="30" rx="2"/>
+      <rect x="128" y="174" width="104" height="30" rx="2"/><rect x="368" y="174" width="104" height="30" rx="2"/>
+      <rect x="728" y="174" width="104" height="30" rx="2"/><rect x="968" y="174" width="104" height="30" rx="2"/>
+      <rect x="70" y="228" width="80" height="30" rx="2"/><rect x="210" y="228" width="80" height="30" rx="2"/>
+      <rect x="320" y="228" width="80" height="30" rx="2"/><rect x="460" y="228" width="80" height="30" rx="2"/>
+      <rect x="680" y="228" width="80" height="30" rx="2"/><rect x="820" y="228" width="80" height="30" rx="2"/>
+      <rect x="920" y="228" width="80" height="30" rx="2"/><rect x="1060" y="228" width="80" height="30" rx="2"/>
+    </g>
+  </svg>
+
+  <div style="position:relative">
+    <h1 class="spine" style="font-size:var(--t-huge)">Where Does the Thinking Go?</h1>
+    <p class="lede" style="font-family:var(--display);font-size:var(--t-mid);max-width:34ch;color:var(--ink-soft)">
+      Trees, forums, and getting Second Renaissance to build on its own ideas.
+    </p>
+    <p style="margin:clamp(2rem,6vh,4rem) 0 0;font-size:var(--t-small);letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)">
+      Rufus Pollock &amp; David Joseph &middot; Second Renaissance Research Group
+    </p>
+  </div>
+
+  <div class="note">
+    <h4>Title</h4>
+    <p>Hold this while the room settles. Say nothing about the software yet.</p>
+    <p class="ask">Visual: ghosted issue-tree behind the type, drawn rather than photographed. If an out-of-focus canopy photo turns up in the image pass it can replace the SVG — keep the opacity at ~0.16 either way, the type has to stay the figure.</p>
+    <p><b>Keys</b> → next build · ← back · ↑↓ slide · G overview · N notes · F fullscreen · T timer</p>
+  </div>
+</section>
+
+<section class="slide centre" data-act="0 · cold open" data-title="The question that started it" data-steps="5">
+  <!--
+    Build: the question fades in a line at a time, holds, and then drops to 20%
+    and stays there. It evaporates in front of the room. This is one of the two
+    transitions in the deck that IS the argument rather than serving it.
+  -->
+  <div class="p evaporate" data-from="1" data-recede="4" style="max-width:38ch">
+    <p class="pull" style="color:var(--ink);max-width:none">
+      <span class="p" data-from="1">&ldquo;What is the goal of the Second&nbsp;Renaissance,</span>
+      <span class="p" data-from="2">and how would we know we were&nbsp;moving</span>
+      <span class="p" data-from="3">toward&nbsp;it?&rdquo;</span>
+    </p>
+    <p class="p" data-from="3" style="margin:clamp(1.4rem,3.4vh,2.6rem) 0 0;font-size:var(--t-tiny);letter-spacing:0.18em;text-transform:uppercase;color:var(--muted)">
+      &mdash; a sense-making session, earlier this year
+    </p>
+  </div>
+  <p class="p relay" data-from="5" style="margin-top:clamp(2rem,5vh,3.4rem);text-align:center">
+    It is still there. It is just no longer anybody&rsquo;s.
+  </p>
+
+  <div class="note">
+    <h4>The question that started it</h4>
+    <p>Three clicks to build the question. Hold. <b>Fourth click drops it to 20% and leaves it there</b> — do not narrate the fade, let the room watch it happen. It comes back at full opacity in the close.</p>
+    <p>&ldquo;It was a good question. It got a good hour. People said things I still think about.&rdquo;</p>
+  </div>
+</section>
+
+<section class="slide" data-act="0 · cold open" data-title="A week later" data-steps="5">
+  <p class="p eyebrow quiet" data-from="1" style="margin-bottom:0.4rem">A week later:</p>
+  <h1 class="p" data-from="1" style="font-size:var(--t-spine);font-weight:300;line-height:0.94">nowhere.</h1>
+  <ul class="lines" style="margin-top:clamp(1.6rem,4vh,3rem)">
+    <li class="p soft" data-from="2">No note.</li>
+    <li class="p soft" data-from="3">No thread.</li>
+    <li class="p soft" data-from="4">The thinking stayed in the room.</li>
+  </ul>
+  <p class="p aside" data-from="5">And people leave rooms.</p>
+
+  <div class="note">
+    <h4>A week later</h4>
+    <p>&ldquo;nowhere&rdquo; lands first and lands hard. Then the three short lines underneath, one at a time, quietly.</p>
+    <p>&ldquo;I don&rsquo;t think that was unusual. I think it is close to the normal outcome here.&rdquo;</p>
+  </div>
+</section>
+
+<section class="slide centre dark" data-act="0 · cold open" data-title="Spine line">
+  <!-- Reused, once, as the closer. Largest type in the deck. Cut to black, then in. -->
+  <h1 class="spine">Where does the thinking go?</h1>
+
+  <div class="note">
+    <h4>Spine line</h4>
+    <p>Cut to black. Let it sit for three full seconds before you speak. This exact design returns once, at the end, answered.</p>
+    <p>&ldquo;So that is what this talk is about. I have been trying to answer it in a practical way, and it turned into a project.&rdquo;</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     1 · THE PROBLEM
+     ═══════════════════════════════════════════════════════════════════════ -->
+
+<section class="slide divider" data-act="1 · the problem" data-title="§ 1 · The problem">
+  <p class="num">1</p>
+  <h1>The problem</h1>
+  <p class="lede">A movement whose thinking doesn&rsquo;t accumulate. The group&rsquo;s version is a rumour. Prose has no addresses.</p>
+</section>
+
+<section class="slide draw" data-act="1 · the problem" data-title="What the movement is trying to be" data-steps="4">
+  <ul class="lines" style="flex:0 0 auto">
+    <li class="p" data-from="1">A movement for civilizational renewal.</li>
+    <li class="p" data-from="2">A living theory of change, meant to get better as more people work on it.</li>
+    <li class="p" data-from="3">That only works if the improving adds up.</li>
+  </ul>
+  <!--
+    Low in the frame: a scaffold, drawn. Verticals rebel against gravity and
+    imply energy (Bang 2); the horizontal cross-braces put stability back
+    (Bang 1). It sets up "wall, not scaffold" two slides later, and it is drawn
+    rather than photographed so the two halves of that comparison are made of
+    the same material.
+  -->
+  <div class="sheet p" data-from="4">
+    <svg viewBox="0 0 1200 260" aria-label="A scaffold: verticals braced by horizontals, open enough to reach into.">
+      <g fill="none" stroke="#dcd3c4" stroke-width="1.4">
+        <path d="M120 250 V40 M300 250 V40 M480 250 V40 M660 250 V40 M840 250 V40 M1020 250 V40"/>
+        <path d="M120 70 H1020 M120 130 H1020 M120 190 H1020 M120 250 H1020"/>
+        <path d="M120 130 L300 70 M300 190 L480 130 M660 130 L840 70 M840 190 L1020 130"/>
+      </g>
+      <g fill="#c0b6a5">
+        <circle cx="120" cy="70" r="2.6"/><circle cx="300" cy="70" r="2.6"/><circle cx="480" cy="130" r="2.6"/>
+        <circle cx="660" cy="130" r="2.6"/><circle cx="840" cy="70" r="2.6"/><circle cx="1020" cy="130" r="2.6"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="note">
+    <h4>What the movement is trying to be</h4>
+    <p>One or two sentences on the 2R thesis, no more — this room knows it cold. The load-bearing line is the third: <b>that only works if the improving adds up</b>.</p>
+    <p>Scope note lands here in the spoken track: there are two halves, cohering our thinking and coordinating our action. Today is the first. The tree of action is a talk of its own.</p>
+  </div>
+</section>
+
+<section class="slide draw" data-act="1 · the problem" data-title="The research circle" data-steps="4">
+  <ul class="lines" style="flex:0 0 auto">
+    <li class="p" data-from="1" data-recede="3">Same conclusion. Twice in three years.</li>
+    <li class="p" data-from="2" data-recede="3">Both times the room agreed.</li>
+    <li class="p" data-from="3">Both times it evaporated.</li>
+  </ul>
+  <!--
+    A single loop-arrow that returns to its own start, with two ticks where the
+    conclusion was reached. One mark, doing one job. Bang's revision question —
+    what does this element add? — kills everything else that wanted to be here.
+  -->
+  <div class="sheet p" data-from="4">
+    <svg viewBox="0 0 1200 300" aria-label="A loop that returns to its own start, with two marks on it where the same conclusion was reached.">
+      <g fill="none" stroke="#645c50" stroke-width="1.4">
+        <path d="M600 40 A 118 118 0 1 1 596 40" stroke-linecap="round"/>
+      </g>
+      <path d="M600 40 L612 32 L611 47 Z" fill="#645c50"/>
+      <g stroke="oklch(0.47 0.14 358)" stroke-width="2.4" stroke-linecap="round">
+        <path d="M711 96 L731 84"/>
+        <path d="M711 204 L731 216"/>
+      </g>
+      <text class="ann" x="745" y="92" fill="oklch(0.38 0.13 358)">2023 &mdash; the room agreed</text>
+      <text class="ann" x="745" y="224" fill="oklch(0.38 0.13 358)">2026 &mdash; the room agreed again</text>
+      <text class="ann brace" x="600" y="285" text-anchor="middle">nothing downstream changed either time</text>
+    </svg>
+  </div>
+
+  <div class="note">
+    <h4>The research circle</h4>
+    <p>&ldquo;A research circle meets every week. Twice in three years it has worked its way to the same conclusion. Both times the agreement had nobody&rsquo;s name on it and nothing downstream had changed.&rdquo;</p>
+    <p>On the third line the first two dim. <b>The people in that room are not the problem</b> — say that out loud. Individual understanding compounds; the group&rsquo;s version doesn&rsquo;t.</p>
+  </div>
+</section>
+
+<section class="slide centre dark" data-act="1 · the problem" data-title="The line">
+  <p class="pull">
+    Agreement that survives only in the people who were present is a rumour.
+    <cite>the one dark slide in this stretch</cite>
+  </p>
+
+  <div class="note">
+    <h4>The line</h4>
+    <p>Say it once, at normal volume, and move on. It does not need help.</p>
+  </div>
+</section>
+
+<section class="slide" data-act="1 · the problem" data-title="Not a shortage of" data-steps="2">
+  <!-- Replace in place: the same position, saying the opposite. -->
+  <div class="swap">
+    <h1 class="p" data-from="1" data-leave="2" style="max-width:26ch">Not a shortage of intelligence. Or goodwill. Or ideas.</h1>
+    <h1 class="p" data-from="2" style="max-width:26ch">A shortage of somewhere to put them.</h1>
+  </div>
+
+  <div class="note">
+    <h4>Not a shortage of</h4>
+    <p>One click. The first sentence leaves and the second arrives in the same place — do not let them coexist.</p>
+    <p>&ldquo;We are not short of ideas.&rdquo;</p>
+  </div>
+</section>
+
+<section class="slide draw" data-act="1 · the problem" data-title="No address" data-steps="4">
+  <h2 class="p" data-from="1" style="flex:0 0 auto">Six or seven white papers. ~200,000 words.<br>A claim in the middle of page 40 has no address.</h2>
+  <!--
+    A page, drawn as texture, because at the distance the argument is made from
+    you cannot read page 40 — that is the point. One real sentence is set
+    legibly in the middle: the 2R goal statement, which is the sentence the
+    whole tree is later built on. It gets ringed, then a "?", then both fade.
+    Nothing to attach to.
+  -->
+  <div class="sheet p" data-from="2">
+    <svg viewBox="0 0 1200 400" aria-label="A dense page of prose, greyed down. One sentence mid-page is ringed, and then a question mark appears beside it.">
+      <g class="e">
+        <rect x="330" y="0" width="540" height="392" fill="#fdf6ea" stroke="#dcd3c4" stroke-width="1"/>
+        <text class="kind" x="360" y="26">SECOND RENAISSANCE &mdash; WHITE PAPER &middot; P.&nbsp;40</text>
+      </g>
+      <!-- The page as rule-texture: regular, relentless repetition. Bang 10. -->
+      <g stroke="#dcd3c4" stroke-width="3.2" stroke-linecap="round" opacity="0.55">
+        <path d="M360 46 H840 M360 58 H832 M360 70 H840 M360 82 H796 M360 94 H840 M360 106 H818 M360 118 H840 M360 130 H772"/>
+        <path d="M360 154 H840 M360 166 H826 M360 178 H840 M360 190 H804"/>
+        <path d="M360 268 H840 M360 280 H836 M360 292 H840 M360 304 H788 M360 316 H840 M360 328 H812 M360 340 H840 M360 352 H760 M360 364 H822"/>
+      </g>
+      <!-- The one sentence you can read. Verbatim, from the 2R goal tree. -->
+      <text class="e" x="360" y="216" style="font-family:var(--body);font-size:11.5px;font-weight:500;fill:#474238">
+        <tspan x="360">&hellip;to co-initiate a Second Renaissance: a conscious transformation of</tspan>
+        <tspan x="360" dy="15">foundational views, values, practices and institutions toward a wiser,</tspan>
+        <tspan x="360" dy="15">weller, regenerative civilization&hellip;</tspan>
+      </text>
+      <g class="p" data-from="3" data-leave="4">
+        <rect x="346" y="196" width="508" height="46" rx="23" fill="none" stroke="#b2622d" stroke-width="2"/>
+      </g>
+      <g class="p" data-from="4">
+        <text x="888" y="228" style="font-family:var(--display);font-size:64px;fill:#b2622d">?</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="note">
+    <h4>No address</h4>
+    <p>&ldquo;A claim buried in the middle of a paragraph on page forty has no address. You cannot point at it. If you cannot point at it, you cannot disagree with it precisely &mdash; so in the end nobody does.&rdquo;</p>
+    <p>The sentence ringed here is the 2R goal statement itself. It is the sentence the tree in the next act is built on, and in the prose it has nowhere to live.</p>
+    <p>&ldquo;The most valuable thing a new person brings, a precise disagreement, is the thing a long document is least able to receive.&rdquo;</p>
+    <p class="ask">Asset: a real screenshot of a dense 2R white-paper page can drop straight in behind the ring. The drawn version reads correctly from the back of a room, which a screenshot of body text may not.</p>
+  </div>
+</section>
+
+<section class="slide draw" data-act="1 · the problem" data-title="Wall, not scaffold" data-steps="3">
+  <h2 class="p" data-from="1" style="flex:0 0 auto">A long document is a wall, not a scaffold.</h2>
+  <div class="sheet">
+    <svg viewBox="0 0 1200 340" aria-label="Left: a wall of identical courses, closed. Right: a scaffold of verticals and braces, open enough to reach into.">
+      <g class="p" data-from="2">
+        <text class="ann brace" x="60" y="24">A WALL</text>
+        <g fill="#e5dccd" stroke="#dcd3c4" stroke-width="1">
+          <!-- Perfect regularity. Relentless repetition, which Bang calls the more horrifying of the two. -->
+          <rect x="60" y="44" width="112" height="34"/><rect x="176" y="44" width="112" height="34"/><rect x="292" y="44" width="112" height="34"/><rect x="408" y="44" width="112" height="34"/>
+          <rect x="4" y="82" width="112" height="34"/><rect x="120" y="82" width="112" height="34"/><rect x="236" y="82" width="112" height="34"/><rect x="352" y="82" width="112" height="34"/><rect x="468" y="82" width="52" height="34"/>
+          <rect x="60" y="120" width="112" height="34"/><rect x="176" y="120" width="112" height="34"/><rect x="292" y="120" width="112" height="34"/><rect x="408" y="120" width="112" height="34"/>
+          <rect x="4" y="158" width="112" height="34"/><rect x="120" y="158" width="112" height="34"/><rect x="236" y="158" width="112" height="34"/><rect x="352" y="158" width="112" height="34"/><rect x="468" y="158" width="52" height="34"/>
+          <rect x="60" y="196" width="112" height="34"/><rect x="176" y="196" width="112" height="34"/><rect x="292" y="196" width="112" height="34"/><rect x="408" y="196" width="112" height="34"/>
+          <rect x="4" y="234" width="112" height="34"/><rect x="120" y="234" width="112" height="34"/><rect x="236" y="234" width="112" height="34"/><rect x="352" y="234" width="112" height="34"/><rect x="468" y="234" width="52" height="34"/>
+        </g>
+        <text class="ann" x="60" y="300">200,000 words. Every course identical.</text>
+        <text class="ann" x="60" y="318" fill="#6e6559">Nothing to hold on to, and nowhere to stand.</text>
+      </g>
+      <g class="p" data-from="3">
+        <text class="ann brace" x="680" y="24">A SCAFFOLD</text>
+        <g fill="none" stroke="#645c50" stroke-width="1.4">
+          <path d="M700 268 V44 M810 268 V44 M920 268 V44 M1030 268 V44 M1140 268 V44"/>
+          <path d="M700 88 H1140 M700 156 H1140 M700 224 H1140 M700 268 H1140"/>
+          <path d="M700 156 L810 88 M920 224 L1030 156"/>
+        </g>
+        <g fill="#b2622d"><circle cx="920" cy="88" r="4"/></g>
+        <text class="ann" x="680" y="300">Every joint has a location.</text>
+        <text class="ann" x="680" y="318" fill="#8c491a">You can add one member without rebuilding it.</text>
+      </g>
+    </svg>
+  </div>
+  <div class="legend">
+    <span><i class="prop"></i> only proposed, or newly connected</span>
+    <span><em>the drawing has no reasoning in it yet &mdash; both halves are the same material, on purpose</em></span>
+  </div>
+
+  <div class="note">
+    <h4>Wall, not scaffold</h4>
+    <p>Two clicks: the wall, then the scaffold. Let the wall sit alone for a beat first &mdash; the regularity is doing the work.</p>
+    <p>The single accent dot on the scaffold is the only coloured mark on the slide. It is one new member, added without touching anything else.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     2 · THE IDEA + DEMO A
+     ═══════════════════════════════════════════════════════════════════════ -->
+
+<section class="slide divider" data-act="2 · the idea" data-title="§ 2 · The idea + Demo A">
+  <p class="num">2</p>
+  <h1>The idea</h1>
+  <p class="lede">The tree of change on screen. Every claim has an address. The links are claims too.</p>
+</section>
+
+<section class="slide draw" data-act="2 · the idea" data-title="The idea" data-steps="3">
+  <h2 class="p" data-from="1" style="flex:0 0 auto">What if what we share isn&rsquo;t a stack of documents, but a structure.</h2>
+  <div class="sheet">
+    <svg viewBox="0 0 1200 340" aria-label="A stack of documents on the left gives way to a node-and-line tree on the right.">
+      <!-- A document is drawn with a folded corner, in one mark rather than a box. Never a reasoning hue. -->
+      <g class="p e" data-from="2" data-recede="3">
+        <g fill="#fdf6ea" stroke="#dcd3c4" stroke-width="1">
+          <path d="M120 66 h150 l22 22 v128 h-172 z"/>
+          <path d="M104 92 h150 l22 22 v128 h-172 z"/>
+          <path d="M88 118 h150 l22 22 v128 h-172 z"/>
+        </g>
+        <g stroke="#dcd3c4" stroke-width="2.6" stroke-linecap="round" opacity="0.7">
+          <path d="M108 154 H228 M108 166 H220 M108 178 H228 M108 190 H196 M108 202 H228 M108 214 H210 M108 226 H228 M108 238 H184 M108 250 H222 M108 262 H200"/>
+        </g>
+        <text class="kind" x="88" y="298">A STACK OF DOCUMENTS</text>
+        <text class="body" x="88" y="318">read front to back, or not at all</text>
+      </g>
+      <text class="ann brace" x="360" y="196" fill="#c0b6a5">GIVES WAY TO</text>
+      <path class="p" data-from="3" d="M470 190 H528" stroke="#c0b6a5" stroke-width="1.2" fill="none"/>
+      <path class="p" data-from="3" d="M528 190 L518 185 L518 195 Z" fill="#c0b6a5"/>
+      <g class="p" data-from="3">
+        <g fill="none" stroke="#645c50" stroke-width="1.4">
+          <path d="M710 162 V132 H1070 V162 M890 132 V96"/>
+          <path d="M635 276 V240 H785 V276 M710 240 V198"/>
+          <path d="M995 276 V240 H1145 V276 M1070 240 V198"/>
+        </g>
+        <g fill="none" stroke="oklch(0.53 0.085 130)" stroke-width="1">
+          <rect x="800" y="60" width="180" height="36" rx="2" fill="color-mix(in srgb, #fdf6ea 58%, transparent)"/>
+          <rect x="630" y="162" width="160" height="36" rx="2" fill="color-mix(in srgb, #fdf6ea 58%, transparent)"/>
+          <rect x="990" y="162" width="160" height="36" rx="2" fill="color-mix(in srgb, #fdf6ea 58%, transparent)"/>
+          <rect x="580" y="276" width="110" height="34" rx="2" fill="color-mix(in srgb, #fdf6ea 58%, transparent)"/>
+          <rect x="730" y="276" width="110" height="34" rx="2" fill="color-mix(in srgb, #fdf6ea 58%, transparent)"/>
+          <rect x="940" y="276" width="110" height="34" rx="2" fill="color-mix(in srgb, #fdf6ea 58%, transparent)"/>
+          <rect x="1090" y="276" width="110" height="34" rx="2" fill="color-mix(in srgb, #fdf6ea 58%, transparent)"/>
+        </g>
+        <g stroke="oklch(0.53 0.085 130)" stroke-width="2.5" fill="none">
+          <path d="M800 60 V96 M630 162 V198 M990 162 V198 M580 276 V310 M730 276 V310 M940 276 V310 M1090 276 V310"/>
+        </g>
+        <text class="ann brace" x="800" y="42" fill="#c0b6a5">A STRUCTURE</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="note">
+    <h4>The idea</h4>
+    <p>Two clicks. The stack recedes rather than vanishing &mdash; the documents still exist, they just stop being the thing held in common.</p>
+    <p>&ldquo;What is on the screen is not just the conclusions. It is the reasoning.&rdquo;</p>
+  </div>
+</section>
+
+<section class="slide draw" data-act="2 · the idea" data-title="Every claim has an address" data-steps="7">
+  <ul class="lines" style="flex:0 0 auto;max-width:64ch">
+    <li class="p" data-from="1">A top claim. The sub-claims it depends on. All the way down.</li>
+    <li class="p" data-from="5"><b style="font-weight:500;color:var(--accent-deep)">Every claim has an address.</b></li>
+    <li class="p soft" data-from="6" style="font-size:var(--t-body);font-family:var(--body)">The links are claims too: <i>this one is necessary for that one.</i></li>
+  </ul>
+  <!--
+    Schematic, not the real tree yet. Draws itself rank by rank as the lines are
+    spoken; then one node takes an address tag; then one link is glossed.
+    The address is the path, because in a tree that is what an address is.
+  -->
+  <div class="sheet">
+    <svg viewBox="0 0 1200 330" aria-label="A schematic tree of four ranks. One node takes an address tag; one link is labelled 'is necessary for'.">
+      <g class="l l--quiet p" data-from="2"><path d="M320 130 V96 H880 V130 M600 96 V66"/></g>
+      <g class="l l--quiet p" data-from="3"><path d="M600 130 V96"/></g>
+      <g class="l l--quiet p" data-from="3"><path d="M245 194 V178 H320 V164"/></g>
+      <g class="l l--quiet p" data-from="4"><path d="M845 194 V178 H880 V164"/></g>
+      <g class="l l--quiet p" data-from="4"><path d="M845 258 V226"/></g>
+
+      <g class="n n--outcome p" data-from="1">
+        <rect x="500" y="30" width="200" height="36" rx="2"/><path class="edge" d="M500 30 V66"/>
+        <text class="st sm" x="514" y="53">the top claim</text>
+      </g>
+      <g class="n n--outcome p" data-from="2">
+        <rect x="240" y="130" width="160" height="34" rx="2"/><path class="edge" d="M240 130 V164"/>
+        <text class="st sm" x="254" y="152">a sub-claim</text>
+      </g>
+      <g class="n n--outcome p" data-from="3">
+        <rect x="520" y="130" width="160" height="34" rx="2"/><path class="edge" d="M520 130 V164"/>
+        <text class="st sm" x="534" y="152">a sub-claim</text>
+      </g>
+      <g class="n n--outcome p" data-from="2">
+        <rect x="800" y="130" width="160" height="34" rx="2"/><path class="edge" d="M800 130 V164"/>
+        <text class="st sm" x="814" y="152">a sub-claim</text>
+      </g>
+      <g class="n n--outcome p" data-from="3">
+        <rect x="180" y="194" width="130" height="32" rx="2"/><path class="edge" d="M180 194 V226"/>
+        <text class="st xs" x="192" y="214">and one under it</text>
+      </g>
+      <g class="n n--outcome p" data-from="4">
+        <rect x="780" y="194" width="130" height="32" rx="2"/><path class="edge" d="M780 194 V226"/>
+        <text class="st xs" x="792" y="214">and one under it</text>
+      </g>
+      <g class="n n--outcome p" data-from="4">
+        <rect x="740" y="258" width="210" height="32" rx="2"/><path class="edge" d="M740 258 V290"/>
+        <rect class="ring" x="736" y="254" width="218" height="40" rx="4"/>
+        <text class="st xs" x="752" y="278">a leaf, three levels down</text>
+      </g>
+
+      <!-- An address: the path, which is the only thing an address can be in a tree. -->
+      <g class="addr p" data-from="5">
+        <rect x="740" y="298" width="196" height="18" rx="2"/>
+        <text x="748" y="311">GOAL / 3 / 3.2 / 3.2.1</text>
+      </g>
+      <path class="p" data-from="5" d="M960 274 H1010" stroke="#b2622d" stroke-width="1" fill="none" stroke-dasharray="3 3"/>
+      <text class="p ann" data-from="5" x="1018" y="278" fill="#8c491a">you can point at exactly one</text>
+
+      <!-- One link glossed. The link is a claim, so it gets its name in words. -->
+      <g class="l p" data-from="6" style="--lline:#b2622d">
+        <path d="M880 194 V164" stroke-width="2.4"/>
+        <text x="898" y="182" fill="#8c491a">IS NECESSARY FOR</text>
+      </g>
+      <text class="p ann" data-from="7" x="60" y="306">You can disagree with a link without touching either box.</text>
+    </svg>
+  </div>
+  <div class="legend">
+    <span><i class="held"></i> held: something wanted, or observed</span>
+    <span><i class="prop"></i> only proposed, or newly connected</span>
+    <span><em>&#9678; outcome &middot; &#9650; trouble &middot; &#8627; cause &middot; &#8644; tension &middot; &#9670; move &middot; &#9673; evidence</em></span>
+  </div>
+
+  <div class="note">
+    <h4>Every claim has an address</h4>
+    <p>The tree draws itself rank by rank as you speak. Click 5 is the one that matters: <b>the address tag</b>. Click 6 glosses a link and click 7 says what that buys.</p>
+    <p>&ldquo;The lines between claims are themselves claims: this one is necessary for that one.&rdquo;</p>
+  </div>
+</section>
+
+<section class="slide draw" data-act="2 · the idea" data-title="Demo A — the real tree" data-steps="5">
+  <div style="flex:0 0 auto;display:flex;align-items:baseline;gap:1.2rem;flex-wrap:wrap">
+    <p class="eyebrow" style="margin:0">Demo A &middot; pre-baked, narrated live</p>
+    <h3 style="color:var(--muted)">The Second Renaissance tree of change</h3>
+  </div>
+  <!--
+    ══ THE RECONSTRUCTION, ONE OF TWO ══
+    The real tree: the goal, its eight critical success factors, and sub-claims
+    under one of them. Two clicks and stop.
+
+    (1) a deep leaf: its path to the goal lights and everything else recedes.
+        Arnheim §2.2 — disequilibrium can be expressed only by equilibrium. The
+        path reads as the one live thing because the other seven are settled.
+    (2) one link, glossed, with the assumption it hangs on. That assumption is
+        challenged by name in Demo B, so the room meets it before it breaks.
+
+    The remainder is stated as a count, never drawn. Bang: restrict yourself to
+    the aspects that frighten you most; forget the others.
+  -->
+  <div class="sheet">
+    <svg viewBox="0 0 1200 600" aria-label="The Second Renaissance goal with its eight critical success factors, sub-claims under the fourth, and one link glossed.">
+      <!-- rank 1 → goal, as an orthogonal bus. Ortho reads as settled structure. -->
+      <g class="l l--quiet p" data-from="1" data-recede="3">
+        <path d="M89 206 V170 H1111 V206"/>
+        <path d="M235 206 V170 M381 206 V170 M673 206 V170 M819 206 V170 M965 206 V170"/>
+        <path d="M600 170 V108"/>
+      </g>
+      <g class="l l--quiet p" data-from="1"><path d="M527 206 V170"/></g>
+
+      <g class="n n--outcome p" data-from="1">
+        <rect x="320" y="34" width="560" height="74" rx="2"/><path class="edge" d="M320 34 V108"/>
+        <rect class="ring" x="315" y="29" width="570" height="84" rx="5"/>
+        <text class="role" x="336" y="55">&#9678; GOAL</text>
+        <text class="st" x="336" y="78"><tspan x="336">co-initiate a Second Renaissance: a conscious transformation of foundational</tspan><tspan x="336" dy="17">views, values, practices and institutions toward a wiser, weller civilization</tspan></text>
+      </g>
+
+      <text class="ann brace p" data-from="1" x="21" y="192">WHAT SUCCESS REQUIRES &mdash; EIGHT CONDITIONS</text>
+
+      <g class="n n--outcome p" data-from="1" data-recede="3">
+        <rect x="21" y="206" width="136" height="100" rx="2"/><path class="edge" d="M21 206 V306"/>
+        <text class="role" x="33" y="226">&#9678; 1</text>
+        <text class="st sm" x="33" y="248"><tspan x="33">Shared diagnosis</tspan><tspan x="33" dy="15">of civilizational</tspan><tspan x="33" dy="15">crisis</tspan></text>
+      </g>
+      <g class="n n--outcome p" data-from="1" data-recede="3">
+        <rect x="167" y="206" width="136" height="100" rx="2"/><path class="edge" d="M167 206 V306"/>
+        <text class="role" x="179" y="226">&#9678; 2</text>
+        <text class="st sm" x="179" y="248"><tspan x="179">Compelling vision</tspan><tspan x="179" dy="15">of the next</tspan><tspan x="179" dy="15">paradigm</tspan></text>
+      </g>
+      <g class="n n--outcome p" data-from="1" data-recede="3">
+        <rect x="313" y="206" width="136" height="100" rx="2"/><path class="edge" d="M313 206 V306"/>
+        <text class="role" x="325" y="226">&#9678; 3</text>
+        <text class="st sm" x="325" y="248"><tspan x="325">Embodied practices</tspan><tspan x="325" dy="15">and inner</tspan><tspan x="325" dy="15">development</tspan></text>
+      </g>
+      <g class="n n--outcome p" data-from="1" data-hold="2" data-hold-until="4" data-recede="4">
+        <rect x="459" y="206" width="136" height="100" rx="2"/><path class="edge" d="M459 206 V306"/>
+        <rect class="ring" x="454" y="201" width="146" height="110" rx="5"/>
+        <text class="role" x="471" y="226">&#9678; 4</text>
+        <text class="st sm" x="471" y="248"><tspan x="471">Pockets of</tspan><tspan x="471" dy="15">coherent new</tspan><tspan x="471" dy="15">culture</tspan></text>
+      </g>
+      <g class="n n--outcome p" data-from="1" data-recede="3">
+        <rect x="605" y="206" width="136" height="100" rx="2"/><path class="edge" d="M605 206 V306"/>
+        <text class="role" x="617" y="226">&#9678; 5</text>
+        <text class="st sm" x="617" y="248"><tspan x="617">Sangha / wider</tspan><tspan x="617" dy="15">community of</tspan><tspan x="617" dy="15">practice</tspan></text>
+      </g>
+      <g class="n n--outcome p" data-from="1" data-recede="3" data-recede-until="4" data-hold="4">
+        <rect x="751" y="206" width="136" height="100" rx="2"/><path class="edge" d="M751 206 V306"/>
+        <rect class="ring" x="746" y="201" width="146" height="110" rx="5"/>
+        <text class="role" x="763" y="226">&#9678; 6</text>
+        <text class="st sm" x="763" y="248"><tspan x="763">Movement</tspan><tspan x="763" dy="15">coherence and</tspan><tspan x="763" dy="15">cultural</tspan><tspan x="763" dy="15">transmission</tspan></text>
+      </g>
+      <g class="n n--outcome p" data-from="1" data-recede="3">
+        <rect x="897" y="206" width="136" height="100" rx="2"/><path class="edge" d="M897 206 V306"/>
+        <text class="role" x="909" y="226">&#9678; 7</text>
+        <text class="st sm" x="909" y="248"><tspan x="909">New institutions</tspan><tspan x="909" dy="15">and regenerative</tspan><tspan x="909" dy="15">social architecture</tspan></text>
+      </g>
+      <g class="n n--outcome p" data-from="1" data-recede="3">
+        <rect x="1043" y="206" width="136" height="100" rx="2"/><path class="edge" d="M1043 206 V306"/>
+        <text class="role" x="1055" y="226">&#9678; 8</text>
+        <text class="st sm" x="1055" y="248"><tspan x="1055">Wise transition</tspan><tspan x="1055" dy="15">through collapse</tspan><tspan x="1055" dy="15">and renewal</tspan></text>
+      </g>
+
+      <!-- Sub-claims, under condition 4 only. The rest is a count. -->
+      <g class="l l--quiet p" data-from="2"><path d="M407 372 V340 H637 V372"/><path d="M527 340 V306"/></g>
+      <g class="l l--quiet p" data-from="2"><path d="M637 500 V452"/></g>
+
+      <g class="n n--outcome p" data-from="2" data-recede="3">
+        <rect x="300" y="372" width="214" height="80" rx="2"/><path class="edge" d="M300 372 V452"/>
+        <text class="role" x="314" y="392">&#9678; 4.1</text>
+        <text class="st sm" x="314" y="414"><tspan x="314">Enough people live inside a</tspan><tspan x="314" dy="15">coherent alternative for it to</tspan><tspan x="314" dy="15">be observable from outside</tspan></text>
+      </g>
+      <g class="n n--outcome p" data-from="2" data-hold="2" data-hold-until="4" data-recede="4">
+        <rect x="530" y="372" width="214" height="80" rx="2"/><path class="edge" d="M530 372 V452"/>
+        <rect class="ring" x="525" y="367" width="224" height="90" rx="5"/>
+        <text class="role" x="544" y="392">&#9678; 4.2</text>
+        <text class="st sm" x="544" y="414"><tspan x="544">A newcomer can find one,</tspan><tspan x="544" dy="15">enter it, and be changed</tspan><tspan x="544" dy="15">by it</tspan></text>
+      </g>
+      <g class="n n--outcome p" data-from="2" data-hold="2" data-hold-until="4" data-recede="4">
+        <rect x="488" y="500" width="298" height="76" rx="2"/><path class="edge" d="M488 500 V576"/>
+        <rect class="ring" x="483" y="495" width="308" height="86" rx="5"/>
+        <text class="role" x="504" y="520">&#9678; 4.2.1</text>
+        <text class="st sm" x="504" y="542"><tspan x="504">Action is formulated, encouraged and</tspan><tspan x="504" dy="15">brought into reality inside these places</tspan></text>
+      </g>
+      <g class="addr p" data-from="3" data-recede="4">
+        <rect x="488" y="584" width="212" height="18" rx="2"/>
+        <text x="496" y="597">GOAL / 4 / 4.2 / 4.2.1</text>
+      </g>
+
+      <text class="ann count p" data-from="2" data-recede="3" x="1179" y="352" text-anchor="end">+ 34 more claims below these eight</text>
+
+      <!-- The glossed link, and the assumption it hangs on. -->
+      <g class="l p" data-from="4" style="--lline:#b2622d">
+        <path d="M819 206 V170 H600 V108" stroke-width="2.4"/>
+        <text x="836" y="188" fill="#8c491a">IS NECESSARY FOR</text>
+      </g>
+      <g class="a p" data-from="5">
+        <path class="tick" d="M900 188 H960"/>
+        <rect x="960" y="150" width="230" height="66" rx="2"/>
+        <text class="kind" x="972" y="170">ASSUMPTION ON THIS LINK</text>
+        <text class="st" x="972" y="188"><tspan x="972">Shared action requires a</tspan><tspan x="972" dy="14">shared worldview.</tspan></text>
+        <path class="strike" d="M968 183 H1150"/>
+      </g>
+    </svg>
+  </div>
+  <div class="legend">
+    <span><i class="held"></i> held: wanted, or observed</span>
+    <span><i class="prop"></i> only proposed, or newly connected</span>
+    <span><i class="wrong"></i> going wrong, or in the way</span>
+    <span><em>underlined address = you can point at it</em></span>
+  </div>
+
+  <div class="note">
+    <h4>Demo A &mdash; the real tree</h4>
+    <p><b>Two things and stop. Ninety seconds. Do not tour the tree.</b></p>
+    <p><b>Click 2</b> &mdash; the deep leaf under condition 4, &ldquo;pockets of coherent new culture&rdquo;. Its path to the goal lights, everything else recedes. Say: this claim is not floating in a document, it is at an address, and the address tells you what it is holding up.</p>
+    <p><b>Click 4</b> &mdash; one link. &ldquo;The links are claims too, so you can disagree with a link without touching the boxes.&rdquo; <b>Click 5</b> shows the assumption that link hangs on: <i>shared action requires a shared worldview</i>. Note it and move on &mdash; somebody in the thread breaks it in Act 4, and it lands much harder if the room has already seen it.</p>
+    <p>&ldquo;I did not build it for the talk. It is generated from the actual written corpus.&rdquo; The eight conditions are the goal tree&rsquo;s own critical success factors; the claims under condition 4 are the tree as it currently stands, which is to say provisional.</p>
+    <p class="ask">Live alternative: screen-share the tool and make the same two clicks. This drawing is the fallback, and it is also the safer choice from the back of a large room.</p>
+  </div>
+</section>
+
+<section class="slide draw" data-act="2 · the idea" data-title="Two things at once" data-steps="4">
+  <ul class="lines" style="flex:0 0 auto">
+    <li class="p" data-from="1">A thesis about what has to be true.</li>
+    <li class="p" data-from="2">An object you can improve, one claim at a time.</li>
+  </ul>
+  <div class="sheet">
+    <svg viewBox="0 0 1200 320" aria-label="The same schematic tree, labelled a thesis on one side and an editable object on the other. One leaf shows a single-point edit.">
+      <g class="l l--quiet"><path d="M320 126 V92 H880 V126 M600 92 V62 M600 126 V92"/></g>
+      <g class="l l--quiet"><path d="M245 190 V174 H405 V190 M320 174 V160"/></g>
+      <g class="l l--quiet"><path d="M765 190 V174 H1005 V190 M880 174 V160"/></g>
+      <g class="n n--outcome">
+        <rect x="500" y="26" width="200" height="36" rx="2"/><path class="edge" d="M500 26 V62"/>
+        <text class="st sm" x="514" y="49">the top claim</text>
+      </g>
+      <g class="n n--outcome">
+        <rect x="240" y="126" width="160" height="34" rx="2"/><path class="edge" d="M240 126 V160"/>
+        <text class="st sm" x="254" y="148">a sub-claim</text>
+      </g>
+      <g class="n n--outcome">
+        <rect x="520" y="126" width="160" height="34" rx="2"/><path class="edge" d="M520 126 V160"/>
+        <text class="st sm" x="534" y="148">a sub-claim</text>
+      </g>
+      <g class="n n--outcome">
+        <rect x="800" y="126" width="160" height="34" rx="2"/><path class="edge" d="M800 126 V160"/>
+        <text class="st sm" x="814" y="148">a sub-claim</text>
+      </g>
+      <g class="n n--outcome"><rect x="180" y="190" width="130" height="32" rx="2"/><path class="edge" d="M180 190 V222"/></g>
+      <g class="n n--outcome"><rect x="340" y="190" width="130" height="32" rx="2"/><path class="edge" d="M340 190 V222"/></g>
+      <g class="n n--outcome"><rect x="700" y="190" width="130" height="32" rx="2"/><path class="edge" d="M700 190 V222"/></g>
+      <!-- The single-point edit. Dashed, because it is only proposed. -->
+      <g class="n n--proposed p" data-from="4" data-hold="4" data-hold-until="5">
+        <rect x="940" y="190" width="130" height="32" rx="2"/><path class="edge" d="M940 190 V222"/>
+        <rect class="ring" x="936" y="186" width="138" height="40" rx="4"/>
+        <text class="st xs" x="952" y="210" style="fill:#8c491a">one claim, edited</text>
+      </g>
+      <g class="n n--outcome p" data-from="1" data-leave="4"><rect x="940" y="190" width="130" height="32" rx="2"/><path class="edge" d="M940 190 V222"/></g>
+
+      <g class="p" data-from="1">
+        <path d="M60 100 H150" stroke="#c0b6a5" stroke-width="1" fill="none"/>
+        <text class="ann brace" x="60" y="88">A THESIS</text>
+        <text class="ann" x="60" y="126"><tspan x="60">these conditions,</tspan><tspan x="60" dy="15">in this arrangement,</tspan><tspan x="60" dy="15">are what it takes</tspan></text>
+      </g>
+      <g class="p" data-from="2">
+        <path d="M1140 100 H1050" stroke="#c0b6a5" stroke-width="1" fill="none"/>
+        <text class="ann brace" x="1140" y="88" text-anchor="end">AN EDITABLE OBJECT</text>
+        <text class="ann" x="1140" y="126" text-anchor="end"><tspan x="1140">change one claim</tspan><tspan x="1140" dy="15">without rewriting</tspan><tspan x="1140" dy="15">the whole thing</tspan></text>
+      </g>
+      <text class="ann p" data-from="3" x="600" y="290" text-anchor="middle">The whole and the parts stay connected. Any leaf, however far down, traces back to the goal.</text>
+    </svg>
+  </div>
+  <div class="legend">
+    <span><i class="held"></i> held</span>
+    <span><i class="prop"></i> only proposed &mdash; a change offered, not yet relied upon</span>
+  </div>
+
+  <div class="note">
+    <h4>Two things at once</h4>
+    <p>Click 4 turns one leaf dashed. <b>Dashed is the whole grammar in one mark</b>: offered, not yet relied upon. The tree did not have to be reopened to receive it.</p>
+  </div>
+</section>
+
+<section class="slide draw" data-act="2 · the idea" data-title="Lineage (aside)" data-steps="2">
+  <div style="flex:1 1 auto;display:flex;align-items:center">
+    <p class="p aside" data-from="1" style="margin:0;max-width:52ch;border-left:2px solid var(--line);padding-left:1.4rem">
+      The shape is ~40 years old. Operations research. &ldquo;The Logical Thinking Process.&rdquo;
+      Nothing here depends on knowing that.
+    </p>
+  </div>
+  <!-- Deliberately un-emphasised, and in the structure hue: a document is not reasoning. -->
+  <div class="sheet p" data-from="2" style="flex:0 0 auto;height:clamp(5rem,12vh,8rem)">
+    <svg viewBox="0 0 1200 130" aria-label="A book, drawn small and tucked into the corner: H. William Dettmer, The Logical Thinking Process.">
+      <g class="e">
+        <rect x="1010" y="16" width="86" height="112" fill="#fdf6ea" stroke="#dcd3c4" stroke-width="1"/>
+        <rect x="1096" y="20" width="6" height="108" fill="#e5dccd" stroke="none"/>
+        <text class="kind" x="1020" y="38">DETTMER</text>
+        <text class="body" x="1020" y="58" style="font-size:9.5px"><tspan x="1020">The Logical</tspan><tspan x="1020" dy="12">Thinking</tspan><tspan x="1020" dy="12">Process</tspan></text>
+        <path class="rule" d="M1020 104 H1086"/>
+        <text class="kind" x="1020" y="120" style="font-size:8px">1997</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="note">
+    <h4>Lineage (aside)</h4>
+    <p>Quick in, quick out. This should feel like a footnote and be over in fifteen seconds.</p>
+    <p>&ldquo;There is a separate talk that does it justice. Nothing here depends on knowing any of it.&rdquo; If someone in the room lights up at Theory of Constraints, take it in the break, not now.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     3 · THE CONFLICT + THE TURN
+     ═══════════════════════════════════════════════════════════════════════ -->
+
+<section class="slide divider" data-act="3 · the conflict" data-title="§ 3 · The conflict + the turn">
+  <p class="num">3</p>
+  <h1>The conflict, and the turn</h1>
+  <p class="lede">Spontaneity versus structure, and the one false assumption holding the dilemma together.</p>
+</section>
+
+<section class="slide centre" data-act="3 · the conflict" data-title="Why don't we already do this?">
+  <h1 style="max-width:24ch">So why don&rsquo;t we already work like this?</h1>
+
+  <div class="note">
+    <h4>Why don&rsquo;t we already do this?</h4>
+    <p>A beat slide. Ask it, and wait long enough that somebody nearly answers.</p>
+  </div>
+</section>
+
+<section class="slide draw" data-act="3 · the conflict" data-title="The conflict" data-steps="4">
+  <!--
+    The Evaporating Cloud shape without the name. Two tension nodes at opposite
+    edges of the same sheet, and one conflicts_with link between them — drawn
+    with NO arrowhead, because "A conflicts with B" is the same claim as
+    "B conflicts with A" and an arrow would invent a direction nobody asserted
+    (src/domain/graph.ts, edgeDirection).
+  -->
+  <div class="sheet" style="margin-top:clamp(1rem,4vh,3rem)">
+    <svg viewBox="0 0 1200 480" aria-label="Two conflicting requirements at opposite edges of the field, joined by a symmetric conflict link with no arrowhead.">
+      <g class="n n--tension p" data-from="1">
+        <rect x="30" y="150" width="400" height="150" rx="2"/><path class="edge" d="M30 150 V300"/>
+        <text class="role" x="50" y="176">&#8644; KEEP IT HUMAN</text>
+        <text class="st" x="50" y="204"><tspan x="50">Quick, exploratory, relational.</tspan><tspan x="50" dy="19">Nobody wants to fill in a form.</tspan></text>
+        <text class="att" x="50" y="272"><tspan x="50">Nobody joined a movement for civilizational</tspan><tspan x="50" dy="13">renewal in order to file things.</tspan></text>
+      </g>
+      <g class="n n--tension p" data-from="2">
+        <rect x="770" y="150" width="400" height="150" rx="2"/><path class="edge" d="M770 150 V300"/>
+        <text class="role" x="790" y="176">&#8644; MAKE IT ADD UP</text>
+        <text class="st" x="790" y="204"><tspan x="790">Structure &mdash; or the good parts</tspan><tspan x="790" dy="19">dissolve into the scroll.</tspan></text>
+        <text class="att" x="790" y="272"><tspan x="790">And we are back to the same conversation</tspan><tspan x="790" dy="13">next year.</tspan></text>
+      </g>
+      <!-- The clash. Symmetric, so no arrowhead at either end. -->
+      <g class="l l--challenge p" data-from="3">
+        <path d="M430 225 H540" stroke-dasharray="none"/>
+        <path d="M660 225 H770" stroke-dasharray="none"/>
+        <text x="600" y="200" text-anchor="middle">CONFLICTS WITH</text>
+      </g>
+      <g class="p" data-from="3">
+        <path d="M570 205 L600 225 L570 245" fill="none" stroke="oklch(0.47 0.14 358)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M630 205 L600 225 L630 245" fill="none" stroke="oklch(0.47 0.14 358)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <text class="ann p" data-from="4" x="600" y="400" text-anchor="middle">It looks like you have to choose.</text>
+      <text class="ann brace p" data-from="4" x="600" y="424" text-anchor="middle">EVERY GROUP THAT TRIES TO GIVE ITSELF STRUCTURE HITS THIS</text>
+    </svg>
+  </div>
+  <div class="legend">
+    <span><i class="prop"></i> &#8644; one side of a collision</span>
+    <span><i class="wrong"></i> the collision itself</span>
+    <span><em>no arrowhead: a conflict is symmetric, and an arrow would invent a direction nobody claimed</em></span>
+  </div>
+
+  <div class="note">
+    <h4>The conflict</h4>
+    <p>Left, then right, then the clash. Give both sides their due &mdash; <b>people are right to be wary</b> of anything that interrupts a good exchange to make it tidy.</p>
+    <p>This is the Evaporating Cloud, and you are not going to say so.</p>
+  </div>
+</section>
+
+<section class="slide draw" data-act="3 · the conflict" data-title="The hidden assumption" data-steps="3">
+  <p class="p eyebrow" data-from="1" style="flex:0 0 auto">One assumption holds the dilemma together</p>
+  <!--
+    The two sides collapse inward and hang off one sentence. Drawn as the
+    grammar draws an assumption: dashed, hanging off the link, never a card of
+    its own — because an assumption is a thing that can fail.
+  -->
+  <div class="sheet">
+    <svg viewBox="0 0 1200 460" aria-label="The two conflicting requirements, now small, both hanging off a single dashed assumption in the middle of the field.">
+      <g class="n n--tension p" data-from="1" data-recede="2">
+        <rect x="40" y="40" width="280" height="62" rx="2"/><path class="edge" d="M40 40 V102"/>
+        <text class="role" x="56" y="62">&#8644; KEEP IT HUMAN</text>
+        <text class="st sm" x="56" y="84">Nobody wants to fill in a form.</text>
+      </g>
+      <g class="n n--tension p" data-from="1" data-recede="2">
+        <rect x="880" y="40" width="280" height="62" rx="2"/><path class="edge" d="M880 40 V102"/>
+        <text class="role" x="896" y="62">&#8644; MAKE IT ADD UP</text>
+        <text class="st sm" x="896" y="84">Structure, or it dissolves.</text>
+      </g>
+      <g class="l l--quiet p" data-from="2">
+        <path d="M180 102 V180 H600 V216"/>
+        <path d="M1020 102 V180 H600"/>
+      </g>
+      <g class="a p" data-from="2">
+        <rect x="300" y="216" width="600" height="104" rx="2"/>
+        <text class="kind" x="326" y="244">THE ASSUMPTION BOTH SIDES ARE STANDING ON</text>
+        <text class="st" x="326" y="274" style="font-size:19px;font-style:italic"><tspan x="326">The structure has to be added by the contributor,</tspan><tspan x="326" dy="24">at the moment of contributing.</tspan></text>
+        <path class="strike" d="M320 268 H880"/>
+      </g>
+      <text class="ann p" data-from="3" x="600" y="386" text-anchor="middle">Take it away and there is no dilemma left to have.</text>
+    </svg>
+  </div>
+  <div class="legend">
+    <span><i class="prop"></i> dashed &mdash; an assumption is a thing that can fail</span>
+    <span><em>attached to the link, never to a box: that is how the record stores it too</em></span>
+  </div>
+
+  <div class="note">
+    <h4>The hidden assumption</h4>
+    <p>The two columns collapse inward and hang off this one sentence. Read it slowly. <b>Do not editorialise yet</b> &mdash; the next slide is the pivot and it needs the room to have taken the assumption seriously first.</p>
+  </div>
+</section>
+
+<section class="slide centre dark" data-act="3 · the conflict" data-title="The turn" data-steps="2">
+  <!-- The pivot. The second of the two transitions that IS the argument. -->
+  <div class="p" data-from="1" data-leave="2" style="max-width:44ch">
+    <p class="pull" style="font-size:clamp(1.5rem,3vw,3rem);opacity:0.55">
+      <s style="text-decoration-color:oklch(0.62 0.16 358);text-decoration-thickness:2px">The structure has to be added by the contributor, at the moment of contributing.</s>
+    </p>
+  </div>
+  <div class="p" data-from="2">
+    <h1 class="spine">It&rsquo;s not true.</h1>
+    <p style="margin:clamp(1.4rem,3.4vh,2.4rem) 0 0;font-size:var(--t-small);letter-spacing:0.14em;text-transform:uppercase;color:rgb(245 234 216 / 0.5)">
+      That&rsquo;s more or less the whole talk.
+    </p>
+  </div>
+
+  <div class="note">
+    <h4>The turn</h4>
+    <p>Cut to black on entry. The assumption is struck through, then it goes, then <b>&ldquo;It&rsquo;s not true.&rdquo;</b> Let the second line sit for a moment before you say the small one.</p>
+    <p>This is the pivot of the talk. If the room is going to lean in anywhere, it is here.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     4 · THE MOVE + DEMO B
+     ═══════════════════════════════════════════════════════════════════════ -->
+
+<section class="slide divider" data-act="4 · the move" data-title="§ 4 · The move + Demo B">
+  <p class="num">4</p>
+  <h1>The move</h1>
+  <p class="lede">Contribute normally. A machine recovers the structure afterwards. AI is what makes that affordable.</p>
+</section>
+
+<section class="slide draw" data-act="4 · the move" data-title="The move" data-steps="3">
+  <ul class="lines" style="flex:0 0 auto">
+    <li class="p" data-from="1">So don&rsquo;t add the structure at the moment of contributing.</li>
+    <li class="p" data-from="2">Let the conversation be a conversation.</li>
+  </ul>
+  <!--
+    Real posts from the thread, drawn in the structure hue and unboxed, because
+    a forum is not reasoning. Untouched: not one mark on any of them.
+  -->
+  <div class="sheet p" data-from="3">
+    <svg viewBox="0 0 1200 330" aria-label="Four forum posts flowing normally down the page, with no marks on any of them.">
+      <g class="e">
+        <text class="kind" x="20" y="20">FORUM.SECONDRENAISSANCE.NET &middot; T/878 &middot; 20 POSTS</text>
+        <rect class="post" x="20" y="34" width="620" height="58" rx="7"/>
+        <text class="label" x="38" y="56">dvdjsph &middot; 26 Aug, 2:11pm</text>
+        <text class="body" x="38" y="76">&ldquo;I&rsquo;m creating this thread as a place to bring together problems, possible explanations&hellip;&rdquo;</text>
+
+        <rect class="post" x="120" y="104" width="620" height="58" rx="7"/>
+        <text class="label" x="138" y="126">RobertBunge &middot; 26 Aug, 2:59pm</text>
+        <text class="body" x="138" y="146">&ldquo;Depends quite a bit on who &lsquo;we&rsquo; are and how &lsquo;we&rsquo; are situated.&rdquo;</text>
+
+        <rect class="post" x="220" y="174" width="620" height="58" rx="7"/>
+        <text class="label" x="238" y="196">Asimong &middot; 27 Aug, 9:49am</text>
+        <text class="body" x="238" y="216">&ldquo;It&rsquo;s in the small tents that action is formulated, encouraged, and brought into reality.&rdquo;</text>
+
+        <rect class="post" x="320" y="244" width="620" height="58" rx="7"/>
+        <text class="label" x="338" y="266">glennr86 &middot; 31 Aug, 2:07am</text>
+        <text class="body" x="338" y="286">&ldquo;I would like to respond to this in a simple way, with my thoughts and opinion.&rdquo;</text>
+      </g>
+      <text class="ann brace" x="1180" y="320" text-anchor="end">NOT ONE MARK ON ANY OF THEM</text>
+    </svg>
+  </div>
+  <div class="legend">
+    <span><i class="mach"></i> not reasoning at all &mdash; a forum, a model, a document</span>
+    <span><em>none of the reasoning hues appear here, ever</em></span>
+  </div>
+
+  <div class="note">
+    <h4>The move</h4>
+    <p>&ldquo;You post your paragraph on the forum the way you were going to anyway. Nothing interrupts you.&rdquo;</p>
+    <p>These are the actual posts. Same thread we are about to read.</p>
+  </div>
+</section>
+
+<section class="slide draw" data-act="4 · the move" data-title="Structure recovered afterwards" data-steps="3">
+  <h2 class="p" data-from="1" style="flex:0 0 auto">Afterwards, separately, a machine reads it against the tree.</h2>
+  <div class="sheet">
+    <svg viewBox="0 0 1200 340" aria-label="The same posts, with faint dashed lines now running from individual messages to nodes on a small tree at the side.">
+      <g class="e p" data-from="1">
+        <rect class="post" x="20" y="20" width="420" height="52" rx="7"/>
+        <text class="label" x="36" y="40" style="font-size:11px">dvdjsph &middot; post 1</text>
+        <text class="body" x="36" y="58" style="font-size:9.75px">&ldquo;&hellip;problems, possible explanations, proposed responses&hellip;&rdquo;</text>
+        <rect class="post" x="20" y="86" width="420" height="52" rx="7"/>
+        <text class="label" x="36" y="106" style="font-size:11px">RobertBunge &middot; post 6</text>
+        <text class="body" x="36" y="124" style="font-size:9.75px">&ldquo;no unified forum &lsquo;goal&rsquo; that applies equally&hellip;&rdquo;</text>
+        <rect class="post" x="20" y="152" width="420" height="52" rx="7"/>
+        <text class="label" x="36" y="172" style="font-size:11px">Asimong &middot; post 7</text>
+        <text class="body" x="36" y="190" style="font-size:9.75px">&ldquo;it&rsquo;s in the small tents that action is formulated&hellip;&rdquo;</text>
+        <rect class="post" x="20" y="218" width="420" height="52" rx="7"/>
+        <text class="label" x="36" y="238" style="font-size:11px">Asimong &middot; post 8</text>
+        <text class="body" x="36" y="256" style="font-size:9.75px">&ldquo;mutual respect, with no expectation of coherence&rdquo;</text>
+        <text class="kind" x="20" y="296">AND SIXTEEN MORE</text>
+      </g>
+
+      <g class="p" data-from="3">
+        <g stroke="#b2622d" stroke-width="1" stroke-dasharray="3 4" fill="none" opacity="0.75">
+          <path d="M440 46 C 620 46, 660 61, 830 61"/>
+          <path d="M440 112 C 620 112, 660 61, 830 61"/>
+          <path d="M440 178 C 620 178, 660 201, 830 201"/>
+          <path d="M440 244 C 620 244, 660 131, 830 131"/>
+        </g>
+      </g>
+
+      <g class="p" data-from="2">
+        <text class="ann brace" x="830" y="34">THE TREE</text>
+        <g class="n n--outcome">
+          <rect x="830" y="44" width="340" height="34" rx="2"/><path class="edge" d="M830 44 V78"/>
+          <text class="st xs" x="844" y="65">&#9678; the goal</text>
+        </g>
+        <g class="l l--quiet"><path d="M912 114 V96 H1088 V114 M1000 96 V78"/></g>
+        <g class="n n--outcome"><rect x="830" y="114" width="164" height="34" rx="2"/><path class="edge" d="M830 114 V148"/><text class="st xs" x="842" y="135">&#9678; 1 &hellip; 4</text></g>
+        <g class="n n--outcome"><rect x="1006" y="114" width="164" height="34" rx="2"/><path class="edge" d="M1006 114 V148"/><text class="st xs" x="1018" y="135">&#9678; 5 &hellip; 8</text></g>
+        <g class="l l--quiet"><path d="M900 184 V166 H912 V148"/></g>
+        <g class="n n--outcome"><rect x="830" y="184" width="340" height="34" rx="2"/><path class="edge" d="M830 184 V218"/><text class="st xs" x="844" y="205">&#9678; 4.2.1 &mdash; and 34 more claims below</text></g>
+        <text class="ann count" x="830" y="244" style="font-size:10px;fill:#6e6559">43 claims, each at an address</text>
+      </g>
+      <text class="ann p" data-from="3" x="440" y="322">The reading happens later, somewhere else, by something whose whole job is the filing.</text>
+    </svg>
+  </div>
+  <div class="legend">
+    <span><i class="mach"></i> a forum &mdash; not reasoning</span>
+    <span><i class="prop"></i> a proposed connection, not yet a connection</span>
+    <span><i class="held"></i> what the commons currently holds</span>
+  </div>
+
+  <div class="note">
+    <h4>Structure recovered afterwards</h4>
+    <p>The lines are <b>dashed and accent-coloured</b>, and that is not decoration: nothing has been connected yet. These are proposals about where things might go.</p>
+  </div>
+</section>
+
+<section class="slide draw" data-act="4 · the move" data-title="Demo B — watch it read a thread" data-steps="7">
+  <div style="flex:0 0 auto;display:flex;align-items:baseline;gap:1.2rem;flex-wrap:wrap">
+    <p class="eyebrow" style="margin:0">Demo B &middot; pre-baked, narrated live</p>
+    <h3 style="color:var(--muted)">A real forum thread &mdash; <i>Problems and Possible Responses Within Our Influence</i></h3>
+  </div>
+  <!--
+    ══ THE RECONSTRUCTION, TWO OF TWO ══
+    Source → proposal → target, left to right, which is also space-implies-time:
+    the filing happens afterwards, to the right of the conversation.
+
+    The figure here is the CARDS. The thread is quiet texture in the structure
+    hue; the tree is quiet tiles. Only the card under discussion is ringed. If
+    two things resolved at once the slide would be asserting a tie.
+
+    Every quoted span is verbatim and continuous — shortened only by taking a
+    shorter run, never by rewording and never by stitching two phrases
+    together. The strings are checked against fixtures/talk/forum-thread-878.md
+    by tests/unit/talk.test.ts, because misquoting a participant on a slide
+    about faithful representation would refute the talk on the projector.
+  -->
+  <div class="sheet">
+    <svg viewBox="0 0 1200 600" aria-label="A forum thread on the left, four proposed placement cards in the middle, and the tree of change on the right.">
+      <!-- ── The thread. Quiet. Not reasoning. ── -->
+      <g class="e p" data-from="1">
+        <text class="kind" x="0" y="16">FORUM THREAD &middot; 20 POSTS &middot; 26&ndash;31 AUG 2026</text>
+        <path class="rule" d="M0 26 H352"/>
+        <rect class="post" x="0" y="38" width="352" height="98" rx="7"/>
+        <text class="label" x="14" y="58">dvdjsph &middot; post 1</text>
+        <text class="body" x="14" y="76" style="font-size:9.75px"><tspan x="14">&ldquo;The central obstacle is not a shortage of ideas.</tspan><tspan x="14" dy="13">It is the conversion of radical pluralistic</tspan><tspan x="14" dy="13">sense-making into coordinated, credible and</tspan><tspan x="14" dy="13">cumulative action.&rdquo;</tspan></text>
+        <text class="kind" x="14" y="130" style="font-size:8.5px">QUOTING GPT 5.6</text>
+
+        <rect class="post" x="0" y="146" width="352" height="86" rx="7"/>
+        <text class="label" x="14" y="166">RobertBunge &middot; post 6</text>
+        <text class="body" x="14" y="184" style="font-size:9.75px"><tspan x="14">&ldquo;Depends quite a bit on who &lsquo;we&rsquo; are and how</tspan><tspan x="14" dy="13">&lsquo;we&rsquo; are situated. &hellip; Note there is no unified</tspan><tspan x="14" dy="13">forum &lsquo;goal&rsquo; that applies equally to each forum</tspan><tspan x="14" dy="13">participant.&rdquo;</tspan></text>
+
+        <rect class="post" x="0" y="242" width="352" height="130" rx="7"/>
+        <text class="label" x="14" y="262">Asimong &middot; posts 7&ndash;8</text>
+        <text class="body" x="14" y="280" style="font-size:9.75px"><tspan x="14">&ldquo;I agree that these are necessary for acting</tspan><tspan x="14" dy="13">together; what I&rsquo;m questioning is whether they</tspan><tspan x="14" dy="13">are sufficient. &hellip; It&rsquo;s in the small tents that</tspan><tspan x="14" dy="13">action is formulated, encouraged, and brought</tspan><tspan x="14" dy="13">into reality. &hellip; what we need is mutual respect,</tspan><tspan x="14" dy="13">with no expectation of coherence.&rdquo;</tspan></text>
+
+        <rect class="post" x="0" y="382" width="352" height="86" rx="7"/>
+        <text class="label" x="14" y="402">glennr86 &middot; post 19</text>
+        <text class="body" x="14" y="420" style="font-size:9.75px"><tspan x="14">&ldquo;I&rsquo;m hesitant to say anything here. it&rsquo;s a long</tspan><tspan x="14" dy="13">thread and admit I haven&rsquo;t read the whole thing</tspan><tspan x="14" dy="13">(and not planning to), it&rsquo;s a bit overwhelming.&rdquo;</tspan></text>
+
+        <path class="rule" d="M0 486 H352"/>
+        <text class="kind" x="0" y="504">FIFTEEN FURTHER POSTS NOT SHOWN</text>
+        <text class="body" x="0" y="526" style="font-size:10px;fill:#6e6559"><tspan x="0">Nobody in this thread did anything</tspan><tspan x="0" dy="14">differently. Nobody was asked to.</tspan></text>
+      </g>
+
+      <!-- ── The proposals. The figure. ── -->
+      <text class="ann brace p" data-from="2" x="404" y="16">WHAT THE READER PROPOSES &mdash; NOTHING MERGED</text>
+
+      <g class="n n--proposed p" data-from="2" data-hold="2" data-hold-until="3">
+        <rect x="404" y="28" width="374" height="122" rx="2"/><path class="edge" d="M404 28 V150"/>
+        <rect class="ring" x="399" y="23" width="384" height="132" rx="5"/>
+        <text class="role" x="420" y="50">&#9673; SUPPORTS 4.2.1</text>
+        <text class="st sm" x="420" y="72" style="font-style:italic"><tspan x="420">&ldquo;It&rsquo;s in the small tents that action is</tspan><tspan x="420" dy="15">formulated, encouraged, and brought</tspan><tspan x="420" dy="15">into reality.&rdquo;</tspan></text>
+        <text class="att" x="420" y="134">&mdash; Asimong &middot; post 7 &middot; opens the post</text>
+      </g>
+
+      <g class="n n--proposed p" data-from="3" data-hold="3" data-hold-until="4">
+        <rect x="404" y="164" width="374" height="122" rx="2"/><path class="edge" d="M404 164 V286"/>
+        <rect class="ring" x="399" y="159" width="384" height="132" rx="5"/>
+        <text class="role" x="420" y="186">&#8644; CHALLENGES THE LINK 6 &rarr; GOAL</text>
+        <text class="st sm" x="420" y="208" style="font-style:italic"><tspan x="420">&ldquo;what we need is mutual respect, with</tspan><tspan x="420" dy="15">no expectation of coherence&rdquo;</tspan></text>
+        <text class="att" x="420" y="252">&mdash; Asimong &middot; post 8 &middot; opens the post</text>
+        <text class="att" x="420" y="270" style="fill:oklch(0.38 0.13 358)">defeats the assumption on that link</text>
+      </g>
+
+      <g class="n n--proposed p" data-from="4" data-hold="4">
+        <rect x="404" y="300" width="374" height="106" rx="2"/><path class="edge" d="M404 300 V406"/>
+        <rect class="ring" x="399" y="295" width="384" height="116" rx="5"/>
+        <text class="role" x="420" y="322">&#9650; CHALLENGES THE GOAL ITSELF</text>
+        <text class="st sm" x="420" y="344" style="font-style:italic"><tspan x="420">&ldquo;there is no unified forum &lsquo;goal&rsquo; that</tspan><tspan x="420" dy="15">applies equally to each forum participant&rdquo;</tspan></text>
+        <text class="att" x="420" y="390">&mdash; Robert Bunge &middot; post 6 &middot; opens the post</text>
+      </g>
+
+      <g class="n n--proposed p" data-from="5" data-hold="5" data-hold-until="6">
+        <rect x="404" y="420" width="374" height="122" rx="2"/><path class="edge" d="M404 420 V542"/>
+        <rect class="ring" x="399" y="415" width="384" height="132" rx="5"/>
+        <text class="role" x="420" y="442">&#9650; NOWHERE TO PUT IT</text>
+        <text class="st sm" x="420" y="464" style="font-style:italic"><tspan x="420">&ldquo;it&rsquo;s a long thread and admit I haven&rsquo;t</tspan><tspan x="420" dy="15">read the whole thing (and not planning</tspan><tspan x="420" dy="15">to), it&rsquo;s a bit overwhelming&rdquo;</tspan></text>
+        <text class="att" x="420" y="526">&mdash; glennr86 &middot; post 19 &middot; opens the post</text>
+      </g>
+
+      <text class="ann p" data-from="6" x="404" y="566" style="fill:oklch(0.38 0.13 358)">The tree cannot place it. It is the best evidence in the thread that the diagnosis is right.</text>
+      <text class="ann count p" data-from="7" x="404" y="586">20 posts read &middot; 4 placements proposed &middot; 0 merged &middot; every one links back to its exact post</text>
+
+      <!-- ── The targets. One rank, in a column. Indentation is the parent relation. ── -->
+      <text class="ann brace p" data-from="1" x="1196" y="16" text-anchor="end">THE TREE OF CHANGE</text>
+      <g class="n n--outcome p" data-from="1" data-hold="4" data-hold-until="5">
+        <rect x="852" y="28" width="344" height="46" rx="2"/><path class="edge" d="M852 28 V74"/>
+        <rect class="ring" x="847" y="23" width="354" height="56" rx="5"/>
+        <text class="role" x="866" y="48">&#9678; GOAL</text>
+        <text class="st xs" x="866" y="66">co-initiate a Second Renaissance</text>
+      </g>
+      <g class="n n--outcome p" data-from="1">
+        <rect x="852" y="92" width="344" height="34" rx="2"/><path class="edge" d="M852 92 V126"/>
+        <rect class="ring" x="847" y="87" width="354" height="44" rx="5"/>
+        <text class="role" x="866" y="114">&#9678; 1</text>
+        <text class="st xs" x="906" y="114">Shared diagnosis of civilizational crisis</text>
+      </g>
+      <g class="n n--outcome p" data-from="1">
+        <rect x="852" y="134" width="344" height="34" rx="2"/><path class="edge" d="M852 134 V168"/>
+        <rect class="ring" x="847" y="129" width="354" height="44" rx="5"/>
+        <text class="role" x="866" y="156">&#9678; 2</text>
+        <text class="st xs" x="906" y="156">Compelling vision of the next paradigm</text>
+      </g>
+      <g class="n n--outcome p" data-from="1">
+        <rect x="852" y="176" width="344" height="34" rx="2"/><path class="edge" d="M852 176 V210"/>
+        <rect class="ring" x="847" y="171" width="354" height="44" rx="5"/>
+        <text class="role" x="866" y="198">&#9678; 3</text>
+        <text class="st xs" x="906" y="198">Embodied practices and inner development</text>
+      </g>
+      <g class="n n--outcome p" data-from="1" data-hold="2" data-hold-until="3">
+        <rect x="852" y="218" width="344" height="34" rx="2"/><path class="edge" d="M852 218 V252"/>
+        <rect class="ring" x="847" y="213" width="354" height="44" rx="5"/>
+        <text class="role" x="866" y="240">&#9678; 4</text>
+        <text class="st xs" x="906" y="240">Pockets of coherent new culture</text>
+      </g>
+      <g class="n n--outcome p" data-from="1" data-hold="2" data-hold-until="3">
+        <rect x="896" y="260" width="300" height="34" rx="2"/><path class="edge" d="M896 260 V294"/>
+        <rect class="ring" x="891" y="255" width="310" height="44" rx="5"/>
+        <text class="role" x="910" y="282">&#9678; 4.2.1</text>
+        <text class="st xs" x="972" y="282">Action is formulated and brought into reality inside these places</text>
+      </g>
+      <g class="n n--outcome p" data-from="1">
+        <rect x="852" y="302" width="344" height="34" rx="2"/><path class="edge" d="M852 302 V336"/>
+        <rect class="ring" x="847" y="297" width="354" height="44" rx="5"/>
+        <text class="role" x="866" y="324">&#9678; 5</text>
+        <text class="st xs" x="906" y="324">Sangha / wider community of practice</text>
+      </g>
+      <g class="n n--outcome p" data-from="1" data-hold="3" data-hold-until="4">
+        <rect x="852" y="344" width="344" height="34" rx="2"/><path class="edge" d="M852 344 V378"/>
+        <rect class="ring" x="847" y="339" width="354" height="44" rx="5"/>
+        <text class="role" x="866" y="366">&#9678; 6</text>
+        <text class="st xs" x="906" y="366">Movement coherence and cultural transmission</text>
+      </g>
+      <g class="n n--outcome p" data-from="1">
+        <rect x="852" y="386" width="344" height="34" rx="2"/><path class="edge" d="M852 386 V420"/>
+        <rect class="ring" x="847" y="381" width="354" height="44" rx="5"/>
+        <text class="role" x="866" y="408">&#9678; 7</text>
+        <text class="st xs" x="906" y="408">New institutions and regenerative social architecture</text>
+      </g>
+      <g class="n n--outcome p" data-from="1">
+        <rect x="852" y="428" width="344" height="34" rx="2"/><path class="edge" d="M852 428 V462"/>
+        <rect class="ring" x="847" y="423" width="354" height="44" rx="5"/>
+        <text class="role" x="866" y="450">&#9678; 8</text>
+        <text class="st xs" x="906" y="450">Wise transition through collapse and renewal</text>
+      </g>
+      <g class="l l--quiet p" data-from="1"><path d="M836 74 V445 M836 109 H852 M836 151 H852 M836 193 H852 M836 235 H852 M880 277 H896 M836 319 H852 M836 361 H852 M836 403 H852 M836 445 H852 M880 252 V277"/></g>
+
+      <!-- The assumption from Demo A, still standing here — until post 8. -->
+      <g class="a p" data-from="1" data-refute="3">
+        <rect x="820" y="486" width="376" height="52" rx="2"/>
+        <text class="kind" x="834" y="504">ASSUMPTION ON THE LINK 6 &rarr; GOAL</text>
+        <text class="st" x="834" y="524">Shared action requires a shared worldview.</text>
+        <path class="strike" d="M828 520 H1184"/>
+      </g>
+
+      <text class="ann p" data-from="1" x="1196" y="566" text-anchor="end" style="fill:#c0b6a5">nothing on this side changes until somebody merges it</text>
+    </svg>
+  </div>
+  <div class="legend">
+    <span><i class="held"></i> what the commons holds</span>
+    <span><i class="prop"></i> proposed, not yet relied upon</span>
+    <span><i class="wrong"></i> in the way, or defeated</span>
+    <span><i class="mach"></i> not reasoning: the forum</span>
+    <span><em>&#9673; observed &middot; &#8644; a collision &middot; &#9650; in the way</em></span>
+  </div>
+
+  <div class="note">
+    <h4>Demo B &mdash; watch it read a thread</h4>
+    <p>&ldquo;Nobody in that thread did anything differently. The structure was recovered afterwards, by something whose whole job is to do the filing.&rdquo;</p>
+    <p><b>Card 1 (click 2)</b> &mdash; the easy one. Asimong&rsquo;s small-tents sentence supports the leaf we looked at in Demo A. Point out that the target is <i>4.2.1</i>, the same address from ninety seconds ago.</p>
+    <p><b>Card 2 (click 3)</b> &mdash; the good one. He is not challenging a box, he is challenging a <b>link</b>, and specifically the assumption hanging off it. Watch the assumption strike through on the right as the card lands. &ldquo;You can disagree with a link without touching either box&rdquo; stops being an abstraction here.</p>
+    <p><b>Card 3 (click 4)</b> &mdash; Robert challenges the goal itself. Note that it is <b>not struck through</b>: it is a live disagreement, not a settled defeat, and the record keeps it that way.</p>
+    <p><b>Card 4 (click 5)</b> &mdash; the honest one. The tree cannot place glennr86&rsquo;s post at all. <b>Click 6 says why that matters</b>: it is the best evidence in the thread that the diagnosis is right. Twenty posts of good thinking produced a thread the twentieth person could not enter.</p>
+    <p><b>Click 7</b> &mdash; the count. Four proposals, nothing merged. Say &ldquo;nothing merged&rdquo; out loud; the next slide is about who does that.</p>
+    <p class="ask">Consent: check with Asimong, Robert Bunge and glennr86 before the talk. Posts 6, 7, 8 and 19 are public, but being quoted on a slide is different, and the whole argument depends on people&rsquo;s contributions being handled well.</p>
+  </div>
+</section>
+
+<section class="slide draw" data-act="4 · the move" data-title="Who decides" data-steps="4">
+  <ul class="lines" style="flex:0 0 auto">
+    <li class="p" data-from="1">A rotating handful of people decide what merges.</li>
+    <li class="p soft" data-from="2">Not one person. Not the machine alone.</li>
+  </ul>
+  <!--
+    A commons boundary: a jurisdiction, not a container. Solid, because a
+    boundary is not provisional. The proposals sit outside it and are dashed;
+    the tree sits inside it. The gate between them is where people are.
+  -->
+  <div class="sheet">
+    <svg viewBox="0 0 1200 340" aria-label="Proposals outside a governed boundary, a gate of three people and one model, and the tree inside the boundary.">
+      <g class="b b--proposal p" data-from="1">
+        <rect x="20" y="70" width="270" height="180" rx="2"/>
+        <rect class="plate" x="32" y="62" width="106" height="14"/>
+        <text class="blabel" x="40" y="73">PROPOSALS</text>
+      </g>
+      <g class="n n--proposed p" data-from="1"><rect x="40" y="94" width="230" height="34" rx="2"/><path class="edge" d="M40 94 V128"/><text class="st xs" x="54" y="115" style="fill:#8c491a">supports 4.2.1</text></g>
+      <g class="n n--proposed p" data-from="1"><rect x="40" y="138" width="230" height="34" rx="2"/><path class="edge" d="M40 138 V172"/><text class="st xs" x="54" y="159" style="fill:#8c491a">challenges the link 6 &rarr; goal</text></g>
+      <g class="n n--proposed p" data-from="1"><rect x="40" y="182" width="230" height="34" rx="2"/><path class="edge" d="M40 182 V216"/><text class="st xs" x="54" y="203" style="fill:#8c491a">challenges the goal</text></g>
+      <text class="ann brace p" data-from="1" x="40" y="238">4 PROPOSED &middot; 0 MERGED</text>
+
+      <!-- The gate. People, and one model that is plainly not a person. -->
+      <g class="p" data-from="2">
+        <path d="M290 160 H400" stroke="#b2622d" stroke-width="1.2" stroke-dasharray="4 4" fill="none"/>
+        <text class="ann brace" x="470" y="76" text-anchor="middle">WHO DECIDES</text>
+        <g stroke="oklch(0.53 0.085 130)" stroke-width="1.4" fill="none">
+          <circle cx="420" cy="112" r="13"/><path d="M406 138 a14 14 0 0 1 28 0"/>
+          <circle cx="470" cy="112" r="13"/><path d="M456 138 a14 14 0 0 1 28 0"/>
+          <circle cx="520" cy="112" r="13"/><path d="M506 138 a14 14 0 0 1 28 0"/>
+        </g>
+        <text class="ann" x="470" y="160" text-anchor="middle" style="font-size:10px">three, rotating</text>
+        <g class="e">
+          <rect x="440" y="192" width="60" height="34" rx="2" fill="none" stroke="#645c50" stroke-width="1" stroke-dasharray="none"/>
+          <text class="kind" x="470" y="206" text-anchor="middle" style="font-size:8px">MODEL</text>
+          <text class="label" x="470" y="220" text-anchor="middle" style="font-size:10px">drafts</text>
+        </g>
+        <text class="ann" x="470" y="250" text-anchor="middle" style="font-size:10px;fill:#6e6559">proposes, never accepts</text>
+        <path d="M540 160 H650" stroke="oklch(0.53 0.085 130)" stroke-width="1.4" fill="none"/>
+        <path d="M650 160 L638 154 L638 166 Z" fill="oklch(0.53 0.085 130)"/>
+      </g>
+
+      <g class="b b--commons p" data-from="3">
+        <rect x="670" y="40" width="510" height="250" rx="2"/>
+        <rect class="plate" x="690" y="32" width="240" height="14"/>
+        <text class="blabel" x="698" y="43">GOVERNED HERE &mdash; THE COMMONS</text>
+      </g>
+      <g class="p" data-from="3">
+        <g class="n n--outcome"><rect x="700" y="70" width="450" height="34" rx="2"/><path class="edge" d="M700 70 V104"/><text class="st xs" x="714" y="91">&#9678; the goal</text></g>
+        <g class="l l--quiet"><path d="M790 130 V116 H1060 V130"/><path d="M925 116 V104"/></g>
+        <g class="n n--outcome"><rect x="700" y="130" width="180" height="30" rx="2"/><path class="edge" d="M700 130 V160"/><text class="st xs" x="714" y="149">&#9678; 1 &hellip; 4</text></g>
+        <g class="n n--outcome"><rect x="970" y="130" width="180" height="30" rx="2"/><path class="edge" d="M970 130 V160"/><text class="st xs" x="984" y="149">&#9678; 5 &hellip; 8</text></g>
+        <g class="n n--outcome is-settled"><rect x="700" y="186" width="450" height="34" rx="2"/><path class="edge" d="M700 186 V220"/><text class="st xs" x="714" y="207">&#9678; 4.2.1 &mdash; and, once merged, Asimong&rsquo;s support for it</text></g>
+        <text class="ann" x="700" y="252" style="font-size:10px">A merged proposal keeps its author, its wording and the post it came from.</text>
+        <text class="ann" x="700" y="270" style="font-size:10px;fill:#6e6559">An unmerged one stays a proposal. It does not disappear.</text>
+      </g>
+      <text class="ann p" data-from="4" x="600" y="326" text-anchor="middle">One party quietly deciding what the map says is how you get a map nobody trusts.</text>
+    </svg>
+  </div>
+  <div class="legend">
+    <span><i class="prop"></i> proposed &mdash; outside the boundary</span>
+    <span><i class="held"></i> held &mdash; inside it, and the boundary is solid because a jurisdiction is not provisional</span>
+    <span><i class="mach"></i> the model &mdash; drafts, never accepts</span>
+  </div>
+
+  <div class="note">
+    <h4>Who decides</h4>
+    <p>&ldquo;Not one person, and not the machine on its own, because one party quietly deciding what the map says is how you get a map nobody trusts.&rdquo;</p>
+    <p>The model is drawn in the structure hue and has none of the reasoning colours. <b>That is enforced, not stylistic</b> &mdash; the machine and the reasoning are different objects, and an AI can help a team think without getting to decide what the team believes.</p>
+    <p>If someone asks about capture or governance, this is the slide to stay on.</p>
+  </div>
+</section>
+
+<section class="slide draw" data-act="4 · the move" data-title="The cost of contributing" data-steps="3">
+  <ul class="lines" style="flex:0 0 auto">
+    <li class="p" data-from="1">Cost of contributing: one sentence, where you were already saying it.</li>
+    <li class="p soft" data-from="2">The filing is someone&rsquo;s job now. Not the contributor&rsquo;s.</li>
+  </ul>
+  <div class="sheet">
+    <svg viewBox="0 0 1200 300" aria-label="A cost bar that drops from high to low: learn the schema, choose a node, phrase it as a claim, all removed, leaving 'write the sentence'.">
+      <g class="ann axis"><path d="M60 250 H1140" stroke="#c0b6a5" stroke-width="1" fill="none"/></g>
+      <g class="p" data-from="1">
+        <rect x="120" y="40" width="150" height="210" fill="oklch(0.95 0.03 358)" stroke="oklch(0.47 0.14 358)" stroke-width="1"/>
+        <text class="ann" x="195" y="70" text-anchor="middle" style="font-size:10.5px"><tspan x="195">learn the schema</tspan><tspan x="195" dy="26">find the right node</tspan><tspan x="195" dy="26">phrase it as a claim</tspan><tspan x="195" dy="26">get the relation right</tspan><tspan x="195" dy="26">attach the evidence</tspan><tspan x="195" dy="26">keep it up next week</tspan></text>
+        <text class="ann brace" x="195" y="272" text-anchor="middle">IF THE CONTRIBUTOR FILES</text>
+      </g>
+      <path class="p" data-from="2" d="M300 145 H420" stroke="#c0b6a5" stroke-width="1.2" fill="none"/>
+      <path class="p" data-from="2" d="M420 145 L406 139 L406 151 Z" fill="#c0b6a5"/>
+      <g class="p" data-from="2">
+        <rect x="450" y="216" width="150" height="34" fill="oklch(0.955 0.025 130)" stroke="oklch(0.53 0.085 130)" stroke-width="1"/>
+        <text class="ann" x="525" y="238" text-anchor="middle" style="font-size:10.5px">write the sentence</text>
+        <text class="ann brace" x="525" y="272" text-anchor="middle">IF SOMEBODY ELSE FILES</text>
+      </g>
+      <text class="ann p" data-from="3" x="660" y="150" style="font-size:13px"><tspan x="660">The filing did not go away.</tspan><tspan x="660" dy="22">It moved to whoever&rsquo;s job it is,</tspan><tspan x="660" dy="22">which is the only place it was</tspan><tspan x="660" dy="22">ever going to survive.</tspan></text>
+    </svg>
+  </div>
+  <div class="legend">
+    <span><i class="wrong"></i> what stops people contributing</span>
+    <span><i class="held"></i> what is left when the filing moves</span>
+  </div>
+
+  <div class="note">
+    <h4>The cost of contributing</h4>
+    <p>Six things on the tall bar, and every one of them is a real reason somebody has already not contributed to something.</p>
+    <p>Be careful not to overclaim: <b>the filing did not vanish</b>. It moved.</p>
+  </div>
+</section>
+
+<section class="slide draw" data-act="4 · the move" data-title="Why now" data-steps="3">
+  <ul class="lines" style="flex:0 0 auto">
+    <li class="p" data-from="1">Two years ago this ended at &ldquo;too much hand work.&rdquo;</li>
+    <li class="p soft" data-from="2">AI is what makes the filing affordable.</li>
+  </ul>
+  <div class="sheet p" data-from="3" style="flex:0 0 auto;height:clamp(6rem,18vh,11rem)">
+    <svg viewBox="0 0 1200 190" aria-label="Before and after: twenty posts and one volunteer's evening, against twenty posts and four proposals for review.">
+      <g class="e">
+        <text class="kind" x="60" y="20">2024</text>
+        <path class="rule" d="M60 30 H520"/>
+        <text class="body" x="60" y="54" style="font-size:11px"><tspan x="60">20 posts &rarr; one volunteer&rsquo;s evening &rarr; abandoned by week three</tspan></text>
+        <text class="kind" x="660" y="20">NOW</text>
+        <path class="rule" d="M660 30 H1140"/>
+        <text class="body" x="660" y="54" style="font-size:11px"><tspan x="660">20 posts &rarr; four proposals &rarr; ten minutes of somebody&rsquo;s judgment</tspan></text>
+      </g>
+      <text class="ann" x="60" y="116" style="font-size:11px;fill:#6e6559">&ldquo;Lovely. Far too much hand work. Nobody will keep it up.&rdquo;</text>
+      <text class="ann" x="660" y="116" style="font-size:11px;fill:#8c491a">The judgment is still the scarce thing. That part does not get cheaper.</text>
+    </svg>
+  </div>
+
+  <div class="note">
+    <h4>Why now</h4>
+    <p>Matter-of-fact and small. Do not let this become a slide about AI.</p>
+    <p>The right-hand note is the honest half: what got cheap is the filing. <b>Judgment did not.</b></p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     5 · YOU TRY IT (DEMO C)
+     ═══════════════════════════════════════════════════════════════════════ -->
+
+<section class="slide divider" data-act="5 · you try it" data-title="§ 5 · You try it (Demo C)">
+  <p class="num">5</p>
+  <h1>You try it</h1>
+  <p class="lede">The room writes. One or two taken through fit &rarr; gap or disagreement &rarr; so what. Then the reverse view.</p>
+</section>
+
+<section class="slide" data-act="5 · you try it" data-title="Demo C — write">
+  <div class="write">
+    <div>
+      <p class="eyebrow">Your turn &middot; ~1,000 characters</p>
+      <h1 style="max-width:26ch">Something important the Second Renaissance may be missing, underestimating, or getting wrong.</h1>
+      <p class="lede" style="max-width:38ch">Or something we could act on.<br>
+        <b style="font-weight:500;color:var(--accent-deep)">Your words. Don&rsquo;t tidy them.</b></p>
+      <p class="timer" id="timer"><b>4:00</b><span>press T to start &middot; T again to pause</span></p>
+    </div>
+    <div>
+      <div class="qr">
+        <!-- Placeholder module grid. Drop the real code in once the form exists. -->
+        <svg viewBox="0 0 100 100" aria-label="Placeholder for the contribution form's QR code.">
+          <g fill="#dcd3c4">
+            <rect x="2" y="2" width="24" height="24"/><rect x="74" y="2" width="24" height="24"/><rect x="2" y="74" width="24" height="24"/>
+          </g>
+          <g fill="#fdf6ea">
+            <rect x="8" y="8" width="12" height="12"/><rect x="80" y="8" width="12" height="12"/><rect x="8" y="80" width="12" height="12"/>
+          </g>
+          <g fill="#e5dccd">
+            <rect x="34" y="6" width="6" height="6"/><rect x="46" y="6" width="6" height="6"/><rect x="58" y="18" width="6" height="6"/>
+            <rect x="34" y="30" width="6" height="6"/><rect x="58" y="42" width="6" height="6"/><rect x="70" y="34" width="6" height="6"/>
+            <rect x="6" y="34" width="6" height="6"/><rect x="18" y="46" width="6" height="6"/><rect x="6" y="58" width="6" height="6"/>
+            <rect x="34" y="58" width="6" height="6"/><rect x="46" y="70" width="6" height="6"/><rect x="82" y="46" width="6" height="6"/>
+            <rect x="70" y="58" width="6" height="6"/><rect x="82" y="70" width="6" height="6"/><rect x="34" y="82" width="6" height="6"/>
+            <rect x="46" y="46" width="6" height="6"/><rect x="58" y="82" width="6" height="6"/><rect x="70" y="82" width="6" height="6"/>
+          </g>
+        </svg>
+      </div>
+      <p class="qrnote">QR &mdash; drop the form&rsquo;s code here</p>
+      <p class="link" style="display:block;margin-top:1rem;text-align:center">rc.li/2r</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <h4>Demo C &mdash; write</h4>
+    <p>Leave this up for three or four minutes of genuine quiet. Press <b>T</b> to start the timer. Do not fill the silence.</p>
+    <p><b>Step 2, before anything is shown:</b> &ldquo;What you are about to watch is a prototype. The trees are provisional and wrong in places, the reader is early, and the rules for what merges are about three sentences long and have never been tested by anyone genuinely annoyed. That is what today is for.&rdquo; The caveat lands here, not in the close.</p>
+    <p class="ask">Kit: shared form, short link, QR, screen operator. Have the pre-baked mock-up ready and switch to it without ceremony if the live run stalls.</p>
+  </div>
+</section>
+
+<section class="slide" data-act="5 · you try it" data-title="The three questions" data-steps="4">
+  <p class="eyebrow">Always in this order</p>
+  <ol class="qs">
+    <li data-on="1"><b>1</b> Where does it fit?</li>
+    <li data-on="2"><b>2</b> Gap or disagreement?</li>
+    <li data-on="3"><b>3</b> So what, and who owns it?</li>
+  </ol>
+  <p class="p aside" data-from="4">
+    Question one is the easy part, and it is the only part a machine does well.
+    Two and three are the group&rsquo;s work.
+  </p>
+
+  <div class="note">
+    <h4>The three questions</h4>
+    <p>This slide stays up while you walk one or two contributions through. Each number lights as you reach it.</p>
+    <p><b>1 &mdash; where does it fit?</b> The tree proposes a location. Easy part.<br>
+       <b>2 &mdash; gap or disagreement?</b> Is it under a condition nobody is holding, or in tension with a link? Now it is doing work on the group&rsquo;s reasoning.<br>
+       <b>3 &mdash; so what?</b> If the room broadly agrees: what is the next action, and who might own it?</p>
+    <p>If the placement is weak, say so, place it by hand, and move on. <b>A wrong first guess that a person corrects in five seconds is still the system working.</b></p>
+  </div>
+</section>
+
+<section class="slide draw" data-act="5 · you try it" data-title="The reverse view" data-steps="4">
+  <h2 class="p" data-from="1" style="flex:0 0 auto">The same map tells everyone which condition nobody is currently holding.</h2>
+  <!--
+    The same eight tiles, same geometry as Demo A, now carrying counts. The
+    unheld one is marked by ABSENCE — everything around it fills up and it does
+    not. Arnheim: a balanced pattern segregates any departure as an intruder,
+    so disequilibrium is expressed by equilibrium.
+
+    The alarm gets its boundary drawn in words and with a count, and the counts
+    get their origin, because a number that arrives without its provenance is
+    exactly the myth this whole architecture exists to refuse.
+  -->
+  <div class="sheet">
+    <svg viewBox="0 0 1200 420" aria-label="The eight conditions with the number of claims attached to each. Condition 8 has none.">
+      <g class="n n--outcome p" data-from="1"><rect x="320" y="10" width="560" height="40" rx="2"/><path class="edge" d="M320 10 V50"/><text class="role" x="336" y="28">&#9678; GOAL</text><text class="st xs" x="336" y="44">co-initiate a Second Renaissance</text></g>
+      <g class="l l--quiet p" data-from="1"><path d="M89 110 V80 H1111 V110"/><path d="M235 110 V80 M381 110 V80 M527 110 V80 M673 110 V80 M819 110 V80 M965 110 V80"/><path d="M600 80 V50"/></g>
+
+      <g class="n n--outcome p" data-from="1"><rect x="21" y="110" width="136" height="96" rx="2"/><path class="edge" d="M21 110 V206"/><text class="role" x="33" y="130">&#9678; 1</text><text class="st xs" x="33" y="150"><tspan x="33">Shared diagnosis</tspan><tspan x="33" dy="12">of crisis</tspan></text></g>
+      <g class="n n--outcome p" data-from="1"><rect x="167" y="110" width="136" height="96" rx="2"/><path class="edge" d="M167 110 V206"/><text class="role" x="179" y="130">&#9678; 2</text><text class="st xs" x="179" y="150"><tspan x="179">Compelling vision</tspan><tspan x="179" dy="12">of the next paradigm</tspan></text></g>
+      <g class="n n--outcome p" data-from="1"><rect x="313" y="110" width="136" height="96" rx="2"/><path class="edge" d="M313 110 V206"/><text class="role" x="325" y="130">&#9678; 3</text><text class="st xs" x="325" y="150"><tspan x="325">Embodied practices,</tspan><tspan x="325" dy="12">inner development</tspan></text></g>
+      <g class="n n--outcome p" data-from="1"><rect x="459" y="110" width="136" height="96" rx="2"/><path class="edge" d="M459 110 V206"/><text class="role" x="471" y="130">&#9678; 4</text><text class="st xs" x="471" y="150"><tspan x="471">Pockets of coherent</tspan><tspan x="471" dy="12">new culture</tspan></text></g>
+      <g class="n n--outcome p" data-from="1"><rect x="605" y="110" width="136" height="96" rx="2"/><path class="edge" d="M605 110 V206"/><text class="role" x="617" y="130">&#9678; 5</text><text class="st xs" x="617" y="150"><tspan x="617">Sangha / community</tspan><tspan x="617" dy="12">of practice</tspan></text></g>
+      <g class="n n--outcome p" data-from="1"><rect x="751" y="110" width="136" height="96" rx="2"/><path class="edge" d="M751 110 V206"/><text class="role" x="763" y="130">&#9678; 6</text><text class="st xs" x="763" y="150"><tspan x="763">Movement coherence,</tspan><tspan x="763" dy="12">transmission</tspan></text></g>
+      <g class="n n--outcome p" data-from="1"><rect x="897" y="110" width="136" height="96" rx="2"/><path class="edge" d="M897 110 V206"/><text class="role" x="909" y="130">&#9678; 7</text><text class="st xs" x="909" y="150"><tspan x="909">New institutions,</tspan><tspan x="909" dy="12">social architecture</tspan></text></g>
+      <!-- Marked by absence, and by rust: a condition with nothing behind it is a thing going wrong. -->
+      <g class="n n--trouble p" data-from="1" data-hold="3"><rect x="1043" y="110" width="136" height="96" rx="2"/><path class="edge" d="M1043 110 V206"/><rect class="ring" x="1038" y="105" width="146" height="106" rx="5"/><text class="role" x="1055" y="130">&#9650; 8</text><text class="st xs" x="1055" y="150"><tspan x="1055">Wise transition</tspan><tspan x="1055" dy="12">through collapse</tspan><tspan x="1055" dy="12">and renewal</tspan></text></g>
+
+      <!-- Counts. Accent ticks, because each one is a newly attached claim. -->
+      <g class="p" data-from="2">
+        <g fill="#d67f48">
+          <rect x="33" y="222" width="4" height="14"/><rect x="41" y="222" width="4" height="14"/><rect x="49" y="222" width="4" height="14"/>
+          <rect x="179" y="222" width="4" height="14"/><rect x="187" y="222" width="4" height="14"/><rect x="195" y="222" width="4" height="14"/><rect x="203" y="222" width="4" height="14"/>
+          <rect x="325" y="222" width="4" height="14"/><rect x="333" y="222" width="4" height="14"/>
+          <rect x="471" y="222" width="4" height="14"/><rect x="479" y="222" width="4" height="14"/><rect x="487" y="222" width="4" height="14"/><rect x="495" y="222" width="4" height="14"/><rect x="503" y="222" width="4" height="14"/>
+          <rect x="617" y="222" width="4" height="14"/><rect x="625" y="222" width="4" height="14"/>
+          <rect x="763" y="222" width="4" height="14"/><rect x="771" y="222" width="4" height="14"/><rect x="779" y="222" width="4" height="14"/><rect x="787" y="222" width="4" height="14"/><rect x="795" y="222" width="4" height="14"/><rect x="803" y="222" width="4" height="14"/>
+          <rect x="909" y="222" width="4" height="14"/>
+        </g>
+        <g class="ann count" style="fill:#8c491a">
+          <text x="33" y="254">3 attached</text><text x="179" y="254">4 attached</text><text x="325" y="254">2 attached</text><text x="471" y="254">5 attached</text>
+          <text x="617" y="254">2 attached</text><text x="763" y="254">6 attached</text><text x="909" y="254">1 attached</text>
+        </g>
+      </g>
+      <g class="p" data-from="3">
+        <text class="ann count" x="1055" y="238" style="fill:oklch(0.38 0.13 358);font-size:13px;font-weight:700">0 attached</text>
+        <text class="ann" x="1055" y="258" style="fill:oklch(0.38 0.13 358)"><tspan x="1055">Nothing in this thread,</tspan><tspan x="1055" dy="14">and nothing in the corpus,</tspan><tspan x="1055" dy="14">currently attaches here.</tspan></text>
+      </g>
+      <text class="ann brace p" data-from="2" x="21" y="292">CLAIMS ATTACHED &mdash; COUNTED FROM THIS THREAD AND THE WRITTEN CORPUS, 31 AUG 2026</text>
+      <text class="ann p" data-from="4" x="21" y="342" style="font-size:13px">That is not a criticism of anyone. It is a fact about the map, and finding it took no extra work.</text>
+      <text class="ann p" data-from="4" x="21" y="368" style="fill:#6e6559">Nobody had to survey the movement. The counting is a side-effect of the filing already being done.</text>
+    </svg>
+  </div>
+  <div class="legend">
+    <span><i class="held"></i> a condition the commons holds</span>
+    <span><i class="prop"></i> each tick is one newly attached claim</span>
+    <span><i class="wrong"></i> nothing attached &mdash; a condition with nothing behind it is a thing going wrong</span>
+  </div>
+
+  <div class="note">
+    <h4>The reverse view</h4>
+    <p>&ldquo;The same structure that tells one person where their idea goes tells everyone which part of the goal nobody is holding.&rdquo;</p>
+    <p>Condition 8 is marked by <b>absence</b> as much as by colour: the seven around it fill up with ticks and it does not. Say the number out loud.</p>
+    <p>Then click 4, which is the important half: <b>this is not an accusation.</b> The redesign brief calls for competence at this moment, not alarm &mdash; and the boundary of the alarm is drawn in words and in a count.</p>
+    <p class="ask">Replace the counts with the real figures before the talk. They carry a date on the slide on purpose: a number that arrives without its origin is the exact failure mode this whole architecture exists to refuse.</p>
+  </div>
+</section>
+
+<section class="slide draw" data-act="5 · you try it" data-title="What just happened" data-steps="8">
+  <ul class="lines" style="flex:0 0 auto;max-width:60ch">
+    <li class="p" data-from="1">A paragraph of ordinary thinking &rarr; a specific claim, at a place, with a path to an action.</li>
+    <li class="p soft" data-from="7" style="font-family:var(--body);font-size:var(--t-body)">A long way past &ldquo;thanks for your feedback.&rdquo;</li>
+  </ul>
+  <!--
+    Horizontal, because the loop is a stable ongoing fact and not an emergency
+    (Bang 1). And distance on it is time: the gap between "proposal" and
+    "evidence" is doing the work a countdown badge would do worse.
+  -->
+  <div class="sheet">
+    <svg viewBox="0 0 1200 300" aria-label="A pipeline running left to right: contribution, claim at an address, gap or disagreement, proposal, action, evidence — and then an arrow looping back to the tree.">
+      <g stroke="#c0b6a5" stroke-width="1.2" fill="none">
+        <path class="p" data-from="2" d="M150 120 H196"/><path class="p" data-from="3" d="M346 120 H392"/>
+        <path class="p" data-from="4" d="M542 120 H588"/><path class="p" data-from="5" d="M738 120 H784"/>
+        <path class="p" data-from="6" d="M934 120 H980"/>
+      </g>
+      <g fill="#c0b6a5">
+        <path class="p" data-from="2" d="M196 120 L184 115 L184 125 Z"/><path class="p" data-from="3" d="M392 120 L380 115 L380 125 Z"/>
+        <path class="p" data-from="4" d="M588 120 L576 115 L576 125 Z"/><path class="p" data-from="5" d="M784 120 L772 115 L772 125 Z"/>
+        <path class="p" data-from="6" d="M980 120 L968 115 L968 125 Z"/>
+      </g>
+
+      <g class="e p" data-from="1">
+        <rect class="post" x="0" y="86" width="150" height="68" rx="7"/>
+        <text class="kind" x="14" y="106">CONTRIBUTION</text>
+        <text class="body" x="14" y="126" style="font-size:10px"><tspan x="14">a paragraph, in</tspan><tspan x="14" dy="13">your own words</tspan></text>
+      </g>
+      <g class="n n--outcome p" data-from="2">
+        <rect x="196" y="86" width="150" height="68" rx="2"/><path class="edge" d="M196 86 V154"/>
+        <text class="role" x="210" y="106">&#9678; CLAIM</text>
+        <text class="st xs" x="210" y="126"><tspan x="210">at an address</tspan><tspan x="210" dy="13">you can point at</tspan></text>
+      </g>
+      <g class="n n--trouble p" data-from="3">
+        <rect x="392" y="86" width="150" height="68" rx="2"/><path class="edge" d="M392 86 V154"/>
+        <text class="role" x="406" y="106">&#9650; GAP, OR</text>
+        <text class="st xs" x="406" y="126"><tspan x="406">a disagreement</tspan><tspan x="406" dy="13">with a name on it</tspan></text>
+      </g>
+      <g class="n n--proposed p" data-from="4">
+        <rect x="588" y="86" width="150" height="68" rx="2"/><path class="edge" d="M588 86 V154"/>
+        <text class="role" x="602" y="106">&#8644; PROPOSAL</text>
+        <text class="st xs" x="602" y="126" style="fill:#8c491a"><tspan x="602">offered, not yet</tspan><tspan x="602" dy="13">relied upon</tspan></text>
+      </g>
+      <g class="n n--move p" data-from="5">
+        <rect x="784" y="86" width="150" height="68" rx="2"/><path class="edge" d="M784 86 V154"/>
+        <text class="role" x="798" y="106">&#9670; ACTION</text>
+        <text class="st xs" x="798" y="126"><tspan x="798">with an owner</tspan><tspan x="798" dy="13">and a date</tspan></text>
+      </g>
+      <g class="n n--evidence p" data-from="6">
+        <rect x="980" y="86" width="150" height="68" rx="2"/><path class="edge" d="M980 86 V154"/>
+        <text class="role" x="994" y="106">&#9673; EVIDENCE</text>
+        <text class="st xs" x="994" y="126"><tspan x="994">what actually</tspan><tspan x="994" dy="13">happened</tspan></text>
+      </g>
+
+      <!-- And back. The loop is the whole point, so it is drawn as a return. -->
+      <g class="p" data-from="8">
+        <path d="M1055 154 V220 H271 V154" fill="none" stroke="oklch(0.53 0.085 130)" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M271 154 L265 168 L277 168 Z" fill="oklch(0.53 0.085 130)"/>
+        <text class="ann" x="663" y="244" text-anchor="middle" style="fill:oklch(0.39 0.07 130)">and the claim changes, or it holds &mdash; which is the only thing that makes it a theory of change</text>
+      </g>
+      <text class="ann brace p" data-from="1" x="0" y="70">SPACE IS TIME. NONE OF THESE STEPS HAPPENS AT THE MOMENT OF CONTRIBUTING.</text>
+    </svg>
+  </div>
+  <div class="legend">
+    <span><i class="mach"></i> a forum post</span>
+    <span><i class="held"></i> held, or observed</span>
+    <span><i class="prop"></i> proposed &middot; something we would do</span>
+    <span><i class="wrong"></i> in the way</span>
+  </div>
+
+  <div class="note">
+    <h4>What just happened</h4>
+    <p>Build it one box at a time as you narrate. <b>Click 8 is the loop</b>, and the loop is the argument: without the return arrow this is a filing system, and with it it is a theory of change.</p>
+    <p>&ldquo;It is also, more or less, that forty-year-old method from earlier, run without any of its vocabulary.&rdquo;</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     6 · CLOSE
+     ═══════════════════════════════════════════════════════════════════════ -->
+
+<section class="slide divider" data-act="6 · close" data-title="§ 6 · Close">
+  <p class="num">6</p>
+  <h1>Close</h1>
+  <p class="lede">Back to the goal question. The ask. Where the thinking goes.</p>
+</section>
+
+<section class="slide centre" data-act="6 · close" data-title="Back to the question" data-steps="2">
+  <!-- The question returns at full opacity. It was faded to 20% in the cold open. -->
+  <p class="p pull" data-from="1" style="color:var(--ink);max-width:34ch">
+    &ldquo;How would we know if we were moving toward what we&rsquo;re trying to do?&rdquo;
+  </p>
+  <p class="p relay" data-from="2" style="margin-top:clamp(1.6rem,4vh,3rem);text-align:center">
+    You can only ask that of something you can point at.
+  </p>
+
+  <div class="note">
+    <h4>Back to the question</h4>
+    <p>The question comes back at <b>full opacity</b>, in the same face it evaporated in. Do not remark on that. The room will feel it.</p>
+    <p>&ldquo;A tree of change, you can point at. Two hundred thousand words, you can&rsquo;t.&rdquo;</p>
+  </div>
+</section>
+
+<section class="slide" data-act="6 · close" data-title="Loaded words" data-steps="3">
+  <h2 class="p" data-from="1" style="max-width:34ch">
+    &ldquo;Goal.&rdquo; &ldquo;Progress.&rdquo; &ldquo;Moving toward.&rdquo;<br>Loaded words here, and that&rsquo;s fine.
+  </h2>
+  <p class="p lede" data-from="2" style="font-family:var(--display);font-size:var(--t-mid);color:var(--ink);max-width:34ch">
+    That disagreement should live at an address, with a name on it. Not be had again next year.
+  </p>
+  <!-- The disagreement itself, drawn: a challenge that stands, unresolved, and is not deleted. -->
+  <div class="sheet p" data-from="3" style="flex:0 0 auto;height:clamp(7rem,20vh,12rem)">
+    <svg viewBox="0 0 1200 200" aria-label="A challenge to the goal, standing unresolved, with its author's name on it.">
+      <g class="n n--outcome"><rect x="20" y="20" width="380" height="42" rx="2"/><path class="edge" d="M20 20 V62"/><text class="role" x="34" y="38">&#9678; GOAL</text><text class="st xs" x="34" y="54">co-initiate a Second Renaissance</text></g>
+      <g class="l l--challenge"><path d="M400 41 H560"/><path class="head" d="M400 41 L414 35 L414 47 Z"/><text x="480" y="30" text-anchor="middle">CHALLENGES</text></g>
+      <g class="n n--proposed">
+        <rect x="560" y="14" width="440" height="76" rx="2"/><path class="edge" d="M560 14 V90"/>
+        <text class="role" x="576" y="34">&#8644; UNRESOLVED SINCE 26 AUG 2026</text>
+        <text class="st sm" x="576" y="56" style="font-style:italic"><tspan x="576">&ldquo;there is no unified forum &lsquo;goal&rsquo; that applies</tspan><tspan x="576" dy="15">equally to each forum participant&rdquo;</tspan></text>
+      </g>
+      <text class="att" x="576" y="108" style="font-family:var(--body);font-size:10.25px;fill:#6e6559">&mdash; Robert Bunge &middot; 2R forum, post 6</text>
+      <text class="ann" x="20" y="150">It is not struck through, and it is not going anywhere.</text>
+      <text class="ann" x="20" y="174" style="fill:#6e6559">A challenge that simply stands is the honest drawing. Disagreement does not have to be eliminated for reasoning to accumulate.</text>
+    </svg>
+  </div>
+
+  <div class="note">
+    <h4>Loaded words</h4>
+    <p>&ldquo;I know some of you think a renewal is not the kind of thing you march at. That is a real disagreement.&rdquo; Name the discomfort; do not route around it.</p>
+    <p>Robert&rsquo;s challenge is on screen, unresolved, with his name on it. <b>That is the demonstration, not an illustration of one.</b> The last line is quoted from the thread &mdash; from the post that started all of this.</p>
+  </div>
+</section>
+
+<section class="slide" data-act="6 · close" data-title="The ask" data-steps="3">
+  <p class="eyebrow">The ask</p>
+  <ul class="lines" style="max-width:34ch">
+    <li class="p" data-from="1">Today: write the thousand characters.</li>
+    <li class="p" data-from="2">After today: follow where it lands.</li>
+    <li class="p" data-from="3">If an action comes out of it, own it.</li>
+  </ul>
+
+  <div class="note">
+    <h4>The ask</h4>
+    <p>Three lines, one at a time, and then stop talking.</p>
+    <p>&ldquo;The test is not whether the software is clever. It is whether today&rsquo;s contributions improve 2R&rsquo;s reasoning, and cause useful things to happen.&rdquo;</p>
+  </div>
+</section>
+
+<section class="slide centre dark" data-act="6 · close" data-title="Spine line, answered" data-steps="2">
+  <!-- Same design as the cold open's spine slide. Largest type in the deck. The closer. -->
+  <h1 class="spine">Where does the thinking go?</h1>
+  <p class="p" data-from="2" style="margin:clamp(1.8rem,4.4vh,3.4rem) 0 0;font-family:var(--display);font-size:var(--t-big);font-weight:300;color:rgb(245 234 216 / 0.78);text-wrap:balance;max-width:30ch">
+    Into the tree. At an address. With your name on it.
+  </p>
+
+  <div class="note">
+    <h4>Spine line, answered</h4>
+    <p>Same slide as the cold open, answered. Hold the question alone for a beat before the second line arrives.</p>
+  </div>
+</section>
+
+<section class="slide" data-act="6 · close" data-title="Final">
+  <h2 style="max-width:32ch">Find the claim you disagree with.<br>Or the one nobody is standing under.</h2>
+  <p class="aside">the trees are public: <b style="font-weight:500;color:var(--accent-deep)">reasoncommons.org/2r</b></p>
+  <p style="margin-top:auto;font-family:var(--display);font-size:var(--t-mid);color:var(--muted);text-align:right">Life Itself</p>
+
+  <div class="note">
+    <h4>Final</h4>
+    <p>Leave it up through the discussion. It is the only slide with an instruction on it, and it is the one instruction worth giving.</p>
+    <p class="ask">Assets: confirm the Life Itself logotype path, and the real public URL for the trees.</p>
+  </div>
+</section>
+
+<div id="act"><b></b><span></span></div>
+<div id="count"></div>
+<div id="help">&rarr; build &middot; &uarr;&darr; slide &middot; G grid &middot; N notes &middot; F full</div>
+<div id="notes"></div>
+<div id="grid"></div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /*
+   * The build engine.
+   *
+   * It mirrors `presenceOf` in src/features/essay/field/fieldSpec.ts rather than
+   * inventing a second animation vocabulary, because the deck is drawn in the
+   * product's grammar and the grammar includes when things arrive and what
+   * happens to them afterwards:
+   *
+   *   from     the state it condenses into view at
+   *   recede   still there, no longer what is being discussed
+   *   leave    it goes, and you are meant to notice it leaving
+   *   hold     ringed: just landed, or just named
+   *
+   * `recede-until` and `hold-until` close those two off again, which the
+   * compositions need: a path highlighted across three clicks has to stay
+   * ringed, and a node the argument comes back to has to come back with it.
+   *   settle   a dashed proposal becomes reasoning the community holds
+   *   refute   no longer the position. Kept and struck through, never deleted
+   */
+
+  var deck = document.getElementById("deck");
+  var slides = [].slice.call(document.querySelectorAll(".slide"));
+  var progress = document.getElementById("progress");
+  var actEl = document.getElementById("act");
+  var countEl = document.getElementById("count");
+  var notesEl = document.getElementById("notes");
+  var gridEl = document.getElementById("grid");
+
+  var i = 0;
+  var step = 1;
+  var showNotes = false;
+
+  function steps(s) { return Math.max(1, parseInt(s.dataset.steps || "1", 10)); }
+  function num(el, key) {
+    var v = el.dataset[key];
+    return v === undefined ? null : parseInt(v, 10);
+  }
+
+  function paint() {
+    slides.forEach(function (s, n) { s.classList.toggle("is-current", n === i); });
+    var s = slides[i];
+
+    s.querySelectorAll("[data-from]").forEach(function (el) {
+      var from = num(el, "from");
+      var recede = num(el, "recede");
+      var leave = num(el, "leave");
+      var recedeUntil = num(el, "recedeUntil");
+      var hold = num(el, "hold");
+      var holdUntil = num(el, "holdUntil");
+      var settle = num(el, "settle");
+      var refute = num(el, "refute");
+
+      var gone = leave !== null && step >= leave;
+      el.classList.toggle("is-shown", step >= from && !gone);
+      el.classList.toggle("is-leaving", gone);
+      el.classList.toggle(
+        "is-receded",
+        recede !== null && step >= recede && (recedeUntil === null || step < recedeUntil)
+      );
+      el.classList.toggle(
+        "is-held",
+        hold !== null && step >= hold && (holdUntil === null || step < holdUntil)
+      );
+      el.classList.toggle("is-settled", settle !== null && step >= settle);
+      el.classList.toggle("is-refuted", refute !== null && step >= refute);
+    });
+
+    // The three questions light in turn rather than arriving.
+    s.querySelectorAll("[data-on]").forEach(function (el) {
+      el.classList.toggle("on", step >= parseInt(el.dataset.on, 10));
+    });
+
+    var total = slides.length - 1;
+    progress.style.width = (total ? (i / total) * 100 : 100) + "%";
+    actEl.firstElementChild.textContent = s.dataset.act || "";
+    actEl.lastElementChild.textContent = s.dataset.title || "";
+    countEl.textContent = (i + 1) + " / " + slides.length +
+      (steps(s) > 1 ? "  ·  " + step + " of " + steps(s) : "");
+
+    var note = s.querySelector(".note");
+    notesEl.innerHTML = note ? note.innerHTML : "";
+    notesEl.classList.toggle("on", showNotes);
+
+    // Chrome inverts on dark slides rather than disappearing.
+    var dark = s.classList.contains("dark");
+    var chrome = dark ? "rgb(245 234 216 / 0.42)" : "";
+    actEl.style.color = chrome;
+    countEl.style.color = chrome;
+    if (dark) { actEl.firstElementChild.style.color = "rgb(245 234 216 / 0.62)"; }
+    else { actEl.firstElementChild.style.color = ""; }
+
+    resetTimerIfAway();
+    if (gridEl.classList.contains("on")) { markGrid(); }
+  }
+
+  function go(n, atEnd) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    step = atEnd ? steps(slides[i]) : 1;
+    deck.classList.add("moved");
+    paint();
+  }
+
+  function next() {
+    if (step < steps(slides[i])) { step += 1; paint(); deck.classList.add("moved"); }
+    else if (i < slides.length - 1) { go(i + 1); }
+  }
+
+  function prev() {
+    if (step > 1) { step -= 1; paint(); }
+    else if (i > 0) { go(i - 1, true); }
+  }
+
+  // ── The write timer. Four minutes of genuine quiet is longer than it sounds. ──
+  var TOTAL = 240;
+  var left = TOTAL;
+  var ticking = null;
+
+  function drawTimer() {
+    var t = document.getElementById("timer");
+    if (!t) { return; }
+    var m = Math.floor(left / 60);
+    var s = left % 60;
+    t.firstElementChild.textContent = m + ":" + (s < 10 ? "0" : "") + s;
+    t.classList.toggle("done", left === 0);
+    t.lastElementChild.textContent = left === 0
+      ? "time · press T to reset"
+      : (ticking ? "writing · T to pause" : "press T to start · T again to pause");
+  }
+
+  function toggleTimer() {
+    if (!document.getElementById("timer")) { return; }
+    if (left === 0) { left = TOTAL; drawTimer(); return; }
+    if (ticking) { clearInterval(ticking); ticking = null; }
+    else {
+      ticking = setInterval(function () {
+        left = Math.max(0, left - 1);
+        if (left === 0) { clearInterval(ticking); ticking = null; }
+        drawTimer();
+      }, 1000);
+    }
+    drawTimer();
+  }
+
+  function resetTimerIfAway() {
+    if (document.getElementById("timer")) { drawTimer(); return; }
+    if (ticking) { clearInterval(ticking); ticking = null; left = TOTAL; }
+  }
+
+  // ── The overview. Navigation lives here rather than in a rail on every slide. ──
+  slides.forEach(function (s, n) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.innerHTML = "<i></i><b></b>";
+    b.firstElementChild.textContent = s.dataset.act || "";
+    b.lastElementChild.textContent = s.dataset.title || "";
+    b.addEventListener("click", function () {
+      gridEl.classList.remove("on");
+      go(n);
+    });
+    gridEl.appendChild(b);
+  });
+
+  function markGrid() {
+    [].slice.call(gridEl.children).forEach(function (b, n) {
+      b.classList.toggle("here", n === i);
+    });
+  }
+
+  document.addEventListener("keydown", function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) { return; }
+    var k = e.key;
+
+    if (k === "Escape") { gridEl.classList.remove("on"); return; }
+    if (k === "g" || k === "G") {
+      gridEl.classList.toggle("on");
+      if (gridEl.classList.contains("on")) { markGrid(); }
+      e.preventDefault();
+      return;
+    }
+    if (gridEl.classList.contains("on") && (k === "Enter" || k === " ")) { return; }
+
+    if (k === "ArrowRight" || k === " " || k === "PageDown") { next(); e.preventDefault(); }
+    else if (k === "ArrowLeft" || k === "PageUp") { prev(); e.preventDefault(); }
+    else if (k === "ArrowDown") { go(i + 1); e.preventDefault(); }
+    else if (k === "ArrowUp") { go(i - 1); e.preventDefault(); }
+    else if (k === "Home") { go(0); e.preventDefault(); }
+    else if (k === "End") { go(slides.length - 1, true); e.preventDefault(); }
+    else if (k === "n" || k === "N") { showNotes = !showNotes; paint(); }
+    else if (k === "t" || k === "T") { toggleTimer(); }
+    else if (k === "f" || k === "F") {
+      if (document.fullscreenElement) { document.exitFullscreen(); }
+      else if (document.documentElement.requestFullscreen) { document.documentElement.requestFullscreen(); }
+    }
+  });
+
+  // Click-through for a handheld remote that only sends a click.
+  deck.addEventListener("click", function (e) {
+    if (e.target.closest("#grid") || e.target.closest("#notes")) { return; }
+    next();
+  });
+
+  paint();
+})();
+</script>
