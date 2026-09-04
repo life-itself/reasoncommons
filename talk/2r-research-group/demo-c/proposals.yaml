@@ -1,0 +1,155 @@
+# REHEARSAL BUILD — these seven contributions are synthetic, not the room's.
+# They exist so the page can be driven end to end before the session and so
+# every operation has a worked example. Replace this file with the real batch
+# (skills/contribution-proposals, run against the downloaded contributions) and
+# rebuild; ltp/ltp-model.yaml is not touched either way.
+#
+#   python3 skills/contribution-proposals/scripts/build-demo.py
+
+meta:
+  title: Demo C — rehearsal · sample contributions
+  event: Second Renaissance Research Group
+  date: 2026-09-04
+  model_source: ltp/ltp-model.yaml
+  contributions_source: skills/contribution-proposals/examples/contributions.sample.txt
+  attribution: numbered
+
+proposals:
+  - id: PROP-001
+    source:
+      contributor: Participant 1
+      text: >-
+        I think we're assuming everyone has to move through the same progression. First contact, then practice, then contributing, then stewarding. But the communities I work with wouldn't recognise that shape at all — some of them start with the doing and never get near the discourse. A single path is going to lose them at step one.
+    interpretation:
+      statement: The path from first contact to sustained practice has to be able to take different shapes in different communities, rather than one progression everybody runs.
+    proposal:
+      operation: add_entity
+      entity:
+        type: necessary_condition
+        status: provisional
+        statement: Entry paths can take different shapes in different community contexts
+      placement:
+        view: goal-tree
+        connects_to: NC-2
+        relation: necessary_for
+      rationale: NC-2 already requires a transparent path from first contact to sustained practice, but says nothing about whether that path can vary. This is a condition on NC-2 rather than a rival to it.
+      confidence: high
+    review:
+      status: pending
+
+  - id: PROP-002
+    source:
+      contributor: Participant 2
+      text: >-
+        it's in the small tents that the actual work happens. big gatherings are good for morale and terrible for anything else. every real change I've seen came out of five people who kept showing up.
+    interpretation:
+      statement: Dense small groups, not large gatherings, are where practice actually takes hold — offered from the contributor's own experience.
+    proposal:
+      operation: support_entity
+      placement:
+        view: goal-tree
+        connects_to: NC-5
+      rationale: NC-5 already holds that dense practice containers need sangha support. This is first-hand testimony for it, which the condition currently lacks — its evidence is all documentary.
+      confidence: high
+      alternatives:
+        - target: NC-3
+          confidence: low
+          note: Also touches repeated practice, but the contribution is about group size rather than depth.
+    review:
+      status: pending
+
+  - id: PROP-003
+    source:
+      contributor: Participant 3
+      text: >-
+        Honestly I don't think "throughput" can be defined here without becoming a metric someone games. The moment you count adoption events you get people producing adoption events. I know the doc says it won't reduce to activity counts but I've never seen that hold once there's a number.
+    interpretation:
+      statement: Any operational definition of throughput will be gamed, so NC-1 may be requiring something that cannot survive contact with the group's own incentives.
+    proposal:
+      operation: challenge_entity
+      placement:
+        view: goal-tree
+        connects_to: NC-1
+      rationale: NC-1 asserts throughput can be operationally defined without reducing transformation to activity counts. This says the qualifier will not hold in practice. It disputes the condition itself, not its placement.
+      confidence: high
+    review:
+      status: pending
+
+  - id: PROP-004
+    source:
+      contributor: Participant 4
+      text: >-
+        The maps being versioned and challengeable is good but that on its own doesn't make the group learn anything. You can have a beautifully maintained wiki that nobody's mind is ever changed by. Learning happens when someone is actually made to answer an objection, and that's a social practice, not a document format.
+    interpretation:
+      statement: Governing the maps as a versioned commons is not sufficient for the group to learn; the link from NC-6 to CSF-2 assumes a social practice that the condition does not name.
+    proposal:
+      operation: challenge_link
+      placement:
+        view: goal-tree
+        link: L-009
+      rationale: The challenge is aimed at the arrow, not at either end of it. NC-6 can be fully satisfied and CSF-2 still fail, which is what a challenge to a necessity link means.
+      confidence: high
+    review:
+      status: pending
+
+  - id: PROP-005
+    source:
+      contributor: Participant 5
+      text: >-
+        Facilitator development isn't just about replication — the people who learn to facilitate are the ones who end up noticing what isn't working and saying so. That's how the group learns. Feels like it should point at both.
+    interpretation:
+      statement: Developing facilitators feeds the group's capacity to learn and revise strategy, not only its capacity to transmit practice.
+    proposal:
+      operation: add_link
+      placement:
+        view: goal-tree
+        from: NC-4
+        to: CSF-2
+        relation: contributes_to
+      rationale: NC-4 currently hangs only under CSF-3, transmissibility. The contribution claims a second parent, which the model can hold — a necessary condition may serve more than one success factor.
+      confidence: medium
+    review:
+      status: pending
+
+  - id: PROP-006
+    source:
+      contributor: Participant 6
+      text: >-
+        We keep talking as if the problem is that people don't convert. In my experience they convert fine and then leave after eight months because nothing changed for them personally. The leak is at the back, not the front.
+    interpretation:
+      statement: People do enter sustained practice and then leave, because participation does not change their own conditions — so low durable adoption is a retention failure rather than a conversion failure.
+      note: Read as a cause to be added. It could equally be read as a challenge to RC-1, the model's named current constraint; that reading is recorded below rather than shown.
+    proposal:
+      operation: add_entity
+      entity:
+        type: root_cause
+        status: provisional
+        statement: Sustained participants leave because participation does not change their own conditions
+      placement:
+        view: current-reality
+        connects_to: UDE-2
+        relation: causes
+      rationale: UDE-2 observes that the group is busy while durable-adoption throughput stays low. Attrition after entry is a cause of that effect which the tree does not currently carry — every existing cause sits before entry, not after it.
+      confidence: medium
+      alternatives:
+        - target: RC-1
+          confidence: medium
+          note: Read instead as a direct challenge to RC-1, which locates the constraint in conversion. The room may well prefer this reading.
+    review:
+      status: pending
+
+  - id: PROP-007
+    source:
+      contributor: Participant 7
+      text: >-
+        None of this addresses money. Who is paying for any of it. Every group I've been part of that ignored this ended up quietly run by whoever happened to have savings, and nobody voted for that.
+    interpretation:
+      statement: The model says nothing about how the work is funded, and unexamined funding quietly decides who holds authority.
+    proposal:
+      operation: unplaced
+      placement:
+        view: goal-tree
+      rationale: No entity in the model concerns resourcing, funding, or the authority that follows it. The nearest, NC-6 on governance, is about how maps are governed rather than how the work is paid for. Attaching this anywhere would misfile it, and misfiling it would hide exactly the thing the contributor is pointing at.
+      confidence: high
+    review:
+      status: pending

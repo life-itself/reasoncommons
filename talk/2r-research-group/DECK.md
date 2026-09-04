@@ -89,6 +89,31 @@ paragraphs. Checked against the source PDF and against
 `fixtures/talk/forum-thread-878.md` in the `reason-commons` repo, whose
 `tests/unit/talk.test.ts` enforces the same rule on its own deck.
 
+## Demo C has a review page
+
+The room writes, and then the room's contributions get read against the tree in
+front of everyone: [`demo-c/index.html`](./demo-c/index.html). One proposal per
+contribution, each landing dashed at a real address in the Second Renaissance
+model, with Accept / Edit / Reject. Accepted proposals turn solid and stay,
+so by the last one the tree on screen is the original plus everything the room
+agreed to. Refresh throws it all away, and saying that out loud is part of the
+point — nothing on disk changes.
+
+It is generated, not hand-authored. Download the contributions, then run the
+`contribution-proposals` skill (`skills/contribution-proposals/SKILL.md`), which
+writes `demo-c/proposals.yaml` and builds the page from it:
+
+```sh
+python3 skills/contribution-proposals/scripts/build-demo.py
+```
+
+What ships in the repo today is a **rehearsal build from seven synthetic
+contributions** — every operation is represented, so the page can be driven
+end to end before the session. Replace it with the real batch on the day.
+
+Keys: `→` `←` move · `A` accept · `E` edit · `X` reject · `0` reset · `End`
+jumps to the tally. `A` and `X` toggle, so a mis-press costs one keystroke.
+
 ## Before the talk
 
 1. **Consent.** Asimong, Robert Bunge and glennr86 are quoted on slides.
@@ -99,6 +124,8 @@ paragraphs. Checked against the source PDF and against
    to refuse.
 3. **Demo C kit** — the shared form, its short link, and its QR. The QR on the
    slide is a labelled placeholder; drop the real code into the `.qr` block.
+   And rebuild the review page from the real contributions once they are in;
+   the committed one is a rehearsal.
 4. **Optional swap-ins**, all working type-only today: a real dense
    white-paper page behind the ring on "No address"; the Life Itself logotype
    on the final slide; the public URL for the trees.
