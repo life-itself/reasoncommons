@@ -3,6 +3,10 @@
 Notable changes to this project. Not strictly [Keep a Changelog](https://keepachangelog.com/)
 format, but same spirit — human-readable, most recent first.
 
+## 2026-09-05 — A claim tree for the climate transition
+
+[The annotation demo](claim-tree-annotation-demo/index.html) now opens on “Can the world switch to clean energy in time?” rather than remote-work productivity, using IPCC’s energy-systems assessment to show evidence landing on renewables, grids, nuclear and the contested shape of the transition. It also now carries an AI-control version at [`#topic=ai`](claim-tree-annotation-demo/index.html#topic=ai), while [`#topic=remote-work`](claim-tree-annotation-demo/index.html#topic=remote-work) preserves the original Ctrip example.
+
 ## 2026-09-04 — The room's contributions, proposed against the tree
 
 ![The review page: Priya Raghavan's contribution quoted at full size on the left with the reader's proposed change beneath it, and on the right the Second Renaissance goal tree as an indented outline — the path from the goal down to the condition under discussion at full strength, the rest of the tree quiet, a dashed rust challenge attached to that condition, and three proposals the room has already accepted sitting solid in green further up.](changelog/images/2026-09-04-contribution-proposals.png)
