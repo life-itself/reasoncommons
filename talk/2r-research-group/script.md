@@ -143,7 +143,7 @@ Afterwards, separately, a machine reads the thread against the tree and proposes
 > *TODO(@David): pick the specific forum thread — real, public, four to six posts, ideally one that supports a condition, one that challenges a link, and one the tree can't place yet.*
 > *On screen: a real Second Renaissance forum thread, four to six posts, the kind of exchange that normally just scrolls away. Trigger the reader. Three or four cards appear next to the tree: "this paragraph supports condition 4, pockets"; "this sentence challenges the link between sangha and movement coherence"; "this is a claim the tree has nowhere to put yet." Each card links back to the exact post it came from. Say: nobody in that thread did anything differently. The structure was recovered afterwards, by something whose whole job is to do the filing. Pre-bake it so it lands in about a minute; narrate what it is doing while it runs.*
 
-Then a rotating handful of people (with AI assistance) decide what actually merges into the tree. It's pull requests for discourse 🙂
+Then a person or group of people (with AI assistance if necessary) decide what actually merges into the tree. It's pull requests for discourse 🙂
 
 And look at what happened to the cost of contributing. It remains simply the effort of writing on the forum. The filing still gets done. But by AI. And it is AI that makes that affordable.
 
@@ -161,18 +161,19 @@ Now you.
 > *Step 4. Show the reverse view: the tree with the condition that currently has the least attached to it highlighted. Say: the same structure that tells one person where their idea goes tells everyone which part of the goal nobody is holding.*
 > *If the placement is weak on a given contribution, say so, place it by hand, and move on. A wrong first guess that a person corrects in five seconds is still the system working.*
 
-What you just did, if it went well, is take a paragraph of ordinary thinking and turn it into a specific claim, at a specific place, with a path to an action. That is a long way past "thanks for your feedback." It is also, more or less, that forty-year-old method from earlier, run without any of its vocabulary.
+What you just did, if it went well, is take a paragraph of ordinary thinking and turn it into a specific claim, at a specific place, with a path to an action. That is a lot better than "thanks for your suggestion" and then nothing happens.
 
+It is also, more or less, that forty-year-old method mentioned earlier but powered by AI.
 ### 6 · Close
 
 Go back to the question the sense-making session ended on. How would we know if we were moving toward what we are trying to do?
 
-You can only ask that about something you can point at. A tree of change, you can point at. Two hundred thousand words, you can't.
+You can only ask that about something you can point at. A tree of change, you can point at. One hundred thousand words, you can't.
 
-I know "goal" and "progress" and "moving toward" are loaded words in this room, and that some of you think a renewal is not the kind of thing you march at. That is a real disagreement. It is exactly the kind of disagreement that should live at an address, with a name on it, where it can change what the rest of us think, instead of being had again next year.
+"Goal" and "progress" and "moving toward" may be loaded words in this room, and that some of you think a renewal is something that emerges not something you can plan towards.
 
-So, the ask. Today, write the thousand characters. After today, follow where it lands. If an action comes out of it that you want to own, take it.
+We would agree.
 
-Where does the thinking go? Into the tree. At an address. With your name on it.
+But skilful gardeners and perma-culturists do planning and use reason to improve what they are doing. That is what we are doing here. We are cultivating a commons for reason and a place for better sensemaking to emerge.
 
-Find the claim you disagree with. Or find the one nobody is standing under.
+Where does the thinking go? Anywhere! What is connected to and supported by? The tree! And a trees has leaves and branches that we can reference and contribute to.
