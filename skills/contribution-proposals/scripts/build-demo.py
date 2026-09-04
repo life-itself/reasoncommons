@@ -94,6 +94,11 @@ def validate(bundle: dict, proposals: list, strict: bool) -> list:
     seen_ids = set()
     entities, links, views = bundle["entities"], bundle["links"], bundle["views"]
 
+    # A proposal may hang off a claim an earlier proposal introduces, so that a
+    # second contribution can build on one the room has just accepted. Only
+    # backwards: the tree has to make sense read in order.
+    added_by = {}
+
     for index, item in enumerate(proposals, start=1):
         pid = item.get("id") or f"#{index}"
 
@@ -139,8 +144,19 @@ def validate(bundle: dict, proposals: list, strict: bool) -> list:
             ref = placement.get(field)
             if not ref:
                 continue
+            if field == "connects_to" and ref in added_by:
+                earlier_view = added_by[ref]
+                if view_key and earlier_view != view_key:
+                    bad(f"placement.connects_to {ref!r} is a claim proposed in view "
+                        f"{earlier_view!r}, not {view_key!r}")
+                continue
             if ref not in entities:
-                bad(f"placement.{field} {ref!r} is not an entity in the model")
+                hint = ""
+                if ref in seen_ids:
+                    hint = " (that proposal does not add a claim to hang this from)"
+                elif ref.startswith("PROP-"):
+                    hint = " (a proposal id may only be used once that proposal has appeared, and only if it adds a claim)"
+                bad(f"placement.{field} {ref!r} is not an entity in the model" + hint)
             elif view_key and ref not in views[view_key]["entities"]:
                 msg = f"placement.{field} {ref!r} is not in view {view_key!r}, so it will not be on screen"
                 if strict:
@@ -161,6 +177,8 @@ def validate(bundle: dict, proposals: list, strict: bool) -> list:
                 bad("add_entity needs proposal.entity.statement")
             if not entity.get("type"):
                 bad("add_entity needs proposal.entity.type")
+            if item.get("id"):
+                added_by[item["id"]] = view_key
         elif prop.get("entity"):
             bad(f"{op} should not carry proposal.entity")
 

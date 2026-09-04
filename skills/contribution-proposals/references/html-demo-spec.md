@@ -31,11 +31,17 @@ accent for existing injections, the page starts lying about what is proposed.
 
 Two columns under a thin bar, with the legend along the bottom.
 
-**Left — the contribution.** Their words at display size, verbatim, with
-attribution. Then, under a label that says whose words they are, the reader's
-interpretation, the operation, the address, the rationale, and the confidence.
-Controls sit at the foot of the column and are sticky, so they are never below
-the fold on a projector.
+**Left — the contribution.** Their words at display size, verbatim, with the
+contributor's name set large enough to read as a person rather than a footnote.
+Then, under a label that says whose words they are, the reader's interpretation,
+the operation, the address, the rationale, and the confidence. Controls sit at
+the foot of the column and are sticky, so they are never below the fold on a
+projector.
+
+Length varies more than anything else about real contributions — one line to a
+thousand characters — so the quote steps down through three sizes at 340 and 700
+characters, and the longest tier scrolls within 38vh rather than pushing the
+proposal off the screen.
 
 **Right — the field.** The view named in the proposal's placement, drawn as an
 indented outline rather than a node-and-edge graph. This follows the deck's own
@@ -61,15 +67,28 @@ strength on the repeat.
 | rejected | dashed, faint, struck through — kept, never deleted |
 | edited | the amended wording and address, stamped *edited by the room* |
 
-Decided proposals stay on screen as the room advances, so the tree accumulates.
-Only the current proposal and its target are at full strength; everything else
-in the view drops to 46% — present, still readable, not competing.
+Decided proposals stay on screen as the room advances, so the tree accumulates:
+by the last proposal the field is the original tree plus everything the room
+agreed to, with the declines still legible beside it.
+
+Three strengths, not two. The proposal and its target are the figure. **Every
+ancestor of the target, up to the root of the view, stays at full strength** and
+carries a faint band so the path reads as a path — a claim you cannot trace to
+a goal is not a claim anyone can review, and a greyed-out goal makes the review
+impossible. Everything else drops to 50%. Decided proposals are never dimmed;
+they are the record of what the room did. The field also scrolls to show the
+whole path from the root down to the node in play when it fits, and centres the
+node when it does not.
 
 ## How each operation is drawn
 
 - **`add_entity`** — a dashed card indented under `connects_to`, drawn *before*
   that node's existing children so it sits against its address rather than at
   the end of a long list. Its footer names the relation and the contributor.
+  `connects_to` may be an earlier proposal rather than an entity, in which case
+  the card nests under that proposal's card — so a contribution can extend a
+  claim the room accepted a minute ago, and the nesting is drawn rather than
+  asserted. The Edit dropdown offers those proposed claims as addresses too.
 - **`support_entity` / `challenge_entity`** — a chip attached to the target card
   carrying the verbatim quote (clipped at 180 characters; the full text is on
   the left at size), the contributor, and the reader's one-line reading.

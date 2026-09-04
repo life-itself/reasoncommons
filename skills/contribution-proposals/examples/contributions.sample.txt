@@ -1,31 +1,58 @@
 Second Renaissance Research Group — 4 September 2026
 Responses to: "Something important the Second Renaissance may be missing, underestimating, or getting wrong. Or something we could act on."
-(Paste from the shared doc. Unedited.)
+
+SYNTHETIC. The names below are invented and so is every word attributed to them. This file exists so the skill has a worked example with the shape real contributions have: names attached, lengths from one line to a thousand characters, and several people answering a question adjacent to the one that was asked.
 
 ---
+
+Wendy Nakamura
 
 I think we're assuming everyone has to move through the same progression. First contact, then practice, then contributing, then stewarding. But the communities I work with wouldn't recognise that shape at all — some of them start with the doing and never get near the discourse. A single path is going to lose them at step one.
 
 ---
 
+Tomás Herrera
+
 it's in the small tents that the actual work happens. big gatherings are good for morale and terrible for anything else. every real change I've seen came out of five people who kept showing up.
 
 ---
+
+Marta Oyelaran
+
+I run a permaculture cooperative outside Coimbra, eleven of us, going on six years now. I'll be honest, I came to this because a friend sent it to me and I'm not sure I follow all the language in your documents. But here is what I know. We spent the first two years talking about values. Reading, discussing, going on retreats. Nothing changed. What changed us was the third year, when we took on four hectares of degraded land and had to actually feed ourselves from it. You learn cooperation very fast when the irrigation fails in August. People who could not agree in a meeting agreed in a field. So I think something is being missed here, which is that most people do not change their views and then change their lives. They change their lives, usually because they have to, and the views follow after. If you want the durable thing you keep talking about, I suspect you need people doing something together that has real consequences if they get it wrong.
+
+---
+
+Kwame Boateng
+
+Adding to what Marta said, because I think it's the same point from a different angle. I trained as a carpenter. Nobody learns carpentry from a book and nobody learns it alone. You stand next to someone for two years and you ruin a lot of wood. Whatever this group is trying to pass on, if there isn't an apprenticeship shape to it — someone experienced, someone new, real work between them, and time — it will not pass on.
+
+---
+
+Priya Raghavan
 
 Honestly I don't think "throughput" can be defined here without becoming a metric someone games. The moment you count adoption events you get people producing adoption events. I know the doc says it won't reduce to activity counts but I've never seen that hold once there's a number.
 
 ---
 
+Dev Chaudhary
+
 The maps being versioned and challengeable is good but that on its own doesn't make the group learn anything. You can have a beautifully maintained wiki that nobody's mind is ever changed by. Learning happens when someone is actually made to answer an objection, and that's a social practice, not a document format.
 
 ---
+
+Ana Beatriz Lima
+
+I want to talk about money, but not in the way people usually mean it here. I've spent nine years working on mutual credit systems in Belo Horizonte, and the thing I keep seeing is that the currency people use decides what they are able to do with each other. If you need euros to take part, then taking part is rationed by who has euros, and that isn't a values problem, it's a plumbing problem. Everyone in our network can trade hours without having to earn first, and it changed who showed up — completely. What I notice in your model is that it assumes people can give time to practice and to stewarding. But the people who most need what you're describing are exactly the ones whose hours are already sold. I don't know where this goes in your diagram. I just don't think you can leave it out.
+
+---
+
+Joachim Weber
 
 Facilitator development isn't just about replication — the people who learn to facilitate are the ones who end up noticing what isn't working and saying so. That's how the group learns. Feels like it should point at both.
 
 ---
 
-None of this addresses money. Who is paying for any of it. Every group I've been part of that ignored this ended up quietly run by whoever happened to have savings, and nobody voted for that.
+Sam Okonkwo
 
----
-
-We keep talking as if the problem is that people don't convert. In my experience they convert fine and then leave after eight months because nothing changed for them personally. The leak is at the back, not the front.
+None of this addresses who is paying for any of it. Every group I've been part of that ignored that ended up quietly run by whoever happened to have savings, and nobody voted for that. I'd want to see the funding model before I'd want to see another tree.

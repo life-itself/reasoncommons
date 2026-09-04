@@ -159,11 +159,22 @@ main {
 .quote::before { content: "\201C"; }
 .quote::after { content: "\201D"; }
 .att {
-  font-size: var(--t-small);
+  font-size: var(--t-mid);
   color: var(--muted);
-  margin: 0.55rem 0 0;
+  margin: 0.7rem 0 0;
 }
-.att b { font-weight: 500; color: var(--ink-soft); }
+.att b { font-weight: 500; color: var(--ink); }
+
+/* People write at wildly different lengths. A thousand characters cannot be set
+   at the same size as one sentence and still leave room for the proposal. */
+.quote.long { font-size: var(--t-mid); line-height: 1.44; }
+.quote.xlong {
+  font-size: var(--t-body);
+  line-height: 1.52;
+  max-height: 38vh;
+  overflow: auto;
+  padding-right: 0.5rem;
+}
 
 hr.rule { border: 0; border-top: 1px solid var(--line); margin: 0.2rem 0; }
 
@@ -358,8 +369,15 @@ button[disabled] { opacity: 0.4; cursor: default; }
 .n--cause { --nline: var(--structure); }
 
 /* Existing reasoning, not under discussion: present, quiet, still readable. */
-#field.dim .node:not(.hot) > .card { opacity: 0.46; --nline: var(--faint); }
-#field.dim .node:not(.hot) > .card .st { color: var(--ink-soft); }
+.card.quiet { opacity: 0.5; --nline: var(--faint); }
+.card.quiet .st { color: var(--ink-soft); }
+/* A node already drawn elsewhere in this view, shown again for its second parent. */
+.card.repeat { opacity: 0.5; }
+
+/* The path from the node in play up to the top of the tree. Never dimmed: a
+   claim you cannot trace to a goal is not a claim anyone can review. The band
+   is what makes it read as one path rather than three unrelated survivors. */
+.node.lineage > .card { background: color-mix(in srgb, var(--paper) 52%, transparent); }
 
 /* The node the proposal is addressed to. */
 .card.target {
@@ -646,6 +664,7 @@ const RELATIONS = ['necessary_for', 'causes', 'enables', 'contributes_to', 'prod
   'overcome_by', 'reinforces', 'may_cause', 'believed_necessary_for', 'achieves', 'tests',
   'reframes', 'conflicts_with'];
 
+const byId = id => P.find(x => x.id === id);
 const fam = t => FAMILY[t] || 'cause';
 const glyph = t => GLYPH[fam(t)];
 const words = s => (s || '').replace(/_/g, ' ');
@@ -785,8 +804,14 @@ function renderField() {
   if (view) {
     const { roots, kids, parentRel, only } = outline(viewKey);
     $('view-means').hidden = !only;
-    $('view-means').textContent = only ? 'indentation reads upward — each child is ' + words(only) + ' its parent' : '';
+    $('view-means').textContent = only
+      ? 'indentation reads upward — each child is ' + words(only) + ' its parent' : '';
+
     const shown = visibleIn(viewKey);
+
+    // Proposals grouped by what they hang from. That can be an entity in the
+    // model or an earlier proposal, so a later contribution can build on a
+    // claim the room has just accepted.
     const byTarget = new Map();
     shown.forEach(s => {
       const c = live(s);
@@ -795,10 +820,78 @@ function renderField() {
       if (!byTarget.has(key)) byTarget.set(key, []);
       byTarget.get(key).push(s);
     });
+
     const focusId = p && !unplaced
       ? (p.proposal.placement.connects_to || p.proposal.placement.from) : null;
-    const focusLink = p && p.proposal.operation === 'challenge_link' ? p.proposal.placement.link : null;
+    const focusLink = p && p.proposal.operation === 'challenge_link'
+      ? p.proposal.placement.link : null;
+
+    // Every ancestor of the node in play stays at full strength.
+    const lineage = new Set();
+    function climbFrom(start) {
+      let cur = start, hops = 0;
+      // A proposal id resolves to whatever that proposal itself hangs from.
+      while (cur && !M.entities[cur] && byId(cur) && hops++ < 20) {
+        cur = ((live(byId(cur)).proposal || {}).placement || {}).connects_to;
+      }
+      while (cur && !lineage.has(cur)) {
+        lineage.add(cur);
+        const pr = parentRel.get(cur);
+        cur = pr ? pr.to : null;
+      }
+    }
+    climbFrom(focusId);
+    if (focusLink && M.links[focusLink]) climbFrom(M.links[focusLink].from);
+
+    const quieten = !!(focusId || focusLink || unplaced);
     const drawn = new Set();
+
+    /** Things said ABOUT a node — support, challenge, a new link — as chips. */
+    function chipsFor(key, node) {
+      (byTarget.get(key) || []).forEach(s => {
+        const op = live(s).proposal.operation;
+        if (op === 'add_entity' || op === 'challenge_link' || op === 'unplaced') return;
+        node.appendChild(chipFor(live(s), state.decisions[s.id]));
+        if (s === raw) node.classList.add('hot');
+      });
+    }
+
+    /** Claims proposed under a node — including under another proposal. */
+    function proposedKids(key, box) {
+      let any = false;
+      (byTarget.get(key) || []).forEach(s => {
+        if (live(s).proposal.operation !== 'add_entity') return;
+        drawProposed(s, box);
+        any = true;
+      });
+      return any;
+    }
+
+    function drawProposed(s, container) {
+      const c = live(s);
+      const d = state.decisions[s.id];
+      const e = c.proposal.entity || {};
+      const node = el('div', 'node' + (s === raw ? ' hot' : ''));
+      let stamp = null;
+      if (d === 'accepted') stamp = { kind: 'on', text: '· held' };
+      else if (d === 'rejected') stamp = { kind: 'off', text: '· not merged' };
+      else if (state.edits[s.id]) stamp = { kind: 'edited', text: '· edited by the room' };
+      const card = cardFor({
+        role: glyph(e.type) + '  ' + (SHORT[e.type] || words(e.type)).toUpperCase()
+          + '  ·  ' + (d === 'accepted' ? 'NEW' : 'PROPOSED'),
+        statement: e.statement,
+        rel: words(c.proposal.placement.relation) + ' ↑  ·  ' + c.source.contributor,
+        cls: d === 'accepted' ? 'settled' : d === 'rejected' ? 'refuted' : 'proposed',
+        famName: fam(e.type),
+        stamp: stamp,
+      });
+      if (s === raw && d === 'pending') card.classList.add('arrive');
+      node.appendChild(card);
+      chipsFor(s.id, node);
+      const box = el('div', 'kids');
+      if (proposedKids(s.id, box)) node.appendChild(box);
+      container.appendChild(node);
+    }
 
     function draw(id, container, relLabel) {
       const ent = M.entities[id];
@@ -806,7 +899,8 @@ function renderField() {
       const repeat = drawn.has(id);
       drawn.add(id);
       const node = el('div', 'node');
-      const linkChallenged = focusLink && parentRel.get(id) && parentRel.get(id).link === focusLink;
+      const linkChallenged = focusLink && parentRel.get(id)
+        && parentRel.get(id).link === focusLink;
       const isFocus = id === focusId || linkChallenged;
 
       const card = cardFor({
@@ -818,20 +912,12 @@ function renderField() {
         famName: fam(ent.type),
       });
       if (isFocus) node.classList.add('hot');
-      if (repeat) card.style.opacity = '0.5';
+      else if (lineage.has(id)) node.classList.add('lineage');
+      else if (quieten) card.classList.add('quiet');
+      if (repeat) card.classList.add('repeat');
       node.appendChild(card);
 
-      // Anything said ABOUT this node rather than added under it.
-      (byTarget.get(id) || []).forEach(s => {
-        const c = live(s);
-        const op = c.proposal.operation;
-        if (op === 'add_entity' || op === 'challenge_link') return;
-        if (op === 'add_link' && c.proposal.placement.from !== id) return;
-        if ((op === 'support_entity' || op === 'challenge_entity')
-          && c.proposal.placement.connects_to !== id) return;
-        node.appendChild(chipFor(c, state.decisions[s.id]));
-        if (s === raw) node.classList.add('hot');
-      });
+      chipsFor(id, node);
 
       // A challenge to the link that holds this node to its parent.
       shown.forEach(s => {
@@ -844,35 +930,7 @@ function renderField() {
       });
 
       const childBox = el('div', 'kids');
-      let any = false;
-
-      // Proposed children first, dashed, so they sit against their address
-      // rather than at the end of whatever is already there.
-      (byTarget.get(id) || []).forEach(s => {
-        const c = live(s);
-        if (c.proposal.operation !== 'add_entity') return;
-        if (c.proposal.placement.connects_to !== id) return;
-        const d = state.decisions[s.id];
-        const e = c.proposal.entity || {};
-        const kid = el('div', 'node' + (s === raw ? ' hot' : ''));
-        let stamp = null;
-        if (d === 'accepted') stamp = { kind: 'on', text: '· held' };
-        else if (d === 'rejected') stamp = { kind: 'off', text: '· not merged' };
-        else if (state.edits[s.id]) stamp = { kind: 'edited', text: '· edited by the room' };
-        const c2 = cardFor({
-          role: glyph(e.type) + '  ' + (SHORT[e.type] || words(e.type)).toUpperCase()
-            + '  ·  ' + (d === 'accepted' ? 'NEW' : 'PROPOSED'),
-          statement: e.statement,
-          rel: words(c.proposal.placement.relation) + ' ↑  ·  ' + c.source.contributor,
-          cls: d === 'accepted' ? 'settled' : d === 'rejected' ? 'refuted' : 'proposed',
-          famName: fam(e.type),
-          stamp: stamp,
-        });
-        if (s === raw && d === 'pending') c2.classList.add('arrive');
-        kid.appendChild(c2);
-        childBox.appendChild(kid);
-        any = true;
-      });
+      let any = proposedKids(id, childBox);
 
       if (!repeat) {
         (kids.get(id) || []).forEach(k => {
@@ -887,19 +945,35 @@ function renderField() {
 
     roots.forEach(r => draw(r, tree, null));
     view.entities.filter(id => !drawn.has(id)).forEach(id => draw(id, tree, null));
-    $('field').classList.toggle('dim', !!focusId || !!focusLink || !!unplaced);
   }
 
-  const gapped = P.filter(x => x.proposal.operation === 'unplaced' && state.decisions[x.id] === 'accepted');
+  const gapped = P.filter(x => x.proposal.operation === 'unplaced'
+    && state.decisions[x.id] === 'accepted');
   $('gaps').hidden = gapped.length === 0;
   const list = $('gaps-list');
   list.textContent = '';
   gapped.forEach(g => list.appendChild(
-    el('li', null, '“' + g.source.text.trim() + '” — ' + g.source.contributor)));
+    el('li', null, '“' + clip(g.source.text, 220) + '” — ' + g.source.contributor)));
 
+  // Show the whole path from the top of the tree down to the node in play when
+  // it fits; otherwise centre the node and let the ancestors read where they are.
+  const field = $('field');
   const hot = tree.querySelector('.hot');
-  if (hot) hot.scrollIntoView({ block: 'center', behavior: 'smooth' });
-  else $('field').scrollTo({ top: 0, behavior: 'smooth' });
+  if (!hot) {
+    field.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    const anchor = tree.querySelector('.node.lineage') || hot;
+    const fieldTop = field.getBoundingClientRect().top;
+    const span = hot.getBoundingClientRect().bottom - anchor.getBoundingClientRect().top;
+    if (span <= field.clientHeight - 40) {
+      field.scrollTo({
+        top: field.scrollTop + anchor.getBoundingClientRect().top - fieldTop - 14,
+        behavior: 'smooth',
+      });
+    } else {
+      hot.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    }
+  }
 }
 
 function renderLeft() {
@@ -909,7 +983,10 @@ function renderLeft() {
   const op = p.proposal.operation;
   const pl = p.proposal.placement || {};
 
-  $('quote').textContent = p.source.text.trim();
+  const text = p.source.text.trim();
+  $('quote').textContent = text;
+  $('quote').className = 'quote'
+    + (text.length > 700 ? ' xlong' : text.length > 340 ? ' long' : '');
   $('attrib').innerHTML = '— <b>' + escapeHtml(p.source.contributor) + '</b>'
     + (p.source.received ? '  ·  ' + escapeHtml(p.source.received) : '');
 
@@ -925,7 +1002,9 @@ function renderLeft() {
     + (op === 'unplaced' ? ' gapward' : '');
 
   let addr;
-  if (op === 'add_entity') addr = 'as <code>' + words(pl.relation) + '</code> for <code>' + pl.connects_to + '</code> — ' + escapeHtml(shortStatement(pl.connects_to));
+  // An arrow, not the word "for": "necessary for → NC-2" reads for every
+  // relation, where "as necessary for for NC-2" reads for none of them.
+  if (op === 'add_entity') addr = '<code>' + words(pl.relation) + '</code> → <code>' + pl.connects_to + '</code> — ' + escapeHtml(shortStatement(pl.connects_to));
   else if (op === 'support_entity' || op === 'challenge_entity') addr = 'at <code>' + pl.connects_to + '</code> — ' + escapeHtml(shortStatement(pl.connects_to));
   else if (op === 'challenge_link') addr = 'at link <code>' + pl.link + '</code> — ' + escapeHtml(linkWords(pl.link));
   else if (op === 'add_link') addr = '<code>' + pl.from + '</code> ' + words(pl.relation) + ' <code>' + pl.to + '</code>';
@@ -974,8 +1053,10 @@ function escapeHtml(s) {
 }
 function shortStatement(id) {
   const e = M.entities[id];
-  if (!e) return '';
-  return e.statement.length > 64 ? e.statement.slice(0, 62).trimEnd() + '…' : e.statement;
+  if (e) return clip(e.statement, 64);
+  const pr = byId(id);
+  const proposed = pr && (live(pr).proposal.entity || {}).statement;
+  return proposed ? clip(proposed, 64) : '';
 }
 function linkWords(id) {
   const l = M.links[id];
@@ -1045,12 +1126,21 @@ function openEdit() {
 
   const t = $('e-target');
   t.textContent = '';
-  (view ? view.entities : Object.keys(M.entities)).forEach(id => {
-    if (!M.entities[id]) return;
+  const option = (value, label) => {
     const o = document.createElement('option');
-    o.value = id;
-    o.textContent = id + ' — ' + shortStatement(id);
+    o.value = value;
+    o.textContent = label;
     t.appendChild(o);
+  };
+  (view ? view.entities : Object.keys(M.entities)).forEach(id => {
+    if (M.entities[id]) option(id, id + ' — ' + shortStatement(id));
+  });
+  // Claims earlier proposals introduce are addresses too, once they exist.
+  P.slice(0, state.i).forEach(x => {
+    const c = live(x);
+    if (c.proposal.operation !== 'add_entity') return;
+    if (c.proposal.placement.view !== p.proposal.placement.view) return;
+    option(x.id, x.id + ' (proposed) — ' + shortStatement(x.id));
   });
   t.value = p.proposal.placement.connects_to || p.proposal.placement.from
     || (view ? view.entities[0] : '');

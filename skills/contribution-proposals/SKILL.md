@@ -72,10 +72,18 @@ form export with a timestamp column, one bullet per person. Say how many you
 found before going further — a segmentation that silently merges two people is
 worse than one that asks.
 
-**Attribution.** Default to `Participant 1`, `Participant 2`, … numbered in
-document order. Use real names only if the user confirms the room agreed to be
-named on a slide. A public post is still not a slide; the deck's own pre-talk
-checklist asks for consent first.
+**Attribution.** Use the name each person gave, spelled the way they spelled it.
+A contribution read back to a room without its author stops feeling like
+anyone's, and the argument this whole thing serves is that a merged proposal
+keeps its author. Fall back to `Participant 1`, `Participant 2`, … only where
+the batch genuinely arrived without names, or where someone asked not to be
+named — and say which you did.
+
+Consent is still a real question when contributions come from somewhere the
+person did not expect to be quoted on a slide, a public forum thread being the
+obvious case. A form the room filled in during the session, knowing it would be
+read back, is not that case. Ask when it is unclear; do not silently anonymise a
+room that wanted to be credited.
 
 ### 2. Read the target model
 
@@ -96,6 +104,61 @@ Note which relation dominates each view. In `goal-tree` every link is
 | `challenge_link` | Both ends are fine; the arrow between them is what fails | `view`, `link` |
 | `add_link` | Both entities exist; the model is missing a relation between them | `view`, `from`, `to`, `relation` |
 | `unplaced` | No address exists that would not misfile it | `view` (for context only) |
+
+### Contributions that do not look like they fit
+
+Most of them will not, at first. People answer the question they heard, not the
+one on the slide, and they answer it in their own vocabulary — a permaculture
+cooperative, a mutual credit network, a carpentry apprenticeship, nine hundred
+characters of hard-won experience that never once uses the word *condition*.
+This is the normal case, not the awkward one, and reading it well is most of
+what the skill is for.
+
+Work in this order:
+
+1. **Find the operative claim.** A long contribution is usually one claim plus
+   the experience that earned it. Marta's cooperative is not the claim; *views
+   follow changed lives rather than preceding them* is the claim, and the
+   cooperative is her evidence for it. Say so in `interpretation.note` when you
+   have had to separate the two.
+2. **Ask what it says must be true, or is going wrong.** That question moves
+   almost any contribution into the model's register without distorting it.
+   "The currency people use decides what they can do with each other" becomes
+   *taking part depends on unpaid time, so it is rationed to people whose hours
+   are not already sold* — which is a cause, and the current-reality tree holds
+   causes.
+3. **Then look for the address.** The trees are broad: a goal about civilizational
+   transformation, success factors about embodiment, learning, and
+   transmissibility. Most claims about how people actually change have a
+   defensible home under one of them.
+4. **Check you have not smuggled in your own claim.** The test is whether the
+   contributor would recognise `interpretation.statement` as what they meant.
+   If it needs a premise they did not offer, you have written your own proposal
+   and attributed it to them.
+
+Two contributions can circle the same subject and belong in different places.
+Ana Beatriz on participants' hours is a cause of an existing undesirable effect;
+Sam on who funds the group has no address at all. Resolving that difference in
+the `rationale` is worth more to the room than either placement on its own.
+
+**Reserve `unplaced` for genuine absence, not for surprise.** A contribution
+about soil, or money, or a trade you have never modelled is not thereby
+unplaceable. It is unplaced only when you have done the three steps above and
+the honest answer is that attaching it anywhere would hide what it revealed.
+
+### Building on a claim the room just accepted
+
+For `add_entity`, `placement.connects_to` may name an **earlier `add_entity`
+proposal** instead of an entity — `connects_to: PROP-003` — when a contribution
+extends one already on the table rather than anything in the model. Kwame's
+apprenticeship claim is a condition on Marta's, not on `CSF-1` directly, and
+drawing it that way is more truthful than flattening both under the same parent.
+
+Two rules. The reference must point **backwards**, to a proposal the room has
+already seen, and to one in the same view. And put the pair adjacent in the
+running order, so they are decided together — a child left hanging under a
+rejected parent is legible but not a good moment on stage. Record the fallback
+address under `alternatives` for exactly that case.
 
 **Direction matters for `add_entity`.** The new node always links *into* the
 existing one: the created link is `new_entity --relation--> connects_to`. In a
@@ -123,8 +186,10 @@ Use `>-` for the verbatim text and keep it on one unwrapped line, matching the
 repo's no-line-wrap convention. If a contribution has real internal line breaks,
 use `|-` instead so they survive.
 
-See `examples/proposals.sample.yaml` for a worked batch of seven covering all
-six operations, read against the real Second Renaissance model.
+See `examples/proposals.sample.yaml` for a worked batch of nine covering all six
+operations, read against the real Second Renaissance model — including two long
+contributions that never use the model's vocabulary, one proposal that hangs off
+another, and one honest `unplaced`.
 
 ### 5. Build the page
 

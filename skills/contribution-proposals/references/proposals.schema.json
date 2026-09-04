@@ -22,8 +22,8 @@
         "attribution": {
           "type": "string",
           "enum": ["name", "first-name", "anonymous", "numbered"],
-          "default": "numbered",
-          "description": "How contributors are credited on screen. Default to numbered unless the room consented to names."
+          "default": "name",
+          "description": "How contributors are credited on screen. Use the name each person gave; a contribution read back without its author stops feeling like anyone's. Fall back to first-name or numbered only where someone asked not to be named, or where the batch arrived without names."
         }
       }
     },
@@ -46,7 +46,7 @@
           "required": ["contributor", "text"],
           "additionalProperties": false,
           "properties": {
-            "contributor": { "type": "string", "description": "As it should appear on screen — 'Participant 7', a first name, or a full name if consent was given." },
+            "contributor": { "type": "string", "description": "The person's name as they gave it, and as it should appear on screen. 'Participant 7' only where the batch has no names or someone asked not to be named." },
             "text": { "type": "string", "description": "The contribution VERBATIM. Never tidied, corrected, shortened by rewording, or stitched together from separate passages. Shortening is allowed only by taking a shorter continuous run." },
             "received": { "type": "string" }
           }
@@ -89,7 +89,7 @@
               "additionalProperties": false,
               "properties": {
                 "view": { "type": "string", "description": "A key of the model's views map — the tree the room will be looking at." },
-                "connects_to": { "type": "string", "description": "Existing entity id. The parent for add_entity; the subject for support_entity and challenge_entity." },
+                "connects_to": { "type": "string", "description": "The parent for add_entity; the subject for support_entity and challenge_entity. Usually an entity id from the model. For add_entity it may instead be the id of an EARLIER add_entity proposal in the same view, which hangs this claim off one the room may have just accepted — put the two next to each other in the running order so they are decided together." },
                 "relation": { "type": "string", "description": "Link relation for add_entity and add_link, e.g. necessary_for, causes, enables, contributes_to." },
                 "link": { "type": "string", "description": "Existing link id. challenge_link only." },
                 "from": { "type": "string", "description": "add_link only." },
