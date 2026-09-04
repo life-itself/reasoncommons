@@ -2098,19 +2098,83 @@ h3 {
   </div>
 </section>
 
-<section class="slide" data-act="5 · you try it" data-title="It works the other way, too" data-steps="4">
-  <p class="eyebrow quiet">One more thing this buys you &mdash; not built yet</p>
-  <ul class="lines" style="max-width:46ch">
+<section class="slide draw" data-act="5 · you try it" data-title="It works the other way, too" data-steps="7">
+  <p class="eyebrow quiet" style="flex:0 0 auto">One more thing this buys you &mdash; not built yet</p>
+  <ul class="lines" style="flex:0 0 auto;max-width:52ch">
     <li class="p soft" data-from="1">So far: the forum tells the tree what&rsquo;s happening.</li>
     <li class="p" data-from="2"><b style="font-weight:500;color:var(--accent-deep)">It can go the other way.</b> The tree can tell the forum what already happened.</li>
     <li class="p" data-from="3">A new post touching a claim gets a quiet tag: &ldquo;related &mdash; see the 2023 and 2026 threads on this.&rdquo;</li>
     <li class="p soft" data-from="4">The research circle wouldn&rsquo;t have needed a third pass.</li>
   </ul>
+  <!--
+    Three stages, left to right, reusing the deck's own grammar rather than
+    inventing new marks: a forum post is `.e` (not reasoning), a claim is
+    `.n n--outcome`, "relates to" is an `.addr` tag (the same device "Every
+    claim has an address" uses), and the fan-out to prior posts is quiet
+    links. Explicitly speculative -- see the eyebrow -- so nothing here reads
+    as a screenshot.
+  -->
+  <div class="sheet p" data-from="5" style="height:clamp(9rem,24vh,14rem)">
+    <svg viewBox="0 0 1200 320" aria-label="Three steps: a new forum post is matched to a claim in the tree; earlier posts already attached to that claim are found; the post is tagged with the claim and linked to those earlier posts.">
+      <!-- Step 1 · match -->
+      <g class="p" data-from="5">
+        <g class="e">
+          <rect class="post" x="20" y="20" width="320" height="64" rx="7"/>
+          <text class="label" x="36" y="42">dvdjsph &middot; new post</text>
+          <text class="body" x="36" y="60" style="font-size:11.5px">&ldquo;&hellip;this is why newcomers struggle to join&hellip;&rdquo;</text>
+        </g>
+        <path d="M180 84 V122" stroke="#b2622d" stroke-width="1.4" stroke-dasharray="4 4" fill="none"/>
+        <path d="M180 122 L173 110 L187 110 Z" fill="#b2622d"/>
+        <g class="n n--outcome"><rect x="70" y="128" width="220" height="56" rx="2"/><path class="edge" d="M70 128 V184"/>
+          <text class="role" x="84" y="148" style="font-size:12px">&#9678; 4.2.1</text>
+          <text class="st xs" x="84" y="166" style="font-size:11px">a newcomer can find, enter&hellip;</text>
+        </g>
+        <text class="ann brace" x="20" y="300" style="font-size:11px">1 &middot; MATCH THE POST TO A CLAIM</text>
+      </g>
+
+      <!-- Step 2 · gather -->
+      <g class="p" data-from="6">
+        <path d="M340 156 H430" stroke="#c0b6a5" stroke-width="1.2" fill="none"/>
+        <path d="M430 156 L418 150 L418 162 Z" fill="#c0b6a5"/>
+        <g class="n n--outcome"><rect x="510" y="128" width="220" height="56" rx="2"/><path class="edge" d="M510 128 V184"/>
+          <rect class="ring" x="505" y="123" width="230" height="66" rx="5"/>
+          <text class="role" x="524" y="148" style="font-size:12px">&#9678; 4.2.1</text>
+          <text class="st xs" x="524" y="166" style="font-size:11px">same claim as the new post</text>
+        </g>
+        <g class="l l--quiet"><path d="M620 184 V198 H515 V210"/><path d="M620 184 V198 H705 V210"/></g>
+        <g class="e">
+          <rect class="post" x="440" y="210" width="160" height="54" rx="7"/>
+          <text class="label" x="454" y="230" style="font-size:10.5px">2023 thread</text>
+          <text class="body" x="454" y="248" style="font-size:10.5px">same claim, different words</text>
+          <rect class="post" x="625" y="210" width="160" height="54" rx="7"/>
+          <text class="label" x="639" y="230" style="font-size:10.5px">2026 thread</text>
+          <text class="body" x="639" y="248" style="font-size:10.5px">same claim, again</text>
+        </g>
+        <text class="ann brace" x="440" y="300" style="font-size:11px">2 &middot; FIND WHAT&rsquo;S ALREADY THERE</text>
+      </g>
+
+      <!-- Step 3 · annotate -->
+      <g class="p" data-from="7">
+        <path d="M800 156 H850" stroke="#c0b6a5" stroke-width="1.2" fill="none"/>
+        <path d="M850 156 L838 150 L838 162 Z" fill="#c0b6a5"/>
+        <g class="e">
+          <rect class="post" x="860" y="20" width="320" height="64" rx="7"/>
+          <text class="label" x="876" y="42">dvdjsph &middot; new post</text>
+          <text class="body" x="876" y="60" style="font-size:11.5px">&ldquo;&hellip;this is why newcomers struggle to join&hellip;&rdquo;</text>
+        </g>
+        <g class="addr"><rect x="876" y="94" width="184" height="20" rx="2"/><text x="886" y="108">RELATES TO 4.2.1</text></g>
+        <text class="ann" x="860" y="146" style="font-size:11.5px">&middot; 2023 &mdash; same claim, different words</text>
+        <text class="ann" x="860" y="166" style="font-size:11.5px;fill:#6e6559">&middot; 2026 &mdash; same claim, again</text>
+        <text class="ann brace" x="860" y="300" style="font-size:11px">3 &middot; TAG IT, LINK THE REST</text>
+      </g>
+    </svg>
+  </div>
 
   <div class="note">
     <h4>It works the other way, too</h4>
-    <p>Say plainly that this is roadmap, not shipped &mdash; same honesty as the Demo C prototype caveat. No diagram on purpose: this is the &ldquo;one more thing this buys you&rdquo; register, same weight as the evaluation point, not a fourth demo.</p>
-    <p>The payoff line is a direct callback to &ldquo;The research circle&rdquo; (Act 1): the same conclusion reached twice in three years because nobody knew it had already happened. This is the fix for <b>that</b> specific failure, not a generic AI-magic line.</p>
+    <p>Say plainly that this is roadmap, not shipped &mdash; same honesty as the Demo C prototype caveat. The diagram is a schematic in the deck&rsquo;s own drawing grammar, not a mock screenshot, so it can&rsquo;t be mistaken for a built feature.</p>
+    <p>The payoff line is a direct callback to &ldquo;The research circle&rdquo; (Act 1): the same conclusion reached twice in three years because nobody knew it had already happened. This is the fix for <b>that</b> specific failure, not a generic AI-magic line &mdash; hence dating the two prior posts 2023 and 2026, matching that story exactly.</p>
+    <p class="ask">If the diagram doesn&rsquo;t earn its place once it&rsquo;s on screen, cut it back to text-only (steps 1&ndash;4) &mdash; it was optional from the start.</p>
   </div>
 </section>
 
