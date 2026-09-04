@@ -85,27 +85,30 @@ Today, we want to share with you where we have got to and where we are going.
 
 ### 1 · The problem: thinking that doesn't accumulate
 
-To see why the thinking goes nowhere, start with what the movement is trying to be.
+The Second Renaissance is a movement for civilizational renewal. It is largely volunteer. It has a real vision and a real theory of change, and both are meant to keep evolving as more people work on them. That only works if the contributions add up.
 
-The Second Renaissance is a movement for civilizational renewal. It is largely volunteer. It has a real vision and a real theory of change, and both are meant to keep improving as more people work on them. That only works if the improving adds up.
+Mostly it doesn't.
 
-Mostly it doesn't. Here is the shape of it. A research circle meets every week. Twice in three years it has worked its way to the same conclusion. Both times the room agreed. Both times, a couple of weeks later, the agreement had nobody's name on it and nothing downstream had changed. Months after that it came round again from the beginning, because everything that produced it was still sitting where it had been.
+Take the the research circle. It meets weekly. Several times in last couple of years it has worked its way to similar ideas. Each time, by a few weeks later they are lost and nothing has changed in the core theory of change. And a few months later the topic will start again from the beginning, because everything that produced it was stuck in a zoom call or an old thread on the forum.
 
-The people in that room are not the problem. They learned something and they kept it. Individual understanding compounds. Twenty years of anyone's students will show you that. What does not compound is the group's version. Agreement that survives only in the people who were present is a rumour.
+The people in the room did learn something. To some extent, individual understanding compounds. Twenty years of someone's students will show you that. What does not compound is the group's share collective understanding. Agreement that survives only in the people who were present is close to rumour.
 
-So this is not a shortage of intelligence, or goodwill, or ideas. We are not short of ideas. It is a shortage of somewhere to put them.
+So this is not a shortage of intelligence, or goodwill, or ideas. It is a shortage of somewhere to put them.
 
-And the obvious fix does not work. Write it up properly and you get six or seven white papers, something like two hundred thousand words. A claim buried in the middle of a paragraph on page forty has no address. You cannot point at it. If you cannot point at it, you cannot disagree with it precisely, and a vague disagreement with a long document is one nobody can act on, so in the end nobody makes it. The most valuable thing a new person brings, a precise disagreement, is the thing a long document is least able to receive.
+And the obvious fixes do not work. Write it up properly and you get six or seven white papers, nearly a hundred thousand words. **But a claim buried in the middle of a paragraph on page forty has no address**. You cannot point at it. If you cannot point at it, you cannot disagree with it or improve. A vague disagreement with a long document is one nobody can act on, so in the end nobody makes it. The most valuable thing a new person brings, a specific suggestion or disagreement, is the thing we are least able to receive.
 
-One scope note before I show you the idea. There are really two halves to this: cohering our thinking, and coordinating our action. What I have just described is the first half. The second, how work gets organised and tracked against all this, is a talk of its own. Today is about the thinking.
+> [!note]
+>  One scope note before we go further. There are really two halves to all of this: cohering our thinking, and coordinating our action. What I have just described is the first half. The second, how work gets organised and tracked against all this, is a talk of its own. Today is about the thinking.
 
 ### 2 · The idea, and a look at it
 
-So here is the idea. What if the thing we hold in common is not a stack of documents but a structure.
+So here is the idea. What if the thing we hold in common is not a set of documents or a bunch of forum posts but an underlying structure -- a tree. A tree drawn from the former and supporting the latter.
 
-You take the top claim. You break it into the sub-claims it depends on. You break those down again, as far as is useful. Now every claim sits at a location. You can point at exactly one. And the lines between claims are themselves claims: this one is necessary for that one. What is on the screen is not just the conclusions. It is the reasoning.
+TODO: simple right to left tree structure of thought. preferably animated so it grows in an organic way.
 
-Let me show you a real one. This is the Second Renaissance tree of change. I did not build it for the talk. It is generated from the actual written corpus.
+A tree helps you structure a thesis. Its root, its foundational node, is the the top claim. Then you break that down into the sub-claims it depends on. And so on: you keep break a claim into subclaims, as far down as is useful. Now every claim has a clear location in the tree. And we can also see exactly how a given claim depends on or supports other claims (we can even see circular reasoning if we spot loops!). What is on the screen is now not just conclusions but the structure of the the reasoning behind them.
+
+Let me show you a real one. This is the Second Renaissance tree of change. It is generated from the actual written corpus.
 
 > **DEMO A: see the tree**
 > *On screen: the real 2R tree of change. The goal at the top ("co-initiate a Second Renaissance: a conscious transformation of foundational views, values, practices and institutions toward a wiser, weller, regenerative civilization"), the eight critical success factors below it, sub-claims under those. Do two things and stop. (1) Click one leaf, three levels down, under a condition like "pockets of coherent new culture." Its path up to the goal lights; everything else dims. Say: this claim is not floating in a document, it is at an address, and the address tells you what it is holding up. (2) Click one line between two claims. A one-line gloss appears: "this one is necessary for that one." Say: the links are claims too, so you can disagree with a link without touching the boxes. Ninety seconds. Do not tour the whole tree.*
@@ -114,23 +117,25 @@ Two things about that tree at the same time. It is a thesis: a claim that these 
 
 One aside on where the shape comes from, because it matters and then it doesn't. It is about forty years old, it came out of operations research, and it is called the Logical Thinking Process. There is a separate talk that does it justice. Nothing here depends on knowing any of it.
 
-### 3 · The conflict, and the turn
+### 3 · The complication
 
 So why don't we already work like this?
 
-Because there is a real conflict in the way, and every group that tries to give itself structure hits it. On one side, people want the conversation to stay what it is: quick, exploratory, human. Nobody joined a movement for civilizational renewal in order to fill in a form, and people are right to be wary of anything that interrupts a good exchange to make it tidy. On the other side, accumulation needs structure. If everything stays loose, the good parts dissolve into the scroll and we are back to the same conversation next year.
+Because there is a real problem: structure takes effort and gets in the way of free flowing discourse. Put simply: structure supports cumulation but it creates friction, especially for new contributors -- people you may most want to encourage to join in. It is even more work if you want the structure to enrich the existing discourse -- and not just draw from it (e.g. you want the forum posts to be annotated with pointers to the tree of change). 
 
-It looks like you have to choose. Keep it human, or make it add up.
+Every group that tries to give itself structure hits it. On one side, people want the conversation to be as accessible, easy and joyful as possible: quick, exploratory, human. Nobody joined a movement for civilizational renewal to fill in a form or through some cumbersome analysis. People are right to be wary of anything that interrupts the flow of thought or dams up discourse. On the other side, accumulation needs structure. If everything stays loose, the good parts dissolve into the scroll and we are back to the same conversation two months later.
 
-There is exactly one assumption underneath that makes it look like a choice. The assumption is that the structure has to be put there by the person contributing, at the moment they contribute.
+It looks like you have a dilemma: Keep it accessible or make it structured so it cumulates.
 
-That assumption is not true. That is more or less the whole talk.
+But fortunately there is one dissolvable assumption underneath that is forcing this choice. The assumption is that the structure has to **be put there by a person** -- even perhaps the person contributing, at the moment they contribute.
 
-### 4 · The move, and watch it work
+**That assumption is no longer true in the age of AI**. That is what makes a reason commons possible.
 
-If the structure does not have to be added at the moment of contributing, then don't.
+### 4 · The possibility, and how it works
 
-Let the conversation be a conversation. You post your paragraph on the forum the way you were going to anyway. Nothing interrupts you.
+The key point is that structure does not have to be added by a person at the moment of contributing.
+
+We can let the conversation be a conversation. You post your paragraph on the forum the way you were going to anyway.
 
 Afterwards, separately, a machine reads the thread against the tree and proposes where the parts of it belong.
 
@@ -138,9 +143,11 @@ Afterwards, separately, a machine reads the thread against the tree and proposes
 > *TODO(@David): pick the specific forum thread — real, public, four to six posts, ideally one that supports a condition, one that challenges a link, and one the tree can't place yet.*
 > *On screen: a real Second Renaissance forum thread, four to six posts, the kind of exchange that normally just scrolls away. Trigger the reader. Three or four cards appear next to the tree: "this paragraph supports condition 4, pockets"; "this sentence challenges the link between sangha and movement coherence"; "this is a claim the tree has nowhere to put yet." Each card links back to the exact post it came from. Say: nobody in that thread did anything differently. The structure was recovered afterwards, by something whose whole job is to do the filing. Pre-bake it so it lands in about a minute; narrate what it is doing while it runs.*
 
-Then a rotating handful of people decide what actually merges into the tree. Not one person, and not the machine on its own, because one party quietly deciding what the map says is how you get a map nobody trusts.
+Then a rotating handful of people (with AI assistance) decide what actually merges into the tree. It's pull requests for discourse 🙂
 
-Look at what happened to the cost of contributing. It fell back to one sentence, said where you were already saying it. The filing still gets done. It is somebody's job now, and that somebody is not the contributor. AI is what makes that affordable. Two years ago this same idea ended at "lovely, far too much hand work, nobody will keep it up."
+And look at what happened to the cost of contributing. It remains simply the effort of writing on the forum. The filing still gets done. But by AI. And it is AI that makes that affordable.
+
+Two years ago this same idea would have ended at "lovely, far too much hand work, nobody will keep it up."
 
 ### 5 · You try it
 
