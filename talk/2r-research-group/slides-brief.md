@@ -1,6 +1,6 @@
 ---
-title: Where Does the Thinking Go?
-subtitle: Trees, forums, and getting Second Renaissance to build on its own ideas
+title: Where Does our Thinking Go?
+subtitle: Trees of change, forum discussions, and getting Second Renaissance to constantly evolve its vision.
 authors: Rufus Pollock, David Joseph
 event: Second Renaissance Research Group
 theme: life-itself-warm-earth
@@ -23,6 +23,8 @@ Feeds the slide build (frontend-slides skill). This is the slide text, the build
 ---
 
 ## 0 · Introduction
+
+> FIX: this is introduction not cold open.
 
 ### Title
 

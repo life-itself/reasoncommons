@@ -7,6 +7,10 @@ updated: 2026-09-01
 
 Working notes, decisions, and parking lot. Keeps `README.md` tight and gives the script somewhere to defer detail to.
 
+2026-09-04
+
+- [ ] How Does Our Thinking Grow (alt title)
+
 ## The framing decision: 2R-first
 
 Two talks were possible from the same material:
