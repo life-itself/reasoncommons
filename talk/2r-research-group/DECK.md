@@ -114,11 +114,19 @@ Then promote it onto `demo-c/`, which is the route that ships:
 python3 skills/contribution-proposals/scripts/build-demo.py --promote
 ```
 
-What ships in the repo today is a **rehearsal build from nine synthetic
-contributions** — every operation is represented, the lengths run from one line
-to a thousand characters, and two of them arrive in a vocabulary the model does
-not use at all, which is the case worth rehearsing. Replace it with the real
-batch on the day.
+What ships in the repo today is a **rehearsal build from
+[`2r_participant_contributions_test.docx`](../2r_participant_contributions_test.docx)** —
+nine fictional participants, written independently of the tree, which is the
+case worth rehearsing. Four of the nine challenge a claim, one challenges a
+link, three add one, and one has nowhere to go. Replace it with the real batch
+on the day.
+
+Two things to settle before you drive it. It **opens on a challenge to the goal
+itself** — Maya on `G-1` being too broad to rule anything out — and if the room
+accepts that, a challenge sits on the goal for the rest of the session. Moving
+her later is a one-line edit. And it **closes on the contribution with nowhere
+to go**, Ana on art, celebration and grief ritual, which is the same beat Demo B
+ends on.
 
 Keys: `→` `←` move · `A` accept · `E` edit · `X` reject · `0` reset · `End`
 jumps to the tally. `A` and `X` toggle, so a mis-press costs one keystroke.

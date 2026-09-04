@@ -1,204 +1,217 @@
-# REHEARSAL BUILD — the nine contributions below are synthetic and so are the
-# names on them. They exist so the page can be driven end to end before the
-# session and so every operation has a worked example. Replace this file with
-# the real batch (skills/contribution-proposals, run against the downloaded
-# contributions) and rebuild; ltp/ltp-model.yaml is not touched either way.
+# REHEARSAL BUILD — read from talk/2r_participant_contributions_test.docx
+# against ltp/ltp-model.yaml. The nine contributors are fictional and the
+# document says so; this is rehearsal material, not the room's words. Replace
+# it with the real batch on the day and rebuild.
 #
-#   python3 skills/contribution-proposals/scripts/build-demo.py
+#   python3 skills/contribution-proposals/scripts/build-demo.py --test --serve
+#   python3 skills/contribution-proposals/scripts/build-demo.py --promote
+#
+# Nine contributions, nine proposals, nothing merged. Running order is the
+# document's, with two exceptions: Sofia and Tarek are swapped so the six
+# goal-tree readings run together before the two current-reality ones, and
+# Ana's unplaced closes. One view switch instead of four. The unplaced is last
+# by choice, not by drift: the deck's Demo B ends on the same beat, and a
+# contribution the tree cannot hold is the strongest note to leave a room on.
+#
+# Confidence is 6 high / 3 medium. Jonas never names the link he is objecting
+# to and Ana names the placement herself as one of three possibilities she is
+# unsure between, so neither reading is offered as a certainty.
 
 meta:
-  title: Demo C — rehearsal · sample contributions
+  title: Demo C — rehearsal · test contributions
   event: Second Renaissance Research Group
   date: 2026-09-04
   model_source: ltp/ltp-model.yaml
-  contributions_source: skills/contribution-proposals/examples/contributions.sample.txt
+  contributions_source: talk/2r_participant_contributions_test.docx
   attribution: name
 
 proposals:
   - id: PROP-001
     source:
-      contributor: Wendy Nakamura
+      contributor: Maya
       text: >-
-        I think we're assuming everyone has to move through the same progression. First contact, then practice, then contributing, then stewarding. But the communities I work with wouldn't recognise that shape at all — some of them start with the doing and never get near the discourse. A single path is going to lose them at step one.
+        I'm sympathetic to the big civilizational goal, but I'm not sure it helps this group make choices. "Transform civilization" is so broad that almost anything can be justified by it. I'd want a nearer-term statement of success — maybe something like being able to create and sustain a few local communities where people actually live these values over time. Then we could ask whether what we're doing is getting us there.
     interpretation:
-      statement: The path from first contact to sustained practice has to be able to take different shapes in different communities, rather than one progression everybody runs.
+      statement: G-1 is too broad to discriminate between courses of action, so it cannot do the work a goal is supposed to do for this group.
+      note: Read as a challenge to the goal rather than a request to replace it. Maya offers a candidate nearer-term goal, but as an illustration of what she is missing rather than as a proposal.
     proposal:
-      operation: add_entity
-      entity:
-        type: necessary_condition
-        status: provisional
-        statement: Entry paths can take different shapes in different community contexts
+      operation: challenge_entity
       placement:
         view: goal-tree
-        connects_to: NC-2
-        relation: necessary_for
-      rationale: NC-2 already requires a transparent path from first contact to sustained practice, but says nothing about whether that path can vary. This is a condition on NC-2 rather than a rival to it.
+        connects_to: G-1
+      rationale: The objection is not that G-1 is wrong but that it is unfalsifiable in practice — anything can be justified under it, so it cannot rule anything out. That is a challenge to the goal as stated, at the top of the tree, and the open questions already ask whether participants confirm G-1 as the operating goal.
       confidence: high
+      alternatives:
+        - target: G-1
+          confidence: medium
+          note: Could instead be read as proposing an intermediate objective under G-1 — sustaining a few local communities that live the values over time.
     review:
       status: pending
 
   - id: PROP-002
     source:
-      contributor: Tomás Herrera
+      contributor: Jonas
       text: >-
-        it's in the small tents that the actual work happens. big gatherings are good for morale and terrible for anything else. every real change I've seen came out of five people who kept showing up.
+        I think the 'clear next step' idea is only part of why people stay or leave. In my experience, people commit because somebody they trust invites them into a relationship. A beautifully designed pathway can still feel like a funnel. I'd test whether the real drop-off is missing steps, or whether people just don't yet trust the people and culture enough to go deeper.
     interpretation:
-      statement: Dense small groups, not large gatherings, are where practice actually takes hold — offered from Tomás's own experience.
+      statement: A transparent path can be fully in place and people still not embody the practice, because what moves them is being invited into relationship by someone they trust.
     proposal:
-      operation: support_entity
+      operation: challenge_link
       placement:
         view: goal-tree
-        connects_to: NC-5
-      rationale: NC-5 already holds that dense practice containers need sangha support. This is first-hand testimony for it, which the condition currently lacks — its evidence is all documentary.
-      confidence: high
+        link: L-005
+      rationale: Jonas does not dispute that a path helps, and he does not dispute the outcome. He disputes that satisfying NC-2 gets you CSF-1 — "a beautifully designed pathway can still feel like a funnel" is precisely the claim that the arrow can fail with both ends intact.
+      confidence: medium
       alternatives:
-        - target: NC-3
-          confidence: low
-          note: Also touches repeated practice, but the contribution is about group size rather than depth.
+        - target: CSF-1
+          confidence: medium
+          note: Could instead add a sibling condition under CSF-1 — that newcomers are invited into relationship by someone they already trust.
     review:
       status: pending
 
   - id: PROP-003
     source:
-      contributor: Marta Oyelaran
+      contributor: Leila
       text: >-
-        I run a permaculture cooperative outside Coimbra, eleven of us, going on six years now. I'll be honest, I came to this because a friend sent it to me and I'm not sure I follow all the language in your documents. But here is what I know. We spent the first two years talking about values. Reading, discussing, going on retreats. Nothing changed. What changed us was the third year, when we took on four hectares of degraded land and had to actually feed ourselves from it. You learn cooperation very fast when the irrigation fails in August. People who could not agree in a meeting agreed in a field. So I think something is being missed here, which is that most people do not change their views and then change their lives. They change their lives, usually because they have to, and the views follow after. If you want the durable thing you keep talking about, I suspect you need people doing something together that has real consequences if they get it wrong.
+        Before we talk about growing more pockets, I think there needs to be a minimum safeguarding layer. What happens when there's a power conflict, harassment, a mental-health crisis, or somebody needs to leave safely? Who handles grievances? If we can't answer that, I don't think replication is responsible, even if the practices themselves are strong.
     interpretation:
-      statement: Durable change comes from shared practical work with real consequences, and the change in views follows it rather than preceding it.
-      note: The contribution is mostly an account of one cooperative and never uses the model's vocabulary. The operative claim is the causal order in its last three sentences; the account is the evidence for it, not a second claim.
+      statement: Replication is not responsible until there is a safeguarding layer that handles harm, grievance, crisis, and safe exit.
     proposal:
       operation: add_entity
       entity:
         type: necessary_condition
         status: provisional
-        statement: People take on shared practical work with real consequences, from which changed views follow
+        statement: A safeguarding layer handles harm, grievance, crisis and safe exit before practices are replicated
       placement:
         view: goal-tree
-        connects_to: CSF-1
+        connects_to: CSF-3
         relation: necessary_for
-      rationale: CSF-1 requires that people durably embody wiser views, values, practices, and ways of acting, but is silent on how that comes about. Marta's claim is that consequential shared work is what produces it, which makes it a condition on CSF-1.
-      confidence: medium
-      alternatives:
-        - target: NC-3
-          confidence: medium
-          note: Could instead be read as a challenge to NC-3's "progressively deeper levels", which implies practice deepens by repetition rather than by consequence.
+      rationale: CSF-3 requires that practices become "responsibly transmissible" and the model never says what makes transmission responsible. Leila names the missing content of that word, which makes this a condition on CSF-3 rather than a challenge to it. The coverage gaps already note that no safeguarding policy accompanied the source documents.
+      confidence: high
     review:
       status: pending
 
   - id: PROP-004
     source:
-      contributor: Kwame Boateng
+      contributor: Ben
       text: >-
-        Adding to what Marta said, because I think it's the same point from a different angle. I trained as a carpenter. Nobody learns carpentry from a book and nobody learns it alone. You stand next to someone for two years and you ruin a lot of wood. Whatever this group is trying to pass on, if there isn't an apprenticeship shape to it — someone experienced, someone new, real work between them, and time — it will not pass on.
+        I'm uneasy with a contributor → facilitator → steward ladder. It sounds reasonable, but it could accidentally turn into a status hierarchy where the people who move 'up' are seen as more developed. Some people may want to host, care for newcomers, make art, do logistics, or contribute money without ever becoming facilitators. I'd rather the model describe different forms of responsibility than one progression everyone is expected to climb.
     interpretation:
-      statement: The shared practical work has to be organised as apprenticeship — an experienced person, a newer person, real work between them, over time — or nothing transmits.
+      statement: NC-4 encodes a single ladder of advancement, which risks becoming a status hierarchy and excludes forms of responsibility that are not facilitation.
     proposal:
-      operation: add_entity
-      entity:
-        type: necessary_condition
-        status: provisional
-        statement: The work is learned by apprenticeship — an experienced person, a newer person, and real work between them over time
+      operation: challenge_entity
       placement:
         view: goal-tree
-        connects_to: PROP-003
-        relation: necessary_for
-      rationale: Kwame says explicitly that he is extending Marta's point, and he is — this is a condition on the shared consequential work she proposes, not on CSF-1 directly. It hangs off her claim, so the room decides hers first.
-      confidence: medium
-      alternatives:
-        - target: NC-4
-          confidence: medium
-          note: If PROP-003 is rejected, this reads instead as a condition on NC-4, contributors developing into facilitators and stewards.
+        connects_to: NC-4
+      rationale: NC-4 states that contributors develop into facilitators and accountable stewards — one progression. Ben's objection is to that shape, not to the capacity it is reaching for, and he proposes describing different forms of responsibility instead. That disputes the condition as written.
+      confidence: high
     review:
       status: pending
 
   - id: PROP-005
     source:
-      contributor: Priya Raghavan
+      contributor: Priya
       text: >-
-        Honestly I don't think "throughput" can be defined here without becoming a metric someone games. The moment you count adoption events you get people producing adoption events. I know the doc says it won't reduce to activity counts but I've never seen that hold once there's a number.
+        I like the attempt to define durable adoption, but once we make throughput a number I'm worried we'll optimize for the number. I'd want stories, peer observation, and evidence about the quality of relationships to count just as much. Also, somebody deciding not to continue — or leaving because something felt wrong — should be treated as useful evidence, not simply as a failed conversion.
     interpretation:
-      statement: Any operational definition of throughput will be gamed, so NC-1 may be requiring something that cannot survive contact with the group's own incentives.
+      statement: Operationalising throughput will produce optimisation for the measure, and treating departure as failed conversion discards evidence the group needs.
     proposal:
       operation: challenge_entity
       placement:
         view: goal-tree
         connects_to: NC-1
-      rationale: NC-1 asserts throughput can be operationally defined without reducing transformation to activity counts. This says the qualifier will not hold in practice. It disputes the condition itself, not its placement.
+      rationale: NC-1 claims throughput can be operationally defined without reducing transformation to activity counts. Priya's claim is that the qualifier will not survive having a number, and that the definition would misclassify a considered departure as a failure. Both dispute the condition itself rather than where it sits.
       confidence: high
     review:
       status: pending
 
   - id: PROP-006
     source:
-      contributor: Dev Chaudhary
+      contributor: Sofia
       text: >-
-        The maps being versioned and challengeable is good but that on its own doesn't make the group learn anything. You can have a beautifully maintained wiki that nobody's mind is ever changed by. Learning happens when someone is actually made to answer an objection, and that's a social practice, not a document format.
+        I'd connect the practice pockets much more directly to doing useful work in a place. A group that meditates and studies together is one thing; a group that also restores a watershed, helps neighbors, runs a community kitchen, or solves a local problem may build a much more durable culture. It might even be that shared action creates the depth and trust, rather than depth always coming first and then producing action.
     interpretation:
-      statement: Governing the maps as a versioned commons is not sufficient for the group to learn; the link from NC-6 to CSF-2 assumes a social practice that the condition does not name.
+      statement: Pockets need to be doing useful work in a specific place, and that shared work may be what produces depth and trust rather than following from them.
+      note: Two claims, and only the first is proposed here. The second — that the causal order runs the other way — would be a challenge to NC-3's "progressively deeper levels" and is recorded as an alternative rather than shown.
     proposal:
-      operation: challenge_link
+      operation: add_entity
+      entity:
+        type: necessary_condition
+        status: provisional
+        statement: Practice pockets take on useful work in a specific place alongside their inward practice
       placement:
         view: goal-tree
-        link: L-009
-      rationale: The challenge is aimed at the arrow, not at either end of it. NC-6 can be fully satisfied and CSF-2 still fail, which is what a challenge to a necessity link means.
-      confidence: high
+        connects_to: NC-5
+        relation: necessary_for
+      rationale: NC-5 already requires that dense practice containers remain outward-facing, but says nothing about what outward-facing consists of. Sofia gives it content — consequential work in a place — which makes this a condition on NC-5 rather than a rival to it.
+      confidence: medium
+      alternatives:
+        - target: NC-3
+          confidence: medium
+          note: The second half of the contribution challenges NC-3's assumption that depth accumulates by repetition and then produces action.
     review:
       status: pending
 
   - id: PROP-007
     source:
-      contributor: Ana Beatriz Lima
+      contributor: Tarek
       text: >-
-        I want to talk about money, but not in the way people usually mean it here. I've spent nine years working on mutual credit systems in Belo Horizonte, and the thing I keep seeing is that the currency people use decides what they are able to do with each other. If you need euros to take part, then taking part is rationed by who has euros, and that isn't a values problem, it's a plumbing problem. Everyone in our network can trade hours without having to earn first, and it changed who showed up — completely. What I notice in your model is that it assumes people can give time to practice and to stewarding. But the people who most need what you're describing are exactly the ones whose hours are already sold. I don't know where this goes in your diagram. I just don't think you can leave it out.
+        I'm not convinced that awareness isn't the bottleneck. Outside the people already adjacent to this work, almost nobody I talk to has heard of Second Renaissance. Before we organize the whole strategy around conversion, I'd run a simple test: put comparable effort into outreach and into improving the pathway, and see which one actually changes sustained participation. Right now the constraint feels assumed rather than demonstrated.
     interpretation:
-      statement: Taking part depends on unpaid time, so it is rationed to people whose hours are not already sold — which narrows who can practise and who can steward.
-      note: The mutual credit material is the contributor's evidence for the mechanism rather than a proposal to adopt mutual credit, and is read that way here. Read otherwise, this would be an injection for the future-reality tree and a different proposal entirely.
+      statement: The claim that conversion rather than awareness is the constraint is assumed rather than demonstrated, and could be settled by a comparison test.
     proposal:
-      operation: add_entity
-      entity:
-        type: root_cause
-        status: provisional
-        statement: Participation depends on unpaid time, so it is rationed to those whose hours are not already sold
+      operation: challenge_entity
       placement:
         view: current-reality
-        connects_to: UDE-3
-        relation: causes
-      rationale: UDE-3 observes that core organizers carry too much of the work and risk burnout. If only people with spare unpaid hours can take part, the pool of people who could carry it is small by construction — a cause of UDE-3 the tree does not currently hold. Note this is a different claim from Sam's about who funds the work.
-      confidence: medium
+        connects_to: RC-1
+      rationale: RC-1 is the model's named current constraint, and it rests on ASM-3, that awareness and reach are not the current constraint. Tarek disputes exactly that assumption, which makes this a challenge to RC-1 rather than to any effect below it. The model's own open questions ask whether conversion architecture is truly the constraint.
+      confidence: high
+      alternatives:
+        - target: ACT-1
+          confidence: medium
+          note: The comparison test he describes would also be a transition-tree action in its own right.
     review:
       status: pending
 
   - id: PROP-008
     source:
-      contributor: Joachim Weber
+      contributor: Marcus
       text: >-
-        Facilitator development isn't just about replication — the people who learn to facilitate are the ones who end up noticing what isn't working and saying so. That's how the group learns. Feels like it should point at both.
+        The organizer-burnout problem feels underexplained to me. It may not mainly come from too few people progressing into leadership. A lot of burnout is boring coordination: scheduling, admin, fundraising, maintaining tools, following up, paying for space. We may need actual budget, infrastructure, and some paid operational capacity. A better apprenticeship pathway won't automatically remove that load.
     interpretation:
-      statement: Developing facilitators feeds the group's capacity to learn and revise strategy, not only its capacity to transmit practice.
+      statement: Organizer burnout comes largely from unfunded coordination work — admin, fundraising, tooling, space — which developing more facilitators does not remove.
     proposal:
-      operation: add_link
+      operation: add_entity
+      entity:
+        type: root_cause
+        status: provisional
+        statement: Coordination, administration, fundraising and infrastructure work is unfunded and falls on organizers
       placement:
-        view: goal-tree
-        from: NC-4
-        to: CSF-2
-        relation: contributes_to
-      rationale: NC-4 currently hangs only under CSF-3, transmissibility. The contribution claims a second parent, which the model can hold — a necessary condition may serve more than one success factor.
-      confidence: medium
+        view: current-reality
+        connects_to: UDE-3
+        relation: causes
+      rationale: UDE-3 observes that core organizers carry too much of the work and risk burnout, and every cause the tree currently offers is about the supply of leaders. Marcus names a different cause of the same effect, one the tree does not hold — which also weakens the assumption that facilitator development is what relieves it.
+      confidence: high
     review:
       status: pending
 
   - id: PROP-009
     source:
-      contributor: Sam Okonkwo
+      contributor: Ana
       text: >-
-        None of this addresses who is paying for any of it. Every group I've been part of that ignored that ended up quietly run by whoever happened to have savings, and nobody voted for that. I'd want to see the funding model before I'd want to see another tree.
+        I keep wondering where art, celebration, grief ritual, music, shared meals, and beauty fit in this picture. They aren't 'practice' in the narrow sense, and they aren't exactly outreach either, but they're often what makes a culture feel alive enough that people want to belong to it. I'm not sure whether this should become a condition in the tree, evidence for embodiment, or whether it points to something the model simply doesn't represent yet.
     interpretation:
-      statement: The model says nothing about how the work is funded, and unexamined funding quietly decides who holds authority.
+      statement: Culture — art, celebration, grief ritual, music, shared meals, beauty — is what makes a way of life worth belonging to, and the model has no category for it.
+      note: Ana names the three possibilities herself, and the third is the one taken here. Her own uncertainty is part of the contribution rather than a gap in it.
     proposal:
       operation: unplaced
       placement:
         view: goal-tree
-      rationale: No entity in the model concerns resourcing, funding, or the authority that follows it. The nearest, NC-6 on governance, is about how maps are governed rather than how the work is paid for. Ana Beatriz's contribution is about participants' own hours and does have an address; this one is about who funds the group and who thereby ends up in charge, and attaching it anywhere would hide exactly the thing Sam is pointing at.
-      confidence: high
+      rationale: The nearest address is CSF-1, durable embodiment of practices and ways of acting — but filing celebration and grief there would make them instrumental, a means to adoption, which is close to the reading Ana is wary of. The model has no category for what a culture is like to belong to, as distinct from what it asks of people. Attaching this anywhere would hide that.
+      confidence: medium
+      alternatives:
+        - target: CSF-1
+          confidence: medium
+          note: Ana lists this reading herself — that culture is a condition for durable embodiment. Taking it would place the contribution but arguably instrumentalise it.
     review:
       status: pending
