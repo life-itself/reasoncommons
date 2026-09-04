@@ -1,6 +1,6 @@
 ---
 title: Where Does our Thinking Go?
-subtitle: Trees of change, forum discussions, and getting Second Renaissance to constantly evolve its vision.
+subtitle: Trees of change, forum discussions, and getting Second Renaissance to consistently improve its vision.
 authors: Rufus Pollock, David Joseph
 event: Second Renaissance Research Group
 theme: life-itself-warm-earth
