@@ -32,10 +32,15 @@ import hashlib
 import http.server
 import json
 import pathlib
+import re
 import shutil
 import socketserver
+import subprocess
 import sys
 import threading
+import time
+import urllib.error
+import urllib.request
 import webbrowser
 
 try:
@@ -274,6 +279,147 @@ def promote() -> int:
     return 0
 
 
+def git(*args: str, check: bool = True) -> str:
+    """Run a git command and return its stdout."""
+    done = subprocess.run(
+        ("git",) + args, capture_output=True, text=True, cwd=pathlib.Path.cwd()
+    )
+    if check and done.returncode != 0:
+        raise Problem(f"git {' '.join(args)} failed:\n{(done.stderr or done.stdout).strip()}")
+    return done.stdout.strip()
+
+
+def wait_until_live(url: str, marker: str, timeout: int = 240) -> bool:
+    """Poll until the built page is actually the one being served.
+
+    The marker is this build's own `generated` stamp, so this cannot be fooled by
+    a cached copy of the previous version — which is exactly the failure you do
+    not want to discover from the stage.
+    """
+    started = time.time()
+    delay = 3
+    while time.time() - started < timeout:
+        # Two things this host does that break the obvious implementation: it
+        # answers 403 to urllib's default User-Agent, and it 404s any URL with a
+        # query string, so the usual ?t= cache-buster cannot be used. Ask for a
+        # fresh copy with headers instead.
+        request = urllib.request.Request(
+            url,
+            headers={
+                "User-Agent": "reasoncommons-build-demo",
+                "Cache-Control": "no-cache",
+                "Pragma": "no-cache",
+            },
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=20) as response:
+                body = response.read().decode("utf-8", "replace")
+            if marker in body:
+                print(f"  live after {int(time.time() - started)}s "
+                      f"({len(body):,} bytes)", flush=True)
+                return True
+            print(f"    …still the previous version ({int(time.time() - started)}s)", flush=True)
+        except urllib.error.HTTPError as exc:
+            print(f"    …{exc.code} ({int(time.time() - started)}s)", flush=True)
+        except Exception as exc:  # a flaky network is not a reason to give up
+            print(f"    …{type(exc).__name__} ({int(time.time() - started)}s)", flush=True)
+        time.sleep(delay)
+        delay = min(delay + 2, 15)
+    return False
+
+
+def publish(out: pathlib.Path, message: str | None, dry_run: bool) -> None:
+    """Commit the live route, push it to main, and wait until it is serving.
+
+    This puts a page in front of the public with no review step, which is a real
+    departure from the repo's preview-first rule — so it is opt-in, it stages
+    only the live route and never a stray working-tree change, and it refuses
+    outright rather than guessing whenever the situation is not the simple one.
+    """
+    branch = git("rev-parse", "--abbrev-ref", "HEAD")
+    if branch != "main":
+        raise Problem(
+            f"--publish pushes to main, and you are on {branch!r}. Either "
+            "`git checkout main` and rebuild, or land the branch the normal way. "
+            "Refusing rather than pushing a branch's other commits to production.\n"
+            "  (In a git worktree you cannot check out main at all — publish from "
+            "the primary checkout.)"
+        )
+
+    dirty = git("status", "--porcelain", str(LIVE_ROUTE))
+    if not dirty:
+        print(f"  {LIVE_ROUTE} is unchanged — nothing to commit")
+    else:
+        # git() strips, so the porcelain status field is no longer a fixed
+        # width — split rather than slicing at an offset.
+        paths = [line.split(None, 1)[-1] for line in dirty.splitlines() if line.strip()]
+        print(f"  changed: {', '.join(paths)}")
+
+    # Check the remote BEFORE committing, so a refusal never strands a commit.
+    #
+    # Deliberately no `pull --rebase` here. It fails outright whenever any
+    # unrelated file in the working tree is dirty, which is the normal state of
+    # a repo somebody is working in, and the autostash alternative reaches for
+    # a stash stack that is shared with every other worktree and session. For a
+    # command that pushes to production, refusing with instructions beats being
+    # clever.
+    git("fetch", "--quiet", "origin", "main")
+    behind = git("rev-list", "--count", "HEAD..origin/main")
+    if behind != "0":
+        raise Problem(
+            f"main has moved on the remote ({behind} commit(s) ahead of you). "
+            "Reconcile first, then rebuild and publish:\n"
+            "    git pull --rebase origin main\n"
+            f"    python3 {pathlib.Path(__file__).name} --publish"
+        )
+
+    subject = message or f"Demo C: rebuild {LIVE_ROUTE.name} from the current batch"
+
+    if dry_run:
+        print("  up to date with origin/main")
+        print("\n  --dry-run, so stopping here. It would have:")
+        print(f"    git add -- {LIVE_ROUTE}")
+        print(f"    git commit -m {subject!r}")
+        print("    git push origin main")
+        print("    then polled the live URL until this build was serving")
+        return
+
+    if dirty:
+        # Only the route. Whatever else is in the working tree stays there.
+        git("add", "--", str(LIVE_ROUTE))
+        git("commit", "-m", subject)
+        print(f"  committed  {subject}")
+
+    ahead = git("rev-list", "--count", "origin/main..HEAD")
+    if ahead == "0":
+        print("  nothing to push — main already matches the remote")
+    else:
+        git("push", "origin", "main")
+        print(f"  pushed     main ({ahead} commit(s))")
+
+    try:
+        rel = out.resolve().relative_to(pathlib.Path.cwd().resolve())
+    except ValueError:
+        print("  built outside the repo, so there is nothing to wait for")
+        return
+    url = f"{SITE}/{rel.as_posix()}"
+
+    marker = ""
+    found = re.search(r'"generated":"([^"]+)"', out.read_text(encoding="utf-8"))
+    if found:
+        marker = found.group(0)
+
+    print("  waiting for the deploy…", flush=True)
+    if marker and wait_until_live(url, marker):
+        print(f"\n  LIVE  {url}\n")
+    elif marker:
+        print(f"\n  pushed, but {url} is still serving an older copy.")
+        print("  The deploy usually lands within a couple of minutes — reload it.")
+        print("  Keep the /index.html; the bare folder URL 404s.\n")
+    else:
+        print(f"\n  pushed. {url}\n")
+
+
 def report(out: pathlib.Path, is_test: bool) -> None:
     """Say, in as many words, where this page can now be opened.
 
@@ -381,6 +527,10 @@ def build(args) -> int:
 
     report(out, args.test)
 
+    if args.publish:
+        print()
+        publish(out, args.message, args.dry_run)
+
     if args.serve:
         serve(out, args.port, not args.no_open)
     return 0
@@ -402,12 +552,23 @@ def main() -> int:
     ap.add_argument("--no-open", action="store_true", help="with --serve, do not open a browser")
     ap.add_argument("--promote", action="store_true",
                     help="copy the test batch onto the live route and rebuild it there")
+    ap.add_argument("--publish", action="store_true",
+                    help="commit the live route, push it straight to main, and wait until "
+                         "the page is actually serving. No review step — see SKILL.md")
+    ap.add_argument("--message", help="commit subject for --publish")
+    ap.add_argument("--dry-run", action="store_true",
+                    help="with --publish, print what it would do and stop")
     ap.add_argument("--check", action="store_true", help="validate only, write nothing")
     ap.add_argument("--strict", action="store_true",
                     help="treat 'target not in view' as an error rather than a warning")
     args = ap.parse_args()
 
     try:
+        if args.publish and args.test:
+            raise Problem(
+                "--publish and --test are opposites. The test route exists so an "
+                "unreviewed batch cannot reach the site; --promote it first."
+            )
         if args.promote:
             if args.test:
                 raise Problem("--promote and --test are opposites; pick one")

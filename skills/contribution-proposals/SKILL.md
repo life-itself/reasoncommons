@@ -256,10 +256,35 @@ there without the stamp. That route is the one that ships.
 The result is one self-contained HTML file with the model and the proposals
 embedded. No server, no build step, no network at run time except Google Fonts.
 
-The live route publishes at
-**https://reasoncommons.com/talk/2r-research-group/demo-c/index.html** once the
-change is merged. To publish, follow the repo's preview-first rule in
-`AGENTS.md`: `fl . --yes` to the preview site, look, then land on `main`. Note that Flowershow previews
+### 7. Put it on the site
+
+```sh
+python3 skills/contribution-proposals/scripts/build-demo.py --promote --publish
+```
+
+Commits the live route, pushes it straight to `main`, and waits until
+**https://reasoncommons.com/talk/2r-research-group/demo-c/index.html** is
+actually serving this build before telling you it is live. Add `--message` for
+the commit subject, `--dry-run` to see the plan without doing any of it.
+
+**This puts a page in front of the public with no review step**, which departs
+from the repo's preview-first rule in `AGENTS.md`. It is opt-in for that reason,
+and it refuses rather than guessing whenever the situation is not simple:
+
+- with `--test`, because the test route exists so an unreviewed batch cannot
+  reach the site;
+- when you are not on `main`, rather than pushing a branch's other commits to
+  production — and in a git worktree you cannot be, so publish from the primary
+  checkout;
+- when `main` has moved on the remote, telling you to `git pull --rebase` and
+  rebuild, rather than reconciling a production branch on your behalf.
+
+It stages only `talk/2r-research-group/demo-c/`, so anything else in your
+working tree stays exactly where it is, and it checks the remote before
+committing so a refusal never strands a commit.
+
+If you would rather have the review step, do it the ordinary way instead: commit
+and open a pull request, or `fl . --yes` to the preview site and look first. Note that Flowershow previews
 ignore `contentExclude`, so the test route *will* show up on a preview site and
 will not show up in production — which is usually what you want, but is worth
 knowing before you send anyone a preview link.

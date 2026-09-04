@@ -125,20 +125,25 @@ Check the title in `talk/2r-research-group/demo-c/proposals.yaml` before you shi
 ### 5. Publish
 
 ```sh
-git add -A
-git commit -m "Demo C: <what this batch is>"
-git push
+python3 skills/contribution-proposals/scripts/build-demo.py --promote --publish
 ```
 
-Then open a pull request and merge it. `main` is the live site, so the URL updates within a couple of minutes of the merge.
+That does steps 4 and 5 together: promotes the batch, commits it, pushes straight to `main`, and then waits until the URL is actually serving *this* build before telling you it is live. It checks the served page against this build's own stamp, so a cached copy of the previous version cannot fool it.
 
-If you would rather look before you land, publish to the preview site first:
+```
+  committed  Demo C: the room's contributions
+  pushed     main (1 commit(s))
+  waiting for the deploy…
+  live after 47s (74,512 bytes)
 
-```sh
-fl . --yes
+  LIVE  https://reasoncommons.com/talk/2r-research-group/demo-c/index.html
 ```
 
-Note the preview **ignores `contentExclude`**, so the test route shows up there even though it 404s in production. Do not send anyone a preview link and call it the demo.
+`--message` sets the commit subject. `--dry-run` prints the plan and does nothing.
+
+**This publishes with no review step.** It only stages `talk/2r-research-group/demo-c/`, so nothing else in your working tree goes out, and it refuses rather than guessing when the situation is not simple — on a branch rather than `main`, or when `main` has moved on the remote. If you would rather have review, commit and open a pull request in the ordinary way.
+
+Publishing to the preview site instead is `fl . --yes`. Note the preview **ignores `contentExclude`**, so the test route shows up there even though it 404s in production. Do not send anyone a preview link and call it the demo.
 
 ## Driving it in the room
 
@@ -177,7 +182,9 @@ The path from whatever is under discussion up to the goal stays at full strength
 |---|---|
 | Blank page or 404 | You dropped `/index.html`. See [The URL](#the-url). |
 | `demo-c-test` is 404 | Correct. It is local-only and never publishes. |
-| Merged but the URL is stale | Give it a minute, then hard-reload. Flowershow rebuilds on push. |
+| Merged but the URL is stale | Give it a minute, then hard-reload. Flowershow rebuilds on push. `--publish` waits for this and tells you when it has landed. |
+| `--publish` says main has moved | Someone else pushed. `git pull --rebase origin main`, rebuild, publish again. It refuses instead of reconciling production for you. |
+| `--publish` says you are not on main | You are on a branch, or in a git worktree, where main cannot be checked out. Publish from the primary checkout. |
 | No internet in the room | Open the HTML file directly from a clone — `talk/2r-research-group/demo-c/index.html`. It is self-contained. **Download a copy before you travel.** |
 | `PyYAML is required` | `pip3 install pyyaml` |
 | Build refuses with a named error | It found a dangling reference — an id not in the model, a link not in the named view, a missing placement field. Fix `proposals.yaml`. Never fix the model to suit a proposal. |
