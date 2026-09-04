@@ -8,24 +8,26 @@ status: approved for implementation
 
 ## Goal
 
-Make the public "See it working" demo immediately compelling to the site audience by opening with climate, while preserving remote work and adding an AI-control version that demonstrate the same four-step cumulative-annotation interaction.
+Make the public "See it working" demo immediately compelling to the site audience by opening with climate, using rigorous source-to-claim mappings, while preserving remote work and adding AI control as shorter examples on the same page.
 
 ## Experience
 
-`claim-tree-annotation-demo/index.html` opens on the climate question, "Can the world switch to clean energy in time?" The four beats remain unchanged: a seed question, a tree that exposes the material distinctions, a real source read against it, and mapped annotations that make the stable-scaffold idea concrete. The source card links directly to the source it represents.
+`claim-tree-annotation-demo/index.html` opens on the climate question, "Can the world switch to clean energy in time?" The four beats remain unchanged: a seed question, a tree that exposes the material distinctions, real sources read against it, and mapped annotations that make the stable-scaffold idea concrete. Each source card links directly to the report it represents, distinguishes quoted findings from editorial explanation, and lands short passages on the most specific relevant claim.
 
-The URL parameter selects the other examples without duplicating the page runtime: `?topic=ai` asks "Can humans stay in control of advanced AI?" and `?topic=remote-work` retains the current question and Ctrip example. The default source HTML is the climate version, so the published page remains meaningful without JavaScript.
+The closing links down to a visible appendix, "Two more questions, same method." AI control and remote-work productivity appear there as compact tree-and-evidence examples rather than alternate page states. This keeps the climate walkthrough continuous, makes every example discoverable by scrolling, and leaves the page meaningful without JavaScript.
 
 ## Trees
 
 The climate tree asks what "in time" requires, whether clean supply can scale, whether fossil use outside electricity can fall, and whether a fair transition can be financed and governed. It surfaces solar, wind, grids and storage, nuclear and other firm low-carbon supply, electrification, and international coordination without prematurely endorsing one mix.
 
-The AI tree asks what loss of control would mean, whether technical safeguards can work, whether institutions can prevent unsafe deployment, and whether capabilities may outpace safeguards. It uses Yudkowsky's maximal warning as an annotation rather than as the root claim, leaving room for evidence to support, qualify, or challenge it.
+The AI tree asks what loss of control would require: dangerous capabilities, a propensity to use them, access and autonomy, and inadequate safeguards. Yudkowsky's maximal warning remains an attributed forecast rather than the root claim, leaving empirical capability evidence and explicit scientific uncertainty visible beside it.
 
 ## Sources and annotation semantics
 
-The climate card is a short, linked extract from IPCC AR6 WGIII Chapter 6, Energy Systems. Its three marked fragments respectively support systems integration, complicate a one-size-fits-all renewable answer, and broaden the supply branch to include nuclear or other low-carbon sources. The AI card links to the International AI Safety Report and to Yudkowsky's Time essay; its fragments distinguish a reported risk category from a strongly contested judgement about severity and governance.
+The climate walkthrough uses three IEA reports whose findings match individual branches. The 2023 Net Zero Roadmap supplies scenario-specific figures for available technologies, renewable capacity, electrification and the emissions timetable. Electricity Grids and Secure Energy Transitions quantifies the grid build-out, connection queue and investment bottleneck. Nuclear Power and Secure Energy Transitions supplies a scenario comparison and construction-cost qualification for the firm low-carbon branch. Mappings use `supports`, `complicates`, or `limits` semantics and retain the condition or scenario around every number.
+
+The AI appendix uses METR's 2026 Frontier Risk Report for measured agent capabilities and its overall rogue-deployment assessment, the International AI Safety Report for the present/future distinction and disagreement among experts, and Yudkowsky's Time essay for the strongest catastrophic forecast. These sources are shown as different kinds of evidence rather than blended into a synthetic consensus. The remote-work appendix retains the randomized Ctrip experiment and makes its unusually measurable call-centre setting part of the mapping.
 
 ## Implementation and checks
 
-The existing self-contained component gets a small topic configuration layer that replaces the displayed question, tree labels, source card and annotation mapping before its animation initialises. A Node verification script asserts the default climate content, both URL-selectable alternatives, direct source links, and the expected annotation mappings. `node --check` covers syntax; the preview site is used for a visual and no-JavaScript check before any live-site integration.
+The existing self-contained component keeps one animated climate tree and a static, semantic appendix below the closing. The dynamic topic configuration and fragment routing are removed. A Node verification script asserts the stronger source URLs and figures, appendix anchors, all three examples, and the absence of alternate page-state machinery. `node --check` covers syntax; the preview site is used for visual, mobile and no-JavaScript checks before any live-site integration.

@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use `executing-plans` to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Ship a climate-first claim-tree annotation demo with AI and remote-work alternatives selected by URL parameter.
+**Goal:** Ship a climate-first claim-tree annotation demo with rigorous source mappings and visible AI and remote-work appendix examples.
 
-**Architecture:** Keep the standalone HTML component and its current animation runtime. Add one topic configuration object that supplies question text, node labels, a source-card HTML fragment, and annotation flights; populate the climate version in the server-rendered HTML and apply AI or remote-work data before animation wiring when `topic` is present in the URL.
+**Architecture:** Keep the standalone HTML component and its current animation runtime for the climate walkthrough. Replace the generic climate card with several source-specific cards and a fixed flights array, remove URL-selected topic state, and append static tree-and-evidence examples for AI and remote work below the closing.
 
 **Tech Stack:** Self-contained HTML, inline JavaScript, Node.js `assert` verification.
 
@@ -13,8 +13,12 @@
 The default URL is climate and remains readable without JavaScript.
 All three topic variants use the existing four-beat narrative and hover/flight interaction.
 Every source card has a direct, external source link; source excerpts are short and clearly attributed.
-The public topic is climate; `?topic=ai` and `?topic=remote-work` are stable alternate URLs.
+The public walkthrough is climate; AI and remote work are anchored appendix sections in the same document.
 Markdown remains unwrapped outside code blocks.
+
+## Review revision
+
+Tasks 1–4 below record the committed first pass. User review supersedes its URL variants and generic IPCC mapping. The remaining work is to replace that implementation with the evidence-rich, single-page design in Tasks 5–7.
 
 ---
 
@@ -155,3 +159,32 @@ Add a dated entry explaining that the live demo now opens on a climate transitio
 git add changelog.md
 git commit -m "docs: record claim-tree demo update"
 ```
+
+### Task 5: Define the reviewed evidence contract
+
+**Files:**
+- Modify: `claim-tree-annotation-demo/verify.mjs`
+
+- [ ] Assert direct links to the IEA Net Zero Roadmap, electricity-grids report and nuclear report, plus their distinctive quantitative findings.
+- [ ] Assert a `#more-examples` link and appendix containing METR 2026, the International AI Safety Report, Yudkowsky's essay and the Ctrip experiment.
+- [ ] Assert that `topicData`, `URLSearchParams` and `#topic=` routing are absent.
+- [ ] Run the test and confirm it fails before changing the page.
+
+### Task 6: Implement the evidence-rich single page
+
+**Files:**
+- Modify: `claim-tree-annotation-demo/index.html`
+
+- [ ] Replace the generic IPCC source card with three compact IEA source cards. Preserve the scenario and conditional context around short highlighted findings and map every passage to a specific climate leaf.
+- [ ] Replace topic configuration with a fixed climate flights array and keep the existing animation and hover tracing intact.
+- [ ] Link the closing to `#more-examples` and append compact AI and remote-work examples with visible mini trees, source passages, relation labels and direct source links.
+- [ ] Check responsive layout and no-JavaScript readability.
+
+### Task 7: Verify, preview and record the revision
+
+**Files:**
+- Modify: `changelog.md`
+
+- [ ] Run the focused verification, component syntax compilation, project tests and `git diff --check`.
+- [ ] Publish to the Flowershow preview using the repository's `.agents` workaround, then inspect desktop and phone-sized captures plus fetched markup.
+- [ ] Update the changelog to describe the evidence-rich climate walkthrough and on-page appendix accurately, then commit the reviewed revision.
