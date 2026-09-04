@@ -238,6 +238,12 @@ in the named view, a missing placement field for the chosen operation, a chain
 to a proposal that has not appeared yet. Fix `proposals.yaml`; never fix the
 model.
 
+Every build ends by printing where the page can be opened: the local `file://`
+path, the published address it will have once merged, and the localhost one
+when serving. Read that back to whoever is presenting rather than reconstructing
+a URL by hand — and note the published address keeps its `/index.html`, because
+a bare folder URL 404s on this site.
+
 ### 6. Promote it when it is right
 
 ```sh
@@ -250,8 +256,10 @@ there without the stamp. That route is the one that ships.
 The result is one self-contained HTML file with the model and the proposals
 embedded. No server, no build step, no network at run time except Google Fonts.
 
-To publish, follow the repo's preview-first rule in `AGENTS.md`: `fl . --yes`
-to the preview site, look, then land on `main`. Note that Flowershow previews
+The live route publishes at
+**https://reasoncommons.com/talk/2r-research-group/demo-c/index.html** once the
+change is merged. To publish, follow the repo's preview-first rule in
+`AGENTS.md`: `fl . --yes` to the preview site, look, then land on `main`. Note that Flowershow previews
 ignore `contentExclude`, so the test route *will* show up on a preview site and
 will not show up in production — which is usually what you want, but is worth
 knowing before you send anyone a preview link.
@@ -292,4 +300,5 @@ better demonstration than a machine that was right every time.
   verdicts. If you want them recorded, write them down.
 
 `references/html-demo-spec.md` describes what the page draws and why, for
-anyone changing the template.
+anyone changing the template. [`docs/demo-c.md`](../../docs/demo-c.md) is the
+runbook for someone who has to present it without having built it.
