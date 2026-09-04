@@ -2,6 +2,7 @@
 # Skills themselves are tracked under top-level skills/; .claude/skills/ just
 # symlinks them in so Claude Code can discover them. See AGENTS.md > Conventions.
 .claude/
+.worktrees/
 
 # Local dashboard build tooling (the compiled dashboard under dist/ is tracked).
 node_modules/
