@@ -164,6 +164,9 @@ Now you.
 What you just did, if it went well, is take a paragraph of ordinary thinking and turn it into a specific claim, at a specific place, with a path to an action. That is a lot better than "thanks for your suggestion" and then nothing happens.
 
 It is also, more or less, that forty-year-old method mentioned earlier but powered by AI.
+
+One more thing this buys you, and this part is not built yet. So far the forum has been telling the tree what's happening. It can go the other way: the tree can tell the forum what already happened. A new post that touches a claim could get a quiet tag -- "related, see the 2023 and 2026 threads on this" -- so the next person reading it knows the ground has been covered before they write the same thing again. The research circle wouldn't have needed a third pass.
+
 ### 6 · Close
 
 Go back to the question the sense-making session ended on. How would we know if we were moving toward what we are trying to do?
