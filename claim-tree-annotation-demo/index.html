@@ -60,6 +60,29 @@
   /* passage shimmer while its link is being traced */
   [data-wired]{box-shadow:0 0 0 2px rgba(40,36,25,0.24)!important;animation:wireShim 1s ease-in-out infinite;}
   @keyframes wireShim{0%,100%{filter:brightness(1);}50%{filter:brightness(1.08);}}
+
+  .source-stack{display:grid;gap:24px;}
+  .source-card{position:relative;background:#fffdf7;border:1px solid #e4dfd0;border-radius:6px;padding:34px 34px 30px;box-shadow:0 4px 18px rgba(40,36,25,0.07);}
+  .source-kicker{position:absolute;top:-11px;left:24px;background:#211f1a;color:#f6f4ec;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;padding:4px 11px;border-radius:3px;z-index:2;}
+  .relation{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;border-radius:10px;padding:2px 7px;margin-right:5px;white-space:nowrap;}
+  .relation-supports{color:#1f6f5c;background:rgba(31,111,92,0.11);}
+  .relation-complicates{color:#9a6818;background:rgba(176,122,31,0.13);}
+  .relation-limits{color:#a8512f;background:rgba(168,81,47,0.12);}
+  .appendix-grid{display:grid;grid-template-columns:minmax(250px,.78fr) minmax(0,1.22fr);gap:54px;align-items:start;}
+  .mini-tree{background:#fffdf7;border:1px solid #e4dfd0;border-radius:6px;padding:26px;}
+  .mini-tree ul{list-style:none;margin:16px 0 0;padding:0 0 0 18px;border-left:1px solid #d8d2c2;}
+  .mini-tree li{position:relative;padding:7px 0 7px 18px;font-size:15px;line-height:1.35;color:#54503f;}
+  .mini-tree li::before{content:"";position:absolute;left:0;top:17px;width:12px;height:1px;background:#d8d2c2;}
+  .mini-tree li::after{content:"";position:absolute;left:10px;top:14px;width:7px;height:7px;border:1px solid #b3ab95;border-radius:50%;background:#fffdf7;}
+  .evidence-list{display:grid;gap:16px;}
+  .evidence-card{background:#fffdf7;border:1px solid #e4dfd0;border-radius:6px;padding:24px 26px;}
+  @media(max-width:820px){
+    .objects-grid,.demo-grid,.appendix-grid{grid-template-columns:1fr!important;}
+    .demo-grid{gap:42px!important;}
+    .tree-sticky{position:relative!important;top:auto!important;}
+    .appendix-grid{gap:24px;}
+    .source-card{padding:32px 24px 26px;}
+  }
 </style>
 </helmet>
 
@@ -83,7 +106,7 @@
     <div data-reveal style="opacity:0;transform:translateY(12px);transition:opacity .7s ease,transform .7s ease;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#8a8475;">Three objects</div>
     <h2 data-reveal style="opacity:0;transform:translateY(12px);transition:opacity .7s ease .06s,transform .7s ease .06s;font-weight:500;font-size:clamp(28px,3.6vw,40px);line-height:1.12;margin:14px 0 0;max-width:24ch;">The whole method rests on three&nbsp;things.</h2>
 
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:50px;">
+    <div class="objects-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:50px;">
       <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease;background:#fffdf7;border:1px solid #e4dfd0;border-radius:5px;padding:30px 28px;">
         <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.1em;color:#1f6f5c;">01</div>
         <h3 style="font-weight:600;font-size:21px;margin:14px 0 0;">Claim Tree</h3>
@@ -122,10 +145,10 @@
 
   <!-- ============ BUILD THE TREE ============ -->
   <section data-screen-label="Build the tree" style="max-width:1220px;margin:0 auto;padding:30px 40px 130px;">
-    <div style="display:grid;grid-template-columns:0.92fr 1.08fr;gap:70px;align-items:start;">
+    <div class="demo-grid" style="display:grid;grid-template-columns:0.92fr 1.08fr;gap:70px;align-items:start;">
 
       <!-- LHS tree (builds) -->
-      <div style="position:sticky;top:70px;">
+      <div class="tree-sticky" style="position:sticky;top:70px;">
         <div style="background:#fffdf7;border:1px solid #e4dfd0;border-radius:6px;padding:30px 30px 34px;box-shadow:0 1px 3px rgba(40,36,25,0.05);">
           <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#a39d8c;">The claim tree · the scaffold</div>
           <div data-tree="build" style="margin-top:22px;font-family:'Spectral',serif;">
@@ -230,15 +253,15 @@
     <div style="max-width:1220px;margin:0 auto;">
       <div data-reveal style="opacity:0;transform:translateY(12px);transition:opacity .7s ease,transform .7s ease;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#8a8475;">Now bring in the world</div>
       <h2 data-reveal style="opacity:0;transform:translateY(12px);transition:opacity .7s ease .06s,transform .7s ease .06s;font-weight:500;font-size:clamp(28px,3.8vw,44px);line-height:1.12;margin:14px 0 0;max-width:22ch;">A document arrives, and is read against the&nbsp;tree.</h2>
-      <p data-reveal style="opacity:0;transform:translateY(12px);transition:opacity .7s ease .12s,transform .7s ease .12s;font-size:18px;line-height:1.6;color:#54503f;max-width:54ch;margin:18px 0 0;">People and AI pull fragments from each new source and attach them to the nodes they bear on. Here is the first one landing — the same scaffold, now catching evidence.</p>
+      <p data-reveal style="opacity:0;transform:translateY(12px);transition:opacity .7s ease .12s,transform .7s ease .12s;font-size:18px;line-height:1.6;color:#54503f;max-width:58ch;margin:18px 0 0;">People and AI pull fragments from each new source and attach them to the most specific claims they bear on. Three reports now land on the same scaffold: a pathway, a bottleneck, and a contested part of the energy mix.</p>
 
       <div data-annowrap style="position:relative;margin-top:54px;">
         <svg data-wire style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:6;overflow:visible;"></svg>
 
-        <div style="display:grid;grid-template-columns:0.92fr 1.08fr;gap:70px;align-items:start;">
+        <div class="demo-grid" style="display:grid;grid-template-columns:0.92fr 1.08fr;gap:70px;align-items:start;">
 
           <!-- LHS: the tree, repeated -->
-          <div data-reveal style="opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;">
+          <div data-reveal class="tree-sticky" style="opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;position:sticky;top:70px;">
             <div style="background:#fffdf7;border:1px solid #e4dfd0;border-radius:6px;padding:30px 30px 34px;box-shadow:0 1px 3px rgba(40,36,25,0.05);">
               <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#a39d8c;">The same claim tree · now annotated</div>
               <div data-tree="annotate" style="margin-top:22px;font-family:'Spectral',serif;">
@@ -328,19 +351,38 @@
             <div style="margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:#a8a294;">Hover a node — or a passage — to trace the&nbsp;link.</div>
           </div>
 
-          <!-- RHS: the source document -->
-          <div data-tree-doc data-reveal style="opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease;position:relative;">
-            <div style="position:absolute;top:-11px;left:24px;background:#211f1a;color:#f6f4ec;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;padding:4px 11px;border-radius:3px;z-index:2;">Source document</div>
-            <div style="background:#fffdf7;border:1px solid #e4dfd0;border-radius:6px;padding:38px 38px 34px;box-shadow:0 4px 18px rgba(40,36,25,0.07);">
-              <h3 style="font-weight:600;font-size:23px;line-height:1.25;margin:6px 0 0;">Energy Systems</h3>
-              <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8a8475;margin-top:12px;letter-spacing:0.04em;">IPCC AR6 WGIII · Chapter 6 · 2022 · <a href="https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-6/" target="_blank" rel="noreferrer" style="color:inherit;">Read source ↗</a></div>
-              <div style="height:1px;background:#e9e3d4;margin:22px 0 24px;"></div>
-              <p style="font-size:16px;line-height:1.72;color:#3a362d;margin:0;">A clean-energy transition is not one technology replacing another. The IPCC’s energy-systems assessment asks how supply, grids and the energy services they power change together.</p>
-              <p style="font-size:16px;line-height:1.72;color:#3a362d;margin:16px 0 0;">Greater integration between electricity and end-use sectors <span data-src="p-grid" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">can facilitate integration of variable renewable energy.</span></p>
-              <p style="font-size:16px;line-height:1.72;color:#3a362d;margin:16px 0 0;">But <span data-src="p-renewables" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">debates continue</span> about the appropriate role of wind and solar in different systems.</p>
-              <p style="font-size:16px;line-height:1.72;color:#3a362d;margin:16px 0 0;">The assessment also notes that <span data-src="p-nuclear" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">nuclear power can also contribute</span> to low-carbon energy systems.</p>
-            </div>
-            <p style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;line-height:1.7;letter-spacing:0.04em;color:#8a8475;margin:18px 4px 0;">Other questions: <a href="#topic=ai" style="color:inherit;">AI control</a> · <a href="#topic=remote-work" style="color:inherit;">remote work</a></p>
+          <!-- RHS: source documents -->
+          <div data-tree-doc data-reveal class="source-stack" style="opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease;position:relative;">
+            <article class="source-card">
+              <div class="source-kicker">Source 1 · pathway</div>
+              <h3 style="font-weight:600;font-size:23px;line-height:1.25;margin:6px 0 0;">Net Zero Roadmap</h3>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8a8475;margin-top:12px;letter-spacing:0.04em;">IEA · 2023 update · <a href="https://www.iea.org/reports/net-zero-roadmap-a-global-pathway-to-keep-the-15-c-goal-in-reach/executive-summary" target="_blank" rel="noreferrer" style="color:inherit;">Read executive summary ↗</a></div>
+              <div style="height:1px;background:#e9e3d4;margin:22px 0 20px;"></div>
+              <p style="font-size:14px;line-height:1.55;color:#6f6a5e;margin:0 0 16px;">This is a modelled pathway to 1.5 °C, not a prediction. Its near-term numbers say what the transition would have to achieve.</p>
+              <p style="font-size:16px;line-height:1.65;color:#3a362d;margin:0;"><span class="relation relation-supports">Supports · emissions pace</span> Renewables, efficiency, methane cuts and electrification using technologies available today deliver <span data-src="p-path" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">more than 80% of the emissions reductions needed by 2030</span> in the scenario.</p>
+              <p style="font-size:16px;line-height:1.65;color:#3a362d;margin:16px 0 0;"><span class="relation relation-supports">Supports · renewable scale</span> The largest reduction comes from tripling global installed renewable capacity to <span data-src="p-renewables" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">11 000 gigawatts by 2030</span>.</p>
+              <p style="font-size:16px;line-height:1.65;color:#3a362d;margin:16px 0 0;"><span class="relation relation-supports">Supports · electrification</span> Electric vehicles and heat pumps provide <span data-src="p-electrify" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">nearly one-fifth of the emissions reductions to 2030</span>.</p>
+              <p style="font-size:16px;line-height:1.65;color:#3a362d;margin:16px 0 0;"><span class="relation relation-complicates">Complicates · coordination</span> Current policies put advanced economies and China on track for 85% of their contribution to the renewables goal, but <span data-src="p-policy" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">stronger policies and international support are required</span> elsewhere.</p>
+            </article>
+            <article class="source-card">
+              <div class="source-kicker">Source 2 · bottleneck</div>
+              <h3 style="font-weight:600;font-size:23px;line-height:1.25;margin:6px 0 0;">Electricity Grids and Secure Energy Transitions</h3>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8a8475;margin-top:12px;letter-spacing:0.04em;">IEA · 2023 · <a href="https://www.iea.org/reports/electricity-grids-and-secure-energy-transitions/executive-summary" target="_blank" rel="noreferrer" style="color:inherit;">Read executive summary ↗</a></div>
+              <div style="height:1px;background:#e9e3d4;margin:22px 0 20px;"></div>
+              <p style="font-size:14px;line-height:1.55;color:#6f6a5e;margin:0 0 16px;">A dedicated infrastructure report tests the “grids” part of the renewable claim rather than treating it as a footnote.</p>
+              <p style="font-size:16px;line-height:1.65;color:#3a362d;margin:0;"><span class="relation relation-complicates">Complicates · grids</span> Meeting national goals means adding or refurbishing <span data-src="p-grid-build" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">over 80 million kilometres of grids by 2040</span> — equivalent to the entire existing global grid.</p>
+              <p style="font-size:16px;line-height:1.65;color:#3a362d;margin:16px 0 0;"><span class="relation relation-complicates">Complicates · permits</span> At least 3 000 GW of renewables are waiting in connection queues, of which <span data-src="p-grid-queue" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">1 500 GW are in advanced stages</span>.</p>
+            </article>
+            <article class="source-card">
+              <div class="source-kicker">Source 3 · tradeoff</div>
+              <h3 style="font-weight:600;font-size:23px;line-height:1.25;margin:6px 0 0;">Nuclear Power and Secure Energy Transitions</h3>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8a8475;margin-top:12px;letter-spacing:0.04em;">IEA · 2022 · <a href="https://www.iea.org/reports/nuclear-power-and-secure-energy-transitions/executive-summary" target="_blank" rel="noreferrer" style="color:inherit;">Read executive summary ↗</a></div>
+              <div style="height:1px;background:#e9e3d4;margin:22px 0 20px;"></div>
+              <p style="font-size:14px;line-height:1.55;color:#6f6a5e;margin:0 0 16px;">A scenario comparison makes the nuclear branch testable: what changes with less nuclear, and what would nuclear itself have to achieve?</p>
+              <p style="font-size:16px;line-height:1.65;color:#3a362d;margin:0;"><span class="relation relation-supports">Supports · firm supply</span> In the report’s Low Nuclear Case, replacing nuclear with more renewables, storage and fossil generation with carbon capture would require <span data-src="p-nuclear-value" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">USD 500 billion more investment</span>.</p>
+              <p style="font-size:16px;line-height:1.65;color:#3a362d;margin:16px 0 0;"><span class="relation relation-complicates">Complicates · nuclear cost</span> New projects in advanced economies would need to reach around USD 5 000/kW by 2030, versus <span data-src="p-nuclear-cost" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">reported capital costs of around USD 9 000/kW</span> for first-of-a-kind projects.</p>
+            </article>
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;line-height:1.7;letter-spacing:0.04em;color:#8a8475;margin:0 4px;">Quoted phrases are short extracts; the surrounding prose preserves each report’s scenario and conditions. <a href="#more-examples" style="color:inherit;">See two more mapped examples below ↓</a></p>
           </div>
 
         </div>
@@ -367,7 +409,75 @@
         </div>
         <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#8d8775;">Documents annotated · 01 / ∞</div>
       </div>
+      <div data-reveal style="opacity:0;transform:translateY(12px);transition:opacity .7s ease .28s,transform .7s ease .28s;margin-top:58px;"><a href="#more-examples" style="display:inline-block;border:1px solid #676253;border-radius:24px;padding:11px 18px;color:#d4d0c2;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.13em;text-transform:uppercase;">See more examples below ↓</a></div>
     </div>
+  </section>
+
+  <!-- ============ APPENDIX EXAMPLES ============ -->
+  <section id="more-examples" data-screen-label="More examples" style="max-width:1120px;margin:0 auto;padding:120px 40px 140px;scroll-margin-top:24px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#8a8475;">Appendix · the method travels</div>
+    <h2 style="font-weight:500;font-size:clamp(32px,4.4vw,52px);line-height:1.12;margin:16px 0 0;">Two more questions, same method.</h2>
+    <p style="font-size:19px;line-height:1.6;color:#54503f;max-width:62ch;margin:22px 0 0;">These abbreviated examples do not replace the climate walkthrough. They show how the same discipline handles a maximal warning and a bounded experiment: decompose first, preserve what the source actually says, then attach it narrowly.</p>
+
+    <article id="ai-control" style="padding-top:84px;scroll-margin-top:24px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#a8512f;">Example A · AI existential risk</div>
+      <h3 style="font-weight:500;font-size:clamp(27px,3.5vw,40px);line-height:1.15;margin:14px 0 0;">Can humans stay in control of advanced AI?</h3>
+      <p style="font-size:17px;line-height:1.6;color:#54503f;max-width:68ch;margin:18px 0 34px;">The vivid version is “if anyone builds superhuman AI, everyone dies.” A tree turns that single forecast into conditions that can be investigated separately.</p>
+      <div class="appendix-grid">
+        <div class="mini-tree">
+          <div style="display:flex;align-items:flex-start;gap:11px;"><span style="width:13px;height:13px;border-radius:50%;background:#a8512f;flex:none;margin-top:5px;"></span><strong style="font-size:17px;line-height:1.35;">Would advanced AI cause human extinction?</strong></div>
+          <ul>
+            <li>Could agents acquire dangerous capabilities?</li>
+            <li>Would they try to evade or defeat oversight?</li>
+            <li>Would deployment give them access and autonomy?</li>
+            <li>Could safeguards detect and stop harmful action?</li>
+          </ul>
+        </div>
+        <div class="evidence-list">
+          <div class="evidence-card">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#8a8475;">METR · FRONTIER RISK REPORT · MAY 2026 · <a href="https://metr.org/blog/2026-05-19-frontier-risk-report/" target="_blank" rel="noreferrer" style="color:inherit;">SOURCE ↗</a></div>
+            <p style="font-size:16px;line-height:1.65;color:#3a362d;margin:15px 0 0;"><span class="relation relation-supports">Supports · access &amp; autonomy</span> METR assessed internal agents at four frontier developers and concluded they <mark style="background:rgba(31,111,92,0.13);color:inherit;">plausibly had the means, motive, and opportunity to start small rogue deployments</mark>.</p>
+            <p style="font-size:16px;line-height:1.65;color:#3a362d;margin:15px 0 0;"><span class="relation relation-limits">Limits · robustness</span> The same conclusion says those agents <mark style="background:rgba(168,81,47,0.12);color:inherit;">did not have the means to make them highly robust</mark>. Its strongest evaluated agents completed some software tasks measured in human-days or weeks, while still showing much worse judgement and reliability than human experts.</p>
+          </div>
+          <div class="evidence-card">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#8a8475;">INTERNATIONAL AI SAFETY REPORT · 2025 · <a href="https://internationalaisafetyreport.org/publication/international-ai-safety-report-2025" target="_blank" rel="noreferrer" style="color:inherit;">SOURCE ↗</a></div>
+            <p style="font-size:16px;line-height:1.65;color:#3a362d;margin:15px 0 0;"><span class="relation relation-limits">Limits · current capability</span> <mark style="background:rgba(168,81,47,0.12);color:inherit;">Existing AI systems are not capable of undermining human control.</mark></p>
+            <p style="font-size:16px;line-height:1.65;color:#3a362d;margin:15px 0 0;"><span class="relation relation-complicates">Complicates · forecast</span> Evidence about future capabilities and their use is mixed; <mark style="background:rgba(176,122,31,0.13);color:inherit;">experts disagree about the likelihood</mark> of active loss of control in the next several years.</p>
+          </div>
+          <div class="evidence-card">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#8a8475;">ELIEZER YUDKOWSKY · TIME · 2023 · <a href="https://time.com/6266923/ai-eliezer-yudkowsky-open-letter-not-enough/" target="_blank" rel="noreferrer" style="color:inherit;">SOURCE ↗</a></div>
+            <p style="font-size:16px;line-height:1.65;color:#3a362d;margin:15px 0 0;"><span class="relation relation-supports">Supports · extinction forecast</span> Yudkowsky states the strongest version directly: the most likely result of building a superhumanly smart AI is that <mark style="background:rgba(31,111,92,0.13);color:inherit;">literally everyone on Earth will die</mark>. This is an attributed judgement about the root claim, not a measured result.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div style="height:1px;background:#ded8c8;margin:94px 0 0;"></div>
+
+    <article id="remote-work" style="padding-top:84px;scroll-margin-top:24px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#1f6f5c;">Example B · remote work</div>
+      <h3 style="font-weight:500;font-size:clamp(27px,3.5vw,40px);line-height:1.15;margin:14px 0 0;">Does remote work increase productivity?</h3>
+      <p style="font-size:17px;line-height:1.6;color:#54503f;max-width:68ch;margin:18px 0 34px;">A randomized experiment can answer a narrow version well. The tree makes the boundary between that result and the general claim impossible to miss.</p>
+      <div class="appendix-grid">
+        <div class="mini-tree">
+          <div style="display:flex;align-items:flex-start;gap:11px;"><span style="width:13px;height:13px;border-radius:50%;background:#1f6f5c;flex:none;margin-top:5px;"></span><strong style="font-size:17px;line-height:1.35;">Does remote work increase productivity?</strong></div>
+          <ul>
+            <li>For whom?</li>
+            <li>For what tasks?</li>
+            <li>Over what time horizon?</li>
+            <li>Under what home and management conditions?</li>
+          </ul>
+        </div>
+        <div class="evidence-list">
+          <div class="evidence-card">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#8a8475;">BLOOM, LIANG, ROBERTS &amp; YING · AER · 2015 · <a href="https://www.aeaweb.org/articles?id=10.1257/aer.20131516" target="_blank" rel="noreferrer" style="color:inherit;">SOURCE ↗</a></div>
+            <p style="font-size:16px;line-height:1.65;color:#3a362d;margin:15px 0 0;"><span class="relation relation-supports">Supports · tested setting</span> In a nine-month randomized experiment with Ctrip call-centre employees, working from home led to a <mark style="background:rgba(31,111,92,0.13);color:inherit;">13% performance increase</mark>.</p>
+            <p style="font-size:16px;line-height:1.65;color:#3a362d;margin:15px 0 0;"><span class="relation relation-limits">Limits · people &amp; tasks</span> Participants volunteered, had suitable home arrangements, and did routine work with individually measurable output. The study does not establish the same result for creative or collaborative work.</p>
+            <p style="font-size:16px;line-height:1.65;color:#3a362d;margin:15px 0 0;"><span class="relation relation-complicates">Complicates · preference</span> When workers could choose again, half switched groups; the performance gains almost doubled after that selection.</p>
+          </div>
+        </div>
+      </div>
+    </article>
   </section>
 
 </div>
@@ -379,53 +489,18 @@ class Component extends DCLogic {
     const props = this.props || {};
     const showAll = !!props.showAll;
     const stanceOn = props.stanceColors !== false;
-    const sourceCard = (title, meta, paragraphs) => '<div style="position:absolute;top:-11px;left:24px;background:#211f1a;color:#f6f4ec;font-family:\'IBM Plex Mono\',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;padding:4px 11px;border-radius:3px;z-index:2;">Source document</div><div style="background:#fffdf7;border:1px solid #e4dfd0;border-radius:6px;padding:38px 38px 34px;box-shadow:0 4px 18px rgba(40,36,25,0.07);"><h3 style="font-weight:600;font-size:23px;line-height:1.25;margin:6px 0 0;">' + title + '</h3><div style="font-family:\'IBM Plex Mono\',monospace;font-size:11.5px;color:#8a8475;margin-top:12px;letter-spacing:0.04em;">' + meta + '</div><div style="height:1px;background:#e9e3d4;margin:22px 0 24px;"></div>' + paragraphs.map((paragraph, index) => '<p style="font-size:16px;line-height:1.72;color:#3a362d;margin:' + (index ? '16px 0 0' : '0') + ';">' + paragraph + '</p>').join('') + '</div><p style="font-family:\'IBM Plex Mono\',monospace;font-size:10.5px;line-height:1.7;letter-spacing:0.04em;color:#8a8475;margin:18px 4px 0;">Other questions: <a href="#topic=ai" style="color:inherit;">AI control</a> · <a href="#topic=remote-work" style="color:inherit;">remote work</a></p>';
-    const topicData = {
-      climate: {
-        question: 'Can the world switch to clean energy in time?',
-        sourceUrl: 'https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-6/',
-        nodes: { 'q-root': 'Can the world switch to clean energy in time?', whom: 'What does “in time” require?', 'whom-ic': 'How fast must emissions fall?', 'whom-deep': 'What warming and risk remain?', tasks: 'Can clean supply scale?', 'tasks-solo': 'Solar, wind, grids & storage', 'tasks-creative': 'Nuclear & firm low-carbon supply', time: 'Can fossil use fall beyond electricity?', 'time-short': 'Electrify transport, heat & buildings', 'time-long': 'Industry, shipping & aviation', cond: 'Can the transition be fair and governable?', 'cond-home': 'Finance, materials & permits', 'cond-mgr': 'Coordination, jobs & energy access' },
-        sourceHtml: sourceCard('Energy Systems', 'IPCC AR6 WGIII · Chapter 6 · 2022 · <a href="https://www.ipcc.ch/report/ar6/wg3/chapter/chapter-6/" target="_blank" rel="noreferrer" style="color:inherit;">Read source ↗</a>', ['A clean-energy transition is not one technology replacing another. The IPCC’s energy-systems assessment asks how supply, grids and the energy services they power change together.', 'Greater integration between electricity and end-use sectors <span data-src="p-grid" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">can facilitate integration of variable renewable energy.</span>', 'But <span data-src="p-renewables" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">debates continue</span> about the appropriate role of wind and solar in different systems.', 'The assessment also notes that <span data-src="p-nuclear" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">nuclear power can also contribute</span> to low-carbon energy systems.']),
-        flights: [
-          { key: 's', srcId: 'p-grid', nodeId: 'tasks-solo', text: 'facilitate renewable integration' },
-          { key: 'c', srcId: 'p-renewables', nodeId: 'tasks-solo', text: 'debates continue' },
-          { key: 'l', srcId: 'p-nuclear', nodeId: 'tasks-creative', text: 'nuclear can also contribute' }
-        ]
-      },
-      ai: {
-        question: 'Can humans stay in control of advanced AI?',
-        sourceUrl: 'https://internationalaisafetyreport.org/publication/international-ai-safety-report-2025',
-        nodes: { 'q-root': 'Can humans stay in control of advanced AI?', whom: 'What could loss of control look like?', 'whom-ic': 'Misuse, accidents & systemic harm', 'whom-deep': 'Systems that evade oversight', tasks: 'Can technical safeguards work?', 'tasks-solo': 'Alignment, interpretability & evaluations', 'tasks-creative': 'Monitoring & human control at deployment', time: 'Can institutions prevent unsafe races?', 'time-short': 'Lab standards & independent testing', 'time-long': 'International rules & verification', cond: 'Will capabilities outpace safeguards?', 'cond-home': 'How rapidly capabilities advance', 'cond-mgr': 'Competition, incentives & coordination' },
-        sourceHtml: sourceCard('International AI Safety Report 2025', 'International AI Safety Report · 2025 · <a href="https://internationalaisafetyreport.org/publication/international-ai-safety-report-2025" target="_blank" rel="noreferrer" style="color:inherit;">Read report ↗</a>', ['The report distinguishes present systems from possible future loss-of-control scenarios — then records where the evidence and expert judgement still diverge.', '<span data-src="p-current" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">Existing AI systems are not capable of undermining human control.</span>', '<span data-src="p-contested" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">Experts disagree about the likelihood</span> of active loss of control in the next several years.', 'In a contrasting warning, Eliezer Yudkowsky writes that the likely result of building superhuman AI is that <span data-src="p-yudkowsky" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">literally everyone on Earth will die.</span> <a href="https://time.com/6266923/ai-eliezer-yudkowsky-open-letter-not-enough/" target="_blank" rel="noreferrer" style="color:inherit;">Read essay ↗</a>']),
-        flights: [
-          { key: 'c', srcId: 'p-current', nodeId: 'whom-deep', text: 'not capable of undermining control' },
-          { key: 'c', srcId: 'p-contested', nodeId: 'cond', text: 'experts disagree about likelihood' },
-          { key: 'l', srcId: 'p-yudkowsky', nodeId: 'cond', text: 'literally everyone on Earth will die' }
-        ]
-      },
-      'remote-work': {
-        question: 'Does remote work increase productivity?',
-        sourceUrl: 'https://www.aeaweb.org/articles?id=10.1257/aer.20131516',
-        nodes: { 'q-root': 'Does remote work increase productivity?', whom: 'For whom?', 'whom-ic': 'Contributors vs managers', 'whom-deep': 'Deep-work vs collaborative', tasks: 'For what tasks?', 'tasks-solo': 'Focused / solo tasks', 'tasks-creative': 'Creative / collaborative', time: 'Over what time horizon?', 'time-short': 'Short-term (first months)', 'time-long': 'Long-term (1+ years)', cond: 'Under what conditions?', 'cond-home': 'Home setup quality', 'cond-mgr': 'Managerial practices' },
-        sourceHtml: sourceCard('Does Working From Home Work? Evidence from a Chinese Experiment', 'Bloom, Liang, Roberts & Ying · Stanford / Ctrip · 2015 · <a href="https://www.aeaweb.org/articles?id=10.1257/aer.20131516" target="_blank" rel="noreferrer" style="color:inherit;">Read source ↗</a>', ['We ran a nine-month randomised experiment at Ctrip, a 16,000-employee travel agency, assigning a group of call-centre staff to work from home while their colleagues stayed in the office.', '<span data-src="p-13pct" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">Home working led to a 13% improvement in performance</span>, of which roughly nine points came from working more minutes per shift — fewer breaks and sick days — and four from <span data-src="p-solo" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">handling more calls per minute in a quieter, more convenient environment.</span>', 'Home workers reported higher satisfaction, and attrition fell by half. <span data-src="p-reversed" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">Yet when later given the choice, over half asked to return to the office — and the gains for that group narrowed once they did.</span>', '<span data-src="p-callcentre" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">The setting is a specific one: routine, individually-measured call-centre work, where output is unusually easy to quantify.</span> Whether the same holds for collaborative or creative roles remains open.']),
-        flights: [
-          { key: 's', srcId: 'p-13pct', nodeId: 'q-root', text: '13% improvement in performance' },
-          { key: 's', srcId: 'p-solo', nodeId: 'tasks-solo', text: 'more calls per minute, quieter environment' },
-          { key: 'c', srcId: 'p-reversed', nodeId: 'time', text: 'over half asked to return' },
-          { key: 'l', srcId: 'p-callcentre', nodeId: 'whom', text: 'routine call-centre work' },
-          { key: 'l', srcId: 'p-callcentre', nodeId: 'tasks', text: 'routine call-centre work' }
-        ]
-      }
-    };
-    const topic = new URLSearchParams(window.location.hash.slice(1)).get('topic') || 'climate';
-    const selected = topicData[topic] || topicData.climate;
-    if (topic === 'ai') document.title = 'Can humans stay in control of advanced AI? · Reason Commons';
-    else if (topic === 'remote-work') document.title = 'Does remote work increase productivity? · Reason Commons';
-    else document.title = 'Can the world switch to clean energy in time? · Reason Commons';
-    root.querySelectorAll('[data-topic-question]').forEach(el => { el.textContent = selected.question; });
-    Object.entries(selected.nodes).forEach(([id, text]) => root.querySelectorAll('[data-node="' + id + '"] [data-label]').forEach(el => { el.textContent = text; }));
+    document.title = 'Can the world switch to clean energy in time? · Reason Commons';
     const docEl = root.querySelector('[data-tree-doc]');
-    if (docEl) docEl.innerHTML = selected.sourceHtml;
+    const flights = [
+      { key: 's', srcId: 'p-path', nodeId: 'whom-ic', text: 'more than 80% of reductions by 2030' },
+      { key: 's', srcId: 'p-renewables', nodeId: 'tasks-solo', text: '11 000 gigawatts by 2030' },
+      { key: 's', srcId: 'p-electrify', nodeId: 'time-short', text: 'nearly one-fifth of reductions' },
+      { key: 'c', srcId: 'p-policy', nodeId: 'cond-mgr', text: 'stronger policies and support required' },
+      { key: 'c', srcId: 'p-grid-build', nodeId: 'tasks-solo', text: '80 million kilometres of grids' },
+      { key: 'c', srcId: 'p-grid-queue', nodeId: 'cond-home', text: '1 500 GW waiting at an advanced stage' },
+      { key: 's', srcId: 'p-nuclear-value', nodeId: 'tasks-creative', text: 'USD 500 billion more investment' },
+      { key: 'c', srcId: 'p-nuclear-cost', nodeId: 'tasks-creative', text: 'reported costs around USD 9 000/kW' }
+    ];
     const colorFor = { s: '#1f6f5c', c: '#b07a1f', l: '#a8512f', n: '#3a362d' };
     const kf = (f) => stanceOn ? f.key : 'n';
 
@@ -447,9 +522,6 @@ class Component extends DCLogic {
     const wrap = root.querySelector('[data-annowrap]');
     const svg = wrap && wrap.querySelector('[data-wire]');
     const buildNodes = Array.from(buildTree ? buildTree.querySelectorAll('[data-node]') : []);
-
-    // fragment -> node mapping
-    const flights = selected.flights;
 
     // attachment is driven by data attributes; CSS does the painting
     const attachNode = (nodeId, key) => {
