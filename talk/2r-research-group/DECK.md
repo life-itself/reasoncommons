@@ -99,6 +99,8 @@ so by the last one the tree on screen is the original plus everything the room
 agreed to. Refresh throws it all away, and saying that out loud is part of the
 point — nothing on disk changes.
 
+**Presenting it without having built it?** [`docs/demo-c.md`](../../docs/demo-c.md) is the runbook — the URL, the fallbacks, and what to do when a reading is wrong on the night. It lives at <https://reasoncommons.com/talk/2r-research-group/demo-c/index.html>, and the trailing `/index.html` is not optional.
+
 It is generated, not hand-authored. Download the contributions, then run the
 `contribution-proposals` skill (`skills/contribution-proposals/SKILL.md`), which
 reads them against the tree and builds the page. Work in the test route first —

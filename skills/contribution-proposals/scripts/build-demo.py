@@ -52,6 +52,11 @@ TEMPLATE = HERE.parent / "templates" / "demo.html"
 LIVE_ROUTE = pathlib.Path("talk/2r-research-group/demo-c")
 TEST_ROUTE = pathlib.Path("talk/2r-research-group/demo-c-test")
 
+# Where the live route ends up once it is merged. The trailing index.html is not
+# optional: a bare folder URL 404s on this site, because Flowershow only
+# resolves those for markdown pages.
+SITE = "https://reasoncommons.com"
+
 # Which placement fields each operation needs. Everything else is optional.
 REQUIRED_PLACEMENT = {
     "add_entity": ("view", "connects_to", "relation"),
@@ -246,7 +251,8 @@ def serve(path: pathlib.Path, port: int, open_browser: bool) -> None:
     except OSError as exc:
         raise Problem(f"cannot serve on port {port}: {exc}. Try --port with another number.")
 
-    print(f"\n  {url}\n  serving {root} — ctrl-c to stop", flush=True)
+    print(f"\n  serving here   {url}", flush=True)
+    print(f"                 from {root} — ctrl-c to stop", flush=True)
     if open_browser:
         threading.Timer(0.4, webbrowser.open, args=(url,)).start()
     try:
@@ -266,6 +272,33 @@ def promote() -> int:
     shutil.copyfile(src, LIVE_ROUTE / "proposals.yaml")
     print(f"  copied {src} -> {LIVE_ROUTE / 'proposals.yaml'}")
     return 0
+
+
+def report(out: pathlib.Path, is_test: bool) -> None:
+    """Say, in as many words, where this page can now be opened.
+
+    Every build ends here. Somebody running this an hour before a talk should
+    not have to work out the URL, and should not be able to confuse the route
+    that publishes with the route that never does.
+    """
+    print()
+    print(f"  open it now    file://{out.resolve()}")
+
+    try:
+        rel = out.resolve().relative_to(pathlib.Path.cwd().resolve())
+    except ValueError:
+        print("  (built outside the repo, so it has no published address)")
+        return
+
+    url = f"{SITE}/{rel.as_posix()}"
+    if is_test:
+        print(f"  will NOT publish — {url}")
+        print("                   returns 404 by design: the test route is gitignored")
+        print("                   and excluded from the site. Use --promote when it is right.")
+    else:
+        print(f"  published at   {url}")
+        print("                 once this is committed and merged to main (a minute or two).")
+        print("                 Keep the /index.html — the bare folder URL 404s.")
 
 
 def build(args) -> int:
@@ -345,6 +378,8 @@ def build(args) -> int:
             shutil.copyfile(proposals_path, kept)
             print(f"  kept a copy at {kept} — edit that and rebuild, then --promote")
         print("  TEST BUILD — stamped on the page, gitignored, not published")
+
+    report(out, args.test)
 
     if args.serve:
         serve(out, args.port, not args.no_open)
