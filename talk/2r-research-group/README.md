@@ -6,11 +6,17 @@ created: 2026-09-01
 
 # Talk — Reason Commons for the Second Renaissance Research Group
 
-## Where Does the Thinking Go?
+## Blurb for talk
 
-*Trees, forums, and getting Second Renaissance to build on its own ideas.*
+Title: Where Does the Thinking Go?
 
-A movement for civilizational renewal needs its thinking to compound: better hypotheses about how renewal happens, a theory of change that gets sharper as more people work on it. Right now it mostly doesn't. The same questions come round again, new people re-cover old ground, discussion on the forum repeats itself, and offers of help have nowhere to land. The proposal is to hold the shared thinking as a tree of change rather than a stack of documents, so any point has an address you can argue with. AI is what makes this workable now: it can connect everyday conversation to the tree with almost no extra work. Bring something you think Second Renaissance is missing or getting wrong, and we'll run it through live.
+Subtitle: Trees of change, forum discussions, and getting Second Renaissance to constantly evolve its vision.
+
+Abstract:
+
+​Any movement for civilizational renewal needs its discourse to compound: hypotheses about how renewal happens needs to evolve, questions and suggestions need to be captured and resolved. Right now it often doesn't. Discussions are scattered across the forum or WhatsApp and frequently repeats itself; offers of help struggle to find a place to land.
+
+​The proposal here is to develop a “reason commons”, a place where shared thinking anchors to a tree of change — rather than a stack of documents. This means that discourse has a foundation to build on and to contribute to. We show how to use AI to connect everyday conversation to that tree with little extra work.
 
 ## What this is
 

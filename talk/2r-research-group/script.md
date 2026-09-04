@@ -65,15 +65,23 @@ Two layers below. First a skeleton: what each beat has to land, with timings. Th
 
 ### 0 · Cold open
 
-A few months ago, one of the sense-making sessions ended on a question. What is the goal of the Second Renaissance, and how would we actually know if we were moving toward it?
+A few months ago, one of our sense-making sessions ended on a question. What is the goal of the Second Renaissance, and how would we actually know if we were moving toward it?
 
-It was a good question. It got a good hour. People said things I still think about.
+It was a good question. It got a full hour.
 
-A week later it was nowhere. No note that changed what we do. No thread that carried it forward. The thinking stayed in the room, and people leave rooms.
+A week later it was largely forgotten[^1]. Nothing changed in any of the white papers. The thinking stayed in the room.
 
-I don't think that was unusual. I think it is close to the normal outcome here. This community has a good hour, works something out, and a week later the working-out is gone and the question is open again.
+I don't think this is unusual -- either for us at Second Renaissance or in my experience across many other organizations and initiatives. I think it is close to the normal outcome. The community spends time discussing something, really good points are raised and a week later it is gone -- and probably a month or two later we'll have the question will be debated again.
 
-So that is what this talk is about. Where does the thinking go? I have been trying to answer that in a practical way, and it turned into a project. That is what I want to show you.
+Could we do better? And how?
+
+That is what talk is about. How can we provide structure and process to our discourse so that it **accumulates**? Put more simply: where does the thinking go? 
+
+We have been trying to answer that in a practical way, and it turned into a project: Reason Commons. It draws on ideas and patterns that are more than fifty years old -- things like the Theory of Constraints by Eilyahu Goldratt, the Pyramid Principle of Barbara Minto and the Logical Thinking Process developed by Goldratt and colleagues.
+
+Today, we want to share with you where we have got to and where we are going.
+
+[^1]: the one thing that came out of it was this work on reason commons ironically -- so not a direct update but an attempt to make the theory of change clearer and addressable.
 
 ### 1 · The problem: thinking that doesn't accumulate
 
