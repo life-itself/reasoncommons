@@ -102,6 +102,20 @@ node when it does not.
   strength; the Accept button becomes **Record as a gap**, and accepted gaps
   collect in a strip under the tree.
 
+## Test builds
+
+`--test` writes the same page to `talk/2r-research-group/demo-c-test/` with
+`meta.mode: "test"`, and the page then says so three ways: a rust **test build**
+chip in the header bar, a `TEST · ` prefix on the browser tab, and a rust
+hairline along the top edge of the app. Rust is the right hue for it — in this
+grammar rust means *something going wrong or in the way*, and a test build on a
+projector during the real session is exactly that.
+
+The route is gitignored and listed in `config.json` > `contentExclude`, so a
+half-read batch reaches neither a commit nor the published site. Flowershow
+previews ignore `contentExclude`, so it does appear on a preview site; that is
+usually wanted, but worth knowing before sending someone a preview link.
+
 ## State
 
 All of it lives in one JavaScript object: the current index, a decision per

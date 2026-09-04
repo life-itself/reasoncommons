@@ -102,6 +102,20 @@ body {
   color: var(--muted);
 }
 #bar .who { color: var(--faint); }
+#bar .flag {
+  font-size: var(--t-tiny);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--rust);
+  background: var(--rust-wash);
+  border: 1px solid color-mix(in srgb, var(--rust-line) 45%, transparent);
+  border-radius: 2px;
+  padding: 0.16rem 0.45rem;
+}
+#bar .flag[hidden] { display: none; }
+/* And a hairline along the top edge, so it is visible even past the fold. */
+body.is-test #app { box-shadow: inset 0 3px 0 0 var(--rust-line); }
 #count {
   margin-left: auto;
   font-size: var(--t-tiny);
@@ -536,6 +550,7 @@ button[disabled] { opacity: 0.4; cursor: default; }
 <div id="app">
   <header id="bar">
     <span class="eyebrow" id="title">Contribution proposals</span>
+    <span class="flag" id="flag" hidden>test build</span>
     <span class="eyebrow who" id="who"></span>
     <span id="count"></span>
     <ol id="dots"></ol>
@@ -676,6 +691,12 @@ const M = DATA.model;
 const P = DATA.proposals;
 const state = { i: 0, decisions: {}, edits: {}, editing: false };
 P.forEach(p => { state.decisions[p.id] = 'pending'; });
+
+// A test build says so, in the bar, in the tab, and along the top edge.
+const IS_TEST = DATA.meta.mode === 'test';
+document.body.classList.toggle('is-test', IS_TEST);
+$('flag').hidden = !IS_TEST;
+document.title = (IS_TEST ? 'TEST · ' : '') + DATA.meta.title;
 
 /** A proposal as the room has amended it, if it has. */
 function live(p) {
@@ -1031,6 +1052,7 @@ function renderLeft() {
   $('count').textContent = (state.i + 1) + ' / ' + P.length;
   $('who').textContent = DATA.meta.event || '';
   $('title').textContent = DATA.meta.title;
+  $('flag').hidden = !IS_TEST;
 
   const dots = $('dots');
   dots.textContent = '';

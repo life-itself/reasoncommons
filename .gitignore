@@ -11,6 +11,11 @@ __pycache__/
 skills/project-ltp/dashboard/vite.config.js
 skills/project-ltp/dashboard/vite.config.d.ts
 
+# Test builds of the contribution-proposals review page. `--test` writes here so
+# a half-read batch can be looked at without touching the live route or the
+# repo's history. See skills/contribution-proposals/SKILL.md.
+talk/2r-research-group/demo-c-test/
+
 # macOS metadata.
 .DS_Store
 

@@ -105,7 +105,19 @@ Note which relation dominates each view. In `goal-tree` every link is
 | `add_link` | Both entities exist; the model is missing a relation between them | `view`, `from`, `to`, `relation` |
 | `unplaced` | No address exists that would not misfile it | `view` (for context only) |
 
-### Contributions that do not look like they fit
+**Direction matters for `add_entity`.** The new node always links *into* the
+existing one: the created link is `new_entity --relation--> connects_to`. In a
+goal tree that means the new node is a necessary condition *for* `connects_to`;
+in a current-reality tree it means the new node *causes* `connects_to`. If the
+contribution names a new *effect* rather than a new cause, it is usually a
+`challenge_entity` on the effect the model already claims, or an `add_entity`
+hung off something further down. Do not invert the link to make it fit.
+
+Distinguishing `challenge_entity` from `challenge_link` is worth the extra
+thought, and the page draws them differently. Ask: can the node be true and the
+arrow still fail? If yes, it is the link.
+
+#### Contributions that do not look like they fit
 
 Most of them will not, at first. People answer the question they heard, not the
 one on the slide, and they answer it in their own vocabulary — a permaculture
@@ -146,7 +158,7 @@ about soil, or money, or a trade you have never modelled is not thereby
 unplaceable. It is unplaced only when you have done the three steps above and
 the honest answer is that attaching it anywhere would hide what it revealed.
 
-### Building on a claim the room just accepted
+#### Building on a claim the room just accepted
 
 For `add_entity`, `placement.connects_to` may name an **earlier `add_entity`
 proposal** instead of an entity — `connects_to: PROP-003` — when a contribution
@@ -159,18 +171,6 @@ already seen, and to one in the same view. And put the pair adjacent in the
 running order, so they are decided together — a child left hanging under a
 rejected parent is legible but not a good moment on stage. Record the fallback
 address under `alternatives` for exactly that case.
-
-**Direction matters for `add_entity`.** The new node always links *into* the
-existing one: the created link is `new_entity --relation--> connects_to`. In a
-goal tree that means the new node is a necessary condition *for* `connects_to`;
-in a current-reality tree it means the new node *causes* `connects_to`. If the
-contribution names a new *effect* rather than a new cause, it is usually a
-`challenge_entity` on the effect the model already claims, or an `add_entity`
-hung off something further down. Do not invert the link to make it fit.
-
-Distinguishing `challenge_entity` from `challenge_link` is worth the extra
-thought, and the page draws them differently. Ask: can the node be true and the
-arrow still fail? If yes, it is the link.
 
 ### 4. Write `proposals.yaml`
 
@@ -191,40 +191,59 @@ operations, read against the real Second Renaissance model — including two lon
 contributions that never use the model's vocabulary, one proposal that hangs off
 another, and one honest `unplaced`.
 
-### 5. Build the page
+### 5. Build it to the test route and look at it
+
+**Always build to the test route first.** Whether the reading is any good is not
+a thing you can tell from the YAML, and the live route is what gets published.
 
 ```sh
 python3 skills/contribution-proposals/scripts/build-demo.py \
-  --model ltp/ltp-model.yaml \
-  --proposals talk/2r-research-group/demo-c/proposals.yaml \
-  --out talk/2r-research-group/demo-c/index.html
+  --proposals <wherever you wrote it>.yaml --test --serve
 ```
 
-Those are the defaults, so a bare `python3
-skills/contribution-proposals/scripts/build-demo.py` does the same thing. Add
-`--check` to validate without writing.
+That validates, writes `talk/2r-research-group/demo-c-test/`, keeps a copy of
+the proposals there for the next round, serves the repo, and opens the page.
+The test route is gitignored and in `config.json` > `contentExclude`, so a
+half-read batch cannot reach a commit or the published site by accident, and the
+page carries a rust **test build** stamp in its header, its browser tab, and a
+hairline along its top edge — no one is going to project it thinking it is the
+real one.
 
-The script refuses to build on a dangling reference — an entity id that is not
-in the model, a link that is not in the named view, a missing placement field
-for the chosen operation. Fix `proposals.yaml`; never fix the model.
+Add `--no-open` to skip the browser, `--port` to move off 8731. Leave the server
+running and it picks up each rebuild on reload:
+
+```sh
+python3 skills/contribution-proposals/scripts/build-demo.py --test   # rebuild, then reload the tab
+```
+
+Then click through every proposal. Does each one land on the node you meant? Is
+the interpretation something the contributor would recognise? Does the accepted
+state persist as you advance? Does anything overflow at the projector's
+resolution? Fix `talk/2r-research-group/demo-c-test/proposals.yaml` and rebuild.
+
+`--check` validates and writes nothing. The script refuses to build on a
+dangling reference — an entity id that is not in the model, a link that is not
+in the named view, a missing placement field for the chosen operation, a chain
+to a proposal that has not appeared yet. Fix `proposals.yaml`; never fix the
+model.
+
+### 6. Promote it when it is right
+
+```sh
+python3 skills/contribution-proposals/scripts/build-demo.py --promote
+```
+
+That copies the test batch onto `talk/2r-research-group/demo-c/` and rebuilds it
+there without the stamp. That route is the one that ships.
 
 The result is one self-contained HTML file with the model and the proposals
 embedded. No server, no build step, no network at run time except Google Fonts.
 
-### 6. Look at it before the room does
-
-```sh
-python3 -m http.server 8731
-```
-
-then open `http://localhost:8731/talk/2r-research-group/demo-c/index.html` and
-click through every proposal. Opening the file directly with `file://` works
-too. Check that each one lands on the node you meant, that the accepted state
-persists as you advance, and that nothing overflows at the projector's
-resolution.
-
 To publish, follow the repo's preview-first rule in `AGENTS.md`: `fl . --yes`
-to the preview site, look, then land on `main`.
+to the preview site, look, then land on `main`. Note that Flowershow previews
+ignore `contentExclude`, so the test route *will* show up on a preview site and
+will not show up in production — which is usually what you want, but is worth
+knowing before you send anyone a preview link.
 
 ## Driving it in the room
 

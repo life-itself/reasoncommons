@@ -101,10 +101,17 @@ point — nothing on disk changes.
 
 It is generated, not hand-authored. Download the contributions, then run the
 `contribution-proposals` skill (`skills/contribution-proposals/SKILL.md`), which
-writes `demo-c/proposals.yaml` and builds the page from it:
+reads them against the tree and builds the page. Work in the test route first —
+it stamps the page, serves it, and opens it, and it cannot touch the live one:
 
 ```sh
-python3 skills/contribution-proposals/scripts/build-demo.py
+python3 skills/contribution-proposals/scripts/build-demo.py --proposals <file>.yaml --test --serve
+```
+
+Then promote it onto `demo-c/`, which is the route that ships:
+
+```sh
+python3 skills/contribution-proposals/scripts/build-demo.py --promote
 ```
 
 What ships in the repo today is a **rehearsal build from nine synthetic
