@@ -22,7 +22,7 @@ Feeds the slide build (frontend-slides skill). This is the slide text, the build
 
 ---
 
-## 0 · Cold open
+## 0 · Introduction
 
 ### Title
 
