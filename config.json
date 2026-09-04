@@ -37,7 +37,8 @@
     "/talk/_process",
     "/docs/plans",
     "/CLAUDE.md",
-    "/AGENTS.md"
+    "/AGENTS.md",
+    "/talk/2r-research-group/demo-c-test"
   ],
   "contentHide": [
     "/dashboard/assets",

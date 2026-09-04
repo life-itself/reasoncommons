@@ -12,6 +12,16 @@ decides otherwise.
         --out talk/2r-research-group/demo-c/index.html
 
 Add --check to validate and print the plan without writing anything.
+
+While you are still working out whether the reading is any good, build to the
+test route instead and look at it in a browser:
+
+    python3 build-demo.py --proposals <anywhere>.yaml --test --serve
+
+That writes talk/2r-research-group/demo-c-test/, stamps the page as a test build
+so it can never be mistaken for the real one, serves the repo, and opens the
+page. The test route is gitignored and excluded from the published site. When
+the batch is right, --promote copies it onto the live route and rebuilds.
 """
 
 from __future__ import annotations
@@ -19,9 +29,14 @@ from __future__ import annotations
 import argparse
 import datetime as _dt
 import hashlib
+import http.server
 import json
 import pathlib
+import shutil
+import socketserver
 import sys
+import threading
+import webbrowser
 
 try:
     import yaml
@@ -30,6 +45,12 @@ except ImportError:  # pragma: no cover - environment problem, not a data proble
 
 HERE = pathlib.Path(__file__).resolve().parent
 TEMPLATE = HERE.parent / "templates" / "demo.html"
+
+# The two routes. LIVE is what ships and gets published; TEST is the loop you
+# work in, gitignored and excluded from the site, so a half-read batch can never
+# reach an audience by accident.
+LIVE_ROUTE = pathlib.Path("talk/2r-research-group/demo-c")
+TEST_ROUTE = pathlib.Path("talk/2r-research-group/demo-c-test")
 
 # Which placement fields each operation needs. Everything else is optional.
 REQUIRED_PLACEMENT = {
@@ -193,6 +214,60 @@ def validate(bundle: dict, proposals: list, strict: bool) -> list:
     return problems
 
 
+def resolve_paths(args) -> None:
+    """Work out which route we are building to, and fill in the defaults."""
+    route = TEST_ROUTE if args.test else LIVE_ROUTE
+    if args.proposals is None:
+        args.proposals = str(route / "proposals.yaml")
+    if args.out is None:
+        args.out = str(route / "index.html")
+
+
+def serve(path: pathlib.Path, port: int, open_browser: bool) -> None:
+    """Serve the repo root so the page can be looked at, and stay up."""
+    root = pathlib.Path.cwd()
+    url = f"http://localhost:{port}/{path.as_posix()}"
+
+    class Handler(http.server.SimpleHTTPRequestHandler):
+        def __init__(self, *a, **kw):
+            super().__init__(*a, directory=str(root), **kw)
+
+        def log_message(self, fmt, *a):
+            # A 200 for every asset is noise. A miss is worth knowing about.
+            if a and str(a[1]).startswith(("4", "5")):
+                sys.stderr.write("  %s %s\n" % (a[1], a[0]))
+
+    class Reusable(socketserver.TCPServer):
+        allow_reuse_address = True
+        daemon_threads = True
+
+    try:
+        httpd = Reusable(("127.0.0.1", port), Handler)
+    except OSError as exc:
+        raise Problem(f"cannot serve on port {port}: {exc}. Try --port with another number.")
+
+    print(f"\n  {url}\n  serving {root} — ctrl-c to stop", flush=True)
+    if open_browser:
+        threading.Timer(0.4, webbrowser.open, args=(url,)).start()
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        print("\n  stopped")
+    finally:
+        httpd.server_close()
+
+
+def promote() -> int:
+    """Copy the test batch onto the live route and rebuild it there."""
+    src = TEST_ROUTE / "proposals.yaml"
+    if not src.exists():
+        raise Problem(f"nothing to promote: {src} does not exist. Build with --test first.")
+    LIVE_ROUTE.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(src, LIVE_ROUTE / "proposals.yaml")
+    print(f"  copied {src} -> {LIVE_ROUTE / 'proposals.yaml'}")
+    return 0
+
+
 def build(args) -> int:
     model_path = pathlib.Path(args.model)
     proposals_path = pathlib.Path(args.proposals)
@@ -217,6 +292,7 @@ def build(args) -> int:
     meta = dict(doc.get("meta") or {})
     meta.setdefault("title", "Contribution proposals")
     meta.setdefault("attribution", "numbered")
+    meta["mode"] = "test" if args.test else "live"
     meta["model_source"] = meta.get("model_source") or str(model_path)
     meta["model_sha256"] = hashlib.sha256(model_raw).hexdigest()[:12]
     meta["generated"] = _dt.datetime.now().astimezone().strftime("%Y-%m-%d %H:%M")
@@ -261,19 +337,48 @@ def build(args) -> int:
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html, encoding="utf-8")
     print(f"  wrote {out} ({len(html) // 1024} KB, self-contained)")
+
+    if args.test:
+        kept = TEST_ROUTE / "proposals.yaml"
+        if proposals_path.resolve() != kept.resolve():
+            kept.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(proposals_path, kept)
+            print(f"  kept a copy at {kept} — edit that and rebuild, then --promote")
+        print("  TEST BUILD — stamped on the page, gitignored, not published")
+
+    if args.serve:
+        serve(out, args.port, not args.no_open)
     return 0
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--model", default="ltp/ltp-model.yaml")
-    ap.add_argument("--proposals", default="talk/2r-research-group/demo-c/proposals.yaml")
-    ap.add_argument("--out", default="talk/2r-research-group/demo-c/index.html")
+    ap.add_argument("--proposals", default=None,
+                    help=f"defaults to {LIVE_ROUTE}/proposals.yaml, or the test route's under --test")
+    ap.add_argument("--out", default=None,
+                    help=f"defaults to {LIVE_ROUTE}/index.html, or the test route's under --test")
+    ap.add_argument("--test", action="store_true",
+                    help=f"build to {TEST_ROUTE}/ and stamp the page as a test build — "
+                         "gitignored and excluded from the published site")
+    ap.add_argument("--serve", action="store_true",
+                    help="after building, serve the repo and open the page in a browser")
+    ap.add_argument("--port", type=int, default=8731, help="port for --serve (default 8731)")
+    ap.add_argument("--no-open", action="store_true", help="with --serve, do not open a browser")
+    ap.add_argument("--promote", action="store_true",
+                    help="copy the test batch onto the live route and rebuild it there")
     ap.add_argument("--check", action="store_true", help="validate only, write nothing")
     ap.add_argument("--strict", action="store_true",
                     help="treat 'target not in view' as an error rather than a warning")
     args = ap.parse_args()
+
     try:
+        if args.promote:
+            if args.test:
+                raise Problem("--promote and --test are opposites; pick one")
+            promote()
+            args.proposals = args.proposals or str(LIVE_ROUTE / "proposals.yaml")
+        resolve_paths(args)
         return build(args)
     except Problem as exc:
         print(f"build-demo: {exc}", file=sys.stderr)

@@ -81,6 +81,19 @@ dropdown omitting proposed claims, so opening it on a chained proposal silently
 re-targeted it to the first entity in the view; and `as necessary for for NC-2`
 in the address line, which had been there since the first build.
 
+## Test-route checks
+
+- `--test` writes only to `talk/2r-research-group/demo-c-test/`, leaves the live
+  route untouched in `git status`, and the route is confirmed gitignored.
+- The built page reports `meta.mode: "test"`, shows the rust chip, prefixes the
+  browser tab with `TEST · `, and carries the top-edge hairline. The live build
+  reports `"live"` and shows none of it.
+- `--serve` prints the URL before serving, answers 200 for the page, stays
+  silent on hits and reports misses (`404 GET /nope-does-not-exist`).
+- `--promote` copies the test batch onto the live route and rebuilds it there
+  unstamped; with no test batch present it fails with a named reason, and
+  `--promote --test` is refused as contradictory.
+
 ## Not yet tested
 
 - A batch larger than about a dozen proposals. The header dots and the
