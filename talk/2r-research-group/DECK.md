@@ -107,9 +107,11 @@ writes `demo-c/proposals.yaml` and builds the page from it:
 python3 skills/contribution-proposals/scripts/build-demo.py
 ```
 
-What ships in the repo today is a **rehearsal build from seven synthetic
-contributions** — every operation is represented, so the page can be driven
-end to end before the session. Replace it with the real batch on the day.
+What ships in the repo today is a **rehearsal build from nine synthetic
+contributions** — every operation is represented, the lengths run from one line
+to a thousand characters, and two of them arrive in a vocabulary the model does
+not use at all, which is the case worth rehearsing. Replace it with the real
+batch on the day.
 
 Keys: `→` `←` move · `A` accept · `E` edit · `X` reject · `0` reset · `End`
 jumps to the tally. `A` and `X` toggle, so a mis-press costs one keystroke.

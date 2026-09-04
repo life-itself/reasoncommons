@@ -159,11 +159,22 @@ main {
 .quote::before { content: "\201C"; }
 .quote::after { content: "\201D"; }
 .att {
-  font-size: var(--t-small);
+  font-size: var(--t-mid);
   color: var(--muted);
-  margin: 0.55rem 0 0;
+  margin: 0.7rem 0 0;
 }
-.att b { font-weight: 500; color: var(--ink-soft); }
+.att b { font-weight: 500; color: var(--ink); }
+
+/* People write at wildly different lengths. A thousand characters cannot be set
+   at the same size as one sentence and still leave room for the proposal. */
+.quote.long { font-size: var(--t-mid); line-height: 1.44; }
+.quote.xlong {
+  font-size: var(--t-body);
+  line-height: 1.52;
+  max-height: 38vh;
+  overflow: auto;
+  padding-right: 0.5rem;
+}
 
 hr.rule { border: 0; border-top: 1px solid var(--line); margin: 0.2rem 0; }
 
@@ -358,8 +369,15 @@ button[disabled] { opacity: 0.4; cursor: default; }
 .n--cause { --nline: var(--structure); }
 
 /* Existing reasoning, not under discussion: present, quiet, still readable. */
-#field.dim .node:not(.hot) > .card { opacity: 0.46; --nline: var(--faint); }
-#field.dim .node:not(.hot) > .card .st { color: var(--ink-soft); }
+.card.quiet { opacity: 0.5; --nline: var(--faint); }
+.card.quiet .st { color: var(--ink-soft); }
+/* A node already drawn elsewhere in this view, shown again for its second parent. */
+.card.repeat { opacity: 0.5; }
+
+/* The path from the node in play up to the top of the tree. Never dimmed: a
+   claim you cannot trace to a goal is not a claim anyone can review. The band
+   is what makes it read as one path rather than three unrelated survivors. */
+.node.lineage > .card { background: color-mix(in srgb, var(--paper) 52%, transparent); }
 
 /* The node the proposal is addressed to. */
 .card.target {
@@ -615,7 +633,7 @@ button[disabled] { opacity: 0.4; cursor: default; }
 </div>
 
 <script>
-const DATA = {"meta":{"title":"Demo C — rehearsal · sample contributions","event":"Second Renaissance Research Group","date":"2026-09-04","model_source":"ltp/ltp-model.yaml","contributions_source":"skills/contribution-proposals/examples/contributions.sample.txt","attribution":"numbered","model_sha256":"390cdda8458f","generated":"2026-09-04 15:01"},"model":{"project":"Second Renaissance LTP","entities":{"G-1":{"id":"G-1","type":"goal","statement":"Co-initiate a conscious transformation toward a wiser, weller, regenerative civilization","status":"provisional"},"CSF-1":{"id":"CSF-1","type":"critical_success_factor","statement":"People durably embody wiser views, values, practices, and ways of acting","status":"inferred"},"CSF-2":{"id":"CSF-2","type":"critical_success_factor","statement":"The group learns and revises strategy through evidence, objections, and constraint review","status":"inferred"},"CSF-3":{"id":"CSF-3","type":"critical_success_factor","statement":"Proven practices stabilize in pockets and become responsibly transmissible","status":"inferred"},"NC-1":{"id":"NC-1","type":"necessary_condition","statement":"Goal-relevant throughput is operationally defined without reducing transformation to activity counts","status":"provisional"},"NC-2":{"id":"NC-2","type":"necessary_condition","statement":"A transparent path connects first contact to sustained practice and contribution","status":"provisional"},"NC-3":{"id":"NC-3","type":"necessary_condition","statement":"Participants can repeat embodied practices at progressively deeper levels","status":"provisional"},"NC-4":{"id":"NC-4","type":"necessary_condition","statement":"Contributors can develop into facilitators and accountable stewards","status":"provisional"},"NC-5":{"id":"NC-5","type":"necessary_condition","statement":"Dense practice containers receive sangha support and remain outward-facing","status":"provisional"},"NC-6":{"id":"NC-6","type":"necessary_condition","statement":"Strategic maps are governed as living, challengeable, versioned commons","status":"provisional"},"RC-0":{"id":"RC-0","type":"root_cause","statement":"The group has no agreed process for validating and revising its strategic maps","status":"provisional"},"RC-1":{"id":"RC-1","type":"root_cause","statement":"The group lacks a reliable architecture that converts interest into practice, contribution, pocket formation, and replication","status":"provisional"},"RC-2":{"id":"RC-2","type":"root_cause","statement":"Throughput is not yet operationally defined and accepted","status":"provisional"},"RC-3":{"id":"RC-3","type":"root_cause","statement":"The group lacks a disciplined practice-action-learning and constraint-review cadence","status":"provisional"},"UDE-1":{"id":"UDE-1","type":"undesirable_effect","statement":"Many people resonate with the ideas but few enter sustained practice","status":"provisional"},"UDE-2":{"id":"UDE-2","type":"undesirable_effect","statement":"The group is busy while durable-adoption throughput remains low","status":"provisional"},"UDE-3":{"id":"UDE-3","type":"undesirable_effect","statement":"Core organizers carry too much of the work and risk burnout","status":"provisional"},"UDE-4":{"id":"UDE-4","type":"undesirable_effect","statement":"New participants do not know the next step after initial contact","status":"provisional"},"UDE-5":{"id":"UDE-5","type":"undesirable_effect","statement":"Pockets are difficult to form and remain fragile or isolated","status":"provisional"},"UDE-6":{"id":"UDE-6","type":"undesirable_effect","statement":"Others may admire the work without reproducing it","status":"provisional"},"CO-1":{"id":"CO-1","type":"common_objective","statement":"Increase durable cultural transformation","status":"inferred"},"NEED-1":{"id":"NEED-1","type":"need","statement":"Become visible enough to attract people, resources, energy, and legitimacy","status":"inferred"},"NEED-2":{"id":"NEED-2","type":"need","statement":"Become embodied enough to represent the proposed new paradigm with integrity","status":"inferred"},"OPT-1":{"id":"OPT-1","type":"option","statement":"Act like a movement now by prioritizing scale, speed, message, and accessibility","status":"provisional"},"OPT-2":{"id":"OPT-2","type":"option","statement":"Act like a monastery or laboratory now by prioritizing depth, slowness, practice, and rigor","status":"provisional"},"INJ-0":{"id":"INJ-0","type":"injection","statement":"Establish a lightweight stewardship and revision protocol for the trees","status":"provisional"},"INJ-1":{"id":"INJ-1","type":"injection","statement":"Organize a broad public invitation around deep, protected, practice-based pockets","status":"inferred"},"INJ-2":{"id":"INJ-2","type":"injection","statement":"Define throughput as verified durable adoption using mixed quantitative and qualitative evidence","status":"provisional"},"INJ-3":{"id":"INJ-3","type":"injection","statement":"Build a transparent, consent-based staged conversion architecture","status":"provisional"},"INJ-4":{"id":"INJ-4","type":"injection","statement":"Install a practice-action-learning cadence with regular constraint review","status":"provisional"},"INJ-5":{"id":"INJ-5","type":"injection","statement":"Create a graduated contributor, facilitator, and stewardship pathway","status":"provisional"},"INJ-6":{"id":"INJ-6","type":"injection","statement":"Build dense practice containers connected to an outward-facing sangha","status":"provisional"},"INJ-7":{"id":"INJ-7","type":"injection","statement":"Document only maturity-rated practices in a context-adaptable replication library","status":"provisional"},"DE-1":{"id":"DE-1","type":"desirable_effect","statement":"The group can distinguish durable transformation from visible activity","status":"inferred"},"DE-2":{"id":"DE-2","type":"desirable_effect","statement":"More interested people enter and sustain embodied practice","status":"inferred"},"DE-3":{"id":"DE-3","type":"desirable_effect","statement":"Leadership capacity grows without permanent founder bottlenecks","status":"inferred"},"DE-4":{"id":"DE-4","type":"desirable_effect","statement":"Stable pockets form, mature, and stay connected to wider society","status":"inferred"},"DE-5":{"id":"DE-5","type":"desirable_effect","statement":"Tested practices become teachable and independently reproducible","status":"inferred"},"DE-6":{"id":"DE-6","type":"desirable_effect","statement":"The rate of verified durable adoption increases","status":"inferred"},"NBR-1":{"id":"NBR-1","type":"negative_branch","statement":"Throughput metrics crowd out subtle inner and relational transformation","status":"provisional"},"NBR-2":{"id":"NBR-2","type":"negative_branch","statement":"A conversion pathway feels manipulative, extractive, or cult-like","status":"provisional"},"OBS-1":{"id":"OBS-1","type":"obstacle","statement":"The goal, UDEs, and causal arrows have not been tested against lived group evidence","status":"observed"},"IO-1":{"id":"IO-1","type":"intermediate_objective","statement":"A stewarded, versioned model is accepted as good enough for provisional use","status":"inferred"},"OBS-2":{"id":"OBS-2","type":"obstacle","statement":"Throughput may be contested or become reductive before the goal model is trusted","status":"inferred"},"IO-2":{"id":"IO-2","type":"intermediate_objective","statement":"A mixed-method throughput definition and review protocol are accepted","status":"provisional"},"OBS-3":{"id":"OBS-3","type":"obstacle","statement":"New people lack a clear next step and may resist being funneled","status":"provisional"},"IO-3":{"id":"IO-3","type":"intermediate_objective","statement":"One transparent, consent-based entry pathway exists","status":"provisional"},"OBS-4":{"id":"OBS-4","type":"obstacle","statement":"Intellectual agreement does not reliably change daily practice","status":"provisional"},"IO-4":{"id":"IO-4","type":"intermediate_objective","statement":"A recurring, progressively deep practice architecture exists","status":"provisional"},"OBS-5":{"id":"OBS-5","type":"obstacle","statement":"Delegating responsibility may reduce quality or create status hierarchy","status":"provisional"},"IO-5":{"id":"IO-5","type":"intermediate_objective","statement":"A graduated stewardship pathway with accountable role criteria exists","status":"provisional"},"OBS-6":{"id":"OBS-6","type":"obstacle","statement":"New values are hard to sustain without dense and supported containers","status":"provisional"},"IO-6":{"id":"IO-6","type":"intermediate_objective","statement":"A pilot pocket or sangha container operates with outward-facing service","status":"provisional"},"OBS-7":{"id":"OBS-7","type":"obstacle","statement":"Successful practices may remain tacit or spread as shallow copies","status":"provisional"},"IO-7":{"id":"IO-7","type":"intermediate_objective","statement":"A maturity-rated replication library distinguishes principles from local forms","status":"provisional"},"ACT-1":{"id":"ACT-1","type":"action","statement":"Facilitate one bounded stewarded review of the goal, priority UDEs, and conversion-constraint hypothesis","status":"inferred"},"TR-1":{"id":"TR-1","type":"expected_effect","statement":"A dated model records confirmations, disputes, evidence gaps, a named steward, and the next review","status":"inferred"},"ACT-2":{"id":"ACT-2","type":"action","statement":"Draft and review one mixed-method definition of a durable adoption event","status":"provisional"},"TR-2":{"id":"TR-2","type":"expected_effect","statement":"The group can test one candidate throughput measure without treating it as complete truth","status":"inferred"},"ACT-3":{"id":"ACT-3","type":"action","statement":"Prototype one consent-based next-step pathway from a real public contact into first practice","status":"provisional"},"TR-3":{"id":"TR-3","type":"expected_effect","statement":"The group observes where real participants accept, decline, or leave the entry pathway","status":"inferred"},"ACT-4":{"id":"ACT-4","type":"action","statement":"Run one short recurring-practice cohort as a documented learning experiment","status":"provisional"},"TR-4":{"id":"TR-4","type":"expected_effect","statement":"The group obtains retention, qualitative practice, safety, and learning evidence","status":"inferred"}},"links":{"L-001":{"id":"L-001","from":"CSF-1","to":"G-1","relation":"necessary_for"},"L-002":{"id":"L-002","from":"CSF-2","to":"G-1","relation":"necessary_for"},"L-003":{"id":"L-003","from":"CSF-3","to":"G-1","relation":"necessary_for"},"L-004":{"id":"L-004","from":"NC-1","to":"CSF-2","relation":"necessary_for"},"L-005":{"id":"L-005","from":"NC-2","to":"CSF-1","relation":"necessary_for"},"L-006":{"id":"L-006","from":"NC-3","to":"CSF-1","relation":"necessary_for"},"L-007":{"id":"L-007","from":"NC-4","to":"CSF-3","relation":"necessary_for"},"L-008":{"id":"L-008","from":"NC-5","to":"CSF-3","relation":"necessary_for"},"L-009":{"id":"L-009","from":"NC-6","to":"CSF-2","relation":"necessary_for"},"L-010":{"id":"L-010","from":"RC-0","to":"RC-2","relation":"reinforces"},"L-011":{"id":"L-011","from":"RC-2","to":"UDE-2","relation":"causes"},"L-012":{"id":"L-012","from":"RC-3","to":"UDE-2","relation":"causes"},"L-013":{"id":"L-013","from":"RC-1","to":"UDE-4","relation":"causes"},"L-014":{"id":"L-014","from":"UDE-4","to":"UDE-1","relation":"contributes_to"},"L-015":{"id":"L-015","from":"UDE-1","to":"UDE-3","relation":"contributes_to"},"L-016":{"id":"L-016","from":"UDE-1","to":"UDE-5","relation":"contributes_to"},"L-017":{"id":"L-017","from":"UDE-5","to":"UDE-6","relation":"contributes_to"},"L-018":{"id":"L-018","from":"UDE-6","to":"UDE-2","relation":"contributes_to"},"L-019":{"id":"L-019","from":"NEED-1","to":"CO-1","relation":"necessary_for"},"L-020":{"id":"L-020","from":"NEED-2","to":"CO-1","relation":"necessary_for"},"L-021":{"id":"L-021","from":"OPT-1","to":"NEED-1","relation":"believed_necessary_for"},"L-022":{"id":"L-022","from":"OPT-2","to":"NEED-2","relation":"believed_necessary_for"},"L-023":{"id":"L-023","from":"OPT-1","to":"OPT-2","relation":"conflicts_with"},"L-024":{"id":"L-024","from":"INJ-0","to":"DE-1","relation":"enables"},"L-025":{"id":"L-025","from":"INJ-2","to":"DE-1","relation":"causes"},"L-026":{"id":"L-026","from":"INJ-3","to":"DE-2","relation":"causes"},"L-027":{"id":"L-027","from":"INJ-4","to":"DE-1","relation":"reinforces"},"L-028":{"id":"L-028","from":"INJ-5","to":"DE-3","relation":"causes"},"L-029":{"id":"L-029","from":"INJ-6","to":"DE-4","relation":"causes"},"L-030":{"id":"L-030","from":"INJ-7","to":"DE-5","relation":"causes"},"L-031":{"id":"L-031","from":"DE-1","to":"DE-2","relation":"enables"},"L-032":{"id":"L-032","from":"DE-2","to":"DE-3","relation":"enables"},"L-033":{"id":"L-033","from":"DE-3","to":"DE-4","relation":"enables"},"L-034":{"id":"L-034","from":"DE-4","to":"DE-5","relation":"enables"},"L-035":{"id":"L-035","from":"DE-5","to":"DE-6","relation":"contributes_to"},"L-036":{"id":"L-036","from":"DE-6","to":"G-1","relation":"contributes_to"},"L-037":{"id":"L-037","from":"INJ-2","to":"NBR-1","relation":"may_cause"},"L-038":{"id":"L-038","from":"INJ-3","to":"NBR-2","relation":"may_cause"},"L-039":{"id":"L-039","from":"OBS-1","to":"IO-1","relation":"overcome_by"},"L-040":{"id":"L-040","from":"IO-1","to":"IO-2","relation":"enables"},"L-041":{"id":"L-041","from":"OBS-2","to":"IO-2","relation":"overcome_by"},"L-042":{"id":"L-042","from":"IO-2","to":"IO-3","relation":"enables"},"L-043":{"id":"L-043","from":"OBS-3","to":"IO-3","relation":"overcome_by"},"L-044":{"id":"L-044","from":"IO-3","to":"IO-4","relation":"enables"},"L-045":{"id":"L-045","from":"OBS-4","to":"IO-4","relation":"overcome_by"},"L-046":{"id":"L-046","from":"IO-4","to":"IO-5","relation":"enables"},"L-047":{"id":"L-047","from":"OBS-5","to":"IO-5","relation":"overcome_by"},"L-048":{"id":"L-048","from":"IO-5","to":"IO-6","relation":"enables"},"L-049":{"id":"L-049","from":"OBS-6","to":"IO-6","relation":"overcome_by"},"L-050":{"id":"L-050","from":"IO-6","to":"IO-7","relation":"enables"},"L-051":{"id":"L-051","from":"OBS-7","to":"IO-7","relation":"overcome_by"},"L-052":{"id":"L-052","from":"IO-7","to":"INJ-1","relation":"enables"},"L-053":{"id":"L-053","from":"ACT-1","to":"TR-1","relation":"produces"},"L-054":{"id":"L-054","from":"TR-1","to":"IO-1","relation":"achieves"},"L-055":{"id":"L-055","from":"ACT-2","to":"TR-2","relation":"produces"},"L-056":{"id":"L-056","from":"TR-2","to":"IO-2","relation":"achieves"},"L-057":{"id":"L-057","from":"ACT-3","to":"TR-3","relation":"produces"},"L-058":{"id":"L-058","from":"TR-3","to":"IO-3","relation":"tests"},"L-059":{"id":"L-059","from":"ACT-4","to":"TR-4","relation":"produces"},"L-060":{"id":"L-060","from":"TR-4","to":"IO-4","relation":"tests"},"L-061":{"id":"L-061","from":"INJ-1","to":"INJ-3","relation":"reframes"}},"views":{"goal-tree":{"key":"goal-tree","title":"What the Second Renaissance group must make true","purpose":"Necessary conditions for durable, learning, and transmissible cultural transformation.","entities":["NC-1","NC-2","NC-3","NC-4","NC-5","NC-6","CSF-1","CSF-2","CSF-3","G-1"],"links":["L-001","L-002","L-003","L-004","L-005","L-006","L-007","L-008","L-009"]},"current-reality":{"key":"current-reality","title":"Why resonance is not becoming durable adoption","purpose":"Candidate causes and effects that require validation against lived group evidence.","entities":["RC-0","RC-1","RC-2","RC-3","UDE-1","UDE-2","UDE-3","UDE-4","UDE-5","UDE-6"],"links":["L-010","L-011","L-012","L-013","L-014","L-015","L-016","L-017","L-018"]}}},"proposals":[{"id":"PROP-001","source":{"contributor":"Participant 1","text":"I think we're assuming everyone has to move through the same progression. First contact, then practice, then contributing, then stewarding. But the communities I work with wouldn't recognise that shape at all — some of them start with the doing and never get near the discourse. A single path is going to lose them at step one."},"interpretation":{"statement":"The path from first contact to sustained practice has to be able to take different shapes in different communities, rather than one progression everybody runs."},"proposal":{"operation":"add_entity","entity":{"type":"necessary_condition","status":"provisional","statement":"Entry paths can take different shapes in different community contexts"},"placement":{"view":"goal-tree","connects_to":"NC-2","relation":"necessary_for"},"rationale":"NC-2 already requires a transparent path from first contact to sustained practice, but says nothing about whether that path can vary. This is a condition on NC-2 rather than a rival to it.","confidence":"high"},"review":{"status":"pending"}},{"id":"PROP-002","source":{"contributor":"Participant 2","text":"it's in the small tents that the actual work happens. big gatherings are good for morale and terrible for anything else. every real change I've seen came out of five people who kept showing up."},"interpretation":{"statement":"Dense small groups, not large gatherings, are where practice actually takes hold — offered from the contributor's own experience."},"proposal":{"operation":"support_entity","placement":{"view":"goal-tree","connects_to":"NC-5"},"rationale":"NC-5 already holds that dense practice containers need sangha support. This is first-hand testimony for it, which the condition currently lacks — its evidence is all documentary.","confidence":"high","alternatives":[{"target":"NC-3","confidence":"low","note":"Also touches repeated practice, but the contribution is about group size rather than depth."}]},"review":{"status":"pending"}},{"id":"PROP-003","source":{"contributor":"Participant 3","text":"Honestly I don't think \"throughput\" can be defined here without becoming a metric someone games. The moment you count adoption events you get people producing adoption events. I know the doc says it won't reduce to activity counts but I've never seen that hold once there's a number."},"interpretation":{"statement":"Any operational definition of throughput will be gamed, so NC-1 may be requiring something that cannot survive contact with the group's own incentives."},"proposal":{"operation":"challenge_entity","placement":{"view":"goal-tree","connects_to":"NC-1"},"rationale":"NC-1 asserts throughput can be operationally defined without reducing transformation to activity counts. This says the qualifier will not hold in practice. It disputes the condition itself, not its placement.","confidence":"high"},"review":{"status":"pending"}},{"id":"PROP-004","source":{"contributor":"Participant 4","text":"The maps being versioned and challengeable is good but that on its own doesn't make the group learn anything. You can have a beautifully maintained wiki that nobody's mind is ever changed by. Learning happens when someone is actually made to answer an objection, and that's a social practice, not a document format."},"interpretation":{"statement":"Governing the maps as a versioned commons is not sufficient for the group to learn; the link from NC-6 to CSF-2 assumes a social practice that the condition does not name."},"proposal":{"operation":"challenge_link","placement":{"view":"goal-tree","link":"L-009"},"rationale":"The challenge is aimed at the arrow, not at either end of it. NC-6 can be fully satisfied and CSF-2 still fail, which is what a challenge to a necessity link means.","confidence":"high"},"review":{"status":"pending"}},{"id":"PROP-005","source":{"contributor":"Participant 5","text":"Facilitator development isn't just about replication — the people who learn to facilitate are the ones who end up noticing what isn't working and saying so. That's how the group learns. Feels like it should point at both."},"interpretation":{"statement":"Developing facilitators feeds the group's capacity to learn and revise strategy, not only its capacity to transmit practice."},"proposal":{"operation":"add_link","placement":{"view":"goal-tree","from":"NC-4","to":"CSF-2","relation":"contributes_to"},"rationale":"NC-4 currently hangs only under CSF-3, transmissibility. The contribution claims a second parent, which the model can hold — a necessary condition may serve more than one success factor.","confidence":"medium"},"review":{"status":"pending"}},{"id":"PROP-006","source":{"contributor":"Participant 6","text":"We keep talking as if the problem is that people don't convert. In my experience they convert fine and then leave after eight months because nothing changed for them personally. The leak is at the back, not the front."},"interpretation":{"statement":"People do enter sustained practice and then leave, because participation does not change their own conditions — so low durable adoption is a retention failure rather than a conversion failure.","note":"Read as a cause to be added. It could equally be read as a challenge to RC-1, the model's named current constraint; that reading is recorded below rather than shown."},"proposal":{"operation":"add_entity","entity":{"type":"root_cause","status":"provisional","statement":"Sustained participants leave because participation does not change their own conditions"},"placement":{"view":"current-reality","connects_to":"UDE-2","relation":"causes"},"rationale":"UDE-2 observes that the group is busy while durable-adoption throughput stays low. Attrition after entry is a cause of that effect which the tree does not currently carry — every existing cause sits before entry, not after it.","confidence":"medium","alternatives":[{"target":"RC-1","confidence":"medium","note":"Read instead as a direct challenge to RC-1, which locates the constraint in conversion. The room may well prefer this reading."}]},"review":{"status":"pending"}},{"id":"PROP-007","source":{"contributor":"Participant 7","text":"None of this addresses money. Who is paying for any of it. Every group I've been part of that ignored this ended up quietly run by whoever happened to have savings, and nobody voted for that."},"interpretation":{"statement":"The model says nothing about how the work is funded, and unexamined funding quietly decides who holds authority."},"proposal":{"operation":"unplaced","placement":{"view":"goal-tree"},"rationale":"No entity in the model concerns resourcing, funding, or the authority that follows it. The nearest, NC-6 on governance, is about how maps are governed rather than how the work is paid for. Attaching this anywhere would misfile it, and misfiling it would hide exactly the thing the contributor is pointing at.","confidence":"high"},"review":{"status":"pending"}}]};
+const DATA = {"meta":{"title":"Demo C — rehearsal · sample contributions","event":"Second Renaissance Research Group","date":"2026-09-04","model_source":"ltp/ltp-model.yaml","contributions_source":"skills/contribution-proposals/examples/contributions.sample.txt","attribution":"name","model_sha256":"390cdda8458f","generated":"2026-09-04 15:33"},"model":{"project":"Second Renaissance LTP","entities":{"G-1":{"id":"G-1","type":"goal","statement":"Co-initiate a conscious transformation toward a wiser, weller, regenerative civilization","status":"provisional"},"CSF-1":{"id":"CSF-1","type":"critical_success_factor","statement":"People durably embody wiser views, values, practices, and ways of acting","status":"inferred"},"CSF-2":{"id":"CSF-2","type":"critical_success_factor","statement":"The group learns and revises strategy through evidence, objections, and constraint review","status":"inferred"},"CSF-3":{"id":"CSF-3","type":"critical_success_factor","statement":"Proven practices stabilize in pockets and become responsibly transmissible","status":"inferred"},"NC-1":{"id":"NC-1","type":"necessary_condition","statement":"Goal-relevant throughput is operationally defined without reducing transformation to activity counts","status":"provisional"},"NC-2":{"id":"NC-2","type":"necessary_condition","statement":"A transparent path connects first contact to sustained practice and contribution","status":"provisional"},"NC-3":{"id":"NC-3","type":"necessary_condition","statement":"Participants can repeat embodied practices at progressively deeper levels","status":"provisional"},"NC-4":{"id":"NC-4","type":"necessary_condition","statement":"Contributors can develop into facilitators and accountable stewards","status":"provisional"},"NC-5":{"id":"NC-5","type":"necessary_condition","statement":"Dense practice containers receive sangha support and remain outward-facing","status":"provisional"},"NC-6":{"id":"NC-6","type":"necessary_condition","statement":"Strategic maps are governed as living, challengeable, versioned commons","status":"provisional"},"RC-0":{"id":"RC-0","type":"root_cause","statement":"The group has no agreed process for validating and revising its strategic maps","status":"provisional"},"RC-1":{"id":"RC-1","type":"root_cause","statement":"The group lacks a reliable architecture that converts interest into practice, contribution, pocket formation, and replication","status":"provisional"},"RC-2":{"id":"RC-2","type":"root_cause","statement":"Throughput is not yet operationally defined and accepted","status":"provisional"},"RC-3":{"id":"RC-3","type":"root_cause","statement":"The group lacks a disciplined practice-action-learning and constraint-review cadence","status":"provisional"},"UDE-1":{"id":"UDE-1","type":"undesirable_effect","statement":"Many people resonate with the ideas but few enter sustained practice","status":"provisional"},"UDE-2":{"id":"UDE-2","type":"undesirable_effect","statement":"The group is busy while durable-adoption throughput remains low","status":"provisional"},"UDE-3":{"id":"UDE-3","type":"undesirable_effect","statement":"Core organizers carry too much of the work and risk burnout","status":"provisional"},"UDE-4":{"id":"UDE-4","type":"undesirable_effect","statement":"New participants do not know the next step after initial contact","status":"provisional"},"UDE-5":{"id":"UDE-5","type":"undesirable_effect","statement":"Pockets are difficult to form and remain fragile or isolated","status":"provisional"},"UDE-6":{"id":"UDE-6","type":"undesirable_effect","statement":"Others may admire the work without reproducing it","status":"provisional"},"CO-1":{"id":"CO-1","type":"common_objective","statement":"Increase durable cultural transformation","status":"inferred"},"NEED-1":{"id":"NEED-1","type":"need","statement":"Become visible enough to attract people, resources, energy, and legitimacy","status":"inferred"},"NEED-2":{"id":"NEED-2","type":"need","statement":"Become embodied enough to represent the proposed new paradigm with integrity","status":"inferred"},"OPT-1":{"id":"OPT-1","type":"option","statement":"Act like a movement now by prioritizing scale, speed, message, and accessibility","status":"provisional"},"OPT-2":{"id":"OPT-2","type":"option","statement":"Act like a monastery or laboratory now by prioritizing depth, slowness, practice, and rigor","status":"provisional"},"INJ-0":{"id":"INJ-0","type":"injection","statement":"Establish a lightweight stewardship and revision protocol for the trees","status":"provisional"},"INJ-1":{"id":"INJ-1","type":"injection","statement":"Organize a broad public invitation around deep, protected, practice-based pockets","status":"inferred"},"INJ-2":{"id":"INJ-2","type":"injection","statement":"Define throughput as verified durable adoption using mixed quantitative and qualitative evidence","status":"provisional"},"INJ-3":{"id":"INJ-3","type":"injection","statement":"Build a transparent, consent-based staged conversion architecture","status":"provisional"},"INJ-4":{"id":"INJ-4","type":"injection","statement":"Install a practice-action-learning cadence with regular constraint review","status":"provisional"},"INJ-5":{"id":"INJ-5","type":"injection","statement":"Create a graduated contributor, facilitator, and stewardship pathway","status":"provisional"},"INJ-6":{"id":"INJ-6","type":"injection","statement":"Build dense practice containers connected to an outward-facing sangha","status":"provisional"},"INJ-7":{"id":"INJ-7","type":"injection","statement":"Document only maturity-rated practices in a context-adaptable replication library","status":"provisional"},"DE-1":{"id":"DE-1","type":"desirable_effect","statement":"The group can distinguish durable transformation from visible activity","status":"inferred"},"DE-2":{"id":"DE-2","type":"desirable_effect","statement":"More interested people enter and sustain embodied practice","status":"inferred"},"DE-3":{"id":"DE-3","type":"desirable_effect","statement":"Leadership capacity grows without permanent founder bottlenecks","status":"inferred"},"DE-4":{"id":"DE-4","type":"desirable_effect","statement":"Stable pockets form, mature, and stay connected to wider society","status":"inferred"},"DE-5":{"id":"DE-5","type":"desirable_effect","statement":"Tested practices become teachable and independently reproducible","status":"inferred"},"DE-6":{"id":"DE-6","type":"desirable_effect","statement":"The rate of verified durable adoption increases","status":"inferred"},"NBR-1":{"id":"NBR-1","type":"negative_branch","statement":"Throughput metrics crowd out subtle inner and relational transformation","status":"provisional"},"NBR-2":{"id":"NBR-2","type":"negative_branch","statement":"A conversion pathway feels manipulative, extractive, or cult-like","status":"provisional"},"OBS-1":{"id":"OBS-1","type":"obstacle","statement":"The goal, UDEs, and causal arrows have not been tested against lived group evidence","status":"observed"},"IO-1":{"id":"IO-1","type":"intermediate_objective","statement":"A stewarded, versioned model is accepted as good enough for provisional use","status":"inferred"},"OBS-2":{"id":"OBS-2","type":"obstacle","statement":"Throughput may be contested or become reductive before the goal model is trusted","status":"inferred"},"IO-2":{"id":"IO-2","type":"intermediate_objective","statement":"A mixed-method throughput definition and review protocol are accepted","status":"provisional"},"OBS-3":{"id":"OBS-3","type":"obstacle","statement":"New people lack a clear next step and may resist being funneled","status":"provisional"},"IO-3":{"id":"IO-3","type":"intermediate_objective","statement":"One transparent, consent-based entry pathway exists","status":"provisional"},"OBS-4":{"id":"OBS-4","type":"obstacle","statement":"Intellectual agreement does not reliably change daily practice","status":"provisional"},"IO-4":{"id":"IO-4","type":"intermediate_objective","statement":"A recurring, progressively deep practice architecture exists","status":"provisional"},"OBS-5":{"id":"OBS-5","type":"obstacle","statement":"Delegating responsibility may reduce quality or create status hierarchy","status":"provisional"},"IO-5":{"id":"IO-5","type":"intermediate_objective","statement":"A graduated stewardship pathway with accountable role criteria exists","status":"provisional"},"OBS-6":{"id":"OBS-6","type":"obstacle","statement":"New values are hard to sustain without dense and supported containers","status":"provisional"},"IO-6":{"id":"IO-6","type":"intermediate_objective","statement":"A pilot pocket or sangha container operates with outward-facing service","status":"provisional"},"OBS-7":{"id":"OBS-7","type":"obstacle","statement":"Successful practices may remain tacit or spread as shallow copies","status":"provisional"},"IO-7":{"id":"IO-7","type":"intermediate_objective","statement":"A maturity-rated replication library distinguishes principles from local forms","status":"provisional"},"ACT-1":{"id":"ACT-1","type":"action","statement":"Facilitate one bounded stewarded review of the goal, priority UDEs, and conversion-constraint hypothesis","status":"inferred"},"TR-1":{"id":"TR-1","type":"expected_effect","statement":"A dated model records confirmations, disputes, evidence gaps, a named steward, and the next review","status":"inferred"},"ACT-2":{"id":"ACT-2","type":"action","statement":"Draft and review one mixed-method definition of a durable adoption event","status":"provisional"},"TR-2":{"id":"TR-2","type":"expected_effect","statement":"The group can test one candidate throughput measure without treating it as complete truth","status":"inferred"},"ACT-3":{"id":"ACT-3","type":"action","statement":"Prototype one consent-based next-step pathway from a real public contact into first practice","status":"provisional"},"TR-3":{"id":"TR-3","type":"expected_effect","statement":"The group observes where real participants accept, decline, or leave the entry pathway","status":"inferred"},"ACT-4":{"id":"ACT-4","type":"action","statement":"Run one short recurring-practice cohort as a documented learning experiment","status":"provisional"},"TR-4":{"id":"TR-4","type":"expected_effect","statement":"The group obtains retention, qualitative practice, safety, and learning evidence","status":"inferred"}},"links":{"L-001":{"id":"L-001","from":"CSF-1","to":"G-1","relation":"necessary_for"},"L-002":{"id":"L-002","from":"CSF-2","to":"G-1","relation":"necessary_for"},"L-003":{"id":"L-003","from":"CSF-3","to":"G-1","relation":"necessary_for"},"L-004":{"id":"L-004","from":"NC-1","to":"CSF-2","relation":"necessary_for"},"L-005":{"id":"L-005","from":"NC-2","to":"CSF-1","relation":"necessary_for"},"L-006":{"id":"L-006","from":"NC-3","to":"CSF-1","relation":"necessary_for"},"L-007":{"id":"L-007","from":"NC-4","to":"CSF-3","relation":"necessary_for"},"L-008":{"id":"L-008","from":"NC-5","to":"CSF-3","relation":"necessary_for"},"L-009":{"id":"L-009","from":"NC-6","to":"CSF-2","relation":"necessary_for"},"L-010":{"id":"L-010","from":"RC-0","to":"RC-2","relation":"reinforces"},"L-011":{"id":"L-011","from":"RC-2","to":"UDE-2","relation":"causes"},"L-012":{"id":"L-012","from":"RC-3","to":"UDE-2","relation":"causes"},"L-013":{"id":"L-013","from":"RC-1","to":"UDE-4","relation":"causes"},"L-014":{"id":"L-014","from":"UDE-4","to":"UDE-1","relation":"contributes_to"},"L-015":{"id":"L-015","from":"UDE-1","to":"UDE-3","relation":"contributes_to"},"L-016":{"id":"L-016","from":"UDE-1","to":"UDE-5","relation":"contributes_to"},"L-017":{"id":"L-017","from":"UDE-5","to":"UDE-6","relation":"contributes_to"},"L-018":{"id":"L-018","from":"UDE-6","to":"UDE-2","relation":"contributes_to"},"L-019":{"id":"L-019","from":"NEED-1","to":"CO-1","relation":"necessary_for"},"L-020":{"id":"L-020","from":"NEED-2","to":"CO-1","relation":"necessary_for"},"L-021":{"id":"L-021","from":"OPT-1","to":"NEED-1","relation":"believed_necessary_for"},"L-022":{"id":"L-022","from":"OPT-2","to":"NEED-2","relation":"believed_necessary_for"},"L-023":{"id":"L-023","from":"OPT-1","to":"OPT-2","relation":"conflicts_with"},"L-024":{"id":"L-024","from":"INJ-0","to":"DE-1","relation":"enables"},"L-025":{"id":"L-025","from":"INJ-2","to":"DE-1","relation":"causes"},"L-026":{"id":"L-026","from":"INJ-3","to":"DE-2","relation":"causes"},"L-027":{"id":"L-027","from":"INJ-4","to":"DE-1","relation":"reinforces"},"L-028":{"id":"L-028","from":"INJ-5","to":"DE-3","relation":"causes"},"L-029":{"id":"L-029","from":"INJ-6","to":"DE-4","relation":"causes"},"L-030":{"id":"L-030","from":"INJ-7","to":"DE-5","relation":"causes"},"L-031":{"id":"L-031","from":"DE-1","to":"DE-2","relation":"enables"},"L-032":{"id":"L-032","from":"DE-2","to":"DE-3","relation":"enables"},"L-033":{"id":"L-033","from":"DE-3","to":"DE-4","relation":"enables"},"L-034":{"id":"L-034","from":"DE-4","to":"DE-5","relation":"enables"},"L-035":{"id":"L-035","from":"DE-5","to":"DE-6","relation":"contributes_to"},"L-036":{"id":"L-036","from":"DE-6","to":"G-1","relation":"contributes_to"},"L-037":{"id":"L-037","from":"INJ-2","to":"NBR-1","relation":"may_cause"},"L-038":{"id":"L-038","from":"INJ-3","to":"NBR-2","relation":"may_cause"},"L-039":{"id":"L-039","from":"OBS-1","to":"IO-1","relation":"overcome_by"},"L-040":{"id":"L-040","from":"IO-1","to":"IO-2","relation":"enables"},"L-041":{"id":"L-041","from":"OBS-2","to":"IO-2","relation":"overcome_by"},"L-042":{"id":"L-042","from":"IO-2","to":"IO-3","relation":"enables"},"L-043":{"id":"L-043","from":"OBS-3","to":"IO-3","relation":"overcome_by"},"L-044":{"id":"L-044","from":"IO-3","to":"IO-4","relation":"enables"},"L-045":{"id":"L-045","from":"OBS-4","to":"IO-4","relation":"overcome_by"},"L-046":{"id":"L-046","from":"IO-4","to":"IO-5","relation":"enables"},"L-047":{"id":"L-047","from":"OBS-5","to":"IO-5","relation":"overcome_by"},"L-048":{"id":"L-048","from":"IO-5","to":"IO-6","relation":"enables"},"L-049":{"id":"L-049","from":"OBS-6","to":"IO-6","relation":"overcome_by"},"L-050":{"id":"L-050","from":"IO-6","to":"IO-7","relation":"enables"},"L-051":{"id":"L-051","from":"OBS-7","to":"IO-7","relation":"overcome_by"},"L-052":{"id":"L-052","from":"IO-7","to":"INJ-1","relation":"enables"},"L-053":{"id":"L-053","from":"ACT-1","to":"TR-1","relation":"produces"},"L-054":{"id":"L-054","from":"TR-1","to":"IO-1","relation":"achieves"},"L-055":{"id":"L-055","from":"ACT-2","to":"TR-2","relation":"produces"},"L-056":{"id":"L-056","from":"TR-2","to":"IO-2","relation":"achieves"},"L-057":{"id":"L-057","from":"ACT-3","to":"TR-3","relation":"produces"},"L-058":{"id":"L-058","from":"TR-3","to":"IO-3","relation":"tests"},"L-059":{"id":"L-059","from":"ACT-4","to":"TR-4","relation":"produces"},"L-060":{"id":"L-060","from":"TR-4","to":"IO-4","relation":"tests"},"L-061":{"id":"L-061","from":"INJ-1","to":"INJ-3","relation":"reframes"}},"views":{"goal-tree":{"key":"goal-tree","title":"What the Second Renaissance group must make true","purpose":"Necessary conditions for durable, learning, and transmissible cultural transformation.","entities":["NC-1","NC-2","NC-3","NC-4","NC-5","NC-6","CSF-1","CSF-2","CSF-3","G-1"],"links":["L-001","L-002","L-003","L-004","L-005","L-006","L-007","L-008","L-009"]},"current-reality":{"key":"current-reality","title":"Why resonance is not becoming durable adoption","purpose":"Candidate causes and effects that require validation against lived group evidence.","entities":["RC-0","RC-1","RC-2","RC-3","UDE-1","UDE-2","UDE-3","UDE-4","UDE-5","UDE-6"],"links":["L-010","L-011","L-012","L-013","L-014","L-015","L-016","L-017","L-018"]}}},"proposals":[{"id":"PROP-001","source":{"contributor":"Wendy Nakamura","text":"I think we're assuming everyone has to move through the same progression. First contact, then practice, then contributing, then stewarding. But the communities I work with wouldn't recognise that shape at all — some of them start with the doing and never get near the discourse. A single path is going to lose them at step one."},"interpretation":{"statement":"The path from first contact to sustained practice has to be able to take different shapes in different communities, rather than one progression everybody runs."},"proposal":{"operation":"add_entity","entity":{"type":"necessary_condition","status":"provisional","statement":"Entry paths can take different shapes in different community contexts"},"placement":{"view":"goal-tree","connects_to":"NC-2","relation":"necessary_for"},"rationale":"NC-2 already requires a transparent path from first contact to sustained practice, but says nothing about whether that path can vary. This is a condition on NC-2 rather than a rival to it.","confidence":"high"},"review":{"status":"pending"}},{"id":"PROP-002","source":{"contributor":"Tomás Herrera","text":"it's in the small tents that the actual work happens. big gatherings are good for morale and terrible for anything else. every real change I've seen came out of five people who kept showing up."},"interpretation":{"statement":"Dense small groups, not large gatherings, are where practice actually takes hold — offered from Tomás's own experience."},"proposal":{"operation":"support_entity","placement":{"view":"goal-tree","connects_to":"NC-5"},"rationale":"NC-5 already holds that dense practice containers need sangha support. This is first-hand testimony for it, which the condition currently lacks — its evidence is all documentary.","confidence":"high","alternatives":[{"target":"NC-3","confidence":"low","note":"Also touches repeated practice, but the contribution is about group size rather than depth."}]},"review":{"status":"pending"}},{"id":"PROP-003","source":{"contributor":"Marta Oyelaran","text":"I run a permaculture cooperative outside Coimbra, eleven of us, going on six years now. I'll be honest, I came to this because a friend sent it to me and I'm not sure I follow all the language in your documents. But here is what I know. We spent the first two years talking about values. Reading, discussing, going on retreats. Nothing changed. What changed us was the third year, when we took on four hectares of degraded land and had to actually feed ourselves from it. You learn cooperation very fast when the irrigation fails in August. People who could not agree in a meeting agreed in a field. So I think something is being missed here, which is that most people do not change their views and then change their lives. They change their lives, usually because they have to, and the views follow after. If you want the durable thing you keep talking about, I suspect you need people doing something together that has real consequences if they get it wrong."},"interpretation":{"statement":"Durable change comes from shared practical work with real consequences, and the change in views follows it rather than preceding it.","note":"The contribution is mostly an account of one cooperative and never uses the model's vocabulary. The operative claim is the causal order in its last three sentences; the account is the evidence for it, not a second claim."},"proposal":{"operation":"add_entity","entity":{"type":"necessary_condition","status":"provisional","statement":"People take on shared practical work with real consequences, from which changed views follow"},"placement":{"view":"goal-tree","connects_to":"CSF-1","relation":"necessary_for"},"rationale":"CSF-1 requires that people durably embody wiser views, values, practices, and ways of acting, but is silent on how that comes about. Marta's claim is that consequential shared work is what produces it, which makes it a condition on CSF-1.","confidence":"medium","alternatives":[{"target":"NC-3","confidence":"medium","note":"Could instead be read as a challenge to NC-3's \"progressively deeper levels\", which implies practice deepens by repetition rather than by consequence."}]},"review":{"status":"pending"}},{"id":"PROP-004","source":{"contributor":"Kwame Boateng","text":"Adding to what Marta said, because I think it's the same point from a different angle. I trained as a carpenter. Nobody learns carpentry from a book and nobody learns it alone. You stand next to someone for two years and you ruin a lot of wood. Whatever this group is trying to pass on, if there isn't an apprenticeship shape to it — someone experienced, someone new, real work between them, and time — it will not pass on."},"interpretation":{"statement":"The shared practical work has to be organised as apprenticeship — an experienced person, a newer person, real work between them, over time — or nothing transmits."},"proposal":{"operation":"add_entity","entity":{"type":"necessary_condition","status":"provisional","statement":"The work is learned by apprenticeship — an experienced person, a newer person, and real work between them over time"},"placement":{"view":"goal-tree","connects_to":"PROP-003","relation":"necessary_for"},"rationale":"Kwame says explicitly that he is extending Marta's point, and he is — this is a condition on the shared consequential work she proposes, not on CSF-1 directly. It hangs off her claim, so the room decides hers first.","confidence":"medium","alternatives":[{"target":"NC-4","confidence":"medium","note":"If PROP-003 is rejected, this reads instead as a condition on NC-4, contributors developing into facilitators and stewards."}]},"review":{"status":"pending"}},{"id":"PROP-005","source":{"contributor":"Priya Raghavan","text":"Honestly I don't think \"throughput\" can be defined here without becoming a metric someone games. The moment you count adoption events you get people producing adoption events. I know the doc says it won't reduce to activity counts but I've never seen that hold once there's a number."},"interpretation":{"statement":"Any operational definition of throughput will be gamed, so NC-1 may be requiring something that cannot survive contact with the group's own incentives."},"proposal":{"operation":"challenge_entity","placement":{"view":"goal-tree","connects_to":"NC-1"},"rationale":"NC-1 asserts throughput can be operationally defined without reducing transformation to activity counts. This says the qualifier will not hold in practice. It disputes the condition itself, not its placement.","confidence":"high"},"review":{"status":"pending"}},{"id":"PROP-006","source":{"contributor":"Dev Chaudhary","text":"The maps being versioned and challengeable is good but that on its own doesn't make the group learn anything. You can have a beautifully maintained wiki that nobody's mind is ever changed by. Learning happens when someone is actually made to answer an objection, and that's a social practice, not a document format."},"interpretation":{"statement":"Governing the maps as a versioned commons is not sufficient for the group to learn; the link from NC-6 to CSF-2 assumes a social practice that the condition does not name."},"proposal":{"operation":"challenge_link","placement":{"view":"goal-tree","link":"L-009"},"rationale":"The challenge is aimed at the arrow, not at either end of it. NC-6 can be fully satisfied and CSF-2 still fail, which is what a challenge to a necessity link means.","confidence":"high"},"review":{"status":"pending"}},{"id":"PROP-007","source":{"contributor":"Ana Beatriz Lima","text":"I want to talk about money, but not in the way people usually mean it here. I've spent nine years working on mutual credit systems in Belo Horizonte, and the thing I keep seeing is that the currency people use decides what they are able to do with each other. If you need euros to take part, then taking part is rationed by who has euros, and that isn't a values problem, it's a plumbing problem. Everyone in our network can trade hours without having to earn first, and it changed who showed up — completely. What I notice in your model is that it assumes people can give time to practice and to stewarding. But the people who most need what you're describing are exactly the ones whose hours are already sold. I don't know where this goes in your diagram. I just don't think you can leave it out."},"interpretation":{"statement":"Taking part depends on unpaid time, so it is rationed to people whose hours are not already sold — which narrows who can practise and who can steward.","note":"The mutual credit material is the contributor's evidence for the mechanism rather than a proposal to adopt mutual credit, and is read that way here. Read otherwise, this would be an injection for the future-reality tree and a different proposal entirely."},"proposal":{"operation":"add_entity","entity":{"type":"root_cause","status":"provisional","statement":"Participation depends on unpaid time, so it is rationed to those whose hours are not already sold"},"placement":{"view":"current-reality","connects_to":"UDE-3","relation":"causes"},"rationale":"UDE-3 observes that core organizers carry too much of the work and risk burnout. If only people with spare unpaid hours can take part, the pool of people who could carry it is small by construction — a cause of UDE-3 the tree does not currently hold. Note this is a different claim from Sam's about who funds the work.","confidence":"medium"},"review":{"status":"pending"}},{"id":"PROP-008","source":{"contributor":"Joachim Weber","text":"Facilitator development isn't just about replication — the people who learn to facilitate are the ones who end up noticing what isn't working and saying so. That's how the group learns. Feels like it should point at both."},"interpretation":{"statement":"Developing facilitators feeds the group's capacity to learn and revise strategy, not only its capacity to transmit practice."},"proposal":{"operation":"add_link","placement":{"view":"goal-tree","from":"NC-4","to":"CSF-2","relation":"contributes_to"},"rationale":"NC-4 currently hangs only under CSF-3, transmissibility. The contribution claims a second parent, which the model can hold — a necessary condition may serve more than one success factor.","confidence":"medium"},"review":{"status":"pending"}},{"id":"PROP-009","source":{"contributor":"Sam Okonkwo","text":"None of this addresses who is paying for any of it. Every group I've been part of that ignored that ended up quietly run by whoever happened to have savings, and nobody voted for that. I'd want to see the funding model before I'd want to see another tree."},"interpretation":{"statement":"The model says nothing about how the work is funded, and unexamined funding quietly decides who holds authority."},"proposal":{"operation":"unplaced","placement":{"view":"goal-tree"},"rationale":"No entity in the model concerns resourcing, funding, or the authority that follows it. The nearest, NC-6 on governance, is about how maps are governed rather than how the work is paid for. Ana Beatriz's contribution is about participants' own hours and does have an address; this one is about who funds the group and who thereby ends up in charge, and attaching it anywhere would hide exactly the thing Sam is pointing at.","confidence":"high"},"review":{"status":"pending"}}]};
 
 /* ── Vocabulary ─────────────────────────────────────────────────────────────
    Six role families told apart by a glyph, never by hue. The families come from
@@ -646,6 +664,7 @@ const RELATIONS = ['necessary_for', 'causes', 'enables', 'contributes_to', 'prod
   'overcome_by', 'reinforces', 'may_cause', 'believed_necessary_for', 'achieves', 'tests',
   'reframes', 'conflicts_with'];
 
+const byId = id => P.find(x => x.id === id);
 const fam = t => FAMILY[t] || 'cause';
 const glyph = t => GLYPH[fam(t)];
 const words = s => (s || '').replace(/_/g, ' ');
@@ -785,8 +804,14 @@ function renderField() {
   if (view) {
     const { roots, kids, parentRel, only } = outline(viewKey);
     $('view-means').hidden = !only;
-    $('view-means').textContent = only ? 'indentation reads upward — each child is ' + words(only) + ' its parent' : '';
+    $('view-means').textContent = only
+      ? 'indentation reads upward — each child is ' + words(only) + ' its parent' : '';
+
     const shown = visibleIn(viewKey);
+
+    // Proposals grouped by what they hang from. That can be an entity in the
+    // model or an earlier proposal, so a later contribution can build on a
+    // claim the room has just accepted.
     const byTarget = new Map();
     shown.forEach(s => {
       const c = live(s);
@@ -795,10 +820,78 @@ function renderField() {
       if (!byTarget.has(key)) byTarget.set(key, []);
       byTarget.get(key).push(s);
     });
+
     const focusId = p && !unplaced
       ? (p.proposal.placement.connects_to || p.proposal.placement.from) : null;
-    const focusLink = p && p.proposal.operation === 'challenge_link' ? p.proposal.placement.link : null;
+    const focusLink = p && p.proposal.operation === 'challenge_link'
+      ? p.proposal.placement.link : null;
+
+    // Every ancestor of the node in play stays at full strength.
+    const lineage = new Set();
+    function climbFrom(start) {
+      let cur = start, hops = 0;
+      // A proposal id resolves to whatever that proposal itself hangs from.
+      while (cur && !M.entities[cur] && byId(cur) && hops++ < 20) {
+        cur = ((live(byId(cur)).proposal || {}).placement || {}).connects_to;
+      }
+      while (cur && !lineage.has(cur)) {
+        lineage.add(cur);
+        const pr = parentRel.get(cur);
+        cur = pr ? pr.to : null;
+      }
+    }
+    climbFrom(focusId);
+    if (focusLink && M.links[focusLink]) climbFrom(M.links[focusLink].from);
+
+    const quieten = !!(focusId || focusLink || unplaced);
     const drawn = new Set();
+
+    /** Things said ABOUT a node — support, challenge, a new link — as chips. */
+    function chipsFor(key, node) {
+      (byTarget.get(key) || []).forEach(s => {
+        const op = live(s).proposal.operation;
+        if (op === 'add_entity' || op === 'challenge_link' || op === 'unplaced') return;
+        node.appendChild(chipFor(live(s), state.decisions[s.id]));
+        if (s === raw) node.classList.add('hot');
+      });
+    }
+
+    /** Claims proposed under a node — including under another proposal. */
+    function proposedKids(key, box) {
+      let any = false;
+      (byTarget.get(key) || []).forEach(s => {
+        if (live(s).proposal.operation !== 'add_entity') return;
+        drawProposed(s, box);
+        any = true;
+      });
+      return any;
+    }
+
+    function drawProposed(s, container) {
+      const c = live(s);
+      const d = state.decisions[s.id];
+      const e = c.proposal.entity || {};
+      const node = el('div', 'node' + (s === raw ? ' hot' : ''));
+      let stamp = null;
+      if (d === 'accepted') stamp = { kind: 'on', text: '· held' };
+      else if (d === 'rejected') stamp = { kind: 'off', text: '· not merged' };
+      else if (state.edits[s.id]) stamp = { kind: 'edited', text: '· edited by the room' };
+      const card = cardFor({
+        role: glyph(e.type) + '  ' + (SHORT[e.type] || words(e.type)).toUpperCase()
+          + '  ·  ' + (d === 'accepted' ? 'NEW' : 'PROPOSED'),
+        statement: e.statement,
+        rel: words(c.proposal.placement.relation) + ' ↑  ·  ' + c.source.contributor,
+        cls: d === 'accepted' ? 'settled' : d === 'rejected' ? 'refuted' : 'proposed',
+        famName: fam(e.type),
+        stamp: stamp,
+      });
+      if (s === raw && d === 'pending') card.classList.add('arrive');
+      node.appendChild(card);
+      chipsFor(s.id, node);
+      const box = el('div', 'kids');
+      if (proposedKids(s.id, box)) node.appendChild(box);
+      container.appendChild(node);
+    }
 
     function draw(id, container, relLabel) {
       const ent = M.entities[id];
@@ -806,7 +899,8 @@ function renderField() {
       const repeat = drawn.has(id);
       drawn.add(id);
       const node = el('div', 'node');
-      const linkChallenged = focusLink && parentRel.get(id) && parentRel.get(id).link === focusLink;
+      const linkChallenged = focusLink && parentRel.get(id)
+        && parentRel.get(id).link === focusLink;
       const isFocus = id === focusId || linkChallenged;
 
       const card = cardFor({
@@ -818,20 +912,12 @@ function renderField() {
         famName: fam(ent.type),
       });
       if (isFocus) node.classList.add('hot');
-      if (repeat) card.style.opacity = '0.5';
+      else if (lineage.has(id)) node.classList.add('lineage');
+      else if (quieten) card.classList.add('quiet');
+      if (repeat) card.classList.add('repeat');
       node.appendChild(card);
 
-      // Anything said ABOUT this node rather than added under it.
-      (byTarget.get(id) || []).forEach(s => {
-        const c = live(s);
-        const op = c.proposal.operation;
-        if (op === 'add_entity' || op === 'challenge_link') return;
-        if (op === 'add_link' && c.proposal.placement.from !== id) return;
-        if ((op === 'support_entity' || op === 'challenge_entity')
-          && c.proposal.placement.connects_to !== id) return;
-        node.appendChild(chipFor(c, state.decisions[s.id]));
-        if (s === raw) node.classList.add('hot');
-      });
+      chipsFor(id, node);
 
       // A challenge to the link that holds this node to its parent.
       shown.forEach(s => {
@@ -844,35 +930,7 @@ function renderField() {
       });
 
       const childBox = el('div', 'kids');
-      let any = false;
-
-      // Proposed children first, dashed, so they sit against their address
-      // rather than at the end of whatever is already there.
-      (byTarget.get(id) || []).forEach(s => {
-        const c = live(s);
-        if (c.proposal.operation !== 'add_entity') return;
-        if (c.proposal.placement.connects_to !== id) return;
-        const d = state.decisions[s.id];
-        const e = c.proposal.entity || {};
-        const kid = el('div', 'node' + (s === raw ? ' hot' : ''));
-        let stamp = null;
-        if (d === 'accepted') stamp = { kind: 'on', text: '· held' };
-        else if (d === 'rejected') stamp = { kind: 'off', text: '· not merged' };
-        else if (state.edits[s.id]) stamp = { kind: 'edited', text: '· edited by the room' };
-        const c2 = cardFor({
-          role: glyph(e.type) + '  ' + (SHORT[e.type] || words(e.type)).toUpperCase()
-            + '  ·  ' + (d === 'accepted' ? 'NEW' : 'PROPOSED'),
-          statement: e.statement,
-          rel: words(c.proposal.placement.relation) + ' ↑  ·  ' + c.source.contributor,
-          cls: d === 'accepted' ? 'settled' : d === 'rejected' ? 'refuted' : 'proposed',
-          famName: fam(e.type),
-          stamp: stamp,
-        });
-        if (s === raw && d === 'pending') c2.classList.add('arrive');
-        kid.appendChild(c2);
-        childBox.appendChild(kid);
-        any = true;
-      });
+      let any = proposedKids(id, childBox);
 
       if (!repeat) {
         (kids.get(id) || []).forEach(k => {
@@ -887,19 +945,35 @@ function renderField() {
 
     roots.forEach(r => draw(r, tree, null));
     view.entities.filter(id => !drawn.has(id)).forEach(id => draw(id, tree, null));
-    $('field').classList.toggle('dim', !!focusId || !!focusLink || !!unplaced);
   }
 
-  const gapped = P.filter(x => x.proposal.operation === 'unplaced' && state.decisions[x.id] === 'accepted');
+  const gapped = P.filter(x => x.proposal.operation === 'unplaced'
+    && state.decisions[x.id] === 'accepted');
   $('gaps').hidden = gapped.length === 0;
   const list = $('gaps-list');
   list.textContent = '';
   gapped.forEach(g => list.appendChild(
-    el('li', null, '“' + g.source.text.trim() + '” — ' + g.source.contributor)));
+    el('li', null, '“' + clip(g.source.text, 220) + '” — ' + g.source.contributor)));
 
+  // Show the whole path from the top of the tree down to the node in play when
+  // it fits; otherwise centre the node and let the ancestors read where they are.
+  const field = $('field');
   const hot = tree.querySelector('.hot');
-  if (hot) hot.scrollIntoView({ block: 'center', behavior: 'smooth' });
-  else $('field').scrollTo({ top: 0, behavior: 'smooth' });
+  if (!hot) {
+    field.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    const anchor = tree.querySelector('.node.lineage') || hot;
+    const fieldTop = field.getBoundingClientRect().top;
+    const span = hot.getBoundingClientRect().bottom - anchor.getBoundingClientRect().top;
+    if (span <= field.clientHeight - 40) {
+      field.scrollTo({
+        top: field.scrollTop + anchor.getBoundingClientRect().top - fieldTop - 14,
+        behavior: 'smooth',
+      });
+    } else {
+      hot.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    }
+  }
 }
 
 function renderLeft() {
@@ -909,7 +983,10 @@ function renderLeft() {
   const op = p.proposal.operation;
   const pl = p.proposal.placement || {};
 
-  $('quote').textContent = p.source.text.trim();
+  const text = p.source.text.trim();
+  $('quote').textContent = text;
+  $('quote').className = 'quote'
+    + (text.length > 700 ? ' xlong' : text.length > 340 ? ' long' : '');
   $('attrib').innerHTML = '— <b>' + escapeHtml(p.source.contributor) + '</b>'
     + (p.source.received ? '  ·  ' + escapeHtml(p.source.received) : '');
 
@@ -925,7 +1002,9 @@ function renderLeft() {
     + (op === 'unplaced' ? ' gapward' : '');
 
   let addr;
-  if (op === 'add_entity') addr = 'as <code>' + words(pl.relation) + '</code> for <code>' + pl.connects_to + '</code> — ' + escapeHtml(shortStatement(pl.connects_to));
+  // An arrow, not the word "for": "necessary for → NC-2" reads for every
+  // relation, where "as necessary for for NC-2" reads for none of them.
+  if (op === 'add_entity') addr = '<code>' + words(pl.relation) + '</code> → <code>' + pl.connects_to + '</code> — ' + escapeHtml(shortStatement(pl.connects_to));
   else if (op === 'support_entity' || op === 'challenge_entity') addr = 'at <code>' + pl.connects_to + '</code> — ' + escapeHtml(shortStatement(pl.connects_to));
   else if (op === 'challenge_link') addr = 'at link <code>' + pl.link + '</code> — ' + escapeHtml(linkWords(pl.link));
   else if (op === 'add_link') addr = '<code>' + pl.from + '</code> ' + words(pl.relation) + ' <code>' + pl.to + '</code>';
@@ -974,8 +1053,10 @@ function escapeHtml(s) {
 }
 function shortStatement(id) {
   const e = M.entities[id];
-  if (!e) return '';
-  return e.statement.length > 64 ? e.statement.slice(0, 62).trimEnd() + '…' : e.statement;
+  if (e) return clip(e.statement, 64);
+  const pr = byId(id);
+  const proposed = pr && (live(pr).proposal.entity || {}).statement;
+  return proposed ? clip(proposed, 64) : '';
 }
 function linkWords(id) {
   const l = M.links[id];
@@ -1045,12 +1126,21 @@ function openEdit() {
 
   const t = $('e-target');
   t.textContent = '';
-  (view ? view.entities : Object.keys(M.entities)).forEach(id => {
-    if (!M.entities[id]) return;
+  const option = (value, label) => {
     const o = document.createElement('option');
-    o.value = id;
-    o.textContent = id + ' — ' + shortStatement(id);
+    o.value = value;
+    o.textContent = label;
     t.appendChild(o);
+  };
+  (view ? view.entities : Object.keys(M.entities)).forEach(id => {
+    if (M.entities[id]) option(id, id + ' — ' + shortStatement(id));
+  });
+  // Claims earlier proposals introduce are addresses too, once they exist.
+  P.slice(0, state.i).forEach(x => {
+    const c = live(x);
+    if (c.proposal.operation !== 'add_entity') return;
+    if (c.proposal.placement.view !== p.proposal.placement.view) return;
+    option(x.id, x.id + ' (proposed) — ' + shortStatement(x.id));
   });
   t.value = p.proposal.placement.connects_to || p.proposal.placement.from
     || (view ? view.entities[0] : '');
