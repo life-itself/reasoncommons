@@ -340,7 +340,7 @@
               <p style="font-size:16px;line-height:1.72;color:#3a362d;margin:16px 0 0;">But <span data-src="p-renewables" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">debates continue</span> about the appropriate role of wind and solar in different systems.</p>
               <p style="font-size:16px;line-height:1.72;color:#3a362d;margin:16px 0 0;">The assessment also notes that <span data-src="p-nuclear" style="border-radius:3px;padding:0 2px;transition:background .4s ease,box-shadow .4s ease;">nuclear power can also contribute</span> to low-carbon energy systems.</p>
             </div>
-            <p style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;line-height:1.7;letter-spacing:0.04em;color:#8a8475;margin:18px 4px 0;">Other questions: <a href="?topic=ai" style="color:inherit;">AI control</a> · <a href="?topic=remote-work" style="color:inherit;">remote work</a></p>
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;line-height:1.7;letter-spacing:0.04em;color:#8a8475;margin:18px 4px 0;">Other questions: <a href="#topic=ai" style="color:inherit;">AI control</a> · <a href="#topic=remote-work" style="color:inherit;">remote work</a></p>
           </div>
 
         </div>
@@ -379,7 +379,7 @@ class Component extends DCLogic {
     const props = this.props || {};
     const showAll = !!props.showAll;
     const stanceOn = props.stanceColors !== false;
-    const sourceCard = (title, meta, paragraphs) => '<div style="position:absolute;top:-11px;left:24px;background:#211f1a;color:#f6f4ec;font-family:\'IBM Plex Mono\',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;padding:4px 11px;border-radius:3px;z-index:2;">Source document</div><div style="background:#fffdf7;border:1px solid #e4dfd0;border-radius:6px;padding:38px 38px 34px;box-shadow:0 4px 18px rgba(40,36,25,0.07);"><h3 style="font-weight:600;font-size:23px;line-height:1.25;margin:6px 0 0;">' + title + '</h3><div style="font-family:\'IBM Plex Mono\',monospace;font-size:11.5px;color:#8a8475;margin-top:12px;letter-spacing:0.04em;">' + meta + '</div><div style="height:1px;background:#e9e3d4;margin:22px 0 24px;"></div>' + paragraphs.map((paragraph, index) => '<p style="font-size:16px;line-height:1.72;color:#3a362d;margin:' + (index ? '16px 0 0' : '0') + ';">' + paragraph + '</p>').join('') + '</div><p style="font-family:\'IBM Plex Mono\',monospace;font-size:10.5px;line-height:1.7;letter-spacing:0.04em;color:#8a8475;margin:18px 4px 0;">Other questions: <a href="?topic=ai" style="color:inherit;">AI control</a> · <a href="?topic=remote-work" style="color:inherit;">remote work</a></p>';
+    const sourceCard = (title, meta, paragraphs) => '<div style="position:absolute;top:-11px;left:24px;background:#211f1a;color:#f6f4ec;font-family:\'IBM Plex Mono\',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;padding:4px 11px;border-radius:3px;z-index:2;">Source document</div><div style="background:#fffdf7;border:1px solid #e4dfd0;border-radius:6px;padding:38px 38px 34px;box-shadow:0 4px 18px rgba(40,36,25,0.07);"><h3 style="font-weight:600;font-size:23px;line-height:1.25;margin:6px 0 0;">' + title + '</h3><div style="font-family:\'IBM Plex Mono\',monospace;font-size:11.5px;color:#8a8475;margin-top:12px;letter-spacing:0.04em;">' + meta + '</div><div style="height:1px;background:#e9e3d4;margin:22px 0 24px;"></div>' + paragraphs.map((paragraph, index) => '<p style="font-size:16px;line-height:1.72;color:#3a362d;margin:' + (index ? '16px 0 0' : '0') + ';">' + paragraph + '</p>').join('') + '</div><p style="font-family:\'IBM Plex Mono\',monospace;font-size:10.5px;line-height:1.7;letter-spacing:0.04em;color:#8a8475;margin:18px 4px 0;">Other questions: <a href="#topic=ai" style="color:inherit;">AI control</a> · <a href="#topic=remote-work" style="color:inherit;">remote work</a></p>';
     const topicData = {
       climate: {
         question: 'Can the world switch to clean energy in time?',
@@ -417,7 +417,7 @@ class Component extends DCLogic {
         ]
       }
     };
-    const topic = new URLSearchParams(window.location.search).get('topic') || 'climate';
+    const topic = new URLSearchParams(window.location.hash.slice(1)).get('topic') || 'climate';
     const selected = topicData[topic] || topicData.climate;
     if (topic === 'ai') document.title = 'Can humans stay in control of advanced AI? · Reason Commons';
     else if (topic === 'remote-work') document.title = 'Does remote work increase productivity? · Reason Commons';
