@@ -1,0 +1,129 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://reasoncommons.com/schemas/proposals.schema.json",
+  "title": "Contribution proposals",
+  "description": "Reviewable proposals for how participant contributions might change an LTP model. Never a merge: the target ltp-model.yaml is not modified by anything in this file.",
+  "type": "object",
+  "required": ["meta", "proposals"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["title", "model_source"],
+      "additionalProperties": false,
+      "properties": {
+        "title": { "type": "string", "description": "Shown in the demo header, e.g. 'Demo C — the room's contributions'." },
+        "event": { "type": "string" },
+        "date": { "type": "string" },
+        "model_source": { "type": "string", "description": "Repo-relative path of the LTP model these proposals were made against, e.g. ltp/ltp-model.yaml." },
+        "model_sha256": { "type": "string", "description": "Set by build-demo.py. Records which version of the model was on screen." },
+        "generated": { "type": "string" },
+        "contributions_source": { "type": "string", "description": "Where the raw contributions came from — file name, form, or doc." },
+        "attribution": {
+          "type": "string",
+          "enum": ["name", "first-name", "anonymous", "numbered"],
+          "default": "numbered",
+          "description": "How contributors are credited on screen. Default to numbered unless the room consented to names."
+        }
+      }
+    },
+    "proposals": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/proposal" }
+    }
+  },
+  "definitions": {
+    "confidence": { "type": "string", "enum": ["high", "medium", "low"] },
+    "proposal": {
+      "type": "object",
+      "required": ["id", "source", "interpretation", "proposal", "review"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^PROP-[0-9]{3}$" },
+        "source": {
+          "type": "object",
+          "required": ["contributor", "text"],
+          "additionalProperties": false,
+          "properties": {
+            "contributor": { "type": "string", "description": "As it should appear on screen — 'Participant 7', a first name, or a full name if consent was given." },
+            "text": { "type": "string", "description": "The contribution VERBATIM. Never tidied, corrected, shortened by rewording, or stitched together from separate passages. Shortening is allowed only by taking a shorter continuous run." },
+            "received": { "type": "string" }
+          }
+        },
+        "interpretation": {
+          "type": "object",
+          "required": ["statement"],
+          "additionalProperties": false,
+          "properties": {
+            "statement": { "type": "string", "description": "The reader's one-sentence reading of the claim, in model register. This is the machine's words, and the interface labels it as such." },
+            "note": { "type": "string", "description": "Anything the reading had to assume, drop, or guess at." }
+          }
+        },
+        "proposal": {
+          "type": "object",
+          "required": ["operation", "placement", "rationale", "confidence"],
+          "additionalProperties": false,
+          "properties": {
+            "operation": {
+              "type": "string",
+              "enum": ["add_entity", "support_entity", "challenge_entity", "challenge_link", "add_link", "unplaced"]
+            },
+            "entity": {
+              "type": "object",
+              "description": "Required for add_entity. The node that would be created.",
+              "required": ["type", "statement"],
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": ["goal", "critical_success_factor", "necessary_condition", "root_cause", "undesirable_effect", "desirable_effect", "expected_effect", "intermediate_objective", "obstacle", "injection", "action", "option", "need", "common_objective", "negative_branch"]
+                },
+                "statement": { "type": "string" },
+                "status": { "type": "string", "enum": ["observed", "inferred", "provisional", "confirmed", "disputed"], "default": "provisional" }
+              }
+            },
+            "placement": {
+              "type": "object",
+              "description": "Where in the model the proposal lands. Which fields are required depends on the operation — see build-demo.py, which enforces it.",
+              "additionalProperties": false,
+              "properties": {
+                "view": { "type": "string", "description": "A key of the model's views map — the tree the room will be looking at." },
+                "connects_to": { "type": "string", "description": "Existing entity id. The parent for add_entity; the subject for support_entity and challenge_entity." },
+                "relation": { "type": "string", "description": "Link relation for add_entity and add_link, e.g. necessary_for, causes, enables, contributes_to." },
+                "link": { "type": "string", "description": "Existing link id. challenge_link only." },
+                "from": { "type": "string", "description": "add_link only." },
+                "to": { "type": "string", "description": "add_link only." }
+              }
+            },
+            "rationale": { "type": "string", "description": "Why this address and not another, in terms a person can check against the tree in front of them." },
+            "confidence": { "$ref": "#/definitions/confidence" },
+            "alternatives": {
+              "type": "array",
+              "description": "Other addresses considered. Recorded for honesty; the interface shows one recommended proposal, not a menu.",
+              "items": {
+                "type": "object",
+                "required": ["target"],
+                "additionalProperties": false,
+                "properties": {
+                  "target": { "type": "string" },
+                  "confidence": { "$ref": "#/definitions/confidence" },
+                  "note": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "review": {
+          "type": "object",
+          "required": ["status"],
+          "additionalProperties": false,
+          "properties": {
+            "status": { "type": "string", "enum": ["pending"], "description": "Always pending on disk. Accept/reject happens live in the browser and is never written back." },
+            "note": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

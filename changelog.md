@@ -3,6 +3,12 @@
 Notable changes to this project. Not strictly [Keep a Changelog](https://keepachangelog.com/)
 format, but same spirit — human-readable, most recent first.
 
+## 2026-09-04 — The room's contributions, proposed against the tree
+
+![The review page: a participant's contribution quoted at full size on the left with the reader's proposed change beneath it, and on the right the Second Renaissance goal tree as an indented outline — most of it quiet, the addressed condition ringed, a dashed rust challenge card attached to it, and two earlier proposals already accepted and sitting solid in green.](changelog/images/2026-09-04-contribution-proposals.png)
+
+A new [`contribution-proposals`](skills/contribution-proposals/SKILL.md) skill turns a batch of raw participant contributions — a Google Doc export, a form dump, whatever a room actually wrote — into one reviewable proposal each for how it might extend, support, challenge, or fail to fit an existing tree, and renders the set as a page the group works through together: accept, edit, or reject, with accepted proposals turning from dashed to solid and staying, so by the last one the tree on screen is the original plus everything the room agreed to. Contributions are quoted verbatim, the machine's reading is labelled as the machine's, and *nowhere to put it* is a first-class result rather than a failure — a contribution the tree cannot hold may be the most useful thing in the batch. Nothing merges: `ltp/ltp-model.yaml` is read-only to the whole pipeline, and refreshing the page throws the room's decisions away, which is the honest behaviour for a tool with no standing over the tree. Built for Demo C of [the talk](talk/2r-research-group/DECK.md), where it ships with a [rehearsal build](talk/2r-research-group/demo-c/index.html) from seven synthetic contributions.
+
 ## 2026-09-04 — Linkable dashboard views
 
 The dashboard now keeps the open project and tree in the URL, so a single view — [the Second Renaissance current reality tree](dashboard/index.html#/second-renaissance/current-reality), say — can be linked to directly instead of "open the dashboard, pick the project, click Reality", and Back and Forward walk the views visited. Stale links degrade rather than break: a tree the project has not modelled opens its overview, and an unknown project lands on the picker. The shape of the links is in [docs/dashboard.md](docs/dashboard.md).
