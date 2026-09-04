@@ -94,6 +94,20 @@ in the address line, which had been there since the first build.
   unstamped; with no test batch present it fails with a named reason, and
   `--promote --test` is refused as contradictory.
 
+## Run on a real document
+
+On 2026-09-04 the skill was run end to end on `talk/2r_participant_contributions_test.docx`
+— nine contributions written by someone else, in their own words, which is the
+case the toy example cannot stand in for. `read-contributions.py` extracted 22
+paragraphs; the nine read out as 4 challenges to a claim (including one to `G-1`
+itself), 1 challenge to a link, 3 added claims across two views, and 1
+`unplaced`. No operation was reached for that the contributions did not warrant:
+the batch has no `support_entity` and no `add_link`, because nobody wrote one.
+
+That is still not evidence the readings are *right* — no one with standing over
+the tree has reviewed them. It is evidence the pipeline survives contact with a
+document it did not write.
+
 ## Not yet tested
 
 - A batch larger than about a dozen proposals. The header dots and the
