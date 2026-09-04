@@ -77,6 +77,13 @@ It handles `.docx`, `.txt`, `.md`, `.csv` and `.tsv`, prints to stdout, and
 takes `--out` to write a file. It extracts text and nothing else; everything
 below is yours. A `.doc`, `.pdf` or `.odt` needs re-exporting as `.docx` first.
 
+A `.csv` or `.tsv` is read as a form export — Google Forms and most survey
+tools give a row per person and a column per question — so it comes back as one
+labelled block per response rather than raw comma-separated text. The column
+headers are usually enough to tell you which cell is the name and which is the
+contribution; the timestamp column is rarely worth carrying into
+`source.received`.
+
 Then work out where one contribution ends and the next begins.
 Common shapes: blank-line-separated blocks, `---` rules, `Name: text` lines, a
 form export with a timestamp column, one bullet per person. Say how many you
