@@ -58,7 +58,7 @@ risk, and puts confirmation authority with contributors and reviewers
 
 | What | Where it usually comes from |
 |------|------------------------------|
-| Contributions | A text file the user downloaded — Google Doc export, form responses, pasted notes. Unstructured is expected. |
+| Contributions | Whatever the room's tooling produced — a Google Docs or Word `.docx`, a form export, a pasted text file. Unstructured is expected. |
 | Target model | `ltp/ltp-model.yaml`, or another model produced by `../project-ltp`. |
 | Presentation details | Title, event, date, and how contributors should be credited. Ask if not given. |
 
@@ -66,7 +66,18 @@ risk, and puts confirmation authority with contributors and reviewers
 
 ### 1. Read the contributions and segment them
 
-Open the file and work out where one contribution ends and the next begins.
+If the file is a `.docx` — which a Google Doc downloaded from the browser will
+be — get the text out of it first:
+
+```sh
+python3 skills/contribution-proposals/scripts/read-contributions.py <file>.docx
+```
+
+It handles `.docx`, `.txt`, `.md`, `.csv` and `.tsv`, prints to stdout, and
+takes `--out` to write a file. It extracts text and nothing else; everything
+below is yours. A `.doc`, `.pdf` or `.odt` needs re-exporting as `.docx` first.
+
+Then work out where one contribution ends and the next begins.
 Common shapes: blank-line-separated blocks, `---` rules, `Name: text` lines, a
 form export with a timestamp column, one bullet per person. Say how many you
 found before going further — a segmentation that silently merges two people is
