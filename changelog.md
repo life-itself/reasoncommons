@@ -5,7 +5,7 @@ format, but same spirit — human-readable, most recent first.
 
 ## 2026-09-05 — A claim tree for the climate transition
 
-[The annotation demo](claim-tree-annotation-demo/index.html) now opens on “Can the world switch to clean energy in time?” rather than remote-work productivity, using IPCC’s energy-systems assessment to show evidence landing on renewables, grids, nuclear and the contested shape of the transition. It also now carries an AI-control version at [`#topic=ai`](claim-tree-annotation-demo/index.html#topic=ai), while [`#topic=remote-work`](claim-tree-annotation-demo/index.html#topic=remote-work) preserves the original Ctrip example.
+[The annotation demo](claim-tree-annotation-demo/index.html) now opens on “Can the world switch to clean energy in time?” with three linked IEA reports mapped to specific claims about emissions pace, renewable scale, grids, electrification and nuclear tradeoffs. The closing now leads to an on-page appendix with AI-control evidence from METR, the International AI Safety Report and Eliezer Yudkowsky, plus the original randomized Ctrip remote-work experiment.
 
 ## 2026-09-04 — The room's contributions, proposed against the tree
 
