@@ -8,17 +8,6 @@
       "source": "https://github.com/life-itself/reasoncommons"
     },
     {
-      "slug": "2r-research-circle",
-      "name": "2R Research Circle",
-      "blurb": "Whether the 2R movement adopts LTP and benefits from it — rebuilt from David and Rufus's own goal tree and problem tree, starting from the fact that the two of them do not yet use it consistently.",
-      "analysis_mode": "reconciliation",
-      "source": "https://github.com/Promise-Foundation/2R-Research",
-      "github": {
-        "repo": "Promise-Foundation/2R-Research",
-        "label": "ltp-action"
-      }
-    },
-    {
       "slug": "individual-swe-example",
       "name": "Individual Contributor — Software Engineer (example)",
       "blurb": "A synthetic personal-notes example: one engineer's TODOs and journal, reverse-analyzed into a goal tree, for piloting cross-tree alignment suggestions.",
