@@ -1,0 +1,2264 @@
+# Reason Commons — the project that develops the app — as one Logical Thinking Process model.
+#
+# A candidate for import into the Reason Commons commons (commons 3), written with the
+# `ltp-project` skill on 2026-09-06 from Promise-Foundation/reason-commons's docs and features,
+# from this repository's own statements of purpose, and from every open issue here. Nothing in it
+# is accepted until it is ratified in the app; the report beside it (reason-commons.report.md)
+# names every judgment call, every issue's placement, and what was deliberately left out.
+#
+# Provenance locators: a path with #L<n> is a line in this repository at the commit this file
+# was authored against; a blob URL is a line in the app repository at a pinned commit; an issue
+# URL is the issue itself (a fragment names the part of the issue a proposition comes from);
+# reason-commons.report.md#... is a dated platform observation recorded in the report.
+#
+# Once commons 3 is connected to this repository, the platform's export at
+# .reason-commons/<space-id>.ltp.json becomes the record of the model; this file stays as the
+# candidate it was imported from. The views are listed last-tree-first, as the app's own example
+# does: the order an import is agreed in is derived from what each claim waits for.
+ltp:
+  schema_version: '1.0'
+  project_id: reason-commons
+  title: Groups think together and act on it, proven on ourselves first
+  source:
+    type: generated
+  entities:
+  - id: t-e-4-reality
+    tree: transition
+    statement: The annotation demo does not explain why AI has changed the game.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/4#reality"
+  - id: t-e-4-need
+    tree: transition
+    statement: "AI removes the translation cost of encoding one's own reasoning into a formal system."
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/reason-commons-manifesto.md#L115"
+  - id: t-e-4-action
+    tree: transition
+    statement: Improve the annotation demo to say that this was always wanted but painful, and that AI has changed that.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/4"
+    external_ids:
+    - source: github.com/life-itself/reasoncommons
+      id: '4'
+  - id: t-e-12-reality
+    tree: transition
+    statement: The landing page ships a placeholder where a newsletter signup should be.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/12#reality"
+  - id: t-e-12-need
+    tree: transition
+    statement: A low-volume update list is coming for people who want to follow along.
+    provenance:
+      path: "about.md#L30"
+  - id: t-e-12-action
+    tree: transition
+    statement: "Pick a provider and put the newsletter signup embed in place of the landing page's placeholder."
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/12"
+    external_ids:
+    - source: github.com/life-itself/reasoncommons
+      id: '12'
+  - id: t-e-13-reality
+    tree: transition
+    statement: "The 'See it working' call to action points at the scripted animation."
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/13#reality"
+  - id: t-e-13-action
+    tree: transition
+    statement: Add a short screen recording of the four steps, of the real tooling as it comes online, to join or replace the scripted animation.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/13"
+    external_ids:
+    - source: github.com/life-itself/reasoncommons
+      id: '13'
+  - id: t-e-14-reality
+    tree: transition
+    statement: "The constraints dashboard is linked as a bare 'Prototype' and reads as opaque."
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/14#reality"
+  - id: t-e-14-action
+    tree: transition
+    statement: Give the dashboard a short intro page saying what the analysis is, whose constraints it holds, and how to read the trees.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/14"
+    external_ids:
+    - source: github.com/life-itself/reasoncommons
+      id: '14'
+  - id: t-e-14-effect
+    tree: transition
+    statement: The dashboard works as a demonstration of the method rather than as an unexplained tool.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/14#so-that"
+  - id: t-e-15-reality
+    tree: transition
+    statement: "The navigation labels 'Introduction' and 'Guide' overlap in what they introduce."
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/15#reality"
+  - id: t-e-15-action
+    tree: transition
+    statement: "Decide the clean split between Introduction and Guide and whether 'The Forum Doesn't Remember' stays inside Introduction."
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/15"
+    external_ids:
+    - source: github.com/life-itself/reasoncommons
+      id: '15'
+  - id: t-e-17-reality
+    tree: transition
+    statement: The plain explainer versions carry rough edges inherited from the source drawings.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/17#reality"
+  - id: t-e-17-action
+    tree: transition
+    statement: Edit the original SVGs to fix the three named figure defects in the plain explainer versions.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/17"
+    external_ids:
+    - source: github.com/life-itself/reasoncommons
+      id: '17'
+  - id: t-e-19-reality
+    tree: transition
+    statement: "The landing page shows Flowershow's file-tree navigation listing internal folders."
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/19#reality"
+  - id: t-e-19-action
+    tree: transition
+    statement: Find the Flowershow option that hides the file-tree sidebar on the homepage or globally.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/19"
+    external_ids:
+    - source: github.com/life-itself/reasoncommons
+      id: '19'
+  - id: t-e-18-reality
+    tree: transition
+    statement: The Second Renaissance explainer closes on a proposed protocol that has not been built.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/18#reality"
+  - id: t-e-18-need
+    tree: transition
+    statement: "The explainer's closing stops being defensible if a year passes and the protocol is still not built."
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/18"
+    external_ids:
+    - source: github.com/life-itself/reasoncommons
+      id: '18'
+  - id: t-e-18-effect
+    tree: transition
+    statement: "By September 2027 the forum-to-model protocol exists or the explainer's closing is revised."
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/18#a-year"
+  - id: t-e-20-reality
+    tree: transition
+    statement: Running text clips at the right edge on narrow mobile widths, which is pre-existing theme behaviour.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/20#reality"
+  - id: t-e-20-action
+    tree: transition
+    statement: Check the mobile right-edge clipping on a real device.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/20"
+    external_ids:
+    - source: github.com/life-itself/reasoncommons
+      id: '20'
+  - id: t-e-20-effect
+    tree: transition
+    statement: The clipping is confirmed or ruled out on a real device.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/20#if-real"
+  - id: t-e-20-fix-action
+    tree: transition
+    statement: "Fix the theme's content container padding and overflow-wrap so text no longer clips."
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/20#theme-level-fix"
+    external_ids:
+    - source: github.com/life-itself/reasoncommons
+      id: '20'
+  - id: t-e-23-reality
+    tree: transition
+    statement: The trees are not yet in a machine-readable, version-controlled repository synced with GitHub issues.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/23#reality"
+  - id: t-e-23-action
+    tree: transition
+    statement: Put the Second Renaissance tree into a machine-readable git repository, synced with GitHub issues.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/23"
+    external_ids:
+    - source: github.com/life-itself/reasoncommons
+      id: '23'
+  - id: t-e-23-effect
+    tree: transition
+    statement: "The connected repository holds the tree as the platform's export, with its version history, refreshed on every sync."
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/CURRENT_STATE.md#L266"
+  - id: t-e-23-dr-action
+    tree: transition
+    statement: Put the David-and-Rufus tree into the same machine-readable, version-controlled form.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/23#d-r-tree"
+    external_ids:
+    - source: github.com/life-itself/reasoncommons
+      id: '23'
+  - id: t-e-24-reality
+    tree: transition
+    statement: There is no deep link to an individual tree, so trees cannot be shared directly.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/24#deep-link"
+  - id: t-e-24-viewer-need
+    tree: transition
+    statement: The viewer is standalone, embeddable and usable from the command line.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/24#viewer"
+  - id: t-e-24-action
+    tree: transition
+    statement: Split the viewer and the editor into separate components.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/24"
+    external_ids:
+    - source: github.com/life-itself/reasoncommons
+      id: '24'
+  - id: t-e-24-links-need
+    tree: transition
+    statement: Hard links exist so that trees can be shared directly.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/24#hard-links"
+  - id: t-e-24-links-action
+    tree: transition
+    statement: Check the existing focus addresses and public reading against the need for shareable tree links.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/37#work"
+  - id: t-e-32-reality
+    tree: transition
+    statement: "Three separate commons have been proposed, and today the group's work is not held apart by commons."
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/32#reality"
+  - id: t-e-32-need
+    tree: transition
+    statement: Subsequent development has a goal, and the three kinds of progress are kept apart.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/32#need"
+  - id: t-e-32-action
+    tree: transition
+    statement: Establish the three commons with their purpose, membership, decision authority and throughput status, and connect the app-development commons to life-itself/reasoncommons.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/32"
+    external_ids:
+    - source: github.com/life-itself/reasoncommons
+      id: '32'
+  - id: t-e-32-effect
+    tree: transition
+    statement: David and Rufus can identify which commons owns a contribution, a decision and a result without reconstructing the distinction from chat.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/32#expected-benefit-and-check"
+  - id: t-e-33-reality
+    tree: transition
+    statement: Deployed behaviour differs from the checkout and browser tests interfere with the live application.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/33#reality"
+  - id: t-e-33-need
+    tree: transition
+    statement: Dogfood results are interpretable rather than confounded by deployment differences or test interference.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/33#need"
+  - id: t-e-33-action
+    tree: transition
+    statement: "Establish a reproducible app baseline: an isolated test database, recorded versions, reachable attribution and one verified run summary."
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/33"
+    external_ids:
+    - source: github.com/life-itself/reasoncommons
+      id: '33'
+  - id: t-e-33-effect
+    tree: transition
+    statement: David and Rufus can attribute dogfood friction to the product rather than to an unknown deployment or test outage.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/33#expected-benefit-and-check"
+  - id: t-e-34-reality
+    tree: transition
+    statement: A new commons gives too little guidance about what to bring and what useful result to expect.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/34#reality"
+  - id: t-e-34-need
+    tree: transition
+    statement: "A participant can start from real material and reach a useful first judgment without the method's vocabulary."
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/34#acceptance-criteria"
+  - id: t-e-34-action
+    tree: transition
+    statement: Make starting a commons lead from existing material to a useful first decision.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/34"
+    external_ids:
+    - source: github.com/life-itself/reasoncommons
+      id: '34'
+  - id: t-e-34-effect
+    tree: transition
+    statement: A participant reaches a useful first judgment with less facilitator explanation and correction work.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/34#expected-benefit-and-check"
+  - id: t-e-35-reality
+    tree: transition
+    statement: The sync projects accepted actions and reconciles existing mappings, and creating an issue does not import it into the app.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/35#reality"
+  - id: t-e-35-need
+    tree: transition
+    statement: "The repository stays the familiar collaboration surface while its work is connected to the commons' goal and reasoning."
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/35#need"
+  - id: t-e-35-action
+    tree: transition
+    statement: Bring a small set of selected existing issues into the commons as reviewable proposals, adopting the original issue on acceptance.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/35"
+    external_ids:
+    - source: github.com/life-itself/reasoncommons
+      id: '35'
+  - id: t-e-35-effect
+    tree: transition
+    statement: David and Rufus can explain why selected work matters and what it should change while continuing to work from GitHub.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/35#expected-benefit-and-check"
+  - id: t-e-36-reality
+    tree: transition
+    statement: Research activity and a proposed change are not yet an accepted update in the receiving model.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/36#reality"
+  - id: t-e-36-need
+    tree: transition
+    statement: "The Research Group's throughput is a controlled, deliberated update accepted into the Second Renaissance model."
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/36#need"
+  - id: t-e-36-action
+    tree: transition
+    statement: Define and exercise the handoff from the Research Group into the Second Renaissance model on one real case.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/36"
+    external_ids:
+    - source: github.com/life-itself/reasoncommons
+      id: '36'
+  - id: t-e-36-effect
+    tree: transition
+    statement: "The group can show what intellectual progress reached the movement's model, why it was accepted and what remains uncertain."
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/36#expected-benefit-and-check"
+  - id: t-e-37-reality
+    tree: transition
+    statement: A completed feature or a larger reasoning graph is not evidence that the software is helping.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/37#reality"
+  - id: t-e-37-need
+    tree: transition
+    statement: "The next app priorities follow observed constraints on the three commons' work."
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/37#need"
+  - id: t-e-37-action
+    tree: transition
+    statement: Run a measured dogfood cycle and select the next app work from its findings.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/37"
+    external_ids:
+    - source: github.com/life-itself/reasoncommons
+      id: '37'
+  - id: t-e-37-effect
+    tree: transition
+    statement: David and Rufus can explain why the next development task is more valuable than alternatives using recorded experience.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/37#expected-benefit-and-check"
+  - id: t-e-0443-reality
+    tree: transition
+    statement: "Which surface names the proposer and the ratifier of a change that has just landed is an open question, and David's."
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/CURRENT_STATE.md#L752"
+  - id: t-e-0443-action
+    tree: transition
+    statement: Decide which surface names the proposer and the ratifier of a change that has just landed.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/CURRENT_STATE.md#L632"
+  - id: t-e-0443-effect
+    tree: transition
+    statement: Current-change attribution is reachable.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/33#acceptance-criteria"
+  - id: t-e-deploy-reality
+    tree: transition
+    statement: The agent-turn function has not run against a live provider since its rewrite, and the realize-narrative function is not deployed.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/CURRENT_STATE.md#L232"
+  - id: t-e-deploy-action
+    tree: transition
+    statement: Deploy the agent-turn and realize-narrative functions and record their versions.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/33#work"
+  - id: t-e-deploy-effect
+    tree: transition
+    statement: Both functions are deployed and their versions are recorded with the tested commit.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/33#work"
+  - id: t-e-admit-r3-action
+    tree: transition
+    statement: Admit R3 by adding @phase-r3 and @phase-e9a to the profile in the same change as the code, with the green profile figure recorded.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/CURRENT_STATE.md#L743"
+  - id: t-e-admit-r3-effect
+    tree: transition
+    statement: AI cannot cross the authority boundary, and every consequential reliance links to a decision and a packet manifest.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L703"
+  - id: t-e-model-row-action
+    tree: transition
+    statement: Carry out the Model row as specified in MODEL_ROW_RETARGET.md.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/CURRENT_STATE.md#L745"
+  - id: t-e-r4-r5-action
+    tree: transition
+    statement: "Continue R4 to R5 in the redesign plan's dependency ladder."
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/CURRENT_STATE.md#L746"
+  - id: t-e-e1-action
+    tree: transition
+    statement: Use the closed evidence loop on active Reason Commons work, registering the prediction prospectively in a deployed build.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/E1_DOGFOOD.md#L15"
+  - id: t-e-e1-effect
+    tree: transition
+    statement: Teams record check-ins on their transition steps.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/E1_DOGFOOD.md#L16"
+  - id: p-e-next-work-chosen-from-dogfood
+    tree: prerequisite
+    statement: The next proposed app work has an explicit connection to the agreed goal, an expected effect, and a date or condition for checking it, selected from a recorded dogfood review.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/37#acceptance-criteria"
+  - id: p-e-obs-tests-are-not-dogfood
+    tree: prerequisite
+    statement: Code fixtures and local or hosted acceptance tests are verification, not dogfood evidence.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/E1_DOGFOOD.md#L77"
+  - id: p-e-obs-migration-not-behaviour
+    tree: prerequisite
+    statement: Migration application is not evidence that the behaviour above it is complete.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L571"
+  - id: p-e-obs-backfill-fabricates
+    tree: prerequisite
+    statement: Historical backfill can fabricate epistemic standing unless legacy records carry honest labels.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L918"
+  - id: p-e-obst-attribution
+    tree: prerequisite
+    statement: The ratifier of the newest accepted change is reachable from no surface.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/CURRENT_STATE.md#L630"
+  - id: p-e-io-attribution
+    tree: prerequisite
+    statement: David has decided which surface names the proposer and the ratifier of a change that has just landed.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/CURRENT_STATE.md#L632"
+  - id: p-e-obst-deployments
+    tree: prerequisite
+    statement: The agent-turn and realize-narrative functions are not deployed since their rewrite.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/CURRENT_STATE.md#L232"
+  - id: p-e-io-deployments
+    tree: prerequisite
+    statement: Both functions are deployed and their versions are recorded with the tested commit.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/33#work"
+  - id: p-e-obst-test-database
+    tree: prerequisite
+    statement: The acceptance suite shares the production database, cannot delete the spaces it leaves behind, and is budgeted by the sign-up ceiling.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/CURRENT_STATE.md#L311"
+  - id: p-e-io-test-database
+    tree: prerequisite
+    statement: Browser acceptance tests run against an isolated, reproducible database.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/33#work"
+  - id: p-e-obst-import-coverage
+    tree: prerequisite
+    statement: No acceptance step has ever driven a file upload, and the import surface belongs to a phase that is not admitted.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/cucumber.mjs#L25"
+  - id: p-e-io-import-coverage
+    tree: prerequisite
+    statement: Import identity-conflict choices and browser upload coverage are finished before repeated import is relied on.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/34#work"
+  - id: p-e-obst-versions-recorded
+    tree: prerequisite
+    statement: Deployed behaviour can differ from the checkout, so a dogfood result is hard to interpret.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/33#interpretation"
+  - id: p-e-io-versions-recorded
+    tree: prerequisite
+    statement: The tested application commit, migrations and deployed function versions are recorded.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/33#work"
+  - id: p-e-obst-commons-3
+    tree: prerequisite
+    statement: The group has no space of its own, no agreed goal and no throughput status.
+    provenance:
+      path: "reason-commons.report.md#platform-observations-2026-09-06"
+  - id: p-e-io-commons-3
+    tree: prerequisite
+    statement: The app-development commons has a stable URL, a distinct purpose, an explicit throughput status, and recorded membership and authority.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/32#acceptance-criteria"
+  - id: p-e-obst-adoption-honesty
+    tree: prerequisite
+    statement: Adopting existing issues into the commons could fabricate epistemic standing they never had.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L918"
+  - id: p-e-io-adoption-honesty
+    tree: prerequisite
+    statement: Adopted issues enter as proposals with their source identity, revision and excerpts preserved and human-written content untouched.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/35#work"
+  - id: p-e-obst-premises-differ
+    tree: prerequisite
+    statement: The two collaborators hold different sequencing premises about the Second Renaissance application.
+    provenance:
+      path: "motivation.md#L28"
+  - id: f-e-four-destinations
+    tree: future_reality
+    statement: A reasoning space has exactly four destinations, with conversation as a persistent rail rather than a fifth.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L131"
+  - id: f-e-standing-deterministic
+    tree: future_reality
+    statement: Standing is a deterministic projection whose material spans carry exact source identities and versions.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L184"
+  - id: f-e-consequence-ranked-crux
+    tree: future_reality
+    statement: Standing shows one consequence-ranked crux that explains what, why, why now, and what relies on it.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L73"
+  - id: f-e-meaning-checkpoint
+    tree: future_reality
+    statement: The record never attributes a material normalization to a contributor without confirmation.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L116"
+  - id: f-e-standing-reservations
+    tree: future_reality
+    statement: Dissent is a structured reservation with a stable target, lifecycle events and explicit proceed-with-dissent links.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L83"
+  - id: f-e-decision-packet-manifest
+    tree: future_reality
+    statement: A Decide packet leads with the decision-relative minimum and stores a content-addressed manifest of what was presented.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L250"
+  - id: f-e-acceptance-vs-reliance
+    tree: future_reality
+    statement: Accepting reasoning changes model membership, and authorizing reliance records a bounded operational judgment.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L117"
+  - id: f-e-work-items-are-projections
+    tree: future_reality
+    statement: External work items are projections of transition actions and never define their necessity or expected effect.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/OPERATIONAL_PROJECTION_SPEC.md#L65"
+  - id: f-e-provider-neutral-export
+    tree: future_reality
+    statement: "A space's reasoning is exported provider-neutrally with integrity and provenance."
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L91"
+  - id: f-e-e1-closed-loop-on-own-work
+    tree: future_reality
+    statement: The team uses the closed evidence loop on active Reason Commons work.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/E1_DOGFOOD.md#L15"
+  - id: f-e-three-commons
+    tree: future_reality
+    statement: Three distinct commons exist with recorded purpose, throughput status and authority, and the app-development commons is connected to life-itself/reasoncommons.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/32#work"
+  - id: f-e-start-from-material
+    tree: future_reality
+    statement: Starting a commons leads from existing material to a useful first decision without Logical Thinking Process vocabulary.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/34#acceptance-criteria"
+  - id: f-e-adopt-issues-as-proposals
+    tree: future_reality
+    statement: Selected existing GitHub issues enter the commons as bounded proposals, and on acceptance the original issue is adopted rather than duplicated.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/35#acceptance-criteria"
+  - id: f-e-progress-not-conflated
+    tree: future_reality
+    statement: Subsequent development has a goal, and the three kinds of progress are not conflated.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/32#establishing-these-boundaries"
+  - id: f-e-prose-not-second-model
+    tree: future_reality
+    statement: Readable prose does not become a second, ungoverned model.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L197"
+  - id: f-e-action-without-false-consensus
+    tree: future_reality
+    statement: A decision proceeds with dissent open, and nobody carries the political burden of keeping it alive by hand.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L243"
+  - id: f-e-teams-record-checkins
+    tree: future_reality
+    statement: Teams record check-ins on their transition steps.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/E1_DOGFOOD.md#L16"
+  - id: f-e-trackers-not-competing-plan
+    tree: future_reality
+    statement: An external issue tracker does not become a second, competing model of the plan.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/OPERATIONAL_PROJECTION_SPEC.md#L19"
+  - id: f-e-inheritor-five-answers
+    tree: future_reality
+    statement: From Standing alone a newcomer can say what the team thinks is happening, what is disputed, what it does because of it, who authorized reliance, and what would cause another look.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L829"
+  - id: f-e-cheaper-than-two-places
+    tree: future_reality
+    statement: Maintaining the commons costs David and Rufus less effort than maintaining both places by hand.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/35#expected-benefit-and-check"
+  - id: f-e-nb-review-backlog
+    tree: future_reality
+    statement: The commons becomes an AI reasoning factory that produces a human review backlog.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L927"
+  - id: f-e-nb-notification-stream
+    tree: future_reality
+    statement: The product becomes a generic notification stream.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L933"
+  - id: f-e-nb-tutorial-product
+    tree: future_reality
+    statement: The product becomes a tutorial-heavy methodology product.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L934"
+  - id: f-e-nb-archive-disconnected
+    tree: future_reality
+    statement: The commons becomes a historical archive disconnected from current decisions and due observations.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L936"
+  - id: f-e-nb-proxy-counts
+    tree: future_reality
+    statement: Success is read from messages sent, claims created, AI drafts generated or reviews completed.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L895"
+  - id: c1-e-objective
+    tree: conflict
+    statement: "A group's thinking accumulates and increasingly results in action."
+    provenance:
+      path: "talk/2r-research-group/notes.md#L76"
+  - id: c1-e-req-a
+    tree: conflict
+    statement: Conversation stays natural and open.
+    provenance:
+      path: "talk/2r-research-group/notes.md#L78"
+  - id: c1-e-req-b
+    tree: conflict
+    statement: Reasoning is structured enough to build on.
+    provenance:
+      path: "talk/2r-research-group/notes.md#L78"
+  - id: c1-e-pre-a
+    tree: conflict
+    statement: People contribute normally, in threads and rooms, without filing their thought.
+    provenance:
+      path: "talk/2r-research-group/notes.md#L79"
+  - id: c1-e-pre-b
+    tree: conflict
+    statement: People think in trees and file their thought into the method.
+    provenance:
+      path: "talk/2r-research-group/notes.md#L79"
+  - id: c1-e-injection
+    tree: conflict
+    statement: People contribute normally and the system reveals the structure underneath.
+    provenance:
+      path: "talk/2r-research-group/notes.md#L79"
+  - id: c2-e-objective
+    tree: conflict
+    statement: Reason Commons is known to create trustworthy institutional learning worth its full cost.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/reason-commons-strategy.ltp.yaml#L10"
+  - id: c2-e-req-a
+    tree: conflict
+    statement: The team discovers quickly which parts of the approach work, transfer, or should die.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/business_plan.md#L119"
+  - id: c2-e-req-b
+    tree: conflict
+    statement: Claims of value rest on evidence that counts as customer value.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/reason-commons-strategy.ltp.yaml#L301"
+  - id: c2-e-pre-a
+    tree: conflict
+    statement: The group uses the product on its own development first.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/business_plan.md#L7"
+  - id: c2-e-pre-b
+    tree: conflict
+    statement: Value is proven with independent teams against a strong conventional baseline.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/reason-commons-strategy.ltp.yaml#L302"
+  - id: c2-e-injection
+    tree: conflict
+    statement: Customer Zero is the first falsification attempt, ahead of an external design partner, a paying customer and repeatable transfer.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/business_plan.md#L83"
+  - id: c3-e-objective
+    tree: conflict
+    statement: "The redesign's claims are true of production behaviour."
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L552"
+  - id: c3-e-req-a
+    tree: conflict
+    statement: Admitted phases are green against production behaviour.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L804"
+  - id: c3-e-req-b
+    tree: conflict
+    statement: The dogfood begins without every future redesign phase being complete.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/33#bounded-gate"
+  - id: c3-e-pre-a
+    tree: conflict
+    statement: R3 is admitted and then the Model row lands before any use of the product on our own work.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/CURRENT_STATE.md#L739"
+  - id: c3-e-pre-b
+    tree: conflict
+    statement: The dogfood runs on the deployed build now.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/37#work"
+  - id: c3-e-injection
+    tree: conflict
+    statement: A dogfood needs a reproducible deployed build with attribution reachable, not another phase tag in the profile.
+    provenance:
+      path: "https://github.com/life-itself/reasoncommons/issues/33#acceptance-criteria"
+  - id: c4-e-objective
+    tree: conflict
+    statement: A ratifier judges with the whole case available and scarce attention protected.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L268"
+  - id: c4-e-req-a
+    tree: conflict
+    statement: The decision leads with what could change it.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/features/38_decide_workspace.feature#L68"
+  - id: c4-e-req-b
+    tree: conflict
+    statement: Nothing consequential is hidden from the case.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/features/38_decide_workspace.feature#L36"
+  - id: c4-e-pre-a
+    tree: conflict
+    statement: The group is shown a short ranked list of what to do next.
+    provenance:
+      path: "reason-commons.report.md#platform-observations-2026-09-06"
+  - id: c4-e-pre-b
+    tree: conflict
+    statement: The group is shown every open issue flat, with no order.
+    provenance:
+      path: "NEXT.md#L8"
+  - id: c4-e-injection
+    tree: conflict
+    statement: Lead with the decision-relative minimum and keep the complete case on dig.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L250"
+  - id: r-e-no-dogfood-result
+    tree: current_reality
+    statement: No completed real dogfood result is recorded in the app repository.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/E1_DOGFOOD.md#L3"
+  - id: r-e-2r-space-no-contributions
+    tree: current_reality
+    statement: The 2R space named Reason Commons Focus holds 67 accepted nodes and zero contributions.
+    provenance:
+      path: "reason-commons.report.md#platform-observations-2026-09-06"
+  - id: r-e-issues-why-not-stated
+    tree: current_reality
+    statement: "The issues projected from the 2R space read 'Why this matters: Not yet stated.'"
+    provenance:
+      path: "reason-commons.report.md#platform-observations-2026-09-06"
+  - id: r-e-group-reasons-in-chat
+    tree: current_reality
+    statement: "The developing group's decisions are recorded in prose by assistants and discussed in Discord and Docs, and the app repository has no space of its own."
+    provenance:
+      path: "reason-commons.report.md#platform-observations-2026-09-06"
+  - id: r-e-issue-sets-unrelated
+    tree: current_reality
+    statement: "Issues #32 to #37 state no relationship to issues #4 to #24 beyond three cross-references."
+    provenance:
+      path: "reason-commons.report.md#platform-observations-2026-09-06"
+  - id: r-e-site-says-no-app
+    tree: current_reality
+    statement: The site says there is no app to log into yet, while the hosted app has three redesign phases admitted.
+    provenance:
+      path: "README.md#L12"
+  - id: r-e-r3-not-admitted
+    tree: current_reality
+    statement: "Redesign phase R3 is not admitted, and the single red scenario 04:43 waits on a decision that is David's."
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/CURRENT_STATE.md#L13"
+  - id: r-e-newest-ratifier-unreachable
+    tree: current_reality
+    statement: The ratifier of the newest accepted change is the one ratifier no reader can reach.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/CURRENT_STATE.md#L630"
+  - id: r-e-agent-turn-not-deployed
+    tree: current_reality
+    statement: "The agent-turn function has not run against a live provider since its rewrite, and deploying it is David's."
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/CURRENT_STATE.md#L232"
+  - id: r-e-narrative-not-deployed
+    tree: current_reality
+    statement: The realize-narrative function is written and bundle-checked and not deployed.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/CURRENT_STATE.md#L235"
+  - id: r-e-evidence-expensive
+    tree: current_reality
+    statement: The hosted project has a daily sign-up ceiling, so whole-profile acceptance runs must be budgeted.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/CURRENT_STATE.md#L505"
+  - id: r-e-sequencing-premises-differ
+    tree: current_reality
+    statement: "Rufus's motivation defers the Second Renaissance application until a toy example works end to end, while issues #32 and #36 make it immediate."
+    provenance:
+      path: "motivation.md#L28"
+  - id: r-e-everything-open-is-davids
+    tree: current_reality
+    statement: Every open decision, deployment and admission step routes through David.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/CURRENT_STATE.md#L748"
+  - id: r-e-assistants-outpace-ratifiers
+    tree: current_reality
+    statement: Assistants produce plans, handoffs and issues faster than the two humans ratify them.
+    provenance:
+      path: "reason-commons.report.md#platform-observations-2026-09-06"
+  - id: r-e-suite-shares-prod-db
+    tree: current_reality
+    statement: The acceptance suite shares the production database with the running application.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/CURRENT_STATE.md#L311"
+  - id: r-e-work-order-no-dogfood-step
+    tree: current_reality
+    statement: The immediate work order runs admit R3, then the Model row, then R4 to R5, and contains no dogfood step.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/CURRENT_STATE.md#L739"
+  - id: r-e-validation-scarce
+    tree: current_reality
+    statement: Once generating plausible reasoning is cheap, generation is no longer the scarce resource; validation is.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/why_redesign.md#L53"
+  - id: r-e-group-not-using-product
+    tree: current_reality
+    statement: The group developing Reason Commons does not hold its own reasoning in Reason Commons.
+    provenance:
+      path: "reason-commons.report.md#platform-observations-2026-09-06"
+  - id: g-e-groups-think-and-act
+    tree: goal
+    statement: Groups have a better way to think together and to turn that thinking into action.
+    provenance:
+      path: "about.md#L8"
+  - id: g-e-tooling-cheap-enough
+    tree: goal
+    statement: "AI tooling makes holding a group's reasoning as living trees cheap enough to actually use."
+    provenance:
+      path: "about.md#L10"
+  - id: g-e-communities-adopt
+    tree: goal
+    statement: Communities already engaged in complex reasoning adopt the approach and develop the practices that make it stick.
+    provenance:
+      path: "about.md#L19"
+  - id: g-e-2r-living-laboratory
+    tree: goal
+    statement: The system is applied within Second Renaissance, coordinating strategic thinking across an active community whose contributions currently stay fragmented.
+    provenance:
+      path: "about.md#L20"
+  - id: g-e-first-customer-ourselves
+    tree: goal
+    statement: The group building Reason Commons is its own first customer.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/business_plan.md#L7"
+  - id: g-e-improves-own-change
+    tree: goal
+    statement: "Reason Commons improves the developing group's ability to change itself."
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/business_plan.md#L79"
+  - id: g-e-protocol-governs-dev
+    tree: goal
+    statement: The common protocol governs product development and resource allocation.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/business_plan.md#L75"
+  - id: g-e-cheaper-to-know
+    tree: goal
+    statement: It is cheaper for the group to know what it believes, why, and who stands behind it than not to know.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/jobs_to_be_done.md#L5"
+  - id: g-e-no-clerical-burden
+    tree: goal
+    statement: Humans do not carry the clerical burden of producing the structure of collective reasoning.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/jobs_to_be_done.md#L3"
+  - id: g-e-rigour-without-vocabulary
+    tree: goal
+    statement: "Reason Commons keeps the Logical Thinking Process's rigour without requiring its vocabulary."
+    provenance:
+      path: "about.md#L12"
+  - id: g-e-memory-owned-by-none
+    tree: goal
+    statement: The memory of reasons is persistent, governed, cumulative, and owned by no single reasoner.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/reason-commons-manifesto.md#L133"
+  - id: g-e-work-is-not-change
+    tree: goal
+    statement: Completing an action records execution, and observation determines what happened.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L119"
+  - id: g-e-ai-no-silent-authority
+    tree: goal
+    statement: AI drafts and analyzes but does not silently acquire authority.
+    provenance:
+      path: "https://github.com/Promise-Foundation/reason-commons/blob/05fe3d426aaa/docs/product-redesign/REDESIGN_PLAN.md#L125"
+  - id: g-e-judgeable-from-site
+    tree: goal
+    statement: Outsiders can judge from what is published whether Reason Commons is worth adopting, joining, or funding.
+    provenance:
+      path: "about.md#L14"
+  - id: g-e-2r-contributions-improve
+    tree: goal
+    statement: "Today's contributions improve Second Renaissance's reasoning and cause useful things to happen."
+    provenance:
+      path: "talk/2r-research-group/notes.md#L82"
+  designations:
+  - id: t-d-4-reality
+    entity_id: t-e-4-reality
+    role: transition_existing_reality
+  - id: t-d-4-need
+    entity_id: t-e-4-need
+    role: transition_need
+  - id: t-d-4-action
+    entity_id: t-e-4-action
+    role: transition_action
+  - id: t-d-12-reality
+    entity_id: t-e-12-reality
+    role: transition_existing_reality
+  - id: t-d-12-need
+    entity_id: t-e-12-need
+    role: transition_need
+  - id: t-d-12-action
+    entity_id: t-e-12-action
+    role: transition_action
+  - id: t-d-13-reality
+    entity_id: t-e-13-reality
+    role: transition_existing_reality
+  - id: t-d-13-action
+    entity_id: t-e-13-action
+    role: transition_action
+  - id: t-d-14-reality
+    entity_id: t-e-14-reality
+    role: transition_existing_reality
+  - id: t-d-14-action
+    entity_id: t-e-14-action
+    role: transition_action
+  - id: t-d-14-effect
+    entity_id: t-e-14-effect
+    role: transition_expected_effect
+  - id: t-d-15-reality
+    entity_id: t-e-15-reality
+    role: transition_existing_reality
+  - id: t-d-15-action
+    entity_id: t-e-15-action
+    role: transition_action
+  - id: t-d-17-reality
+    entity_id: t-e-17-reality
+    role: transition_existing_reality
+  - id: t-d-17-action
+    entity_id: t-e-17-action
+    role: transition_action
+  - id: t-d-19-reality
+    entity_id: t-e-19-reality
+    role: transition_existing_reality
+  - id: t-d-19-action
+    entity_id: t-e-19-action
+    role: transition_action
+  - id: t-d-18-reality
+    entity_id: t-e-18-reality
+    role: transition_existing_reality
+  - id: t-d-18-need
+    entity_id: t-e-18-need
+    role: transition_need
+  - id: t-d-18-effect
+    entity_id: t-e-18-effect
+    role: transition_expected_effect
+  - id: t-d-20-reality
+    entity_id: t-e-20-reality
+    role: transition_existing_reality
+  - id: t-d-20-action
+    entity_id: t-e-20-action
+    role: transition_action
+  - id: t-d-20-effect
+    entity_id: t-e-20-effect
+    role: transition_expected_effect
+  - id: t-d-20-fix-action
+    entity_id: t-e-20-fix-action
+    role: transition_action
+  - id: t-d-23-reality
+    entity_id: t-e-23-reality
+    role: transition_existing_reality
+  - id: t-d-23-action
+    entity_id: t-e-23-action
+    role: transition_action
+  - id: t-d-23-effect
+    entity_id: t-e-23-effect
+    role: transition_expected_effect
+  - id: t-d-23-dr-action
+    entity_id: t-e-23-dr-action
+    role: transition_action
+  - id: t-d-24-reality
+    entity_id: t-e-24-reality
+    role: transition_existing_reality
+  - id: t-d-24-viewer-need
+    entity_id: t-e-24-viewer-need
+    role: transition_need
+  - id: t-d-24-action
+    entity_id: t-e-24-action
+    role: transition_action
+  - id: t-d-24-links-need
+    entity_id: t-e-24-links-need
+    role: transition_need
+  - id: t-d-24-links-action
+    entity_id: t-e-24-links-action
+    role: transition_action
+  - id: t-d-32-reality
+    entity_id: t-e-32-reality
+    role: transition_existing_reality
+  - id: t-d-32-need
+    entity_id: t-e-32-need
+    role: transition_need
+  - id: t-d-32-action
+    entity_id: t-e-32-action
+    role: transition_action
+  - id: t-d-32-effect
+    entity_id: t-e-32-effect
+    role: transition_expected_effect
+  - id: t-d-33-reality
+    entity_id: t-e-33-reality
+    role: transition_existing_reality
+  - id: t-d-33-need
+    entity_id: t-e-33-need
+    role: transition_need
+  - id: t-d-33-action
+    entity_id: t-e-33-action
+    role: transition_action
+  - id: t-d-33-effect
+    entity_id: t-e-33-effect
+    role: transition_expected_effect
+  - id: t-d-34-reality
+    entity_id: t-e-34-reality
+    role: transition_existing_reality
+  - id: t-d-34-need
+    entity_id: t-e-34-need
+    role: transition_need
+  - id: t-d-34-action
+    entity_id: t-e-34-action
+    role: transition_action
+  - id: t-d-34-effect
+    entity_id: t-e-34-effect
+    role: transition_expected_effect
+  - id: t-d-35-reality
+    entity_id: t-e-35-reality
+    role: transition_existing_reality
+  - id: t-d-35-need
+    entity_id: t-e-35-need
+    role: transition_need
+  - id: t-d-35-action
+    entity_id: t-e-35-action
+    role: transition_action
+  - id: t-d-35-effect
+    entity_id: t-e-35-effect
+    role: transition_expected_effect
+  - id: t-d-36-reality
+    entity_id: t-e-36-reality
+    role: transition_existing_reality
+  - id: t-d-36-need
+    entity_id: t-e-36-need
+    role: transition_need
+  - id: t-d-36-action
+    entity_id: t-e-36-action
+    role: transition_action
+  - id: t-d-36-effect
+    entity_id: t-e-36-effect
+    role: transition_expected_effect
+  - id: t-d-37-reality
+    entity_id: t-e-37-reality
+    role: transition_existing_reality
+  - id: t-d-37-need
+    entity_id: t-e-37-need
+    role: transition_need
+  - id: t-d-37-action
+    entity_id: t-e-37-action
+    role: transition_action
+  - id: t-d-37-effect
+    entity_id: t-e-37-effect
+    role: transition_expected_effect
+  - id: t-d-0443-reality
+    entity_id: t-e-0443-reality
+    role: transition_existing_reality
+  - id: t-d-0443-action
+    entity_id: t-e-0443-action
+    role: transition_action
+  - id: t-d-0443-effect
+    entity_id: t-e-0443-effect
+    role: transition_expected_effect
+  - id: t-d-deploy-reality
+    entity_id: t-e-deploy-reality
+    role: transition_existing_reality
+  - id: t-d-deploy-action
+    entity_id: t-e-deploy-action
+    role: transition_action
+  - id: t-d-deploy-effect
+    entity_id: t-e-deploy-effect
+    role: transition_expected_effect
+  - id: t-d-admit-r3-action
+    entity_id: t-e-admit-r3-action
+    role: transition_action
+  - id: t-d-admit-r3-effect
+    entity_id: t-e-admit-r3-effect
+    role: transition_expected_effect
+  - id: t-d-model-row-action
+    entity_id: t-e-model-row-action
+    role: transition_action
+  - id: t-d-r4-r5-action
+    entity_id: t-e-r4-r5-action
+    role: transition_action
+  - id: t-d-e1-action
+    entity_id: t-e-e1-action
+    role: transition_action
+  - id: t-d-e1-effect
+    entity_id: t-e-e1-effect
+    role: transition_expected_effect
+  - id: p-d-next-work-chosen-from-dogfood
+    entity_id: p-e-next-work-chosen-from-dogfood
+    role: implementation_objective
+  - id: p-d-obs-tests-are-not-dogfood
+    entity_id: p-e-obs-tests-are-not-dogfood
+    role: observation
+  - id: p-d-obs-migration-not-behaviour
+    entity_id: p-e-obs-migration-not-behaviour
+    role: observation
+  - id: p-d-obs-backfill-fabricates
+    entity_id: p-e-obs-backfill-fabricates
+    role: observation
+  - id: p-d-obst-attribution
+    entity_id: p-e-obst-attribution
+    role: obstacle
+  - id: p-d-io-attribution
+    entity_id: p-e-io-attribution
+    role: intermediate_objective
+  - id: p-d-obst-deployments
+    entity_id: p-e-obst-deployments
+    role: obstacle
+  - id: p-d-io-deployments
+    entity_id: p-e-io-deployments
+    role: intermediate_objective
+  - id: p-d-obst-test-database
+    entity_id: p-e-obst-test-database
+    role: obstacle
+  - id: p-d-io-test-database
+    entity_id: p-e-io-test-database
+    role: intermediate_objective
+  - id: p-d-obst-import-coverage
+    entity_id: p-e-obst-import-coverage
+    role: obstacle
+  - id: p-d-io-import-coverage
+    entity_id: p-e-io-import-coverage
+    role: intermediate_objective
+  - id: p-d-obst-versions-recorded
+    entity_id: p-e-obst-versions-recorded
+    role: obstacle
+  - id: p-d-io-versions-recorded
+    entity_id: p-e-io-versions-recorded
+    role: intermediate_objective
+  - id: p-d-obst-commons-3
+    entity_id: p-e-obst-commons-3
+    role: obstacle
+  - id: p-d-io-commons-3
+    entity_id: p-e-io-commons-3
+    role: intermediate_objective
+  - id: p-d-obst-adoption-honesty
+    entity_id: p-e-obst-adoption-honesty
+    role: obstacle
+  - id: p-d-io-adoption-honesty
+    entity_id: p-e-io-adoption-honesty
+    role: intermediate_objective
+  - id: p-d-obst-premises-differ
+    entity_id: p-e-obst-premises-differ
+    role: obstacle
+  - id: f-d-four-destinations
+    entity_id: f-e-four-destinations
+    role: injection
+  - id: f-d-standing-deterministic
+    entity_id: f-e-standing-deterministic
+    role: injection
+  - id: f-d-consequence-ranked-crux
+    entity_id: f-e-consequence-ranked-crux
+    role: injection
+  - id: f-d-meaning-checkpoint
+    entity_id: f-e-meaning-checkpoint
+    role: injection
+  - id: f-d-standing-reservations
+    entity_id: f-e-standing-reservations
+    role: injection
+  - id: f-d-decision-packet-manifest
+    entity_id: f-e-decision-packet-manifest
+    role: injection
+  - id: f-d-acceptance-vs-reliance
+    entity_id: f-e-acceptance-vs-reliance
+    role: injection
+  - id: f-d-work-items-are-projections
+    entity_id: f-e-work-items-are-projections
+    role: injection
+  - id: f-d-provider-neutral-export
+    entity_id: f-e-provider-neutral-export
+    role: injection
+  - id: f-d-e1-closed-loop-on-own-work
+    entity_id: f-e-e1-closed-loop-on-own-work
+    role: injection
+  - id: f-d-three-commons
+    entity_id: f-e-three-commons
+    role: injection
+  - id: f-d-start-from-material
+    entity_id: f-e-start-from-material
+    role: injection
+  - id: f-d-adopt-issues-as-proposals
+    entity_id: f-e-adopt-issues-as-proposals
+    role: injection
+  - id: f-d-progress-not-conflated
+    entity_id: f-e-progress-not-conflated
+    role: desired_effect
+  - id: f-d-prose-not-second-model
+    entity_id: f-e-prose-not-second-model
+    role: desired_effect
+  - id: f-d-action-without-false-consensus
+    entity_id: f-e-action-without-false-consensus
+    role: desired_effect
+  - id: f-d-teams-record-checkins
+    entity_id: f-e-teams-record-checkins
+    role: desired_effect
+  - id: f-d-trackers-not-competing-plan
+    entity_id: f-e-trackers-not-competing-plan
+    role: desired_effect
+  - id: f-d-inheritor-five-answers
+    entity_id: f-e-inheritor-five-answers
+    role: desired_effect
+  - id: f-d-cheaper-than-two-places
+    entity_id: f-e-cheaper-than-two-places
+    role: desired_effect
+  - id: f-d-nb-review-backlog
+    entity_id: f-e-nb-review-backlog
+    role: undesirable_effect
+  - id: f-d-nb-notification-stream
+    entity_id: f-e-nb-notification-stream
+    role: undesirable_effect
+  - id: f-d-nb-tutorial-product
+    entity_id: f-e-nb-tutorial-product
+    role: undesirable_effect
+  - id: f-d-nb-archive-disconnected
+    entity_id: f-e-nb-archive-disconnected
+    role: undesirable_effect
+  - id: f-d-nb-proxy-counts
+    entity_id: f-e-nb-proxy-counts
+    role: undesirable_effect
+  - id: c1-d-objective
+    entity_id: c1-e-objective
+    role: cloud_objective
+  - id: c1-d-req-a
+    entity_id: c1-e-req-a
+    role: cloud_requirement
+  - id: c1-d-req-b
+    entity_id: c1-e-req-b
+    role: cloud_requirement
+  - id: c1-d-pre-a
+    entity_id: c1-e-pre-a
+    role: cloud_prerequisite
+  - id: c1-d-pre-b
+    entity_id: c1-e-pre-b
+    role: cloud_prerequisite
+  - id: c1-d-injection
+    entity_id: c1-e-injection
+    role: injection
+  - id: c2-d-objective
+    entity_id: c2-e-objective
+    role: cloud_objective
+  - id: c2-d-req-a
+    entity_id: c2-e-req-a
+    role: cloud_requirement
+  - id: c2-d-req-b
+    entity_id: c2-e-req-b
+    role: cloud_requirement
+  - id: c2-d-pre-a
+    entity_id: c2-e-pre-a
+    role: cloud_prerequisite
+  - id: c2-d-pre-b
+    entity_id: c2-e-pre-b
+    role: cloud_prerequisite
+  - id: c2-d-injection
+    entity_id: c2-e-injection
+    role: injection
+  - id: c3-d-objective
+    entity_id: c3-e-objective
+    role: cloud_objective
+  - id: c3-d-req-a
+    entity_id: c3-e-req-a
+    role: cloud_requirement
+  - id: c3-d-req-b
+    entity_id: c3-e-req-b
+    role: cloud_requirement
+  - id: c3-d-pre-a
+    entity_id: c3-e-pre-a
+    role: cloud_prerequisite
+  - id: c3-d-pre-b
+    entity_id: c3-e-pre-b
+    role: cloud_prerequisite
+  - id: c3-d-injection
+    entity_id: c3-e-injection
+    role: injection
+  - id: c4-d-objective
+    entity_id: c4-e-objective
+    role: cloud_objective
+  - id: c4-d-req-a
+    entity_id: c4-e-req-a
+    role: cloud_requirement
+  - id: c4-d-req-b
+    entity_id: c4-e-req-b
+    role: cloud_requirement
+  - id: c4-d-pre-a
+    entity_id: c4-e-pre-a
+    role: cloud_prerequisite
+  - id: c4-d-pre-b
+    entity_id: c4-e-pre-b
+    role: cloud_prerequisite
+  - id: c4-d-injection
+    entity_id: c4-e-injection
+    role: injection
+  - id: r-d-no-dogfood-result
+    entity_id: r-e-no-dogfood-result
+    role: undesirable_effect
+  - id: r-d-2r-space-no-contributions
+    entity_id: r-e-2r-space-no-contributions
+    role: undesirable_effect
+  - id: r-d-issues-why-not-stated
+    entity_id: r-e-issues-why-not-stated
+    role: undesirable_effect
+  - id: r-d-group-reasons-in-chat
+    entity_id: r-e-group-reasons-in-chat
+    role: undesirable_effect
+  - id: r-d-issue-sets-unrelated
+    entity_id: r-e-issue-sets-unrelated
+    role: undesirable_effect
+  - id: r-d-site-says-no-app
+    entity_id: r-e-site-says-no-app
+    role: undesirable_effect
+  - id: r-d-r3-not-admitted
+    entity_id: r-e-r3-not-admitted
+    role: undesirable_effect
+  - id: r-d-newest-ratifier-unreachable
+    entity_id: r-e-newest-ratifier-unreachable
+    role: undesirable_effect
+  - id: r-d-agent-turn-not-deployed
+    entity_id: r-e-agent-turn-not-deployed
+    role: undesirable_effect
+  - id: r-d-narrative-not-deployed
+    entity_id: r-e-narrative-not-deployed
+    role: undesirable_effect
+  - id: r-d-evidence-expensive
+    entity_id: r-e-evidence-expensive
+    role: undesirable_effect
+  - id: r-d-sequencing-premises-differ
+    entity_id: r-e-sequencing-premises-differ
+    role: observation
+  - id: r-d-everything-open-is-davids
+    entity_id: r-e-everything-open-is-davids
+    role: intermediate_cause
+  - id: r-d-assistants-outpace-ratifiers
+    entity_id: r-e-assistants-outpace-ratifiers
+    role: intermediate_cause
+  - id: r-d-suite-shares-prod-db
+    entity_id: r-e-suite-shares-prod-db
+    role: intermediate_cause
+  - id: r-d-work-order-no-dogfood-step
+    entity_id: r-e-work-order-no-dogfood-step
+    role: root_cause
+  - id: r-d-validation-scarce
+    entity_id: r-e-validation-scarce
+    role: root_cause
+  - id: r-d-group-not-using-product
+    entity_id: r-e-group-not-using-product
+    role: root_cause
+  - id: g-d-groups-think-and-act
+    entity_id: g-e-groups-think-and-act
+    role: goal
+  - id: g-d-tooling-cheap-enough
+    entity_id: g-e-tooling-cheap-enough
+    role: critical_success_factor
+    parent_designation_id: g-d-groups-think-and-act
+  - id: g-d-communities-adopt
+    entity_id: g-e-communities-adopt
+    role: critical_success_factor
+    parent_designation_id: g-d-groups-think-and-act
+  - id: g-d-2r-living-laboratory
+    entity_id: g-e-2r-living-laboratory
+    role: critical_success_factor
+    parent_designation_id: g-d-groups-think-and-act
+  - id: g-d-first-customer-ourselves
+    entity_id: g-e-first-customer-ourselves
+    role: critical_success_factor
+    parent_designation_id: g-d-groups-think-and-act
+  - id: g-d-improves-own-change
+    entity_id: g-e-improves-own-change
+    role: necessary_condition
+    parent_designation_id: g-d-first-customer-ourselves
+  - id: g-d-protocol-governs-dev
+    entity_id: g-e-protocol-governs-dev
+    role: necessary_condition
+    parent_designation_id: g-d-first-customer-ourselves
+  - id: g-d-cheaper-to-know
+    entity_id: g-e-cheaper-to-know
+    role: necessary_condition
+    parent_designation_id: g-d-first-customer-ourselves
+  - id: g-d-no-clerical-burden
+    entity_id: g-e-no-clerical-burden
+    role: necessary_condition
+    parent_designation_id: g-d-tooling-cheap-enough
+  - id: g-d-rigour-without-vocabulary
+    entity_id: g-e-rigour-without-vocabulary
+    role: necessary_condition
+    parent_designation_id: g-d-tooling-cheap-enough
+  - id: g-d-memory-owned-by-none
+    entity_id: g-e-memory-owned-by-none
+    role: necessary_condition
+    parent_designation_id: g-d-tooling-cheap-enough
+  - id: g-d-work-is-not-change
+    entity_id: g-e-work-is-not-change
+    role: necessary_condition
+    parent_designation_id: g-d-tooling-cheap-enough
+  - id: g-d-ai-no-silent-authority
+    entity_id: g-e-ai-no-silent-authority
+    role: necessary_condition
+    parent_designation_id: g-d-tooling-cheap-enough
+  - id: g-d-judgeable-from-site
+    entity_id: g-e-judgeable-from-site
+    role: necessary_condition
+    parent_designation_id: g-d-communities-adopt
+  - id: g-d-2r-contributions-improve
+    entity_id: g-e-2r-contributions-improve
+    role: necessary_condition
+    parent_designation_id: g-d-2r-living-laboratory
+  relationships:
+  - id: t-rel-4-reality-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-4-reality
+    to_entity_id: t-e-4-action
+  - id: t-rel-4-need-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-4-need
+    to_entity_id: t-e-4-action
+  - id: t-rel-12-reality-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-12-reality
+    to_entity_id: t-e-12-action
+  - id: t-rel-12-need-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-12-need
+    to_entity_id: t-e-12-action
+  - id: t-rel-13-reality-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-13-reality
+    to_entity_id: t-e-13-action
+  - id: t-rel-14-reality-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-14-reality
+    to_entity_id: t-e-14-action
+  - id: t-rel-14-action-produces-effect
+    tree: transition
+    kind: produces
+    from_entity_ids:
+    - t-e-14-action
+    to_entity_id: t-e-14-effect
+  - id: t-rel-15-reality-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-15-reality
+    to_entity_id: t-e-15-action
+  - id: t-rel-17-reality-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-17-reality
+    to_entity_id: t-e-17-action
+  - id: t-rel-19-reality-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-19-reality
+    to_entity_id: t-e-19-action
+  - id: t-rel-18-reality-enables-need
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-18-reality
+    to_entity_id: t-e-18-need
+  - id: t-rel-20-reality-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-20-reality
+    to_entity_id: t-e-20-action
+  - id: t-rel-20-action-produces-effect
+    tree: transition
+    kind: produces
+    from_entity_ids:
+    - t-e-20-action
+    to_entity_id: t-e-20-effect
+  - id: t-rel-20-check-precedes-fix
+    tree: transition
+    kind: precedes
+    from_entity_ids:
+    - t-e-20-effect
+    to_entity_id: t-e-20-fix-action
+  - id: t-rel-23-reality-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-23-reality
+    to_entity_id: t-e-23-action
+  - id: t-rel-23-reality-enables-dr-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-23-reality
+    to_entity_id: t-e-23-dr-action
+  - id: t-rel-23-action-produces-effect
+    tree: transition
+    kind: produces
+    from_entity_ids:
+    - t-e-23-action
+    to_entity_id: t-e-23-effect
+  - id: t-rel-24-viewer-need-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-24-viewer-need
+    to_entity_id: t-e-24-action
+  - id: t-rel-24-reality-enables-links-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-24-reality
+    to_entity_id: t-e-24-links-action
+  - id: t-rel-24-links-need-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-24-links-need
+    to_entity_id: t-e-24-links-action
+  - id: t-rel-32-reality-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-32-reality
+    to_entity_id: t-e-32-action
+  - id: t-rel-32-need-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-32-need
+    to_entity_id: t-e-32-action
+  - id: t-rel-32-action-produces-effect
+    tree: transition
+    kind: produces
+    from_entity_ids:
+    - t-e-32-action
+    to_entity_id: t-e-32-effect
+  - id: t-rel-33-reality-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-33-reality
+    to_entity_id: t-e-33-action
+  - id: t-rel-33-need-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-33-need
+    to_entity_id: t-e-33-action
+  - id: t-rel-33-action-produces-effect
+    tree: transition
+    kind: produces
+    from_entity_ids:
+    - t-e-33-action
+    to_entity_id: t-e-33-effect
+  - id: t-rel-34-reality-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-34-reality
+    to_entity_id: t-e-34-action
+  - id: t-rel-34-need-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-34-need
+    to_entity_id: t-e-34-action
+  - id: t-rel-34-action-produces-effect
+    tree: transition
+    kind: produces
+    from_entity_ids:
+    - t-e-34-action
+    to_entity_id: t-e-34-effect
+  - id: t-rel-35-reality-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-35-reality
+    to_entity_id: t-e-35-action
+  - id: t-rel-35-need-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-35-need
+    to_entity_id: t-e-35-action
+  - id: t-rel-35-action-produces-effect
+    tree: transition
+    kind: produces
+    from_entity_ids:
+    - t-e-35-action
+    to_entity_id: t-e-35-effect
+  - id: t-rel-36-reality-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-36-reality
+    to_entity_id: t-e-36-action
+  - id: t-rel-36-need-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-36-need
+    to_entity_id: t-e-36-action
+  - id: t-rel-36-action-produces-effect
+    tree: transition
+    kind: produces
+    from_entity_ids:
+    - t-e-36-action
+    to_entity_id: t-e-36-effect
+  - id: t-rel-37-reality-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-37-reality
+    to_entity_id: t-e-37-action
+  - id: t-rel-37-need-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-37-need
+    to_entity_id: t-e-37-action
+  - id: t-rel-37-action-produces-effect
+    tree: transition
+    kind: produces
+    from_entity_ids:
+    - t-e-37-action
+    to_entity_id: t-e-37-effect
+  - id: t-rel-18-need-enables-36
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-18-need
+    to_entity_id: t-e-36-action
+  - id: t-rel-36-produces-18-effect
+    tree: transition
+    kind: produces
+    from_entity_ids:
+    - t-e-36-action
+    to_entity_id: t-e-18-effect
+  - id: t-rel-24-links-check-part-of-37
+    tree: transition
+    kind: implements
+    from_entity_ids:
+    - t-e-24-links-action
+    to_entity_id: t-e-37-action
+  - id: t-rel-32-precedes-35
+    tree: transition
+    kind: precedes
+    from_entity_ids:
+    - t-e-32-effect
+    to_entity_id: t-e-35-action
+  - id: t-rel-32-precedes-36
+    tree: transition
+    kind: precedes
+    from_entity_ids:
+    - t-e-32-effect
+    to_entity_id: t-e-36-action
+  - id: t-rel-32-precedes-37
+    tree: transition
+    kind: precedes
+    from_entity_ids:
+    - t-e-32-effect
+    to_entity_id: t-e-37-action
+  - id: t-rel-32-precedes-23-dr
+    tree: transition
+    kind: precedes
+    from_entity_ids:
+    - t-e-32-effect
+    to_entity_id: t-e-23-dr-action
+  - id: t-rel-33-precedes-35
+    tree: transition
+    kind: precedes
+    from_entity_ids:
+    - t-e-33-effect
+    to_entity_id: t-e-35-action
+  - id: t-rel-33-precedes-37
+    tree: transition
+    kind: precedes
+    from_entity_ids:
+    - t-e-33-effect
+    to_entity_id: t-e-37-action
+  - id: t-rel-34-precedes-37
+    tree: transition
+    kind: precedes
+    from_entity_ids:
+    - t-e-34-effect
+    to_entity_id: t-e-37-action
+  - id: t-rel-35-precedes-37
+    tree: transition
+    kind: precedes
+    from_entity_ids:
+    - t-e-35-effect
+    to_entity_id: t-e-37-action
+  - id: t-rel-36-precedes-37
+    tree: transition
+    kind: precedes
+    from_entity_ids:
+    - t-e-36-effect
+    to_entity_id: t-e-37-action
+  - id: t-rel-0443-reality-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-0443-reality
+    to_entity_id: t-e-0443-action
+  - id: t-rel-0443-action-produces-effect
+    tree: transition
+    kind: produces
+    from_entity_ids:
+    - t-e-0443-action
+    to_entity_id: t-e-0443-effect
+  - id: t-rel-0443-precedes-33
+    tree: transition
+    kind: precedes
+    from_entity_ids:
+    - t-e-0443-effect
+    to_entity_id: t-e-33-action
+  - id: t-rel-deploy-reality-enables-action
+    tree: transition
+    kind: enables
+    from_entity_ids:
+    - t-e-deploy-reality
+    to_entity_id: t-e-deploy-action
+  - id: t-rel-deploy-action-produces-effect
+    tree: transition
+    kind: produces
+    from_entity_ids:
+    - t-e-deploy-action
+    to_entity_id: t-e-deploy-effect
+  - id: t-rel-deploy-precedes-33
+    tree: transition
+    kind: precedes
+    from_entity_ids:
+    - t-e-deploy-effect
+    to_entity_id: t-e-33-action
+  - id: t-rel-admit-r3-produces-effect
+    tree: transition
+    kind: produces
+    from_entity_ids:
+    - t-e-admit-r3-action
+    to_entity_id: t-e-admit-r3-effect
+  - id: t-rel-0443-precedes-admit-r3
+    tree: transition
+    kind: precedes
+    from_entity_ids:
+    - t-e-0443-effect
+    to_entity_id: t-e-admit-r3-action
+  - id: t-rel-admit-r3-precedes-model-row
+    tree: transition
+    kind: precedes
+    from_entity_ids:
+    - t-e-admit-r3-effect
+    to_entity_id: t-e-model-row-action
+  - id: t-rel-e1-action-produces-effect
+    tree: transition
+    kind: produces
+    from_entity_ids:
+    - t-e-e1-action
+    to_entity_id: t-e-e1-effect
+  - id: t-rel-deploy-precedes-e1
+    tree: transition
+    kind: precedes
+    from_entity_ids:
+    - t-e-deploy-effect
+    to_entity_id: t-e-e1-action
+  - id: p-rel-io-attribution-overcomes
+    tree: prerequisite
+    kind: overcomes
+    from_entity_ids:
+    - p-e-io-attribution
+    to_entity_id: p-e-obst-attribution
+  - id: p-rel-io-attribution-for-objective
+    tree: prerequisite
+    kind: necessary_for
+    from_entity_ids:
+    - p-e-io-attribution
+    to_entity_id: p-e-next-work-chosen-from-dogfood
+  - id: p-rel-io-deployments-overcomes
+    tree: prerequisite
+    kind: overcomes
+    from_entity_ids:
+    - p-e-io-deployments
+    to_entity_id: p-e-obst-deployments
+  - id: p-rel-io-deployments-for-objective
+    tree: prerequisite
+    kind: necessary_for
+    from_entity_ids:
+    - p-e-io-deployments
+    to_entity_id: p-e-next-work-chosen-from-dogfood
+  - id: p-rel-io-test-database-overcomes
+    tree: prerequisite
+    kind: overcomes
+    from_entity_ids:
+    - p-e-io-test-database
+    to_entity_id: p-e-obst-test-database
+  - id: p-rel-io-test-database-for-objective
+    tree: prerequisite
+    kind: necessary_for
+    from_entity_ids:
+    - p-e-io-test-database
+    to_entity_id: p-e-next-work-chosen-from-dogfood
+  - id: p-rel-io-import-coverage-overcomes
+    tree: prerequisite
+    kind: overcomes
+    from_entity_ids:
+    - p-e-io-import-coverage
+    to_entity_id: p-e-obst-import-coverage
+  - id: p-rel-io-import-coverage-for-objective
+    tree: prerequisite
+    kind: necessary_for
+    from_entity_ids:
+    - p-e-io-import-coverage
+    to_entity_id: p-e-next-work-chosen-from-dogfood
+  - id: p-rel-io-versions-recorded-overcomes
+    tree: prerequisite
+    kind: overcomes
+    from_entity_ids:
+    - p-e-io-versions-recorded
+    to_entity_id: p-e-obst-versions-recorded
+  - id: p-rel-io-versions-recorded-for-objective
+    tree: prerequisite
+    kind: necessary_for
+    from_entity_ids:
+    - p-e-io-versions-recorded
+    to_entity_id: p-e-next-work-chosen-from-dogfood
+  - id: p-rel-io-commons-3-overcomes
+    tree: prerequisite
+    kind: overcomes
+    from_entity_ids:
+    - p-e-io-commons-3
+    to_entity_id: p-e-obst-commons-3
+  - id: p-rel-io-commons-3-for-objective
+    tree: prerequisite
+    kind: necessary_for
+    from_entity_ids:
+    - p-e-io-commons-3
+    to_entity_id: p-e-next-work-chosen-from-dogfood
+  - id: p-rel-io-adoption-honesty-overcomes
+    tree: prerequisite
+    kind: overcomes
+    from_entity_ids:
+    - p-e-io-adoption-honesty
+    to_entity_id: p-e-obst-adoption-honesty
+  - id: p-rel-io-adoption-honesty-for-objective
+    tree: prerequisite
+    kind: necessary_for
+    from_entity_ids:
+    - p-e-io-adoption-honesty
+    to_entity_id: p-e-next-work-chosen-from-dogfood
+  - id: f-rel-three-commons-cause-focus
+    tree: future_reality
+    kind: causes
+    from_entity_ids:
+    - f-e-three-commons
+    to_entity_id: f-e-progress-not-conflated
+  - id: f-rel-deterministic-standing-no-second-model
+    tree: future_reality
+    kind: causes
+    from_entity_ids:
+    - f-e-standing-deterministic
+    to_entity_id: f-e-prose-not-second-model
+  - id: f-rel-reservations-allow-action
+    tree: future_reality
+    kind: causes
+    from_entity_ids:
+    - f-e-standing-reservations
+    to_entity_id: f-e-action-without-false-consensus
+  - id: f-rel-e1-loop-produces-checkins
+    tree: future_reality
+    kind: causes
+    from_entity_ids:
+    - f-e-e1-closed-loop-on-own-work
+    to_entity_id: f-e-teams-record-checkins
+  - id: f-rel-projections-no-second-plan
+    tree: future_reality
+    kind: causes
+    from_entity_ids:
+    - f-e-work-items-are-projections
+    to_entity_id: f-e-trackers-not-competing-plan
+  - id: c1-rel-pre-a-for-req-a
+    tree: conflict
+    kind: necessary_for
+    from_entity_ids:
+    - c1-e-pre-a
+    to_entity_id: c1-e-req-a
+  - id: c1-rel-pre-b-for-req-b
+    tree: conflict
+    kind: necessary_for
+    from_entity_ids:
+    - c1-e-pre-b
+    to_entity_id: c1-e-req-b
+  - id: c1-rel-req-a-for-objective
+    tree: conflict
+    kind: necessary_for
+    from_entity_ids:
+    - c1-e-req-a
+    to_entity_id: c1-e-objective
+  - id: c1-rel-req-b-for-objective
+    tree: conflict
+    kind: necessary_for
+    from_entity_ids:
+    - c1-e-req-b
+    to_entity_id: c1-e-objective
+  - id: c1-rel-conflict
+    tree: conflict
+    kind: conflicts_with
+    from_entity_ids:
+    - c1-e-pre-a
+    to_entity_id: c1-e-pre-b
+  - id: c1-rel-injection-satisfies-a
+    tree: conflict
+    kind: satisfies
+    from_entity_ids:
+    - c1-e-injection
+    to_entity_id: c1-e-req-a
+  - id: c1-rel-injection-satisfies-b
+    tree: conflict
+    kind: satisfies
+    from_entity_ids:
+    - c1-e-injection
+    to_entity_id: c1-e-req-b
+  - id: c2-rel-pre-a-for-req-a
+    tree: conflict
+    kind: necessary_for
+    from_entity_ids:
+    - c2-e-pre-a
+    to_entity_id: c2-e-req-a
+  - id: c2-rel-pre-b-for-req-b
+    tree: conflict
+    kind: necessary_for
+    from_entity_ids:
+    - c2-e-pre-b
+    to_entity_id: c2-e-req-b
+  - id: c2-rel-req-a-for-objective
+    tree: conflict
+    kind: necessary_for
+    from_entity_ids:
+    - c2-e-req-a
+    to_entity_id: c2-e-objective
+  - id: c2-rel-req-b-for-objective
+    tree: conflict
+    kind: necessary_for
+    from_entity_ids:
+    - c2-e-req-b
+    to_entity_id: c2-e-objective
+  - id: c2-rel-conflict
+    tree: conflict
+    kind: conflicts_with
+    from_entity_ids:
+    - c2-e-pre-a
+    to_entity_id: c2-e-pre-b
+  - id: c2-rel-injection-satisfies-a
+    tree: conflict
+    kind: satisfies
+    from_entity_ids:
+    - c2-e-injection
+    to_entity_id: c2-e-req-a
+  - id: c2-rel-injection-satisfies-b
+    tree: conflict
+    kind: satisfies
+    from_entity_ids:
+    - c2-e-injection
+    to_entity_id: c2-e-req-b
+  - id: c3-rel-pre-a-for-req-a
+    tree: conflict
+    kind: necessary_for
+    from_entity_ids:
+    - c3-e-pre-a
+    to_entity_id: c3-e-req-a
+  - id: c3-rel-pre-b-for-req-b
+    tree: conflict
+    kind: necessary_for
+    from_entity_ids:
+    - c3-e-pre-b
+    to_entity_id: c3-e-req-b
+  - id: c3-rel-req-a-for-objective
+    tree: conflict
+    kind: necessary_for
+    from_entity_ids:
+    - c3-e-req-a
+    to_entity_id: c3-e-objective
+  - id: c3-rel-req-b-for-objective
+    tree: conflict
+    kind: necessary_for
+    from_entity_ids:
+    - c3-e-req-b
+    to_entity_id: c3-e-objective
+  - id: c3-rel-conflict
+    tree: conflict
+    kind: conflicts_with
+    from_entity_ids:
+    - c3-e-pre-a
+    to_entity_id: c3-e-pre-b
+  - id: c3-rel-injection-satisfies-a
+    tree: conflict
+    kind: satisfies
+    from_entity_ids:
+    - c3-e-injection
+    to_entity_id: c3-e-req-a
+  - id: c3-rel-injection-satisfies-b
+    tree: conflict
+    kind: satisfies
+    from_entity_ids:
+    - c3-e-injection
+    to_entity_id: c3-e-req-b
+  - id: c4-rel-pre-a-for-req-a
+    tree: conflict
+    kind: necessary_for
+    from_entity_ids:
+    - c4-e-pre-a
+    to_entity_id: c4-e-req-a
+  - id: c4-rel-pre-b-for-req-b
+    tree: conflict
+    kind: necessary_for
+    from_entity_ids:
+    - c4-e-pre-b
+    to_entity_id: c4-e-req-b
+  - id: c4-rel-req-a-for-objective
+    tree: conflict
+    kind: necessary_for
+    from_entity_ids:
+    - c4-e-req-a
+    to_entity_id: c4-e-objective
+  - id: c4-rel-req-b-for-objective
+    tree: conflict
+    kind: necessary_for
+    from_entity_ids:
+    - c4-e-req-b
+    to_entity_id: c4-e-objective
+  - id: c4-rel-conflict
+    tree: conflict
+    kind: conflicts_with
+    from_entity_ids:
+    - c4-e-pre-a
+    to_entity_id: c4-e-pre-b
+  - id: c4-rel-injection-satisfies-a
+    tree: conflict
+    kind: satisfies
+    from_entity_ids:
+    - c4-e-injection
+    to_entity_id: c4-e-req-a
+  - id: c4-rel-injection-satisfies-b
+    tree: conflict
+    kind: satisfies
+    from_entity_ids:
+    - c4-e-injection
+    to_entity_id: c4-e-req-b
+  - id: r-rel-0443-blocks-admission
+    tree: current_reality
+    kind: causes
+    from_entity_ids:
+    - r-e-newest-ratifier-unreachable
+    to_entity_id: r-e-r3-not-admitted
+  - id: r-rel-shared-db-costly-evidence
+    tree: current_reality
+    kind: causes
+    from_entity_ids:
+    - r-e-suite-shares-prod-db
+    to_entity_id: r-e-evidence-expensive
+  - id: r-rel-davids-gate-r3
+    tree: current_reality
+    kind: causes
+    from_entity_ids:
+    - r-e-everything-open-is-davids
+    to_entity_id: r-e-r3-not-admitted
+  - id: r-rel-davids-gate-deploy
+    tree: current_reality
+    kind: causes
+    from_entity_ids:
+    - r-e-everything-open-is-davids
+    to_entity_id: r-e-agent-turn-not-deployed
+  - id: r-rel-davids-gate-no-result
+    tree: current_reality
+    kind: contributes_to
+    from_entity_ids:
+    - r-e-everything-open-is-davids
+    to_entity_id: r-e-no-dogfood-result
+  - id: r-rel-validation-scarce-outpace
+    tree: current_reality
+    kind: contributes_to
+    from_entity_ids:
+    - r-e-validation-scarce
+    to_entity_id: r-e-assistants-outpace-ratifiers
+  - id: r-rel-not-using-reasons-in-chat
+    tree: current_reality
+    kind: causes
+    from_entity_ids:
+    - r-e-group-not-using-product
+    to_entity_id: r-e-group-reasons-in-chat
+  - id: r-rel-not-using-why-not-stated
+    tree: current_reality
+    kind: contributes_to
+    from_entity_ids:
+    - r-e-group-not-using-product
+    to_entity_id: r-e-issues-why-not-stated
+  - id: r-rel-no-step-no-result
+    tree: current_reality
+    kind: contributes_to
+    from_entity_ids:
+    - r-e-work-order-no-dogfood-step
+    to_entity_id: r-e-no-dogfood-result
+  - id: g-rel-tooling-cheap-enough-for-goal
+    tree: goal
+    kind: necessary_for
+    from_entity_ids:
+    - g-e-tooling-cheap-enough
+    to_entity_id: g-e-groups-think-and-act
+  - id: g-rel-communities-adopt-for-goal
+    tree: goal
+    kind: necessary_for
+    from_entity_ids:
+    - g-e-communities-adopt
+    to_entity_id: g-e-groups-think-and-act
+  - id: g-rel-2r-living-laboratory-for-goal
+    tree: goal
+    kind: necessary_for
+    from_entity_ids:
+    - g-e-2r-living-laboratory
+    to_entity_id: g-e-groups-think-and-act
+  - id: g-rel-first-customer-ourselves-for-goal
+    tree: goal
+    kind: necessary_for
+    from_entity_ids:
+    - g-e-first-customer-ourselves
+    to_entity_id: g-e-groups-think-and-act
+  - id: g-rel-improves-own-change-for-first-customer-ourselves
+    tree: goal
+    kind: necessary_for
+    from_entity_ids:
+    - g-e-improves-own-change
+    to_entity_id: g-e-first-customer-ourselves
+  - id: g-rel-protocol-governs-dev-for-first-customer-ourselves
+    tree: goal
+    kind: necessary_for
+    from_entity_ids:
+    - g-e-protocol-governs-dev
+    to_entity_id: g-e-first-customer-ourselves
+  - id: g-rel-cheaper-to-know-for-first-customer-ourselves
+    tree: goal
+    kind: necessary_for
+    from_entity_ids:
+    - g-e-cheaper-to-know
+    to_entity_id: g-e-first-customer-ourselves
+  - id: g-rel-no-clerical-burden-for-tooling-cheap-enough
+    tree: goal
+    kind: necessary_for
+    from_entity_ids:
+    - g-e-no-clerical-burden
+    to_entity_id: g-e-tooling-cheap-enough
+  - id: g-rel-rigour-without-vocabulary-for-tooling-cheap-enough
+    tree: goal
+    kind: necessary_for
+    from_entity_ids:
+    - g-e-rigour-without-vocabulary
+    to_entity_id: g-e-tooling-cheap-enough
+  - id: g-rel-memory-owned-by-none-for-tooling-cheap-enough
+    tree: goal
+    kind: necessary_for
+    from_entity_ids:
+    - g-e-memory-owned-by-none
+    to_entity_id: g-e-tooling-cheap-enough
+  - id: g-rel-work-is-not-change-for-tooling-cheap-enough
+    tree: goal
+    kind: necessary_for
+    from_entity_ids:
+    - g-e-work-is-not-change
+    to_entity_id: g-e-tooling-cheap-enough
+  - id: g-rel-ai-no-silent-authority-for-tooling-cheap-enough
+    tree: goal
+    kind: necessary_for
+    from_entity_ids:
+    - g-e-ai-no-silent-authority
+    to_entity_id: g-e-tooling-cheap-enough
+  - id: g-rel-judgeable-from-site-for-communities-adopt
+    tree: goal
+    kind: necessary_for
+    from_entity_ids:
+    - g-e-judgeable-from-site
+    to_entity_id: g-e-communities-adopt
+  - id: g-rel-2r-contributions-improve-for-2r-living-laboratory
+    tree: goal
+    kind: necessary_for
+    from_entity_ids:
+    - g-e-2r-contributions-improve
+    to_entity_id: g-e-2r-living-laboratory
+  - id: g-rel-self-improvement-basis-for-adoption
+    tree: goal
+    kind: necessary_for
+    from_entity_ids:
+    - g-e-improves-own-change
+    to_entity_id: g-e-communities-adopt
+  assumptions:
+  - id: r-asm-transcript-not-available
+    relationship_id: r-rel-not-using-reasons-in-chat
+    statement: "Reasoning buried in a transcript is not operationally available: nobody can query it, challenge it, or build on it."
+  - id: c1-asm-structure-needs-tree-thinkers
+    relationship_id: c1-rel-conflict
+    statement: Structure only arrives if the people contributing think in trees themselves.
+  - id: c2-asm-founder-use-is-not-value
+    relationship_id: c2-rel-conflict
+    statement: Founder dogfooding, check-in frequency and product usage do not establish incremental customer value.
+  - id: f-asm-e1-necessary-conditions
+    relationship_id: f-rel-e1-loop-produces-checkins
+    statement: At least one active space has an accepted transition action and a person responsible for checking its outcome.
+  assessments: []
+  changes: []
