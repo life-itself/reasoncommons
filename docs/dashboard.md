@@ -1,6 +1,6 @@
 ---
 title: Running the dashboard
-updated: 2026-09-04
+updated: 2026-09-06
 ---
 
 # Running the dashboard
@@ -17,7 +17,7 @@ sh skills/project-ltp/scripts/publish_dashboard.sh
 
 This builds the dashboard and copies it to the repo-root `dashboard/` directory that the site serves. The build first runs the configured throughput generators in `skills/project-ltp/dashboard/throughput.config.json`.
 
-For the bundled Second Renaissance projects, committed semantic changes to the canonical model at `ltp/ltp-model.yaml` are automatically attributed to the 2R Research Circle. Stable entity IDs created, updated, or deleted count once per mainline revision; formatting-only changes do not count. The generated weekly totals, operation breakdown, revision hashes, and affected IDs are written to `public/projects/2r-research-circle/throughput.yaml`. The initial model commit is a zero baseline rather than throughput.
+No bundled project currently defines a throughput track, so `throughput.config.json` holds an empty `tracks` list and the generator writes nothing. The 2R Research Circle project that used to carry one was removed on 2026-09-06: its model was the July 2026 `project-ltp` analysis, and the live model now lives in the Reason Commons space connected to the [2R-Research repository](https://github.com/Promise-Foundation/2R-Research), which exports it to that repository as `.reason-commons/<space-id>.ltp.json` and measures throughput from the record rather than from Git history. A track can be added back for any project whose model is versioned in this repository.
 
 ## Linking to a project or a tree
 

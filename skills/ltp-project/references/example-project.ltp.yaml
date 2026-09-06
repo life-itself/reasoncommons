@@ -1,0 +1,104 @@
+# A complete six-tree project, in the interchange format of §19.
+#
+# Listed last-tree-first on purpose: the order an import is agreed in is derived
+# from what each claim logically waits for, never from the order of this file.
+ltp:
+  schema_version: "1.0"
+  project_id: acme-delivery
+  title: Shorten the time from commitment to delivery
+
+  entities:
+    # Transition
+    - { id: t-reality, tree: transition, statement: Work is committed a quarter ahead. }
+    - { id: t-need, tree: transition, statement: Commitments must be made later. }
+    - { id: t-action, tree: transition, statement: Move commitment to the week of work. }
+    - { id: t-effect, tree: transition, statement: Commitments are made in the week of work. }
+
+    # Prerequisite
+    - { id: p-objective, tree: prerequisite, statement: Teams pull work weekly. }
+    - { id: p-obstacle, tree: prerequisite, statement: Quarterly budgets assume fixed scope. }
+    - { id: p-io, tree: prerequisite, statement: Budgets are agreed by capacity, not scope. }
+
+    # Future reality
+    - { id: f-injection, tree: future_reality, statement: Commit work only when capacity is free. }
+    - { id: f-effect, tree: future_reality, statement: Delivery time matches the work, not the queue. }
+
+    # Conflict
+    - { id: c-objective, tree: conflict, statement: Deliver predictably and quickly. }
+    - { id: c-requirement, tree: conflict, statement: Give the business a reliable date. }
+    - { id: c-prerequisite, tree: conflict, statement: Commit far ahead so a date exists. }
+    - { id: c-opposing, tree: conflict, statement: Commit late so the date is honest. }
+
+    # Current reality
+    - { id: r-observation, tree: current_reality, statement: Committed work waits 40 days before it starts. }
+    - { id: r-ude, tree: current_reality, statement: Delivery takes far longer than the work does. }
+    - { id: r-cause, tree: current_reality, statement: More work is accepted than can be started. }
+    - { id: r-root, tree: current_reality, statement: Commitment is made without regard to free capacity. }
+
+    # Goal
+    - { id: g-goal, tree: goal, statement: Committed work is delivered within two weeks. }
+    - { id: g-csf, tree: goal, statement: Work in progress stays below the team's capacity. }
+    - { id: g-nc, tree: goal, statement: Nothing is committed without free capacity. }
+
+  designations:
+    - { id: d-goal, entity_id: g-goal, role: goal }
+    - { id: d-csf, entity_id: g-csf, role: critical_success_factor, parent_designation_id: d-goal }
+    - { id: d-nc, entity_id: g-nc, role: necessary_condition, parent_designation_id: d-csf }
+
+    - { id: d-observation, entity_id: r-observation, role: observation }
+    - { id: d-ude, entity_id: r-ude, role: undesirable_effect }
+    - { id: d-cause, entity_id: r-cause, role: intermediate_cause }
+    - { id: d-root, entity_id: r-root, role: root_cause }
+
+    - { id: d-c-objective, entity_id: c-objective, role: cloud_objective }
+    - { id: d-c-requirement, entity_id: c-requirement, role: cloud_requirement, parent_designation_id: d-c-objective }
+    - { id: d-c-prerequisite, entity_id: c-prerequisite, role: cloud_prerequisite, parent_designation_id: d-c-requirement }
+
+    - { id: d-injection, entity_id: f-injection, role: injection }
+    - { id: d-desired, entity_id: f-effect, role: desired_effect }
+
+    - { id: d-p-objective, entity_id: p-objective, role: implementation_objective }
+    - { id: d-obstacle, entity_id: p-obstacle, role: obstacle }
+    - { id: d-io, entity_id: p-io, role: intermediate_objective }
+
+    - { id: d-t-reality, entity_id: t-reality, role: transition_existing_reality }
+    - { id: d-t-need, entity_id: t-need, role: transition_need }
+    - { id: d-t-action, entity_id: t-action, role: transition_action }
+    - { id: d-t-effect, entity_id: t-effect, role: transition_expected_effect }
+
+  relationships:
+    - { id: rel-nc, tree: goal, kind: necessary_for, from_entity_ids: [g-nc], to_entity_id: g-csf }
+    - { id: rel-csf, tree: goal, kind: necessary_for, from_entity_ids: [g-csf], to_entity_id: g-goal }
+
+    - { id: rel-root, tree: current_reality, kind: causes, from_entity_ids: [r-root], to_entity_id: r-cause }
+    - { id: rel-cause, tree: current_reality, kind: causes, from_entity_ids: [r-cause], to_entity_id: r-ude }
+
+    - { id: rel-conflict, tree: conflict, kind: conflicts_with, from_entity_ids: [c-prerequisite], to_entity_id: c-opposing }
+
+    - { id: rel-injection, tree: future_reality, kind: causes, from_entity_ids: [f-injection], to_entity_id: f-effect }
+
+    - { id: rel-overcomes, tree: prerequisite, kind: overcomes, from_entity_ids: [p-io], to_entity_id: p-obstacle }
+
+    - { id: rel-produces, tree: transition, kind: produces, from_entity_ids: [t-action], to_entity_id: t-effect }
+
+  assumptions:
+    - { id: a-root, relationship_id: rel-root, statement: Nothing else limits when work starts. }
+    - { id: a-conflict, relationship_id: rel-conflict, statement: A date given early is worth more than a date that holds. }
+    - { id: a-injection, relationship_id: rel-injection, statement: Capacity can be measured week to week. }
+
+  assessments:
+    - id: as-root
+      kind: critical_root_cause
+      tree: current_reality
+      statement: Committing without regard to capacity explains the delay we care about.
+      subject_ids: [d-root]
+      depends_on: [rel-root, rel-cause, d-ude]
+
+    - id: as-breaks
+      kind: breaks_conflict
+      tree: conflict
+      statement: Committing at the week of work gives an honest date and a reliable one.
+      subject_ids: [d-injection]
+      depends_on: [a-conflict, rel-conflict]
+
+  changes: []

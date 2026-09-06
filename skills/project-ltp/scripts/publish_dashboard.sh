@@ -13,14 +13,6 @@ publish_dir="$repo_root/dashboard"
 
 cd "$dashboard_src"
 
-# Refresh the published GitHub issue state for projects that track their
-# transition-tree actions as issues. This needs network and an authenticated
-# `gh`; when it is unavailable the site still publishes with the issue state
-# from the last successful refresh.
-if ! npm run sync:github; then
-  echo "warning: could not refresh GitHub issue state; publishing the committed ledger." >&2
-fi
-
 npm run build
 
 rm -rf "$publish_dir"

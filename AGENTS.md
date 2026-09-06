@@ -15,7 +15,7 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
 | Planning — streams, next actions | [GitHub issues](https://github.com/life-itself/reasoncommons/issues) |
 | Process spec + **gold-standard toy fixture** (tree, doc, annotations) | `claim-tree-annotation.md` |
 | Static animated demo of the 4-step vision | `claim-tree-annotation-demo/` |
-| AI skills (tree-gen, annotation-mapping, project-ltp) | `skills/` (see `skills/README.md`) |
+| AI skills (tree-gen, annotation-mapping, ltp-project; project-ltp is deprecated) | `skills/` (see `skills/README.md`) |
 | **Writing a scrolling visual explainer** — principles, patterns, worked teardown | `skills/scrollable-explainer/SKILL.md` — **read before drafting anything in `explainers/`** |
 | The explainer series itself | `explainers/` — see its layout under Conventions below |
 
@@ -27,13 +27,14 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
   mkdir -p .claude/skills
   ln -s ../../skills/tree-gen .claude/skills/tree-gen
   ln -s ../../skills/annotation-mapping .claude/skills/annotation-mapping
-  ln -s ../../skills/project-ltp .claude/skills/project-ltp
+  ln -s ../../skills/ltp-project .claude/skills/ltp-project
   ```
+  `skills/ltp-project/` is a byte-identical mirror of the canonical skill in `Promise-Foundation/reason-commons` (`.claude/skills/ltp-project/`); edit it there and copy it here, and `diff -r` the two before editing either.
 - **Codex skills** are discovered under `.agents/skills/`. The repository tracks
-  `.agents/skills/project-ltp` as a symlink to the same canonical
-  `skills/project-ltp/` directory, so edits stay shared between Claude Code and
-  Codex. In the Codex app, invoke it explicitly with `$project-ltp` or let its
-  description trigger it automatically. Restart Codex if a newly added skill
+  `.agents/skills/ltp-project` (and the deprecated `.agents/skills/project-ltp`)
+  as symlinks to the same `skills/<name>/` directories, so edits stay shared
+  between Claude Code and Codex. In the Codex app, invoke it explicitly with
+  `$ltp-project` or let its description trigger it automatically. Restart Codex if a newly added skill
   does not appear in the Skills sidebar.
 - **Toy example first.** Validate any AI skill against the gold data in `claim-tree-annotation.md` before touching real applications (e.g. Second Renaissance).
 - Keep `motivation.md` (why + SCQH) current; it's referenced from `README.md`. Plan-of-work tracking (streams, next actions) lives in GitHub issues, not a repo file.

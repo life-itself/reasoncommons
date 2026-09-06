@@ -1,0 +1,4 @@
+interface:
+  display_name: "LTP project file"
+  short_description: "Turn documents, repos, plans or notes into a Reason Commons ltp.yaml"
+  default_prompt: "Use $ltp-project to read this material into a candidate .ltp.yaml the Reason Commons importer accepts, with a report of every judgment call, and validate it before handing it over."

@@ -1,15 +1,15 @@
 ---
 name: project-ltp
 description: >
-  Analyze software projects, repositories, codebases, TODO lists, roadmaps,
-  implementation plans, issue exports, and project documentation using the
-  Logical Thinking Processes of the Theory of Constraints. Use this skill
-  whenever the user wants an evidence-backed Goal Tree, Current Reality Tree,
-  Evaporating Cloud, Future Reality Tree, Prerequisite Tree, Transition Tree,
-  system-constraint diagnosis, causal analysis, plan/code reconciliation, or
-  a recommendation for what to work on next. Also use when the user wants to
-  explore those trees or project throughput in the bundled local dashboard.
+  DEPRECATED on 2026-09-06 — do not use this skill to produce or revise an LTP
+  model. Use `ltp-project` instead: it writes the Reason Commons `*.ltp.yaml`
+  interchange file, the same document the app imports and exports as JSON or
+  YAML with history. What remains here is the read-only dashboard over legacy
+  `ltp-model.yaml` files and its build scripts.
 ---
+
+> **Deprecated 2026-09-06.** This skill's `ltp-model.yaml` format was a second, incompatible way of writing an LTP model, and a model written this way cannot be imported into Reason Commons or carry the version and event history the app keeps. Use [`../ltp-project/SKILL.md`](../ltp-project/SKILL.md) for any new or revised model; a space's export from the app (`.reason-commons/<space-id>.ltp.json` in a connected repository) is the canonical representation of a model with history. GitHub issue tracking for transition-tree actions is done by the Reason Commons GitHub projection, which writes and reconciles managed issues itself, so `scripts/sync_github_issues.py` is retired with it. The dashboard under `dashboard/` and `scripts/serve_dashboard.py` remain as a viewer for the legacy `ltp-model.yaml` files still bundled on the site until the dashboard can read the interchange format.
+
 
 # Project LTP
 

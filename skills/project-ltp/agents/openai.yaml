@@ -1,4 +1,4 @@
 interface:
-  display_name: "Project LTP"
-  short_description: "Find constraints and explore six LTP views locally"
-  default_prompt: "Use $project-ltp to analyze this project, build a dashboard-ready evidence-backed causal model, and recommend the single highest-leverage next action."
+  display_name: "Project LTP (deprecated)"
+  short_description: "Deprecated: use $ltp-project; this only serves the legacy dashboard"
+  default_prompt: "Do not use $project-ltp to build a model; use $ltp-project. Use this skill only to serve or publish the legacy read-only dashboard."

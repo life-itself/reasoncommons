@@ -7,9 +7,10 @@ alignment:
   generated_at: "2026-07-24T00:00:00Z"
   note: >
     Pilot run per skills/goal-alignment/SKILL.md. This is the AI-suggested
-    half of the IO-5 comparison the project's own 2r-research-circle model
-    calls for (skills/project-ltp/dashboard/public/projects/2r-research-circle/model.yaml,
-    entities OBS-5/IO-5). No entity here has been reviewed by a human with
+    half of the IO-5 comparison the 2R Research Circle model called for
+    (entities OBS-5/IO-5). That model left this dashboard on 2026-09-06 and
+    now lives in the Reason Commons space connected to the 2R-Research
+    repository. No entity here has been reviewed by a human with
     standing over the Second Renaissance tree; every suggestion is
     status: suggested until that review happens.
 
@@ -92,7 +93,8 @@ suggestions:
       No evidenced mechanism connects routine CRDT-library maintenance to
       any Second Renaissance entity. Included deliberately, not omitted,
       to show the matching doesn't manufacture significance where there
-      isn't any — see NBR-2 in the 2r-research-circle model.
+      isn't any — see NBR-2 in the 2R Research Circle model, now kept in the
+      Reason Commons space connected to the 2R-Research repository.
     confidence: low
     status: suggested
 

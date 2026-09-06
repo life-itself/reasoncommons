@@ -245,8 +245,15 @@ export function generateAll(configPath = DEFAULT_CONFIG, repoRoot) {
   const root =
     repoRoot ?? git(resolve(configPath, ".."), ["rev-parse", "--show-toplevel"]);
   const config = JSON.parse(readFileSync(configPath, "utf8"));
-  if (!Array.isArray(config.tracks) || config.tracks.length === 0) {
-    throw new Error("throughput.config.json needs at least one track");
+  if (!Array.isArray(config.tracks)) {
+    throw new Error("throughput.config.json needs a tracks array");
+  }
+  if (config.tracks.length === 0) {
+    // Since 2026-09-06 no bundled project defines a throughput track: the 2R
+    // Research Circle project, whose track this was, is now measured by the
+    // Reason Commons space connected to its repository rather than from Git.
+    console.log("no throughput tracks configured; nothing generated");
+    return [];
   }
   return config.tracks.map((track) => generateTrack(root, track));
 }
