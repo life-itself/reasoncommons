@@ -57,5 +57,4 @@ Related: [Promise Foundation](https://www.promise.foundation/how-it-works) · [P
 <input type="hidden" name="source" value="https://reasoncommons.com/" />
 <p className="rc-signup-note">Get future updates from Reason Commons.</p>
 </form>
-<p class="rc-cta-row"><a class="btn-secondary" href="https://github.com/life-itself/reasoncommons">GitHub</a> <a class="btn-secondary" href="https://github.com/life-itself/reasoncommons/issues">Issues &amp; discussion</a></p>
 </div>
