@@ -2,27 +2,27 @@
 
 ## Goal
 
-Let a Reason Commons visitor subscribe to occasional project updates from the landing page, using the shared Life Itself Mailer while presenting Reason Commons as the subscriber-facing publication.
+Let a Reason Commons visitor record interest in occasional future project updates from the landing page, using the shared Life Itself open-interest service while presenting Reason Commons as the subscriber-facing project.
 
 ## Scope
 
-The CRM repository will configure a reusable `life-itself` brand in the existing mailer Worker and a `reasoncommons-updates` list under that brand. The list will use double opt-in, record its own Twenty source, and send from `Reason Commons <updates@lifeitself.org>`, which must already be authorised in Resend. The existing deployed Worker, D1 database, secret names, and endpoint remain unchanged.
+The CRM repository's shared `POST /interest/v1` route records open interest in Twenty. It has no per-project registration, brand, sender, Resend configuration, target packet, or double opt-in. Its operator enables the route once with the shared Twenty credential and object mapping; Reason Commons then uses the stable lower-case target slug `reason-commons`. `reasoncommons@lifeitself.org` remains the intended sender for a later newsletter, but this form sends no email.
 
-The Reason Commons landing page will replace its email-capture placeholder with a native HTML form that posts to the Worker `subscribe` endpoint. It will send the visitor's email, the `reasoncommons-updates` subscription ID, and a redirect back to the Reason Commons site. The form will sit in the existing “Stay in touch” section, retain the low-volume promise, and use the site's existing button styling. The Worker will display its branded success/confirmation state if the redirect is not accepted.
+The Reason Commons landing page will replace its email-capture placeholder with a JSX-compatible native HTML form (camel-case React attributes and self-closing `<input />` elements). The form posts to `https://mailer.lifeitself.org/interest/v1` and sends only the visitor's email, `target=reason-commons`, `project=Reason Commons`, the visible consent promise `Get future updates from Reason Commons.`, consent-copy version `2026-09-09`, and the landing's canonical URL as `source`. It will sit in the existing “Stay in touch” section, retain the low-volume promise, use the site's existing button styling, and use a normal browser form post with no JavaScript, CORS, or redirect. The Worker will show its own confirmation page after a successful submission.
 
-The CRM documentation will add a concise site-signup onboarding route for both humans and agents. It will state that a shared Life Itself brand is infrastructure, while each site list supplies the public title, sender, welcome copy, consent setting, and Twenty source; it will link directly to the configuration files, verification commands, and form shape.
+The CRM client guide is the complete agent and human handoff for this form. The form's target, project, consent copy, and consent-copy version are recorded as consent evidence in Twenty; it does not create a Resend audience or an email-delivery entitlement.
 
 ## Data flow
 
 1. A visitor enters an email address on reasoncommons.com and submits the form.
-2. The browser posts `email`, `subscription=reasoncommons-updates`, and an allowed Reason Commons `redirect` URL to the existing Worker.
-3. The Worker records the pending subscription, emails a confirmation link, and applies the configured Twenty source after confirmation.
-4. After confirmation, the visitor is an active subscriber of Reason Commons updates and can unsubscribe through the Worker’s signed link.
+2. The browser posts the documented interest fields to `/interest/v1`.
+3. The Worker writes a Reason Commons interest and consent event to Twenty, with the visible consent copy, version, and source evidence.
+4. The Worker displays its confirmation page. No email is sent and no Resend state is created.
 
 ## Error handling and safety
 
-The existing Worker continues to validate malformed email input and reject redirects whose origins have not been allow-listed. The new list is double opt-in, so entering an address alone does not subscribe someone. Before release, tests must cover the new configuration and subscription path; deployment must use the documented malformed-input smoke check and a designated seed mailbox for confirmation and unsubscribe verification.
+The external form will send no extra tracking or profile fields and must treat an error page or network failure as a recoverable failure without exposing provider or CRM details. Before public release, the CRM operator must confirm that the globally enabled route is deployed; a malformed-input request must return `400`, not create an interest record, and a designated seed mailbox must prove the Twenty record. Tests must cover malformed input, successful interest recording, and unavailable-Twenty retry behaviour.
 
 ## Non-goals
 
-This work does not create a broadcast authoring/sending workflow, alter the Worker’s infrastructure, replace its database schema, or add account/login functionality to Reason Commons.
+This work does not create a newsletter, broadcast authoring/sending workflow, Resend audience, brand configuration, double opt-in flow, account/login functionality, or browser-side tracking.

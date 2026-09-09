@@ -47,6 +47,15 @@ Related: [Promise Foundation](https://www.promise.foundation/how-it-works) · [P
 <div class="rc-foot">
 <h2>Stay in touch</h2>
 <p>Occasional updates as the tooling and the writing develop — monthly at most.</p>
-<!-- TODO: replace with the real newsletter embed once a provider is chosen (see docs/plans/2026-09-01-site-positioning-and-landing-redesign.md and the open issue). Until then, GitHub is the way to follow along. -->
+<form className="rc-signup" method="post" action="https://mailer.lifeitself.org/interest/v1">
+<label htmlFor="reasoncommons-email">Email address</label>
+<div className="rc-signup-row"><input id="reasoncommons-email" type="email" name="email" autoComplete="email" required /> <button className="btn-secondary" type="submit">Get updates</button></div>
+<input type="hidden" name="target" value="reason-commons" />
+<input type="hidden" name="project" value="Reason Commons" />
+<input type="hidden" name="consent_copy" value="Get future updates from Reason Commons." />
+<input type="hidden" name="consent_copy_version" value="2026-09-09" />
+<input type="hidden" name="source" value="https://reasoncommons.com/" />
+<p className="rc-signup-note">Get future updates from Reason Commons.</p>
+</form>
 <p class="rc-cta-row"><a class="btn-secondary" href="https://github.com/life-itself/reasoncommons">GitHub</a> <a class="btn-secondary" href="https://github.com/life-itself/reasoncommons/issues">Issues &amp; discussion</a></p>
 </div>

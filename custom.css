@@ -228,9 +228,47 @@ a.rc-card:hover {
   margin-top: 0;
 }
 
+.rc-signup {
+  margin: 1rem 0;
+}
+
+.rc-signup label {
+  display: block;
+  font-weight: var(--font-weight-headings, 600);
+  margin-bottom: 0.4rem;
+}
+
+.rc-signup-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.rc-signup input[type="email"] {
+  flex: 1 1 15rem;
+  min-width: 0;
+  border: 1px solid var(--color-foreground-300, #b9b2a0);
+  border-radius: 0.35rem;
+  background: var(--color-background, #fff);
+  color: var(--color-foreground, #252113);
+  font: inherit;
+  padding: 0.5rem 0.65rem;
+}
+
+.rc-signup-note {
+  color: var(--color-foreground-600, #5f5947);
+  font-size: 0.86rem;
+  margin: 0.55rem 0 0;
+}
+
 @media (max-width: 44rem) {
   .rc-cta-row .btn-primary,
   .rc-cta-row .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .rc-signup-row .btn-secondary {
     width: 100%;
     justify-content: center;
   }
