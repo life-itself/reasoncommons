@@ -26,6 +26,9 @@ if [ "$(bd show "$EPIC" --json 2>/dev/null | grep -o '"status": *"[a-z_]*"' | he
   exit 0
 fi
 
+if [ -n "$(git status --porcelain)" ] && [ -z "$(git status --porcelain | grep -v ' \.beads/')" ]; then
+  log "committing leftover beads export"; git add .beads && git commit -q -m "chore(beads): sync export" && git push -q
+fi
 if [ -n "$(git status --porcelain)" ]; then log "working tree dirty; skipping"; git status --short; exit 0; fi
 git pull --rebase --quiet || { log "git pull failed; skipping"; exit 0; }
 
