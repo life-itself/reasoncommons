@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "reasoncommons",
+  "project_id": "97563739-1dc2-40b3-9470-9a02fddff10d"
+}
