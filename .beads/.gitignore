@@ -4,6 +4,7 @@ embeddeddolt/
 proxieddb/
 
 # Runtime files
+.auto-import-issues.jsonl
 bd.sock
 bd.sock.startlock
 sync-state.json
