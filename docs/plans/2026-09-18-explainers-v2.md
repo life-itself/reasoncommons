@@ -27,8 +27,8 @@ State lives in **beads** (`bd list --label explainers-v2`), not in this file. Th
 | Focus | Two things: the LTP basics (following the book more closely) and the Second Renaissance story. The other trilogy pieces are source material, not targets. |
 | Order | Finish the simple 2R piece → evaluate → settle the arc → scripts → form → build chapters → retire the long pieces. Don't do everything at once. |
 | Old pieces | Retire: move to `explainers/_archive/`, exclude from the site, redirect their URLs if Flowershow supports it. Not many readers yet, so URL stability doesn't matter. |
-| Autonomy | Sessions work directly on `main` in this checkout (nobody else is working here), check on the preview site (`fl . --yes`) before pushing. One gate: Rufus approves the arc. Everything else proceeds and is reviewed after. |
-| Scheduler | Local launchd job every 5.5h running `claude -p --model opus`. Each session works through ready beads until none are left, then exits. |
+| Autonomy | Cloud sessions work on the `claude/explainers-v2` branch and open a draft PR; Rufus merges to `main` (the live site). One gate: Rufus approves the arc (closed 2026-09-19). Everything else proceeds and is reviewed after. |
+| Scheduler | Scheduled cloud routines (one-shot, created with the `schedule` skill) running Opus. Each session works through ready beads until none are left, then exits. The original local launchd runner was dropped on 2026-09-19: it could not authenticate unattended. |
 
 ## Phases
 
@@ -45,20 +45,15 @@ The beads issues carry the detail and acceptance criteria. In order:
 
 ## Runner
 
-`scripts/explainer-loop/run.sh`, fired by `~/Library/LaunchAgents/com.lifeitself.reasoncommons-explainers.plist` (source copy in `scripts/explainer-loop/`) every 19,800 s.
+Scheduled cloud routines, named "Explainers v2 — continue (n of m)". Each one clones `origin/main`, installs `bd` (or reads `.beads/issues.jsonl` directly), and works through ready beads with [`session-prompt.md`](../../scripts/explainer-loop/session-prompt.md) plus the cloud differences in the routine's own prompt.
 
-- Exits at once, without starting Claude, if nothing is ready (`bd ready --label explainers-v2 --exclude-label human`) — so it idles cheaply while the arc waits on Rufus.
-- Refuses to run if the working tree is dirty or another session holds the lock.
-- Runs `claude -p --model opus --dangerously-skip-permissions` with [`session-prompt.md`](../../scripts/explainer-loop/session-prompt.md).
-- Unloads itself when the epic is closed.
-- Authenticates with a long-lived token from `claude setup-token`, read from `~/.config/reasoncommons-explainers/oauth-token` (mode 600, outside the repo). The interactive login can't be refreshed from launchd: on 2026-09-19 the first three runs all failed with "OAuth session expired and could not be refreshed". Auth failures and other non-zero exits raise a macOS notification.
-- Log: `~/Library/Logs/reasoncommons-explainers.log`. Only runs while the Mac is awake; a missed interval fires once on wake.
+- Work goes on the `claude/explainers-v2` branch with a draft PR to `main`; sessions never push to `main` and have no preview site.
+- A session stops at once if the only work left is behind a `human` gate.
+- List routines and check runs with the `RemoteTrigger` tool (`list`, `list_runs`, `get_run_log`), or on claude.ai; add more with the `schedule` skill.
 
-Controls:
+Useful checks:
 
 ```sh
-launchctl kickstart gui/$(id -u)/com.lifeitself.reasoncommons-explainers   # run now
-launchctl bootout gui/$(id -u)/com.lifeitself.reasoncommons-explainers     # stop
 bd ready --label explainers-v2                                              # what's next
 bd list --label human --status open                                         # waiting on Rufus
 ```
