@@ -4,16 +4,6 @@ description: The Second Renaissance sees more and more contribution, and almost 
 date: 2026-08-30
 ---
 
-The Second Renaissance is a movement for civilizational renewal. Its claim is that our crises are not separate cracks but symptoms of a paradigm in decline, and that a wiser one has to be consciously built rather than waited for.
-
-Many people are showing up to help, and its theory of change is meant to get better as more of them work on it. That only works if the contributions add up.
-
-Mostly they don't. Not for lack of intelligence, goodwill or ideas. **We are short of a way to integrate them.**
-
-*Every diagram here comes from the Second Renaissance's own analysis. There is also an earlier [scrolling version](../second-renaissance/index.html).*
-
-### A story
-
 Meet Maren, twenty-three, a student in Gothenburg. She joins the Second Renaissance forum and posts a comment:
 
 > The Second Renaissance theory of change seems to float free of any actual place. You should start in a neighbourhood somebody actually lives in.
@@ -27,6 +17,12 @@ A year later, nothing in the Second Renaissance theory of change is any differen
 
 ![The same column, a year on. Her post is now just another grey bar among the dated run; the replies have merged into it.](img/thread-lost.png)
 *The same column, a year on. Her post is just another grey bar in the run, and the theory of change hasn't moved.*
+
+The Second Renaissance is a movement for civilizational renewal. Its claim is that our crises are not separate cracks but symptoms of a paradigm in decline, and that a wiser one has to be consciously built rather than waited for. Many people are showing up to help, and its theory of change is meant to get better as more of them work on it. That only works if the contributions add up.
+
+Mostly they don't. Not for lack of intelligence, goodwill or ideas. **We are short of a way to integrate them.**
+
+*Every diagram here comes from the Second Renaissance's own analysis. There is also an earlier [scrolling version](../second-renaissance/index.html).*
 
 ### The same conversation, again and again
 
@@ -63,24 +59,19 @@ What if the thing we hold in common was not a set of documents or a pile of foru
 
 A tree helps you structure a thesis. Its root is the top claim. You break that into the sub-claims it depends on, and those into theirs, as far down as is useful. Now every claim has a location. You can also see how each claim supports the ones above it, because the links are claims too: *this one is necessary for that one*. What you are looking at is not just the conclusions but the reasoning behind them.
 
-Earlier this year we did this for the Second Renaissance, turning its written corpus into five linked diagrams: the goal, what is blocking it, the tensions underneath, the future we are aiming at, and the order of steps.
-
-![Five sheets of paper, labelled GOAL, REALITY, TENSIONS, FUTURE and SEQUENCE.](img/five-sheets.png)
-*The written corpus, sorted into five kinds of question.*
+Earlier this year we did this for the Second Renaissance, drawing its strategy out of its own written corpus.
 
 The goal tree says eight things have to be true at once for a Second Renaissance to be more than an idea: people understanding the crises as one crisis, small dense groups making the new way of living livable, and six more.
 
 ![One map: a goal box at the top — "a Second Renaissance that is more than an idea" — and eight condition boxes beneath it, joined by arrows labelled "is necessary for".](img/five-map.png)
 *A map where every claim, and every link between claims, is something you can point at.*
 
-None of this is new. It draws on decades-old ideas: Eliyahu Goldratt's Theory of Constraints, Barbara Minto's Pyramid Principle and the Logical Thinking Process. [The series](../) covers the method; nothing here depends on it.
-
 ### A destination for the disagreement
 
-Now Maren's suggestion has somewhere to go: a condition under one of those eight, at a spot you can put your finger on. Her disagreement also gets sharper. She doesn't have to reject the whole strategy to think it is wrong about how small, dense groups form. She can challenge one link and leave the rest standing.
+Now Maren's suggestion has somewhere to go. She is saying the tree is missing something: small, dense groups only make a new way of living livable if they are rooted in an actual place. That is a proposed new condition, hanging under one of the eight, and anyone can see exactly what it would change. Her disagreement gets sharper, too. She doesn't have to reject the whole strategy, only argue that one condition is missing.
 
-![The same map. Maren's card is now attached by a dashed line to the "small dense groups make it livable" condition, and the arrow running from that condition up to the goal is struck through with an orange cross.](img/destination.png)
-*Her comment lands on one condition. Her objection is to one link, not the whole strategy.*
+![The same map. The "small dense groups make it livable" condition is marked; a new dashed box, "rooted in an actual place", hangs beneath that condition, with Maren's card attached to it.](img/destination-v2.svg)
+*Her comment becomes a proposed missing condition under one of the eight, not an objection to the whole strategy.*
 
 ### The catch: structure takes effort
 
@@ -104,7 +95,7 @@ It looks like a dilemma: keep it accessible, or make it structured so it cumulat
 
 Both sides serve the same goal, so rather than pick one, look for the assumption that makes them look opposed: *the structure has to be put there by a person, probably the person contributing, at the moment they contribute.*
 
-**That assumption is no longer true in the age of AI.** That is what makes a reason commons possible.
+**That assumption is no longer true in the age of AI.** That is what makes a *reason commons* possible: a shared, living tree of a group's reasoning that anyone can add to just by talking.
 
 ### Separate the acts
 
@@ -119,7 +110,7 @@ Then a person or a small group, with AI assistance where it helps, decides what 
 
 The cost of contributing stays what it always was: writing on the forum. The filing still gets done, just not by the contributor, and AI is what makes that affordable.
 
-Her sentence ends up attached to the claim about small, dense groups, with her name on it. She hasn't joined a committee or learned a notation, and she has changed what the movement believes.
+Her sentence ends up attached to the claim about small, dense groups, with her name on it. She hasn't joined a committee or learned a notation, and her point is now part of what the movement is weighing, where anyone can find it.
 
 ### It works the other way, too
 
