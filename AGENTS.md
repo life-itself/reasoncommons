@@ -111,6 +111,7 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
   hash it. Markup updates promptly; it is the shared assets that lag, which is
   the worst case: the page looks wrong in a way that implicates your change.
   Filed upstream as https://github.com/flowershow/flowershow/issues/1363.
+- **Checking phone width.** Use `node scripts/phone-check.mjs <url> [out.png]`, which emulates a 375px device over the DevTools protocol and lists anything overflowing. Plain `chrome --headless --window-size=375,…` screenshots lie: headless Chrome won't size a window below 500px, so you get a cropped 500px layout with text apparently clipped at the right edge. That artefact is what GH #20 was first reported from.
 - Root docs are lowercase (`motivation.md`, `changelog.md`) so Flowershow gives them clean published URLs — except `README.md` and `AGENTS.md`, which keep their exact uppercase names because tooling (GitHub, Flowershow's homepage, Claude Code/Codex) looks them up by that literal filename.
 
 ## Changelog
