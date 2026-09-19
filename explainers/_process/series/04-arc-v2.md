@@ -66,14 +66,14 @@ Running example: Ashfield clinic (composite, arithmetic checkable). **The open q
 ## Where v2 departs from the critique
 
 - **A's title** "Why fixes don't stick" rather than "Find the constraint": Part two isn't about finding the constraint, and "why fixes don't stick" is already the site's tagline for this material.
-- **"Pull requests for discourse"** is not used in B5; it's the talk's line for a technical room. Rufus may want it back.
+- **"Pull requests for discourse"** is not used as framing in B5; it's the talk's line for a technical room. Rufus wants it back as a short aside (decision 4).
 
-## Decisions for Rufus (the gate)
+## Decisions (resolved by Rufus, 2026-09-19)
 
-1. **Approve the shape**: two series, B (5) first, A (8) second. Or say one series.
-2. **A's open question and running example**: the clinic, with the countersignature rule as the thread. OK?
-3. **B5's worked example uses Demo C's rehearsal contributions** (fictional contributors, real AI reading, real tree). OK to publish that, labelled as rehearsal material? Or wait for real, consented contributions?
-4. **Voice calls**: the gardeners close and "pull requests for discourse" are both out of B as drafted. Keep them out?
-5. **Titles**: "Where does the thinking go?" and "Why fixes don't stick".
+1. **Shape: approved.** Two series, B (5) first, A (8) second. Maren is an invention, so no one arriving from the forum will recognise her: B says so plainly when she is introduced (composite, invented), and never implies she is a real member.
+2. **A's open question and running example: approved as drafted.** The clinic, with the countersignature rule as the thread. Not independently checked by Rufus; a later review can revisit it.
+3. **B5 uses Demo C's rehearsal contributions: approved**, labelled as fictional contributors, a real AI reading, and a prototype. Real contributions from the talk exist and can replace them later; that does not block shipping.
+4. **Voice calls.** "Gardeners close" stays out of B. "Pull requests for discourse" comes back as a short aside in B5 (a line for technical readers, skippable), not as the framing.
+5. **Titles: keep** "Where does the thinking go?" and "Why fixes don't stick". Rufus thought about the talk's title and subtitle but is not attached; revisit if a better one turns up.
 
-Edit this file directly or add comments with `bd comments add reasoncommons-bnl.8 "..."`, then `bd close reasoncommons-bnl.8`.
+Standing instruction: keep shipping; review again later rather than holding chapter work.
