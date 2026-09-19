@@ -10,8 +10,7 @@ Many people are showing up to help, and its theory of change is meant to get bet
 
 Mostly they don't. Not for lack of intelligence, goodwill or ideas. **We are short of a way to integrate them.**
 
-> [!note]
-> This is a plain, non-scrolling version of **[The Forum Doesn't Remember, and Doesn't Cumulate](../second-renaissance/index.html)**, with the drawings held still. Every diagram comes from the Second Renaissance's own analysis.
+*Every diagram here comes from the Second Renaissance's own analysis. There is also an earlier [scrolling version](../second-renaissance/index.html).*
 
 ### A story
 

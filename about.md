@@ -17,7 +17,7 @@ There is no app to log into yet. There is a way of thinking, [a demo of the four
 
 1. **Tooling.** AI-assisted software for creating, maintaining, and evolving analytical trees — goal trees, issue trees, problem trees — with an annotation layer that connects ongoing discussion to the structure so the trees stay current.
 2. **Community adoption.** Working with communities already engaged in complex reasoning — AI governance, effective altruism, climate, social movements — to demonstrate the approach and develop the practices that make it stick.
-3. **Living laboratory.** Applying the system within [Second Renaissance](/explainers/second-renaissance/index.html), coordinating strategic thinking across an active community whose valuable contributions currently stay fragmented.
+3. **Living laboratory.** Applying the system within [Second Renaissance](/explainers/second-renaissance-plain/), coordinating strategic thinking across an active community whose valuable contributions currently stay fragmented.
 
 ## Who is behind it
 

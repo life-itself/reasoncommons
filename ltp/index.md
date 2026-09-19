@@ -28,7 +28,7 @@ The first trees are the **tree of change** — where the goal is, what is in the
 
 ## A worked example
 
-The pages in this section are a complete LTP analysis of one real organisation — the [Second Renaissance](/explainers/second-renaissance/index.html) movement — reconciled into a single evidence-backed model:
+The pages in this section are a complete LTP analysis of one real organisation — the [Second Renaissance](/explainers/second-renaissance-plain/) movement — reconciled into a single evidence-backed model:
 
 - [Project model](/ltp/01-project-model) — the five source documents rebuilt as one causal model
 - [Goal Tree](/ltp/02-goal-tree) · [Current Reality Tree](/ltp/03-current-reality-tree) · [Evaporating Cloud](/ltp/04-evaporating-clouds)

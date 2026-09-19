@@ -23,7 +23,7 @@ On the questions that matter most, we generate plenty of heat and not much light
 
 ## Start here — the three-part series
 
-The way in is a short scrolling series: [why fixes don't stick](/explainers/01-bottleneck/index.html), [why reasoning has to be made visible](/explainers/02-thinking-made-visible/index.html), and [the forty-year-old method that connects them](/explainers/03-five-shapes/index.html). Then watch the method meet a real movement's strategy in [The Forum Doesn't Remember](/explainers/second-renaissance/index.html). Full contents on [the series page](/explainers).
+The way in is a short scrolling series: [why fixes don't stick](/explainers/01-bottleneck/index.html), [why reasoning has to be made visible](/explainers/02-thinking-made-visible/index.html), and [the forty-year-old method that connects them](/explainers/03-five-shapes/index.html). Then watch the method meet a real movement's strategy in [The Forum Doesn't Remember](/explainers/second-renaissance-plain/). Full contents on [the series page](/explainers).
 
 <p class="rc-eyebrow">Demos &amp; experiments — rough, unfinished, illustrative</p>
 
