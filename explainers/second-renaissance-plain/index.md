@@ -91,7 +91,7 @@ Because structure takes effort. To move a single claim on those maps today you w
 
 Each step is reasonable. Together they are far too much, especially for new contributors, the people we most want to welcome. Maren is not going to do the filing. She has a dissertation to write.
 
-![A staircase of four steps in orange — "read five diagrams", "learn the grammar", "find your point", "defend it" — climbing toward the map, which sits small and out of reach at the top. A crowd of faint figures stands at the foot of the stairs, not climbing.](img/the-stack.png)
+![A staircase of four steps in orange — "read five diagrams", "learn the grammar", "find your point", "defend it" — climbing toward the map, which sits small and out of reach at the top. A crowd of faint figures stands at the foot of the stairs, not climbing.](img/the-stack-v2.svg)
 *Four reasonable requirements between a newcomer and the map. Most people stop at the bottom.*
 
 ### A dilemma, and the assumption behind it
