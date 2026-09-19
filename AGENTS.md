@@ -18,7 +18,7 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
 | AI skills (tree-gen, annotation-mapping, ltp-project; project-ltp is deprecated) | `skills/` (see `skills/README.md`) |
 | **Writing a scrolling visual explainer** — principles, patterns, worked teardown | `skills/scrollable-explainer/SKILL.md` — **read before drafting anything in `explainers/`** |
 | The explainer series itself | `explainers/` — see its layout under Conventions below |
-| **Explainers v2** — the rework into short illustrated chapters, run by scheduled cloud sessions | `docs/plans/2026-09-18-explainers-v2.md`; state in beads (`bd ready --label explainers-v2`); session prompt in `scripts/explainer-loop/session-prompt.md` |
+| **Explainers v2** — the rework into short illustrated chapters | `docs/plans/2026-09-18-explainers-v2.md`; state in beads (`bd ready --label explainers-v2`) |
 
 ## Conventions
 
