@@ -41,8 +41,28 @@ fi
 
 log "starting session: $ready ready, $inprog in progress"
 [ -n "${DRY_RUN:-}" ] && { log "DRY_RUN set; not launching claude"; exit 0; }
+notify() { osascript -e "display notification \"$1\" with title \"Reason Commons explainers\"" 2>/dev/null; }
+
+# launchd can't refresh the interactive OAuth login, so use a long-lived token
+# from `claude setup-token`, kept outside the repo.
+TOKEN_FILE="$HOME/.config/reasoncommons-explainers/oauth-token"
+if [ -r "$TOKEN_FILE" ]; then
+  export CLAUDE_CODE_OAUTH_TOKEN="$(tr -d '[:space:]' < "$TOKEN_FILE")"
+else
+  log "no token at $TOKEN_FILE; trying the interactive login"
+fi
+
+out=$(mktemp)
 claude -p "$(cat scripts/explainer-loop/session-prompt.md)" \
   --model opus \
   --effort high \
-  --dangerously-skip-permissions
-log "session ended (exit $?)"
+  --dangerously-skip-permissions 2>&1 | tee "$out"
+status=${PIPESTATUS[0]}
+log "session ended (exit $status)"
+if grep -qi "authenticate\|OAuth\|login" "$out" && [ "$status" != 0 ]; then
+  notify "Session failed to authenticate — run claude setup-token (see docs/plans/2026-09-18-explainers-v2.md)"
+elif [ "$status" != 0 ]; then
+  notify "Session exited with status $status — see ~/Library/Logs/reasoncommons-explainers.log"
+fi
+rm -f "$out"
+exit "$status"

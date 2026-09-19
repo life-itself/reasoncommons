@@ -51,6 +51,7 @@ The beads issues carry the detail and acceptance criteria. In order:
 - Refuses to run if the working tree is dirty or another session holds the lock.
 - Runs `claude -p --model opus --dangerously-skip-permissions` with [`session-prompt.md`](../../scripts/explainer-loop/session-prompt.md).
 - Unloads itself when the epic is closed.
+- Authenticates with a long-lived token from `claude setup-token`, read from `~/.config/reasoncommons-explainers/oauth-token` (mode 600, outside the repo). The interactive login can't be refreshed from launchd: on 2026-09-19 the first three runs all failed with "OAuth session expired and could not be refreshed". Auth failures and other non-zero exits raise a macOS notification.
 - Log: `~/Library/Logs/reasoncommons-explainers.log`. Only runs while the Mac is awake; a missed interval fires once on wake.
 
 Controls:
