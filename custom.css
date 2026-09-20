@@ -273,3 +273,334 @@ a.rc-card:hover {
     justify-content: center;
   }
 }
+
+/* =======================
+   ILLUSTRATED CHAPTERS  (explainers v2)
+   The chapter form: a static text column, SVG illustrations between the
+   paragraphs, a next-chapter card and an all-chapters list at the foot.
+   Spec and markup: skills/illustrated-chapters/SKILL.md.
+
+   Scoped .ch-*. Page chrome follows the theme variables so light and dark
+   mode work; everything *inside* a figure uses the fixed paper palette
+   below, because a drawing has to read the same in both.
+========================== */
+
+:root {
+  --ch-paper: #efe9dd;
+  --ch-ink: #31302d;
+  --ch-grey: #92908b;
+  --ch-rule: #d8d0bf;
+  --ch-mark: #c25c34;
+}
+
+.ch-eyebrow,
+.ch-lede,
+.ch-fig,
+.ch-next,
+.ch-toc,
+.ch-toc li {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Series · chapter n of m. Sits above the title. */
+.ch-eyebrow {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-foreground-500, #7a7360);
+  margin: 0 0 0.4rem;
+}
+
+.ch-eyebrow a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-foreground-100, #e4ded1);
+}
+
+.ch-eyebrow a:hover {
+  border-bottom-color: var(--ch-mark);
+}
+
+/* The chapter's key claim, in large type, directly under the title. One per
+   chapter — it is also the teaser used for this chapter everywhere else. */
+.ch-lede {
+  font-size: clamp(1.25rem, 1rem + 1.4vw, 1.6rem);
+  line-height: 1.35;
+  font-weight: 500;
+  margin: 0 0 1.75rem;
+  color: var(--color-foreground, #252113);
+}
+
+/* Illustrations. Always on paper, never on the page background, so a drawing
+   made of dark ink stays legible when the site is in dark mode. */
+.ch-fig {
+  margin: 2rem 0;
+  padding: 1rem 1rem 0.85rem;
+  background: var(--ch-paper);
+  border: 1px solid var(--ch-rule);
+  border-radius: 0.6rem;
+}
+
+.ch-fig svg,
+.ch-fig img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+/* A small-caps label, not a sentence: name what to look at. The prose either
+   side does the explaining. */
+.ch-fig figcaption {
+  margin: 0.75rem 0 0;
+  font-size: 0.7rem;
+  line-height: 1.45;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #6f6a60;
+}
+
+/* Ink inside a figure. Set on the svg so individual shapes inherit. */
+.ch-fig svg {
+  color: var(--ch-ink);
+}
+
+.ch-fig svg text {
+  font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
+  fill: var(--ch-ink);
+}
+
+/* The next-chapter card that closes every chapter. */
+.ch-next {
+  display: block;
+  margin: 3rem 0 1.5rem;
+  padding: 1.15rem 1.25rem 1.25rem;
+  border: 1px solid var(--color-foreground-100, #e4ded1);
+  border-radius: 0.7rem;
+  background-color: var(--color-background-surface, #f1ece3);
+  text-decoration: none !important;
+  color: inherit;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+a.ch-next:hover {
+  border-color: var(--ch-mark);
+  transform: translateY(-2px);
+}
+
+.ch-next-label {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-foreground-500, #7a7360);
+  margin-bottom: 0.45rem;
+}
+
+.ch-next-title {
+  display: block;
+  font-size: 1.12rem;
+  line-height: 1.25;
+  font-weight: var(--font-weight-headings, 600);
+  font-family: var(--font-heading, inherit);
+  color: var(--color-foreground, #252113);
+}
+
+.ch-next-title::before {
+  content: attr(data-n) " · ";
+  color: var(--ch-mark);
+}
+
+.ch-next-title::after {
+  content: " \2192";
+  color: var(--ch-mark);
+}
+
+.ch-next-teaser {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.93rem;
+  line-height: 1.5;
+  color: var(--color-foreground-600, #5f5947);
+}
+
+/* The chapter list: all-chapters at the foot of a chapter, and the series
+   index page. Numbers come from a counter, so the markup carries only the
+   title and the teaser. */
+.ch-toc {
+  counter-reset: ch;
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.ch-toc li {
+  counter-increment: ch;
+  display: flex;
+  gap: 0.85rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--color-foreground-100, #e4ded1);
+}
+
+.ch-toc li:last-child {
+  border-bottom: 1px solid var(--color-foreground-100, #e4ded1);
+}
+
+.ch-toc li::before {
+  content: counter(ch);
+  flex: 0 0 1.4rem;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  color: var(--ch-mark);
+}
+
+/* The row's content is one flex child, whether or not it is a link, so a
+   chapter with no page yet lays out like the rest. */
+.ch-toc a,
+.ch-toc-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.ch-toc-title {
+  display: block;
+  font-weight: var(--font-weight-headings, 600);
+  font-family: var(--font-heading, inherit);
+  line-height: 1.3;
+  color: var(--color-foreground, #252113);
+}
+
+.ch-toc a:hover .ch-toc-title {
+  color: var(--ch-mark);
+}
+
+.ch-toc-teaser {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-foreground-600, #5f5947);
+}
+
+/* The chapter you are on, and chapters that don't have a page yet. */
+.ch-toc li.is-current::before,
+.ch-toc li.is-todo::before {
+  color: var(--color-foreground-500, #7a7360);
+}
+
+.ch-toc li.is-current .ch-toc-title,
+.ch-toc li.is-todo .ch-toc-title {
+  color: var(--color-foreground-500, #7a7360);
+  font-weight: 400;
+}
+
+.ch-toc li.is-todo .ch-toc-teaser {
+  color: var(--color-foreground-500, #7a7360);
+}
+
+/* The series index page uses the same list, one size up. */
+.ch-toc-lg li {
+  padding: 0.95rem 0;
+}
+
+.ch-toc-lg li::before {
+  flex-basis: 1.7rem;
+  font-size: 1.1rem;
+}
+
+.ch-toc-lg .ch-toc-title {
+  font-size: 1.15rem;
+}
+
+.ch-toc-lg .ch-toc-teaser {
+  font-size: 0.95rem;
+}
+
+/* ---- Looping illustrations -------------------------------------------
+   CSS rather than SMIL, so prefers-reduced-motion is honoured: with motion
+   reduced, no rule applies and the SVG shows its authored state. Author that
+   state as the frame worth seeing on its own. Every animation in one figure
+   shares a duration and uses no delay, so the whole loop stays in step.
+----------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* A post arrives in a thread, gathers replies, and greys into the run. */
+  .ch-anim-thread .t-card {
+    animation: ch-t-card 14s ease-in-out infinite;
+  }
+
+  .ch-anim-thread .t-replies {
+    animation: ch-t-replies 14s ease-in-out infinite;
+  }
+
+  .ch-anim-thread .t-stack {
+    animation: ch-t-stack 14s ease-in-out infinite;
+  }
+
+  .ch-anim-thread .t-later {
+    animation: ch-t-later 14s ease-in-out infinite;
+  }
+
+  /* A tree grows from its root. */
+  .ch-anim-tree .g-root {
+    animation: ch-g-root 12s ease-in-out infinite;
+  }
+
+  .ch-anim-tree .g-level1 {
+    animation: ch-g-level1 12s ease-in-out infinite;
+  }
+
+  .ch-anim-tree .g-new {
+    animation: ch-g-new 12s ease-in-out infinite;
+  }
+}
+
+@keyframes ch-t-card {
+  0%, 4% { opacity: 0; }
+  10%, 54% { opacity: 1; stroke: var(--ch-mark); }
+  70%, 100% { opacity: 1; stroke: var(--ch-grey); }
+}
+
+@keyframes ch-t-replies {
+  0%, 12% { opacity: 0; transform: translateY(6px); }
+  30%, 100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ch-t-stack {
+  0%, 56% { transform: translateY(0); }
+  76%, 100% { transform: translateY(74px); }
+}
+
+@keyframes ch-t-later {
+  0%, 60% { opacity: 0; }
+  80%, 100% { opacity: 1; }
+}
+
+@keyframes ch-g-root {
+  0%, 6% { opacity: 0; }
+  16%, 100% { opacity: 1; }
+}
+
+@keyframes ch-g-level1 {
+  0%, 20% { opacity: 0; transform: translateY(-10px); }
+  40%, 100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ch-g-new {
+  0%, 44% { opacity: 0; transform: translateY(-8px); }
+  60%, 100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 30rem) {
+  .ch-fig {
+    padding: 0.7rem 0.7rem 0.6rem;
+  }
+
+  .ch-next {
+    padding: 1rem;
+  }
+}
