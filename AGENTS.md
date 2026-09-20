@@ -16,7 +16,8 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
 | Process spec + **gold-standard toy fixture** (tree, doc, annotations) | `claim-tree-annotation.md` |
 | Static animated demo of the 4-step vision | `claim-tree-annotation-demo/` |
 | AI skills (tree-gen, annotation-mapping, ltp-project; project-ltp is deprecated) | `skills/` (see `skills/README.md`) |
-| **Writing a scrolling visual explainer** — principles, patterns, worked teardown | `skills/scrollable-explainer/SKILL.md` — **read before drafting anything in `explainers/`** |
+| **Building an illustrated chapter** — the explainers-v2 form: page skeleton, figures, looping CSS animation, how to check it | `skills/illustrated-chapters/SKILL.md` — **read before building anything in `explainers/`** |
+| **Writing a scrolling visual explainer** — principles, patterns, worked teardown | `skills/scrollable-explainer/SKILL.md` — the retired long form; still the reference for script stage discipline |
 | The explainer series itself | `explainers/` — see its layout under Conventions below |
 | **Explainers v2** — the rework into short illustrated chapters | `docs/plans/2026-09-18-explainers-v2.md`; state in beads (`bd ready --label explainers-v2`) |
 
@@ -111,7 +112,8 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
   hash it. Markup updates promptly; it is the shared assets that lag, which is
   the worst case: the page looks wrong in a way that implicates your change.
   Filed upstream as https://github.com/flowershow/flowershow/issues/1363.
-- **Checking phone width.** Use `node scripts/phone-check.mjs <url> [out.png]`, which emulates a 375px device over the DevTools protocol and lists anything overflowing. Plain `chrome --headless --window-size=375,…` screenshots lie: headless Chrome won't size a window below 500px, so you get a cropped 500px layout with text apparently clipped at the right edge. That artefact is what GH #20 was first reported from.
+- **Checking phone width.** Use `node scripts/phone-check.mjs <url> [out.png]`, which emulates a 375px device over the DevTools protocol and lists anything overflowing. Plain `chrome --headless --window-size=375,…` screenshots lie: headless Chrome won't size a window below 500px, so you get a cropped 500px layout with text apparently clipped at the right edge. That artefact is what GH #20 was first reported from. It finds Chrome by `$CHROME` or the usual macOS and Linux paths, so it also runs in a cloud session.
+- **Checking a page with no preview site.** Cloud sessions have no `fl`, so `node scripts/render-preview.mjs <page.md> <out.html>` renders a repo Markdown page to standalone HTML — the theme's colour variables, a content column of about the right width, and this repo's `custom.css`. It needs `marked` on `NODE_PATH` (`npm i marked` into a scratch directory). It is an approximation, good enough for escaped markup, overflow and a component that looks wrong, and no substitute for `fl . --yes` before anything lands on `main`. Note that headless screenshots do not capture CSS animation state, so a looping figure comes back looking frozen; check a loop by sampling computed style instead (`skills/illustrated-chapters/SKILL.md` §6).
 - Root docs are lowercase (`motivation.md`, `changelog.md`) so Flowershow gives them clean published URLs — except `README.md` and `AGENTS.md`, which keep their exact uppercase names because tooling (GitHub, Flowershow's homepage, Claude Code/Codex) looks them up by that literal filename.
 
 ## Changelog

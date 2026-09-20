@@ -6,18 +6,28 @@
 //   node scripts/phone-check.mjs <url> [out.png] [width=375]
 //
 // Prints elements whose right edge passes the viewport; writes a full-page
-// screenshot if out.png is given. Needs Google Chrome and Node 22+.
+// screenshot if out.png is given. Needs Node 22+ and a Chrome or Chromium
+// binary: set $CHROME to point at one, otherwise the usual macOS and Linux
+// locations are tried, including the Playwright build that cloud sessions have.
 import { spawn } from 'node:child_process';
-import { writeFileSync, mkdtempSync } from 'node:fs';
+import { writeFileSync, mkdtempSync, existsSync, globSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 const [url, out, w = '375'] = process.argv.slice(2);
 if (!url) { console.error('usage: phone-check.mjs <url> [out.png] [width]'); process.exit(2); }
 const width = +w;
-const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+const CANDIDATES = [
+  process.env.CHROME,
+  '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+  '/usr/bin/google-chrome', '/usr/bin/chromium', '/usr/bin/chromium-browser',
+  ...globSync('/opt/pw-browsers/chromium*/chrome-linux/chrome'),
+];
+const CHROME = CANDIDATES.find(p => p && existsSync(p));
+if (!CHROME) { console.error('no Chrome found; set $CHROME to a Chrome or Chromium binary'); process.exit(2); }
 const port = 9300 + Math.floor(Math.random() * 500);
 const chrome = spawn(CHROME, ['--headless=new', '--disable-gpu', `--remote-debugging-port=${port}`,
+  ...(process.getuid && process.getuid() === 0 ? ['--no-sandbox'] : []),
   `--user-data-dir=${mkdtempSync(join(tmpdir(), 'phone-check-'))}`, 'about:blank'], { stdio: 'ignore' });
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
