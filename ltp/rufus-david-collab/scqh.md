@@ -27,6 +27,8 @@ Critical success factors:
 
 Money, from grants or revenue, is a means to resourcing, not the goal.
 
+The goal settles an older question: whether to write instructions for the Logical Thinking Process, build an app, or build a skill. The form matters less than getting people, Rufus and David included, to use it.
+
 ## Obstacles by success factor
 
 Agreed by Rufus and David on 2026-09-25.
@@ -38,7 +40,11 @@ Agreed by Rufus and David on 2026-09-25.
 
 Real users is the branch to work first: without evidence that anyone uses the tool, funding, product shape and the business question are all hard to settle.
 
-## Conflict: why don't we use it ourselves? (draft)
+## Root cause (Rufus)
+
+Rufus and David have not been clear on their goal, how they move towards it, or what is next. That has kept them building, redesigning and working out the thesis instead of trying the tool out. They also lack a shared, structured way of turning the goal into action: who ships what, what counts as progress, and what is next.
+
+## Conflict: why don't we use it ourselves?
 
 Objective: real people use the tool, with Rufus and David as the first users.
 
@@ -53,6 +59,27 @@ Prerequisite 2: Rufus and David keep building and redesigning the tool before re
 The two prerequisites conflict: Rufus and David spend their time either using the tool or building it, not both.
 
 Assumptions to test: the current app is too rough to use on real work; using a rough tool costs more than it teaches; building and using compete for the same limited time.
+
+Confirmed by Rufus on 2026-09-25.
+
+Resolution: do both. Rufus and David use the tool on their real work now while they keep building and redesigning it. The assumption that building and using compete for time does not hold, and the assumption that the app is too rough failed its first test: the first proper live use together, on 2026-09-25, found it good to use.
+
+## Fix (draft)
+
+Two changes:
+
+- Rufus and David use the tool on their real work now while they keep building and redesigning it.
+- Rufus and David run their collaboration through the tree: the goal, what is next, and who ships what.
+
+Expected effects:
+
+- Rufus and David are real, regular users of the tool.
+- What the tool must do is learned from real use rather than guessed.
+- Building effort goes where real use shows the tool falls short.
+- Rufus and David know what is next, who is shipping what, and what counts as progress.
+- The choice between instructions, an app and a skill is settled by what gets used.
+
+To check: does time spent using the tool slow building enough to matter?
 
 ## Hypothesis
 

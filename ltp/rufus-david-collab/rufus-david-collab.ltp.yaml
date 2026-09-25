@@ -131,89 +131,147 @@ ltp:
     - id: p-e-obj-resourced
       tree: prerequisite
       statement: The work is resourced beyond Rufus and David's spare time.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L34" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L36" }
     - id: p-e-only-own-time
       tree: prerequisite
       statement: Rufus and David have no resources for the work other than their own time.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L34" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L36" }
     - id: p-e-no-funding-applied
       tree: prerequisite
       statement: Rufus and David have not applied for funding.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L34" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L36" }
     - id: p-e-no-customers
       tree: prerequisite
       statement: Rufus and David have no customers.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L34" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L36" }
     - id: p-e-funding-model-undecided
       tree: prerequisite
       statement: Rufus and David have not decided whether to seek philanthropic funding or to create a startup.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L34" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L36" }
     - id: p-e-obj-real-users
       tree: prerequisite
       statement: Real people use the tool, with Second Renaissance as the first user and testbed.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L35" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L37" }
     - id: p-e-no-app-in-use
       tree: prerequisite
       statement: No app Rufus and David have built is actively used by anyone, including Rufus and David themselves.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L35" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L37" }
     - id: p-e-users-unknown
       tree: prerequisite
       statement: Rufus and David do not know who their users are.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L35" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L37" }
     - id: p-e-no-pmf
       tree: prerequisite
       statement: Rufus and David have seen no sign of product-market fit.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L35" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L37" }
     - id: p-e-obj-picturable-product
       tree: prerequisite
       statement: The product is something people can picture themselves using.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L36" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L38" }
     - id: p-e-product-unclear
       tree: prerequisite
       statement: Rufus and David are not clear what the product should look like.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L36" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L38" }
     - id: p-e-no-user-picture
       tree: prerequisite
       statement: Rufus and David cannot yet show an average user a clear picture of how they would use the product.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L36" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L38" }
     - id: p-e-obj-clear-agreement
       tree: prerequisite
       statement: Rufus and David have a clear agreement on ownership, licensing and commitment.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L37" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L39" }
     - id: p-e-business-undecided
       tree: prerequisite
       statement: Rufus and David have not decided between keeping the work as a Second Renaissance project and turning it into a business.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L37" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L39" }
     - id: p-e-licensing-unclear
       tree: prerequisite
       statement: The licensing status of software built around the Logical Thinking Process, such as Reason Commons, is unclear.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L37" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L39" }
     - id: p-e-ownership-undiscussed
       tree: prerequisite
       statement: Rufus and David have never discussed ownership or profit share.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L37" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L39" }
 
     # Conflict — draft cloud for the real-users branch (scqh.md)
     - id: c-e-objective
       tree: conflict
       statement: Real people use the tool, with Rufus and David as the first users.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L43" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L49" }
     - id: c-e-req-learn-by-using
       tree: conflict
       statement: Rufus and David learn what the tool must do by using it on their own real work.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L45" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L51" }
     - id: c-e-pre-use-now
       tree: conflict
       statement: Rufus and David use the current app on their real work now, rough as it is.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L47" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L53" }
     - id: c-e-req-good-enough
       tree: conflict
       statement: The tool Rufus and David put in front of people is good enough to be worth using.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L49" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L55" }
     - id: c-e-pre-build-first
       tree: conflict
       statement: Rufus and David keep building and redesigning the tool before relying on it.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L51" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L57" }
+
+    # Third pass — Rufus's notes on the conflict, and the drafted fix
+    - id: g-e-form-follows-use
+      tree: goal
+      statement: The form of the tool, whether written instructions, an app or a skill, is chosen by what people actually use.
+      provenance: { path: "drafts/rufus-2026-09-25-conflict-notes.md#L3" }
+    - id: r-e-unclear-path
+      tree: current_reality
+      statement: Rufus and David have not been clear on their goal, how they move towards it, or what is next.
+      provenance: { path: "drafts/rufus-2026-09-25-conflict-notes.md#L9" }
+    - id: r-e-keep-redesigning
+      tree: current_reality
+      statement: Rufus and David keep building, redesigning and working out the thesis instead of trying the tool out.
+      provenance: { path: "drafts/rufus-2026-09-25-conflict-notes.md#L5" }
+    - id: r-e-no-shared-actioning
+      tree: current_reality
+      statement: Rufus and David have no shared, structured way of turning the goal into action, covering who ships what, what counts as progress and what is next.
+      provenance: { path: "drafts/rufus-2026-09-25-conflict-notes.md#L7" }
+    - id: r-e-dogfood-worked
+      tree: current_reality
+      statement: Rufus and David used the tool properly together, live, for the first time on 2026-09-25 and found it good to use.
+      provenance: { path: "drafts/rufus-2026-09-25-conflict-notes.md#L9" }
+    - id: p-e-no-shared-actioning
+      tree: prerequisite
+      statement: Rufus and David have no shared, structured way of turning the goal into action, covering who ships what, what counts as progress and what is next.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L45" }
+    - id: c-e-injection-do-both
+      tree: conflict
+      statement: Rufus and David use the tool on their real work now while they keep building and redesigning it.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L65" }
+    - id: f-e-use-while-building
+      tree: future_reality
+      statement: Rufus and David use the tool on their real work now while they keep building and redesigning it.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L71" }
+    - id: f-e-run-collab-through-tree
+      tree: future_reality
+      statement: Rufus and David run their collaboration through the tree, covering the goal, what is next and who ships what.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L72" }
+    - id: f-e-regular-users
+      tree: future_reality
+      statement: Rufus and David are real, regular users of the tool.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L76" }
+    - id: f-e-learn-from-use
+      tree: future_reality
+      statement: What the tool must do is learned from real use rather than guessed.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L77" }
+    - id: f-e-build-targets-use
+      tree: future_reality
+      statement: Building effort goes where real use shows the tool falls short.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L78" }
+    - id: f-e-know-next
+      tree: future_reality
+      statement: Rufus and David know what is next, who is shipping what, and what counts as progress.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L79" }
+    - id: f-e-form-settled
+      tree: future_reality
+      statement: The choice between instructions, an app and a skill is settled by what gets used.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L80" }
 
   designations:
     - { id: g-d-ltp-used-in-world, entity_id: g-e-ltp-used-in-world, role: goal }
@@ -269,6 +327,21 @@ ltp:
     - { id: c-d-req-good-enough, entity_id: c-e-req-good-enough, role: cloud_requirement, parent_designation_id: c-d-objective }
     - { id: c-d-pre-build-first, entity_id: c-e-pre-build-first, role: cloud_prerequisite, parent_designation_id: c-d-req-good-enough }
 
+    - { id: g-d-form-follows-use, entity_id: g-e-form-follows-use, role: necessary_condition, parent_designation_id: g-d-real-users }
+    - { id: r-d-unclear-path, entity_id: r-e-unclear-path, role: root_cause }
+    - { id: r-d-keep-redesigning, entity_id: r-e-keep-redesigning, role: intermediate_cause }
+    - { id: r-d-no-shared-actioning, entity_id: r-e-no-shared-actioning, role: undesirable_effect }
+    - { id: r-d-dogfood-worked, entity_id: r-e-dogfood-worked, role: evidence }
+    - { id: p-d-no-shared-actioning, entity_id: p-e-no-shared-actioning, role: obstacle, parent_designation_id: p-d-obj-clear-agreement }
+    - { id: c-d-injection-do-both, entity_id: c-e-injection-do-both, role: injection }
+    - { id: f-d-use-while-building, entity_id: f-e-use-while-building, role: injection }
+    - { id: f-d-run-collab-through-tree, entity_id: f-e-run-collab-through-tree, role: injection }
+    - { id: f-d-regular-users, entity_id: f-e-regular-users, role: desired_effect }
+    - { id: f-d-learn-from-use, entity_id: f-e-learn-from-use, role: desired_effect }
+    - { id: f-d-build-targets-use, entity_id: f-e-build-targets-use, role: desired_effect }
+    - { id: f-d-know-next, entity_id: f-e-know-next, role: desired_effect }
+    - { id: f-d-form-settled, entity_id: f-e-form-settled, role: desired_effect }
+
   relationships:
     - { id: g-rel-resourced-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-resourced], to_entity_id: g-e-ltp-used-in-world }
     - { id: g-rel-users-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-real-users], to_entity_id: g-e-ltp-used-in-world }
@@ -278,10 +351,26 @@ ltp:
     - { id: g-rel-sr-for-users, tree: goal, kind: necessary_for, from_entity_ids: [g-e-ltp-used-in-sr], to_entity_id: g-e-real-users }
     - { id: c-rel-use-vs-build, tree: conflict, kind: conflicts_with, from_entity_ids: [c-e-pre-use-now], to_entity_id: c-e-pre-build-first }
     - { id: c-rel-build-for-good-enough, tree: conflict, kind: necessary_for, from_entity_ids: [c-e-pre-build-first], to_entity_id: c-e-req-good-enough }
+    - { id: g-rel-form-for-users, tree: goal, kind: necessary_for, from_entity_ids: [g-e-form-follows-use], to_entity_id: g-e-real-users }
+    - { id: r-rel-unclear-drives-redesigning, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-unclear-path], to_entity_id: r-e-keep-redesigning }
+    - { id: r-rel-redesigning-drives-no-use, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-keep-redesigning], to_entity_id: r-e-no-app-in-use }
+    - { id: r-rel-dogfood-challenges-no-use, tree: current_reality, kind: challenges, from_entity_ids: [r-e-dogfood-worked], to_entity_id: r-e-no-app-in-use }
+    - { id: f-rel-use-makes-users, tree: future_reality, kind: causes, from_entity_ids: [f-e-use-while-building], to_entity_id: f-e-regular-users }
+    - { id: f-rel-use-teaches, tree: future_reality, kind: causes, from_entity_ids: [f-e-use-while-building], to_entity_id: f-e-learn-from-use }
+    - { id: f-rel-learning-targets-build, tree: future_reality, kind: causes, from_entity_ids: [f-e-learn-from-use], to_entity_id: f-e-build-targets-use }
+    - { id: f-rel-learning-settles-form, tree: future_reality, kind: causes, from_entity_ids: [f-e-learn-from-use], to_entity_id: f-e-form-settled }
+    - { id: f-rel-tree-gives-next, tree: future_reality, kind: causes, from_entity_ids: [f-e-run-collab-through-tree], to_entity_id: f-e-know-next }
+    - { id: f-rel-tree-makes-users, tree: future_reality, kind: causes, from_entity_ids: [f-e-run-collab-through-tree], to_entity_id: f-e-regular-users }
 
   assumptions:
     - { id: c-asm-time-competes, relationship_id: c-rel-use-vs-build, statement: Building and using the tool compete for the same limited time. }
     - { id: c-asm-app-too-rough, relationship_id: c-rel-build-for-good-enough, statement: The current app is too rough to use on real work. }
     - { id: c-asm-rough-costs-more, relationship_id: c-rel-build-for-good-enough, statement: Using a rough tool costs Rufus and David more than it teaches them. }
-  assessments: []
+  assessments:
+    - id: c-as-do-both-breaks
+      kind: breaks_conflict
+      tree: conflict
+      statement: Using the tool on real work while building it meets both requirements without giving either up.
+      subject_ids: [c-d-injection-do-both]
+      depends_on: [c-asm-time-competes, c-rel-use-vs-build]
   changes: []

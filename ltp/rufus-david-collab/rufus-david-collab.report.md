@@ -13,9 +13,9 @@
 
 ## What the file claims
 
-49 propositions, 49 roles, 8 relationships, 3 assumptions, 0 assessments.
+63 propositions, 63 roles, 18 relationships, 3 assumptions, 1 assessment.
 
-goal 7 (1 `goal`, 4 `critical_success_factor`, 2 `necessary_condition`) · current_reality 21 (8 `observation`, 13 `undesirable_effect`) · prerequisite 16 (4 `implementation_objective`, 12 `obstacle`) · conflict 5 (1 `cloud_objective`, 2 `cloud_requirement`, 2 `cloud_prerequisite`)
+goal 8 · current_reality 25 · prerequisite 17 · conflict 6 · future_reality 7
 
 There is no conflict, future_reality, prerequisite or transition view. See **Not in this file**.
 
@@ -71,9 +71,20 @@ There are no relationships in current_reality. The conversation lists the situat
 
 ## Added 2026-09-25, second pass
 
-**Prerequisite view.** Rufus and David agreed the mapping of complications to success factors (`scqh.md` L30–39). Each success factor is restated as an `implementation_objective` and each complication as an `obstacle` under it, linked by `parent_designation_id`. "Goal undecided" is left out because it was settled when the goal was agreed. No `intermediate_objective`s yet.
+**Prerequisite view.** Rufus and David agreed the mapping of complications to success factors (`scqh.md` L32–41). Each success factor is restated as an `implementation_objective` and each complication as an `obstacle` under it, linked by `parent_designation_id`. "Goal undecided" is left out because it was settled when the goal was agreed. No `intermediate_objective`s yet.
 
-**Conflict view, draft.** The real-users cloud (`scqh.md` L41–55) is Claude's reading of why Rufus and David don't use their own tools. Both agreed to work the real-users branch first, but **the cloud itself is not yet confirmed.** Links: `c-rel-use-vs-build` (conflicts_with) and `c-rel-build-for-good-enough` (necessary_for), with three assumptions to test.
+**Conflict view, draft.** The real-users cloud (`scqh.md` L47–61) is Claude's reading of why Rufus and David don't use their own tools. Both agreed to work the real-users branch first, but **the cloud itself is not yet confirmed.** Links: `c-rel-use-vs-build` (conflicts_with) and `c-rel-build-for-good-enough` (necessary_for), with three assumptions to test.
+
+## Added 2026-09-25, third pass
+
+Source: Rufus's notes on the conflict, kept uncommitted in `drafts/rufus-2026-09-25-conflict-notes.md`, and the fix written up in `scqh.md` L63–82.
+
+- **Cloud confirmed and broken.** Rufus confirmed "use now vs build first" and resolved it with "we can do both". This is recorded as the injection `c-e-injection-do-both` plus a `breaks_conflict` assessment. The assessment is the author's own conclusion, not Claude's.
+- **First causal chain.** `r-e-unclear-path` (root cause) → `r-e-keep-redesigning` → `r-e-no-app-in-use`. Both links are `contributes_to`, not `causes`: the notes hedge ("I think", "does that mean…?").
+- **New complication.** No shared, structured way of turning the goal into action (who ships what, what counts as progress, what is next). It is added both as an undesirable effect in current_reality and as an obstacle under "clear agreement" in prerequisite.
+- **Evidence.** The first proper live use together (2026-09-25) found the tool good to use. It is recorded as `evidence` that `challenges` the claim that no app is in use. It also counts against the assumption `c-asm-app-too-rough`, but the format can't link a proposition to an assumption, so that stays here.
+- **Goal refinement.** The form of the tool (instructions, app or skill) follows use. Added as a necessary condition under real users.
+- **Fix drafted (future_reality).** Two injections, use-while-building and run-collab-through-tree, and five expected effects, linked with `causes`. These are Claude's drafting of the fix Rufus asked for, so check them. There is an open negative branch: does time spent using the tool slow building enough to matter?
 
 ## Deliberately omitted
 
