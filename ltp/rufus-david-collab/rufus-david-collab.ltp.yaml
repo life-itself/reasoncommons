@@ -1,0 +1,171 @@
+# Situation, complication and goal for the Rufus–David collaboration. Current
+# reality comes from the 2026-09-25 conversation (one dictated paragraph, so
+# every locator is #L1; the report quotes the fragment behind each). The goal
+# tree comes from scqh.md, where Rufus chose the question and goal the same day.
+ltp:
+  schema_version: "1.0"
+  project_id: rufus-david-collab
+  title: "Rufus and David's collaboration: situation and complication"
+
+  entities:
+    # Goal — agreed by Rufus and David on 2026-09-25 (scqh.md)
+    - id: g-e-ltp-used-in-world
+      tree: goal
+      statement: The Logical Thinking Process, made accessible through AI, is used in the world to help people think and act better together.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L19" }
+    - id: g-e-resourced
+      tree: goal
+      statement: The work is resourced beyond Rufus and David's spare time.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L23" }
+    - id: g-e-real-users
+      tree: goal
+      statement: Real people use the tool, with Second Renaissance as the first user and testbed.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L24" }
+    - id: g-e-picturable-product
+      tree: goal
+      statement: The product is something people can picture themselves using.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L25" }
+    - id: g-e-clear-agreement
+      tree: goal
+      statement: Rufus and David have a clear agreement on ownership, licensing and commitment.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L26" }
+    # Two candidate goals from the conversation, now means under the goal (scqh.md L28)
+    - id: g-e-make-money
+      tree: goal
+      statement: Rufus and David make money from the work.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+    - id: g-e-ltp-used-in-sr
+      tree: goal
+      statement: The Logical Thinking Process is used in Second Renaissance.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+
+    # Current reality — situation (what exists)
+    - id: r-e-three-months
+      tree: current_reality
+      statement: Rufus and David have collaborated for three months.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+    - id: r-e-shared-interest
+      tree: current_reality
+      statement: Rufus and David share a deep interest in thinking and collaborating better together.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+    - id: r-e-ltp-via-ai-thesis
+      tree: current_reality
+      statement: Rufus and David think that better thinking together relates to structured trees of thought and action built with the Logical Thinking Process and made accessible to organisations and individuals through AI.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+    - id: r-e-sites-built
+      tree: current_reality
+      statement: Rufus and David have built several websites and apps.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+    - id: r-e-why-now-narrative
+      tree: current_reality
+      statement: Rufus and David have a fairly good narrative for why AI makes this work possible now.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+    - id: r-e-funder-interest
+      tree: current_reality
+      statement: AI-supported thinking and sense-making is probably of significant interest to philanthropic funders such as Open Philanthropy or Coefficient Giving.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+    - id: r-e-mixed-reception
+      tree: current_reality
+      statement: A presentation of the work by Rufus and David received a mixed reception.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+    - id: r-e-goals-compatible
+      tree: current_reality
+      statement: The potential goals Rufus and David hold for the work do not conflict with one another.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+
+    # Current reality — complication (what is missing or undecided)
+    - id: r-e-only-own-time
+      tree: current_reality
+      statement: Rufus and David have no resources for the work other than their own time.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+    - id: r-e-no-funding-applied
+      tree: current_reality
+      statement: Rufus and David have not applied for funding.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+    - id: r-e-no-customers
+      tree: current_reality
+      statement: Rufus and David have no customers.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+    - id: r-e-funding-model-undecided
+      tree: current_reality
+      statement: Rufus and David have not decided whether to seek philanthropic funding or to create a startup.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+    - id: r-e-business-undecided
+      tree: current_reality
+      statement: Rufus and David do not know whether either of them wants to turn the work into a business rather than keep it as a project within Second Renaissance.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+    - id: r-e-goal-undecided
+      tree: current_reality
+      statement: Rufus and David have not decided which of several potential goals is their actual goal.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+    - id: r-e-licensing-unclear
+      tree: current_reality
+      statement: The licensing status of software built around the Logical Thinking Process, such as Reason Commons, is unclear.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+    - id: r-e-ownership-undiscussed
+      tree: current_reality
+      statement: Rufus and David have never discussed ownership or profit share.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+    - id: r-e-product-unclear
+      tree: current_reality
+      statement: Rufus and David are not clear what the product should look like.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+    - id: r-e-no-user-picture
+      tree: current_reality
+      statement: Rufus and David cannot yet show an average user a clear picture of how they would use the product.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+    - id: r-e-no-app-in-use
+      tree: current_reality
+      statement: No app Rufus and David have built is actively used by anyone, including Rufus and David themselves.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+    - id: r-e-users-unknown
+      tree: current_reality
+      statement: Rufus and David do not know who their users are.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+    - id: r-e-no-pmf
+      tree: current_reality
+      statement: Rufus and David have seen no sign of product-market fit.
+      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
+
+  designations:
+    - { id: g-d-ltp-used-in-world, entity_id: g-e-ltp-used-in-world, role: goal }
+    - { id: g-d-resourced, entity_id: g-e-resourced, role: critical_success_factor, parent_designation_id: g-d-ltp-used-in-world }
+    - { id: g-d-real-users, entity_id: g-e-real-users, role: critical_success_factor, parent_designation_id: g-d-ltp-used-in-world }
+    - { id: g-d-picturable-product, entity_id: g-e-picturable-product, role: critical_success_factor, parent_designation_id: g-d-ltp-used-in-world }
+    - { id: g-d-clear-agreement, entity_id: g-e-clear-agreement, role: critical_success_factor, parent_designation_id: g-d-ltp-used-in-world }
+    - { id: g-d-make-money, entity_id: g-e-make-money, role: necessary_condition, parent_designation_id: g-d-resourced }
+    - { id: g-d-ltp-used-in-sr, entity_id: g-e-ltp-used-in-sr, role: necessary_condition, parent_designation_id: g-d-real-users }
+
+    - { id: r-d-three-months, entity_id: r-e-three-months, role: observation }
+    - { id: r-d-shared-interest, entity_id: r-e-shared-interest, role: observation }
+    - { id: r-d-ltp-via-ai-thesis, entity_id: r-e-ltp-via-ai-thesis, role: observation }
+    - { id: r-d-sites-built, entity_id: r-e-sites-built, role: observation }
+    - { id: r-d-why-now-narrative, entity_id: r-e-why-now-narrative, role: observation }
+    - { id: r-d-funder-interest, entity_id: r-e-funder-interest, role: observation }
+    - { id: r-d-mixed-reception, entity_id: r-e-mixed-reception, role: observation }
+    - { id: r-d-goals-compatible, entity_id: r-e-goals-compatible, role: observation }
+
+    - { id: r-d-only-own-time, entity_id: r-e-only-own-time, role: undesirable_effect }
+    - { id: r-d-no-funding-applied, entity_id: r-e-no-funding-applied, role: undesirable_effect }
+    - { id: r-d-no-customers, entity_id: r-e-no-customers, role: undesirable_effect }
+    - { id: r-d-funding-model-undecided, entity_id: r-e-funding-model-undecided, role: undesirable_effect }
+    - { id: r-d-business-undecided, entity_id: r-e-business-undecided, role: undesirable_effect }
+    - { id: r-d-goal-undecided, entity_id: r-e-goal-undecided, role: undesirable_effect }
+    - { id: r-d-licensing-unclear, entity_id: r-e-licensing-unclear, role: undesirable_effect }
+    - { id: r-d-ownership-undiscussed, entity_id: r-e-ownership-undiscussed, role: undesirable_effect }
+    - { id: r-d-product-unclear, entity_id: r-e-product-unclear, role: undesirable_effect }
+    - { id: r-d-no-user-picture, entity_id: r-e-no-user-picture, role: undesirable_effect }
+    - { id: r-d-no-app-in-use, entity_id: r-e-no-app-in-use, role: undesirable_effect }
+    - { id: r-d-users-unknown, entity_id: r-e-users-unknown, role: undesirable_effect }
+    - { id: r-d-no-pmf, entity_id: r-e-no-pmf, role: undesirable_effect }
+
+  relationships:
+    - { id: g-rel-resourced-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-resourced], to_entity_id: g-e-ltp-used-in-world }
+    - { id: g-rel-users-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-real-users], to_entity_id: g-e-ltp-used-in-world }
+    - { id: g-rel-product-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-picturable-product], to_entity_id: g-e-ltp-used-in-world }
+    - { id: g-rel-agreement-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-clear-agreement], to_entity_id: g-e-ltp-used-in-world }
+    - { id: g-rel-money-for-resourced, tree: goal, kind: necessary_for, from_entity_ids: [g-e-make-money], to_entity_id: g-e-resourced }
+    - { id: g-rel-sr-for-users, tree: goal, kind: necessary_for, from_entity_ids: [g-e-ltp-used-in-sr], to_entity_id: g-e-real-users }
+  assumptions: []
+  assessments: []
+  changes: []
