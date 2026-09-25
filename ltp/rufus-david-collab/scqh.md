@@ -27,6 +27,33 @@ Critical success factors:
 
 Money, from grants or revenue, is a means to resourcing, not the goal.
 
+## Obstacles by success factor
+
+Agreed by Rufus and David on 2026-09-25.
+
+- Resourced: Rufus and David have only their own time; they have not applied for funding; they have no customers; they have not chosen between philanthropic funding and a startup.
+- Real users: no app they have built is in use, including by them; they do not know who their users are; they have seen no sign of product-market fit.
+- Picturable product: they are not clear what the product should look like; they cannot show a user a clear picture of how they would use it.
+- Clear agreement: they have not decided between a Second Renaissance project and a business; licensing of the software is unclear; they have never discussed ownership or profit share.
+
+Real users is the branch to work first: without evidence that anyone uses the tool, funding, product shape and the business question are all hard to settle.
+
+## Conflict: why don't we use it ourselves? (draft)
+
+Objective: real people use the tool, with Rufus and David as the first users.
+
+Requirement 1: Rufus and David learn what the tool must do by using it on their own real work.
+
+Prerequisite 1: Rufus and David use the current app on their real work now, rough as it is.
+
+Requirement 2: the tool Rufus and David put in front of people is good enough to be worth using.
+
+Prerequisite 2: Rufus and David keep building and redesigning the tool before relying on it.
+
+The two prerequisites conflict: Rufus and David spend their time either using the tool or building it, not both.
+
+Assumptions to test: the current app is too rough to use on real work; using a rough tool costs more than it teaches; building and using compete for the same limited time.
+
 ## Hypothesis
 
 Not yet drafted.

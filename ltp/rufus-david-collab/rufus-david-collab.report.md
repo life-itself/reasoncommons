@@ -13,9 +13,9 @@
 
 ## What the file claims
 
-28 propositions, 28 roles, 6 relationships, 0 assumptions, 0 assessments.
+49 propositions, 49 roles, 8 relationships, 3 assumptions, 0 assessments.
 
-goal 7 (1 `goal`, 4 `critical_success_factor`, 2 `necessary_condition`) · current_reality 21 (8 `observation`, 13 `undesirable_effect`)
+goal 7 (1 `goal`, 4 `critical_success_factor`, 2 `necessary_condition`) · current_reality 21 (8 `observation`, 13 `undesirable_effect`) · prerequisite 16 (4 `implementation_objective`, 12 `obstacle`) · conflict 5 (1 `cloud_objective`, 2 `cloud_requirement`, 2 `cloud_prerequisite`)
 
 There is no conflict, future_reality, prerequisite or transition view. See **Not in this file**.
 
@@ -69,6 +69,12 @@ Confidence: **high** means one sentence states it. **medium** means it was assem
 
 There are no relationships in current_reality. The conversation lists the situation and complications but never says one causes another ("X because Y"). Relationships that seem plausible, such as *no users known → no product-market fit*, would be inferences, so they are left out.
 
+## Added 2026-09-25, second pass
+
+**Prerequisite view.** Rufus and David agreed the mapping of complications to success factors (`scqh.md` L30–39). Each success factor is restated as an `implementation_objective` and each complication as an `obstacle` under it, linked by `parent_designation_id`. "Goal undecided" is left out because it was settled when the goal was agreed. No `intermediate_objective`s yet.
+
+**Conflict view, draft.** The real-users cloud (`scqh.md` L41–55) is Claude's reading of why Rufus and David don't use their own tools. Both agreed to work the real-users branch first, but **the cloud itself is not yet confirmed.** Links: `c-rel-use-vs-build` (conflicts_with) and `c-rel-build-for-good-enough` (necessary_for), with three assumptions to test.
+
 ## Deliberately omitted
 
 | what | why |
@@ -88,9 +94,12 @@ There are no relationships in current_reality. The conversation lists the situat
 3. **Mixed reception kept, resistance hypothesis left out.** This follows the line drawn in the conversation itself. If David's hypothesis should be tested, it belongs as a separate proposition marked `observation` with a note that it is disputed.
 4. **Situation items in current_reality as `observation`.** The strengths (collaboration, narrative, funder interest) are not unwanted, but current_reality is the only view for "what is so now". Alternative: leave them out of the file and keep them only in an SCQH write-up.
 
+5. **Obstacles hang off objectives via `parent_designation_id`, not a relationship.** No relationship kind fits "obstacle blocks objective" (`blocks` is legacy and refused). The parent link is the closest honest structure, but it has not been checked against the app's importer. If the importer rejects it, drop the parents and keep the grouping in `scqh.md`.
+6. **Is the dilemma really "use now vs build first"?** Alternatives: "explore many forms (several sites and apps) vs commit to one", or "build for Second Renaissance vs build for general users". Pick the one that matches why you actually don't use the tool.
+
 ## Validator output
 
-Not run (no app checkout). A local YAML check found: schema_version `"1.0"`, 28 entities, 28 designations, 6 relationships, 0 duplicate ids, 0 dangling references, all relationships single-source and within one view. Every role is valid for its view per `references/vocabulary.md`.
+Not run (no app checkout). A local YAML check found: schema_version `"1.0"`, 49 entities, 49 designations, 8 relationships, 3 assumptions, 0 duplicate ids, 0 dangling references, all relationships single-source and within one view. Every role is valid for its view per `references/vocabulary.md`.
 
 ## Not in this file
 

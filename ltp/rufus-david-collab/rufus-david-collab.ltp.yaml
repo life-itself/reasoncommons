@@ -127,6 +127,94 @@ ltp:
       statement: Rufus and David have seen no sign of product-market fit.
       provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
 
+    # Prerequisite — the agreed mapping of complications to success factors (scqh.md)
+    - id: p-e-obj-resourced
+      tree: prerequisite
+      statement: The work is resourced beyond Rufus and David's spare time.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L34" }
+    - id: p-e-only-own-time
+      tree: prerequisite
+      statement: Rufus and David have no resources for the work other than their own time.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L34" }
+    - id: p-e-no-funding-applied
+      tree: prerequisite
+      statement: Rufus and David have not applied for funding.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L34" }
+    - id: p-e-no-customers
+      tree: prerequisite
+      statement: Rufus and David have no customers.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L34" }
+    - id: p-e-funding-model-undecided
+      tree: prerequisite
+      statement: Rufus and David have not decided whether to seek philanthropic funding or to create a startup.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L34" }
+    - id: p-e-obj-real-users
+      tree: prerequisite
+      statement: Real people use the tool, with Second Renaissance as the first user and testbed.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L35" }
+    - id: p-e-no-app-in-use
+      tree: prerequisite
+      statement: No app Rufus and David have built is actively used by anyone, including Rufus and David themselves.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L35" }
+    - id: p-e-users-unknown
+      tree: prerequisite
+      statement: Rufus and David do not know who their users are.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L35" }
+    - id: p-e-no-pmf
+      tree: prerequisite
+      statement: Rufus and David have seen no sign of product-market fit.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L35" }
+    - id: p-e-obj-picturable-product
+      tree: prerequisite
+      statement: The product is something people can picture themselves using.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L36" }
+    - id: p-e-product-unclear
+      tree: prerequisite
+      statement: Rufus and David are not clear what the product should look like.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L36" }
+    - id: p-e-no-user-picture
+      tree: prerequisite
+      statement: Rufus and David cannot yet show an average user a clear picture of how they would use the product.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L36" }
+    - id: p-e-obj-clear-agreement
+      tree: prerequisite
+      statement: Rufus and David have a clear agreement on ownership, licensing and commitment.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L37" }
+    - id: p-e-business-undecided
+      tree: prerequisite
+      statement: Rufus and David have not decided between keeping the work as a Second Renaissance project and turning it into a business.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L37" }
+    - id: p-e-licensing-unclear
+      tree: prerequisite
+      statement: The licensing status of software built around the Logical Thinking Process, such as Reason Commons, is unclear.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L37" }
+    - id: p-e-ownership-undiscussed
+      tree: prerequisite
+      statement: Rufus and David have never discussed ownership or profit share.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L37" }
+
+    # Conflict — draft cloud for the real-users branch (scqh.md)
+    - id: c-e-objective
+      tree: conflict
+      statement: Real people use the tool, with Rufus and David as the first users.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L43" }
+    - id: c-e-req-learn-by-using
+      tree: conflict
+      statement: Rufus and David learn what the tool must do by using it on their own real work.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L45" }
+    - id: c-e-pre-use-now
+      tree: conflict
+      statement: Rufus and David use the current app on their real work now, rough as it is.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L47" }
+    - id: c-e-req-good-enough
+      tree: conflict
+      statement: The tool Rufus and David put in front of people is good enough to be worth using.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L49" }
+    - id: c-e-pre-build-first
+      tree: conflict
+      statement: Rufus and David keep building and redesigning the tool before relying on it.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L51" }
+
   designations:
     - { id: g-d-ltp-used-in-world, entity_id: g-e-ltp-used-in-world, role: goal }
     - { id: g-d-resourced, entity_id: g-e-resourced, role: critical_success_factor, parent_designation_id: g-d-ltp-used-in-world }
@@ -159,6 +247,28 @@ ltp:
     - { id: r-d-users-unknown, entity_id: r-e-users-unknown, role: undesirable_effect }
     - { id: r-d-no-pmf, entity_id: r-e-no-pmf, role: undesirable_effect }
 
+    - { id: p-d-obj-resourced, entity_id: p-e-obj-resourced, role: implementation_objective }
+    - { id: p-d-only-own-time, entity_id: p-e-only-own-time, role: obstacle, parent_designation_id: p-d-obj-resourced }
+    - { id: p-d-no-funding-applied, entity_id: p-e-no-funding-applied, role: obstacle, parent_designation_id: p-d-obj-resourced }
+    - { id: p-d-no-customers, entity_id: p-e-no-customers, role: obstacle, parent_designation_id: p-d-obj-resourced }
+    - { id: p-d-funding-model-undecided, entity_id: p-e-funding-model-undecided, role: obstacle, parent_designation_id: p-d-obj-resourced }
+    - { id: p-d-obj-real-users, entity_id: p-e-obj-real-users, role: implementation_objective }
+    - { id: p-d-no-app-in-use, entity_id: p-e-no-app-in-use, role: obstacle, parent_designation_id: p-d-obj-real-users }
+    - { id: p-d-users-unknown, entity_id: p-e-users-unknown, role: obstacle, parent_designation_id: p-d-obj-real-users }
+    - { id: p-d-no-pmf, entity_id: p-e-no-pmf, role: obstacle, parent_designation_id: p-d-obj-real-users }
+    - { id: p-d-obj-picturable-product, entity_id: p-e-obj-picturable-product, role: implementation_objective }
+    - { id: p-d-product-unclear, entity_id: p-e-product-unclear, role: obstacle, parent_designation_id: p-d-obj-picturable-product }
+    - { id: p-d-no-user-picture, entity_id: p-e-no-user-picture, role: obstacle, parent_designation_id: p-d-obj-picturable-product }
+    - { id: p-d-obj-clear-agreement, entity_id: p-e-obj-clear-agreement, role: implementation_objective }
+    - { id: p-d-business-undecided, entity_id: p-e-business-undecided, role: obstacle, parent_designation_id: p-d-obj-clear-agreement }
+    - { id: p-d-licensing-unclear, entity_id: p-e-licensing-unclear, role: obstacle, parent_designation_id: p-d-obj-clear-agreement }
+    - { id: p-d-ownership-undiscussed, entity_id: p-e-ownership-undiscussed, role: obstacle, parent_designation_id: p-d-obj-clear-agreement }
+    - { id: c-d-objective, entity_id: c-e-objective, role: cloud_objective }
+    - { id: c-d-req-learn-by-using, entity_id: c-e-req-learn-by-using, role: cloud_requirement, parent_designation_id: c-d-objective }
+    - { id: c-d-pre-use-now, entity_id: c-e-pre-use-now, role: cloud_prerequisite, parent_designation_id: c-d-req-learn-by-using }
+    - { id: c-d-req-good-enough, entity_id: c-e-req-good-enough, role: cloud_requirement, parent_designation_id: c-d-objective }
+    - { id: c-d-pre-build-first, entity_id: c-e-pre-build-first, role: cloud_prerequisite, parent_designation_id: c-d-req-good-enough }
+
   relationships:
     - { id: g-rel-resourced-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-resourced], to_entity_id: g-e-ltp-used-in-world }
     - { id: g-rel-users-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-real-users], to_entity_id: g-e-ltp-used-in-world }
@@ -166,6 +276,12 @@ ltp:
     - { id: g-rel-agreement-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-clear-agreement], to_entity_id: g-e-ltp-used-in-world }
     - { id: g-rel-money-for-resourced, tree: goal, kind: necessary_for, from_entity_ids: [g-e-make-money], to_entity_id: g-e-resourced }
     - { id: g-rel-sr-for-users, tree: goal, kind: necessary_for, from_entity_ids: [g-e-ltp-used-in-sr], to_entity_id: g-e-real-users }
-  assumptions: []
+    - { id: c-rel-use-vs-build, tree: conflict, kind: conflicts_with, from_entity_ids: [c-e-pre-use-now], to_entity_id: c-e-pre-build-first }
+    - { id: c-rel-build-for-good-enough, tree: conflict, kind: necessary_for, from_entity_ids: [c-e-pre-build-first], to_entity_id: c-e-req-good-enough }
+
+  assumptions:
+    - { id: c-asm-time-competes, relationship_id: c-rel-use-vs-build, statement: Building and using the tool compete for the same limited time. }
+    - { id: c-asm-app-too-rough, relationship_id: c-rel-build-for-good-enough, statement: The current app is too rough to use on real work. }
+    - { id: c-asm-rough-costs-more, relationship_id: c-rel-build-for-good-enough, statement: Using a rough tool costs Rufus and David more than it teaches them. }
   assessments: []
   changes: []
