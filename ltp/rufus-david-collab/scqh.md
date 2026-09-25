@@ -79,8 +79,17 @@ Expected effects:
 - Rufus and David know what is next, who is shipping what, and what counts as progress.
 - The choice between instructions, an app and a skill is settled by what gets used.
 
-To check: does time spent using the tool slow building enough to matter?
+To check: does time spent using the tool slow building enough to matter? Rufus and David: no (2026-09-25).
 
 ## Hypothesis
 
 Not yet drafted.
+
+## Next session: Saturday 2026-09-26
+
+Rufus and David meet on the tree to decide:
+
+1. The next 3–5 concrete actions, and who owns each.
+2. The next real piece of work, beyond this tree, to run through the tool.
+
+These become the transition view: actions in sequence, each with an owner and an expected effect. Pick up from this file, the [tree](rufus-david-collab.ltp.yaml) and the [report](rufus-david-collab.report.md), and beads issue `reasoncommons-02i`.

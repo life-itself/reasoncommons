@@ -84,7 +84,7 @@ Source: Rufus's notes on the conflict, kept uncommitted in `drafts/rufus-2026-09
 - **New complication.** No shared, structured way of turning the goal into action (who ships what, what counts as progress, what is next). It is added both as an undesirable effect in current_reality and as an obstacle under "clear agreement" in prerequisite.
 - **Evidence.** The first proper live use together (2026-09-25) found the tool good to use. It is recorded as `evidence` that `challenges` the claim that no app is in use. It also counts against the assumption `c-asm-app-too-rough`, but the format can't link a proposition to an assumption, so that stays here.
 - **Goal refinement.** The form of the tool (instructions, app or skill) follows use. Added as a necessary condition under real users.
-- **Fix drafted (future_reality).** Two injections, use-while-building and run-collab-through-tree, and five expected effects, linked with `causes`. These are Claude's drafting of the fix Rufus asked for, so check them. There is an open negative branch: does time spent using the tool slow building enough to matter?
+- **Fix drafted (future_reality).** Two injections, use-while-building and run-collab-through-tree, and five expected effects, linked with `causes`. These are Claude's drafting of the fix Rufus asked for, so check them. Negative branch checked: does time spent using the tool slow building enough to matter? Rufus and David: no.
 
 ## Deliberately omitted
 
