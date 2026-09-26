@@ -13,11 +13,11 @@
 
 ## What the file claims
 
-63 propositions, 63 roles, 18 relationships, 3 assumptions, 1 assessment.
+73 propositions, 73 roles, 24 relationships, 3 assumptions, 1 assessment.
 
-goal 8 · current_reality 25 · prerequisite 17 · conflict 6 · future_reality 7
+goal 8 · current_reality 25 · prerequisite 17 · conflict 6 · future_reality 7 · transition 10
 
-There is no conflict, future_reality, prerequisite or transition view. See **Not in this file**.
+All six views are now populated.
 
 ## Items
 
@@ -86,6 +86,18 @@ Source: Rufus's notes on the conflict, kept uncommitted in `drafts/rufus-2026-09
 - **Goal refinement.** The form of the tool (instructions, app or skill) follows use. Added as a necessary condition under real users.
 - **Fix drafted (future_reality).** Two injections, use-while-building and run-collab-through-tree, and five expected effects, linked with `causes`. These are Claude's drafting of the fix Rufus asked for, so check them. Negative branch checked: does time spent using the tool slow building enough to matter? Rufus and David: no.
 
+## Added 2026-09-26, fourth pass: transition
+
+Source: Rufus's choices on 2026-09-26, written up in `scqh.md` L88–99.
+
+- **Four actions, each with the effect it `produces`.** Run the funding decision (philanthropic funding or a startup) through the tool; run the ownership, licensing and commitment agreement through it; keep a friction log alongside; get one person outside Rufus and David to use it on a real question.
+- **Order (`precedes`).** Funding decision → agreement, and funding decision → outside user. The friction log runs alongside both, so it has no `precedes` link.
+- **Existing reality and need are Claude's drafting.** `t-e-used-once` restates the 2026-09-25 evidence. `t-e-need-repeated-use` restates the real-users success factor as the reason the actions matter. Neither is linked to an action, because no kind carries "this action starts from this situation". Check both.
+- **Owners not assigned.** The format has no owner field, so an owner would go into the action's statement ("Rufus runs…"). Every action currently reads "Rufus and David". Name owners and the statements will be updated.
+- **Left out on purpose:** a fixed weekly check-in (a good habit, but a fixed time is unlikely to hold), and the hypothesis (the tree carries the argument as LTP; a hypothesis is at most a summary for communication).
+- **Folder is public.** Rufus confirmed on 2026-09-26, which settles whether this folder may be on public GitHub. Raw transcripts stay uncommitted in `drafts/`.
+- **Cross-view links the format cannot carry.** The agreement action serves the clear-agreement success factor and its obstacles; the funding action serves the resourced branch's `p-e-funding-model-undecided`; the outside-user action serves real users. These are recorded here only.
+
 ## Deliberately omitted
 
 | what | why |
@@ -110,14 +122,12 @@ Source: Rufus's notes on the conflict, kept uncommitted in `drafts/rufus-2026-09
 
 ## Validator output
 
-Not run (no app checkout). A local YAML check found: schema_version `"1.0"`, 49 entities, 49 designations, 8 relationships, 3 assumptions, 0 duplicate ids, 0 dangling references, all relationships single-source and within one view. Every role is valid for its view per `references/vocabulary.md`.
+Not run (no app checkout). A local YAML check (2026-09-26) found: 73 entities, 73 designations, 24 relationships, 3 assumptions, 1 assessment, 0 duplicate ids, 0 dangling references, all relationships single-source and within one view. Every role is valid for its view per `references/vocabulary.md`.
 
 ## Not in this file
 
-- **No future_reality, prerequisite or transition views.** The conversation deliberately stayed on situation and complication and cut off solution talk.
-- **No relationships or assessments.** The conversation never says what causes what, and never draws a conclusion.
 - **The question has no slot in the format.** It lives in `scqh.md`: *What form should our collaboration take over the next six months, and what would make it worth continuing?* ("Six months" was a draft horizon, so confirm it.)
-- **No hypothesis yet.** That is the next step, and it would seed the conflict and future_reality views.
+- **No hypothesis.** Judged unnecessary on 2026-09-26 (see fourth pass).
 - **No links from complications to goal branches.** Each complication blocks a success factor (e.g. no users known → real users), but that link would cross views, which the importer refuses. The mapping belongs in a prerequisite tree, where the complications become obstacles.
 
 These are gaps in the source, not in the conversion.

@@ -5,7 +5,7 @@
 ltp:
   schema_version: "1.0"
   project_id: rufus-david-collab
-  title: "Rufus and David's collaboration: situation and complication"
+  title: "Rufus and David's collaboration"
 
   entities:
     # Goal — agreed by Rufus and David on 2026-09-25 (scqh.md)
@@ -273,6 +273,48 @@ ltp:
       statement: The choice between instructions, an app and a skill is settled by what gets used.
       provenance: { path: "ltp/rufus-david-collab/scqh.md#L80" }
 
+    # Transition — next actions, decided by Rufus on 2026-09-26 (scqh.md)
+    - id: t-e-used-once
+      tree: transition
+      statement: Rufus and David have used the tool properly on real work once, on this tree.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L65" }
+    - id: t-e-need-repeated-use
+      tree: transition
+      statement: Rufus and David need the tool used repeatedly on real work, including by people other than themselves.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L24" }
+    - id: t-e-act-funding-decision
+      tree: transition
+      statement: Rufus and David run the choice between philanthropic funding and a startup through the tool, from notes to a tree to a decision.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L94" }
+    - id: t-e-eff-funding-decided
+      tree: transition
+      statement: Rufus and David have decided between philanthropic funding and a startup, through a second real use of the tool.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L94" }
+    - id: t-e-act-agreement
+      tree: transition
+      statement: Rufus and David run their agreement on ownership, licensing and commitment through the tool.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L95" }
+    - id: t-e-eff-agreement
+      tree: transition
+      statement: Rufus and David have a clear agreement on ownership, licensing and commitment.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L95" }
+    - id: t-e-act-friction-log
+      tree: transition
+      statement: Rufus and David keep a friction log while using the tool, recording each place the tool falls short as a build item.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L96" }
+    - id: t-e-eff-build-targets-use
+      tree: transition
+      statement: Building effort goes where real use shows the tool falls short.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L96" }
+    - id: t-e-act-outside-user
+      tree: transition
+      statement: Rufus and David get one person outside the two of them, for example a Second Renaissance contributor, to use the tool on a real question.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L97" }
+    - id: t-e-eff-outside-user
+      tree: transition
+      statement: Someone other than Rufus and David has used the tool on a real question.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L97" }
+
   designations:
     - { id: g-d-ltp-used-in-world, entity_id: g-e-ltp-used-in-world, role: goal }
     - { id: g-d-resourced, entity_id: g-e-resourced, role: critical_success_factor, parent_designation_id: g-d-ltp-used-in-world }
@@ -342,6 +384,17 @@ ltp:
     - { id: f-d-know-next, entity_id: f-e-know-next, role: desired_effect }
     - { id: f-d-form-settled, entity_id: f-e-form-settled, role: desired_effect }
 
+    - { id: t-d-used-once, entity_id: t-e-used-once, role: transition_existing_reality }
+    - { id: t-d-need-repeated-use, entity_id: t-e-need-repeated-use, role: transition_need }
+    - { id: t-d-act-funding-decision, entity_id: t-e-act-funding-decision, role: transition_action }
+    - { id: t-d-eff-funding-decided, entity_id: t-e-eff-funding-decided, role: transition_expected_effect }
+    - { id: t-d-act-agreement, entity_id: t-e-act-agreement, role: transition_action }
+    - { id: t-d-eff-agreement, entity_id: t-e-eff-agreement, role: transition_expected_effect }
+    - { id: t-d-act-friction-log, entity_id: t-e-act-friction-log, role: transition_action }
+    - { id: t-d-eff-build-targets-use, entity_id: t-e-eff-build-targets-use, role: transition_expected_effect }
+    - { id: t-d-act-outside-user, entity_id: t-e-act-outside-user, role: transition_action }
+    - { id: t-d-eff-outside-user, entity_id: t-e-eff-outside-user, role: transition_expected_effect }
+
   relationships:
     - { id: g-rel-resourced-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-resourced], to_entity_id: g-e-ltp-used-in-world }
     - { id: g-rel-users-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-real-users], to_entity_id: g-e-ltp-used-in-world }
@@ -361,6 +414,13 @@ ltp:
     - { id: f-rel-learning-settles-form, tree: future_reality, kind: causes, from_entity_ids: [f-e-learn-from-use], to_entity_id: f-e-form-settled }
     - { id: f-rel-tree-gives-next, tree: future_reality, kind: causes, from_entity_ids: [f-e-run-collab-through-tree], to_entity_id: f-e-know-next }
     - { id: f-rel-tree-makes-users, tree: future_reality, kind: causes, from_entity_ids: [f-e-run-collab-through-tree], to_entity_id: f-e-regular-users }
+
+    - { id: t-rel-funding-produces, tree: transition, kind: produces, from_entity_ids: [t-e-act-funding-decision], to_entity_id: t-e-eff-funding-decided }
+    - { id: t-rel-agreement-produces, tree: transition, kind: produces, from_entity_ids: [t-e-act-agreement], to_entity_id: t-e-eff-agreement }
+    - { id: t-rel-friction-produces, tree: transition, kind: produces, from_entity_ids: [t-e-act-friction-log], to_entity_id: t-e-eff-build-targets-use }
+    - { id: t-rel-outside-produces, tree: transition, kind: produces, from_entity_ids: [t-e-act-outside-user], to_entity_id: t-e-eff-outside-user }
+    - { id: t-rel-funding-before-agreement, tree: transition, kind: precedes, from_entity_ids: [t-e-act-funding-decision], to_entity_id: t-e-act-agreement }
+    - { id: t-rel-funding-before-outside, tree: transition, kind: precedes, from_entity_ids: [t-e-act-funding-decision], to_entity_id: t-e-act-outside-user }
 
   assumptions:
     - { id: c-asm-time-competes, relationship_id: c-rel-use-vs-build, statement: Building and using the tool compete for the same limited time. }

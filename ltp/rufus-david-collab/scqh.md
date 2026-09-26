@@ -83,13 +83,17 @@ To check: does time spent using the tool slow building enough to matter? Rufus a
 
 ## Hypothesis
 
-Not yet drafted.
+Not drafted, and not needed: the tree carries the argument as LTP, and the SCQH frame was a way in. A hypothesis may still be worth writing later as a one-line summary for communicating the work.
 
-## Next session: Saturday 2026-09-26
+## Next actions
 
-Rufus and David meet on the tree to decide:
+Decided by Rufus on 2026-09-26.
 
-1. The next 3–5 concrete actions, and who owns each.
-2. The next real piece of work, beyond this tree, to run through the tool.
+Next real work to run through the tool: first the funding decision (philanthropic funding or a startup), then Rufus and David's agreement on ownership, licensing and commitment, which should be quick.
 
-These become the transition view: actions in sequence, each with an owner and an expected effect. Pick up from this file, the [tree](rufus-david-collab.ltp.yaml) and the [report](rufus-david-collab.report.md), and beads issue `reasoncommons-02i`.
+1. Rufus and David run the funding decision through the tool: notes in, then a tree, then a decision. Expected: a second real use of the tool, and a decision between philanthropic funding and a startup.
+2. Rufus and David run their agreement on ownership, licensing and commitment through the tool. Expected: a clear agreement on ownership, licensing and commitment.
+3. Alongside both, Rufus and David keep a friction log: each place the tool falls short becomes a build item. Expected: building effort goes where real use shows the tool falls short.
+4. After the funding decision, Rufus and David get one person outside the two of them to use the tool on a real question, for example a Second Renaissance contributor. Expected: someone other than Rufus and David has used the tool on a real question.
+
+A fixed weekly check-in on the tree was considered and left out for now. Checking in weekly is good, but a fixed time is unlikely to hold. Owners are not yet assigned.
