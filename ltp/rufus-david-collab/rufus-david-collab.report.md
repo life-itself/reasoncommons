@@ -13,9 +13,9 @@
 
 ## What the file claims
 
-79 propositions, 79 roles, 27 relationships, 7 assumptions, 1 assessment.
+83 propositions, 83 roles, 27 relationships, 8 assumptions, 1 assessment.
 
-goal 8 · current_reality 26 · prerequisite 17 · conflict 11 · future_reality 7 · transition 10
+goal 8 · current_reality 29 · prerequisite 17 · conflict 12 · future_reality 7 · transition 10
 
 All six views are now populated.
 
@@ -88,7 +88,7 @@ Source: Rufus's notes on the conflict, kept uncommitted in `drafts/rufus-2026-09
 
 ## Added 2026-09-26, fourth pass: transition
 
-Source: Rufus's choices on 2026-09-26, written up in `scqh.md` L110–121.
+Source: Rufus's choices on 2026-09-26, written up in `scqh.md` L112–123.
 
 - **Four actions, each with the effect it `produces`.** Run the funding decision (philanthropic funding or a startup) through the tool; run the ownership, licensing and commitment agreement through it; keep a friction log alongside; David (and perhaps Rufus) uses it on a real question of his own.
 - **Outside user became David's own question.** Rufus assigned David to use the tool on a real question of his own. That is real use beyond this collaboration, but not a user other than Rufus and David, so the real-users success factor still lacks that evidence. A genuine third-party user can return as a later action.
@@ -106,7 +106,11 @@ Source: Rufus, dictated on 2026-09-26, written up in `scqh.md` L67–87.
 - **Philanthropy versus startup is not a conflict.** Claude's first draft cloud set them against each other. Rufus rejected it: they want both, and do not want long-term dependence on philanthropy. That draft is not in the file. Rufus's view is recorded as `r-e-want-both-routes` (an observation of what Rufus wants; David's view is not yet recorded).
 - **The real cloud is near-term focus.** Grant applications now (for money soon) versus developing the product and finding customers now (for evidence that people value it). Structure as in the first cloud: `conflicts_with` between the two prerequisites, `necessary_for` from each prerequisite to its requirement. The requirements are Claude's wording of Rufus's stakes; check them.
 - **Four assumptions,** all from Rufus's words. The crux is `c-asm-grants-without-maturity`: if funders need a relatively mature product, the product comes first for both routes and the conflict mostly dissolves. Rufus noted a startup may need the same maturity.
-- **Not resolved.** No injection and no assessment yet. Rufus and David each have views on focus.
+- **Resolved (draft), same day.** Rufus, having discussed it with David: funders do not need a mature product, the story resonates with philanthropic funders, and selling to companies is hard. Injection `c-e-focus-injection`: focus now on philanthropic funding, or startup funding that works like it, led by a general-purpose story. Rufus's three judgments are `observation`s in current_reality, each worded "Rufus judges…".
+- **Why it breaks the cloud.** It holds `c-asm-grants-without-maturity` to be true, and a new assumption, `c-asm-customers-soon` (the product route brings paying customers soon), to be false. The format cannot link the judgments to the assumptions they bear on, so those links live here.
+- **No `breaks_conflict` assessment, on purpose.** That kind means neither need is given up, but this resolution defers requirement 2 (people show they value the product and pay for it) rather than meeting it. The real-use actions (1–4) keep some evidence of value coming. If Rufus and David judge that enough, add the assessment.
+- **Negative branch to check.** Focusing on philanthropic money now pulls against Rufus's wish not to depend on it in the long term (`r-e-want-both-routes`).
+- **Transcription reading.** "the effect of autism" read as "effective altruism", and "window story" as "why-now story".
 - **`p-e-funding-model-undecided` is now partly stale.** The route is decided (both); what remains undecided is priority. The obstacle is left as is until David confirms.
 - **Action 1 reworded** from "the choice between philanthropic funding and a startup" to the near-term focus choice, and marked in progress.
 

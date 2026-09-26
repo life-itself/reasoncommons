@@ -84,7 +84,9 @@ Assumptions to test: Rufus and David's time now is too limited to do both at onc
 
 The crux: do funders need a relatively mature product? If they do, the product comes first for both routes and the conflict mostly dissolves. If they fund on the team, the thesis and the why-now story, grant applications can start now. A startup may need the same maturity, so this is not yet clear.
 
-Not yet resolved: Rufus and David each have views on what to focus on now.
+Rufus, 2026-09-26, having discussed it with David: funders do not need a fairly mature product. Philanthropic funders fund a credible idea and a credible team, and the story of the work resonates in the philanthropic sphere, particularly effective altruism: the need for more analytical rigour, the power of AI, and the need for alignment, even in social movements. Selling to companies is harder. A company will ask why it should pay, and why it is not paying already; the tool needs teams to work, has to be sold at a senior level, and is not a small subscription an individual buys.
+
+Resolution (draft): Rufus and David focus now on philanthropic funding, or startup funding that works like it with few strings attached, led by a general-purpose philanthropic story. Funders will still ask about use and customers, but in a different way, so real use keeps mattering.
 
 ## Fix (draft)
 
