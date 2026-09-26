@@ -13,9 +13,9 @@
 
 ## What the file claims
 
-73 propositions, 73 roles, 24 relationships, 3 assumptions, 1 assessment.
+79 propositions, 79 roles, 27 relationships, 7 assumptions, 1 assessment.
 
-goal 8 · current_reality 25 · prerequisite 17 · conflict 6 · future_reality 7 · transition 10
+goal 8 · current_reality 26 · prerequisite 17 · conflict 11 · future_reality 7 · transition 10
 
 All six views are now populated.
 
@@ -77,7 +77,7 @@ There are no relationships in current_reality. The conversation lists the situat
 
 ## Added 2026-09-25, third pass
 
-Source: Rufus's notes on the conflict, kept uncommitted in `drafts/rufus-2026-09-25-conflict-notes.md`, and the fix written up in `scqh.md` L63–82.
+Source: Rufus's notes on the conflict, kept uncommitted in `drafts/rufus-2026-09-25-conflict-notes.md`, and the fix written up in `scqh.md` L63–65 and L89–104.
 
 - **Cloud confirmed and broken.** Rufus confirmed "use now vs build first" and resolved it with "we can do both". This is recorded as the injection `c-e-injection-do-both` plus a `breaks_conflict` assessment. The assessment is the author's own conclusion, not Claude's.
 - **First causal chain.** `r-e-unclear-path` (root cause) → `r-e-keep-redesigning` → `r-e-no-app-in-use`. Both links are `contributes_to`, not `causes`: the notes hedge ("I think", "does that mean…?").
@@ -88,7 +88,7 @@ Source: Rufus's notes on the conflict, kept uncommitted in `drafts/rufus-2026-09
 
 ## Added 2026-09-26, fourth pass: transition
 
-Source: Rufus's choices on 2026-09-26, written up in `scqh.md` L88–99.
+Source: Rufus's choices on 2026-09-26, written up in `scqh.md` L110–121.
 
 - **Four actions, each with the effect it `produces`.** Run the funding decision (philanthropic funding or a startup) through the tool; run the ownership, licensing and commitment agreement through it; keep a friction log alongside; David (and perhaps Rufus) uses it on a real question of his own.
 - **Outside user became David's own question.** Rufus assigned David to use the tool on a real question of his own. That is real use beyond this collaboration, but not a user other than Rufus and David, so the real-users success factor still lacks that evidence. A genuine third-party user can return as a later action.
@@ -98,6 +98,17 @@ Source: Rufus's choices on 2026-09-26, written up in `scqh.md` L88–99.
 - **Left out on purpose:** a fixed weekly check-in (a good habit, but a fixed time is unlikely to hold), and the hypothesis (the tree carries the argument as LTP; a hypothesis is at most a summary for communication).
 - **Folder is public.** Rufus confirmed on 2026-09-26, which settles whether this folder may be on public GitHub. Raw transcripts stay uncommitted in `drafts/`.
 - **Cross-view links the format cannot carry.** The agreement action serves the clear-agreement success factor and its obstacles; the funding action serves the resourced branch's `p-e-funding-model-undecided`; the own-question action serves real users. These are recorded here only.
+
+## Added 2026-09-26, fifth pass: near-term focus cloud
+
+Source: Rufus, dictated on 2026-09-26, written up in `scqh.md` L67–87.
+
+- **Philanthropy versus startup is not a conflict.** Claude's first draft cloud set them against each other. Rufus rejected it: they want both, and do not want long-term dependence on philanthropy. That draft is not in the file. Rufus's view is recorded as `r-e-want-both-routes` (an observation of what Rufus wants; David's view is not yet recorded).
+- **The real cloud is near-term focus.** Grant applications now (for money soon) versus developing the product and finding customers now (for evidence that people value it). Structure as in the first cloud: `conflicts_with` between the two prerequisites, `necessary_for` from each prerequisite to its requirement. The requirements are Claude's wording of Rufus's stakes; check them.
+- **Four assumptions,** all from Rufus's words. The crux is `c-asm-grants-without-maturity`: if funders need a relatively mature product, the product comes first for both routes and the conflict mostly dissolves. Rufus noted a startup may need the same maturity.
+- **Not resolved.** No injection and no assessment yet. Rufus and David each have views on focus.
+- **`p-e-funding-model-undecided` is now partly stale.** The route is decided (both); what remains undecided is priority. The obstacle is left as is until David confirms.
+- **Action 1 reworded** from "the choice between philanthropic funding and a startup" to the near-term focus choice, and marked in progress.
 
 ## Deliberately omitted
 

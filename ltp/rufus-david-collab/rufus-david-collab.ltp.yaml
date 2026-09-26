@@ -247,31 +247,31 @@ ltp:
     - id: f-e-use-while-building
       tree: future_reality
       statement: Rufus and David use the tool on their real work now while they keep building and redesigning it.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L71" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L93" }
     - id: f-e-run-collab-through-tree
       tree: future_reality
       statement: Rufus and David run their collaboration through the tree, covering the goal, what is next and who ships what.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L72" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L94" }
     - id: f-e-regular-users
       tree: future_reality
       statement: Rufus and David are real, regular users of the tool.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L76" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L98" }
     - id: f-e-learn-from-use
       tree: future_reality
       statement: What the tool must do is learned from real use rather than guessed.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L77" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L99" }
     - id: f-e-build-targets-use
       tree: future_reality
       statement: Building effort goes where real use shows the tool falls short.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L78" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L100" }
     - id: f-e-know-next
       tree: future_reality
       statement: Rufus and David know what is next, who is shipping what, and what counts as progress.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L79" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L101" }
     - id: f-e-form-settled
       tree: future_reality
       statement: The choice between instructions, an app and a skill is settled by what gets used.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L80" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L102" }
 
     # Transition — next actions, decided by Rufus on 2026-09-26 (scqh.md)
     - id: t-e-used-once
@@ -284,36 +284,62 @@ ltp:
       provenance: { path: "ltp/rufus-david-collab/scqh.md#L24" }
     - id: t-e-act-funding-decision
       tree: transition
-      statement: Rufus and David together run the choice between philanthropic funding and a startup through the tool, from notes to a tree to a decision.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L94" }
+      statement: Rufus and David together run the choice of near-term focus, grant applications or the product and customers, through the tool, from notes to a tree to a decision.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L116" }
     - id: t-e-eff-funding-decided
       tree: transition
-      statement: Rufus and David have decided between philanthropic funding and a startup, through a second real use of the tool.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L94" }
+      statement: Rufus and David have decided whether their time now goes into grant applications or into the product and customers, through a second real use of the tool.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L116" }
     - id: t-e-act-agreement
       tree: transition
       statement: Rufus and David together run their agreement on ownership, licensing and commitment through the tool.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L95" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L117" }
     - id: t-e-eff-agreement
       tree: transition
       statement: Rufus and David have a clear agreement on ownership, licensing and commitment.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L95" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L117" }
     - id: t-e-act-friction-log
       tree: transition
       statement: Rufus starts a friction log, and Rufus and David record in it each place the tool falls short while they use it.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L96" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L118" }
     - id: t-e-eff-build-targets-use
       tree: transition
       statement: Building effort goes where real use shows the tool falls short.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L96" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L118" }
     - id: t-e-act-own-question
       tree: transition
       statement: David uses the tool on a real question of his own outside this collaboration, and Rufus may do the same.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L97" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L119" }
     - id: t-e-eff-used-beyond-collab
       tree: transition
       statement: The tool has been used on a real question beyond this collaboration.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L97" }
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L119" }
+
+    # Second cloud — near-term focus, drafted from Rufus on 2026-09-26 (scqh.md)
+    - id: r-e-want-both-routes
+      tree: current_reality
+      statement: Rufus wants the work to have both a startup and philanthropic funding, and does not want it to depend on philanthropic funding in the long term.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L69" }
+    - id: c-e-focus-objective
+      tree: conflict
+      statement: The work is resourced beyond Rufus and David's spare time.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L71" }
+    - id: c-e-focus-req-money-soon
+      tree: conflict
+      statement: Money for the work arrives soon.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L73" }
+    - id: c-e-focus-pre-grants
+      tree: conflict
+      statement: Rufus and David spend their time now writing grant applications.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L75" }
+    - id: c-e-focus-req-valued
+      tree: conflict
+      statement: People show they value the product enough to use it and pay for it.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L77" }
+    - id: c-e-focus-pre-product
+      tree: conflict
+      statement: Rufus and David spend their time now developing the product fast and looking for customers.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L79" }
 
   designations:
     - { id: g-d-ltp-used-in-world, entity_id: g-e-ltp-used-in-world, role: goal }
@@ -395,6 +421,13 @@ ltp:
     - { id: t-d-act-own-question, entity_id: t-e-act-own-question, role: transition_action }
     - { id: t-d-eff-used-beyond-collab, entity_id: t-e-eff-used-beyond-collab, role: transition_expected_effect }
 
+    - { id: r-d-want-both-routes, entity_id: r-e-want-both-routes, role: observation }
+    - { id: c-d-focus-objective, entity_id: c-e-focus-objective, role: cloud_objective }
+    - { id: c-d-focus-req-money-soon, entity_id: c-e-focus-req-money-soon, role: cloud_requirement, parent_designation_id: c-d-focus-objective }
+    - { id: c-d-focus-pre-grants, entity_id: c-e-focus-pre-grants, role: cloud_prerequisite, parent_designation_id: c-d-focus-req-money-soon }
+    - { id: c-d-focus-req-valued, entity_id: c-e-focus-req-valued, role: cloud_requirement, parent_designation_id: c-d-focus-objective }
+    - { id: c-d-focus-pre-product, entity_id: c-e-focus-pre-product, role: cloud_prerequisite, parent_designation_id: c-d-focus-req-valued }
+
   relationships:
     - { id: g-rel-resourced-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-resourced], to_entity_id: g-e-ltp-used-in-world }
     - { id: g-rel-users-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-real-users], to_entity_id: g-e-ltp-used-in-world }
@@ -421,11 +454,18 @@ ltp:
     - { id: t-rel-own-question-produces, tree: transition, kind: produces, from_entity_ids: [t-e-act-own-question], to_entity_id: t-e-eff-used-beyond-collab }
     - { id: t-rel-funding-before-agreement, tree: transition, kind: precedes, from_entity_ids: [t-e-act-funding-decision], to_entity_id: t-e-act-agreement }
     - { id: t-rel-funding-before-own-question, tree: transition, kind: precedes, from_entity_ids: [t-e-act-funding-decision], to_entity_id: t-e-act-own-question }
+    - { id: c-rel-grants-vs-product, tree: conflict, kind: conflicts_with, from_entity_ids: [c-e-focus-pre-grants], to_entity_id: c-e-focus-pre-product }
+    - { id: c-rel-grants-for-money, tree: conflict, kind: necessary_for, from_entity_ids: [c-e-focus-pre-grants], to_entity_id: c-e-focus-req-money-soon }
+    - { id: c-rel-product-for-valued, tree: conflict, kind: necessary_for, from_entity_ids: [c-e-focus-pre-product], to_entity_id: c-e-focus-req-valued }
 
   assumptions:
     - { id: c-asm-time-competes, relationship_id: c-rel-use-vs-build, statement: Building and using the tool compete for the same limited time. }
     - { id: c-asm-app-too-rough, relationship_id: c-rel-build-for-good-enough, statement: The current app is too rough to use on real work. }
     - { id: c-asm-rough-costs-more, relationship_id: c-rel-build-for-good-enough, statement: Using a rough tool costs Rufus and David more than it teaches them. }
+    - { id: c-asm-no-time-for-both, relationship_id: c-rel-grants-vs-product, statement: "Rufus and David's time now is too limited to write grant applications and develop the product at once." }
+    - { id: c-asm-grants-faster, relationship_id: c-rel-grants-for-money, statement: Grant money can arrive sooner than revenue. }
+    - { id: c-asm-grants-without-maturity, relationship_id: c-rel-grants-for-money, statement: Funders give grants without a relatively mature product. }
+    - { id: c-asm-life-itself-hosts, relationship_id: c-rel-grants-for-money, statement: Life Itself can host a grant application until a company exists. }
   assessments:
     - id: c-as-do-both-breaks
       kind: breaks_conflict

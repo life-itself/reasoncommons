@@ -64,6 +64,28 @@ Confirmed by Rufus on 2026-09-25.
 
 Resolution: do both. Rufus and David use the tool on their real work now while they keep building and redesigning it. The assumption that building and using compete for time does not hold, and the assumption that the app is too rough failed its first test: the first proper live use together, on 2026-09-25, found it good to use.
 
+## Conflict: what do we focus on now? (draft)
+
+Rufus, 2026-09-26: there is no conflict between a startup and philanthropic funding. Rufus and David want both, and do not want the work to depend on philanthropic funding in the long term. The tension is only about where their time goes now.
+
+Objective: the work is resourced beyond Rufus and David's spare time.
+
+Requirement 1: money for the work arrives soon.
+
+Prerequisite 1: Rufus and David spend their time now writing grant applications.
+
+Requirement 2: people show they value the product enough to use it and pay for it.
+
+Prerequisite 2: Rufus and David spend their time now developing the product fast and looking for customers.
+
+The two prerequisites conflict: time spent now on grant applications is not spent on the product and customers, and the reverse.
+
+Assumptions to test: Rufus and David's time now is too limited to do both at once; grant money can arrive sooner than revenue; funders give grants without a relatively mature product; Life Itself can host a grant application until a company exists.
+
+The crux: do funders need a relatively mature product? If they do, the product comes first for both routes and the conflict mostly dissolves. If they fund on the team, the thesis and the why-now story, grant applications can start now. A startup may need the same maturity, so this is not yet clear.
+
+Not yet resolved: Rufus and David each have views on what to focus on now.
+
 ## Fix (draft)
 
 Two changes:
@@ -89,9 +111,9 @@ Not drafted, and not needed: the tree carries the argument as LTP, and the SCQH 
 
 Decided by Rufus on 2026-09-26.
 
-Next real work to run through the tool: first the funding decision (philanthropic funding or a startup), then Rufus and David's agreement on ownership, licensing and commitment, which should be quick.
+Next real work to run through the tool: first the funding decision, then Rufus and David's agreement on ownership, licensing and commitment, which should be quick.
 
-1. Rufus and David, together, run the funding decision through the tool: notes in, then a tree, then a decision. Expected: a second real use of the tool, and a decision between philanthropic funding and a startup.
+1. Rufus and David, together, run the funding decision through the tool: notes in, then a tree, then a decision. Rufus reframed it on 2026-09-26 as a choice of near-term focus, grant applications or the product and customers (see the conflict above); in progress. Expected: a second real use of the tool, and a decision on where time goes now.
 2. Rufus and David, together, run their agreement on ownership, licensing and commitment through the tool. Expected: a clear agreement on ownership, licensing and commitment.
 3. Alongside both, a [friction log](friction-log.md), started by Rufus on 2026-09-26: each place the tool falls short becomes a build item. Expected: building effort goes where real use shows the tool falls short.
 4. After the funding decision, David uses the tool on a real question of his own, outside this collaboration; Rufus may do the same. Expected: the tool has been used on a real question beyond this collaboration.
