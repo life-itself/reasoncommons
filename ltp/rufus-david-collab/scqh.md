@@ -125,3 +125,14 @@ Next real work to run through the tool: first the funding decision, then Rufus a
 Decided 2026-09-26: Life Itself (UK, not a registered charity; it can apply as a for-profit) hosts the applications until a company exists. Actions 5 and 6 are owned by Rufus and David together. The Foresight application is being drafted first. This repository is MIT-licensed from 2026-09-26, which meets Foresight's open-source requirement. The one-page pitch is written. The agreement (action 2) still matters, but does not block applications: a funder giving through an organisation will not ask about ownership.
 
 A fixed weekly check-in on the tree was considered and left out for now. Checking in weekly is good, but a fixed time is unlikely to hold. Owners assigned by Rufus on 2026-09-26.
+
+## Tree cleanup: 2026-09-26
+
+Agreed by Rufus and David after reviewing the current reality tree. Settled nodes are kept and annotated with what settled them, except where they are wholly moot.
+
+- The goal was agreed on 2026-09-25, so "which goal" and "the candidate goals do not conflict" are removed.
+- Rufus and David both want a startup as well as philanthropic funding, and do not want long-term dependence on philanthropy; David is, if anything, keener on the startup. This settles both the funding route and whether to build a business.
+- Rufus and David are happy for all the software, the app included, to be MIT-licensed.
+- Rufus and David now use the tool on their own work; no one else yet does.
+- Rufus and David do not know their users in general, but for the nonprofit-oriented version they have candidate communities: the AI-risk debate, effective altruism and Second Renaissance.
+- Selling the tool to companies is hard (Rufus's judgment above) and is one reason there are no customers yet.

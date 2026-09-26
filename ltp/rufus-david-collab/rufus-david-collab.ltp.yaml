@@ -68,10 +68,6 @@ ltp:
       tree: current_reality
       statement: A presentation of the work by Rufus and David received a mixed reception.
       provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
-    - id: r-e-goals-compatible
-      tree: current_reality
-      statement: The potential goals Rufus and David hold for the work do not conflict with one another.
-      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
 
     # Current reality — complication (what is missing or undecided)
     - id: r-e-only-own-time
@@ -93,10 +89,6 @@ ltp:
     - id: r-e-business-undecided
       tree: current_reality
       statement: Rufus and David do not know whether either of them wants to turn the work into a business rather than keep it as a project within Second Renaissance.
-      provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
-    - id: r-e-goal-undecided
-      tree: current_reality
-      statement: Rufus and David have not decided which of several potential goals is their actual goal.
       provenance: { path: "drafts/david-rufus-2026-09-25-re-collab.md#L1" }
     - id: r-e-licensing-unclear
       tree: current_reality
@@ -318,8 +310,8 @@ ltp:
     # Second cloud — near-term focus, drafted from Rufus on 2026-09-26 (scqh.md)
     - id: r-e-want-both-routes
       tree: current_reality
-      statement: Rufus wants the work to have both a startup and philanthropic funding, and does not want it to depend on philanthropic funding in the long term.
-      provenance: { path: "ltp/rufus-david-collab/scqh.md#L69" }
+      statement: Rufus and David both want the work to become a startup as well as seek philanthropic funding, and do not want it to depend on philanthropic funding in the long term; David is, if anything, keener on the startup.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L134" }
     - id: c-e-focus-objective
       tree: conflict
       statement: The work is resourced beyond Rufus and David's spare time.
@@ -392,8 +384,42 @@ ltp:
 
     - id: r-e-repo-mit
       tree: current_reality
-      statement: The Reason Commons repository life-itself/reasoncommons is released under the MIT licence from 2026-09-26.
+      statement: The Reason Commons repository is released under the MIT licence from 2026-09-26, and Rufus and David are happy for all the software, the app included, to be MIT-licensed.
       provenance: { path: "LICENSE#L1" }
+
+    # Cleanup 2026-09-26: settled nodes annotated, not deleted (scqh.md "Tree cleanup")
+    - id: r-e-goal-agreed
+      tree: current_reality
+      statement: Rufus and David agreed the goal of their collaboration on 2026-09-25.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L133" }
+    - id: r-e-no-outside-users
+      tree: current_reality
+      statement: No one other than Rufus and David uses any app they have built.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L136" }
+    - id: r-e-users-candidates
+      tree: current_reality
+      statement: Rufus and David do not know who their users are in general, though for the nonprofit-oriented version they have candidate communities in the AI-risk debate, effective altruism and Second Renaissance.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L137" }
+    - id: p-e-io-both-routes
+      tree: prerequisite
+      statement: Rufus and David pursue both a startup and philanthropic funding, with grant applications first.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L134" }
+    - id: p-e-io-startup-wanted
+      tree: prerequisite
+      statement: Rufus and David both want to turn the work into a startup.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L134" }
+    - id: p-e-io-mit
+      tree: prerequisite
+      statement: The Reason Commons software is released under the MIT licence.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L135" }
+    - id: p-e-no-outside-users
+      tree: prerequisite
+      statement: No one other than Rufus and David uses any app they have built.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L136" }
+    - id: p-e-users-candidates
+      tree: prerequisite
+      statement: Rufus and David do not know who their users are in general, though for the nonprofit-oriented version they have candidate communities in the AI-risk debate, effective altruism and Second Renaissance.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L137" }
 
   designations:
     - { id: g-d-ltp-used-in-world, entity_id: g-e-ltp-used-in-world, role: goal }
@@ -411,14 +437,12 @@ ltp:
     - { id: r-d-why-now-narrative, entity_id: r-e-why-now-narrative, role: observation }
     - { id: r-d-funder-interest, entity_id: r-e-funder-interest, role: observation }
     - { id: r-d-mixed-reception, entity_id: r-e-mixed-reception, role: observation }
-    - { id: r-d-goals-compatible, entity_id: r-e-goals-compatible, role: observation }
 
     - { id: r-d-only-own-time, entity_id: r-e-only-own-time, role: undesirable_effect }
     - { id: r-d-no-funding-applied, entity_id: r-e-no-funding-applied, role: undesirable_effect }
     - { id: r-d-no-customers, entity_id: r-e-no-customers, role: undesirable_effect }
     - { id: r-d-funding-model-undecided, entity_id: r-e-funding-model-undecided, role: undesirable_effect }
     - { id: r-d-business-undecided, entity_id: r-e-business-undecided, role: undesirable_effect }
-    - { id: r-d-goal-undecided, entity_id: r-e-goal-undecided, role: undesirable_effect }
     - { id: r-d-licensing-unclear, entity_id: r-e-licensing-unclear, role: undesirable_effect }
     - { id: r-d-ownership-undiscussed, entity_id: r-e-ownership-undiscussed, role: undesirable_effect }
     - { id: r-d-product-unclear, entity_id: r-e-product-unclear, role: undesirable_effect }
@@ -475,7 +499,7 @@ ltp:
     - { id: t-d-act-own-question, entity_id: t-e-act-own-question, role: transition_action }
     - { id: t-d-eff-used-beyond-collab, entity_id: t-e-eff-used-beyond-collab, role: transition_expected_effect }
 
-    - { id: r-d-want-both-routes, entity_id: r-e-want-both-routes, role: observation }
+    - { id: r-d-want-both-routes, entity_id: r-e-want-both-routes, role: evidence }
     - { id: c-d-focus-objective, entity_id: c-e-focus-objective, role: cloud_objective }
     - { id: c-d-focus-req-money-soon, entity_id: c-e-focus-req-money-soon, role: cloud_requirement, parent_designation_id: c-d-focus-objective }
     - { id: c-d-focus-pre-grants, entity_id: c-e-focus-pre-grants, role: cloud_prerequisite, parent_designation_id: c-d-focus-req-money-soon }
@@ -484,10 +508,10 @@ ltp:
 
     - { id: r-d-funders-fund-story, entity_id: r-e-funders-fund-story, role: observation }
     - { id: r-d-story-resonates, entity_id: r-e-story-resonates, role: observation }
-    - { id: r-d-company-sale-hard, entity_id: r-e-company-sale-hard, role: observation }
+    - { id: r-d-company-sale-hard, entity_id: r-e-company-sale-hard, role: evidence }
     - { id: c-d-focus-injection, entity_id: c-e-focus-injection, role: injection }
 
-    - { id: r-d-pitch-written, entity_id: r-e-pitch-written, role: observation }
+    - { id: r-d-pitch-written, entity_id: r-e-pitch-written, role: evidence }
     - { id: r-d-life-itself-hosts, entity_id: r-e-life-itself-hosts, role: observation }
     - { id: t-d-act-shortlist, entity_id: t-e-act-shortlist, role: transition_action }
     - { id: t-d-eff-shortlist, entity_id: t-e-eff-shortlist, role: transition_expected_effect }
@@ -496,6 +520,15 @@ ltp:
 
     - { id: r-d-foresight-deadline, entity_id: r-e-foresight-deadline, role: evidence }
     - { id: r-d-repo-mit, entity_id: r-e-repo-mit, role: evidence }
+    - { id: r-d-goal-agreed, entity_id: r-e-goal-agreed, role: evidence }
+    - { id: r-d-no-outside-users, entity_id: r-e-no-outside-users, role: undesirable_effect }
+    - { id: r-d-users-candidates, entity_id: r-e-users-candidates, role: undesirable_effect }
+    - { id: p-d-io-both-routes, entity_id: p-e-io-both-routes, role: intermediate_objective, parent_designation_id: p-d-funding-model-undecided }
+    - { id: p-d-io-startup-wanted, entity_id: p-e-io-startup-wanted, role: intermediate_objective, parent_designation_id: p-d-business-undecided }
+    - { id: p-d-io-mit, entity_id: p-e-io-mit, role: intermediate_objective, parent_designation_id: p-d-licensing-unclear }
+    - { id: p-d-no-outside-users, entity_id: p-e-no-outside-users, role: obstacle, parent_designation_id: p-d-obj-real-users }
+    - { id: p-d-users-candidates, entity_id: p-e-users-candidates, role: obstacle, parent_designation_id: p-d-obj-real-users }
+
   relationships:
     - { id: g-rel-resourced-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-resourced], to_entity_id: g-e-ltp-used-in-world }
     - { id: g-rel-users-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-real-users], to_entity_id: g-e-ltp-used-in-world }
@@ -507,7 +540,7 @@ ltp:
     - { id: c-rel-build-for-good-enough, tree: conflict, kind: necessary_for, from_entity_ids: [c-e-pre-build-first], to_entity_id: c-e-req-good-enough }
     - { id: g-rel-form-for-users, tree: goal, kind: necessary_for, from_entity_ids: [g-e-form-follows-use], to_entity_id: g-e-real-users }
     - { id: r-rel-unclear-drives-redesigning, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-unclear-path], to_entity_id: r-e-keep-redesigning }
-    - { id: r-rel-redesigning-drives-no-use, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-keep-redesigning], to_entity_id: r-e-no-app-in-use }
+    - { id: r-rel-redesigning-drives-no-use, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-keep-redesigning], to_entity_id: r-e-no-outside-users }
     - { id: r-rel-dogfood-challenges-no-use, tree: current_reality, kind: challenges, from_entity_ids: [r-e-dogfood-worked], to_entity_id: r-e-no-app-in-use }
     - { id: f-rel-use-makes-users, tree: future_reality, kind: causes, from_entity_ids: [f-e-use-while-building], to_entity_id: f-e-regular-users }
     - { id: f-rel-use-teaches, tree: future_reality, kind: causes, from_entity_ids: [f-e-use-while-building], to_entity_id: f-e-learn-from-use }
@@ -530,6 +563,17 @@ ltp:
     - { id: t-rel-funding-before-shortlist, tree: transition, kind: precedes, from_entity_ids: [t-e-act-funding-decision], to_entity_id: t-e-act-shortlist }
     - { id: t-rel-shortlist-before-apply, tree: transition, kind: precedes, from_entity_ids: [t-e-act-shortlist], to_entity_id: t-e-act-apply }
     - { id: r-rel-mit-challenges-licensing, tree: current_reality, kind: challenges, from_entity_ids: [r-e-repo-mit], to_entity_id: r-e-licensing-unclear }
+    - { id: r-rel-both-challenges-funding-model, tree: current_reality, kind: challenges, from_entity_ids: [r-e-want-both-routes], to_entity_id: r-e-funding-model-undecided }
+    - { id: r-rel-both-challenges-business, tree: current_reality, kind: challenges, from_entity_ids: [r-e-want-both-routes], to_entity_id: r-e-business-undecided }
+    - { id: r-rel-outside-users-supersedes, tree: current_reality, kind: supersedes, from_entity_ids: [r-e-no-outside-users], to_entity_id: r-e-no-app-in-use }
+    - { id: r-rel-candidates-supersedes, tree: current_reality, kind: supersedes, from_entity_ids: [r-e-users-candidates], to_entity_id: r-e-users-unknown }
+    - { id: r-rel-pitch-supports-candidates, tree: current_reality, kind: supports, from_entity_ids: [r-e-pitch-written], to_entity_id: r-e-users-candidates }
+    - { id: r-rel-company-sale-drives-no-customers, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-company-sale-hard], to_entity_id: r-e-no-customers }
+    - { id: p-rel-both-routes-overcomes, tree: prerequisite, kind: overcomes, from_entity_ids: [p-e-io-both-routes], to_entity_id: p-e-funding-model-undecided }
+    - { id: p-rel-startup-overcomes, tree: prerequisite, kind: overcomes, from_entity_ids: [p-e-io-startup-wanted], to_entity_id: p-e-business-undecided }
+    - { id: p-rel-mit-overcomes, tree: prerequisite, kind: overcomes, from_entity_ids: [p-e-io-mit], to_entity_id: p-e-licensing-unclear }
+    - { id: p-rel-outside-users-supersedes, tree: prerequisite, kind: supersedes, from_entity_ids: [p-e-no-outside-users], to_entity_id: p-e-no-app-in-use }
+    - { id: p-rel-candidates-supersedes, tree: prerequisite, kind: supersedes, from_entity_ids: [p-e-users-candidates], to_entity_id: p-e-users-unknown }
 
   assumptions:
     - { id: c-asm-time-competes, relationship_id: c-rel-use-vs-build, statement: Building and using the tool compete for the same limited time. }

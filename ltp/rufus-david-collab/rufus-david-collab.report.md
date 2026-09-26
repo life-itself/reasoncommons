@@ -13,9 +13,9 @@
 
 ## What the file claims
 
-91 propositions, 91 roles, 32 relationships, 8 assumptions, 1 assessment.
+97 propositions, 97 roles, 43 relationships, 8 assumptions, 1 assessment.
 
-goal 8 · current_reality 33 · prerequisite 17 · conflict 12 · future_reality 7 · transition 14
+goal 8 · current_reality 34 · prerequisite 22 · conflict 12 · future_reality 7 · transition 14
 
 All six views are now populated.
 
@@ -39,13 +39,11 @@ All locators are `#L1`. The quotes below are what each item points to.
 | r-e-why-now-narrative | current_reality | observation | medium | "What they do have is a pretty good, like, story or narrative … of, like, why now?" | the remark that the story "could go better" is left out (see below) |
 | r-e-funder-interest | current_reality | observation | medium | "AI plus thinking about stuff is, like, a hot topic for … philanthropic funding, like open philanthropy or coefficient giving" | "probably" is kept in the statement |
 | r-e-mixed-reception | current_reality | observation | high | "we presented, there was kind of mixed reaction" | the version both speakers agreed on (see judgment call 3) |
-| r-e-goals-compatible | current_reality | observation | high | "They're not actually conflicting, but the question is which is our actual goal?" | |
 | r-e-only-own-time | current_reality | undesirable_effect | high | "they don't have any resource other than their own time" | |
 | r-e-no-funding-applied | current_reality | undesirable_effect | high | "They haven't applied for funding." | |
 | r-e-no-customers | current_reality | undesirable_effect | high | "They don't have customers." | |
 | r-e-funding-model-undecided | current_reality | undesirable_effect | high | "unclear whether they want nonprofit funding … or they're looking to create a startup" | |
 | r-e-business-undecided | current_reality | undesirable_effect | medium | "do they just keep collaborating around Second Renaissance … Is there actual interest from either or both parties to turn this into a business" | two sentences merged into one proposition |
-| r-e-goal-undecided | current_reality | undesirable_effect | high | "it's not really true what our goals are … which is our actual goal?" | "not really true" read as "not really clear" (likely a transcription slip) |
 | r-e-licensing-unclear | current_reality | undesirable_effect | medium | "We're not really sure about the licensing status of what the logical thinking process? Whatever software we make around it, so, like Reason Commons." | garbled sentence. Read as being about the software, not LTP itself |
 | r-e-ownership-undiscussed | current_reality | undesirable_effect | high | "they've never really talked about ownership, profit share" | |
 | r-e-product-unclear | current_reality | undesirable_effect | high | "we're not really clear about what the product should even look like" | |
@@ -127,6 +125,18 @@ Source: Rufus on 2026-09-26 (`scqh.md` L122–125) and the one-page pitch in `dr
 - **Shortlist drafted** (Claude's web research, same day). Funder assessments are private, in the Reason Commons Funding Google Doc; the public `funders.md` keeps only who, where and when. Only the most time-critical fact enters the tree: `r-e-foresight-deadline`, as `evidence`.
 - **Life Itself** is not a registered charity; Rufus: it can apply as a UK for-profit, which SFF accepts.
 - **Foresight application drafted** in `drafts/` (uncommitted). It surfaced two requirements that bear on the tree: the work must be open source, which made the licensing obstacle (`p-e-licensing-unclear`, action 2) block this application, until Rufus added an MIT licence to this repository the same day (`r-e-repo-mit`, `evidence` that `challenges` `r-e-licensing-unclear`; the app repository's licence is not yet known, and ownership and commitment in action 2 remain open); and Foresight favours applicants who work in person at its Berlin or San Francisco Nodes.
+
+## Added 2026-09-26, seventh pass: cleanup of settled nodes
+
+Source: Rufus and David's review of the current reality tree (`scqh.md`, "Tree cleanup"). Prompted by a friction they logged: nodes were not updated as the conversation moved on. Rule agreed: **annotate settled nodes rather than delete them**, except where wholly moot.
+
+- **Removed** (wholly moot once the goal was agreed): `r-e-goal-undecided` and `r-e-goals-compatible`. Their rows are gone from the items table; git history keeps them. Replaced by `r-e-goal-agreed` (evidence).
+- **Settled, kept and challenged:** `r-e-funding-model-undecided` and `r-e-business-undecided`, by `r-e-want-both-routes` (now worded for both Rufus and David, role `evidence`); `r-e-licensing-unclear`, by `r-e-repo-mit` (now covering the app too).
+- **Restated with `supersedes`:** `r-e-no-app-in-use` → `r-e-no-outside-users`; `r-e-users-unknown` → `r-e-users-candidates`. The old nodes stay, marked superseded. The causal link from `r-e-keep-redesigning` now points at the restated node.
+- **Observations attached as evidence:** the pitch `supports` the candidate-users node; "selling to companies is hard" `contributes_to` "no customers" (a cause link Rufus confirmed). The remaining observations (funder interest, funders fund stories, the story resonates, Life Itself hosts, the Foresight deadline) bear on decisions and assumptions rather than on any current undesirable effect, and the format cannot link them to assumptions, so they stay as observations.
+- **Prerequisite view mirrors it:** intermediate objectives that `overcomes` the settled obstacles (both routes, startup wanted, MIT), and superseding obstacles for the two restated ones.
+- **Kept as is, by agreement:** the root cause `r-e-unclear-path` and `r-e-no-shared-actioning`, both partly addressed but still live.
+- **Still not a real tree:** 11 live undesirable effects and few cause links. Drafting the cause links is the next step.
 
 ## Deliberately omitted
 
