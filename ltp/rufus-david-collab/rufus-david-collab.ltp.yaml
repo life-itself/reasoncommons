@@ -385,6 +385,11 @@ ltp:
       statement: Grant applications for the work are submitted.
       provenance: { path: "ltp/rufus-david-collab/scqh.md#L123" }
 
+    - id: r-e-foresight-deadline
+      tree: current_reality
+      statement: The Foresight Institute's AI for Science & Safety Nodes call, which funds work on coordination and on how humans and AI systems interact, closes on 2026-10-31.
+      provenance: { path: "ltp/rufus-david-collab/funders.md#L9" }
+
   designations:
     - { id: g-d-ltp-used-in-world, entity_id: g-e-ltp-used-in-world, role: goal }
     - { id: g-d-resourced, entity_id: g-e-resourced, role: critical_success_factor, parent_designation_id: g-d-ltp-used-in-world }
@@ -484,6 +489,7 @@ ltp:
     - { id: t-d-act-apply, entity_id: t-e-act-apply, role: transition_action }
     - { id: t-d-eff-applied, entity_id: t-e-eff-applied, role: transition_expected_effect }
 
+    - { id: r-d-foresight-deadline, entity_id: r-e-foresight-deadline, role: evidence }
   relationships:
     - { id: g-rel-resourced-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-resourced], to_entity_id: g-e-ltp-used-in-world }
     - { id: g-rel-users-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-real-users], to_entity_id: g-e-ltp-used-in-world }

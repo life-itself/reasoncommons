@@ -13,9 +13,9 @@
 
 ## What the file claims
 
-89 propositions, 89 roles, 31 relationships, 8 assumptions, 1 assessment.
+90 propositions, 90 roles, 31 relationships, 8 assumptions, 1 assessment.
 
-goal 8 · current_reality 31 · prerequisite 17 · conflict 12 · future_reality 7 · transition 14
+goal 8 · current_reality 32 · prerequisite 17 · conflict 12 · future_reality 7 · transition 14
 
 All six views are now populated.
 
@@ -124,6 +124,7 @@ Source: Rufus on 2026-09-26 (`scqh.md` L122–125) and the one-page pitch in `dr
 - **The agreement does not block applications.** Rufus: a funder giving through an organisation will not ask about ownership. So there is no `precedes` from the agreement to applying. It stays in the plan.
 - **Action 1 is done (draft).** Its expected effect, a decision on near-term focus, is met: grants first. David to confirm.
 - **Owners of the two new actions** are "Rufus and David" until named.
+- **Shortlist drafted** in `funders.md` (Claude's web research, same day). Only the most time-critical fact enters the tree: `r-e-foresight-deadline`, as `evidence`. Coefficient Giving's pages refused fetching, so its row rests on secondary sources.
 
 ## Deliberately omitted
 
