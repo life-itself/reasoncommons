@@ -1,4 +1,0 @@
-interface:
-  display_name: "Project LTP (deprecated)"
-  short_description: "Deprecated: use $ltp-project; this only serves the legacy dashboard"
-  default_prompt: "Do not use $project-ltp to build a model; use $ltp-project. Use this skill only to serve or publish the legacy read-only dashboard."
