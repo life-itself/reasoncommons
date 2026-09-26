@@ -390,6 +390,11 @@ ltp:
       statement: The Foresight Institute's AI for Science & Safety Nodes call, which funds work on coordination and on how humans and AI systems interact, closes on 2026-10-31.
       provenance: { path: "ltp/rufus-david-collab/funders.md#L7" }
 
+    - id: r-e-repo-mit
+      tree: current_reality
+      statement: The Reason Commons repository life-itself/reasoncommons is released under the MIT licence from 2026-09-26.
+      provenance: { path: "LICENSE#L1" }
+
   designations:
     - { id: g-d-ltp-used-in-world, entity_id: g-e-ltp-used-in-world, role: goal }
     - { id: g-d-resourced, entity_id: g-e-resourced, role: critical_success_factor, parent_designation_id: g-d-ltp-used-in-world }
@@ -490,6 +495,7 @@ ltp:
     - { id: t-d-eff-applied, entity_id: t-e-eff-applied, role: transition_expected_effect }
 
     - { id: r-d-foresight-deadline, entity_id: r-e-foresight-deadline, role: evidence }
+    - { id: r-d-repo-mit, entity_id: r-e-repo-mit, role: evidence }
   relationships:
     - { id: g-rel-resourced-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-resourced], to_entity_id: g-e-ltp-used-in-world }
     - { id: g-rel-users-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-real-users], to_entity_id: g-e-ltp-used-in-world }
@@ -523,6 +529,7 @@ ltp:
     - { id: t-rel-apply-produces, tree: transition, kind: produces, from_entity_ids: [t-e-act-apply], to_entity_id: t-e-eff-applied }
     - { id: t-rel-funding-before-shortlist, tree: transition, kind: precedes, from_entity_ids: [t-e-act-funding-decision], to_entity_id: t-e-act-shortlist }
     - { id: t-rel-shortlist-before-apply, tree: transition, kind: precedes, from_entity_ids: [t-e-act-shortlist], to_entity_id: t-e-act-apply }
+    - { id: r-rel-mit-challenges-licensing, tree: current_reality, kind: challenges, from_entity_ids: [r-e-repo-mit], to_entity_id: r-e-licensing-unclear }
 
   assumptions:
     - { id: c-asm-time-competes, relationship_id: c-rel-use-vs-build, statement: Building and using the tool compete for the same limited time. }

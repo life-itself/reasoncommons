@@ -13,9 +13,9 @@
 
 ## What the file claims
 
-90 propositions, 90 roles, 31 relationships, 8 assumptions, 1 assessment.
+91 propositions, 91 roles, 32 relationships, 8 assumptions, 1 assessment.
 
-goal 8 · current_reality 32 · prerequisite 17 · conflict 12 · future_reality 7 · transition 14
+goal 8 · current_reality 33 · prerequisite 17 · conflict 12 · future_reality 7 · transition 14
 
 All six views are now populated.
 
@@ -125,8 +125,8 @@ Source: Rufus on 2026-09-26 (`scqh.md` L122–125) and the one-page pitch in `dr
 - **Action 1 is done (draft).** Its expected effect, a decision on near-term focus, is met: grants first. David to confirm.
 - **Owners of the two new actions:** Rufus and David together (confirmed by Rufus).
 - **Shortlist drafted** (Claude's web research, same day). Funder assessments are private, in the Reason Commons Funding Google Doc; the public `funders.md` keeps only who, where and when. Only the most time-critical fact enters the tree: `r-e-foresight-deadline`, as `evidence`.
-- **Life Itself** is a UK company limited by guarantee (a CIC if needed), not a registered charity. Whether SFF treats it as eligible is to confirm.
-- **Foresight application drafted** in `drafts/` (uncommitted). It surfaced two requirements that bear on the tree: the work must be open source, which makes the licensing obstacle (`p-e-licensing-unclear`, action 2) block this application after all; and Foresight favours applicants who work in person at its Berlin or San Francisco Nodes.
+- **Life Itself** is not a registered charity; Rufus: it can apply as a UK for-profit, which SFF accepts.
+- **Foresight application drafted** in `drafts/` (uncommitted). It surfaced two requirements that bear on the tree: the work must be open source, which made the licensing obstacle (`p-e-licensing-unclear`, action 2) block this application, until Rufus added an MIT licence to this repository the same day (`r-e-repo-mit`, `evidence` that `challenges` `r-e-licensing-unclear`; the app repository's licence is not yet known, and ownership and commitment in action 2 remain open); and Foresight favours applicants who work in person at its Berlin or San Francisco Nodes.
 
 ## Deliberately omitted
 
