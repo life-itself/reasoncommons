@@ -43,6 +43,14 @@ reports/ltp/<slug>/<slug>.report.md    everything the YAML cannot hold
 bun run check:import <path>            must exit 0 before you hand anything over
 ```
 
+To inspect the candidate in the repository's read-only dashboard, run:
+
+```bash
+python3 skills/ltp-project/scripts/preview_dashboard.py reports/ltp/<slug>/<slug>.ltp.yaml
+```
+
+The preview opens a local browser page and serves a temporary dashboard-compatible view; it does not modify the candidate or import it into a Reason Commons space. For a standalone HTML export, use `$ltp-visualize` or add `--export-html` to the command. The preview requires PyYAML (`python3 -m pip install pyyaml`). See `references/preview.md` for format limitations and options.
+
 In the app repository `reports/` is gitignored, which is correct: a machine wrote
 this and a person has to read it before any of it is ratified. In another
 repository, write to a path a person will review before it is committed, and say
