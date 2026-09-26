@@ -574,6 +574,13 @@ ltp:
     - { id: p-rel-mit-overcomes, tree: prerequisite, kind: overcomes, from_entity_ids: [p-e-io-mit], to_entity_id: p-e-licensing-unclear }
     - { id: p-rel-outside-users-supersedes, tree: prerequisite, kind: supersedes, from_entity_ids: [p-e-no-outside-users], to_entity_id: p-e-no-app-in-use }
     - { id: p-rel-candidates-supersedes, tree: prerequisite, kind: supersedes, from_entity_ids: [p-e-users-candidates], to_entity_id: p-e-users-unknown }
+    - { id: r-rel-outside-users-drives-no-pmf, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-no-outside-users], to_entity_id: r-e-no-pmf }
+    - { id: r-rel-product-unclear-drives-no-picture, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-product-unclear], to_entity_id: r-e-no-user-picture }
+    - { id: r-rel-no-picture-drives-no-outside-users, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-no-user-picture], to_entity_id: r-e-no-outside-users }
+    - { id: r-rel-no-pmf-drives-no-customers, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-no-pmf], to_entity_id: r-e-no-customers }
+    - { id: r-rel-no-customers-drives-own-time, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-no-customers], to_entity_id: r-e-only-own-time }
+    - { id: r-rel-no-funding-drives-own-time, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-no-funding-applied], to_entity_id: r-e-only-own-time }
+    - { id: r-rel-unclear-drives-no-actioning, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-unclear-path], to_entity_id: r-e-no-shared-actioning }
 
   assumptions:
     - { id: c-asm-time-competes, relationship_id: c-rel-use-vs-build, statement: Building and using the tool compete for the same limited time. }

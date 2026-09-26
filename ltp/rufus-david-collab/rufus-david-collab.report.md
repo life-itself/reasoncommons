@@ -13,7 +13,7 @@
 
 ## What the file claims
 
-97 propositions, 97 roles, 43 relationships, 8 assumptions, 1 assessment.
+97 propositions, 97 roles, 50 relationships, 8 assumptions, 1 assessment.
 
 goal 8 · current_reality 34 · prerequisite 22 · conflict 12 · future_reality 7 · transition 14
 
@@ -136,7 +136,8 @@ Source: Rufus and David's review of the current reality tree (`scqh.md`, "Tree c
 - **Observations attached as evidence:** the pitch `supports` the candidate-users node; "selling to companies is hard" `contributes_to` "no customers" (a cause link Rufus confirmed). The remaining observations (funder interest, funders fund stories, the story resonates, Life Itself hosts, the Foresight deadline) bear on decisions and assumptions rather than on any current undesirable effect, and the format cannot link them to assumptions, so they stay as observations.
 - **Prerequisite view mirrors it:** intermediate objectives that `overcomes` the settled obstacles (both routes, startup wanted, MIT), and superseding obstacles for the two restated ones.
 - **Kept as is, by agreement:** the root cause `r-e-unclear-path` and `r-e-no-shared-actioning`, both partly addressed but still live.
-- **Still not a real tree:** 11 live undesirable effects and few cause links. Drafting the cause links is the next step.
+- **Cause links, draft (same day).** Claude proposed seven `contributes_to` links and Rufus accepted them to try out ("let's try this and see"); `scqh.md`, "Cause links". Two chains end at `r-e-only-own-time`: product and users (product unclear → no clear picture → no outside users → no product-market fit → no customers) and funding (no funding applied). Unclear path → no shared actioning: the direction was Claude's choice, to keep one root. These are the weakest links in the file: asserted for testing, not stated in any source. Roles unchanged: an undesirable effect may also cause another.
+- **Open:** `r-e-product-unclear` and `r-e-no-funding-applied` have no cause. Does the unclear path explain them too? If so, it becomes the root of the whole tree.
 
 ## Deliberately omitted
 

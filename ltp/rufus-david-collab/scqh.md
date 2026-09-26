@@ -136,3 +136,13 @@ Agreed by Rufus and David after reviewing the current reality tree. Settled node
 - Rufus and David now use the tool on their own work; no one else yet does.
 - Rufus and David do not know their users in general, but for the nonprofit-oriented version they have candidate communities: the AI-risk debate, effective altruism and Second Renaissance.
 - Selling the tool to companies is hard (Rufus's judgment above) and is one reason there are no customers yet.
+
+## Cause links (draft, 2026-09-26)
+
+Proposed by Claude and accepted by Rufus to try out ("let's try this and see"). All partial causes (contributes to), none sole:
+
+- Unclear path → keep redesigning → no one outside Rufus and David uses the tool.
+- Product unclear → cannot show a user a clear picture → no outside users.
+- No outside users → no sign of product-market fit → no customers → only their own time.
+- No funding applied → only their own time.
+- Unclear path → no shared way of turning the goal into action (direction chosen by Claude so that the unclear path stays the single root).
