@@ -284,7 +284,7 @@ ltp:
       provenance: { path: "ltp/rufus-david-collab/scqh.md#L24" }
     - id: t-e-act-funding-decision
       tree: transition
-      statement: Rufus and David run the choice between philanthropic funding and a startup through the tool, from notes to a tree to a decision.
+      statement: Rufus and David together run the choice between philanthropic funding and a startup through the tool, from notes to a tree to a decision.
       provenance: { path: "ltp/rufus-david-collab/scqh.md#L94" }
     - id: t-e-eff-funding-decided
       tree: transition
@@ -292,7 +292,7 @@ ltp:
       provenance: { path: "ltp/rufus-david-collab/scqh.md#L94" }
     - id: t-e-act-agreement
       tree: transition
-      statement: Rufus and David run their agreement on ownership, licensing and commitment through the tool.
+      statement: Rufus and David together run their agreement on ownership, licensing and commitment through the tool.
       provenance: { path: "ltp/rufus-david-collab/scqh.md#L95" }
     - id: t-e-eff-agreement
       tree: transition
@@ -300,19 +300,19 @@ ltp:
       provenance: { path: "ltp/rufus-david-collab/scqh.md#L95" }
     - id: t-e-act-friction-log
       tree: transition
-      statement: Rufus and David keep a friction log while using the tool, recording each place the tool falls short as a build item.
+      statement: Rufus starts a friction log, and Rufus and David record in it each place the tool falls short while they use it.
       provenance: { path: "ltp/rufus-david-collab/scqh.md#L96" }
     - id: t-e-eff-build-targets-use
       tree: transition
       statement: Building effort goes where real use shows the tool falls short.
       provenance: { path: "ltp/rufus-david-collab/scqh.md#L96" }
-    - id: t-e-act-outside-user
+    - id: t-e-act-own-question
       tree: transition
-      statement: Rufus and David get one person outside the two of them, for example a Second Renaissance contributor, to use the tool on a real question.
+      statement: David uses the tool on a real question of his own outside this collaboration, and Rufus may do the same.
       provenance: { path: "ltp/rufus-david-collab/scqh.md#L97" }
-    - id: t-e-eff-outside-user
+    - id: t-e-eff-used-beyond-collab
       tree: transition
-      statement: Someone other than Rufus and David has used the tool on a real question.
+      statement: The tool has been used on a real question beyond this collaboration.
       provenance: { path: "ltp/rufus-david-collab/scqh.md#L97" }
 
   designations:
@@ -392,8 +392,8 @@ ltp:
     - { id: t-d-eff-agreement, entity_id: t-e-eff-agreement, role: transition_expected_effect }
     - { id: t-d-act-friction-log, entity_id: t-e-act-friction-log, role: transition_action }
     - { id: t-d-eff-build-targets-use, entity_id: t-e-eff-build-targets-use, role: transition_expected_effect }
-    - { id: t-d-act-outside-user, entity_id: t-e-act-outside-user, role: transition_action }
-    - { id: t-d-eff-outside-user, entity_id: t-e-eff-outside-user, role: transition_expected_effect }
+    - { id: t-d-act-own-question, entity_id: t-e-act-own-question, role: transition_action }
+    - { id: t-d-eff-used-beyond-collab, entity_id: t-e-eff-used-beyond-collab, role: transition_expected_effect }
 
   relationships:
     - { id: g-rel-resourced-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-resourced], to_entity_id: g-e-ltp-used-in-world }
@@ -418,9 +418,9 @@ ltp:
     - { id: t-rel-funding-produces, tree: transition, kind: produces, from_entity_ids: [t-e-act-funding-decision], to_entity_id: t-e-eff-funding-decided }
     - { id: t-rel-agreement-produces, tree: transition, kind: produces, from_entity_ids: [t-e-act-agreement], to_entity_id: t-e-eff-agreement }
     - { id: t-rel-friction-produces, tree: transition, kind: produces, from_entity_ids: [t-e-act-friction-log], to_entity_id: t-e-eff-build-targets-use }
-    - { id: t-rel-outside-produces, tree: transition, kind: produces, from_entity_ids: [t-e-act-outside-user], to_entity_id: t-e-eff-outside-user }
+    - { id: t-rel-own-question-produces, tree: transition, kind: produces, from_entity_ids: [t-e-act-own-question], to_entity_id: t-e-eff-used-beyond-collab }
     - { id: t-rel-funding-before-agreement, tree: transition, kind: precedes, from_entity_ids: [t-e-act-funding-decision], to_entity_id: t-e-act-agreement }
-    - { id: t-rel-funding-before-outside, tree: transition, kind: precedes, from_entity_ids: [t-e-act-funding-decision], to_entity_id: t-e-act-outside-user }
+    - { id: t-rel-funding-before-own-question, tree: transition, kind: precedes, from_entity_ids: [t-e-act-funding-decision], to_entity_id: t-e-act-own-question }
 
   assumptions:
     - { id: c-asm-time-competes, relationship_id: c-rel-use-vs-build, statement: Building and using the tool compete for the same limited time. }

@@ -90,13 +90,14 @@ Source: Rufus's notes on the conflict, kept uncommitted in `drafts/rufus-2026-09
 
 Source: Rufus's choices on 2026-09-26, written up in `scqh.md` L88–99.
 
-- **Four actions, each with the effect it `produces`.** Run the funding decision (philanthropic funding or a startup) through the tool; run the ownership, licensing and commitment agreement through it; keep a friction log alongside; get one person outside Rufus and David to use it on a real question.
-- **Order (`precedes`).** Funding decision → agreement, and funding decision → outside user. The friction log runs alongside both, so it has no `precedes` link.
+- **Four actions, each with the effect it `produces`.** Run the funding decision (philanthropic funding or a startup) through the tool; run the ownership, licensing and commitment agreement through it; keep a friction log alongside; David (and perhaps Rufus) uses it on a real question of his own.
+- **Outside user became David's own question.** Rufus assigned David to use the tool on a real question of his own. That is real use beyond this collaboration, but not a user other than Rufus and David, so the real-users success factor still lacks that evidence. A genuine third-party user can return as a later action.
+- **Order (`precedes`).** Funding decision → agreement, and funding decision → David's own question. The friction log runs alongside both, so it has no `precedes` link.
 - **Existing reality and need are Claude's drafting.** `t-e-used-once` restates the 2026-09-25 evidence. `t-e-need-repeated-use` restates the real-users success factor as the reason the actions matter. Neither is linked to an action, because no kind carries "this action starts from this situation". Check both.
-- **Owners not assigned.** The format has no owner field, so an owner would go into the action's statement ("Rufus runs…"). Every action currently reads "Rufus and David". Name owners and the statements will be updated.
+- **Owners are in the statements.** The format has no owner field (logged in `friction-log.md`), so each owner is written into the action: funding decision and agreement, Rufus and David together; friction log, started by Rufus; own real question, David, perhaps Rufus too.
 - **Left out on purpose:** a fixed weekly check-in (a good habit, but a fixed time is unlikely to hold), and the hypothesis (the tree carries the argument as LTP; a hypothesis is at most a summary for communication).
 - **Folder is public.** Rufus confirmed on 2026-09-26, which settles whether this folder may be on public GitHub. Raw transcripts stay uncommitted in `drafts/`.
-- **Cross-view links the format cannot carry.** The agreement action serves the clear-agreement success factor and its obstacles; the funding action serves the resourced branch's `p-e-funding-model-undecided`; the outside-user action serves real users. These are recorded here only.
+- **Cross-view links the format cannot carry.** The agreement action serves the clear-agreement success factor and its obstacles; the funding action serves the resourced branch's `p-e-funding-model-undecided`; the own-question action serves real users. These are recorded here only.
 
 ## Deliberately omitted
 

@@ -91,9 +91,9 @@ Decided by Rufus on 2026-09-26.
 
 Next real work to run through the tool: first the funding decision (philanthropic funding or a startup), then Rufus and David's agreement on ownership, licensing and commitment, which should be quick.
 
-1. Rufus and David run the funding decision through the tool: notes in, then a tree, then a decision. Expected: a second real use of the tool, and a decision between philanthropic funding and a startup.
-2. Rufus and David run their agreement on ownership, licensing and commitment through the tool. Expected: a clear agreement on ownership, licensing and commitment.
-3. Alongside both, Rufus and David keep a friction log: each place the tool falls short becomes a build item. Expected: building effort goes where real use shows the tool falls short.
-4. After the funding decision, Rufus and David get one person outside the two of them to use the tool on a real question, for example a Second Renaissance contributor. Expected: someone other than Rufus and David has used the tool on a real question.
+1. Rufus and David, together, run the funding decision through the tool: notes in, then a tree, then a decision. Expected: a second real use of the tool, and a decision between philanthropic funding and a startup.
+2. Rufus and David, together, run their agreement on ownership, licensing and commitment through the tool. Expected: a clear agreement on ownership, licensing and commitment.
+3. Alongside both, a [friction log](friction-log.md), started by Rufus on 2026-09-26: each place the tool falls short becomes a build item. Expected: building effort goes where real use shows the tool falls short.
+4. After the funding decision, David uses the tool on a real question of his own, outside this collaboration; Rufus may do the same. Expected: the tool has been used on a real question beyond this collaboration.
 
-A fixed weekly check-in on the tree was considered and left out for now. Checking in weekly is good, but a fixed time is unlikely to hold. Owners are not yet assigned.
+A fixed weekly check-in on the tree was considered and left out for now. Checking in weekly is good, but a fixed time is unlikely to hold. Owners assigned by Rufus on 2026-09-26.
