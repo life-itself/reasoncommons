@@ -388,7 +388,7 @@ ltp:
     - id: r-e-foresight-deadline
       tree: current_reality
       statement: The Foresight Institute's AI for Science & Safety Nodes call, which funds work on coordination and on how humans and AI systems interact, closes on 2026-10-31.
-      provenance: { path: "ltp/rufus-david-collab/funders.md#L9" }
+      provenance: { path: "ltp/rufus-david-collab/funders.md#L7" }
 
   designations:
     - { id: g-d-ltp-used-in-world, entity_id: g-e-ltp-used-in-world, role: goal }
