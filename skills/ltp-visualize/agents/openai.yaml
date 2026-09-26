@@ -1,0 +1,7 @@
+interface:
+  display_name: "LTP Visualize"
+  short_description: "Visualize LTP YAML in the dashboard"
+  default_prompt: "Use $ltp-visualize to export the latest LTP project as dashboard HTML and open it."
+
+policy:
+  allow_implicit_invocation: true
