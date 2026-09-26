@@ -359,6 +359,32 @@ ltp:
       statement: Rufus and David focus their time now on philanthropic funding, or startup funding that works like it with few strings attached, led by a general-purpose philanthropic story.
       provenance: { path: "ltp/rufus-david-collab/scqh.md#L89" }
 
+    # Grants first, turned into actions, from Rufus on 2026-09-26 (scqh.md)
+    - id: r-e-pitch-written
+      tree: current_reality
+      statement: Rufus and David have a one-page funding proposal for AI-assisted Logical Thinking Process tooling, community adoption and Second Renaissance as a living laboratory.
+      provenance: { path: "drafts/funding-pitch-2026-09-26.md#L1" }
+    - id: r-e-life-itself-hosts
+      tree: current_reality
+      statement: Life Itself hosts Rufus and David's grant applications until a company exists.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L125" }
+    - id: t-e-act-shortlist
+      tree: transition
+      statement: Rufus and David shortlist funders, starting with Coefficient Giving and the Survival and Flourishing Fund and adding others found by research or by asking around.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L122" }
+    - id: t-e-eff-shortlist
+      tree: transition
+      statement: Rufus and David have a shortlist of funders, with what each asks for and when.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L122" }
+    - id: t-e-act-apply
+      tree: transition
+      statement: Rufus and David apply to the shortlisted funders through Life Itself, using the one-page pitch.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L123" }
+    - id: t-e-eff-applied
+      tree: transition
+      statement: Grant applications for the work are submitted.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L123" }
+
   designations:
     - { id: g-d-ltp-used-in-world, entity_id: g-e-ltp-used-in-world, role: goal }
     - { id: g-d-resourced, entity_id: g-e-resourced, role: critical_success_factor, parent_designation_id: g-d-ltp-used-in-world }
@@ -451,6 +477,13 @@ ltp:
     - { id: r-d-company-sale-hard, entity_id: r-e-company-sale-hard, role: observation }
     - { id: c-d-focus-injection, entity_id: c-e-focus-injection, role: injection }
 
+    - { id: r-d-pitch-written, entity_id: r-e-pitch-written, role: observation }
+    - { id: r-d-life-itself-hosts, entity_id: r-e-life-itself-hosts, role: observation }
+    - { id: t-d-act-shortlist, entity_id: t-e-act-shortlist, role: transition_action }
+    - { id: t-d-eff-shortlist, entity_id: t-e-eff-shortlist, role: transition_expected_effect }
+    - { id: t-d-act-apply, entity_id: t-e-act-apply, role: transition_action }
+    - { id: t-d-eff-applied, entity_id: t-e-eff-applied, role: transition_expected_effect }
+
   relationships:
     - { id: g-rel-resourced-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-resourced], to_entity_id: g-e-ltp-used-in-world }
     - { id: g-rel-users-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-real-users], to_entity_id: g-e-ltp-used-in-world }
@@ -480,6 +513,10 @@ ltp:
     - { id: c-rel-grants-vs-product, tree: conflict, kind: conflicts_with, from_entity_ids: [c-e-focus-pre-grants], to_entity_id: c-e-focus-pre-product }
     - { id: c-rel-grants-for-money, tree: conflict, kind: necessary_for, from_entity_ids: [c-e-focus-pre-grants], to_entity_id: c-e-focus-req-money-soon }
     - { id: c-rel-product-for-valued, tree: conflict, kind: necessary_for, from_entity_ids: [c-e-focus-pre-product], to_entity_id: c-e-focus-req-valued }
+    - { id: t-rel-shortlist-produces, tree: transition, kind: produces, from_entity_ids: [t-e-act-shortlist], to_entity_id: t-e-eff-shortlist }
+    - { id: t-rel-apply-produces, tree: transition, kind: produces, from_entity_ids: [t-e-act-apply], to_entity_id: t-e-eff-applied }
+    - { id: t-rel-funding-before-shortlist, tree: transition, kind: precedes, from_entity_ids: [t-e-act-funding-decision], to_entity_id: t-e-act-shortlist }
+    - { id: t-rel-shortlist-before-apply, tree: transition, kind: precedes, from_entity_ids: [t-e-act-shortlist], to_entity_id: t-e-act-apply }
 
   assumptions:
     - { id: c-asm-time-competes, relationship_id: c-rel-use-vs-build, statement: Building and using the tool compete for the same limited time. }

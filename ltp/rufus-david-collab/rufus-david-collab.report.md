@@ -13,9 +13,9 @@
 
 ## What the file claims
 
-83 propositions, 83 roles, 27 relationships, 8 assumptions, 1 assessment.
+89 propositions, 89 roles, 31 relationships, 8 assumptions, 1 assessment.
 
-goal 8 · current_reality 29 · prerequisite 17 · conflict 12 · future_reality 7 · transition 10
+goal 8 · current_reality 31 · prerequisite 17 · conflict 12 · future_reality 7 · transition 14
 
 All six views are now populated.
 
@@ -113,6 +113,17 @@ Source: Rufus, dictated on 2026-09-26, written up in `scqh.md` L67–87.
 - **Transcription reading.** "the effect of autism" read as "effective altruism", and "window story" as "why-now story".
 - **`p-e-funding-model-undecided` is now partly stale.** The route is decided (both); what remains undecided is priority. The obstacle is left as is until David confirms.
 - **Action 1 reworded** from "the choice between philanthropic funding and a startup" to the near-term focus choice, and marked in progress.
+
+## Added 2026-09-26, sixth pass: grants first, as actions
+
+Source: Rufus on 2026-09-26 (`scqh.md` L122–125) and the one-page pitch in `drafts/funding-pitch-2026-09-26.md` (uncommitted, like the transcripts).
+
+- **Pitch written.** Recorded as `r-e-pitch-written`. It already follows the resolution: a general-purpose story, three strands (tooling, community adoption, Second Renaissance as a living laboratory). It names the "Survive and Flourishing Fund"; the fund is the Survival and Flourishing Fund.
+- **Life Itself hosts the applications.** This settles `c-asm-life-itself-hosts` as true. Recorded as `r-e-life-itself-hosts`; the format cannot link it to the assumption.
+- **Two new actions:** shortlist funders (Coefficient Giving, formerly Open Philanthropy; the Survival and Flourishing Fund; others by research or asking), then apply through Life Itself. Order: funding decision → shortlist → apply.
+- **The agreement does not block applications.** Rufus: a funder giving through an organisation will not ask about ownership. So there is no `precedes` from the agreement to applying. It stays in the plan.
+- **Action 1 is done (draft).** Its expected effect, a decision on near-term focus, is met: grants first. David to confirm.
+- **Owners of the two new actions** are "Rufus and David" until named.
 
 ## Deliberately omitted
 

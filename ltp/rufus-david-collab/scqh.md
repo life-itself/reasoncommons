@@ -115,9 +115,13 @@ Decided by Rufus on 2026-09-26.
 
 Next real work to run through the tool: first the funding decision, then Rufus and David's agreement on ownership, licensing and commitment, which should be quick.
 
-1. Rufus and David, together, run the funding decision through the tool: notes in, then a tree, then a decision. Rufus reframed it on 2026-09-26 as a choice of near-term focus, grant applications or the product and customers (see the conflict above); in progress. Expected: a second real use of the tool, and a decision on where time goes now.
+1. Rufus and David, together, run the funding decision through the tool: notes in, then a tree, then a decision. Rufus reframed it on 2026-09-26 as a choice of near-term focus, grant applications or the product and customers (see the conflict above). Decided the same day: grants first (draft; David to confirm). Expected: a second real use of the tool, and a decision on where time goes now.
 2. Rufus and David, together, run their agreement on ownership, licensing and commitment through the tool. Expected: a clear agreement on ownership, licensing and commitment.
 3. Alongside both, a [friction log](friction-log.md), started by Rufus on 2026-09-26: each place the tool falls short becomes a build item. Expected: building effort goes where real use shows the tool falls short.
 4. After the funding decision, David uses the tool on a real question of his own, outside this collaboration; Rufus may do the same. Expected: the tool has been used on a real question beyond this collaboration.
+5. Rufus and David shortlist funders: Coefficient Giving (formerly Open Philanthropy) and the Survival and Flourishing Fund so far, with others found by research or by asking around. Expected: a shortlist with what each funder asks for and when.
+6. Rufus and David apply to the shortlisted funders through Life Itself, using the one-page pitch (`drafts/funding-pitch-2026-09-26.md`). Expected: grant applications submitted.
+
+Decided 2026-09-26: Life Itself hosts the applications until a company exists. The one-page pitch is written. The agreement (action 2) still matters, but does not block applications: a funder giving through an organisation will not ask about ownership.
 
 A fixed weekly check-in on the tree was considered and left out for now. Checking in weekly is good, but a fixed time is unlikely to hold. Owners assigned by Rufus on 2026-09-26.
