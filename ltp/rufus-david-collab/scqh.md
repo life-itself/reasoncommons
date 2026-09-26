@@ -146,3 +146,12 @@ Proposed by Claude and accepted by Rufus to try out ("let's try this and see"). 
 - No outside users → no sign of product-market fit → no customers → only their own time.
 - No funding applied → only their own time.
 - Unclear path → no shared way of turning the goal into action (direction chosen by Claude so that the unclear path stays the single root).
+
+Rufus, 2026-09-26, extending the draft:
+
+- Only having their own time, which is limited, means Rufus and David cannot build a product of the quality needed for impact.
+- It also means they have no time to disseminate or market it, so too few people know about it.
+- Without quality or awareness, the tool is not adopted and the goal fails. This is the key point.
+- The product is unclear partly because, with only their own time, Rufus and David have had no time to test the market: demos, calling people, looking for product-market fit. This closes a loop back to having only their own time.
+- Neither founder is strongly oriented to market testing and selling. Rufus is not motivated by it, financially or otherwise, and finds it a hassle. This also keeps the product unclear.
+- No funding has been applied for partly for lack of time (another loop) and partly because Rufus and David had not agreed their route. The route is now agreed, so applying is more likely.

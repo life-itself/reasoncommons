@@ -421,6 +421,24 @@ ltp:
       statement: Rufus and David do not know who their users are in general, though for the nonprofit-oriented version they have candidate communities in the AI-risk debate, effective altruism and Second Renaissance.
       provenance: { path: "ltp/rufus-david-collab/scqh.md#L137" }
 
+    # Cause links extended by Rufus, 2026-09-26 (scqh.md "Cause links")
+    - id: r-e-quality-short
+      tree: current_reality
+      statement: Rufus and David cannot build the tool to the quality needed for impact in their own limited time.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L152" }
+    - id: r-e-no-awareness
+      tree: current_reality
+      statement: Rufus and David have no time to disseminate or market the tool, so too few people know about it.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L153" }
+    - id: r-e-not-adopted
+      tree: current_reality
+      statement: The Logical Thinking Process, made accessible through AI, is not being adopted in the world to help people think and act better together.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L154" }
+    - id: r-e-no-sales-drive
+      tree: current_reality
+      statement: Neither Rufus nor David is strongly oriented to market testing and selling, and Rufus is not motivated to do it, financially or otherwise.
+      provenance: { path: "ltp/rufus-david-collab/scqh.md#L156" }
+
   designations:
     - { id: g-d-ltp-used-in-world, entity_id: g-e-ltp-used-in-world, role: goal }
     - { id: g-d-resourced, entity_id: g-e-resourced, role: critical_success_factor, parent_designation_id: g-d-ltp-used-in-world }
@@ -529,6 +547,11 @@ ltp:
     - { id: p-d-no-outside-users, entity_id: p-e-no-outside-users, role: obstacle, parent_designation_id: p-d-obj-real-users }
     - { id: p-d-users-candidates, entity_id: p-e-users-candidates, role: obstacle, parent_designation_id: p-d-obj-real-users }
 
+    - { id: r-d-quality-short, entity_id: r-e-quality-short, role: undesirable_effect }
+    - { id: r-d-no-awareness, entity_id: r-e-no-awareness, role: undesirable_effect }
+    - { id: r-d-not-adopted, entity_id: r-e-not-adopted, role: undesirable_effect }
+    - { id: r-d-no-sales-drive, entity_id: r-e-no-sales-drive, role: root_cause }
+
   relationships:
     - { id: g-rel-resourced-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-resourced], to_entity_id: g-e-ltp-used-in-world }
     - { id: g-rel-users-for-goal, tree: goal, kind: necessary_for, from_entity_ids: [g-e-real-users], to_entity_id: g-e-ltp-used-in-world }
@@ -581,6 +604,14 @@ ltp:
     - { id: r-rel-no-customers-drives-own-time, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-no-customers], to_entity_id: r-e-only-own-time }
     - { id: r-rel-no-funding-drives-own-time, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-no-funding-applied], to_entity_id: r-e-only-own-time }
     - { id: r-rel-unclear-drives-no-actioning, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-unclear-path], to_entity_id: r-e-no-shared-actioning }
+    - { id: r-rel-own-time-drives-quality, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-only-own-time], to_entity_id: r-e-quality-short }
+    - { id: r-rel-own-time-drives-no-awareness, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-only-own-time], to_entity_id: r-e-no-awareness }
+    - { id: r-rel-quality-drives-not-adopted, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-quality-short], to_entity_id: r-e-not-adopted }
+    - { id: r-rel-awareness-drives-not-adopted, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-no-awareness], to_entity_id: r-e-not-adopted }
+    - { id: r-rel-own-time-drives-product-unclear, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-only-own-time], to_entity_id: r-e-product-unclear }
+    - { id: r-rel-no-sales-drive-drives-product-unclear, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-no-sales-drive], to_entity_id: r-e-product-unclear }
+    - { id: r-rel-own-time-drives-no-funding, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-only-own-time], to_entity_id: r-e-no-funding-applied }
+    - { id: r-rel-route-undecided-drove-no-funding, tree: current_reality, kind: contributes_to, from_entity_ids: [r-e-funding-model-undecided], to_entity_id: r-e-no-funding-applied }
 
   assumptions:
     - { id: c-asm-time-competes, relationship_id: c-rel-use-vs-build, statement: Building and using the tool compete for the same limited time. }

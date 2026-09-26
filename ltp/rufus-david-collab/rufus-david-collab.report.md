@@ -13,9 +13,9 @@
 
 ## What the file claims
 
-97 propositions, 97 roles, 50 relationships, 8 assumptions, 1 assessment.
+101 propositions, 101 roles, 58 relationships, 8 assumptions, 1 assessment.
 
-goal 8 · current_reality 34 · prerequisite 22 · conflict 12 · future_reality 7 · transition 14
+goal 8 · current_reality 38 · prerequisite 22 · conflict 12 · future_reality 7 · transition 14
 
 All six views are now populated.
 
@@ -137,7 +137,11 @@ Source: Rufus and David's review of the current reality tree (`scqh.md`, "Tree c
 - **Prerequisite view mirrors it:** intermediate objectives that `overcomes` the settled obstacles (both routes, startup wanted, MIT), and superseding obstacles for the two restated ones.
 - **Kept as is, by agreement:** the root cause `r-e-unclear-path` and `r-e-no-shared-actioning`, both partly addressed but still live.
 - **Cause links, draft (same day).** Claude proposed seven `contributes_to` links and Rufus accepted them to try out ("let's try this and see"); `scqh.md`, "Cause links". Two chains end at `r-e-only-own-time`: product and users (product unclear → no clear picture → no outside users → no product-market fit → no customers) and funding (no funding applied). Unclear path → no shared actioning: the direction was Claude's choice, to keep one root. These are the weakest links in the file: asserted for testing, not stated in any source. Roles unchanged: an undesirable effect may also cause another.
-- **Open:** `r-e-product-unclear` and `r-e-no-funding-applied` have no cause. Does the unclear path explain them too? If so, it becomes the root of the whole tree.
+- **Extended by Rufus, same day** (`scqh.md`, "Cause links", second list). "Only our own time" is not the bottom: it `contributes_to` low quality (`r-e-quality-short`) and no awareness (`r-e-no-awareness`), which both lead to `r-e-not-adopted`, the goal negated, now the bottom of the tree ("the key point").
+- **Two reinforcing loops.** Only our own time → product unclear (no time to test the market) → … → no customers → only our own time; and only our own time → no funding applied → only our own time. The format holds loops as ordinary links; the importer's handling of cycles is untested.
+- **Second root cause:** `r-e-no-sales-drive`, neither founder oriented to market testing and selling, which also keeps the product unclear.
+- **Settled cause still shown:** the undecided route contributed to no funding being applied (`r-rel-route-undecided-drove-no-funding`). The route is now agreed, so this cause is spent; it stays as history, challenged by `r-e-want-both-routes`.
+- **Where the leverage is:** the loops run through "only our own time", which is exactly what the grants-first resolution attacks. That is the tree's own argument for the funding work.
 
 ## Deliberately omitted
 
