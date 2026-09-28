@@ -2,6 +2,13 @@
 
 AI skills that turn documents, plans and notes into a Reason Commons reasoning project — goals, current reality, conflicts, and the actions that follow — using the Logical Thinking Process (LTP). They work in Claude Code, Codex and any other agent that supports `SKILL.md` skills.
 
+<div class="rc-cards rc-cards-2">
+<a class="rc-card" href="#start-here"><span class="rc-card-title">1 · Install</span><p>One command puts the skills in your agent.</p></a>
+<a class="rc-card" href="#try-it"><span class="rc-card-title">2 · Turn a document into a tree</span><p>Copy-paste prompts for a document, a repo or meeting notes.</p></a>
+<a class="rc-card" href="#ltp-visualize-needs-a-clone-of-this-repo"><span class="rc-card-title">3 · See the trees</span><p>Open the result as a dashboard in your browser. Needs a clone.</p></a>
+<a class="rc-card" href="#send-this-to-a-colleague"><span class="rc-card-title">Pass it on</span><p>A short message to send a colleague.</p></a>
+</div>
+
 ## Start here
 
 Install the skills once, then paste a prompt from [Try it](#try-it).
@@ -94,6 +101,12 @@ Use the ltp-project skill to check [path/to/project.ltp.yaml] by hand against th
 - **It is conservative on purpose.** It only writes a cause-and-effect link when a single sentence in your source states it without hedging. Expect a sparser tree than you'd draw by hand; that is the skill declining to make things up. Add the links you believe, yourself.
 - **Nothing is ratified.** The output is a candidate for a person to review, not a finished model.
 - **The file is not machine-validated.** `ltp-project` checks its own output by hand against the format and says so in the report. To find out whether the app would accept it, attach it in the Reason Commons app; the import reports anything it refuses. (A standalone validator is a known gap — see the TODO in `ltp-project/SKILL.md`.)
+
+## Send this to a colleague
+
+```text
+Try the Reason Commons skills — they turn a document, repo or notes into a reasoning tree. Install: `npx skills add life-itself/reasoncommons`, then ask your agent: "Use the ltp-project skill on [your file]". Read the report it writes first. Everything else: https://reasoncommons.com/skills
+```
 
 ## For maintainers
 
