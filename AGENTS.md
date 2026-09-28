@@ -13,9 +13,10 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
 | Project overview + references | `README.md` |
 | Why this matters + problem framing (SCQH) | `motivation.md` |
 | Planning — streams, next actions | [GitHub issues](https://github.com/life-itself/reasoncommons/issues) |
+| Resume the Rufus–David collaboration | Bead `reasoncommons-a4l` (START HERE), then [the Beads/reasoning workflow](docs/beads-reasoning.md) and `ltp/rufus-david-collab/reason-commons.yaml` |
 | Process spec + **gold-standard toy fixture** (tree, doc, annotations) | `claim-tree-annotation.md` |
 | Static animated demo of the 4-step vision | `claim-tree-annotation-demo/` |
-| AI skills (ltp-project, ltp-visualize, scrollable-explainer) — install + copy-paste prompts | `skills/` (see `skills/README.md`) |
+| AI skills (reason-commons, ltp-project, ltp-visualize, scrollable-explainer) — install + copy-paste prompts | `skills/` (see `skills/README.md`) |
 | **Writing a scrolling visual explainer** — principles, patterns, worked teardown | `skills/scrollable-explainer/SKILL.md` — **read before drafting anything in `explainers/`** |
 | The explainer series itself | `explainers/` — see its layout under Conventions below |
 | **Explainers v2** — the rework into short illustrated chapters | `docs/plans/2026-09-18-explainers-v2.md`; state in beads (`bd ready --label explainers-v2`) |
@@ -26,15 +27,16 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
 - **Skills** live in top-level `skills/<name>/` so they're usable outside Claude Code (e.g. Codex). `.claude/` is gitignored (local-only, see `.gitignore`), so to let Claude Code discover them, wire the symlinks locally:
   ```sh
   mkdir -p .claude/skills
+  ln -s ../../skills/reason-commons .claude/skills/reason-commons
   ln -s ../../skills/ltp-project .claude/skills/ltp-project
   ln -s ../../skills/ltp-visualize .claude/skills/ltp-visualize
   ```
   `skills/ltp-project/` is canonical in this repo (as of 2026-09-28); the copy in `Promise-Foundation/reason-commons` is older, so never copy it over this one. The `bun run check:import` step was removed here (TODO in its `SKILL.md`, bead `reasoncommons-vc0`).
 - **Codex skills** are discovered under `.agents/skills/`. The repository tracks
-  `.agents/skills/ltp-project` and `.agents/skills/ltp-visualize`
+  `.agents/skills/reason-commons`, `.agents/skills/ltp-project` and `.agents/skills/ltp-visualize`
   as symlinks to the same `skills/<name>/` directories, so edits stay shared
-  between Claude Code and Codex. In the Codex app, invoke it explicitly with
-  `$ltp-project` or let its description trigger it automatically. Restart Codex if a newly added skill
+  between Claude Code and Codex. In the Codex app, invoke one explicitly, such as
+  `$reason-commons`, or let its description trigger it automatically. Restart Codex if a newly added skill
   does not appear in the Skills sidebar.
 - **Toy example first.** Validate any AI skill against the gold data in `claim-tree-annotation.md` before touching real applications (e.g. Second Renaissance).
 - Keep `motivation.md` (why + SCQH) current; it's referenced from `README.md`. Plan-of-work tracking (streams, next actions) lives in GitHub issues, not a repo file.
@@ -78,6 +80,7 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
   come back empty. Allow a moment after `fl` for the rebuild; a fetch made
   mid-rebuild can return a stale page and mislead you either way.
 - **Beads** (`bd`) tracks agent-executable work plans (e.g. Explainers v2); GitHub issues stay the place for project-level planning. Issues labelled `human` are gates only Rufus closes.
+- **Resume collaboration through its handoff.** Before choosing a reasoning topic for the Rufus–David collaboration, read `bd show reasoncommons-a4l` and its current work bead, then `skills/reason-commons/SKILL.md` and `ltp/rufus-david-collab/reason-commons.yaml`. Follow [docs/beads-reasoning.md](docs/beads-reasoning.md): Beads owns session priorities, ownership and task completion; the conversational YAML owns reasoning, acceptance and reasoning backlog. Refresh the existing START HERE bead at the end of a meaningful session. Closing a bead never endorses a claim or resolves a challenge automatically. Implementation work arising from tree sessions goes into separate beads and separate sessions. If `bd` is unavailable, read the saved `.beads/issues.jsonl` as a fallback and report that it may be stale; do not silently replace an existing database or start a second task list.
 - There is exactly one `NEXT.md`, at the repo root. Don't create per-folder ones.
 - **Preview before pushing to live.** `main` is the live site
   (`reasoncommons.com`, Flowershow site `ltp-issue-trees`) — never push to it

@@ -39,3 +39,11 @@ drafts
 .beads-credential-key
 .beads/proxieddb/
 .beads.gate.lock
+
+# Local accepted-history snapshots and diagrams for conversational facilitation.
+/ltp/rufus-david-collab/.reason-commons/
+
+# Private personal reasoning state and generated views.
+/personal-goals.yaml
+/personal-goals/
+/.personal-goals/

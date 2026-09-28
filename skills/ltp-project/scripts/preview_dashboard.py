@@ -215,6 +215,20 @@ def main() -> None:
     if replacements != 1:
         temporary.cleanup()
         parser.error("could not locate the dashboard's embedded demo data")
+
+    # The app's default is to collapse every tree. That works well for the
+    # hosted dashboard but makes a generated LTP preview look like a flat list
+    # of effects. Start the Current Reality view fully expanded in exported
+    # previews so its causal links (including loops) are visible immediately.
+    expansion_default = 'St=ze?A[ze]??sc:sc,'
+    if expansion_default not in dashboard_html:
+        temporary.cleanup()
+        parser.error("could not locate the dashboard's initial tree expansion state")
+    dashboard_html = dashboard_html.replace(
+        expansion_default,
+        'St=ze?A[ze]??(ze==="current-reality"&&r.project.analysis_mode==="preview"?new Set(gt?.entities??[]):sc):sc,',
+        1,
+    )
     (root / "index.html").write_text(dashboard_html, encoding="utf-8")
 
     if args.export_html is not None:
