@@ -20,10 +20,16 @@ allowed-tools: Read, Write, Edit, Bash, Grep, Glob
 
 The canonical copy of this skill lives in the Reason Commons app repository
 (`Promise-Foundation/reason-commons`, at `.claude/skills/ltp-project/`).
-`life-itself/reasoncommons` carries a byte-identical mirror at
-`skills/ltp-project/`. Edit the canonical copy, then copy the whole directory
-over the mirror; `diff -r` the two before editing either, and if they differ the
-mirror is the stale one.
+`life-itself/reasoncommons` carries a mirror at `skills/ltp-project/`. Edit the
+canonical copy, then copy the whole directory over the mirror; `diff -r` the two
+before editing either.
+
+> **TODO — the mirror has diverged.** This copy no longer requires a Reason
+> Commons app checkout: the `bun run check:import` step was dropped because it
+> never worked reliably for people without the app repo (see the bead
+> "ltp-project: validate without an app checkout"). Port that change to the
+> canonical copy, or restore validation here in a form that runs standalone
+> (for example a self-contained script in `scripts/`), then delete this note.
 
 The format is the app's own. What this skill writes is what the app imports
 through its attach control, and what the app exports from a space (Integrations →
@@ -35,13 +41,14 @@ already carries for you.
 
 ## What you produce
 
-Two files and one green command. Never one file.
+Two files. Never one.
 
 ```
 reports/ltp/<slug>/<slug>.ltp.yaml     the candidate
 reports/ltp/<slug>/<slug>.report.md    everything the YAML cannot hold
-bun run check:import <path>            must exit 0 before you hand anything over
 ```
+
+The file is **not machine-validated** here (see the TODO above), so hold it to `references/example-project.ltp.yaml` and `references/vocabulary.md` by hand and say in the report that it is unvalidated.
 
 To inspect the candidate in the repository's read-only dashboard, run:
 
@@ -120,12 +127,13 @@ goal   current_reality   conflict   future_reality   prerequisite   transition
     and the issue or comment URL for a tracker item. This becomes the locator in
     the import plan and in every refusal message about that proposition, so make
     it one a person can act on.
-12. **Write both files, then validate and repair.** `bun run check:import <path>`
-    from a Reason Commons app checkout — `~/github/reason-commons` unless
-    `REASON_COMMONS_DIR` says otherwise — at most five iterations. If the same
-    code survives three, stop and put the ambiguity to the person. With no
-    checkout at hand, attach the file in the app: the import packet runs the same
-    analysis and refuses for the same reasons.
+12. **Write both files, then check them by hand.** There is no validator to run
+    (see the TODO above). Re-read the YAML against the three rules below and
+    `references/vocabulary.md`: every view, role, relationship kind and assessment
+    kind valid; every identifier unique; every relationship inside one view; every
+    reference resolving. In the report's "Validator output" section write
+    "Not machine-validated", and tell the person to attach the file in the Reason
+    Commons app, whose import runs the full analysis and reports what it refuses.
 
 Nothing has to be listed in dependency order. The importer resolves references in
 two passes and plans in its own order, so a child may name a parent defined later.
@@ -178,14 +186,13 @@ Default kinds per view: `goal` → `necessary_for`; `current_reality` → `cause
 - a PDF has no text layer _and_ the page images are illegible
 - the source is not about a system anyone acts on — a novel, a price list, a form,
   or code with no plan, README or issue that says what it is for
-- the same validator code survives three repair attempts
 - the material is about several unrelated systems, and it is not clear which one
   the project is meant to be
 
 ## Never
 
 - invent a proposition to satisfy a dangling reference
-- delete real content to make the validator green
+- delete real content to make the file look valid
 - write `vision` or `higher_level_objective` — the file contract accepts them and
   no view holds them
 - assess on the author's behalf, when the source only recommends

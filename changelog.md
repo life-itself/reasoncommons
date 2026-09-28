@@ -3,6 +3,10 @@
 Notable changes to this project. Not strictly [Keep a Changelog](https://keepachangelog.com/)
 format, but same spirit — human-readable, most recent first.
 
+## 2026-09-28 — Skills README you can hand to a colleague
+
+[`skills/README.md`](skills/README.md) now leads with `npx skills add life-itself/reasoncommons` and copy-and-paste prompts for turning a document, repository or notes into a project file and viewing it, and says plainly that `ltp-visualize` needs a clone of the repo. `ltp-project` no longer asks for a checkout of the app to validate its output; it labels the file unvalidated instead, and a proper standalone check is tracked as a follow-up.
+
 ## 2026-09-26 — Preview LTP project files in the dashboard
 
 You can now export an `.ltp.yaml` candidate as a standalone HTML dashboard and open it directly in the browser with the [`ltp-visualize` skill](skills/ltp-visualize/SKILL.md). A local-server preview is available too; neither path changes the candidate or imports it into a Reason Commons space.

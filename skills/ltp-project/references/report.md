@@ -23,7 +23,7 @@ a real answer and a useful one; an absent section is not.
 | Reading conditions | text layer throughout / pages 12–18 are scans read as images |
 | Converted          | 2026-08-10                                                   |
 | Candidate          | `warehouse-throughput.ltp.yaml`                              |
-| `check:import`     | passes, exit 0 — 16 units in 2 waves, nothing excluded       |
+| Validation         | not machine-validated — attach in the app to run the import |
 
 ## What the file claims
 
@@ -79,7 +79,7 @@ subject; outside the system boundary; duplicate of an earlier claim; boilerplate
 
 ## Validator output
 
-<the tail of `bun run check:import`, verbatim>
+Not machine-validated (no validator available in this setup). Attach the file in the Reason Commons app; its import reports anything it refuses. If a validator was run, paste the tail of its output here, verbatim.
 
 ## Not in this file
 

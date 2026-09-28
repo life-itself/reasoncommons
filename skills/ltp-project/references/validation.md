@@ -1,3 +1,5 @@
+> **Optional.** `check:import` needs a Reason Commons app checkout and is not part of the standard `ltp-project` flow (see the TODO in `SKILL.md`). This page is still the reference for what each refusal code means, whether it comes from `check:import` or from the app's import screen.
+
 # Reading `check:import`, and repairing what it says
 
 ```bash

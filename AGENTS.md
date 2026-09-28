@@ -15,7 +15,7 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
 | Planning — streams, next actions | [GitHub issues](https://github.com/life-itself/reasoncommons/issues) |
 | Process spec + **gold-standard toy fixture** (tree, doc, annotations) | `claim-tree-annotation.md` |
 | Static animated demo of the 4-step vision | `claim-tree-annotation-demo/` |
-| AI skills (tree-gen, annotation-mapping, ltp-project; project-ltp is deprecated) | `skills/` (see `skills/README.md`) |
+| AI skills (ltp-project, ltp-visualize, scrollable-explainer) — install + copy-paste prompts | `skills/` (see `skills/README.md`) |
 | **Writing a scrolling visual explainer** — principles, patterns, worked teardown | `skills/scrollable-explainer/SKILL.md` — **read before drafting anything in `explainers/`** |
 | The explainer series itself | `explainers/` — see its layout under Conventions below |
 | **Explainers v2** — the rework into short illustrated chapters | `docs/plans/2026-09-18-explainers-v2.md`; state in beads (`bd ready --label explainers-v2`) |
@@ -26,13 +26,12 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
 - **Skills** live in top-level `skills/<name>/` so they're usable outside Claude Code (e.g. Codex). `.claude/` is gitignored (local-only, see `.gitignore`), so to let Claude Code discover them, wire the symlinks locally:
   ```sh
   mkdir -p .claude/skills
-  ln -s ../../skills/tree-gen .claude/skills/tree-gen
-  ln -s ../../skills/annotation-mapping .claude/skills/annotation-mapping
   ln -s ../../skills/ltp-project .claude/skills/ltp-project
+  ln -s ../../skills/ltp-visualize .claude/skills/ltp-visualize
   ```
-  `skills/ltp-project/` is a byte-identical mirror of the canonical skill in `Promise-Foundation/reason-commons` (`.claude/skills/ltp-project/`); edit it there and copy it here, and `diff -r` the two before editing either.
+  `skills/ltp-project/` mirrors the canonical skill in `Promise-Foundation/reason-commons` (`.claude/skills/ltp-project/`); edit it there and copy it here, and `diff -r` the two before editing either. **It has diverged**: the `bun run check:import` step was removed here (see the TODO in its `SKILL.md` and the bead), so port that upstream before copying over or it is lost.
 - **Codex skills** are discovered under `.agents/skills/`. The repository tracks
-  `.agents/skills/ltp-project` (and the deprecated `.agents/skills/project-ltp`)
+  `.agents/skills/ltp-project` and `.agents/skills/ltp-visualize`
   as symlinks to the same `skills/<name>/` directories, so edits stay shared
   between Claude Code and Codex. In the Codex app, invoke it explicitly with
   `$ltp-project` or let its description trigger it automatically. Restart Codex if a newly added skill
