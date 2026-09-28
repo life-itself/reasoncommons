@@ -97,7 +97,7 @@ Use the ltp-project skill to check [path/to/project.ltp.yaml] by hand against th
 
 ## For maintainers
 
-- `ltp-project/` mirrors the canonical skill in `Promise-Foundation/reason-commons` (`.claude/skills/ltp-project/`). Edit it there, copy the directory here, and `diff -r` the two before editing either. **Currently diverged**: the `check:import` validation step was removed here (TODO in `ltp-project/SKILL.md`), so the change must be ported upstream before the next copy-over, or it will be overwritten.
+- `ltp-project/` is canonical here. The app repo (`Promise-Foundation/reason-commons`) may carry an older copy; don't copy it over this one. The `check:import` validation step was removed (TODO in `ltp-project/SKILL.md`).
 - Skills live here, top level, so they work outside Claude Code. To use them while working in this repo, link them into the agent's discovery directory:
   - Claude Code (`.claude/` is gitignored): `mkdir -p .claude/skills && ln -s ../../skills/ltp-project .claude/skills/ltp-project` — likewise `ltp-visualize` and `scrollable-explainer`.
   - Codex: `.agents/skills/ltp-project` and `.agents/skills/ltp-visualize` are already tracked symlinks, so invoke them with `$ltp-project` and `$ltp-visualize`. Restart Codex if they don't appear in the Skills sidebar.

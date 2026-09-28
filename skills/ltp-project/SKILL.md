@@ -16,20 +16,11 @@ allowed-tools: Read, Write, Edit, Bash, Grep, Glob
 
 # Source material → candidate `ltp.yaml`
 
-## One skill, two homes
+## Where this skill lives
 
-The canonical copy of this skill lives in the Reason Commons app repository
-(`Promise-Foundation/reason-commons`, at `.claude/skills/ltp-project/`).
-`life-itself/reasoncommons` carries a mirror at `skills/ltp-project/`. Edit the
-canonical copy, then copy the whole directory over the mirror; `diff -r` the two
-before editing either.
+This repository (`life-itself/reasoncommons`, `skills/ltp-project/`) is the home of this skill. Edit it here. The Reason Commons app repository (`Promise-Foundation/reason-commons`) may still carry an older copy under `.claude/skills/ltp-project/`; that copy is stale, and nothing should be copied from it over this one.
 
-> **TODO — the mirror has diverged.** This copy no longer requires a Reason
-> Commons app checkout: the `bun run check:import` step was dropped because it
-> never worked reliably for people without the app repo (see the bead
-> "ltp-project: validate without an app checkout"). Port that change to the
-> canonical copy, or restore validation here in a form that runs standalone
-> (for example a self-contained script in `scripts/`), then delete this note.
+> **TODO — no validator.** This skill no longer requires a Reason Commons app checkout: the `bun run check:import` step was dropped because it never worked reliably for people without the app repo (see the bead "ltp-project: validate without an app checkout"). Restore validation in a form that runs standalone (for example a self-contained script in `scripts/`), then delete this note.
 
 The format is the app's own. What this skill writes is what the app imports
 through its attach control, and what the app exports from a space (Integrations →

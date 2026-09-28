@@ -29,7 +29,7 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
   ln -s ../../skills/ltp-project .claude/skills/ltp-project
   ln -s ../../skills/ltp-visualize .claude/skills/ltp-visualize
   ```
-  `skills/ltp-project/` mirrors the canonical skill in `Promise-Foundation/reason-commons` (`.claude/skills/ltp-project/`); edit it there and copy it here, and `diff -r` the two before editing either. **It has diverged**: the `bun run check:import` step was removed here (see the TODO in its `SKILL.md` and the bead), so port that upstream before copying over or it is lost.
+  `skills/ltp-project/` is canonical in this repo (as of 2026-09-28); the copy in `Promise-Foundation/reason-commons` is older, so never copy it over this one. The `bun run check:import` step was removed here (TODO in its `SKILL.md`, bead `reasoncommons-vc0`).
 - **Codex skills** are discovered under `.agents/skills/`. The repository tracks
   `.agents/skills/ltp-project` and `.agents/skills/ltp-visualize`
   as symlinks to the same `skills/<name>/` directories, so edits stay shared
