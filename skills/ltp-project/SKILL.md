@@ -118,13 +118,7 @@ goal   current_reality   conflict   future_reality   prerequisite   transition
     and the issue or comment URL for a tracker item. This becomes the locator in
     the import plan and in every refusal message about that proposition, so make
     it one a person can act on.
-12. **Write both files, then check them by hand.** There is no validator to run
-    (see the TODO above). Re-read the YAML against the three rules below and
-    `references/vocabulary.md`: every view, role, relationship kind and assessment
-    kind valid; every identifier unique; every relationship inside one view; every
-    reference resolving. In the report's "Validator output" section write
-    "Not machine-validated", and tell the person to attach the file in the Reason
-    Commons app, whose import runs the full analysis and reports what it refuses.
+12. **Write both files, then check them by hand.** There is no validator to run (see the TODO above). Re-read the YAML against the three rules below and `references/vocabulary.md`: every view, role, relationship kind and assessment kind valid; every identifier unique; every relationship inside one view; every reference resolving. In the report's "Validator output" section write "Not machine-validated", and tell the person to attach the file in the Reason Commons app, whose import runs the full analysis and reports what it refuses.
 
 Nothing has to be listed in dependency order. The importer resolves references in
 two passes and plans in its own order, so a child may name a parent defined later.

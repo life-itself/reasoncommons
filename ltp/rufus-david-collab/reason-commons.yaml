@@ -1,0 +1,3571 @@
+schema_version: 1
+project: Rufus and David's collaboration
+driver: david
+participants:
+  david: David Joseph
+  rufus: Rufus Pollock
+active_tree: current_reality
+work_tracking:
+  system: beads
+  handoff: reasoncommons-a4l
+  current: reasoncommons-5lo
+import_context:
+  source: ltp/rufus-david-collab/rufus-david-collab.ltp.yaml
+  sha256: e8012ee0d274e4ca623cfd62f84e5939aa81b5834ebfe4e8b30b3a0c378db142
+  converted_on: '2026-09-28'
+  question: What form should our collaboration take over the next six months, and what would make it worth continuing?
+  notes:
+  - Conversational working state; the original app interchange file remains unchanged.
+  - Source observations describe September 25–26, 2026; conversion does not verify their present-day accuracy.
+  - Acceptance is imported only where the accompanying SCQH or report records explicit endorsement; assertions alone remain proposed.
+  - Unlabelled source authors use David as driver_default with an uncertainty note; this does not establish authorship or endorsement.
+  - Source metadata preserves app roles and parent designations; it is archival metadata, not additional reasoning.
+  - The six-month horizon is a source draft, not a newly agreed commitment.
+  source_assessments:
+  - id: c-as-do-both-breaks
+    kind: breaks_conflict
+    tree: conflict
+    statement: Using the tool on real work while building it meets both requirements without giving either up.
+    subject_ids:
+    - c-d-injection-do-both
+    depends_on:
+    - c-asm-time-competes
+    - c-rel-use-vs-build
+  source_changes: []
+  id_aliases:
+    c-e-injection-do-both: f-e-use-while-building
+trees:
+  goal:
+    nodes:
+    - id: g-e-ltp-used-in-world
+      kind: goal
+      text: The Logical Thinking Process, made accessible through AI, is used in the world to help people think and act better together.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: g-e-ltp-used-in-world
+          tree: goal
+          statement: The Logical Thinking Process, made accessible through AI, is used in the world to help people think and act better together.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L19
+        designation:
+          id: g-d-ltp-used-in-world
+          entity_id: g-e-ltp-used-in-world
+          role: goal
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+    - id: g-e-resourced
+      kind: critical_success_factor
+      text: The work is resourced beyond Rufus and David's spare time.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: g-e-resourced
+          tree: goal
+          statement: The work is resourced beyond Rufus and David's spare time.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L23
+        designation:
+          id: g-d-resourced
+          entity_id: g-e-resourced
+          role: critical_success_factor
+          parent_designation_id: g-d-ltp-used-in-world
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+    - id: g-e-real-users
+      kind: critical_success_factor
+      text: Real people use the tool, with Second Renaissance as the first user and testbed.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: g-e-real-users
+          tree: goal
+          statement: Real people use the tool, with Second Renaissance as the first user and testbed.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L24
+        designation:
+          id: g-d-real-users
+          entity_id: g-e-real-users
+          role: critical_success_factor
+          parent_designation_id: g-d-ltp-used-in-world
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+    - id: g-e-picturable-product
+      kind: critical_success_factor
+      text: The product is something people can picture themselves using.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: g-e-picturable-product
+          tree: goal
+          statement: The product is something people can picture themselves using.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L25
+        designation:
+          id: g-d-picturable-product
+          entity_id: g-e-picturable-product
+          role: critical_success_factor
+          parent_designation_id: g-d-ltp-used-in-world
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+    - id: g-e-clear-agreement
+      kind: critical_success_factor
+      text: Rufus and David have a clear agreement on ownership, licensing and commitment.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: g-e-clear-agreement
+          tree: goal
+          statement: Rufus and David have a clear agreement on ownership, licensing and commitment.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L26
+        designation:
+          id: g-d-clear-agreement
+          entity_id: g-e-clear-agreement
+          role: critical_success_factor
+          parent_designation_id: g-d-ltp-used-in-world
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+    - id: g-e-make-money
+      kind: necessary_condition
+      text: Rufus and David make money from the work.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: g-e-make-money
+          tree: goal
+          statement: Rufus and David make money from the work.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: g-d-make-money
+          entity_id: g-e-make-money
+          role: necessary_condition
+          parent_designation_id: g-d-resourced
+    - id: g-e-ltp-used-in-sr
+      kind: necessary_condition
+      text: The Logical Thinking Process is used in Second Renaissance.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: g-e-ltp-used-in-sr
+          tree: goal
+          statement: The Logical Thinking Process is used in Second Renaissance.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: g-d-ltp-used-in-sr
+          entity_id: g-e-ltp-used-in-sr
+          role: necessary_condition
+          parent_designation_id: g-d-real-users
+    - id: g-e-form-follows-use
+      kind: necessary_condition
+      text: The form of the tool, whether written instructions, an app or a skill, is chosen by what people actually use.
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: g-e-form-follows-use
+          tree: goal
+          statement: The form of the tool, whether written instructions, an app or a skill, is chosen by what people actually use.
+          provenance:
+            path: drafts/rufus-2026-09-25-conflict-notes.md#L3
+        designation:
+          id: g-d-form-follows-use
+          entity_id: g-e-form-follows-use
+          role: necessary_condition
+          parent_designation_id: g-d-real-users
+    links:
+    - id: g-rel-resourced-for-goal
+      from:
+      - g-e-resourced
+      to: g-e-ltp-used-in-world
+      relation: necessary_for
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: agreed goal and critical success factors, 2026-09-25.'
+    - id: g-rel-users-for-goal
+      from:
+      - g-e-real-users
+      to: g-e-ltp-used-in-world
+      relation: necessary_for
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: agreed goal and critical success factors, 2026-09-25.'
+    - id: g-rel-product-for-goal
+      from:
+      - g-e-picturable-product
+      to: g-e-ltp-used-in-world
+      relation: necessary_for
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: agreed goal and critical success factors, 2026-09-25.'
+    - id: g-rel-agreement-for-goal
+      from:
+      - g-e-clear-agreement
+      to: g-e-ltp-used-in-world
+      relation: necessary_for
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: agreed goal and critical success factors, 2026-09-25.'
+    - id: g-rel-money-for-resourced
+      from:
+      - g-e-make-money
+      to: g-e-resourced
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: g-rel-sr-for-users
+      from:
+      - g-e-ltp-used-in-sr
+      to: g-e-real-users
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: g-rel-form-for-users
+      from:
+      - g-e-form-follows-use
+      to: g-e-real-users
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    backlog:
+    - ref: g-rel-resourced-for-goal
+      work: test_necessity
+    - ref: g-rel-users-for-goal
+      work: test_necessity
+    - ref: g-rel-product-for-goal
+      work: test_necessity
+    - ref: g-rel-agreement-for-goal
+      work: test_necessity
+    - ref: g-rel-money-for-resourced
+      work: test_necessity
+    - ref: g-rel-sr-for-users
+      work: test_necessity
+    - ref: g-rel-form-for-users
+      work: test_necessity
+    - ref: g-rel-money-for-resourced
+      work: examine_assumption
+      note: The old report asks whether income for Rufus and David is necessary for resourcing; consider grants paying others or in-kind support.
+  current_reality:
+    nodes:
+    - id: r-e-three-months
+      kind: observation
+      text: Rufus and David have collaborated for three months.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-three-months
+          tree: current_reality
+          statement: Rufus and David have collaborated for three months.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: r-d-three-months
+          entity_id: r-e-three-months
+          role: observation
+    - id: r-e-shared-interest
+      kind: observation
+      text: Rufus and David share a deep interest in thinking and collaborating better together.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-shared-interest
+          tree: current_reality
+          statement: Rufus and David share a deep interest in thinking and collaborating better together.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: r-d-shared-interest
+          entity_id: r-e-shared-interest
+          role: observation
+    - id: r-e-ltp-via-ai-thesis
+      kind: observation
+      text: Rufus and David think that better thinking together relates to structured trees of thought and action built with the Logical Thinking Process and made accessible to organisations and individuals through AI.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-ltp-via-ai-thesis
+          tree: current_reality
+          statement: Rufus and David think that better thinking together relates to structured trees of thought and action built with the Logical Thinking Process and made accessible to organisations and individuals through AI.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: r-d-ltp-via-ai-thesis
+          entity_id: r-e-ltp-via-ai-thesis
+          role: observation
+    - id: r-e-sites-built
+      kind: observation
+      text: Rufus and David have built several websites and apps.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-sites-built
+          tree: current_reality
+          statement: Rufus and David have built several websites and apps.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: r-d-sites-built
+          entity_id: r-e-sites-built
+          role: observation
+    - id: r-e-why-now-narrative
+      kind: observation
+      text: Rufus and David have a fairly good narrative for why AI makes this work possible now.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-why-now-narrative
+          tree: current_reality
+          statement: Rufus and David have a fairly good narrative for why AI makes this work possible now.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: r-d-why-now-narrative
+          entity_id: r-e-why-now-narrative
+          role: observation
+    - id: r-e-funder-interest
+      kind: observation
+      text: AI-supported thinking and sense-making is probably of significant interest to philanthropic funders such as Open Philanthropy or Coefficient Giving.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-funder-interest
+          tree: current_reality
+          statement: AI-supported thinking and sense-making is probably of significant interest to philanthropic funders such as Open Philanthropy or Coefficient Giving.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: r-d-funder-interest
+          entity_id: r-e-funder-interest
+          role: observation
+    - id: r-e-mixed-reception
+      kind: observation
+      text: A presentation of the work by Rufus and David received a mixed reception.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-mixed-reception
+          tree: current_reality
+          statement: A presentation of the work by Rufus and David received a mixed reception.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: r-d-mixed-reception
+          entity_id: r-e-mixed-reception
+          role: observation
+    - id: r-e-only-own-time
+      kind: undesirable_effect
+      text: Rufus and David have no resources for the work other than their own time.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-only-own-time
+          tree: current_reality
+          statement: Rufus and David have no resources for the work other than their own time.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: r-d-only-own-time
+          entity_id: r-e-only-own-time
+          role: undesirable_effect
+      accepted_by:
+      - rufus
+      acceptance_source: Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.
+    - id: r-e-no-funding-applied
+      kind: undesirable_effect
+      text: Rufus and David have not applied for funding.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-no-funding-applied
+          tree: current_reality
+          statement: Rufus and David have not applied for funding.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: r-d-no-funding-applied
+          entity_id: r-e-no-funding-applied
+          role: undesirable_effect
+      accepted_by:
+      - rufus
+      acceptance_source: Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.
+    - id: r-e-no-customers
+      kind: undesirable_effect
+      text: Rufus and David have no customers.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-no-customers
+          tree: current_reality
+          statement: Rufus and David have no customers.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: r-d-no-customers
+          entity_id: r-e-no-customers
+          role: undesirable_effect
+      accepted_by:
+      - rufus
+      acceptance_source: Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.
+    - id: r-e-funding-model-undecided
+      kind: undesirable_effect
+      text: Rufus and David have not decided whether to seek philanthropic funding or to create a startup.
+      status: disputed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-funding-model-undecided
+          tree: current_reality
+          statement: Rufus and David have not decided whether to seek philanthropic funding or to create a startup.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: r-d-funding-model-undecided
+          entity_id: r-e-funding-model-undecided
+          role: undesirable_effect
+      challenges:
+      - text: 'The joint 2026-09-26 cleanup supersedes this as a current claim: Rufus and David both want the work to become a startup as well as seek philanthropic funding, and do not want it to depend on philanthropic funding in the long term; David is, if anything, keener on the startup.'
+        by: rufus
+      - text: The same cleanup is recorded as agreed by David; retain the old wording only as historical context.
+        by: david
+    - id: r-e-business-undecided
+      kind: undesirable_effect
+      text: Rufus and David do not know whether either of them wants to turn the work into a business rather than keep it as a project within Second Renaissance.
+      status: disputed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-business-undecided
+          tree: current_reality
+          statement: Rufus and David do not know whether either of them wants to turn the work into a business rather than keep it as a project within Second Renaissance.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: r-d-business-undecided
+          entity_id: r-e-business-undecided
+          role: undesirable_effect
+      challenges:
+      - text: 'The joint 2026-09-26 cleanup supersedes this as a current claim: Rufus and David both want the work to become a startup as well as seek philanthropic funding, and do not want it to depend on philanthropic funding in the long term; David is, if anything, keener on the startup.'
+        by: rufus
+      - text: The same cleanup is recorded as agreed by David; retain the old wording only as historical context.
+        by: david
+    - id: r-e-licensing-unclear
+      kind: undesirable_effect
+      text: The licensing status of software built around the Logical Thinking Process, such as Reason Commons, is unclear.
+      status: disputed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-licensing-unclear
+          tree: current_reality
+          statement: The licensing status of software built around the Logical Thinking Process, such as Reason Commons, is unclear.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: r-d-licensing-unclear
+          entity_id: r-e-licensing-unclear
+          role: undesirable_effect
+      challenges:
+      - text: 'The joint 2026-09-26 cleanup supersedes this as a current claim: The Reason Commons repository is released under the MIT licence from 2026-09-26, and Rufus and David are happy for all the software, the app included, to be MIT-licensed.'
+        by: rufus
+      - text: The same cleanup is recorded as agreed by David; retain the old wording only as historical context.
+        by: david
+    - id: r-e-ownership-undiscussed
+      kind: undesirable_effect
+      text: Rufus and David have never discussed ownership or profit share.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-ownership-undiscussed
+          tree: current_reality
+          statement: Rufus and David have never discussed ownership or profit share.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: r-d-ownership-undiscussed
+          entity_id: r-e-ownership-undiscussed
+          role: undesirable_effect
+    - id: r-e-product-unclear
+      kind: undesirable_effect
+      text: Rufus and David are not clear what the product should look like.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-product-unclear
+          tree: current_reality
+          statement: Rufus and David are not clear what the product should look like.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: r-d-product-unclear
+          entity_id: r-e-product-unclear
+          role: undesirable_effect
+      accepted_by:
+      - rufus
+      acceptance_source: Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.
+    - id: r-e-no-user-picture
+      kind: undesirable_effect
+      text: Rufus and David cannot yet show an average user a clear picture of how they would use the product.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-no-user-picture
+          tree: current_reality
+          statement: Rufus and David cannot yet show an average user a clear picture of how they would use the product.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: r-d-no-user-picture
+          entity_id: r-e-no-user-picture
+          role: undesirable_effect
+      accepted_by:
+      - rufus
+      acceptance_source: Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.
+    - id: r-e-no-app-in-use
+      kind: undesirable_effect
+      text: No app Rufus and David have built is actively used by anyone, including Rufus and David themselves.
+      status: disputed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-no-app-in-use
+          tree: current_reality
+          statement: No app Rufus and David have built is actively used by anyone, including Rufus and David themselves.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: r-d-no-app-in-use
+          entity_id: r-e-no-app-in-use
+          role: undesirable_effect
+      challenges:
+      - text: 'The joint 2026-09-26 cleanup supersedes this as a current claim: No one other than Rufus and David uses any app they have built.'
+        by: rufus
+      - text: The same cleanup is recorded as agreed by David; retain the old wording only as historical context.
+        by: david
+    - id: r-e-users-unknown
+      kind: undesirable_effect
+      text: Rufus and David do not know who their users are.
+      status: disputed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-users-unknown
+          tree: current_reality
+          statement: Rufus and David do not know who their users are.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: r-d-users-unknown
+          entity_id: r-e-users-unknown
+          role: undesirable_effect
+      challenges:
+      - text: 'The joint 2026-09-26 cleanup supersedes this as a current claim: Rufus and David do not know who their users are in general, though for the nonprofit-oriented version they have candidate communities in the AI-risk debate, effective altruism and Second Renaissance.'
+        by: rufus
+      - text: The same cleanup is recorded as agreed by David; retain the old wording only as historical context.
+        by: david
+    - id: r-e-no-pmf
+      kind: undesirable_effect
+      text: Rufus and David have seen no sign of product-market fit.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-no-pmf
+          tree: current_reality
+          statement: Rufus and David have seen no sign of product-market fit.
+          provenance:
+            path: drafts/david-rufus-2026-09-25-re-collab.md#L1
+        designation:
+          id: r-d-no-pmf
+          entity_id: r-e-no-pmf
+          role: undesirable_effect
+      accepted_by:
+      - rufus
+      acceptance_source: Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.
+    - id: r-e-unclear-path
+      kind: cause
+      text: Rufus and David have not been clear on their goal, how they move towards it, or what is next.
+      status: accepted
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: r-e-unclear-path
+          tree: current_reality
+          statement: Rufus and David have not been clear on their goal, how they move towards it, or what is next.
+          provenance:
+            path: drafts/rufus-2026-09-25-conflict-notes.md#L9
+        designation:
+          id: r-d-unclear-path
+          entity_id: r-e-unclear-path
+          role: root_cause
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+    - id: r-e-keep-redesigning
+      kind: cause
+      text: Rufus and David keep building, redesigning and working out the thesis instead of trying the tool out.
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: r-e-keep-redesigning
+          tree: current_reality
+          statement: Rufus and David keep building, redesigning and working out the thesis instead of trying the tool out.
+          provenance:
+            path: drafts/rufus-2026-09-25-conflict-notes.md#L5
+        designation:
+          id: r-d-keep-redesigning
+          entity_id: r-e-keep-redesigning
+          role: intermediate_cause
+    - id: r-e-no-shared-actioning
+      kind: undesirable_effect
+      text: Rufus and David have no shared, structured way of turning the goal into action, covering who ships what, what counts as progress and what is next.
+      status: accepted
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: r-e-no-shared-actioning
+          tree: current_reality
+          statement: Rufus and David have no shared, structured way of turning the goal into action, covering who ships what, what counts as progress and what is next.
+          provenance:
+            path: drafts/rufus-2026-09-25-conflict-notes.md#L7
+        designation:
+          id: r-d-no-shared-actioning
+          entity_id: r-e-no-shared-actioning
+          role: undesirable_effect
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+    - id: r-e-dogfood-worked
+      kind: observation
+      text: Rufus and David used the tool properly together, live, for the first time on 2026-09-25 and found it good to use.
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: r-e-dogfood-worked
+          tree: current_reality
+          statement: Rufus and David used the tool properly together, live, for the first time on 2026-09-25 and found it good to use.
+          provenance:
+            path: drafts/rufus-2026-09-25-conflict-notes.md#L9
+        designation:
+          id: r-d-dogfood-worked
+          entity_id: r-e-dogfood-worked
+          role: evidence
+    - id: r-e-want-both-routes
+      kind: observation
+      text: Rufus and David both want the work to become a startup as well as seek philanthropic funding, and do not want it to depend on philanthropic funding in the long term; David is, if anything, keener on the startup.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-want-both-routes
+          tree: current_reality
+          statement: Rufus and David both want the work to become a startup as well as seek philanthropic funding, and do not want it to depend on philanthropic funding in the long term; David is, if anything, keener on the startup.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L134
+        designation:
+          id: r-d-want-both-routes
+          entity_id: r-e-want-both-routes
+          role: evidence
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+    - id: r-e-funders-fund-story
+      kind: observation
+      text: Rufus judges that philanthropic funders fund a credible idea and a credible team without a fairly mature product.
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: r-e-funders-fund-story
+          tree: current_reality
+          statement: Rufus judges that philanthropic funders fund a credible idea and a credible team without a fairly mature product.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L87
+        designation:
+          id: r-d-funders-fund-story
+          entity_id: r-e-funders-fund-story
+          role: observation
+    - id: r-e-story-resonates
+      kind: observation
+      text: Rufus judges that the story of the work, covering analytical rigour, the power of AI and the need for alignment, resonates in the philanthropic sphere, particularly effective altruism.
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: r-e-story-resonates
+          tree: current_reality
+          statement: Rufus judges that the story of the work, covering analytical rigour, the power of AI and the need for alignment, resonates in the philanthropic sphere, particularly effective altruism.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L87
+        designation:
+          id: r-d-story-resonates
+          entity_id: r-e-story-resonates
+          role: observation
+    - id: r-e-company-sale-hard
+      kind: observation
+      text: Rufus judges that selling the tool to companies is hard, because it needs teams to work, has to be sold at a senior level and is not a small subscription an individual buys.
+      status: accepted
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: r-e-company-sale-hard
+          tree: current_reality
+          statement: Rufus judges that selling the tool to companies is hard, because it needs teams to work, has to be sold at a senior level and is not a small subscription an individual buys.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L87
+        designation:
+          id: r-d-company-sale-hard
+          entity_id: r-e-company-sale-hard
+          role: evidence
+      accepted_by:
+      - rufus
+      acceptance_source: Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.
+    - id: r-e-pitch-written
+      kind: observation
+      text: Rufus and David have a one-page funding proposal for AI-assisted Logical Thinking Process tooling, community adoption and Second Renaissance as a living laboratory.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-pitch-written
+          tree: current_reality
+          statement: Rufus and David have a one-page funding proposal for AI-assisted Logical Thinking Process tooling, community adoption and Second Renaissance as a living laboratory.
+          provenance:
+            path: drafts/funding-pitch-2026-09-26.md#L1
+        designation:
+          id: r-d-pitch-written
+          entity_id: r-e-pitch-written
+          role: evidence
+    - id: r-e-life-itself-hosts
+      kind: observation
+      text: Life Itself hosts Rufus and David's grant applications until a company exists.
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: r-e-life-itself-hosts
+          tree: current_reality
+          statement: Life Itself hosts Rufus and David's grant applications until a company exists.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L125
+        designation:
+          id: r-d-life-itself-hosts
+          entity_id: r-e-life-itself-hosts
+          role: observation
+    - id: r-e-foresight-deadline
+      kind: observation
+      text: The Foresight Institute's AI for Science & Safety Nodes call, which funds work on coordination and on how humans and AI systems interact, closes on 2026-10-31.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source:
+        entity:
+          id: r-e-foresight-deadline
+          tree: current_reality
+          statement: The Foresight Institute's AI for Science & Safety Nodes call, which funds work on coordination and on how humans and AI systems interact, closes on 2026-10-31.
+          provenance:
+            path: ltp/rufus-david-collab/funders.md#L7
+        designation:
+          id: r-d-foresight-deadline
+          entity_id: r-e-foresight-deadline
+          role: evidence
+    - id: r-e-repo-mit
+      kind: observation
+      text: The Reason Commons repository is released under the MIT licence from 2026-09-26, and Rufus and David are happy for all the software, the app included, to be MIT-licensed.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-repo-mit
+          tree: current_reality
+          statement: The Reason Commons repository is released under the MIT licence from 2026-09-26, and Rufus and David are happy for all the software, the app included, to be MIT-licensed.
+          provenance:
+            path: LICENSE#L1
+        designation:
+          id: r-d-repo-mit
+          entity_id: r-e-repo-mit
+          role: evidence
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+    - id: r-e-goal-agreed
+      kind: observation
+      text: Rufus and David agreed the goal of their collaboration on 2026-09-25.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-goal-agreed
+          tree: current_reality
+          statement: Rufus and David agreed the goal of their collaboration on 2026-09-25.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L133
+        designation:
+          id: r-d-goal-agreed
+          entity_id: r-e-goal-agreed
+          role: evidence
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+    - id: r-e-no-outside-users
+      kind: undesirable_effect
+      text: No one other than Rufus and David uses any app they have built.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-no-outside-users
+          tree: current_reality
+          statement: No one other than Rufus and David uses any app they have built.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L136
+        designation:
+          id: r-d-no-outside-users
+          entity_id: r-e-no-outside-users
+          role: undesirable_effect
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+    - id: r-e-users-candidates
+      kind: undesirable_effect
+      text: Rufus and David do not know who their users are in general, though for the nonprofit-oriented version they have candidate communities in the AI-risk debate, effective altruism and Second Renaissance.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: r-e-users-candidates
+          tree: current_reality
+          statement: Rufus and David do not know who their users are in general, though for the nonprofit-oriented version they have candidate communities in the AI-risk debate, effective altruism and Second Renaissance.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L137
+        designation:
+          id: r-d-users-candidates
+          entity_id: r-e-users-candidates
+          role: undesirable_effect
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+    - id: r-e-quality-short
+      kind: undesirable_effect
+      text: Rufus and David cannot build the tool to the quality needed for impact in their own limited time.
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: r-e-quality-short
+          tree: current_reality
+          statement: Rufus and David cannot build the tool to the quality needed for impact in their own limited time.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L152
+        designation:
+          id: r-d-quality-short
+          entity_id: r-e-quality-short
+          role: undesirable_effect
+    - id: r-e-no-awareness
+      kind: undesirable_effect
+      text: Rufus and David have no time to disseminate or market the tool, so too few people know about it.
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: r-e-no-awareness
+          tree: current_reality
+          statement: Rufus and David have no time to disseminate or market the tool, so too few people know about it.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L153
+        designation:
+          id: r-d-no-awareness
+          entity_id: r-e-no-awareness
+          role: undesirable_effect
+    - id: r-e-not-adopted
+      kind: undesirable_effect
+      text: The Logical Thinking Process, made accessible through AI, is not being adopted in the world to help people think and act better together.
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: r-e-not-adopted
+          tree: current_reality
+          statement: The Logical Thinking Process, made accessible through AI, is not being adopted in the world to help people think and act better together.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L154
+        designation:
+          id: r-d-not-adopted
+          entity_id: r-e-not-adopted
+          role: undesirable_effect
+    - id: r-e-no-sales-drive
+      kind: cause
+      text: Neither Rufus nor David is strongly oriented to market testing and selling, and Rufus is not motivated to do it, financially or otherwise.
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: r-e-no-sales-drive
+          tree: current_reality
+          statement: Neither Rufus nor David is strongly oriented to market testing and selling, and Rufus is not motivated to do it, financially or otherwise.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L156
+        designation:
+          id: r-d-no-sales-drive
+          entity_id: r-e-no-sales-drive
+          role: root_cause
+    links:
+    - id: r-rel-unclear-drives-redesigning
+      from:
+      - r-e-unclear-path
+      to: r-e-keep-redesigning
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+    - id: r-rel-redesigning-drives-no-use
+      from:
+      - r-e-keep-redesigning
+      to: r-e-no-outside-users
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+    - id: r-rel-dogfood-challenges-no-use
+      from:
+      - r-e-dogfood-worked
+      to: r-e-no-app-in-use
+      relation: challenges
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: r-rel-mit-challenges-licensing
+      from:
+      - r-e-repo-mit
+      to: r-e-licensing-unclear
+      relation: challenges
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: r-rel-both-challenges-funding-model
+      from:
+      - r-e-want-both-routes
+      to: r-e-funding-model-undecided
+      relation: challenges
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: r-rel-both-challenges-business
+      from:
+      - r-e-want-both-routes
+      to: r-e-business-undecided
+      relation: challenges
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: r-rel-outside-users-supersedes
+      from:
+      - r-e-no-outside-users
+      to: r-e-no-app-in-use
+      relation: supersedes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: r-rel-candidates-supersedes
+      from:
+      - r-e-users-candidates
+      to: r-e-users-unknown
+      relation: supersedes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: r-rel-pitch-supports-candidates
+      from:
+      - r-e-pitch-written
+      to: r-e-users-candidates
+      relation: supports
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: r-rel-company-sale-drives-no-customers
+      from:
+      - r-e-company-sale-hard
+      to: r-e-no-customers
+      relation: contributes_to
+      status: accepted
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      accepted_by:
+      - rufus
+      acceptance_source: 'scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.'
+    - id: r-rel-outside-users-drives-no-pmf
+      from:
+      - r-e-no-outside-users
+      to: r-e-no-pmf
+      relation: contributes_to
+      status: accepted
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      accepted_by:
+      - rufus
+      acceptance_source: 'scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.'
+    - id: r-rel-product-unclear-drives-no-picture
+      from:
+      - r-e-product-unclear
+      to: r-e-no-user-picture
+      relation: contributes_to
+      status: accepted
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      accepted_by:
+      - rufus
+      acceptance_source: 'scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.'
+    - id: r-rel-no-picture-drives-no-outside-users
+      from:
+      - r-e-no-user-picture
+      to: r-e-no-outside-users
+      relation: contributes_to
+      status: accepted
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      accepted_by:
+      - rufus
+      acceptance_source: 'scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.'
+    - id: r-rel-no-pmf-drives-no-customers
+      from:
+      - r-e-no-pmf
+      to: r-e-no-customers
+      relation: contributes_to
+      status: accepted
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      accepted_by:
+      - rufus
+      acceptance_source: 'scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.'
+    - id: r-rel-no-customers-drives-own-time
+      from:
+      - r-e-no-customers
+      to: r-e-only-own-time
+      relation: contributes_to
+      status: accepted
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      accepted_by:
+      - rufus
+      acceptance_source: 'scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.'
+    - id: r-rel-no-funding-drives-own-time
+      from:
+      - r-e-no-funding-applied
+      to: r-e-only-own-time
+      relation: contributes_to
+      status: accepted
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      accepted_by:
+      - rufus
+      acceptance_source: 'scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.'
+    - id: r-rel-unclear-drives-no-actioning
+      from:
+      - r-e-unclear-path
+      to: r-e-no-shared-actioning
+      relation: contributes_to
+      status: accepted
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      accepted_by:
+      - rufus
+      acceptance_source: 'scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.'
+    - id: r-rel-own-time-drives-quality
+      from:
+      - r-e-only-own-time
+      to: r-e-quality-short
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+    - id: r-rel-own-time-drives-no-awareness
+      from:
+      - r-e-only-own-time
+      to: r-e-no-awareness
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+    - id: r-rel-quality-drives-not-adopted
+      from:
+      - r-e-quality-short
+      to: r-e-not-adopted
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+    - id: r-rel-awareness-drives-not-adopted
+      from:
+      - r-e-no-awareness
+      to: r-e-not-adopted
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+    - id: r-rel-own-time-drives-product-unclear
+      from:
+      - r-e-only-own-time
+      to: r-e-product-unclear
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+    - id: r-rel-no-sales-drive-drives-product-unclear
+      from:
+      - r-e-no-sales-drive
+      to: r-e-product-unclear
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+    - id: r-rel-own-time-drives-no-funding
+      from:
+      - r-e-only-own-time
+      to: r-e-no-funding-applied
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+    - id: r-rel-route-undecided-drove-no-funding
+      from:
+      - r-e-funding-model-undecided
+      to: r-e-no-funding-applied
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+    backlog:
+    - ref: r-e-no-sales-drive
+      work: clarify_with_driver
+      note: 'Current question within reasoncommons-5lo: Rufus supplied this characterization of both collaborators. Ask David whether lack of motivation/fit or lack of available time is the obstacle to market testing.'
+      beads:
+      - reasoncommons-5lo
+    - ref: r-rel-no-sales-drive-drives-product-unclear
+      work: test_causality
+      note: 'Within reasoncommons-5lo, after clarifying the source claim: what market-testing behavior is missing, and would changing it make the product clearer?'
+      beads:
+      - reasoncommons-5lo
+    - ref: r-rel-unclear-drives-redesigning
+      work: test_causality
+      beads:
+      - reasoncommons-5lo
+    - ref: r-rel-redesigning-drives-no-use
+      work: test_causality
+      beads:
+      - reasoncommons-5lo
+    - ref: r-rel-dogfood-challenges-no-use
+      work: review_relation
+    - ref: r-rel-mit-challenges-licensing
+      work: review_relation
+    - ref: r-rel-both-challenges-funding-model
+      work: review_relation
+    - ref: r-rel-both-challenges-business
+      work: review_relation
+    - ref: r-rel-outside-users-supersedes
+      work: review_relation
+    - ref: r-rel-candidates-supersedes
+      work: review_relation
+    - ref: r-rel-pitch-supports-candidates
+      work: review_relation
+    - ref: r-rel-company-sale-drives-no-customers
+      work: test_causality
+      beads:
+      - reasoncommons-5lo
+    - ref: r-rel-outside-users-drives-no-pmf
+      work: test_causality
+      beads:
+      - reasoncommons-5lo
+    - ref: r-rel-product-unclear-drives-no-picture
+      work: test_causality
+      beads:
+      - reasoncommons-5lo
+    - ref: r-rel-no-picture-drives-no-outside-users
+      work: test_causality
+      beads:
+      - reasoncommons-5lo
+    - ref: r-rel-no-pmf-drives-no-customers
+      work: test_causality
+      beads:
+      - reasoncommons-5lo
+    - ref: r-rel-no-customers-drives-own-time
+      work: test_causality
+      beads:
+      - reasoncommons-5lo
+    - ref: r-rel-no-funding-drives-own-time
+      work: test_causality
+      beads:
+      - reasoncommons-5lo
+    - ref: r-rel-unclear-drives-no-actioning
+      work: test_causality
+      beads:
+      - reasoncommons-5lo
+    - ref: r-rel-own-time-drives-quality
+      work: test_causality
+      beads:
+      - reasoncommons-5lo
+    - ref: r-rel-own-time-drives-no-awareness
+      work: test_causality
+      beads:
+      - reasoncommons-5lo
+    - ref: r-rel-quality-drives-not-adopted
+      work: test_causality
+      beads:
+      - reasoncommons-5lo
+    - ref: r-rel-awareness-drives-not-adopted
+      work: test_causality
+      beads:
+      - reasoncommons-5lo
+    - ref: r-rel-own-time-drives-product-unclear
+      work: test_causality
+      beads:
+      - reasoncommons-5lo
+    - ref: r-rel-own-time-drives-no-funding
+      work: test_causality
+      beads:
+      - reasoncommons-5lo
+    - ref: r-rel-route-undecided-drove-no-funding
+      work: test_causality
+      beads:
+      - reasoncommons-5lo
+    - ref: r-e-funding-model-undecided
+      work: review_historical_scope
+      note: Preserve the recorded correction; decide whether the older claim has any remaining current meaning.
+    - ref: r-e-business-undecided
+      work: review_historical_scope
+      note: Preserve the recorded correction; decide whether the older claim has any remaining current meaning.
+    - ref: r-e-licensing-unclear
+      work: review_historical_scope
+      note: Preserve the recorded correction; decide whether the older claim has any remaining current meaning.
+    - ref: r-e-no-app-in-use
+      work: review_historical_scope
+      note: Preserve the recorded correction; decide whether the older claim has any remaining current meaning.
+    - ref: r-e-users-unknown
+      work: review_historical_scope
+      note: Preserve the recorded correction; decide whether the older claim has any remaining current meaning.
+    - ref: r-e-foresight-deadline
+      work: verify_before_relying
+      note: Imported historical deadline; not verified during conversion.
+    - ref: r-e-no-shared-actioning
+      work: review_resolution
+      note: Existing review bead asks whether using the tree and Beads now resolves the lack of a shared way to turn the goal into action. Integration alone does not establish that it does.
+      beads:
+      - reasoncommons-5lo
+  conflict:
+    nodes:
+    - id: c-e-objective
+      kind: objective
+      text: Real people use the tool, with Rufus and David as the first users.
+      status: accepted
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source:
+        entity:
+          id: c-e-objective
+          tree: conflict
+          statement: Real people use the tool, with Rufus and David as the first users.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L49
+        designation:
+          id: c-d-objective
+          entity_id: c-e-objective
+          role: cloud_objective
+      accepted_by:
+      - rufus
+      acceptance_source: 'scqh.md: first conflict confirmed by Rufus, 2026-09-25; positions describe the historical cloud.'
+    - id: c-e-req-learn-by-using
+      kind: need
+      text: Rufus and David learn what the tool must do by using it on their own real work.
+      status: accepted
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source:
+        entity:
+          id: c-e-req-learn-by-using
+          tree: conflict
+          statement: Rufus and David learn what the tool must do by using it on their own real work.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L51
+        designation:
+          id: c-d-req-learn-by-using
+          entity_id: c-e-req-learn-by-using
+          role: cloud_requirement
+          parent_designation_id: c-d-objective
+      accepted_by:
+      - rufus
+      acceptance_source: 'scqh.md: first conflict confirmed by Rufus, 2026-09-25; positions describe the historical cloud.'
+    - id: c-e-pre-use-now
+      kind: prerequisite
+      text: Rufus and David use the current app on their real work now, rough as it is.
+      status: accepted
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source:
+        entity:
+          id: c-e-pre-use-now
+          tree: conflict
+          statement: Rufus and David use the current app on their real work now, rough as it is.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L53
+        designation:
+          id: c-d-pre-use-now
+          entity_id: c-e-pre-use-now
+          role: cloud_prerequisite
+          parent_designation_id: c-d-req-learn-by-using
+      accepted_by:
+      - rufus
+      acceptance_source: 'scqh.md: first conflict confirmed by Rufus, 2026-09-25; positions describe the historical cloud.'
+    - id: c-e-req-good-enough
+      kind: need
+      text: The tool Rufus and David put in front of people is good enough to be worth using.
+      status: accepted
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source:
+        entity:
+          id: c-e-req-good-enough
+          tree: conflict
+          statement: The tool Rufus and David put in front of people is good enough to be worth using.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L55
+        designation:
+          id: c-d-req-good-enough
+          entity_id: c-e-req-good-enough
+          role: cloud_requirement
+          parent_designation_id: c-d-objective
+      accepted_by:
+      - rufus
+      acceptance_source: 'scqh.md: first conflict confirmed by Rufus, 2026-09-25; positions describe the historical cloud.'
+    - id: c-e-pre-build-first
+      kind: prerequisite
+      text: Rufus and David keep building and redesigning the tool before relying on it.
+      status: accepted
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source:
+        entity:
+          id: c-e-pre-build-first
+          tree: conflict
+          statement: Rufus and David keep building and redesigning the tool before relying on it.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L57
+        designation:
+          id: c-d-pre-build-first
+          entity_id: c-e-pre-build-first
+          role: cloud_prerequisite
+          parent_designation_id: c-d-req-good-enough
+      accepted_by:
+      - rufus
+      acceptance_source: 'scqh.md: first conflict confirmed by Rufus, 2026-09-25; positions describe the historical cloud.'
+    - id: c-e-focus-objective
+      kind: objective
+      text: The work is resourced beyond Rufus and David's spare time.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source:
+        entity:
+          id: c-e-focus-objective
+          tree: conflict
+          statement: The work is resourced beyond Rufus and David's spare time.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L71
+        designation:
+          id: c-d-focus-objective
+          entity_id: c-e-focus-objective
+          role: cloud_objective
+    - id: c-e-focus-req-money-soon
+      kind: need
+      text: Money for the work arrives soon.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source:
+        entity:
+          id: c-e-focus-req-money-soon
+          tree: conflict
+          statement: Money for the work arrives soon.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L73
+        designation:
+          id: c-d-focus-req-money-soon
+          entity_id: c-e-focus-req-money-soon
+          role: cloud_requirement
+          parent_designation_id: c-d-focus-objective
+    - id: c-e-focus-pre-grants
+      kind: prerequisite
+      text: Rufus and David spend their time now writing grant applications.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source:
+        entity:
+          id: c-e-focus-pre-grants
+          tree: conflict
+          statement: Rufus and David spend their time now writing grant applications.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L75
+        designation:
+          id: c-d-focus-pre-grants
+          entity_id: c-e-focus-pre-grants
+          role: cloud_prerequisite
+          parent_designation_id: c-d-focus-req-money-soon
+    - id: c-e-focus-req-valued
+      kind: need
+      text: People show they value the product enough to use it and pay for it.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source:
+        entity:
+          id: c-e-focus-req-valued
+          tree: conflict
+          statement: People show they value the product enough to use it and pay for it.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L77
+        designation:
+          id: c-d-focus-req-valued
+          entity_id: c-e-focus-req-valued
+          role: cloud_requirement
+          parent_designation_id: c-d-focus-objective
+    - id: c-e-focus-pre-product
+      kind: prerequisite
+      text: Rufus and David spend their time now developing the product fast and looking for customers.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source:
+        entity:
+          id: c-e-focus-pre-product
+          tree: conflict
+          statement: Rufus and David spend their time now developing the product fast and looking for customers.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L79
+        designation:
+          id: c-d-focus-pre-product
+          entity_id: c-e-focus-pre-product
+          role: cloud_prerequisite
+          parent_designation_id: c-d-focus-req-valued
+    links:
+    - id: c-rel-use-vs-build
+      from:
+      - c-e-pre-use-now
+      to: c-e-pre-build-first
+      relation: conflicts_with
+      status: disputed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: Building and using the tool compete for the same limited time.
+        by: assistant
+        source_id: c-asm-time-competes
+      challenges:
+      - text: Rufus’s recorded resolution is to use while building; the first live use challenged the claim that the app was too rough. Retain the original assumptions for inspection, not as accepted constraints.
+        by: rufus
+    - id: c-rel-build-for-good-enough
+      from:
+      - c-e-pre-build-first
+      to: c-e-req-good-enough
+      relation: necessary_for
+      status: disputed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: The current app is too rough to use on real work.
+        by: assistant
+        source_id: c-asm-app-too-rough
+      - text: Using a rough tool costs Rufus and David more than it teaches them.
+        by: assistant
+        source_id: c-asm-rough-costs-more
+      challenges:
+      - text: Rufus’s recorded resolution is to use while building; the first live use challenged the claim that the app was too rough. Retain the original assumptions for inspection, not as accepted constraints.
+        by: rufus
+    - id: c-rel-grants-vs-product
+      from:
+      - c-e-focus-pre-grants
+      to: c-e-focus-pre-product
+      relation: conflicts_with
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: Rufus and David's time now is too limited to write grant applications and develop the product at once.
+        by: rufus
+        source_id: c-asm-no-time-for-both
+    - id: c-rel-grants-for-money
+      from:
+      - c-e-focus-pre-grants
+      to: c-e-focus-req-money-soon
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: Grant money can arrive sooner than revenue.
+        by: rufus
+        source_id: c-asm-grants-faster
+      - text: Funders give grants without a relatively mature product.
+        by: rufus
+        source_id: c-asm-grants-without-maturity
+      - text: Life Itself can host a grant application until a company exists.
+        by: rufus
+        source_id: c-asm-life-itself-hosts
+    - id: c-rel-product-for-valued
+      from:
+      - c-e-focus-pre-product
+      to: c-e-focus-req-valued
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: Developing the product fast and looking for customers now brings paying customers soon.
+        by: rufus
+        source_id: c-asm-customers-soon
+    - id: import-parent-c-d-req-learn-by-using
+      from:
+      - c-e-req-learn-by-using
+      to: c-e-objective
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        parent_designation_id: c-d-objective
+        note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    - id: import-parent-c-d-pre-use-now
+      from:
+      - c-e-pre-use-now
+      to: c-e-req-learn-by-using
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        parent_designation_id: c-d-req-learn-by-using
+        note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    - id: import-parent-c-d-req-good-enough
+      from:
+      - c-e-req-good-enough
+      to: c-e-objective
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        parent_designation_id: c-d-objective
+        note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    - id: import-parent-c-d-focus-req-money-soon
+      from:
+      - c-e-focus-req-money-soon
+      to: c-e-focus-objective
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        parent_designation_id: c-d-focus-objective
+        note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    - id: import-parent-c-d-focus-req-valued
+      from:
+      - c-e-focus-req-valued
+      to: c-e-focus-objective
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        parent_designation_id: c-d-focus-objective
+        note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    backlog:
+    - ref: c-rel-use-vs-build
+      work: resolve_challenge
+    - ref: c-rel-build-for-good-enough
+      work: resolve_challenge
+    - ref: c-rel-grants-vs-product
+      work: review_relation
+      beads:
+      - reasoncommons-5lo
+    - ref: c-rel-grants-for-money
+      work: test_necessity
+      beads:
+      - reasoncommons-5lo
+    - ref: c-rel-product-for-valued
+      work: test_necessity
+      beads:
+      - reasoncommons-5lo
+    - ref: import-parent-c-d-req-learn-by-using
+      work: test_necessity
+    - ref: import-parent-c-d-pre-use-now
+      work: test_necessity
+    - ref: import-parent-c-d-req-good-enough
+      work: test_necessity
+    - ref: import-parent-c-d-focus-req-money-soon
+      work: test_necessity
+      beads:
+      - reasoncommons-5lo
+    - ref: import-parent-c-d-focus-req-valued
+      work: test_necessity
+      beads:
+      - reasoncommons-5lo
+  future_reality:
+    nodes:
+    - id: f-e-use-while-building
+      kind: injection
+      text: Rufus and David use the tool on their real work now while they keep building and redesigning it.
+      status: accepted
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: f-e-use-while-building
+          tree: future_reality
+          statement: Rufus and David use the tool on their real work now while they keep building and redesigning it.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L95
+        designation:
+          id: f-d-use-while-building
+          entity_id: f-e-use-while-building
+          role: injection
+        merged_entity:
+          id: c-e-injection-do-both
+          tree: conflict
+          statement: Rufus and David use the tool on their real work now while they keep building and redesigning it.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L65
+        merged_designation:
+          id: c-d-injection-do-both
+          entity_id: c-e-injection-do-both
+          role: injection
+      accepted_by:
+      - rufus
+      acceptance_source: 'scqh.md: first conflict resolution; report third pass identifies this as Rufus’s own resolution.'
+      derived_from:
+      - c-e-pre-use-now
+      - c-e-pre-build-first
+    - id: f-e-run-collab-through-tree
+      kind: injection
+      text: Rufus and David run their collaboration through the tree, covering the goal, what is next and who ships what.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source:
+        entity:
+          id: f-e-run-collab-through-tree
+          tree: future_reality
+          statement: Rufus and David run their collaboration through the tree, covering the goal, what is next and who ships what.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L96
+        designation:
+          id: f-d-run-collab-through-tree
+          entity_id: f-e-run-collab-through-tree
+          role: injection
+    - id: f-e-regular-users
+      kind: desirable_effect
+      text: Rufus and David are real, regular users of the tool.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source:
+        entity:
+          id: f-e-regular-users
+          tree: future_reality
+          statement: Rufus and David are real, regular users of the tool.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L100
+        designation:
+          id: f-d-regular-users
+          entity_id: f-e-regular-users
+          role: desired_effect
+    - id: f-e-learn-from-use
+      kind: desirable_effect
+      text: What the tool must do is learned from real use rather than guessed.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source:
+        entity:
+          id: f-e-learn-from-use
+          tree: future_reality
+          statement: What the tool must do is learned from real use rather than guessed.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L101
+        designation:
+          id: f-d-learn-from-use
+          entity_id: f-e-learn-from-use
+          role: desired_effect
+    - id: f-e-build-targets-use
+      kind: desirable_effect
+      text: Building effort goes where real use shows the tool falls short.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source:
+        entity:
+          id: f-e-build-targets-use
+          tree: future_reality
+          statement: Building effort goes where real use shows the tool falls short.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L102
+        designation:
+          id: f-d-build-targets-use
+          entity_id: f-e-build-targets-use
+          role: desired_effect
+    - id: f-e-know-next
+      kind: desirable_effect
+      text: Rufus and David know what is next, who is shipping what, and what counts as progress.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source:
+        entity:
+          id: f-e-know-next
+          tree: future_reality
+          statement: Rufus and David know what is next, who is shipping what, and what counts as progress.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L103
+        designation:
+          id: f-d-know-next
+          entity_id: f-e-know-next
+          role: desired_effect
+    - id: f-e-form-settled
+      kind: desirable_effect
+      text: The choice between instructions, an app and a skill is settled by what gets used.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source:
+        entity:
+          id: f-e-form-settled
+          tree: future_reality
+          statement: The choice between instructions, an app and a skill is settled by what gets used.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L104
+        designation:
+          id: f-d-form-settled
+          entity_id: f-e-form-settled
+          role: desired_effect
+    - id: c-e-focus-injection
+      kind: injection
+      text: Rufus and David focus their time now on philanthropic funding, or startup funding that works like it with few strings attached, led by a general-purpose philanthropic story.
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: c-e-focus-injection
+          tree: conflict
+          statement: Rufus and David focus their time now on philanthropic funding, or startup funding that works like it with few strings attached, led by a general-purpose philanthropic story.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L89
+        designation:
+          id: c-d-focus-injection
+          entity_id: c-e-focus-injection
+          role: injection
+      derived_from:
+      - c-e-focus-pre-grants
+      - c-e-focus-pre-product
+    links:
+    - id: f-rel-use-makes-users
+      from:
+      - f-e-use-while-building
+      to: f-e-regular-users
+      relation: causes
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-rel-use-teaches
+      from:
+      - f-e-use-while-building
+      to: f-e-learn-from-use
+      relation: causes
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-rel-learning-targets-build
+      from:
+      - f-e-learn-from-use
+      to: f-e-build-targets-use
+      relation: causes
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-rel-learning-settles-form
+      from:
+      - f-e-learn-from-use
+      to: f-e-form-settled
+      relation: causes
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-rel-tree-gives-next
+      from:
+      - f-e-run-collab-through-tree
+      to: f-e-know-next
+      relation: causes
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-rel-tree-makes-users
+      from:
+      - f-e-run-collab-through-tree
+      to: f-e-regular-users
+      relation: causes
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    backlog:
+    - ref: f-rel-use-makes-users
+      work: test_causality
+    - ref: f-rel-use-teaches
+      work: test_causality
+    - ref: f-rel-learning-targets-build
+      work: test_causality
+    - ref: f-rel-learning-settles-form
+      work: test_causality
+    - ref: f-rel-tree-gives-next
+      work: test_causality
+    - ref: f-rel-tree-makes-users
+      work: test_causality
+    - ref: c-e-focus-injection
+      work: confirm_priority_with_david
+      note: The source still labels grants-first draft / David to confirm; do not equate agreement to both routes with agreement on priority.
+      beads:
+      - reasoncommons-5lo
+    - ref: c-e-focus-injection
+      work: test_negative_branch
+      note: Would grants-first create long-term dependence on philanthropy or delay learning whether people value the product?
+      beads:
+      - reasoncommons-i2b
+    - ref: f-e-use-while-building
+      work: test_conflict_resolution
+      note: Preserved source assessment c-as-do-both-breaks says both needs are met; check repeated real use, not just one successful session.
+  prerequisite:
+    nodes:
+    - id: p-e-obj-resourced
+      kind: objective
+      text: The work is resourced beyond Rufus and David's spare time.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-obj-resourced
+          tree: prerequisite
+          statement: The work is resourced beyond Rufus and David's spare time.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L36
+        designation:
+          id: p-d-obj-resourced
+          entity_id: p-e-obj-resourced
+          role: implementation_objective
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+    - id: p-e-only-own-time
+      kind: obstacle
+      text: Rufus and David have no resources for the work other than their own time.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-only-own-time
+          tree: prerequisite
+          statement: Rufus and David have no resources for the work other than their own time.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L36
+        designation:
+          id: p-d-only-own-time
+          entity_id: p-e-only-own-time
+          role: obstacle
+          parent_designation_id: p-d-obj-resourced
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+      derived_from:
+      - r-e-only-own-time
+    - id: p-e-no-funding-applied
+      kind: obstacle
+      text: Rufus and David have not applied for funding.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-no-funding-applied
+          tree: prerequisite
+          statement: Rufus and David have not applied for funding.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L36
+        designation:
+          id: p-d-no-funding-applied
+          entity_id: p-e-no-funding-applied
+          role: obstacle
+          parent_designation_id: p-d-obj-resourced
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+      derived_from:
+      - r-e-no-funding-applied
+    - id: p-e-no-customers
+      kind: obstacle
+      text: Rufus and David have no customers.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-no-customers
+          tree: prerequisite
+          statement: Rufus and David have no customers.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L36
+        designation:
+          id: p-d-no-customers
+          entity_id: p-e-no-customers
+          role: obstacle
+          parent_designation_id: p-d-obj-resourced
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+      derived_from:
+      - r-e-no-customers
+    - id: p-e-funding-model-undecided
+      kind: obstacle
+      text: Rufus and David have not decided whether to seek philanthropic funding or to create a startup.
+      status: disputed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-funding-model-undecided
+          tree: prerequisite
+          statement: Rufus and David have not decided whether to seek philanthropic funding or to create a startup.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L36
+        designation:
+          id: p-d-funding-model-undecided
+          entity_id: p-e-funding-model-undecided
+          role: obstacle
+          parent_designation_id: p-d-obj-resourced
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+      challenges:
+      - text: 'The joint 2026-09-26 cleanup supersedes this as a current claim: Rufus and David both want the work to become a startup as well as seek philanthropic funding, and do not want it to depend on philanthropic funding in the long term; David is, if anything, keener on the startup.'
+        by: rufus
+      - text: The same cleanup is recorded as agreed by David; retain the old wording only as historical context.
+        by: david
+      derived_from:
+      - r-e-funding-model-undecided
+    - id: p-e-obj-real-users
+      kind: objective
+      text: Real people use the tool, with Second Renaissance as the first user and testbed.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-obj-real-users
+          tree: prerequisite
+          statement: Real people use the tool, with Second Renaissance as the first user and testbed.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L37
+        designation:
+          id: p-d-obj-real-users
+          entity_id: p-e-obj-real-users
+          role: implementation_objective
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+    - id: p-e-no-app-in-use
+      kind: obstacle
+      text: No app Rufus and David have built is actively used by anyone, including Rufus and David themselves.
+      status: disputed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-no-app-in-use
+          tree: prerequisite
+          statement: No app Rufus and David have built is actively used by anyone, including Rufus and David themselves.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L37
+        designation:
+          id: p-d-no-app-in-use
+          entity_id: p-e-no-app-in-use
+          role: obstacle
+          parent_designation_id: p-d-obj-real-users
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+      challenges:
+      - text: 'The joint 2026-09-26 cleanup supersedes this as a current claim: No one other than Rufus and David uses any app they have built.'
+        by: rufus
+      - text: The same cleanup is recorded as agreed by David; retain the old wording only as historical context.
+        by: david
+      derived_from:
+      - r-e-no-app-in-use
+    - id: p-e-users-unknown
+      kind: obstacle
+      text: Rufus and David do not know who their users are.
+      status: disputed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-users-unknown
+          tree: prerequisite
+          statement: Rufus and David do not know who their users are.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L37
+        designation:
+          id: p-d-users-unknown
+          entity_id: p-e-users-unknown
+          role: obstacle
+          parent_designation_id: p-d-obj-real-users
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+      challenges:
+      - text: 'The joint 2026-09-26 cleanup supersedes this as a current claim: Rufus and David do not know who their users are in general, though for the nonprofit-oriented version they have candidate communities in the AI-risk debate, effective altruism and Second Renaissance.'
+        by: rufus
+      - text: The same cleanup is recorded as agreed by David; retain the old wording only as historical context.
+        by: david
+      derived_from:
+      - r-e-users-unknown
+    - id: p-e-no-pmf
+      kind: obstacle
+      text: Rufus and David have seen no sign of product-market fit.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-no-pmf
+          tree: prerequisite
+          statement: Rufus and David have seen no sign of product-market fit.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L37
+        designation:
+          id: p-d-no-pmf
+          entity_id: p-e-no-pmf
+          role: obstacle
+          parent_designation_id: p-d-obj-real-users
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+      derived_from:
+      - r-e-no-pmf
+    - id: p-e-obj-picturable-product
+      kind: objective
+      text: The product is something people can picture themselves using.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-obj-picturable-product
+          tree: prerequisite
+          statement: The product is something people can picture themselves using.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L38
+        designation:
+          id: p-d-obj-picturable-product
+          entity_id: p-e-obj-picturable-product
+          role: implementation_objective
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+    - id: p-e-product-unclear
+      kind: obstacle
+      text: Rufus and David are not clear what the product should look like.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-product-unclear
+          tree: prerequisite
+          statement: Rufus and David are not clear what the product should look like.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L38
+        designation:
+          id: p-d-product-unclear
+          entity_id: p-e-product-unclear
+          role: obstacle
+          parent_designation_id: p-d-obj-picturable-product
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+      derived_from:
+      - r-e-product-unclear
+    - id: p-e-no-user-picture
+      kind: obstacle
+      text: Rufus and David cannot yet show an average user a clear picture of how they would use the product.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-no-user-picture
+          tree: prerequisite
+          statement: Rufus and David cannot yet show an average user a clear picture of how they would use the product.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L38
+        designation:
+          id: p-d-no-user-picture
+          entity_id: p-e-no-user-picture
+          role: obstacle
+          parent_designation_id: p-d-obj-picturable-product
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+      derived_from:
+      - r-e-no-user-picture
+    - id: p-e-obj-clear-agreement
+      kind: objective
+      text: Rufus and David have a clear agreement on ownership, licensing and commitment.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-obj-clear-agreement
+          tree: prerequisite
+          statement: Rufus and David have a clear agreement on ownership, licensing and commitment.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L39
+        designation:
+          id: p-d-obj-clear-agreement
+          entity_id: p-e-obj-clear-agreement
+          role: implementation_objective
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+    - id: p-e-business-undecided
+      kind: obstacle
+      text: Rufus and David have not decided between keeping the work as a Second Renaissance project and turning it into a business.
+      status: disputed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-business-undecided
+          tree: prerequisite
+          statement: Rufus and David have not decided between keeping the work as a Second Renaissance project and turning it into a business.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L39
+        designation:
+          id: p-d-business-undecided
+          entity_id: p-e-business-undecided
+          role: obstacle
+          parent_designation_id: p-d-obj-clear-agreement
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+      challenges:
+      - text: 'The joint 2026-09-26 cleanup supersedes this as a current claim: Rufus and David both want the work to become a startup as well as seek philanthropic funding, and do not want it to depend on philanthropic funding in the long term; David is, if anything, keener on the startup.'
+        by: rufus
+      - text: The same cleanup is recorded as agreed by David; retain the old wording only as historical context.
+        by: david
+      derived_from:
+      - r-e-business-undecided
+    - id: p-e-licensing-unclear
+      kind: obstacle
+      text: The licensing status of software built around the Logical Thinking Process, such as Reason Commons, is unclear.
+      status: disputed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-licensing-unclear
+          tree: prerequisite
+          statement: The licensing status of software built around the Logical Thinking Process, such as Reason Commons, is unclear.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L39
+        designation:
+          id: p-d-licensing-unclear
+          entity_id: p-e-licensing-unclear
+          role: obstacle
+          parent_designation_id: p-d-obj-clear-agreement
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+      challenges:
+      - text: 'The joint 2026-09-26 cleanup supersedes this as a current claim: The Reason Commons repository is released under the MIT licence from 2026-09-26, and Rufus and David are happy for all the software, the app included, to be MIT-licensed.'
+        by: rufus
+      - text: The same cleanup is recorded as agreed by David; retain the old wording only as historical context.
+        by: david
+      derived_from:
+      - r-e-licensing-unclear
+    - id: p-e-ownership-undiscussed
+      kind: obstacle
+      text: Rufus and David have never discussed ownership or profit share.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-ownership-undiscussed
+          tree: prerequisite
+          statement: Rufus and David have never discussed ownership or profit share.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L39
+        designation:
+          id: p-d-ownership-undiscussed
+          entity_id: p-e-ownership-undiscussed
+          role: obstacle
+          parent_designation_id: p-d-obj-clear-agreement
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).'
+      derived_from:
+      - r-e-ownership-undiscussed
+    - id: p-e-no-shared-actioning
+      kind: obstacle
+      text: Rufus and David have no shared, structured way of turning the goal into action, covering who ships what, what counts as progress and what is next.
+      status: proposed
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: p-e-no-shared-actioning
+          tree: prerequisite
+          statement: Rufus and David have no shared, structured way of turning the goal into action, covering who ships what, what counts as progress and what is next.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L45
+        designation:
+          id: p-d-no-shared-actioning
+          entity_id: p-e-no-shared-actioning
+          role: obstacle
+          parent_designation_id: p-d-obj-clear-agreement
+      derived_from:
+      - r-e-no-shared-actioning
+    - id: p-e-io-both-routes
+      kind: intermediate_objective
+      text: Rufus and David pursue both a startup and philanthropic funding, with grant applications first.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-io-both-routes
+          tree: prerequisite
+          statement: Rufus and David pursue both a startup and philanthropic funding, with grant applications first.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L134
+        designation:
+          id: p-d-io-both-routes
+          entity_id: p-e-io-both-routes
+          role: intermediate_objective
+          parent_designation_id: p-d-funding-model-undecided
+    - id: p-e-io-startup-wanted
+      kind: intermediate_objective
+      text: Rufus and David both want to turn the work into a startup.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-io-startup-wanted
+          tree: prerequisite
+          statement: Rufus and David both want to turn the work into a startup.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L134
+        designation:
+          id: p-d-io-startup-wanted
+          entity_id: p-e-io-startup-wanted
+          role: intermediate_objective
+          parent_designation_id: p-d-business-undecided
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Tree cleanup (2026-09-26).'
+    - id: p-e-io-mit
+      kind: intermediate_objective
+      text: The Reason Commons software is released under the MIT licence.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-io-mit
+          tree: prerequisite
+          statement: The Reason Commons software is released under the MIT licence.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L135
+        designation:
+          id: p-d-io-mit
+          entity_id: p-e-io-mit
+          role: intermediate_objective
+          parent_designation_id: p-d-licensing-unclear
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Tree cleanup (2026-09-26).'
+    - id: p-e-no-outside-users
+      kind: obstacle
+      text: No one other than Rufus and David uses any app they have built.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-no-outside-users
+          tree: prerequisite
+          statement: No one other than Rufus and David uses any app they have built.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L136
+        designation:
+          id: p-d-no-outside-users
+          entity_id: p-e-no-outside-users
+          role: obstacle
+          parent_designation_id: p-d-obj-real-users
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Tree cleanup (2026-09-26).'
+      derived_from:
+      - r-e-no-outside-users
+    - id: p-e-users-candidates
+      kind: obstacle
+      text: Rufus and David do not know who their users are in general, though for the nonprofit-oriented version they have candidate communities in the AI-risk debate, effective altruism and Second Renaissance.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: p-e-users-candidates
+          tree: prerequisite
+          statement: Rufus and David do not know who their users are in general, though for the nonprofit-oriented version they have candidate communities in the AI-risk debate, effective altruism and Second Renaissance.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L137
+        designation:
+          id: p-d-users-candidates
+          entity_id: p-e-users-candidates
+          role: obstacle
+          parent_designation_id: p-d-obj-real-users
+      accepted_by:
+      - rufus
+      - david
+      acceptance_source: 'scqh.md: Tree cleanup (2026-09-26).'
+      derived_from:
+      - r-e-users-candidates
+    links:
+    - id: p-rel-both-routes-overcomes
+      from:
+      - p-e-io-both-routes
+      to: p-e-funding-model-undecided
+      relation: overcomes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: p-rel-startup-overcomes
+      from:
+      - p-e-io-startup-wanted
+      to: p-e-business-undecided
+      relation: overcomes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: p-rel-mit-overcomes
+      from:
+      - p-e-io-mit
+      to: p-e-licensing-unclear
+      relation: overcomes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: p-rel-outside-users-supersedes
+      from:
+      - p-e-no-outside-users
+      to: p-e-no-app-in-use
+      relation: supersedes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: p-rel-candidates-supersedes
+      from:
+      - p-e-users-candidates
+      to: p-e-users-unknown
+      relation: supersedes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: import-parent-p-d-only-own-time
+      from:
+      - p-e-only-own-time
+      to: p-e-obj-resourced
+      relation: blocks
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        parent_designation_id: p-d-obj-resourced
+        note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    - id: import-parent-p-d-no-funding-applied
+      from:
+      - p-e-no-funding-applied
+      to: p-e-obj-resourced
+      relation: blocks
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        parent_designation_id: p-d-obj-resourced
+        note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    - id: import-parent-p-d-no-customers
+      from:
+      - p-e-no-customers
+      to: p-e-obj-resourced
+      relation: blocks
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        parent_designation_id: p-d-obj-resourced
+        note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    - id: import-parent-p-d-funding-model-undecided
+      from:
+      - p-e-funding-model-undecided
+      to: p-e-obj-resourced
+      relation: blocks
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        parent_designation_id: p-d-obj-resourced
+        note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    - id: import-parent-p-d-no-app-in-use
+      from:
+      - p-e-no-app-in-use
+      to: p-e-obj-real-users
+      relation: blocks
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        parent_designation_id: p-d-obj-real-users
+        note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    - id: import-parent-p-d-users-unknown
+      from:
+      - p-e-users-unknown
+      to: p-e-obj-real-users
+      relation: blocks
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        parent_designation_id: p-d-obj-real-users
+        note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    - id: import-parent-p-d-no-pmf
+      from:
+      - p-e-no-pmf
+      to: p-e-obj-real-users
+      relation: blocks
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        parent_designation_id: p-d-obj-real-users
+        note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    - id: import-parent-p-d-product-unclear
+      from:
+      - p-e-product-unclear
+      to: p-e-obj-picturable-product
+      relation: blocks
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        parent_designation_id: p-d-obj-picturable-product
+        note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    - id: import-parent-p-d-no-user-picture
+      from:
+      - p-e-no-user-picture
+      to: p-e-obj-picturable-product
+      relation: blocks
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        parent_designation_id: p-d-obj-picturable-product
+        note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    - id: import-parent-p-d-business-undecided
+      from:
+      - p-e-business-undecided
+      to: p-e-obj-clear-agreement
+      relation: blocks
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        parent_designation_id: p-d-obj-clear-agreement
+        note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    - id: import-parent-p-d-licensing-unclear
+      from:
+      - p-e-licensing-unclear
+      to: p-e-obj-clear-agreement
+      relation: blocks
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        parent_designation_id: p-d-obj-clear-agreement
+        note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    - id: import-parent-p-d-ownership-undiscussed
+      from:
+      - p-e-ownership-undiscussed
+      to: p-e-obj-clear-agreement
+      relation: blocks
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        parent_designation_id: p-d-obj-clear-agreement
+        note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    - id: import-parent-p-d-no-shared-actioning
+      from:
+      - p-e-no-shared-actioning
+      to: p-e-obj-clear-agreement
+      relation: blocks
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        parent_designation_id: p-d-obj-clear-agreement
+        note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    - id: import-parent-p-d-no-outside-users
+      from:
+      - p-e-no-outside-users
+      to: p-e-obj-real-users
+      relation: blocks
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        parent_designation_id: p-d-obj-real-users
+        note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    - id: import-parent-p-d-users-candidates
+      from:
+      - p-e-users-candidates
+      to: p-e-obj-real-users
+      relation: blocks
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        parent_designation_id: p-d-obj-real-users
+        note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    backlog:
+    - ref: p-rel-both-routes-overcomes
+      work: review_relation
+    - ref: p-rel-startup-overcomes
+      work: review_relation
+    - ref: p-rel-mit-overcomes
+      work: review_relation
+    - ref: p-rel-outside-users-supersedes
+      work: review_relation
+    - ref: p-rel-candidates-supersedes
+      work: review_relation
+    - ref: import-parent-p-d-only-own-time
+      work: review_relation
+    - ref: import-parent-p-d-no-funding-applied
+      work: review_relation
+    - ref: import-parent-p-d-no-customers
+      work: review_relation
+    - ref: import-parent-p-d-funding-model-undecided
+      work: review_relation
+    - ref: import-parent-p-d-no-app-in-use
+      work: review_relation
+    - ref: import-parent-p-d-users-unknown
+      work: review_relation
+    - ref: import-parent-p-d-no-pmf
+      work: review_relation
+    - ref: import-parent-p-d-product-unclear
+      work: review_relation
+    - ref: import-parent-p-d-no-user-picture
+      work: review_relation
+    - ref: import-parent-p-d-business-undecided
+      work: review_relation
+    - ref: import-parent-p-d-licensing-unclear
+      work: review_relation
+    - ref: import-parent-p-d-ownership-undiscussed
+      work: review_relation
+    - ref: import-parent-p-d-no-shared-actioning
+      work: review_relation
+    - ref: import-parent-p-d-no-outside-users
+      work: review_relation
+    - ref: import-parent-p-d-users-candidates
+      work: review_relation
+    - ref: p-e-funding-model-undecided
+      work: review_historical_scope
+      note: Preserve the recorded correction; decide whether the older claim has any remaining current meaning.
+    - ref: p-e-no-app-in-use
+      work: review_historical_scope
+      note: Preserve the recorded correction; decide whether the older claim has any remaining current meaning.
+    - ref: p-e-users-unknown
+      work: review_historical_scope
+      note: Preserve the recorded correction; decide whether the older claim has any remaining current meaning.
+    - ref: p-e-business-undecided
+      work: review_historical_scope
+      note: Preserve the recorded correction; decide whether the older claim has any remaining current meaning.
+    - ref: p-e-licensing-unclear
+      work: review_historical_scope
+      note: Preserve the recorded correction; decide whether the older claim has any remaining current meaning.
+  transition:
+    nodes:
+    - id: t-e-used-once
+      kind: existing_condition
+      text: Rufus and David have used the tool properly on real work once, on this tree.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source:
+        entity:
+          id: t-e-used-once
+          tree: transition
+          statement: Rufus and David have used the tool properly on real work once, on this tree.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L65
+        designation:
+          id: t-d-used-once
+          entity_id: t-e-used-once
+          role: transition_existing_reality
+    - id: t-e-need-repeated-use
+      kind: need
+      text: Rufus and David need the tool used repeatedly on real work, including by people other than themselves.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source:
+        entity:
+          id: t-e-need-repeated-use
+          tree: transition
+          statement: Rufus and David need the tool used repeatedly on real work, including by people other than themselves.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L24
+        designation:
+          id: t-d-need-repeated-use
+          entity_id: t-e-need-repeated-use
+          role: transition_need
+    - id: t-e-act-funding-decision
+      kind: action
+      text: Rufus and David together run the choice of near-term focus, grant applications or the product and customers, through the tool, from notes to a tree to a decision.
+      status: accepted
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: t-e-act-funding-decision
+          tree: transition
+          statement: Rufus and David together run the choice of near-term focus, grant applications or the product and customers, through the tool, from notes to a tree to a decision.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L118
+        designation:
+          id: t-d-act-funding-decision
+          entity_id: t-e-act-funding-decision
+          role: transition_action
+      accepted_by:
+      - rufus
+      acceptance_source: 'scqh.md: Next actions, decided/assigned by Rufus 2026-09-26. Acceptance of a plan does not mean completion.'
+    - id: t-e-eff-funding-decided
+      kind: expected_effect
+      text: Rufus and David have decided whether their time now goes into grant applications or into the product and customers, through a second real use of the tool.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: t-e-eff-funding-decided
+          tree: transition
+          statement: Rufus and David have decided whether their time now goes into grant applications or into the product and customers, through a second real use of the tool.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L118
+        designation:
+          id: t-d-eff-funding-decided
+          entity_id: t-e-eff-funding-decided
+          role: transition_expected_effect
+    - id: t-e-act-agreement
+      kind: action
+      text: Rufus and David together run their agreement on ownership, licensing and commitment through the tool.
+      status: accepted
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: t-e-act-agreement
+          tree: transition
+          statement: Rufus and David together run their agreement on ownership, licensing and commitment through the tool.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L119
+        designation:
+          id: t-d-act-agreement
+          entity_id: t-e-act-agreement
+          role: transition_action
+      accepted_by:
+      - rufus
+      acceptance_source: 'scqh.md: Next actions, decided/assigned by Rufus 2026-09-26. Acceptance of a plan does not mean completion.'
+    - id: t-e-eff-agreement
+      kind: expected_effect
+      text: Rufus and David have a clear agreement on ownership, licensing and commitment.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: t-e-eff-agreement
+          tree: transition
+          statement: Rufus and David have a clear agreement on ownership, licensing and commitment.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L119
+        designation:
+          id: t-d-eff-agreement
+          entity_id: t-e-eff-agreement
+          role: transition_expected_effect
+    - id: t-e-act-friction-log
+      kind: action
+      text: Rufus starts a friction log, and Rufus and David record in it each place the tool falls short while they use it.
+      status: accepted
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: t-e-act-friction-log
+          tree: transition
+          statement: Rufus starts a friction log, and Rufus and David record in it each place the tool falls short while they use it.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L120
+        designation:
+          id: t-d-act-friction-log
+          entity_id: t-e-act-friction-log
+          role: transition_action
+      accepted_by:
+      - rufus
+      acceptance_source: 'scqh.md: Next actions, decided/assigned by Rufus 2026-09-26. Acceptance of a plan does not mean completion.'
+    - id: t-e-eff-build-targets-use
+      kind: expected_effect
+      text: Building effort goes where real use shows the tool falls short.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: t-e-eff-build-targets-use
+          tree: transition
+          statement: Building effort goes where real use shows the tool falls short.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L120
+        designation:
+          id: t-d-eff-build-targets-use
+          entity_id: t-e-eff-build-targets-use
+          role: transition_expected_effect
+    - id: t-e-act-own-question
+      kind: action
+      text: David uses the tool on a real question of his own outside this collaboration, and Rufus may do the same.
+      status: accepted
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: t-e-act-own-question
+          tree: transition
+          statement: David uses the tool on a real question of his own outside this collaboration, and Rufus may do the same.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L121
+        designation:
+          id: t-d-act-own-question
+          entity_id: t-e-act-own-question
+          role: transition_action
+      accepted_by:
+      - rufus
+      acceptance_source: 'scqh.md: Next actions, decided/assigned by Rufus 2026-09-26. Acceptance of a plan does not mean completion.'
+    - id: t-e-eff-used-beyond-collab
+      kind: expected_effect
+      text: The tool has been used on a real question beyond this collaboration.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: t-e-eff-used-beyond-collab
+          tree: transition
+          statement: The tool has been used on a real question beyond this collaboration.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L121
+        designation:
+          id: t-d-eff-used-beyond-collab
+          entity_id: t-e-eff-used-beyond-collab
+          role: transition_expected_effect
+    - id: t-e-act-shortlist
+      kind: action
+      text: Rufus and David shortlist funders, starting with Coefficient Giving and the Survival and Flourishing Fund and adding others found by research or by asking around.
+      status: accepted
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: t-e-act-shortlist
+          tree: transition
+          statement: Rufus and David shortlist funders, starting with Coefficient Giving and the Survival and Flourishing Fund and adding others found by research or by asking around.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L122
+        designation:
+          id: t-d-act-shortlist
+          entity_id: t-e-act-shortlist
+          role: transition_action
+      accepted_by:
+      - rufus
+      acceptance_source: 'scqh.md: Next actions, decided/assigned by Rufus 2026-09-26. Acceptance of a plan does not mean completion.'
+    - id: t-e-eff-shortlist
+      kind: expected_effect
+      text: Rufus and David have a shortlist of funders, with what each asks for and when.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: t-e-eff-shortlist
+          tree: transition
+          statement: Rufus and David have a shortlist of funders, with what each asks for and when.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L122
+        designation:
+          id: t-d-eff-shortlist
+          entity_id: t-e-eff-shortlist
+          role: transition_expected_effect
+    - id: t-e-act-apply
+      kind: action
+      text: Rufus and David apply to the shortlisted funders through Life Itself, using the one-page pitch.
+      status: accepted
+      contributions:
+      - by: rufus
+        attribution: explicit
+        mode: text
+      source:
+        entity:
+          id: t-e-act-apply
+          tree: transition
+          statement: Rufus and David apply to the shortlisted funders through Life Itself, using the one-page pitch.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L123
+        designation:
+          id: t-d-act-apply
+          entity_id: t-e-act-apply
+          role: transition_action
+      accepted_by:
+      - rufus
+      acceptance_source: 'scqh.md: Next actions, decided/assigned by Rufus 2026-09-26. Acceptance of a plan does not mean completion.'
+    - id: t-e-eff-applied
+      kind: expected_effect
+      text: Grant applications for the work are submitted.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+      source:
+        entity:
+          id: t-e-eff-applied
+          tree: transition
+          statement: Grant applications for the work are submitted.
+          provenance:
+            path: ltp/rufus-david-collab/scqh.md#L123
+        designation:
+          id: t-d-eff-applied
+          entity_id: t-e-eff-applied
+          role: transition_expected_effect
+    links:
+    - id: t-rel-funding-produces
+      from:
+      - t-e-act-funding-decision
+      to: t-e-eff-funding-decided
+      relation: produces
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: t-rel-agreement-produces
+      from:
+      - t-e-act-agreement
+      to: t-e-eff-agreement
+      relation: produces
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: t-rel-friction-produces
+      from:
+      - t-e-act-friction-log
+      to: t-e-eff-build-targets-use
+      relation: produces
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: t-rel-own-question-produces
+      from:
+      - t-e-act-own-question
+      to: t-e-eff-used-beyond-collab
+      relation: produces
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: t-rel-funding-before-agreement
+      from:
+      - t-e-act-funding-decision
+      to: t-e-act-agreement
+      relation: precedes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: t-rel-funding-before-own-question
+      from:
+      - t-e-act-funding-decision
+      to: t-e-act-own-question
+      relation: precedes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: t-rel-shortlist-produces
+      from:
+      - t-e-act-shortlist
+      to: t-e-eff-shortlist
+      relation: produces
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: t-rel-apply-produces
+      from:
+      - t-e-act-apply
+      to: t-e-eff-applied
+      relation: produces
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: t-rel-funding-before-shortlist
+      from:
+      - t-e-act-funding-decision
+      to: t-e-act-shortlist
+      relation: precedes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: t-rel-shortlist-before-apply
+      from:
+      - t-e-act-shortlist
+      to: t-e-act-apply
+      relation: precedes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: driver_default
+        mode: unknown
+        note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    backlog:
+    - ref: t-rel-funding-produces
+      work: test_causality
+    - ref: t-rel-agreement-produces
+      work: test_causality
+    - ref: t-rel-friction-produces
+      work: test_causality
+    - ref: t-rel-own-question-produces
+      work: test_causality
+    - ref: t-rel-funding-before-agreement
+      work: review_relation
+    - ref: t-rel-funding-before-own-question
+      work: review_relation
+    - ref: t-rel-shortlist-produces
+      work: test_causality
+    - ref: t-rel-apply-produces
+      work: test_causality
+    - ref: t-rel-funding-before-shortlist
+      work: review_relation
+    - ref: t-rel-shortlist-before-apply
+      work: review_relation
+    - ref: t-e-act-shortlist
+      work: reconcile_progress
+      note: SCQH reports a shortlist already drafted. Check current progress before presenting this as new work.
+    - ref: t-e-act-funding-decision
+      work: reconcile_progress
+      note: Source says decision done in draft, with David still to confirm priority.
+      beads:
+      - reasoncommons-5lo
+    - ref: t-e-need-repeated-use
+      work: justify_actions
+      note: Existing condition and need are not yet connected to the actions; explain why the chosen steps will yield repeated useful use.

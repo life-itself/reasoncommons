@@ -1,55 +1,113 @@
 # Reason Commons skills
 
-AI skills that turn documents, plans and notes into a Reason Commons reasoning project — goals, current reality, conflicts, and the actions that follow — using the Logical Thinking Process (LTP). They work in Claude Code, Codex and any other agent that supports `SKILL.md` skills.
+AI skills for turning source material into Logical Thinking Process (LTP) trees and developing those trees with people. They work in Claude Code, Codex and other agents that support `SKILL.md` skills.
 
 <div class="rc-cards rc-cards-2">
 <a class="rc-card" href="#start-here"><span class="rc-card-title">1 · Install</span><p>One command puts the skills in your agent.</p></a>
-<a class="rc-card" href="#try-it"><span class="rc-card-title">2 · Turn a document into a tree</span><p>Copy-paste prompts for a document, a repo or meeting notes.</p></a>
-<a class="rc-card" href="#ltp-visualize-needs-a-clone-of-this-repo"><span class="rc-card-title">3 · See the trees</span><p>Open the result as a dashboard in your browser. Needs a clone.</p></a>
+<a class="rc-card" href="#start-a-reasoning-conversation"><span class="rc-card-title">2 · Think together</span><p>Build and challenge a tree through conversation.</p></a>
+<a class="rc-card" href="#turn-existing-material-into-a-project-file"><span class="rc-card-title">3 · Convert source material</span><p>Turn a document, repository or notes into an importable draft.</p></a>
 <a class="rc-card" href="#send-this-to-a-colleague"><span class="rc-card-title">Pass it on</span><p>A short message to send a colleague.</p></a>
 </div>
 
 ## Start here
 
-Install the skills once, then paste a prompt from [Try it](#try-it).
+Install the skills once:
 
 ```sh
 npx skills add life-itself/reasoncommons
 ```
 
-That lists the skills in this repo and asks which agents to install them into (Claude Code, Codex, Cursor and others). Useful variants:
+That lists the skills in this repository and asks which agents to install them into. To install just the conversational skill:
 
 ```sh
-npx skills add life-itself/reasoncommons --list                     # see what is available, install nothing
-npx skills add life-itself/reasoncommons -s ltp-project             # one skill only
-npx skills add life-itself/reasoncommons -s ltp-project -a claude-code -g   # one skill, one agent, for every project
+npx skills add life-itself/reasoncommons -s reason-commons
 ```
 
-Don't want to install anything? Print a skill as a ready-to-paste prompt, or hand your agent the raw file:
+To install it for one agent in every project:
 
 ```sh
-npx skills use life-itself/reasoncommons@ltp-project
+npx skills add life-itself/reasoncommons -s reason-commons -a claude-code -g
+```
+
+Replace `claude-code` with the agent you use. Run `npx skills add life-itself/reasoncommons --list` to see the available skills without installing them.
+
+Don't want to install anything? Print a skill as a ready-to-paste prompt, or give your agent the raw file:
+
+```sh
+npx skills use life-itself/reasoncommons@reason-commons
 ```
 
 ```text
-https://reasoncommons.com/skills/ltp-project/SKILL.md
+https://reasoncommons.com/skills/reason-commons/SKILL.md
 ```
 
-Any page on the site returns its raw Markdown if you add `.md` to the path, so that URL is the skill file itself — paste it into a chat and say "follow this skill". The skill's `references/` folder lives beside it, and an installed copy carries it along, so prefer installing.
+An installed copy includes the skill's helper script and references, so installation is the best option.
 
 ## The skills
 
 | Skill | What it does | Use it when |
 |-------|--------------|-------------|
-| [`ltp-project`](ltp-project/SKILL.md) | Reads a document, repository, plan, issue export or set of notes and writes a candidate `*.ltp.yaml` — the file the Reason Commons app imports — plus a report naming every judgment call it made | You have source material and want a first-draft reasoning model out of it |
-| [`ltp-visualize`](ltp-visualize/SKILL.md) | Turns a `*.ltp.yaml` into a standalone HTML dashboard and opens it in your browser | You have a project file and want to see the trees |
-| [`scrollable-explainer`](scrollable-explainer/SKILL.md) | Principles and patterns for writing scroll-driven visual explainers, with a teardown of a ProPublica piece as the worked case | You are drafting in [`explainers/`](../explainers/) — contributors only, you can skip this one |
+| [`reason-commons`](reason-commons/SKILL.md) | Helps people build and challenge LTP trees through conversation, while keeping attribution, unfinished reasoning, accepted history and diagrams | You want to think through a goal, problem, conflict, proposed change, obstacle or action with one person or a group |
+| [`ltp-project`](ltp-project/SKILL.md) | Reads a document, repository, plan, issue export or notes and writes a candidate `*.ltp.yaml` that the Reason Commons app imports, plus a report naming every judgment call | You already have source material and want a first-draft app project from it |
+| [`ltp-visualize`](ltp-visualize/SKILL.md) | Turns an app-compatible `*.ltp.yaml` into a standalone HTML dashboard and opens it in your browser | You have an `ltp-project` file and want to see its six trees |
+| [`scrollable-explainer`](scrollable-explainer/SKILL.md) | Gives contributors principles and patterns for writing scroll-driven visual explainers | You are drafting in [`explainers/`](../explainers/) |
 
-The first two are the working pair: `ltp-project` makes the file, `ltp-visualize` shows it.
+`reason-commons` is a candidate to replace `ltp-project` as the main way people create and develop reasoning. It starts from conversation, keeps work in progress visible, and records only explicitly accepted reasoning in its diagrams. It does not yet replace `ltp-project` for every job: its conversational YAML is independent of the Reason Commons app's import/export format. Use `ltp-project` when you need to extract a first draft from existing material or create a file for the app.
 
-### `ltp-visualize` needs a clone of this repo
+## Start a reasoning conversation
 
-`ltp-project` works anywhere it is installed. `ltp-visualize` draws with the dashboard that lives in this repository, so `npx skills add` alone is not enough — run it from inside a clone, with PyYAML available:
+After installing, open your agent in the folder where you want the working state to live and paste a prompt like this:
+
+```text
+Use the reason-commons skill to help me think through why customer quotes are late. My name is Alice. Keep the working state in reason-commons.yaml.
+```
+
+You can begin with a goal, a problem, a conflict, a proposed change, an obstacle or a sequence of actions. You do not need to know the LTP tree names or prepare a document. The agent will capture useful statements, keep contributors' names attached to their ideas, and ask one focused question at a time.
+
+To resume later, open the same folder and say:
+
+```text
+Use the reason-commons skill and resume from reason-commons.yaml. Show me the most useful unfinished reasoning to work on next.
+```
+
+For a group, name people as they contribute. If speaker labels come from a transcript or voice system, give those labels to the agent; the skill does not guess who spoke.
+
+### What the backlog is for
+
+The backlog is the reasoning that still needs attention: an observation that has not been connected or explained, a causal link that needs testing, an assumption to examine, or an objection to resolve. It is not a second task manager and it is not a list of every possible question. The agent keeps a small active subset, preserves the rest, and prefers working through existing reasoning before asking the group for more material.
+
+Acceptance and backlog are separate. A person can accept a useful statement or connection while leaving a question about it in the backlog. Drawing an arrow does not by itself finish the reasoning.
+
+### How accepted reasoning becomes diagrams
+
+New statements and connections begin as proposals. They become accepted only when a person explicitly endorses the identified item or fragment; silence and moving on do not count. A substantive objection marks the item disputed until it is resolved.
+
+After an accepted change, the helper validates the working YAML and saves one numbered snapshot of that turn's accepted state. It then updates two SVG diagrams for each affected tree:
+
+- The full view shows all currently accepted statements and accepted connections.
+- The latest-change view highlights what was added, changed or removed, with enough neighboring context to review the change.
+
+Proposals, disputes and backlog-only edits stay in the working YAML but do not create a new accepted snapshot. The YAML is the source of truth; the diagrams are derived views. The skill normally runs the helper and links both diagrams when accepted reasoning changes. Python with PyYAML is required, plus Graphviz or the supported JavaScript renderer; see [`reason-commons/references/views.md`](reason-commons/references/views.md) for details.
+
+## Turn existing material into a project file
+
+Use `ltp-project` when your starting point is a document, repository, plan, issue export or meeting notes and you want a candidate file for the Reason Commons app.
+
+```text
+Use the ltp-project skill on [path/to/document.pdf]. Write the candidate .ltp.yaml and the report, then summarise the judgment calls I should check first.
+```
+
+For a repository:
+
+```text
+Use the ltp-project skill on this repository. Read the README, plans and docs, treat each planned task as a candidate transition action, and list any task you couldn't trace back to a goal.
+```
+
+Every run produces a `.ltp.yaml` and a `.report.md`. Read the report first: it lists guesses and omissions. The output is a candidate, not ratified reasoning, and is checked by hand rather than by a standalone validator. Attach it in the Reason Commons app to run the app's import checks.
+
+### See the imported format as a dashboard
+
+`ltp-visualize` draws with the dashboard in this repository, so it needs a clone and PyYAML:
 
 ```sh
 git clone https://github.com/life-itself/reasoncommons.git
@@ -57,61 +115,22 @@ cd reasoncommons
 python3 -m pip install pyyaml
 ```
 
-Then open your agent in that folder (`claude` or `codex`) and use the visualize prompt below; it picks up the skill from the clone, so no `npx skills add` is needed there. Give it the path to your `.ltp.yaml` — it can be anywhere on your machine. It writes `<project-name>.dashboard-preview.html` beside your file and opens it in your browser.
-
-## Try it
-
-Paste into your agent after installing. Swap the bracketed part for your own material.
-
-**Turn a document into a project file**
-
-```text
-Use the ltp-project skill on [path/to/document.pdf]. Write the candidate .ltp.yaml and the report, then summarise the judgment calls I should check first.
-```
-
-**Turn a repository's plans and issues into one**
-
-```text
-Use the ltp-project skill on this repository. Read the README, plans and docs, treat each planned task as a candidate transition action, and list any task you couldn't trace back to a goal.
-```
-
-**Turn meeting notes into one**
-
-```text
-Use the ltp-project skill on these notes: [paste notes, or a path]. I'm most interested in the undesirable effects people raised and what they think is causing them. Don't invent links the notes don't state.
-```
-
-**See what you made** (run from inside a clone of this repo — [see above](#ltp-visualize-needs-a-clone-of-this-repo))
+Then open your agent in that folder and paste:
 
 ```text
 Use the ltp-visualize skill on [/full/path/to/project.ltp.yaml] and open the result in my browser.
 ```
 
-**Check and repair a file**
-
-```text
-Use the ltp-project skill to check [path/to/project.ltp.yaml] by hand against the format and vocabulary, and fix anything the importer would likely refuse. Don't delete real content to make it look valid.
-```
-
-**Just want to see the format first?** The full worked example, across all six trees, is at [`ltp-project/references/example-project.ltp.yaml`](ltp-project/references/example-project.ltp.yaml). Ask your agent to read it and explain it before you start.
-
-## What to expect
-
-- **Every run produces two files**: the `.ltp.yaml` and a `.report.md`. Read the report first — it lists every place the skill had to guess, and what it left out because the source didn't say it plainly.
-- **It is conservative on purpose.** It only writes a cause-and-effect link when a single sentence in your source states it without hedging. Expect a sparser tree than you'd draw by hand; that is the skill declining to make things up. Add the links you believe, yourself.
-- **Nothing is ratified.** The output is a candidate for a person to review, not a finished model.
-- **The file is not machine-validated.** `ltp-project` checks its own output by hand against the format and says so in the report. To find out whether the app would accept it, attach it in the Reason Commons app; the import reports anything it refuses. (A standalone validator is a known gap — see the TODO in `ltp-project/SKILL.md`.)
+This visualization flow is for app-compatible files made by `ltp-project`; it is separate from the accepted/change diagrams maintained by `reason-commons`.
 
 ## Send this to a colleague
 
 ```text
-Try the Reason Commons skills — they turn a document, repo or notes into a reasoning tree. Install: `npx skills add life-itself/reasoncommons`, then ask your agent: "Use the ltp-project skill on [your file]". Read the report it writes first. Everything else: https://reasoncommons.com/skills
+Try the Reason Commons skill to think through a goal, problem, conflict or plan together. Install it with `npx skills add life-itself/reasoncommons -s reason-commons`, then ask your agent: "Use the reason-commons skill to help me think through [topic]. My name is [name]." The agent keeps unfinished reasoning in a backlog and turns explicitly accepted reasoning into full and latest-change diagrams. More: https://reasoncommons.com/skills
 ```
 
 ## For maintainers
 
-- `ltp-project/` is canonical here. The app repo (`Promise-Foundation/reason-commons`) may carry an older copy; don't copy it over this one. The `check:import` validation step was removed (TODO in `ltp-project/SKILL.md`).
-- Skills live here, top level, so they work outside Claude Code. To use them while working in this repo, link them into the agent's discovery directory:
-  - Claude Code (`.claude/` is gitignored): `mkdir -p .claude/skills && ln -s ../../skills/ltp-project .claude/skills/ltp-project` — likewise `ltp-visualize` and `scrollable-explainer`.
-  - Codex: `.agents/skills/ltp-project` and `.agents/skills/ltp-visualize` are already tracked symlinks, so invoke them with `$ltp-project` and `$ltp-visualize`. Restart Codex if they don't appear in the Skills sidebar.
-- Retired: `tree-gen`, `annotation-mapping`, `contribution-proposals`, `goal-alignment` and `project-ltp` (its `ltp-model.yaml` format can't be imported into Reason Commons; `ltp-project` replaces it). They remain in git history.
+- This repository is the canonical home of `ltp-project`; the copy in `Promise-Foundation/reason-commons` may be older and must not be copied over this one. A standalone validator remains a tracked gap.
+- Skills live at top level so they work outside one agent runtime. Link the skills you use into `.claude/skills/` for Claude Code or `.agents/skills/` for Codex. This repository tracks the Codex links for `reason-commons`, `ltp-project` and `ltp-visualize`.
+- `tree-gen`, `annotation-mapping`, `contribution-proposals`, `goal-alignment` and `project-ltp` are retired and remain in Git history.

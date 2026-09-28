@@ -3,13 +3,35 @@
 Notable changes to this project. Not strictly [Keep a Changelog](https://keepachangelog.com/)
 format, but same spirit — human-readable, most recent first.
 
+## 2026-09-28 — Track the last reasoning change at a glance
+
+Reasoning sessions now put an ASCII status card above the direction choices to summarize the latest proposal, acceptance, dispute, or lack of change, and the final view choice lists available trees with node counts and a direct prompt for viewing one.
+
+## 2026-09-28 — Open reasoning diagrams without installing a renderer
+
+The [`reason-commons` skill](skills/reason-commons/SKILL.md) now generates standalone HTML diagrams with inline SVG, so accepted trees open in a browser without Graphviz, Node, or a Mermaid renderer.
+
 ## 2026-09-28 — Skills README you can hand to a colleague
 
-[`skills/README.md`](skills/README.md) now leads with `npx skills add life-itself/reasoncommons` and copy-and-paste prompts for turning a document, repository or notes into a project file and viewing it, and says plainly that `ltp-visualize` needs a clone of the repo. `ltp-project` no longer asks for a checkout of the app to validate its output; it labels the file unvalidated instead, and a proper standalone check is tracked as a follow-up.
+[`skills/README.md`](skills/README.md) now leads with a simple installation path and copy-and-paste prompts for both conversational reasoning and source-to-project conversion. It explains that `reason-commons` is a candidate successor to `ltp-project`, while `ltp-project` remains the route to an app-importable file and `ltp-visualize` still needs a clone of this repository. `ltp-project` no longer asks for an app checkout to validate its output; it labels the file unvalidated instead, and a standalone check is tracked as a follow-up.
+
+## 2026-09-28 — Build trees together and see what changed
+
+The new [`reason-commons` skill](skills/reason-commons/SKILL.md) helps individuals and groups develop Thinking Process trees through concise conversations, retaining contributors' ideas and unfinished reasoning. Explicitly accepted changes now preserve a numbered snapshot and produce two diagrams: the accepted tree and its latest changes, with earlier wording and removed connections visible for review.
+
+Sessions offer labeled choices to refine the reasoning, explore difficulties, capture another thought, or view the tree, with a compact status line showing the driver, other participants, and current focus. Tree requests include clearly labeled proposals so the reasoning is visible before anything is accepted. Natural review checkpoints now invite users to test, revise, continue developing, or provisionally accept a coherent proposal.
+
+Collaboration sessions now resume through the existing Beads handoff, with outstanding reasoning linked to work items and task completion kept separate from endorsement.
+
+![A remote-work toy example shows revised wording in amber, the old connection in dashed red, and unchanged neighboring observations in gray.](changelog/images/2026-09-28-reason-commons-changes.png)
 
 ## 2026-09-26 — Preview LTP project files in the dashboard
 
 You can now export an `.ltp.yaml` candidate as a standalone HTML dashboard and open it directly in the browser with the [`ltp-visualize` skill](skills/ltp-visualize/SKILL.md). A local-server preview is available too; neither path changes the candidate or imports it into a Reason Commons space.
+
+## 2026-09-26 — See the Current Reality causal graph on opening
+
+Standalone LTP previews now open with the Current Reality tree expanded, showing the source's causal links and feedback loops immediately while leaving disconnected observations separate.
 
 ## 2026-09-06 — The project has a model of itself, and NEXT.md is read off it
 
