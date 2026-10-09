@@ -47,7 +47,8 @@ class ViewTests(unittest.TestCase):
             item["status"] = "proposed"
         result = self.save()
         self.assertEqual(result["revision"], 0)
-        self.assertFalse(self.out.exists())
+        self.assertFalse((self.out / "history").exists())
+        self.assertFalse((self.out / "diagrams").exists())
 
     def test_first_acceptance_keeps_backlogged_and_isolated_nodes(self):
         result = self.save()
@@ -61,7 +62,7 @@ class ViewTests(unittest.TestCase):
 
     def test_wip_attribution_and_reordering_do_not_clear_delta(self):
         self.save()
-        original = {p: (p.read_bytes(), p.stat().st_mtime_ns) for p in self.out.rglob("*") if p.is_file()}
+        original = {p: (p.read_bytes(), p.stat().st_mtime_ns) for p in self.out.rglob("*") if p.is_file() and p.name != "heads.jsonl"}
         tree = self.state["trees"]["current_reality"]
         tree["nodes"].reverse()
         tree["nodes"][0]["contributions"][0]["by"] = "bob"
@@ -172,6 +173,49 @@ class ViewTests(unittest.TestCase):
         self.diagram().unlink()
         self.assertEqual(self.save()["revision"], 1)
         self.assertEqual(previous, self.diagram().read_bytes())
+
+    def test_rewound_state_sets_later_snapshots_aside(self):
+        self.save()
+        rewound = self.path.read_bytes()
+        self.state["trees"]["current_reality"]["nodes"][0]["text"] = "A clarified observation"
+        self.save()
+        self.path.write_bytes(rewound)  # What an agent rewind restores.
+        result = views.update(self.path)
+        self.assertEqual(result["revision"], 1)
+        self.assertEqual(result["orphaned_revisions"], [2])
+        self.assertFalse((self.out / "history/000002.yaml").exists())
+        self.assertEqual(len(list((self.out / "history/orphaned").rglob("000002.yaml"))), 1)
+        self.assertNotIn("A clarified observation", self.diagram().read_text())
+        self.state["trees"]["current_reality"]["nodes"][0]["text"] = "A different clarification"
+        self.assertEqual(self.save()["revision"], 2)
+
+    def test_rewind_to_before_first_acceptance(self):
+        tree = self.state["trees"]["current_reality"]
+        for item in tree["nodes"] + tree["links"]:
+            item.update(status="proposed")
+            item.pop("accepted_by")
+        self.save()
+        rewound = self.path.read_bytes()
+        self.state = toy()
+        self.save()
+        self.path.write_bytes(rewound)
+        result = views.update(self.path)
+        self.assertEqual((result["revision"], result["orphaned_revisions"]), (0, [1]))
+        self.assertFalse(self.diagram("current").exists())
+
+    def test_deliberate_revert_after_new_lineage_is_a_new_revision(self):
+        self.save()
+        first = deepcopy(self.state)
+        self.state["trees"]["current_reality"]["nodes"][0]["text"] = "Second wording"
+        self.save()
+        self.path.write_text(yaml.safe_dump(first, sort_keys=False))
+        views.update(self.path)  # Rewind sets revision 2 aside.
+        self.state = deepcopy(first)
+        self.state["trees"]["current_reality"]["nodes"][0]["text"] = "Third wording"
+        self.assertEqual(self.save()["revision"], 2)
+        self.state["trees"]["current_reality"]["nodes"][0]["text"] = "Second wording"
+        result = self.save()
+        self.assertEqual((result["revision"], result["orphaned_revisions"]), (3, []))
 
     def test_real_svg_rendering_handles_joint_causes_and_special_text(self):
         tree = self.state["trees"]["current_reality"]

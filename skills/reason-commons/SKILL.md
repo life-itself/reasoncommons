@@ -110,7 +110,7 @@ The file stores participant setup, current trees, and backlog together. This is 
 
 Use optional `addresses`, `derived_from`, and `implements` references to retain meaningful connections between trees as they emerge. For example, a proposed change can address current problems, and implementation objectives and actions can trace back to that change. These references do not establish causal validity or endorsement.
 
-Save all meaningful changes from a turn together, using a temporary file and atomic replacement of the working YAML. Re-read before editing to preserve manual changes. Keep ordering and IDs stable; use a new node for a different claim. Do not overwrite unrelated files or silently discard contributions. If unable to save, say so and provide a compact proposed update.
+Save all meaningful changes from a turn together, writing the working YAML with your file-editing tools (in Claude Code, Write or Edit) rather than shell commands or scripts, so the client can checkpoint it and a rewind can restore it. Re-read before editing to preserve manual changes. Keep ordering and IDs stable; use a new node for a different claim. Do not overwrite unrelated files or silently discard contributions. If unable to save, say so and provide a compact proposed update.
 
 After saving, run the helper in [references/views.md](references/views.md). It validates the state, creates one immutable numbered snapshot when accepted reasoning changes, and updates full and latest-change diagrams for affected trees. Proposals and other WIP remain in working state without creating snapshots of their own. No event log or Git commits are required.
 

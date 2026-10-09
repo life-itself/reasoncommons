@@ -3,11 +3,14 @@
 
 Requires PyYAML; diagrams are drawn as inline SVG with no renderer dependency.
 The working YAML is read-only to this helper; history is never overwritten.
+Snapshots made after a state that has since been restored (an agent rewind)
+are moved to history/orphaned/ rather than deleted.
 """
 
 import argparse
 from copy import deepcopy
 from datetime import datetime, timezone
+import hashlib
 import html
 import json
 import os
@@ -372,6 +375,34 @@ def write_atomic(path, content, exclusive=False):
         temp.unlink(missing_ok=True)
 
 
+def fingerprint(state):
+    return hashlib.sha256(json.dumps(state, sort_keys=True, default=str).encode()).hexdigest()
+
+
+def read_heads(path):
+    return [json.loads(line) for line in path.read_text().splitlines() if line.strip()] if path.exists() else []
+
+
+def write_heads(path, heads):
+    write_atomic(path, "".join(json.dumps(head, sort_keys=True) + "\n" for head in heads))
+
+
+def orphan_rewound(output, history, paths, snapshots, heads, state):
+    """Set aside snapshots made after the working state, e.g. after an agent rewind restored older YAML."""
+    match = next((head for head in reversed(heads) if head["state"] == fingerprint(state)), None)
+    if match is None or match["revision"] >= len(snapshots):
+        return []
+    keep = match["revision"]
+    if accepted(state) != (accepted(snapshots[keep - 1]) if keep else {}):
+        return []  # The recorded state no longer fits this history; treat the YAML as a new change instead.
+    aside = history / "orphaned" / datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+    aside.mkdir(parents=True)
+    for path in paths[keep:]:
+        os.rename(path, aside / path.name)
+    write_heads(output / "heads.jsonl", [head for head in heads if head["revision"] <= keep])
+    return list(range(keep + 1, len(snapshots) + 1))
+
+
 def update(state_path, output=None, summary=None):
     state_path = Path(state_path).resolve()
     state = load(state_path)
@@ -383,6 +414,11 @@ def update(state_path, output=None, summary=None):
     for i, snap in enumerate(snapshots):
         validate(snap)
         require(snap.get("revision") == i + 1 and paths[i].stem == f"{i + 1:06d}" and snap.get("previous_revision") == (i if i else None), "History is incomplete or inconsistent; do not overwrite it.")
+    heads = read_heads(output / "heads.jsonl")
+    orphaned = orphan_rewound(output, history, paths, snapshots, heads, state)
+    if orphaned:
+        snapshots = snapshots[:len(snapshots) - len(orphaned)]
+        heads = [head for head in heads if head["revision"] <= len(snapshots)]
     projections = [accepted(s) for s in snapshots]
     previous = projections[-1] if projections else {}
     current = accepted(state)
@@ -394,9 +430,18 @@ def update(state_path, output=None, summary=None):
                         change={"at": datetime.now(timezone.utc).isoformat(), "driver": state["driver"], "summary": summary or "Updated accepted reasoning in " + ", ".join(changed), "trees": changed})
         write_atomic(history / f"{revision:06d}.yaml", yaml.safe_dump(snapshot, sort_keys=False, allow_unicode=True), exclusive=True)
         projections.append(current)
+    # Remember which revision each saved state stood at, so a later run can recognise a rewind to it.
+    head = {"state": fingerprint(state), "revision": len(projections)}
+    if head not in heads:
+        write_heads(output / "heads.jsonl", heads + [head])
     # For each tree, keep its latest actual change even when another tree changes.
     rendered = []
-    for name in sorted({n for projection in projections for n in projection}):
+    names = {n for projection in projections for n in projection}
+    if orphaned:  # Drop views of trees whose only accepted history was set aside.
+        for path in (output / "diagrams").glob("*/*.*"):
+            if path.stem not in names and path.suffix in {".svg", ".html"}:
+                path.unlink()
+    for name in sorted(names):
         for index in range(len(projections) - 1, -1, -1):
             after = projections[index].get(name, EMPTY)
             before = projections[index - 1].get(name, EMPTY) if index else EMPTY
@@ -412,7 +457,7 @@ def update(state_path, output=None, summary=None):
             write_atomic(base.with_suffix(".svg"), svgs[view])
             write_atomic(base.with_suffix(".html"), html_page(svgs[view]))
         rendered.append(name)
-    return {"revision": len(projections), "changed_trees": changed, "rendered_trees": rendered, "output": str(output)}
+    return {"revision": len(projections), "changed_trees": changed, "rendered_trees": rendered, "orphaned_revisions": orphaned, "output": str(output)}
 
 
 def main():
