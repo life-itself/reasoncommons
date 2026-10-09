@@ -174,6 +174,8 @@ Default kinds per view: `goal` → `necessary_for`; `current_reality` → `cause
 - the material is about several unrelated systems, and it is not clear which one
   the project is meant to be
 
+When the question is a choice among options you can name, such as which of the systems you found the project should cover, ask it with the host's native interactive question or selection tool if it has one (`AskUserQuestion` in Claude Code), with each candidate as an option and a one-line description of it. Otherwise list the options in plain text and ask for a reply. Ask open-ended questions in plain text.
+
 ## Never
 
 - invent a proposition to satisfy a dangling reference
