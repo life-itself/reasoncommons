@@ -1,0 +1,24 @@
+data:
+  base_revision: 6
+  declarations: {}
+  intent: answer
+  request_id: in000007
+  response_target: I6@1
+  schema_version: '1'
+  speaker: RC reconstruction editor (AI)
+  text: 'Reconstructed stage 7: Build the minimal interface
+
+
+    The builders choose and implement the assisted interface. It should keep the human
+    working on what matters, retain source words and causal reasoning, and help choose
+    a next move. It must preserve earlier reasoning so that RC can be improved inside
+    RC. The user stipulates an effective TUI was built; no dated engineering log,
+    forecast or measured trial was supplied. This stage reconstructs the reason for
+    that injection and its reported completion.
+
+
+    Reason for the next step: The interface is the implemented injection into the
+    manual RC process.'
+  timestamp: '2026-10-10T11:49:52.505766+00:00'
+  timezone: Europe/Berlin
+sha256: b8718deb04c394b994e3af9e90996f25a47acf44840324ef71a40b0a2665692e

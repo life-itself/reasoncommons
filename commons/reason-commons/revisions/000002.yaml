@@ -1,0 +1,388 @@
+adapter_versions:
+  in000001: commons-import/2
+  in000002: commons-import/2
+applied_requests:
+- in000001
+- in000002
+case_id: 0133b831-d50b-45da-abaa-15d7e50ff580
+counters:
+  claim: 12
+  goal: 1
+  intervention: 2
+  link: 11
+current_intervention: I2@1
+decisions:
+- action: acceptance
+  actor: RC reconstruction editor (AI)
+  closes: []
+  id: D1
+  mode: explicit
+  refs: []
+  timestamp: '2026-10-10T11:49:52.081371+00:00'
+  value: automatic
+- action: accept
+  actor: RC reconstruction editor (AI)
+  closes: []
+  id: D2
+  mode: automatic
+  refs:
+  - G1@1
+  - C1@1
+  - C2@1
+  - C3@1
+  - C4@1
+  - L1@1
+  - L2@1
+  - L3@1
+  - L4@1
+  request_id: in000001
+  timestamp: '2026-10-10T11:49:52.122612+00:00'
+- action: accept
+  actor: RC reconstruction editor (AI)
+  closes: []
+  id: D3
+  mode: automatic
+  refs:
+  - C5@1
+  - C6@1
+  - C7@1
+  - C8@1
+  - C9@1
+  - C10@1
+  - C11@1
+  - C12@1
+  - L5@1
+  - L6@1
+  - L7@1
+  - L8@1
+  - L9@1
+  - L10@1
+  - L11@1
+  request_id: in000002
+  timestamp: '2026-10-10T11:49:52.161601+00:00'
+delivery_profile: p2
+membership:
+  acceptance: automatic
+  proposals_from: 0
+name: Reason Commons · development
+parent: 1
+records:
+- data:
+    baseline: null
+    horizon: null
+    measure: null
+    protections:
+    - Preserve human value judgments and reality checks.
+    - Support important ongoing work.
+    - Keep consulting effort and reasoning inventory proportionate.
+    scope: Reason Commons, including its own development
+    statement: Help people and groups advance goals they value through useful TOC
+      reasoning.
+  kind: goal
+  ref: G1@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    basis: hypothesis
+    role: critical_success_factor
+    statement: People make more effective progress toward goals they value.
+    tree: goal
+  kind: claim
+  ref: C1@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    basis: hypothesis
+    role: necessary_condition
+    statement: Discover actions that address the constraint on progress.
+    tree: goal
+  kind: claim
+  ref: C2@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    basis: hypothesis
+    role: necessary_condition
+    statement: Useful recommendations are understood and acted on.
+    tree: goal
+  kind: claim
+  ref: C3@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000001
+- data:
+    basis: hypothesis
+    role: necessary_condition
+    statement: Apply TOC insight to the particular situation, rather than merely teach
+      the theory.
+    tree: goal
+  kind: claim
+  ref: C4@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - in000001
+- data:
+    assumption: RC is judged by its contribution to the participant’s goal.
+    from_ref: C1@1
+    relation: necessary_for
+    to_ref: G1@1
+    tree: goal
+  kind: link
+  ref: L1@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    assumption: Disproportionately useful actions matter more than indiscriminate
+      effort.
+    from_ref: C2@1
+    relation: necessary_for
+    to_ref: C1@1
+    tree: goal
+  kind: link
+  ref: L2@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    assumption: An unused recommendation contributes no completed work.
+    from_ref: C3@1
+    relation: necessary_for
+    to_ref: C1@1
+    tree: goal
+  kind: link
+  ref: L3@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    assumption: A constraint depends on the actual situation.
+    from_ref: C4@1
+    relation: necessary_for
+    to_ref: C2@1
+    tree: goal
+  kind: link
+  ref: L4@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    decision: Why TOC needs assistance
+    goal_ref: G1@1
+    kind: question
+    options: []
+    primary_prompt: What prevents people from discovering the actions that make the
+      greatest difference?
+    purpose: reconstructed_development
+    rationale: The system is valuable when its reasoning improves actual progress.
+      Producing more models is not the goal.
+    required_context_refs: []
+  kind: intervention
+  ref: I1@1
+  source_refs:
+  - in000001
+- data:
+    basis: hypothesis
+    role: undesirable_effect
+    statement: People with complex goals lack an adequate way to discover the most
+      useful next action.
+    tree: current_reality
+  kind: claim
+  ref: C5@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    basis: hypothesis
+    role: root_cause
+    statement: Live situations can be stressful, conflict-prone and confusing.
+    tree: current_reality
+  kind: claim
+  ref: C6@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    basis: hypothesis
+    role: intermediate_cause
+    statement: Stress makes patient, disciplined and creative reasoning difficult.
+    tree: current_reality
+  kind: claim
+  ref: C7@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    basis: hypothesis
+    role: root_cause
+    statement: Applying TOC requires analysis unique to the situation.
+    tree: current_reality
+  kind: claim
+  ref: C8@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    basis: hypothesis
+    role: intermediate_cause
+    statement: Preparing and explaining the reasoning adds work to already burdened
+      people.
+    tree: current_reality
+  kind: claim
+  ref: C9@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    basis: hypothesis
+    role: undesirable_effect
+    statement: Analysis appears to require stopping work participants regard as essential.
+    tree: current_reality
+  kind: claim
+  ref: C10@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    basis: hypothesis
+    role: intermediate_cause
+    statement: Participants postpone analysis to continue urgent work.
+    tree: current_reality
+  kind: claim
+  ref: C11@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    basis: hypothesis
+    role: undesirable_effect
+    statement: Understanding TOC alone does not reveal the change needed here.
+    tree: current_reality
+  kind: claim
+  ref: C12@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    assumption: Stress competes with the capacities analysis requires.
+    from_ref: C6@1
+    relation: causes
+    to_ref: C7@1
+    tree: current_reality
+  kind: link
+  ref: L5@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    assumption: Harder contextual reasoning makes a useful next action harder to find.
+    from_ref: C7@1
+    relation: contributes_to
+    to_ref: C5@1
+    tree: current_reality
+  kind: link
+  ref: L6@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    assumption: Someone must carry out and communicate the situated analysis.
+    from_ref: C8@1
+    relation: contributes_to
+    to_ref: C9@1
+    tree: current_reality
+  kind: link
+  ref: L7@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    assumption: The effort is demanded of the same people doing the essential work.
+    from_ref: C9@1
+    relation: causes
+    to_ref: C10@1
+    tree: current_reality
+  kind: link
+  ref: L8@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    assumption: The participants protect work they consider immediately necessary.
+    from_ref: C10@1
+    relation: contributes_to
+    to_ref: C11@1
+    tree: current_reality
+  kind: link
+  ref: L9@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    assumption: Postponing analysis delays discovery of a better approach.
+    from_ref: C11@1
+    relation: contributes_to
+    to_ref: C5@1
+    tree: current_reality
+  kind: link
+  ref: L10@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    assumption: General understanding leaves the situation-specific work undone.
+    from_ref: C8@1
+    relation: causes
+    to_ref: C12@1
+    tree: current_reality
+  kind: link
+  ref: L11@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    decision: Analysis competes with work
+    goal_ref: G1@1
+    kind: question
+    options: []
+    primary_prompt: How can analysis help people continue the work they consider essential?
+    purpose: reconstructed_development
+    rationale: The obstacle is the cost and difficulty of applying reasoning during
+      live work.
+    required_context_refs: []
+  kind: intervention
+  ref: I2@1
+  source_refs:
+  - in000002
+revision: 2
+schema_version: '1'
+source_input_refs:
+- in000001
+- in000002
+timestamp: '2026-10-10T11:49:52.161601+00:00'
+timezone: Europe/Berlin

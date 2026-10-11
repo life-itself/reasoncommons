@@ -34,6 +34,32 @@ The way in is a short scrolling series: [why fixes don't stick](/explainers/01-b
 <a class="rc-card" href="/talk/index.html"><span class="rc-card-tag">Talk</span><span class="rc-card-title">A talk that performs the method</span><p>Five acts; the audience experiences the process before hearing its name.</p></a>
 </div>
 
+## Use the Reason Commons app
+
+The [Reason Commons app](https://github.com/life-itself/reason-commons-tui) keeps a goal's reasoning in a folder of plain files: your words as you wrote them, the six trees, the proposals you accept or reject, and the full history. Our own work on Reason Commons lives in [`commons/reason-commons`](commons/reason-commons), so it travels with this repository. The app replaces the earlier [`reason-commons` skill](skills/reason-commons/SKILL.md) and its YAML file, which stay in the history but are being phased out.
+
+You can use the app two ways, on the same goal; the app's README [compares them](https://github.com/life-itself/reason-commons-tui#two-ways-to-use-it).
+
+**In Claude Code**, with no API key: Claude Code drafts the questions on your subscription. With [uv](https://docs.astral.sh/uv/) installed:
+
+```sh
+claude plugin marketplace add life-itself/reason-commons-tui
+claude plugin install reason-commons@reason-commons --scope user
+```
+
+Then open Claude Code in this repository and ask: "Use the reason-commons-contribute skill. I'm <your name>. Open reason-commons." This repository's `.claude/settings.json` points the skill at `commons/`, so it works on the shared goal rather than on goals in your home folder.
+
+**In the terminal workspace**, from this repository's root:
+
+```sh
+uv tool install git+https://github.com/life-itself/reason-commons-tui
+REASON_COMMONS_HOME=commons reason-commons
+```
+
+Without `REASON_COMMONS_HOME=commons`, the workspace shows the goals in your home folder instead.
+
+**Take turns on a goal.** Pull before you work on it, and commit and push when you stop. Git cannot merge two people's additions to the same goal, because both would write the same next revision. Your own draft, and the lock held while a goal is open, stay out of git.
+
 ## The method underneath
 
 The rigour comes from the [Logical Thinking Process](/ltp) (LTP), part of the Theory of Constraints — a way of laying out a goal, the things blocking it, and the change that gets past them. Our [Guide](/ltp) is a plain-language introduction, with a [reading list](/library) if you want the books.

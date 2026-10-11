@@ -1,0 +1,23 @@
+data:
+  base_revision: 2
+  declarations: {}
+  intent: answer
+  request_id: in000003
+  response_target: I2@1
+  schema_version: '1'
+  speaker: RC reconstruction editor (AI)
+  text: 'Reconstructed stage 3: Resolve the apparent conflict
+
+
+    The expert’s Jonah example suggests a different division of labor. The participant
+    judges what matters and knows the real situation. The consultant carries analysis
+    and offers questions that let the participant arrive at insights. The conflict
+    between doing essential work and understanding how to improve it need not be solved
+    by persuading the participant to abandon that work.
+
+
+    Reason for the next step: Assistance can make reflection part of advancing the
+    work. This is the interface’s first conceptual injection.'
+  timestamp: '2026-10-10T11:49:52.186006+00:00'
+  timezone: Europe/Berlin
+sha256: 62efc0354a03abdecdec1274c7480b4f1e6b4944559f7475ee18920cae24582a

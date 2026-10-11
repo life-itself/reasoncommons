@@ -1,0 +1,206 @@
+data:
+  attempt: 1
+  proposal:
+    base_revision: 6
+    delivery_profile: p2
+    intervention:
+      decision: Build the minimal interface
+      goal_ref: G1@1
+      kind: question
+      options: []
+      primary_prompt: Does the implemented interface remove clerical burden while
+        preserving judgment and inspectable reasoning?
+      purpose: reconstructed_development
+      rationale: The interface is the implemented injection into the manual RC process.
+      required_context_refs: []
+    proposed_updates:
+    - data:
+        basis: hypothesis
+        role: transition_need
+        statement: Make continued RC record keeping practical while preserving the
+          reasoning.
+        tree: transition
+      operation: record_claim
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sb654ea354a08476fb6dac0c202732b86
+      - se9f028eed2b14241826d3172a9c72293
+      - s838b06fb360f48f89c806f015e255e32
+      - in000007
+      temporary_id: build_need
+    - data:
+        basis: participant_report
+        role: transition_action
+        statement: The minimal assisted interface was already built in the stipulated
+          scenario.
+        tree: transition
+      operation: record_claim
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sb654ea354a08476fb6dac0c202732b86
+      - se9f028eed2b14241826d3172a9c72293
+      - s838b06fb360f48f89c806f015e255e32
+      - in000007
+      temporary_id: built
+    - data:
+        basis: hypothesis
+        role: transition_expected_effect
+        statement: Interface assistance was expected to reduce clerical effort and
+          enable continued useful work.
+        tree: transition
+      operation: record_claim
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sb654ea354a08476fb6dac0c202732b86
+      - se9f028eed2b14241826d3172a9c72293
+      - s838b06fb360f48f89c806f015e255e32
+      - in000007
+      temporary_id: expected_clerical
+    - data:
+        basis: participant_report
+        role: observation
+        statement: The user stipulates that the earlier TUI effectively satisfied
+          the interface requirements; measurements are not supplied.
+        tree: transition
+      operation: record_claim
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sb654ea354a08476fb6dac0c202732b86
+      - se9f028eed2b14241826d3172a9c72293
+      - s838b06fb360f48f89c806f015e255e32
+      - in000007
+      temporary_id: success
+    - data:
+        assumption: A useful manual system is worth making easier to operate.
+        from_ref: C40@1
+        relation: supports
+        to_ref: build_need
+        tree: transition
+      operation: record_link
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sb654ea354a08476fb6dac0c202732b86
+      - se9f028eed2b14241826d3172a9c72293
+      - s838b06fb360f48f89c806f015e255e32
+      - in000007
+      temporary_id: link_95
+    - data:
+        assumption: Building the interface was the chosen response to the manual operating
+          constraint.
+        from_ref: build_need
+        relation: requires
+        to_ref: built
+        tree: transition
+      operation: record_link
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sb654ea354a08476fb6dac0c202732b86
+      - se9f028eed2b14241826d3172a9c72293
+      - s838b06fb360f48f89c806f015e255e32
+      - in000007
+      temporary_id: link_96
+    - data:
+        assumption: This was an anticipated benefit, not a recovered numerical forecast.
+        from_ref: built
+        relation: produces
+        to_ref: expected_clerical
+        tree: transition
+      operation: record_link
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sb654ea354a08476fb6dac0c202732b86
+      - se9f028eed2b14241826d3172a9c72293
+      - s838b06fb360f48f89c806f015e255e32
+      - in000007
+      temporary_id: link_97
+    - data:
+        assumption: The completion and success are premises of the scenario.
+        from_ref: success
+        relation: supports
+        to_ref: built
+        tree: transition
+      operation: record_link
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sb654ea354a08476fb6dac0c202732b86
+      - se9f028eed2b14241826d3172a9c72293
+      - s838b06fb360f48f89c806f015e255e32
+      - in000007
+      temporary_id: link_98
+    - data:
+        assumption: The working interface realizes the earlier conceptual injection.
+        from_ref: built
+        relation: implements
+        to_ref: C18@1
+        tree: transition
+      operation: record_link
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sb654ea354a08476fb6dac0c202732b86
+      - se9f028eed2b14241826d3172a9c72293
+      - s838b06fb360f48f89c806f015e255e32
+      - in000007
+      temporary_id: link_99
+    - data:
+        basis: hypothesis
+        role: necessary_condition
+        statement: Keep the interface minimal enough to understand and use during
+          important work.
+        tree: goal
+      operation: record_claim
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sb654ea354a08476fb6dac0c202732b86
+      - se9f028eed2b14241826d3172a9c72293
+      - s838b06fb360f48f89c806f015e255e32
+      - in000007
+      temporary_id: minimal
+    - data:
+        basis: hypothesis
+        role: necessary_condition
+        statement: The system helps choose the next useful move instead of demanding
+          the participant already know it.
+        tree: goal
+      operation: record_claim
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sb654ea354a08476fb6dac0c202732b86
+      - se9f028eed2b14241826d3172a9c72293
+      - s838b06fb360f48f89c806f015e255e32
+      - in000007
+      temporary_id: carry_analysis
+    - data:
+        assumption: Ineffective UX can prevent uptake even when the recommendation
+          is sound.
+        from_ref: minimal
+        relation: necessary_for
+        to_ref: C3@1
+        tree: goal
+      operation: record_link
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sb654ea354a08476fb6dac0c202732b86
+      - se9f028eed2b14241826d3172a9c72293
+      - s838b06fb360f48f89c806f015e255e32
+      - in000007
+      temporary_id: link_102
+    - data:
+        assumption: Discovering priorities is part of the consulting service being
+          sought.
+        from_ref: carry_analysis
+        relation: necessary_for
+        to_ref: C2@1
+        tree: goal
+      operation: record_link
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sb654ea354a08476fb6dac0c202732b86
+      - se9f028eed2b14241826d3172a9c72293
+      - s838b06fb360f48f89c806f015e255e32
+      - in000007
+      temporary_id: link_103
+    request_id: in000007
+    schema_version: '1'
+  request_id: in000007
+  version: commons-import/2
+sha256: 9283ff3921f1030a26a4b8d75f44f792a389cc71ffd6159bc4da46ef5cdb9ebd

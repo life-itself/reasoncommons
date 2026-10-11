@@ -1,0 +1,131 @@
+data:
+  attempt: 1
+  proposal:
+    base_revision: 0
+    delivery_profile: p2
+    intervention:
+      decision: Why TOC needs assistance
+      goal_ref: goal
+      kind: question
+      options: []
+      primary_prompt: What prevents people from discovering the actions that make
+        the greatest difference?
+      purpose: reconstructed_development
+      rationale: The system is valuable when its reasoning improves actual progress.
+        Producing more models is not the goal.
+      required_context_refs: []
+    proposed_updates:
+    - data:
+        baseline: null
+        horizon: null
+        measure: null
+        protections:
+        - Preserve human value judgments and reality checks.
+        - Support important ongoing work.
+        - Keep consulting effort and reasoning inventory proportionate.
+        scope: Reason Commons, including its own development
+        statement: Help people and groups advance goals they value through useful
+          TOC reasoning.
+      operation: record_goal
+      source_refs:
+      - sfa8eacda64df4c1aba0fa5d90751ed47
+      - sb9f961f4a1404d3eb6f8c3742996ca46
+      - in000001
+      temporary_id: goal
+    - data:
+        basis: hypothesis
+        role: critical_success_factor
+        statement: People make more effective progress toward goals they value.
+        tree: goal
+      operation: record_claim
+      source_refs:
+      - sfa8eacda64df4c1aba0fa5d90751ed47
+      - sb9f961f4a1404d3eb6f8c3742996ca46
+      - in000001
+      temporary_id: progress
+    - data:
+        basis: hypothesis
+        role: necessary_condition
+        statement: Discover actions that address the constraint on progress.
+        tree: goal
+      operation: record_claim
+      source_refs:
+      - sfa8eacda64df4c1aba0fa5d90751ed47
+      - sb9f961f4a1404d3eb6f8c3742996ca46
+      - in000001
+      temporary_id: constraint_actions
+    - data:
+        basis: hypothesis
+        role: necessary_condition
+        statement: Useful recommendations are understood and acted on.
+        tree: goal
+      operation: record_claim
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000001
+      temporary_id: carried_out
+    - data:
+        basis: hypothesis
+        role: necessary_condition
+        statement: Apply TOC insight to the particular situation, rather than merely
+          teach the theory.
+        tree: goal
+      operation: record_claim
+      source_refs:
+      - se9f028eed2b14241826d3172a9c72293
+      - in000001
+      temporary_id: situated
+    - data:
+        assumption: RC is judged by its contribution to the participant’s goal.
+        from_ref: progress
+        relation: necessary_for
+        to_ref: goal
+        tree: goal
+      operation: record_link
+      source_refs:
+      - sfa8eacda64df4c1aba0fa5d90751ed47
+      - sb9f961f4a1404d3eb6f8c3742996ca46
+      - in000001
+      temporary_id: link_5
+    - data:
+        assumption: Disproportionately useful actions matter more than indiscriminate
+          effort.
+        from_ref: constraint_actions
+        relation: necessary_for
+        to_ref: progress
+        tree: goal
+      operation: record_link
+      source_refs:
+      - sfa8eacda64df4c1aba0fa5d90751ed47
+      - sb9f961f4a1404d3eb6f8c3742996ca46
+      - in000001
+      temporary_id: link_6
+    - data:
+        assumption: An unused recommendation contributes no completed work.
+        from_ref: carried_out
+        relation: necessary_for
+        to_ref: progress
+        tree: goal
+      operation: record_link
+      source_refs:
+      - sfa8eacda64df4c1aba0fa5d90751ed47
+      - sb9f961f4a1404d3eb6f8c3742996ca46
+      - in000001
+      temporary_id: link_7
+    - data:
+        assumption: A constraint depends on the actual situation.
+        from_ref: situated
+        relation: necessary_for
+        to_ref: constraint_actions
+        tree: goal
+      operation: record_link
+      source_refs:
+      - sfa8eacda64df4c1aba0fa5d90751ed47
+      - sb9f961f4a1404d3eb6f8c3742996ca46
+      - in000001
+      temporary_id: link_8
+    request_id: in000001
+    schema_version: '1'
+  request_id: in000001
+  version: commons-import/2
+sha256: 22bc84d5e407940ef71af2feacf740bda8951f0683b013886fa67985f9c64117

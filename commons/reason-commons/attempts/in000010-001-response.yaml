@@ -1,0 +1,26 @@
+data:
+  attempt: 1
+  proposal:
+    base_revision: 9
+    delivery_profile: p2
+    intervention:
+      decision: Choose the first dogfood move
+      goal_ref: G1@1
+      kind: recommendation
+      options: []
+      primary_prompt: 'Next: trace why manual RC led to this interface, what the interface
+        was meant to change, and what would make that change fail. Use that chain
+        to identify the first improvement to RC itself.'
+      purpose: continuation
+      rationale: A legible record only helps throughput when builders can use it.
+        Following one implemented decision tests the interface’s ability to support
+        continued reasoning, while revealing where explanation or navigation is still
+        missing.
+      required_context_refs:
+      - N1@1
+    proposed_updates: []
+    request_id: in000010
+    schema_version: '1'
+  request_id: in000010
+  version: commons-import/2
+sha256: 501fe16b2c7e08a703747148136f31a9d6bfdd0e51091ea37a6409ab06b11e3b

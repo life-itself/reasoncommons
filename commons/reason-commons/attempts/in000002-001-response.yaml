@@ -1,0 +1,199 @@
+data:
+  attempt: 1
+  proposal:
+    base_revision: 1
+    delivery_profile: p2
+    intervention:
+      decision: Analysis competes with work
+      goal_ref: G1@1
+      kind: question
+      options: []
+      primary_prompt: How can analysis help people continue the work they consider
+        essential?
+      purpose: reconstructed_development
+      rationale: The obstacle is the cost and difficulty of applying reasoning during
+        live work.
+      required_context_refs: []
+    proposed_updates:
+    - data:
+        basis: hypothesis
+        role: undesirable_effect
+        statement: People with complex goals lack an adequate way to discover the
+          most useful next action.
+        tree: current_reality
+      operation: record_claim
+      source_refs:
+      - sb954b05c1b2e4373ab0a01a956d3f1ee
+      - se9f028eed2b14241826d3172a9c72293
+      - in000002
+      temporary_id: missing_actions
+    - data:
+        basis: hypothesis
+        role: root_cause
+        statement: Live situations can be stressful, conflict-prone and confusing.
+        tree: current_reality
+      operation: record_claim
+      source_refs:
+      - sb954b05c1b2e4373ab0a01a956d3f1ee
+      - se9f028eed2b14241826d3172a9c72293
+      - in000002
+      temporary_id: live_stress
+    - data:
+        basis: hypothesis
+        role: intermediate_cause
+        statement: Stress makes patient, disciplined and creative reasoning difficult.
+        tree: current_reality
+      operation: record_claim
+      source_refs:
+      - sb954b05c1b2e4373ab0a01a956d3f1ee
+      - se9f028eed2b14241826d3172a9c72293
+      - in000002
+      temporary_id: capacity
+    - data:
+        basis: hypothesis
+        role: root_cause
+        statement: Applying TOC requires analysis unique to the situation.
+        tree: current_reality
+      operation: record_claim
+      source_refs:
+      - sb954b05c1b2e4373ab0a01a956d3f1ee
+      - se9f028eed2b14241826d3172a9c72293
+      - in000002
+      temporary_id: contextual
+    - data:
+        basis: hypothesis
+        role: intermediate_cause
+        statement: Preparing and explaining the reasoning adds work to already burdened
+          people.
+        tree: current_reality
+      operation: record_claim
+      source_refs:
+      - sb954b05c1b2e4373ab0a01a956d3f1ee
+      - se9f028eed2b14241826d3172a9c72293
+      - in000002
+      temporary_id: tree_burden
+    - data:
+        basis: hypothesis
+        role: undesirable_effect
+        statement: Analysis appears to require stopping work participants regard as
+          essential.
+        tree: current_reality
+      operation: record_claim
+      source_refs:
+      - sb954b05c1b2e4373ab0a01a956d3f1ee
+      - se9f028eed2b14241826d3172a9c72293
+      - in000002
+      temporary_id: interrupt
+    - data:
+        basis: hypothesis
+        role: intermediate_cause
+        statement: Participants postpone analysis to continue urgent work.
+        tree: current_reality
+      operation: record_claim
+      source_refs:
+      - sb954b05c1b2e4373ab0a01a956d3f1ee
+      - se9f028eed2b14241826d3172a9c72293
+      - in000002
+      temporary_id: postpone
+    - data:
+        basis: hypothesis
+        role: undesirable_effect
+        statement: Understanding TOC alone does not reveal the change needed here.
+        tree: current_reality
+      operation: record_claim
+      source_refs:
+      - sb954b05c1b2e4373ab0a01a956d3f1ee
+      - se9f028eed2b14241826d3172a9c72293
+      - in000002
+      temporary_id: theory_only
+    - data:
+        assumption: Stress competes with the capacities analysis requires.
+        from_ref: live_stress
+        relation: causes
+        to_ref: capacity
+        tree: current_reality
+      operation: record_link
+      source_refs:
+      - sb954b05c1b2e4373ab0a01a956d3f1ee
+      - se9f028eed2b14241826d3172a9c72293
+      - in000002
+      temporary_id: link_17
+    - data:
+        assumption: Harder contextual reasoning makes a useful next action harder
+          to find.
+        from_ref: capacity
+        relation: contributes_to
+        to_ref: missing_actions
+        tree: current_reality
+      operation: record_link
+      source_refs:
+      - sb954b05c1b2e4373ab0a01a956d3f1ee
+      - se9f028eed2b14241826d3172a9c72293
+      - in000002
+      temporary_id: link_18
+    - data:
+        assumption: Someone must carry out and communicate the situated analysis.
+        from_ref: contextual
+        relation: contributes_to
+        to_ref: tree_burden
+        tree: current_reality
+      operation: record_link
+      source_refs:
+      - sb954b05c1b2e4373ab0a01a956d3f1ee
+      - se9f028eed2b14241826d3172a9c72293
+      - in000002
+      temporary_id: link_19
+    - data:
+        assumption: The effort is demanded of the same people doing the essential
+          work.
+        from_ref: tree_burden
+        relation: causes
+        to_ref: interrupt
+        tree: current_reality
+      operation: record_link
+      source_refs:
+      - sb954b05c1b2e4373ab0a01a956d3f1ee
+      - se9f028eed2b14241826d3172a9c72293
+      - in000002
+      temporary_id: link_20
+    - data:
+        assumption: The participants protect work they consider immediately necessary.
+        from_ref: interrupt
+        relation: contributes_to
+        to_ref: postpone
+        tree: current_reality
+      operation: record_link
+      source_refs:
+      - sb954b05c1b2e4373ab0a01a956d3f1ee
+      - se9f028eed2b14241826d3172a9c72293
+      - in000002
+      temporary_id: link_21
+    - data:
+        assumption: Postponing analysis delays discovery of a better approach.
+        from_ref: postpone
+        relation: contributes_to
+        to_ref: missing_actions
+        tree: current_reality
+      operation: record_link
+      source_refs:
+      - sb954b05c1b2e4373ab0a01a956d3f1ee
+      - se9f028eed2b14241826d3172a9c72293
+      - in000002
+      temporary_id: link_22
+    - data:
+        assumption: General understanding leaves the situation-specific work undone.
+        from_ref: contextual
+        relation: causes
+        to_ref: theory_only
+        tree: current_reality
+      operation: record_link
+      source_refs:
+      - sb954b05c1b2e4373ab0a01a956d3f1ee
+      - se9f028eed2b14241826d3172a9c72293
+      - in000002
+      temporary_id: link_23
+    request_id: in000002
+    schema_version: '1'
+  request_id: in000002
+  version: commons-import/2
+sha256: 4dd9f62b2694ecb3a218321ee69e1f5affa8c7f26f2827a32434c467214c0ac8

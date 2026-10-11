@@ -1,0 +1,22 @@
+data:
+  base_revision: 3
+  declarations: {}
+  intent: answer
+  request_id: in000004
+  response_target: I3@1
+  schema_version: '1'
+  speaker: RC reconstruction editor (AI)
+  text: 'Reconstructed stage 4: Make the model revisable
+
+
+    The system needs a goal-directed causal model: which interventions could influence
+    which outcomes. Participants are the closest connection to reality and can invalidate
+    that model. A prediction is not an observation. When an outcome contradicts a
+    prediction, the reasoning must change rather than explain the contradiction away.
+
+
+    Reason for the next step: Persistent reasoning should make explanations and revisions
+    inspectable.'
+  timestamp: '2026-10-10T11:49:52.242656+00:00'
+  timezone: Europe/Berlin
+sha256: ba57790a3eab67b4801f0efce7c59326abffb78cb47688b8833de1c5d57a7b15

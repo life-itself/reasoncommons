@@ -1,0 +1,36 @@
+data:
+  accepted_automatically:
+  - C40@1
+  - C41@1
+  - C42@1
+  - L38@1
+  - L39@1
+  - C43@1
+  - C44@1
+  - C45@1
+  - C46@1
+  - C47@1
+  - L40@1
+  - L41@1
+  - L42@1
+  - L43@1
+  attempt: 1
+  proposed:
+  - C40@1
+  - C41@1
+  - C42@1
+  - L38@1
+  - L39@1
+  - C43@1
+  - C44@1
+  - C45@1
+  - C46@1
+  - C47@1
+  - L40@1
+  - L41@1
+  - L42@1
+  - L43@1
+  request_id: in000006
+  revision: 6
+  status: saved
+sha256: 4247d0daa0cb1984a170d0ffd0a5f88bd37083b7e33db52751d44a6d7c748bca

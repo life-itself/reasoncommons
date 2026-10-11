@@ -1,0 +1,9 @@
+data:
+  counters:
+    claim: 77
+    goal: 1
+    intervention: 12
+    link: 68
+    note: 4
+  revision: 20
+sha256: 50b76e6dabf370d91d74a503214bd774440dea7d0bedcb2765dda13fa6ffb63e

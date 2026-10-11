@@ -1,0 +1,1946 @@
+adapter_versions:
+  in000001: commons-import/2
+  in000002: commons-import/2
+  in000003: commons-import/2
+  in000004: commons-import/2
+  in000005: commons-import/2
+  in000006: commons-import/2
+  in000007: commons-import/2
+  in000008: commons-import/2
+  in000009: commons-import/2
+  in000010: commons-import/2
+  in000011: guided/1
+applied_requests:
+- in000001
+- in000002
+- in000003
+- in000004
+- in000005
+- in000006
+- in000007
+- in000008
+- in000009
+- in000010
+- in000011
+case_id: 0133b831-d50b-45da-abaa-15d7e50ff580
+counters:
+  claim: 59
+  goal: 1
+  intervention: 11
+  link: 56
+  note: 4
+current_intervention: I11@1
+decisions:
+- action: acceptance
+  actor: RC reconstruction editor (AI)
+  closes: []
+  id: D1
+  mode: explicit
+  refs: []
+  timestamp: '2026-10-10T11:49:52.081371+00:00'
+  value: automatic
+- action: accept
+  actor: RC reconstruction editor (AI)
+  closes: []
+  id: D2
+  mode: automatic
+  refs:
+  - G1@1
+  - C1@1
+  - C2@1
+  - C3@1
+  - C4@1
+  - L1@1
+  - L2@1
+  - L3@1
+  - L4@1
+  request_id: in000001
+  timestamp: '2026-10-10T11:49:52.122612+00:00'
+- action: accept
+  actor: RC reconstruction editor (AI)
+  closes: []
+  id: D3
+  mode: automatic
+  refs:
+  - C5@1
+  - C6@1
+  - C7@1
+  - C8@1
+  - C9@1
+  - C10@1
+  - C11@1
+  - C12@1
+  - L5@1
+  - L6@1
+  - L7@1
+  - L8@1
+  - L9@1
+  - L10@1
+  - L11@1
+  request_id: in000002
+  timestamp: '2026-10-10T11:49:52.161601+00:00'
+- action: accept
+  actor: RC reconstruction editor (AI)
+  closes: []
+  id: D4
+  mode: automatic
+  refs:
+  - C13@1
+  - C14@1
+  - C15@1
+  - C16@1
+  - C17@1
+  - C18@1
+  - C19@1
+  - L12@1
+  - L13@1
+  - L14@1
+  - L15@1
+  - L16@1
+  - L17@1
+  - L18@1
+  - L19@1
+  - C20@1
+  - C21@1
+  - L20@1
+  - L21@1
+  request_id: in000003
+  timestamp: '2026-10-10T11:49:52.208094+00:00'
+- action: accept
+  actor: RC reconstruction editor (AI)
+  closes: []
+  id: D5
+  mode: automatic
+  refs:
+  - C22@1
+  - C23@1
+  - C24@1
+  - C25@1
+  - L22@1
+  - L23@1
+  - L24@1
+  - L25@1
+  - C26@1
+  - C27@1
+  - C28@1
+  - L26@1
+  - L27@1
+  request_id: in000004
+  timestamp: '2026-10-10T11:49:52.267707+00:00'
+- action: accept
+  actor: RC reconstruction editor (AI)
+  closes: []
+  id: D6
+  mode: automatic
+  refs:
+  - C29@1
+  - C30@1
+  - C31@1
+  - L28@1
+  - L29@1
+  - L30@1
+  - C32@1
+  - C33@1
+  - C34@1
+  - C35@1
+  - C36@1
+  - C37@1
+  - C38@1
+  - C39@1
+  - L31@1
+  - L32@1
+  - L33@1
+  - L34@1
+  - L35@1
+  - L36@1
+  - L37@1
+  request_id: in000005
+  timestamp: '2026-10-10T11:49:52.342911+00:00'
+- action: accept
+  actor: RC reconstruction editor (AI)
+  closes: []
+  id: D7
+  mode: automatic
+  refs:
+  - C40@1
+  - C41@1
+  - C42@1
+  - L38@1
+  - L39@1
+  - C43@1
+  - C44@1
+  - C45@1
+  - C46@1
+  - C47@1
+  - L40@1
+  - L41@1
+  - L42@1
+  - L43@1
+  request_id: in000006
+  timestamp: '2026-10-10T11:49:52.433077+00:00'
+- action: accept
+  actor: RC reconstruction editor (AI)
+  closes: []
+  id: D8
+  mode: automatic
+  refs:
+  - C48@1
+  - C49@1
+  - C50@1
+  - C51@1
+  - L44@1
+  - L45@1
+  - L46@1
+  - L47@1
+  - L48@1
+  - C52@1
+  - C53@1
+  - L49@1
+  - L50@1
+  request_id: in000007
+  timestamp: '2026-10-10T11:49:52.539155+00:00'
+- action: accept
+  actor: RC reconstruction editor (AI)
+  closes: []
+  id: D9
+  mode: automatic
+  refs:
+  - C54@1
+  - C55@1
+  - C56@1
+  - C57@1
+  - L51@1
+  - L52@1
+  - L53@1
+  - L54@1
+  - C58@1
+  - C59@1
+  - L55@1
+  - L56@1
+  request_id: in000008
+  timestamp: '2026-10-10T11:49:52.669151+00:00'
+- action: accept
+  actor: RC reconstruction editor (AI)
+  closes: []
+  id: D10
+  mode: automatic
+  refs:
+  - N1@1
+  - N2@1
+  - N3@1
+  request_id: in000009
+  timestamp: '2026-10-10T11:49:52.808824+00:00'
+- action: acceptance
+  actor: David
+  closes: []
+  id: D11
+  mode: explicit
+  refs: []
+  timestamp: '2026-10-10T16:53:45.581418+00:00'
+  value: review
+- action: acceptance
+  actor: David
+  closes: []
+  id: D12
+  mode: explicit
+  refs: []
+  timestamp: '2026-10-10T16:53:46.026728+00:00'
+  value: automatic
+- action: acceptance
+  actor: David
+  closes: []
+  id: D13
+  mode: explicit
+  refs: []
+  timestamp: '2026-10-10T16:53:46.221231+00:00'
+  value: review
+- action: acceptance
+  actor: David
+  closes: []
+  id: D14
+  mode: explicit
+  refs: []
+  timestamp: '2026-10-10T16:53:46.596723+00:00'
+  value: automatic
+- action: acceptance
+  actor: David
+  closes: []
+  id: D15
+  mode: explicit
+  refs: []
+  timestamp: '2026-10-10T16:53:49.561671+00:00'
+  value: review
+- action: acceptance
+  actor: David
+  closes: []
+  id: D16
+  mode: explicit
+  refs: []
+  timestamp: '2026-10-10T16:53:51.254486+00:00'
+  value: automatic
+- action: accept
+  actor: David
+  closes: []
+  id: D17
+  mode: automatic
+  refs:
+  - N4@1
+  request_id: in000011
+  timestamp: '2026-10-10T17:34:47.550579+00:00'
+- action: acceptance
+  actor: David
+  closes: []
+  id: D18
+  mode: explicit
+  refs: []
+  timestamp: '2026-10-10T17:49:07.992448+00:00'
+  value: review
+delivery_profile: p2
+membership:
+  acceptance: review
+  proposals_from: 0
+name: Reason Commons · development
+parent: 17
+records:
+- data:
+    baseline: null
+    horizon: null
+    measure: null
+    protections:
+    - Preserve human value judgments and reality checks.
+    - Support important ongoing work.
+    - Keep consulting effort and reasoning inventory proportionate.
+    scope: Reason Commons, including its own development
+    statement: Help people and groups advance goals they value through useful TOC
+      reasoning.
+  kind: goal
+  ref: G1@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    basis: hypothesis
+    role: critical_success_factor
+    statement: People make more effective progress toward goals they value.
+    tree: goal
+  kind: claim
+  ref: C1@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    basis: hypothesis
+    role: necessary_condition
+    statement: Discover actions that address the constraint on progress.
+    tree: goal
+  kind: claim
+  ref: C2@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    basis: hypothesis
+    role: necessary_condition
+    statement: Useful recommendations are understood and acted on.
+    tree: goal
+  kind: claim
+  ref: C3@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000001
+- data:
+    basis: hypothesis
+    role: necessary_condition
+    statement: Apply TOC insight to the particular situation, rather than merely teach
+      the theory.
+    tree: goal
+  kind: claim
+  ref: C4@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - in000001
+- data:
+    assumption: RC is judged by its contribution to the participant’s goal.
+    from_ref: C1@1
+    relation: necessary_for
+    to_ref: G1@1
+    tree: goal
+  kind: link
+  ref: L1@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    assumption: Disproportionately useful actions matter more than indiscriminate
+      effort.
+    from_ref: C2@1
+    relation: necessary_for
+    to_ref: C1@1
+    tree: goal
+  kind: link
+  ref: L2@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    assumption: An unused recommendation contributes no completed work.
+    from_ref: C3@1
+    relation: necessary_for
+    to_ref: C1@1
+    tree: goal
+  kind: link
+  ref: L3@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    assumption: A constraint depends on the actual situation.
+    from_ref: C4@1
+    relation: necessary_for
+    to_ref: C2@1
+    tree: goal
+  kind: link
+  ref: L4@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    decision: Why TOC needs assistance
+    goal_ref: G1@1
+    kind: question
+    options: []
+    primary_prompt: What prevents people from discovering the actions that make the
+      greatest difference?
+    purpose: reconstructed_development
+    rationale: The system is valuable when its reasoning improves actual progress.
+      Producing more models is not the goal.
+    required_context_refs: []
+  kind: intervention
+  ref: I1@1
+  source_refs:
+  - in000001
+- data:
+    basis: hypothesis
+    role: undesirable_effect
+    statement: People with complex goals lack an adequate way to discover the most
+      useful next action.
+    tree: current_reality
+  kind: claim
+  ref: C5@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    basis: hypothesis
+    role: root_cause
+    statement: Live situations can be stressful, conflict-prone and confusing.
+    tree: current_reality
+  kind: claim
+  ref: C6@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    basis: hypothesis
+    role: intermediate_cause
+    statement: Stress makes patient, disciplined and creative reasoning difficult.
+    tree: current_reality
+  kind: claim
+  ref: C7@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    basis: hypothesis
+    role: root_cause
+    statement: Applying TOC requires analysis unique to the situation.
+    tree: current_reality
+  kind: claim
+  ref: C8@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    basis: hypothesis
+    role: intermediate_cause
+    statement: Preparing and explaining the reasoning adds work to already burdened
+      people.
+    tree: current_reality
+  kind: claim
+  ref: C9@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    basis: hypothesis
+    role: undesirable_effect
+    statement: Analysis appears to require stopping work participants regard as essential.
+    tree: current_reality
+  kind: claim
+  ref: C10@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    basis: hypothesis
+    role: intermediate_cause
+    statement: Participants postpone analysis to continue urgent work.
+    tree: current_reality
+  kind: claim
+  ref: C11@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    basis: hypothesis
+    role: undesirable_effect
+    statement: Understanding TOC alone does not reveal the change needed here.
+    tree: current_reality
+  kind: claim
+  ref: C12@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    assumption: Stress competes with the capacities analysis requires.
+    from_ref: C6@1
+    relation: causes
+    to_ref: C7@1
+    tree: current_reality
+  kind: link
+  ref: L5@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    assumption: Harder contextual reasoning makes a useful next action harder to find.
+    from_ref: C7@1
+    relation: contributes_to
+    to_ref: C5@1
+    tree: current_reality
+  kind: link
+  ref: L6@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    assumption: Someone must carry out and communicate the situated analysis.
+    from_ref: C8@1
+    relation: contributes_to
+    to_ref: C9@1
+    tree: current_reality
+  kind: link
+  ref: L7@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    assumption: The effort is demanded of the same people doing the essential work.
+    from_ref: C9@1
+    relation: causes
+    to_ref: C10@1
+    tree: current_reality
+  kind: link
+  ref: L8@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    assumption: The participants protect work they consider immediately necessary.
+    from_ref: C10@1
+    relation: contributes_to
+    to_ref: C11@1
+    tree: current_reality
+  kind: link
+  ref: L9@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    assumption: Postponing analysis delays discovery of a better approach.
+    from_ref: C11@1
+    relation: contributes_to
+    to_ref: C5@1
+    tree: current_reality
+  kind: link
+  ref: L10@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    assumption: General understanding leaves the situation-specific work undone.
+    from_ref: C8@1
+    relation: causes
+    to_ref: C12@1
+    tree: current_reality
+  kind: link
+  ref: L11@1
+  source_refs:
+  - sb954b05c1b2e4373ab0a01a956d3f1ee
+  - se9f028eed2b14241826d3172a9c72293
+  - in000002
+- data:
+    decision: Analysis competes with work
+    goal_ref: G1@1
+    kind: question
+    options: []
+    primary_prompt: How can analysis help people continue the work they consider essential?
+    purpose: reconstructed_development
+    rationale: The obstacle is the cost and difficulty of applying reasoning during
+      live work.
+    required_context_refs: []
+  kind: intervention
+  ref: I2@1
+  source_refs:
+  - in000002
+- data:
+    basis: hypothesis
+    role: cloud_objective
+    statement: Advance the goal effectively.
+    tree: conflict
+  kind: claim
+  ref: C13@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - sc6da46795e4144c88e495ce7aa3b6c7e
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - in000003
+- data:
+    basis: hypothesis
+    role: cloud_requirement
+    statement: Continue work the participant regards as essential.
+    tree: conflict
+  kind: claim
+  ref: C14@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - sc6da46795e4144c88e495ce7aa3b6c7e
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - in000003
+- data:
+    basis: hypothesis
+    role: cloud_requirement
+    statement: Develop the understanding needed to improve that work.
+    tree: conflict
+  kind: claim
+  ref: C15@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - sc6da46795e4144c88e495ce7aa3b6c7e
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - in000003
+- data:
+    basis: hypothesis
+    role: cloud_prerequisite
+    statement: Keep working instead of stopping to prepare a tree.
+    tree: conflict
+  kind: claim
+  ref: C16@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - sc6da46795e4144c88e495ce7aa3b6c7e
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - in000003
+- data:
+    basis: hypothesis
+    role: cloud_prerequisite
+    statement: Stop ongoing work to prepare and communicate the analysis.
+    tree: conflict
+  kind: claim
+  ref: C17@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - sc6da46795e4144c88e495ce7aa3b6c7e
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - in000003
+- data:
+    basis: hypothesis
+    role: injection
+    statement: Let RC carry the analytical and clerical work while the participant
+      contributes judgment and reality checks.
+    tree: conflict
+  kind: claim
+  ref: C18@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - sc6da46795e4144c88e495ce7aa3b6c7e
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - in000003
+- data:
+    basis: hypothesis
+    role: injection
+    statement: Ask questions that support the participant’s own insight rather than
+      persuade them to accept a conclusion.
+    tree: conflict
+  kind: claim
+  ref: C19@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - sc6da46795e4144c88e495ce7aa3b6c7e
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - in000003
+- data:
+    assumption: The ongoing work matters to the goal.
+    from_ref: C14@1
+    relation: necessary_for
+    to_ref: C13@1
+    tree: conflict
+  kind: link
+  ref: L12@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - sc6da46795e4144c88e495ce7aa3b6c7e
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - in000003
+- data:
+    assumption: The present approach may miss a disproportionately useful action.
+    from_ref: C15@1
+    relation: necessary_for
+    to_ref: C13@1
+    tree: conflict
+  kind: link
+  ref: L13@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - sc6da46795e4144c88e495ce7aa3b6c7e
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - in000003
+- data:
+    assumption: The participant sees stopping as a threat to necessary work.
+    from_ref: C16@1
+    relation: necessary_for
+    to_ref: C14@1
+    tree: conflict
+  kind: link
+  ref: L14@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - sc6da46795e4144c88e495ce7aa3b6c7e
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - in000003
+- data:
+    assumption: The apparent conflict assumes analysis must interrupt the work.
+    from_ref: C17@1
+    relation: necessary_for
+    to_ref: C15@1
+    tree: conflict
+  kind: link
+  ref: L15@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - sc6da46795e4144c88e495ce7aa3b6c7e
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - in000003
+- data:
+    assumption: The same limited attention cannot be fully devoted to both at once.
+    from_ref: C16@1
+    relation: conflicts_with
+    to_ref: C17@1
+    tree: conflict
+  kind: link
+  ref: L16@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - sc6da46795e4144c88e495ce7aa3b6c7e
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - in000003
+- data:
+    assumption: Assistance could let the participant continue useful work.
+    from_ref: C18@1
+    relation: satisfies
+    to_ref: C14@1
+    tree: conflict
+  kind: link
+  ref: L17@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - sc6da46795e4144c88e495ce7aa3b6c7e
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - in000003
+- data:
+    assumption: The system could carry analysis without removing human judgment.
+    from_ref: C18@1
+    relation: satisfies
+    to_ref: C15@1
+    tree: conflict
+  kind: link
+  ref: L18@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - sc6da46795e4144c88e495ce7aa3b6c7e
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - in000003
+- data:
+    assumption: The participant can develop insight instead of merely complying.
+    from_ref: C19@1
+    relation: contributes_to
+    to_ref: C15@1
+    tree: conflict
+  kind: link
+  ref: L19@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - sc6da46795e4144c88e495ce7aa3b6c7e
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - in000003
+- data:
+    basis: hypothesis
+    role: necessary_condition
+    statement: The participant decides which goals and outcomes are worth pursuing.
+    tree: goal
+  kind: claim
+  ref: C20@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - sc6da46795e4144c88e495ce7aa3b6c7e
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - in000003
+- data:
+    basis: hypothesis
+    role: necessary_condition
+    statement: Questions help participants arrive at insights aligned with their own
+      goals.
+    tree: goal
+  kind: claim
+  ref: C21@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - sc6da46795e4144c88e495ce7aa3b6c7e
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - in000003
+- data:
+    assumption: A causal model is useful relative to preferred outcomes.
+    from_ref: C20@1
+    relation: necessary_for
+    to_ref: C1@1
+    tree: goal
+  kind: link
+  ref: L20@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - sc6da46795e4144c88e495ce7aa3b6c7e
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - in000003
+- data:
+    assumption: Understanding why a move matters can make action more likely.
+    from_ref: C21@1
+    relation: contributes_to
+    to_ref: C3@1
+    tree: goal
+  kind: link
+  ref: L21@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - sc6da46795e4144c88e495ce7aa3b6c7e
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - in000003
+- data:
+    decision: Resolve the apparent conflict
+    goal_ref: G1@1
+    kind: question
+    options: []
+    primary_prompt: What must the participant supply, and what can the system carry?
+    purpose: reconstructed_development
+    rationale: Assistance can make reflection part of advancing the work. This is
+      the interface’s first conceptual injection.
+    required_context_refs: []
+  kind: intervention
+  ref: I3@1
+  source_refs:
+  - in000003
+- data:
+    basis: hypothesis
+    role: necessary_condition
+    statement: Maintain a causal understanding directed by the participant’s goal.
+    tree: goal
+  kind: claim
+  ref: C22@1
+  source_refs:
+  - s16dcef2a5f5744dc9e4969e04e23ae9e
+  - s55252b99c8644a06ae2964a111376ab0
+  - se278d262e7964d1ca1e59b5fbfcf27e9
+  - in000004
+- data:
+    basis: hypothesis
+    role: necessary_condition
+    statement: Retain participant knowledge and outcomes that can contradict the model.
+    tree: goal
+  kind: claim
+  ref: C23@1
+  source_refs:
+  - s16dcef2a5f5744dc9e4969e04e23ae9e
+  - s55252b99c8644a06ae2964a111376ab0
+  - se278d262e7964d1ca1e59b5fbfcf27e9
+  - in000004
+- data:
+    basis: hypothesis
+    role: necessary_condition
+    statement: Revise causal reasoning when reality contradicts its predictions.
+    tree: goal
+  kind: claim
+  ref: C24@1
+  source_refs:
+  - s16dcef2a5f5744dc9e4969e04e23ae9e
+  - s55252b99c8644a06ae2964a111376ab0
+  - se278d262e7964d1ca1e59b5fbfcf27e9
+  - in000004
+- data:
+    basis: hypothesis
+    role: necessary_condition
+    statement: Keep the rationale and earlier formulations available for inspection.
+    tree: goal
+  kind: claim
+  ref: C25@1
+  source_refs:
+  - s16dcef2a5f5744dc9e4969e04e23ae9e
+  - s55252b99c8644a06ae2964a111376ab0
+  - se278d262e7964d1ca1e59b5fbfcf27e9
+  - in000004
+- data:
+    assumption: Selecting an intervention requires some understanding of its effects.
+    from_ref: C22@1
+    relation: necessary_for
+    to_ref: C2@1
+    tree: goal
+  kind: link
+  ref: L22@1
+  source_refs:
+  - s16dcef2a5f5744dc9e4969e04e23ae9e
+  - s55252b99c8644a06ae2964a111376ab0
+  - se278d262e7964d1ca1e59b5fbfcf27e9
+  - in000004
+- data:
+    assumption: The system cannot substitute its prediction for contact with reality.
+    from_ref: C23@1
+    relation: necessary_for
+    to_ref: C24@1
+    tree: goal
+  kind: link
+  ref: L23@1
+  source_refs:
+  - s16dcef2a5f5744dc9e4969e04e23ae9e
+  - s55252b99c8644a06ae2964a111376ab0
+  - se278d262e7964d1ca1e59b5fbfcf27e9
+  - in000004
+- data:
+    assumption: An uncorrectable causal model can continue recommending the wrong
+      move.
+    from_ref: C24@1
+    relation: necessary_for
+    to_ref: C22@1
+    tree: goal
+  kind: link
+  ref: L24@1
+  source_refs:
+  - s16dcef2a5f5744dc9e4969e04e23ae9e
+  - s55252b99c8644a06ae2964a111376ab0
+  - se278d262e7964d1ca1e59b5fbfcf27e9
+  - in000004
+- data:
+    assumption: Earlier reasoning lets participants see what changed and why.
+    from_ref: C25@1
+    relation: contributes_to
+    to_ref: C24@1
+    tree: goal
+  kind: link
+  ref: L25@1
+  source_refs:
+  - s16dcef2a5f5744dc9e4969e04e23ae9e
+  - s55252b99c8644a06ae2964a111376ab0
+  - se278d262e7964d1ca1e59b5fbfcf27e9
+  - in000004
+- data:
+    basis: hypothesis
+    role: injection
+    statement: Connect proposed interventions to their expected effects and revisit
+      them against outcomes.
+    tree: future_reality
+  kind: claim
+  ref: C26@1
+  source_refs:
+  - s16dcef2a5f5744dc9e4969e04e23ae9e
+  - s55252b99c8644a06ae2964a111376ab0
+  - se278d262e7964d1ca1e59b5fbfcf27e9
+  - in000004
+- data:
+    basis: hypothesis
+    role: desired_effect
+    statement: Contradictory outcomes improve the causal understanding.
+    tree: future_reality
+  kind: claim
+  ref: C27@1
+  source_refs:
+  - s16dcef2a5f5744dc9e4969e04e23ae9e
+  - s55252b99c8644a06ae2964a111376ab0
+  - se278d262e7964d1ca1e59b5fbfcf27e9
+  - in000004
+- data:
+    basis: hypothesis
+    role: desired_effect
+    statement: Updated reasoning helps identify more effective actions.
+    tree: future_reality
+  kind: claim
+  ref: C28@1
+  source_refs:
+  - s16dcef2a5f5744dc9e4969e04e23ae9e
+  - s55252b99c8644a06ae2964a111376ab0
+  - se278d262e7964d1ca1e59b5fbfcf27e9
+  - in000004
+- data:
+    assumption: A saved expectation makes contradictions visible.
+    from_ref: C26@1
+    relation: contributes_to
+    to_ref: C27@1
+    tree: future_reality
+  kind: link
+  ref: L26@1
+  source_refs:
+  - s16dcef2a5f5744dc9e4969e04e23ae9e
+  - s55252b99c8644a06ae2964a111376ab0
+  - se278d262e7964d1ca1e59b5fbfcf27e9
+  - in000004
+- data:
+    assumption: Learning can change which intervention seems most useful.
+    from_ref: C27@1
+    relation: contributes_to
+    to_ref: C28@1
+    tree: future_reality
+  kind: link
+  ref: L27@1
+  source_refs:
+  - s16dcef2a5f5744dc9e4969e04e23ae9e
+  - s55252b99c8644a06ae2964a111376ab0
+  - se278d262e7964d1ca1e59b5fbfcf27e9
+  - in000004
+- data:
+    decision: Make the model revisable
+    goal_ref: G1@1
+    kind: question
+    options: []
+    primary_prompt: What would contradict the model or its predicted effect?
+    purpose: reconstructed_development
+    rationale: Persistent reasoning should make explanations and revisions inspectable.
+    required_context_refs: []
+  kind: intervention
+  ref: I4@1
+  source_refs:
+  - in000004
+- data:
+    basis: hypothesis
+    role: necessary_condition
+    statement: Include RC’s AI cost, participant time and displaced work in the assessment.
+    tree: goal
+  kind: claim
+  ref: C29@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    basis: hypothesis
+    role: necessary_condition
+    statement: Keep unused models and hypotheses from overwhelming the work.
+    tree: goal
+  kind: claim
+  ref: C30@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    basis: hypothesis
+    role: necessary_condition
+    statement: Ask when the information gained is worth the effort it requires.
+    tree: goal
+  kind: claim
+  ref: C31@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    assumption: Consulting cost can offset its benefit.
+    from_ref: C29@1
+    relation: necessary_for
+    to_ref: C1@1
+    tree: goal
+  kind: link
+  ref: L28@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    assumption: Reasoning inventory can obscure the action rather than help it.
+    from_ref: C30@1
+    relation: necessary_for
+    to_ref: C3@1
+    tree: goal
+  kind: link
+  ref: L29@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    assumption: Questions consume the same scarce resources as other actions.
+    from_ref: C31@1
+    relation: contributes_to
+    to_ref: C29@1
+    tree: goal
+  kind: link
+  ref: L30@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    basis: hypothesis
+    role: desired_effect
+    statement: A useful move can directly advance progress toward the goal.
+    tree: future_reality
+  kind: claim
+  ref: C32@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    basis: hypothesis
+    role: desired_effect
+    statement: An uncertain action can reveal whether a suspected constraint is real.
+    tree: future_reality
+  kind: claim
+  ref: C33@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    basis: hypothesis
+    role: desired_effect
+    statement: A reasoning act can resolve an uncertainty that blocks useful action.
+    tree: future_reality
+  kind: claim
+  ref: C34@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    basis: hypothesis
+    role: undesirable_effect
+    statement: AI use can consume a non-negligible amount of money.
+    tree: future_reality
+  kind: claim
+  ref: C35@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    basis: hypothesis
+    role: undesirable_effect
+    statement: Time spent modeling displaces other valuable work.
+    tree: future_reality
+  kind: claim
+  ref: C36@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    basis: hypothesis
+    role: undesirable_effect
+    statement: Generated models and hypotheses accumulate as unused inventory.
+    tree: future_reality
+  kind: claim
+  ref: C37@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    basis: hypothesis
+    role: undesirable_effect
+    statement: A correct recommendation may still fail to improve throughput if it
+      is not understood or acted on.
+    tree: future_reality
+  kind: claim
+  ref: C38@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    basis: hypothesis
+    role: injection
+    statement: Evaluate RC as part of the system, including its burden and actual
+      uptake.
+    tree: future_reality
+  kind: claim
+  ref: C39@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    assumption: Accounting for expense lets participants question whether the benefit
+      warrants it.
+    from_ref: C39@1
+    relation: challenges
+    to_ref: C35@1
+    tree: future_reality
+  kind: link
+  ref: L31@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    assumption: Time in RC has an opportunity cost.
+    from_ref: C39@1
+    relation: challenges
+    to_ref: C36@1
+    tree: future_reality
+  kind: link
+  ref: L32@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    assumption: Visible inventory can be reduced when it no longer helps the work.
+    from_ref: C39@1
+    relation: challenges
+    to_ref: C37@1
+    tree: future_reality
+  kind: link
+  ref: L33@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    assumption: Too much reasoning can make the useful recommendation difficult to
+      find.
+    from_ref: C37@1
+    relation: contributes_to
+    to_ref: C38@1
+    tree: future_reality
+  kind: link
+  ref: L34@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    assumption: Direct progress is one sufficient reason to act.
+    from_ref: C32@1
+    relation: contributes_to
+    to_ref: C28@1
+    tree: future_reality
+  kind: link
+  ref: L35@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    assumption: An informative result can justify an uncertain action.
+    from_ref: C33@1
+    relation: contributes_to
+    to_ref: C27@1
+    tree: future_reality
+  kind: link
+  ref: L36@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    assumption: Resolving an important uncertainty can make the next action clearer.
+    from_ref: C34@1
+    relation: contributes_to
+    to_ref: C28@1
+    tree: future_reality
+  kind: link
+  ref: L37@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000005
+- data:
+    decision: Count RC inside the system
+    goal_ref: G1@1
+    kind: question
+    options: []
+    primary_prompt: When is another question worth more than its cost?
+    purpose: reconstructed_development
+    rationale: Consulting is an action with a cost. More reasoning is justified only
+      by what it contributes.
+    required_context_refs: []
+  kind: intervention
+  ref: I5@1
+  source_refs:
+  - in000005
+- data:
+    basis: participant_report
+    role: transition_existing_reality
+    statement: The builders already used manual RC records to further Reason Commons.
+    tree: transition
+  kind: claim
+  ref: C40@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - in000006
+- data:
+    basis: hypothesis
+    role: root_cause
+    statement: Maintaining the manual RC record is tedious without interface assistance.
+    tree: current_reality
+  kind: claim
+  ref: C41@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - in000006
+- data:
+    basis: hypothesis
+    role: intermediate_cause
+    statement: Recording and re-entering prior reasoning consumes effort needed for
+      development.
+    tree: current_reality
+  kind: claim
+  ref: C42@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - in000006
+- data:
+    assumption: The record keeping is part of the work, not an external free service.
+    from_ref: C41@1
+    relation: causes
+    to_ref: C42@1
+    tree: current_reality
+  kind: link
+  ref: L38@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - in000006
+- data:
+    assumption: Manual recording adds to the burden of preparing and communicating
+      analysis.
+    from_ref: C42@1
+    relation: contributes_to
+    to_ref: C9@1
+    tree: current_reality
+  kind: link
+  ref: L39@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - in000006
+- data:
+    basis: hypothesis
+    role: implementation_objective
+    statement: Further Reason Commons through Reason Commons itself.
+    tree: prerequisite
+  kind: claim
+  ref: C43@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - in000006
+- data:
+    basis: hypothesis
+    role: obstacle
+    statement: Hand recording makes continued use needlessly tedious.
+    tree: prerequisite
+  kind: claim
+  ref: C44@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - in000006
+- data:
+    basis: hypothesis
+    role: obstacle
+    statement: Much prior work exists in artifacts rather than entered records.
+    tree: prerequisite
+  kind: claim
+  ref: C45@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - in000006
+- data:
+    basis: hypothesis
+    role: intermediate_objective
+    statement: Provide interface assistance for keeping and inspecting RC records.
+    tree: prerequisite
+  kind: claim
+  ref: C46@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - in000006
+- data:
+    basis: hypothesis
+    role: intermediate_objective
+    statement: Use AI to reconstruct prior reasoning from existing artifacts.
+    tree: prerequisite
+  kind: claim
+  ref: C47@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - in000006
+- data:
+    assumption: Interface assistance can remove repeated clerical effort.
+    from_ref: C46@1
+    relation: overcomes
+    to_ref: C44@1
+    tree: prerequisite
+  kind: link
+  ref: L40@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - in000006
+- data:
+    assumption: Extraction can carry the work without manual re-entry.
+    from_ref: C47@1
+    relation: overcomes
+    to_ref: C45@1
+    tree: prerequisite
+  kind: link
+  ref: L41@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - in000006
+- data:
+    assumption: The builders need a practical way to keep using the record system.
+    from_ref: C46@1
+    relation: necessary_for
+    to_ref: C43@1
+    tree: prerequisite
+  kind: link
+  ref: L42@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - in000006
+- data:
+    assumption: Development should continue from the existing work rather than restart.
+    from_ref: C47@1
+    relation: necessary_for
+    to_ref: C43@1
+    tree: prerequisite
+  kind: link
+  ref: L43@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - in000006
+- data:
+    decision: Use RC manually on RC
+    goal_ref: G1@1
+    kind: question
+    options: []
+    primary_prompt: What must the interface remove while preserving the useful reasoning?
+    purpose: reconstructed_development
+    rationale: The need for an app arises from using the manual system on real development
+      work.
+    required_context_refs: []
+  kind: intervention
+  ref: I6@1
+  source_refs:
+  - in000006
+- data:
+    basis: hypothesis
+    role: transition_need
+    statement: Make continued RC record keeping practical while preserving the reasoning.
+    tree: transition
+  kind: claim
+  ref: C48@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sb654ea354a08476fb6dac0c202732b86
+  - se9f028eed2b14241826d3172a9c72293
+  - s838b06fb360f48f89c806f015e255e32
+  - in000007
+- data:
+    basis: participant_report
+    role: transition_action
+    statement: The minimal assisted interface was already built in the stipulated
+      scenario.
+    tree: transition
+  kind: claim
+  ref: C49@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sb654ea354a08476fb6dac0c202732b86
+  - se9f028eed2b14241826d3172a9c72293
+  - s838b06fb360f48f89c806f015e255e32
+  - in000007
+- data:
+    basis: hypothesis
+    role: transition_expected_effect
+    statement: Interface assistance was expected to reduce clerical effort and enable
+      continued useful work.
+    tree: transition
+  kind: claim
+  ref: C50@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sb654ea354a08476fb6dac0c202732b86
+  - se9f028eed2b14241826d3172a9c72293
+  - s838b06fb360f48f89c806f015e255e32
+  - in000007
+- data:
+    basis: participant_report
+    role: observation
+    statement: The user stipulates that the earlier TUI effectively satisfied the
+      interface requirements; measurements are not supplied.
+    tree: transition
+  kind: claim
+  ref: C51@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sb654ea354a08476fb6dac0c202732b86
+  - se9f028eed2b14241826d3172a9c72293
+  - s838b06fb360f48f89c806f015e255e32
+  - in000007
+- data:
+    assumption: A useful manual system is worth making easier to operate.
+    from_ref: C40@1
+    relation: supports
+    to_ref: C48@1
+    tree: transition
+  kind: link
+  ref: L44@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sb654ea354a08476fb6dac0c202732b86
+  - se9f028eed2b14241826d3172a9c72293
+  - s838b06fb360f48f89c806f015e255e32
+  - in000007
+- data:
+    assumption: Building the interface was the chosen response to the manual operating
+      constraint.
+    from_ref: C48@1
+    relation: requires
+    to_ref: C49@1
+    tree: transition
+  kind: link
+  ref: L45@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sb654ea354a08476fb6dac0c202732b86
+  - se9f028eed2b14241826d3172a9c72293
+  - s838b06fb360f48f89c806f015e255e32
+  - in000007
+- data:
+    assumption: This was an anticipated benefit, not a recovered numerical forecast.
+    from_ref: C49@1
+    relation: produces
+    to_ref: C50@1
+    tree: transition
+  kind: link
+  ref: L46@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sb654ea354a08476fb6dac0c202732b86
+  - se9f028eed2b14241826d3172a9c72293
+  - s838b06fb360f48f89c806f015e255e32
+  - in000007
+- data:
+    assumption: The completion and success are premises of the scenario.
+    from_ref: C51@1
+    relation: supports
+    to_ref: C49@1
+    tree: transition
+  kind: link
+  ref: L47@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sb654ea354a08476fb6dac0c202732b86
+  - se9f028eed2b14241826d3172a9c72293
+  - s838b06fb360f48f89c806f015e255e32
+  - in000007
+- data:
+    assumption: The working interface realizes the earlier conceptual injection.
+    from_ref: C49@1
+    relation: implements
+    to_ref: C18@1
+    tree: transition
+  kind: link
+  ref: L48@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sb654ea354a08476fb6dac0c202732b86
+  - se9f028eed2b14241826d3172a9c72293
+  - s838b06fb360f48f89c806f015e255e32
+  - in000007
+- data:
+    basis: hypothesis
+    role: necessary_condition
+    statement: Keep the interface minimal enough to understand and use during important
+      work.
+    tree: goal
+  kind: claim
+  ref: C52@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sb654ea354a08476fb6dac0c202732b86
+  - se9f028eed2b14241826d3172a9c72293
+  - s838b06fb360f48f89c806f015e255e32
+  - in000007
+- data:
+    basis: hypothesis
+    role: necessary_condition
+    statement: The system helps choose the next useful move instead of demanding the
+      participant already know it.
+    tree: goal
+  kind: claim
+  ref: C53@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sb654ea354a08476fb6dac0c202732b86
+  - se9f028eed2b14241826d3172a9c72293
+  - s838b06fb360f48f89c806f015e255e32
+  - in000007
+- data:
+    assumption: Ineffective UX can prevent uptake even when the recommendation is
+      sound.
+    from_ref: C52@1
+    relation: necessary_for
+    to_ref: C3@1
+    tree: goal
+  kind: link
+  ref: L49@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sb654ea354a08476fb6dac0c202732b86
+  - se9f028eed2b14241826d3172a9c72293
+  - s838b06fb360f48f89c806f015e255e32
+  - in000007
+- data:
+    assumption: Discovering priorities is part of the consulting service being sought.
+    from_ref: C53@1
+    relation: necessary_for
+    to_ref: C2@1
+    tree: goal
+  kind: link
+  ref: L50@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sb654ea354a08476fb6dac0c202732b86
+  - se9f028eed2b14241826d3172a9c72293
+  - s838b06fb360f48f89c806f015e255e32
+  - in000007
+- data:
+    decision: Build the minimal interface
+    goal_ref: G1@1
+    kind: question
+    options: []
+    primary_prompt: Does the implemented interface remove clerical burden while preserving
+      judgment and inspectable reasoning?
+    purpose: reconstructed_development
+    rationale: The interface is the implemented injection into the manual RC process.
+    required_context_refs: []
+  kind: intervention
+  ref: I7@1
+  source_refs:
+  - in000007
+- data:
+    basis: hypothesis
+    role: intermediate_objective
+    statement: Retain literal source words separately from extracted interpretations.
+    tree: prerequisite
+  kind: claim
+  ref: C54@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - s55252b99c8644a06ae2964a111376ab0
+  - s838b06fb360f48f89c806f015e255e32
+  - in000008
+- data:
+    basis: hypothesis
+    role: intermediate_objective
+    statement: Keep a readable sequence explaining how and why the interface was built.
+    tree: prerequisite
+  kind: claim
+  ref: C55@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - s55252b99c8644a06ae2964a111376ab0
+  - s838b06fb360f48f89c806f015e255e32
+  - in000008
+- data:
+    basis: hypothesis
+    role: intermediate_objective
+    statement: Let participants choose automatic acceptance or require explicit acceptance
+      of new reasoning.
+    tree: prerequisite
+  kind: claim
+  ref: C56@1
+  source_refs:
+  - sd67d657813e7487eb83dfef9f80179d1
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - in000008
+- data:
+    basis: hypothesis
+    role: intermediate_objective
+    statement: Review or automatically adopt the imported reconstruction into the
+      working model.
+    tree: prerequisite
+  kind: claim
+  ref: C57@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - s55252b99c8644a06ae2964a111376ab0
+  - s838b06fb360f48f89c806f015e255e32
+  - in000008
+- data:
+    assumption: Sources let participants challenge an interpretation.
+    from_ref: C54@1
+    relation: enables
+    to_ref: C25@1
+    tree: prerequisite
+  kind: link
+  ref: L51@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - s55252b99c8644a06ae2964a111376ab0
+  - s838b06fb360f48f89c806f015e255e32
+  - in000008
+- data:
+    assumption: Builders need to understand their existing reasoning to continue from
+      it.
+    from_ref: C55@1
+    relation: necessary_for
+    to_ref: C43@1
+    tree: prerequisite
+  kind: link
+  ref: L52@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - s55252b99c8644a06ae2964a111376ab0
+  - s838b06fb360f48f89c806f015e255e32
+  - in000008
+- data:
+    assumption: Different participants can choose how to admit new reasoning.
+    from_ref: C56@1
+    relation: enables
+    to_ref: C57@1
+    tree: prerequisite
+  kind: link
+  ref: L53@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - s55252b99c8644a06ae2964a111376ab0
+  - s838b06fb360f48f89c806f015e255e32
+  - in000008
+- data:
+    assumption: An archive alone does not provide an adopted model to work from.
+    from_ref: C57@1
+    relation: necessary_for
+    to_ref: C43@1
+    tree: prerequisite
+  kind: link
+  ref: L54@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - s55252b99c8644a06ae2964a111376ab0
+  - s838b06fb360f48f89c806f015e255e32
+  - in000008
+- data:
+    basis: hypothesis
+    role: transition_action
+    statement: Import the prior artifacts, reconstruct their reasoning and adopt it
+      into the app.
+    tree: transition
+  kind: claim
+  ref: C58@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - s55252b99c8644a06ae2964a111376ab0
+  - s838b06fb360f48f89c806f015e255e32
+  - in000008
+- data:
+    basis: hypothesis
+    role: transition_expected_effect
+    statement: The builders can continue RC development from a legible model and its
+      history.
+    tree: transition
+  kind: claim
+  ref: C59@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - s55252b99c8644a06ae2964a111376ab0
+  - s838b06fb360f48f89c806f015e255e32
+  - in000008
+- data:
+    assumption: The interface makes the imported reasoning usable.
+    from_ref: C49@1
+    relation: enables
+    to_ref: C58@1
+    tree: transition
+  kind: link
+  ref: L55@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - s55252b99c8644a06ae2964a111376ab0
+  - s838b06fb360f48f89c806f015e255e32
+  - in000008
+- data:
+    assumption: Adoption supplies a working starting point instead of a fresh questionnaire.
+    from_ref: C58@1
+    relation: produces
+    to_ref: C59@1
+    tree: transition
+  kind: link
+  ref: L56@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sd1dc415031c54f068eaa146a8c9ac34c
+  - s55252b99c8644a06ae2964a111376ab0
+  - s838b06fb360f48f89c806f015e255e32
+  - in000008
+- data:
+    decision: Preserve development in the app
+    goal_ref: G1@1
+    kind: question
+    options: []
+    primary_prompt: What must survive the import so development can continue?
+    purpose: reconstructed_development
+    rationale: An easy-to-decode account lets builders continue rather than repeat
+      the development reasoning.
+    required_context_refs: []
+  kind: intervention
+  ref: I8@1
+  source_refs:
+  - in000008
+- data:
+    basis: participant_report
+    text: Prior development is imported and adopted. History explains the path from
+      TOC access to manual RC, the interface injection and this import. Trees hold
+      the reasoning; source words remain separately attributed. Empty Backlog means
+      adopted reasoning, not discarded work.
+  kind: note
+  ref: N1@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sb654ea354a08476fb6dac0c202732b86
+  - in000009
+- data:
+    basis: participant_report
+    text: This is an AI-authored reconstruction from the user’s conversation and hypothetical
+      scenario. Stage ordering between the conversation, manual use and implementation
+      is reconstructed. Original dates, manual pages, engineering choices and quantitative
+      outcomes were not supplied. Source names have not been invented. Native timestamps
+      are import timestamps; automatic decisions are the reconstruction editor’s acts.
+  kind: note
+  ref: N2@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sb654ea354a08476fb6dac0c202732b86
+  - in000009
+- data:
+    basis: hypothesis
+    text: 'Still unknown: the present operational constraint, numerical throughput
+      and consulting cost, and whether the next recommendations will be understood,
+      acted on and useful. The next move is a bounded dogfood exercise, not another
+      request for the user to choose the priority.'
+  kind: note
+  ref: N3@1
+  source_refs:
+  - s7cc0be68dd1843ff931b129b19aa0ba5
+  - sb654ea354a08476fb6dac0c202732b86
+  - in000009
+- data:
+    decision: Import and adopt prior reasoning
+    goal_ref: G1@1
+    kind: question
+    options: []
+    primary_prompt: The prior reasoning has been imported into a model ready for adoption
+      and continued work.
+    purpose: reconstructed_development
+    rationale: The imported work is ready for the next contribution. Its historical
+      completion is stipulated; interpretation remains open to challenge.
+    required_context_refs: []
+  kind: intervention
+  ref: I9@1
+  source_refs:
+  - in000009
+- data:
+    decision: Choose the first dogfood move
+    goal_ref: G1@1
+    kind: recommendation
+    options: []
+    primary_prompt: 'Next: trace why manual RC led to this interface, what the interface
+      was meant to change, and what would make that change fail. Use that chain to
+      identify the first improvement to RC itself.'
+    purpose: continuation
+    rationale: A legible record only helps throughput when builders can use it. Following
+      one implemented decision tests the interface’s ability to support continued
+      reasoning, while revealing where explanation or navigation is still missing.
+    required_context_refs:
+    - N1@1
+  kind: intervention
+  ref: I10@1
+  source_refs:
+  - in000010
+- data:
+    basis: participant_report
+    text: 'I think importing existing documents and conversations could be the most
+      useful next improvement. Reconstructing prior work manually seems likely to
+      consume the attention RC is meant to save, although I haven’t measured that
+      burden.
+
+      A first version could import a plain-text conversation, preserve its original
+      words and known authors, propose a source-backed reconstruction for review,
+      and let me continue from it. Unknown attribution and AI interpretation should
+      remain explicit.
+
+      Please examine this suggestion against the existing reasoning: what supports
+      it, what might make another improvement more valuable, and what is the smallest
+      useful next action? Treat it as a proposal; its benefit is still untested.'
+  kind: note
+  ref: N4@1
+  source_refs:
+  - in000011
+- data:
+    decision: Choose the first dogfood move
+    goal_ref: G1@1
+    kind: recommendation
+    options: []
+    primary_prompt: 'Next: trace why manual RC led to this interface, what the interface
+      was meant to change, and what would make that change fail. Use that chain to
+      identify the first improvement to RC itself.'
+    purpose: continuation
+    rationale: The offline guide preserves your contribution as a proposal. For adaptive
+      analysis, choose an AI consultant under Commands (Ctrl+P).
+    required_context_refs:
+    - N1@1
+  kind: intervention
+  ref: I11@1
+  source_refs:
+  - in000011
+revision: 18
+schema_version: '1'
+source_input_refs:
+- in000001
+- in000002
+- in000003
+- in000004
+- in000005
+- in000006
+- in000007
+- in000008
+- in000009
+- in000010
+- in000011
+timestamp: '2026-10-10T17:49:07.992448+00:00'
+timezone: Europe/Berlin

@@ -1,0 +1,43 @@
+data:
+  attempt: 1
+  proposal:
+    base_revision: 16
+    delivery_profile: p2
+    intervention:
+      decision: Choose the first dogfood move
+      goal_ref: G1@1
+      kind: recommendation
+      options: []
+      primary_prompt: 'Next: trace why manual RC led to this interface, what the interface
+        was meant to change, and what would make that change fail. Use that chain
+        to identify the first improvement to RC itself.'
+      purpose: continuation
+      rationale: The offline guide preserves your contribution as a proposal. For
+        adaptive analysis, choose an AI consultant under Commands (Ctrl+P).
+      required_context_refs:
+      - N1@1
+    proposed_updates:
+    - data:
+        basis: participant_report
+        text: 'I think importing existing documents and conversations could be the
+          most useful next improvement. Reconstructing prior work manually seems likely
+          to consume the attention RC is meant to save, although I haven’t measured
+          that burden.
+
+          A first version could import a plain-text conversation, preserve its original
+          words and known authors, propose a source-backed reconstruction for review,
+          and let me continue from it. Unknown attribution and AI interpretation should
+          remain explicit.
+
+          Please examine this suggestion against the existing reasoning: what supports
+          it, what might make another improvement more valuable, and what is the smallest
+          useful next action? Treat it as a proposal; its benefit is still untested.'
+      operation: record_note
+      source_refs:
+      - in000011
+      temporary_id: temp_note
+    request_id: in000011
+    schema_version: '1'
+  request_id: in000011
+  version: guided/1
+sha256: 5c348ae31fd10609a959c1f5040f7a37b679e8dcf5820a08fd036fb596cb9f71

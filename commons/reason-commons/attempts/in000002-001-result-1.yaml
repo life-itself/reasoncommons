@@ -1,0 +1,38 @@
+data:
+  accepted_automatically:
+  - C5@1
+  - C6@1
+  - C7@1
+  - C8@1
+  - C9@1
+  - C10@1
+  - C11@1
+  - C12@1
+  - L5@1
+  - L6@1
+  - L7@1
+  - L8@1
+  - L9@1
+  - L10@1
+  - L11@1
+  attempt: 1
+  proposed:
+  - C5@1
+  - C6@1
+  - C7@1
+  - C8@1
+  - C9@1
+  - C10@1
+  - C11@1
+  - C12@1
+  - L5@1
+  - L6@1
+  - L7@1
+  - L8@1
+  - L9@1
+  - L10@1
+  - L11@1
+  request_id: in000002
+  revision: 2
+  status: saved
+sha256: e0b55f4d86c79a6488e1847b06eec210532b1837a6b8f1070f5396a39c07a215

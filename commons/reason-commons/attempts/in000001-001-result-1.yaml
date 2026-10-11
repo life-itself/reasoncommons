@@ -1,0 +1,26 @@
+data:
+  accepted_automatically:
+  - G1@1
+  - C1@1
+  - C2@1
+  - C3@1
+  - C4@1
+  - L1@1
+  - L2@1
+  - L3@1
+  - L4@1
+  attempt: 1
+  proposed:
+  - G1@1
+  - C1@1
+  - C2@1
+  - C3@1
+  - C4@1
+  - L1@1
+  - L2@1
+  - L3@1
+  - L4@1
+  request_id: in000001
+  revision: 1
+  status: saved
+sha256: 8beb2e6ba282b0e5f298a4fc4fb86737a1beba23e4909d8542fa439a0fa8ca30

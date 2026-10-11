@@ -1,0 +1,263 @@
+data:
+  attempt: 1
+  proposal:
+    base_revision: 2
+    delivery_profile: p2
+    intervention:
+      decision: Resolve the apparent conflict
+      goal_ref: G1@1
+      kind: question
+      options: []
+      primary_prompt: What must the participant supply, and what can the system carry?
+      purpose: reconstructed_development
+      rationale: Assistance can make reflection part of advancing the work. This is
+        the interface’s first conceptual injection.
+      required_context_refs: []
+    proposed_updates:
+    - data:
+        basis: hypothesis
+        role: cloud_objective
+        statement: Advance the goal effectively.
+        tree: conflict
+      operation: record_claim
+      source_refs:
+      - se9f028eed2b14241826d3172a9c72293
+      - sc6da46795e4144c88e495ce7aa3b6c7e
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - in000003
+      temporary_id: cloud_goal
+    - data:
+        basis: hypothesis
+        role: cloud_requirement
+        statement: Continue work the participant regards as essential.
+        tree: conflict
+      operation: record_claim
+      source_refs:
+      - se9f028eed2b14241826d3172a9c72293
+      - sc6da46795e4144c88e495ce7aa3b6c7e
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - in000003
+      temporary_id: work_need
+    - data:
+        basis: hypothesis
+        role: cloud_requirement
+        statement: Develop the understanding needed to improve that work.
+        tree: conflict
+      operation: record_claim
+      source_refs:
+      - se9f028eed2b14241826d3172a9c72293
+      - sc6da46795e4144c88e495ce7aa3b6c7e
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - in000003
+      temporary_id: insight_need
+    - data:
+        basis: hypothesis
+        role: cloud_prerequisite
+        statement: Keep working instead of stopping to prepare a tree.
+        tree: conflict
+      operation: record_claim
+      source_refs:
+      - se9f028eed2b14241826d3172a9c72293
+      - sc6da46795e4144c88e495ce7aa3b6c7e
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - in000003
+      temporary_id: keep_working
+    - data:
+        basis: hypothesis
+        role: cloud_prerequisite
+        statement: Stop ongoing work to prepare and communicate the analysis.
+        tree: conflict
+      operation: record_claim
+      source_refs:
+      - se9f028eed2b14241826d3172a9c72293
+      - sc6da46795e4144c88e495ce7aa3b6c7e
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - in000003
+      temporary_id: stop_to_analyze
+    - data:
+        basis: hypothesis
+        role: injection
+        statement: Let RC carry the analytical and clerical work while the participant
+          contributes judgment and reality checks.
+        tree: conflict
+      operation: record_claim
+      source_refs:
+      - se9f028eed2b14241826d3172a9c72293
+      - sc6da46795e4144c88e495ce7aa3b6c7e
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - in000003
+      temporary_id: assisted
+    - data:
+        basis: hypothesis
+        role: injection
+        statement: Ask questions that support the participant’s own insight rather
+          than persuade them to accept a conclusion.
+        tree: conflict
+      operation: record_claim
+      source_refs:
+      - se9f028eed2b14241826d3172a9c72293
+      - sc6da46795e4144c88e495ce7aa3b6c7e
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - in000003
+      temporary_id: socratic
+    - data:
+        assumption: The ongoing work matters to the goal.
+        from_ref: work_need
+        relation: necessary_for
+        to_ref: cloud_goal
+        tree: conflict
+      operation: record_link
+      source_refs:
+      - se9f028eed2b14241826d3172a9c72293
+      - sc6da46795e4144c88e495ce7aa3b6c7e
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - in000003
+      temporary_id: link_31
+    - data:
+        assumption: The present approach may miss a disproportionately useful action.
+        from_ref: insight_need
+        relation: necessary_for
+        to_ref: cloud_goal
+        tree: conflict
+      operation: record_link
+      source_refs:
+      - se9f028eed2b14241826d3172a9c72293
+      - sc6da46795e4144c88e495ce7aa3b6c7e
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - in000003
+      temporary_id: link_32
+    - data:
+        assumption: The participant sees stopping as a threat to necessary work.
+        from_ref: keep_working
+        relation: necessary_for
+        to_ref: work_need
+        tree: conflict
+      operation: record_link
+      source_refs:
+      - se9f028eed2b14241826d3172a9c72293
+      - sc6da46795e4144c88e495ce7aa3b6c7e
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - in000003
+      temporary_id: link_33
+    - data:
+        assumption: The apparent conflict assumes analysis must interrupt the work.
+        from_ref: stop_to_analyze
+        relation: necessary_for
+        to_ref: insight_need
+        tree: conflict
+      operation: record_link
+      source_refs:
+      - se9f028eed2b14241826d3172a9c72293
+      - sc6da46795e4144c88e495ce7aa3b6c7e
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - in000003
+      temporary_id: link_34
+    - data:
+        assumption: The same limited attention cannot be fully devoted to both at
+          once.
+        from_ref: keep_working
+        relation: conflicts_with
+        to_ref: stop_to_analyze
+        tree: conflict
+      operation: record_link
+      source_refs:
+      - se9f028eed2b14241826d3172a9c72293
+      - sc6da46795e4144c88e495ce7aa3b6c7e
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - in000003
+      temporary_id: link_35
+    - data:
+        assumption: Assistance could let the participant continue useful work.
+        from_ref: assisted
+        relation: satisfies
+        to_ref: work_need
+        tree: conflict
+      operation: record_link
+      source_refs:
+      - se9f028eed2b14241826d3172a9c72293
+      - sc6da46795e4144c88e495ce7aa3b6c7e
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - in000003
+      temporary_id: link_36
+    - data:
+        assumption: The system could carry analysis without removing human judgment.
+        from_ref: assisted
+        relation: satisfies
+        to_ref: insight_need
+        tree: conflict
+      operation: record_link
+      source_refs:
+      - se9f028eed2b14241826d3172a9c72293
+      - sc6da46795e4144c88e495ce7aa3b6c7e
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - in000003
+      temporary_id: link_37
+    - data:
+        assumption: The participant can develop insight instead of merely complying.
+        from_ref: socratic
+        relation: contributes_to
+        to_ref: insight_need
+        tree: conflict
+      operation: record_link
+      source_refs:
+      - se9f028eed2b14241826d3172a9c72293
+      - sc6da46795e4144c88e495ce7aa3b6c7e
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - in000003
+      temporary_id: link_38
+    - data:
+        basis: hypothesis
+        role: necessary_condition
+        statement: The participant decides which goals and outcomes are worth pursuing.
+        tree: goal
+      operation: record_claim
+      source_refs:
+      - se9f028eed2b14241826d3172a9c72293
+      - sc6da46795e4144c88e495ce7aa3b6c7e
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - in000003
+      temporary_id: values
+    - data:
+        basis: hypothesis
+        role: necessary_condition
+        statement: Questions help participants arrive at insights aligned with their
+          own goals.
+        tree: goal
+      operation: record_claim
+      source_refs:
+      - se9f028eed2b14241826d3172a9c72293
+      - sc6da46795e4144c88e495ce7aa3b6c7e
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - in000003
+      temporary_id: insight_owned
+    - data:
+        assumption: A causal model is useful relative to preferred outcomes.
+        from_ref: values
+        relation: necessary_for
+        to_ref: C1@1
+        tree: goal
+      operation: record_link
+      source_refs:
+      - se9f028eed2b14241826d3172a9c72293
+      - sc6da46795e4144c88e495ce7aa3b6c7e
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - in000003
+      temporary_id: link_41
+    - data:
+        assumption: Understanding why a move matters can make action more likely.
+        from_ref: insight_owned
+        relation: contributes_to
+        to_ref: C3@1
+        tree: goal
+      operation: record_link
+      source_refs:
+      - se9f028eed2b14241826d3172a9c72293
+      - sc6da46795e4144c88e495ce7aa3b6c7e
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - in000003
+      temporary_id: link_42
+    request_id: in000003
+    schema_version: '1'
+  request_id: in000003
+  version: commons-import/2
+sha256: 892f0d504a4aa9a0a1713a721c1699dc8619513ead92cd3ebe37ea62c1a76807

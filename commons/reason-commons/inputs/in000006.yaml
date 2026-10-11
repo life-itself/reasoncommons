@@ -1,0 +1,23 @@
+data:
+  base_revision: 5
+  declarations: {}
+  intent: answer
+  request_id: in000006
+  response_target: I5@1
+  schema_version: '1'
+  speaker: RC reconstruction editor (AI)
+  text: 'Reconstructed stage 6: Use RC manually on RC
+
+
+    In the stipulated pre-history, the manual record system already works: its builders
+    use it to further RC. But keeping the record by hand is tedious. This is a concrete
+    operating constraint in the dogfood system itself. Existing artifacts carry prior
+    reasoning; re-entering them would reproduce that burden. The interface is a response
+    to this constraint, not the origin of RC’s purpose.
+
+
+    Reason for the next step: The need for an app arises from using the manual system
+    on real development work.'
+  timestamp: '2026-10-10T11:49:52.401473+00:00'
+  timezone: Europe/Berlin
+sha256: 724bf468da5092bc14f33996db78fa9417d5c8af48413b5e33b79a08996f6ea4

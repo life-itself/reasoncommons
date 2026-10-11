@@ -1,0 +1,32 @@
+data:
+  accepted_automatically:
+  - C54@1
+  - C55@1
+  - C56@1
+  - C57@1
+  - L51@1
+  - L52@1
+  - L53@1
+  - L54@1
+  - C58@1
+  - C59@1
+  - L55@1
+  - L56@1
+  attempt: 1
+  proposed:
+  - C54@1
+  - C55@1
+  - C56@1
+  - C57@1
+  - L51@1
+  - L52@1
+  - L53@1
+  - L54@1
+  - C58@1
+  - C59@1
+  - L55@1
+  - L56@1
+  request_id: in000008
+  revision: 8
+  status: saved
+sha256: ea389c1a77e60b75a1a3ab8d763261d0862319d9a9a462b7cf8a54809e7d43cc

@@ -1,0 +1,15 @@
+data:
+  base_revision: 19
+  declarations: {}
+  intent: answer
+  request_id: in000012
+  response_target: I11@1
+  schema_version: '1'
+  speaker: David
+  text: i left it automatic and entered it.  i don't think i saw anything get updated.  it
+    needs stronger feedback to make sure it actually shows the user that their input
+    led to some change!  a notifaction and/or a little red dot in the trees that are
+    updated would be helpful.  or is the model not even connected
+  timestamp: '2026-10-11T07:34:34.151174+00:00'
+  timezone: Europe/Berlin
+sha256: 334a645c755a91b1f17e59df6aba503199167e90e270498e304c9ecf9af4d62a

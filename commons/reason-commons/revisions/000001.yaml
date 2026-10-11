@@ -1,0 +1,174 @@
+adapter_versions:
+  in000001: commons-import/2
+applied_requests:
+- in000001
+case_id: 0133b831-d50b-45da-abaa-15d7e50ff580
+counters:
+  claim: 4
+  goal: 1
+  intervention: 1
+  link: 4
+current_intervention: I1@1
+decisions:
+- action: acceptance
+  actor: RC reconstruction editor (AI)
+  closes: []
+  id: D1
+  mode: explicit
+  refs: []
+  timestamp: '2026-10-10T11:49:52.081371+00:00'
+  value: automatic
+- action: accept
+  actor: RC reconstruction editor (AI)
+  closes: []
+  id: D2
+  mode: automatic
+  refs:
+  - G1@1
+  - C1@1
+  - C2@1
+  - C3@1
+  - C4@1
+  - L1@1
+  - L2@1
+  - L3@1
+  - L4@1
+  request_id: in000001
+  timestamp: '2026-10-10T11:49:52.122612+00:00'
+delivery_profile: p2
+membership:
+  acceptance: automatic
+  proposals_from: 0
+name: Reason Commons · development
+parent: 0
+records:
+- data:
+    baseline: null
+    horizon: null
+    measure: null
+    protections:
+    - Preserve human value judgments and reality checks.
+    - Support important ongoing work.
+    - Keep consulting effort and reasoning inventory proportionate.
+    scope: Reason Commons, including its own development
+    statement: Help people and groups advance goals they value through useful TOC
+      reasoning.
+  kind: goal
+  ref: G1@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    basis: hypothesis
+    role: critical_success_factor
+    statement: People make more effective progress toward goals they value.
+    tree: goal
+  kind: claim
+  ref: C1@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    basis: hypothesis
+    role: necessary_condition
+    statement: Discover actions that address the constraint on progress.
+    tree: goal
+  kind: claim
+  ref: C2@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    basis: hypothesis
+    role: necessary_condition
+    statement: Useful recommendations are understood and acted on.
+    tree: goal
+  kind: claim
+  ref: C3@1
+  source_refs:
+  - s838b06fb360f48f89c806f015e255e32
+  - in000001
+- data:
+    basis: hypothesis
+    role: necessary_condition
+    statement: Apply TOC insight to the particular situation, rather than merely teach
+      the theory.
+    tree: goal
+  kind: claim
+  ref: C4@1
+  source_refs:
+  - se9f028eed2b14241826d3172a9c72293
+  - in000001
+- data:
+    assumption: RC is judged by its contribution to the participant’s goal.
+    from_ref: C1@1
+    relation: necessary_for
+    to_ref: G1@1
+    tree: goal
+  kind: link
+  ref: L1@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    assumption: Disproportionately useful actions matter more than indiscriminate
+      effort.
+    from_ref: C2@1
+    relation: necessary_for
+    to_ref: C1@1
+    tree: goal
+  kind: link
+  ref: L2@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    assumption: An unused recommendation contributes no completed work.
+    from_ref: C3@1
+    relation: necessary_for
+    to_ref: C1@1
+    tree: goal
+  kind: link
+  ref: L3@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    assumption: A constraint depends on the actual situation.
+    from_ref: C4@1
+    relation: necessary_for
+    to_ref: C2@1
+    tree: goal
+  kind: link
+  ref: L4@1
+  source_refs:
+  - sfa8eacda64df4c1aba0fa5d90751ed47
+  - sb9f961f4a1404d3eb6f8c3742996ca46
+  - in000001
+- data:
+    decision: Why TOC needs assistance
+    goal_ref: G1@1
+    kind: question
+    options: []
+    primary_prompt: What prevents people from discovering the actions that make the
+      greatest difference?
+    purpose: reconstructed_development
+    rationale: The system is valuable when its reasoning improves actual progress.
+      Producing more models is not the goal.
+    required_context_refs: []
+  kind: intervention
+  ref: I1@1
+  source_refs:
+  - in000001
+revision: 1
+schema_version: '1'
+source_input_refs:
+- in000001
+timestamp: '2026-10-10T11:49:52.122612+00:00'
+timezone: Europe/Berlin

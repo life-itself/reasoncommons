@@ -1,7 +1,10 @@
-# Local-only Claude Code / agent wiring (skill symlinks, worktrees, settings).
+# Local-only Claude Code / agent wiring (skill symlinks, worktrees, local settings).
 # Skills themselves are tracked under top-level skills/; .claude/skills/ just
 # symlinks them in so Claude Code can discover them. See AGENTS.md > Conventions.
-.claude/
+# The shared .claude/settings.json is tracked: it points the Reason Commons
+# skill at this repo's commons/ folder.
+.claude/*
+!.claude/settings.json
 .worktrees/
 
 # Local dashboard build tooling (the compiled dashboard under dist/ is tracked).
@@ -47,3 +50,8 @@ drafts
 /personal-goals.yaml
 /personal-goals/
 /.personal-goals/
+
+# Reason Commons goals (commons/<goal>/) are tracked. The writer lock exists only
+# while a goal is open, and cursor.yaml is each person's own draft and view.
+commons/*/writer.lock
+commons/*/cursor.yaml

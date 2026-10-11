@@ -1,0 +1,22 @@
+data:
+  base_revision: 1
+  declarations: {}
+  intent: answer
+  request_id: in000002
+  response_target: I1@1
+  schema_version: '1'
+  speaker: RC reconstruction editor (AI)
+  text: 'Reconstructed stage 2: Analysis competes with work
+
+
+    Knowing TOC does not make applying it easy. The expert describes stress, conflict
+    and confusion, while contextual reasoning demands patience, discipline and creativity.
+    Drawing and explaining a tree adds work to the people already carrying the situation.
+    The apparent refusal to analyze is understandable under this burden.
+
+
+    Reason for the next step: The obstacle is the cost and difficulty of applying
+    reasoning during live work.'
+  timestamp: '2026-10-10T11:49:52.141930+00:00'
+  timezone: Europe/Berlin
+sha256: 9afd7f646432cd7c3eedd47cd4306b87175dea0f493a1081d3ef8d9b676a779d

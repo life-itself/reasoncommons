@@ -13,6 +13,7 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
 | Project overview + references | `README.md` |
 | Why this matters + problem framing (SCQH) | `motivation.md` |
 | Planning — streams, next actions | [GitHub issues](https://github.com/life-itself/reasoncommons/issues) |
+| Reason Commons' own development goal, kept with the Reason Commons app (replaces the `reason-commons` skill) | `commons/reason-commons` — open it with the app, as `README.md` > *Use the Reason Commons app* describes; never edit its files by hand |
 | Resume the Rufus–David collaboration | Bead `reasoncommons-a4l` (START HERE), then [the Beads/reasoning workflow](docs/beads-reasoning.md) and `ltp/rufus-david-collab/reason-commons.yaml` |
 | Process spec + **gold-standard toy fixture** (tree, doc, annotations) | `claim-tree-annotation.md` |
 | Static animated demo of the 4-step vision | `claim-tree-annotation-demo/` |

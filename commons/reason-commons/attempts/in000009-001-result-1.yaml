@@ -1,0 +1,14 @@
+data:
+  accepted_automatically:
+  - N1@1
+  - N2@1
+  - N3@1
+  attempt: 1
+  proposed:
+  - N1@1
+  - N2@1
+  - N3@1
+  request_id: in000009
+  revision: 9
+  status: saved
+sha256: fb40b743f3021c41bc32182cd4790e0d3edc70708f004939dd207b66fad725d8

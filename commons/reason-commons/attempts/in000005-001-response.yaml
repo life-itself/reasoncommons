@@ -1,0 +1,247 @@
+data:
+  attempt: 1
+  proposal:
+    base_revision: 4
+    delivery_profile: p2
+    intervention:
+      decision: Count RC inside the system
+      goal_ref: G1@1
+      kind: question
+      options: []
+      primary_prompt: When is another question worth more than its cost?
+      purpose: reconstructed_development
+      rationale: Consulting is an action with a cost. More reasoning is justified
+        only by what it contributes.
+      required_context_refs: []
+    proposed_updates:
+    - data:
+        basis: hypothesis
+        role: necessary_condition
+        statement: Include RC’s AI cost, participant time and displaced work in the
+          assessment.
+        tree: goal
+      operation: record_claim
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: cost_aware
+    - data:
+        basis: hypothesis
+        role: necessary_condition
+        statement: Keep unused models and hypotheses from overwhelming the work.
+        tree: goal
+      operation: record_claim
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: inventory_small
+    - data:
+        basis: hypothesis
+        role: necessary_condition
+        statement: Ask when the information gained is worth the effort it requires.
+        tree: goal
+      operation: record_claim
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: bounded_question
+    - data:
+        assumption: Consulting cost can offset its benefit.
+        from_ref: cost_aware
+        relation: necessary_for
+        to_ref: C1@1
+        tree: goal
+      operation: record_link
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: link_59
+    - data:
+        assumption: Reasoning inventory can obscure the action rather than help it.
+        from_ref: inventory_small
+        relation: necessary_for
+        to_ref: C3@1
+        tree: goal
+      operation: record_link
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: link_60
+    - data:
+        assumption: Questions consume the same scarce resources as other actions.
+        from_ref: bounded_question
+        relation: contributes_to
+        to_ref: cost_aware
+        tree: goal
+      operation: record_link
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: link_61
+    - data:
+        basis: hypothesis
+        role: desired_effect
+        statement: A useful move can directly advance progress toward the goal.
+        tree: future_reality
+      operation: record_claim
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: direct
+    - data:
+        basis: hypothesis
+        role: desired_effect
+        statement: An uncertain action can reveal whether a suspected constraint is
+          real.
+        tree: future_reality
+      operation: record_claim
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: learn_test
+    - data:
+        basis: hypothesis
+        role: desired_effect
+        statement: A reasoning act can resolve an uncertainty that blocks useful action.
+        tree: future_reality
+      operation: record_claim
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: reason_act
+    - data:
+        basis: hypothesis
+        role: undesirable_effect
+        statement: AI use can consume a non-negligible amount of money.
+        tree: future_reality
+      operation: record_claim
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: token_cost
+    - data:
+        basis: hypothesis
+        role: undesirable_effect
+        statement: Time spent modeling displaces other valuable work.
+        tree: future_reality
+      operation: record_claim
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: time_cost
+    - data:
+        basis: hypothesis
+        role: undesirable_effect
+        statement: Generated models and hypotheses accumulate as unused inventory.
+        tree: future_reality
+      operation: record_claim
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: unused_inventory
+    - data:
+        basis: hypothesis
+        role: undesirable_effect
+        statement: A correct recommendation may still fail to improve throughput if
+          it is not understood or acted on.
+        tree: future_reality
+      operation: record_claim
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: no_execution
+    - data:
+        basis: hypothesis
+        role: injection
+        statement: Evaluate RC as part of the system, including its burden and actual
+          uptake.
+        tree: future_reality
+      operation: record_claim
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: self_account
+    - data:
+        assumption: Accounting for expense lets participants question whether the
+          benefit warrants it.
+        from_ref: self_account
+        relation: challenges
+        to_ref: token_cost
+        tree: future_reality
+      operation: record_link
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: link_70
+    - data:
+        assumption: Time in RC has an opportunity cost.
+        from_ref: self_account
+        relation: challenges
+        to_ref: time_cost
+        tree: future_reality
+      operation: record_link
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: link_71
+    - data:
+        assumption: Visible inventory can be reduced when it no longer helps the work.
+        from_ref: self_account
+        relation: challenges
+        to_ref: unused_inventory
+        tree: future_reality
+      operation: record_link
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: link_72
+    - data:
+        assumption: Too much reasoning can make the useful recommendation difficult
+          to find.
+        from_ref: unused_inventory
+        relation: contributes_to
+        to_ref: no_execution
+        tree: future_reality
+      operation: record_link
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: link_73
+    - data:
+        assumption: Direct progress is one sufficient reason to act.
+        from_ref: direct
+        relation: contributes_to
+        to_ref: C28@1
+        tree: future_reality
+      operation: record_link
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: link_74
+    - data:
+        assumption: An informative result can justify an uncertain action.
+        from_ref: learn_test
+        relation: contributes_to
+        to_ref: C27@1
+        tree: future_reality
+      operation: record_link
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: link_75
+    - data:
+        assumption: Resolving an important uncertainty can make the next action clearer.
+        from_ref: reason_act
+        relation: contributes_to
+        to_ref: C28@1
+        tree: future_reality
+      operation: record_link
+      source_refs:
+      - s838b06fb360f48f89c806f015e255e32
+      - in000005
+      temporary_id: link_76
+    request_id: in000005
+    schema_version: '1'
+  request_id: in000005
+  version: commons-import/2
+sha256: b7458a706856d2d51caf638531ab85940481094a0de42d29ae3375b42129e115

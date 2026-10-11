@@ -3,6 +3,10 @@
 Notable changes to this project. Not strictly [Keep a Changelog](https://keepachangelog.com/)
 format, but same spirit — human-readable, most recent first.
 
+## 2026-10-11 — Our Reason Commons work moves into the app, tracked in this repo
+
+The goal we have been developing Reason Commons with now lives in [`commons/reason-commons`](commons/reason-commons) and opens in the [Reason Commons app](https://github.com/life-itself/reason-commons-tui), either in Claude Code with no API key or in the terminal workspace; the README says how to install it, and the app replaces the earlier `reason-commons` skill.
+
 ## 2026-09-28 — Track the last reasoning change at a glance
 
 Reasoning sessions now put an ASCII status card above the direction choices to summarize the latest proposal, acceptance, dispute, or lack of change, and the final view choice lists available trees with node counts and a direct prompt for viewing one.

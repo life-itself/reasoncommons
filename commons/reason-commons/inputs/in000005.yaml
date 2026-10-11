@@ -1,0 +1,24 @@
+data:
+  base_revision: 4
+  declarations: {}
+  intent: answer
+  request_id: in000005
+  response_target: I4@1
+  schema_version: '1'
+  speaker: RC reconstruction editor (AI)
+  text: 'Reconstructed stage 5: Count RC inside the system
+
+
+    The expert refuses a single perfect rule for the next action. A move can directly
+    advance throughput, reveal whether a hypothesized constraint matters, or perform
+    useful reasoning. All consume resources. RC itself belongs in the model: token
+    expense, participant time, opportunity cost and unused reasoning inventory can
+    reduce the very progress RC is meant to improve. The hospital is an illustration,
+    not project evidence.
+
+
+    Reason for the next step: Consulting is an action with a cost. More reasoning
+    is justified only by what it contributes.'
+  timestamp: '2026-10-10T11:49:52.314662+00:00'
+  timezone: Europe/Berlin
+sha256: 43976eb8df8fa5180203acfbb6bc1cd2db1fd8c612d246bc6e8d0ab8b009ecad

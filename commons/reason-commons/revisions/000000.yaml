@@ -1,0 +1,26 @@
+adapter_versions: {}
+applied_requests: []
+case_id: 0133b831-d50b-45da-abaa-15d7e50ff580
+counters: {}
+current_intervention: null
+decisions:
+- action: acceptance
+  actor: RC reconstruction editor (AI)
+  closes: []
+  id: D1
+  mode: explicit
+  refs: []
+  timestamp: '2026-10-10T11:49:52.081371+00:00'
+  value: automatic
+delivery_profile: p2
+membership:
+  acceptance: automatic
+  proposals_from: 0
+name: Reason Commons · development
+parent: null
+records: []
+revision: 0
+schema_version: '1'
+source_input_refs: []
+timestamp: '2026-10-10T11:49:52.081371+00:00'
+timezone: Europe/Berlin

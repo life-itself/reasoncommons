@@ -1,0 +1,185 @@
+data:
+  attempt: 1
+  proposal:
+    base_revision: 3
+    delivery_profile: p2
+    intervention:
+      decision: Make the model revisable
+      goal_ref: G1@1
+      kind: question
+      options: []
+      primary_prompt: What would contradict the model or its predicted effect?
+      purpose: reconstructed_development
+      rationale: Persistent reasoning should make explanations and revisions inspectable.
+      required_context_refs: []
+    proposed_updates:
+    - data:
+        basis: hypothesis
+        role: necessary_condition
+        statement: Maintain a causal understanding directed by the participant’s goal.
+        tree: goal
+      operation: record_claim
+      source_refs:
+      - s16dcef2a5f5744dc9e4969e04e23ae9e
+      - s55252b99c8644a06ae2964a111376ab0
+      - se278d262e7964d1ca1e59b5fbfcf27e9
+      - in000004
+      temporary_id: model
+    - data:
+        basis: hypothesis
+        role: necessary_condition
+        statement: Retain participant knowledge and outcomes that can contradict the
+          model.
+        tree: goal
+      operation: record_claim
+      source_refs:
+      - s16dcef2a5f5744dc9e4969e04e23ae9e
+      - s55252b99c8644a06ae2964a111376ab0
+      - se278d262e7964d1ca1e59b5fbfcf27e9
+      - in000004
+      temporary_id: reality_check
+    - data:
+        basis: hypothesis
+        role: necessary_condition
+        statement: Revise causal reasoning when reality contradicts its predictions.
+        tree: goal
+      operation: record_claim
+      source_refs:
+      - s16dcef2a5f5744dc9e4969e04e23ae9e
+      - s55252b99c8644a06ae2964a111376ab0
+      - se278d262e7964d1ca1e59b5fbfcf27e9
+      - in000004
+      temporary_id: revisable
+    - data:
+        basis: hypothesis
+        role: necessary_condition
+        statement: Keep the rationale and earlier formulations available for inspection.
+        tree: goal
+      operation: record_claim
+      source_refs:
+      - s16dcef2a5f5744dc9e4969e04e23ae9e
+      - s55252b99c8644a06ae2964a111376ab0
+      - se278d262e7964d1ca1e59b5fbfcf27e9
+      - in000004
+      temporary_id: traceable
+    - data:
+        assumption: Selecting an intervention requires some understanding of its effects.
+        from_ref: model
+        relation: necessary_for
+        to_ref: C2@1
+        tree: goal
+      operation: record_link
+      source_refs:
+      - s16dcef2a5f5744dc9e4969e04e23ae9e
+      - s55252b99c8644a06ae2964a111376ab0
+      - se278d262e7964d1ca1e59b5fbfcf27e9
+      - in000004
+      temporary_id: link_47
+    - data:
+        assumption: The system cannot substitute its prediction for contact with reality.
+        from_ref: reality_check
+        relation: necessary_for
+        to_ref: revisable
+        tree: goal
+      operation: record_link
+      source_refs:
+      - s16dcef2a5f5744dc9e4969e04e23ae9e
+      - s55252b99c8644a06ae2964a111376ab0
+      - se278d262e7964d1ca1e59b5fbfcf27e9
+      - in000004
+      temporary_id: link_48
+    - data:
+        assumption: An uncorrectable causal model can continue recommending the wrong
+          move.
+        from_ref: revisable
+        relation: necessary_for
+        to_ref: model
+        tree: goal
+      operation: record_link
+      source_refs:
+      - s16dcef2a5f5744dc9e4969e04e23ae9e
+      - s55252b99c8644a06ae2964a111376ab0
+      - se278d262e7964d1ca1e59b5fbfcf27e9
+      - in000004
+      temporary_id: link_49
+    - data:
+        assumption: Earlier reasoning lets participants see what changed and why.
+        from_ref: traceable
+        relation: contributes_to
+        to_ref: revisable
+        tree: goal
+      operation: record_link
+      source_refs:
+      - s16dcef2a5f5744dc9e4969e04e23ae9e
+      - s55252b99c8644a06ae2964a111376ab0
+      - se278d262e7964d1ca1e59b5fbfcf27e9
+      - in000004
+      temporary_id: link_50
+    - data:
+        basis: hypothesis
+        role: injection
+        statement: Connect proposed interventions to their expected effects and revisit
+          them against outcomes.
+        tree: future_reality
+      operation: record_claim
+      source_refs:
+      - s16dcef2a5f5744dc9e4969e04e23ae9e
+      - s55252b99c8644a06ae2964a111376ab0
+      - se278d262e7964d1ca1e59b5fbfcf27e9
+      - in000004
+      temporary_id: predictions
+    - data:
+        basis: hypothesis
+        role: desired_effect
+        statement: Contradictory outcomes improve the causal understanding.
+        tree: future_reality
+      operation: record_claim
+      source_refs:
+      - s16dcef2a5f5744dc9e4969e04e23ae9e
+      - s55252b99c8644a06ae2964a111376ab0
+      - se278d262e7964d1ca1e59b5fbfcf27e9
+      - in000004
+      temporary_id: learning
+    - data:
+        basis: hypothesis
+        role: desired_effect
+        statement: Updated reasoning helps identify more effective actions.
+        tree: future_reality
+      operation: record_claim
+      source_refs:
+      - s16dcef2a5f5744dc9e4969e04e23ae9e
+      - s55252b99c8644a06ae2964a111376ab0
+      - se278d262e7964d1ca1e59b5fbfcf27e9
+      - in000004
+      temporary_id: effective_moves
+    - data:
+        assumption: A saved expectation makes contradictions visible.
+        from_ref: predictions
+        relation: contributes_to
+        to_ref: learning
+        tree: future_reality
+      operation: record_link
+      source_refs:
+      - s16dcef2a5f5744dc9e4969e04e23ae9e
+      - s55252b99c8644a06ae2964a111376ab0
+      - se278d262e7964d1ca1e59b5fbfcf27e9
+      - in000004
+      temporary_id: link_54
+    - data:
+        assumption: Learning can change which intervention seems most useful.
+        from_ref: learning
+        relation: contributes_to
+        to_ref: effective_moves
+        tree: future_reality
+      operation: record_link
+      source_refs:
+      - s16dcef2a5f5744dc9e4969e04e23ae9e
+      - s55252b99c8644a06ae2964a111376ab0
+      - se278d262e7964d1ca1e59b5fbfcf27e9
+      - in000004
+      temporary_id: link_55
+    request_id: in000004
+    schema_version: '1'
+  request_id: in000004
+  version: commons-import/2
+sha256: 8ee3feebbdd83b8fff9448111f4e0021981781b9209d3c019e8a05266e4c0220

@@ -1,0 +1,25 @@
+data:
+  base_revision: 7
+  declarations: {}
+  intent: answer
+  request_id: in000008
+  response_target: I7@1
+  schema_version: '1'
+  speaker: RC reconstruction editor (AI)
+  text: 'Reconstructed stage 8: Preserve development in the app
+
+
+    A dogfood interface needs more than a store of source documents. It must preserve
+    the path from purpose, through obstacles and conflict, to the implemented interface
+    injection. The goal, trees, sources, earlier formulations and adoption decisions
+    make that path inspectable. Participants must be able to challenge the interpretation,
+    and choose automatic admission or explicit review. These are reconstructed design
+    implications of persistence and minimal participation burden; no invented manual
+    protocol is presented as a historical law.
+
+
+    Reason for the next step: An easy-to-decode account lets builders continue rather
+    than repeat the development reasoning.'
+  timestamp: '2026-10-10T11:49:52.630976+00:00'
+  timezone: Europe/Berlin
+sha256: 2825745c402782aee4a6f80364fb11a3ab8c03692c1ed217b52c7695c7ef0b5a

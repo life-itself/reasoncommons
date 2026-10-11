@@ -1,0 +1,7 @@
+data:
+  content_base64: c29tZXRoaW5nIHRoYXQgZG9lcyBpbmRlZWQgbmVlZCB0byBiZSBhIGZlYXR1cmUgb2YgdGhlIGFwcCBpcyB0aGUgYWJpbGl0eSB0byBzZXQgdGhlIGFwcCB0byBhdXRvbWF0aWNhbGx5IGFjY2VwdCByZWFzb25pbmcgb3IgdG8gcmVxdWlyZSB0aGUgdXNlciB0byBhY2NlcHQgcmVhc29uaW5nLgo=
+  name: Acceptance setting requested by the user
+  sha256: db74f08b502fb4c7d5d984cae8537c9b22566923b79c4509452115506bad2ed0
+  source_id: sd67d657813e7487eb83dfef9f80179d1
+  speaker: User (current design requirement)
+sha256: 76065fcff17d6d3f365bacd79dcdde411e12239951198428206126937c232932

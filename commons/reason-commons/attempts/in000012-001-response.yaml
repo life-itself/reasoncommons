@@ -1,0 +1,369 @@
+data:
+  attempt: 1
+  proposal:
+    base_revision: 19
+    delivery_profile: p2
+    intervention:
+      decision: Review and use the contribution receipt
+      goal_ref: G1@1
+      kind: recommendation
+      options: []
+      primary_prompt: 'Next: review the change your report led to. The Transition
+        tree has the two actions (a lasting receipt and update markers); their implementation
+        waits for your review at https://github.com/life-itself/reason-commons-tui/pull/40.
+        Once it is merged, send your next contribution and say whether you could tell
+        what it did: a saved note, which consultant, waiting proposals or changed
+        trees.'
+      purpose: continuation
+      rationale: Your report is the undesirable effect. The receipt and markers are
+        the candidate injection; automated checks show they behave as specified, but
+        only your next real use can show whether they make the outcome clear (S191)
+        or just add noise.
+      required_context_refs:
+      - tt_receipt
+      - tt_markers
+      - frt_benefit
+    proposed_updates:
+    - data:
+        basis: hypothesis
+        role: desired_effect
+        statement: Participants correctly distinguish saved input, AI consultation,
+          waiting proposals and changes to their model.
+        tree: future_reality
+      operation: record_claim
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: frt_benefit
+    - data:
+        basis: hypothesis
+        role: necessary_condition
+        statement: Participants can tell what their contributions did without burdensome
+          record keeping.
+        tree: goal
+      operation: record_claim
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: gt_condition
+    - data:
+        basis: hypothesis
+        role: intermediate_cause
+        statement: A fleeting save notice and unchanged question can make a saved
+          contribution look ineffective.
+        tree: current_reality
+      operation: record_claim
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: crt_cues
+    - data:
+        basis: participant_report
+        role: undesirable_effect
+        statement: After submitting, David could not tell whether his contribution
+          had changed anything.
+        tree: current_reality
+      operation: record_claim
+      source_refs:
+      - in000012
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: crt_ude
+    - data:
+        basis: participant_report
+        role: intermediate_cause
+        statement: The offline guide saved a literal note and supplied no adaptive
+          analysis.
+        tree: current_reality
+      operation: record_claim
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: crt_offline
+    - data:
+        basis: hypothesis
+        role: injection
+        statement: Show a lasting truthful contribution receipt and mark actual accepted
+          tree changes.
+        tree: future_reality
+      operation: record_claim
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: frt_injection
+    - data:
+        basis: hypothesis
+        role: undesirable_effect
+        statement: Receipts and markers could consume attention or falsely suggest
+          that reasoning changed.
+        tree: future_reality
+      operation: record_claim
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: frt_risk
+    - data:
+        basis: hypothesis
+        role: implementation_objective
+        statement: Make contribution outcomes legible without interrupting ongoing
+          work.
+        tree: prerequisite
+      operation: record_claim
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: prt_objective
+    - data:
+        basis: hypothesis
+        role: intermediate_objective
+        statement: Durable outcomes and the actual consultant can be distinguished,
+          including after reopening.
+        tree: prerequisite
+      operation: record_claim
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: prt_outcomes
+    - data:
+        basis: hypothesis
+        role: intermediate_objective
+        statement: Changed tree destinations can be identified and acknowledged locally
+          without marking unchanged trees.
+        tree: prerequisite
+      operation: record_claim
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: prt_markers
+    - data:
+        basis: hypothesis
+        role: obstacle
+        statement: A generic Saved notice does not distinguish a literal note, waiting
+          proposals, accepted changes or a failed reply.
+        tree: prerequisite
+      operation: record_claim
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: prt_obstacle
+    - data:
+        basis: participant_report
+        role: transition_existing_reality
+        statement: Published replies, membership and tree projections are available
+          through application capabilities.
+        tree: transition
+      operation: record_claim
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: tt_reality
+    - data:
+        basis: hypothesis
+        role: transition_need
+        statement: Expose the saved contribution outcome where the participant continues
+          working.
+        tree: transition
+      operation: record_claim
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: tt_need
+    - data:
+        basis: hypothesis
+        role: transition_action
+        statement: Observe participants using offline, accepted, waiting and failed
+          contribution outcomes; record interpretation errors and attention costs.
+        tree: transition
+      operation: record_claim
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: tt_evaluate
+    - data:
+        basis: hypothesis
+        role: transition_action
+        statement: Display a lasting receipt derived from the saved reply, actual
+          consultant and current membership.
+        tree: transition
+      operation: record_claim
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: tt_receipt
+    - data:
+        basis: hypothesis
+        role: transition_expected_effect
+        statement: The receipt names the offline guide, a saved accepted note and
+          unchanged trees; it survives reopening.
+        tree: transition
+      operation: record_claim
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: tt_receipt_effect
+    - data:
+        basis: hypothesis
+        role: transition_action
+        statement: Mark accepted tree projection changes and clear the affected marker
+          when that tree is opened.
+        tree: transition
+      operation: record_claim
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: tt_markers
+    - data:
+        basis: hypothesis
+        role: transition_expected_effect
+        statement: Accepted tree changes are marked until inspected; pending proposals
+          leave unchanged trees unmarked.
+        tree: transition
+      operation: record_claim
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: tt_marker_effect
+    - data:
+        assumption: correct interpretation supports continuing useful work; no measured
+          benefit is claimed
+        from_ref: frt_benefit
+        relation: supports
+        to_ref: gt_condition
+        tree: goal
+      operation: record_link
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: gt_support
+    - data:
+        assumption: the person has no other clear visible outcome cue
+        from_ref: crt_cues
+        relation: causes
+        to_ref: crt_ude
+        tree: current_reality
+      operation: record_link
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: crt_cues_cause
+    - data:
+        assumption: the person expects adaptive AI analysis and cannot identify the
+          active consultant
+        from_ref: crt_offline
+        relation: contributes_to
+        to_ref: crt_ude
+        tree: current_reality
+      operation: record_link
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: crt_offline_cause
+    - data:
+        assumption: receipts are accurate, readable and understood; participant evidence
+          is outstanding
+        from_ref: frt_injection
+        relation: produces
+        to_ref: frt_benefit
+        tree: future_reality
+      operation: record_link
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: frt_benefit_route
+    - data:
+        assumption: the cues are noisy, overly verbose or mistaken for proof of truth
+        from_ref: frt_injection
+        relation: contributes_to
+        to_ref: frt_risk
+        tree: future_reality
+      operation: record_link
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: frt_negative_branch
+    - data:
+        assumption: the participant needs accurate outcome information
+        from_ref: prt_objective
+        relation: requires
+        to_ref: prt_outcomes
+        tree: prerequisite
+      operation: record_link
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: prt_requires_outcomes
+    - data:
+        assumption: changed locations need a local route to inspection
+        from_ref: prt_objective
+        relation: requires
+        to_ref: prt_markers
+        tree: prerequisite
+      operation: record_link
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: prt_requires_markers
+    - data:
+        assumption: the distinctions remain visible and accurate in relevant failure
+          and acceptance states
+        from_ref: prt_outcomes
+        relation: overcomes
+        to_ref: prt_obstacle
+        tree: prerequisite
+      operation: record_link
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: prt_obstacle_resolution
+    - data:
+        assumption: we use application state and never infer saving or consulting
+          from model prose
+        from_ref: tt_receipt
+        relation: implements
+        to_ref: prt_outcomes
+        tree: transition
+      operation: record_link
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: tt_receipt_implements
+    - data:
+        assumption: this is an observable interface contract, not a forecast of participant
+          comprehension
+        from_ref: tt_receipt
+        relation: produces
+        to_ref: tt_receipt_effect
+        tree: transition
+      operation: record_link
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: tt_receipt_produces
+    - data:
+        assumption: we compare accepted projections, not the presence of new pending
+          proposals
+        from_ref: tt_markers
+        relation: implements
+        to_ref: prt_markers
+        tree: transition
+      operation: record_link
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: tt_markers_implements
+    - data:
+        assumption: marker acknowledgement is presentation state and creates no reasoning
+          revision
+        from_ref: tt_markers
+        relation: produces
+        to_ref: tt_marker_effect
+        tree: transition
+      operation: record_link
+      source_refs:
+      - s9d39a27aaecb485fb3b70be9b824b151
+      - s7f558ccf1a474a41aaf725a7c5b3a1ec
+      temporary_id: tt_markers_produces
+    request_id: in000012
+    schema_version: '1'
+  request_id: in000012
+  version: feature-argument/1 (Codex reply of 10-11 Oct 2026, recorded 11 Oct 2026)
+sha256: c9acc60f7cb42558ca863b4305168f05fcf9cd0001af0a23f1e9320282da81aa

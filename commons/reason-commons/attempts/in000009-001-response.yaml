@@ -1,0 +1,60 @@
+data:
+  attempt: 1
+  proposal:
+    base_revision: 8
+    delivery_profile: p2
+    intervention:
+      decision: Import and adopt prior reasoning
+      goal_ref: G1@1
+      kind: question
+      options: []
+      primary_prompt: The prior reasoning has been imported into a model ready for
+        adoption and continued work.
+      purpose: reconstructed_development
+      rationale: The imported work is ready for the next contribution. Its historical
+        completion is stipulated; interpretation remains open to challenge.
+      required_context_refs: []
+    proposed_updates:
+    - data:
+        basis: participant_report
+        text: Prior development is imported and adopted. History explains the path
+          from TOC access to manual RC, the interface injection and this import. Trees
+          hold the reasoning; source words remain separately attributed. Empty Backlog
+          means adopted reasoning, not discarded work.
+      operation: record_note
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sb654ea354a08476fb6dac0c202732b86
+      - in000009
+      temporary_id: receipt
+    - data:
+        basis: participant_report
+        text: This is an AI-authored reconstruction from the user’s conversation and
+          hypothetical scenario. Stage ordering between the conversation, manual use
+          and implementation is reconstructed. Original dates, manual pages, engineering
+          choices and quantitative outcomes were not supplied. Source names have not
+          been invented. Native timestamps are import timestamps; automatic decisions
+          are the reconstruction editor’s acts.
+      operation: record_note
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sb654ea354a08476fb6dac0c202732b86
+      - in000009
+      temporary_id: provenance
+    - data:
+        basis: hypothesis
+        text: 'Still unknown: the present operational constraint, numerical throughput
+          and consulting cost, and whether the next recommendations will be understood,
+          acted on and useful. The next move is a bounded dogfood exercise, not another
+          request for the user to choose the priority.'
+      operation: record_note
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sb654ea354a08476fb6dac0c202732b86
+      - in000009
+      temporary_id: open
+    request_id: in000009
+    schema_version: '1'
+  request_id: in000009
+  version: commons-import/2
+sha256: 00065046da3296179b5c305df7c15525d125bedbc3c3eb038f869ce0f65d3936

@@ -1,0 +1,188 @@
+data:
+  attempt: 1
+  proposal:
+    base_revision: 7
+    delivery_profile: p2
+    intervention:
+      decision: Preserve development in the app
+      goal_ref: G1@1
+      kind: question
+      options: []
+      primary_prompt: What must survive the import so development can continue?
+      purpose: reconstructed_development
+      rationale: An easy-to-decode account lets builders continue rather than repeat
+        the development reasoning.
+      required_context_refs: []
+    proposed_updates:
+    - data:
+        basis: hypothesis
+        role: intermediate_objective
+        statement: Retain literal source words separately from extracted interpretations.
+        tree: prerequisite
+      operation: record_claim
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - s55252b99c8644a06ae2964a111376ab0
+      - s838b06fb360f48f89c806f015e255e32
+      - in000008
+      temporary_id: retain_sources
+    - data:
+        basis: hypothesis
+        role: intermediate_objective
+        statement: Keep a readable sequence explaining how and why the interface was
+          built.
+        tree: prerequisite
+      operation: record_claim
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - s55252b99c8644a06ae2964a111376ab0
+      - s838b06fb360f48f89c806f015e255e32
+      - in000008
+      temporary_id: decode_history
+    - data:
+        basis: hypothesis
+        role: intermediate_objective
+        statement: Let participants choose automatic acceptance or require explicit
+          acceptance of new reasoning.
+        tree: prerequisite
+      operation: record_claim
+      source_refs:
+      - sd67d657813e7487eb83dfef9f80179d1
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - in000008
+      temporary_id: adoption_choice
+    - data:
+        basis: hypothesis
+        role: intermediate_objective
+        statement: Review or automatically adopt the imported reconstruction into
+          the working model.
+        tree: prerequisite
+      operation: record_claim
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - s55252b99c8644a06ae2964a111376ab0
+      - s838b06fb360f48f89c806f015e255e32
+      - in000008
+      temporary_id: adopt_import
+    - data:
+        assumption: Sources let participants challenge an interpretation.
+        from_ref: retain_sources
+        relation: enables
+        to_ref: C25@1
+        tree: prerequisite
+      operation: record_link
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - s55252b99c8644a06ae2964a111376ab0
+      - s838b06fb360f48f89c806f015e255e32
+      - in000008
+      temporary_id: link_108
+    - data:
+        assumption: Builders need to understand their existing reasoning to continue
+          from it.
+        from_ref: decode_history
+        relation: necessary_for
+        to_ref: C43@1
+        tree: prerequisite
+      operation: record_link
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - s55252b99c8644a06ae2964a111376ab0
+      - s838b06fb360f48f89c806f015e255e32
+      - in000008
+      temporary_id: link_109
+    - data:
+        assumption: Different participants can choose how to admit new reasoning.
+        from_ref: adoption_choice
+        relation: enables
+        to_ref: adopt_import
+        tree: prerequisite
+      operation: record_link
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - s55252b99c8644a06ae2964a111376ab0
+      - s838b06fb360f48f89c806f015e255e32
+      - in000008
+      temporary_id: link_110
+    - data:
+        assumption: An archive alone does not provide an adopted model to work from.
+        from_ref: adopt_import
+        relation: necessary_for
+        to_ref: C43@1
+        tree: prerequisite
+      operation: record_link
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - s55252b99c8644a06ae2964a111376ab0
+      - s838b06fb360f48f89c806f015e255e32
+      - in000008
+      temporary_id: link_111
+    - data:
+        basis: hypothesis
+        role: transition_action
+        statement: Import the prior artifacts, reconstruct their reasoning and adopt
+          it into the app.
+        tree: transition
+      operation: record_claim
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - s55252b99c8644a06ae2964a111376ab0
+      - s838b06fb360f48f89c806f015e255e32
+      - in000008
+      temporary_id: accepted_import
+    - data:
+        basis: hypothesis
+        role: transition_expected_effect
+        statement: The builders can continue RC development from a legible model and
+          its history.
+        tree: transition
+      operation: record_claim
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - s55252b99c8644a06ae2964a111376ab0
+      - s838b06fb360f48f89c806f015e255e32
+      - in000008
+      temporary_id: continued
+    - data:
+        assumption: The interface makes the imported reasoning usable.
+        from_ref: C49@1
+        relation: enables
+        to_ref: accepted_import
+        tree: transition
+      operation: record_link
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - s55252b99c8644a06ae2964a111376ab0
+      - s838b06fb360f48f89c806f015e255e32
+      - in000008
+      temporary_id: link_114
+    - data:
+        assumption: Adoption supplies a working starting point instead of a fresh
+          questionnaire.
+        from_ref: accepted_import
+        relation: produces
+        to_ref: continued
+        tree: transition
+      operation: record_link
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - sd1dc415031c54f068eaa146a8c9ac34c
+      - s55252b99c8644a06ae2964a111376ab0
+      - s838b06fb360f48f89c806f015e255e32
+      - in000008
+      temporary_id: link_115
+    request_id: in000008
+    schema_version: '1'
+  request_id: in000008
+  version: commons-import/2
+sha256: 950626715ab06bcb5c6c461a0afb16f582a342c9d27e68835c01ee694969438f

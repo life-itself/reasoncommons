@@ -1,0 +1,170 @@
+data:
+  attempt: 1
+  proposal:
+    base_revision: 5
+    delivery_profile: p2
+    intervention:
+      decision: Use RC manually on RC
+      goal_ref: G1@1
+      kind: question
+      options: []
+      primary_prompt: What must the interface remove while preserving the useful reasoning?
+      purpose: reconstructed_development
+      rationale: The need for an app arises from using the manual system on real development
+        work.
+      required_context_refs: []
+    proposed_updates:
+    - data:
+        basis: participant_report
+        role: transition_existing_reality
+        statement: The builders already used manual RC records to further Reason Commons.
+        tree: transition
+      operation: record_claim
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - in000006
+      temporary_id: manual_works
+    - data:
+        basis: hypothesis
+        role: root_cause
+        statement: Maintaining the manual RC record is tedious without interface assistance.
+        tree: current_reality
+      operation: record_claim
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - in000006
+      temporary_id: manual_tedious
+    - data:
+        basis: hypothesis
+        role: intermediate_cause
+        statement: Recording and re-entering prior reasoning consumes effort needed
+          for development.
+        tree: current_reality
+      operation: record_claim
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - in000006
+      temporary_id: clerical
+    - data:
+        assumption: The record keeping is part of the work, not an external free service.
+        from_ref: manual_tedious
+        relation: causes
+        to_ref: clerical
+        tree: current_reality
+      operation: record_link
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - in000006
+      temporary_id: link_80
+    - data:
+        assumption: Manual recording adds to the burden of preparing and communicating
+          analysis.
+        from_ref: clerical
+        relation: contributes_to
+        to_ref: C9@1
+        tree: current_reality
+      operation: record_link
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - in000006
+      temporary_id: link_81
+    - data:
+        basis: hypothesis
+        role: implementation_objective
+        statement: Further Reason Commons through Reason Commons itself.
+        tree: prerequisite
+      operation: record_claim
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - in000006
+      temporary_id: dogfood
+    - data:
+        basis: hypothesis
+        role: obstacle
+        statement: Hand recording makes continued use needlessly tedious.
+        tree: prerequisite
+      operation: record_claim
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - in000006
+      temporary_id: record_obstacle
+    - data:
+        basis: hypothesis
+        role: obstacle
+        statement: Much prior work exists in artifacts rather than entered records.
+        tree: prerequisite
+      operation: record_claim
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - in000006
+      temporary_id: prior_artifacts
+    - data:
+        basis: hypothesis
+        role: intermediate_objective
+        statement: Provide interface assistance for keeping and inspecting RC records.
+        tree: prerequisite
+      operation: record_claim
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - in000006
+      temporary_id: assist_records
+    - data:
+        basis: hypothesis
+        role: intermediate_objective
+        statement: Use AI to reconstruct prior reasoning from existing artifacts.
+        tree: prerequisite
+      operation: record_claim
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - in000006
+      temporary_id: ai_import
+    - data:
+        assumption: Interface assistance can remove repeated clerical effort.
+        from_ref: assist_records
+        relation: overcomes
+        to_ref: record_obstacle
+        tree: prerequisite
+      operation: record_link
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - in000006
+      temporary_id: link_87
+    - data:
+        assumption: Extraction can carry the work without manual re-entry.
+        from_ref: ai_import
+        relation: overcomes
+        to_ref: prior_artifacts
+        tree: prerequisite
+      operation: record_link
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - in000006
+      temporary_id: link_88
+    - data:
+        assumption: The builders need a practical way to keep using the record system.
+        from_ref: assist_records
+        relation: necessary_for
+        to_ref: dogfood
+        tree: prerequisite
+      operation: record_link
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - in000006
+      temporary_id: link_89
+    - data:
+        assumption: Development should continue from the existing work rather than
+          restart.
+        from_ref: ai_import
+        relation: necessary_for
+        to_ref: dogfood
+        tree: prerequisite
+      operation: record_link
+      source_refs:
+      - s7cc0be68dd1843ff931b129b19aa0ba5
+      - in000006
+      temporary_id: link_90
+    request_id: in000006
+    schema_version: '1'
+  request_id: in000006
+  version: commons-import/2
+sha256: eacc14b3a99c70a564bbb2a81e7b0027358aa255ed63e89e6e019115b95e07d3
