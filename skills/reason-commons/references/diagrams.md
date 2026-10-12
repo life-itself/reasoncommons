@@ -1,0 +1,73 @@
+# In-conversation diagrams
+
+The change-status diagram and small view diagrams are written once as a Mermaid `flowchart`, then shown in whatever form the host can display. The topology rules in `SKILL.md` apply in every form: same nodes, same links, same joint conditions, no invented connections. A view diagram shows one standing at a time, as `SKILL.md` describes, with the view heading in place of the change label; endpoints of another standing drawn only for context use the `context` class and keep their marker.
+
+## Choose the form
+
+1. **Inline widget** — when the host has a tool that renders HTML in the conversation (in the Claude apps, `show_widget` from the visualize tools; load its guidance first if the tool asks for that). Render the Mermaid source with mermaid.js, as below. This is the preferred form.
+2. **Fenced Mermaid block** — when there is no widget tool but the surface is known to render ```` ```mermaid ```` blocks (for example a GitHub or Flowershow page). A Claude Code or Codex chat does not render them; do not assume it does.
+3. **ASCII** — in a terminal, any other plain-text surface, when unsure, or when the widget fails to render. Use the ASCII form below.
+
+In voice, follow the voice rules in `SKILL.md` and do not describe the diagram markup.
+
+## Mermaid conventions
+
+- `flowchart LR` for short chains; `flowchart TB` when the fragment is deeper than it is wide.
+- One node per statement: `id["[P] Concise claim"]`. Keep the `[P]`, `[A]`, `[D]` markers in the label so standing never depends on colour alone. Mark a revised node `[P] (revised)`.
+- Links: `-->` accepted, `-.->` proposed, `-. disputed .->` disputed.
+- Joint causes: route each cause into a small `AND` junction, `j1(("AND"))`, then one arrow from the junction to the effect. Never draw separate arrows that would imply each cause is sufficient on its own.
+- Disconnected proposals stay disconnected; separate chains may each sit in their own `subgraph`.
+- Muted neighbouring context uses the `context` class.
+- Use node IDs from the YAML when they are valid Mermaid identifiers; otherwise short letters. Write `#quot;` for a double quote inside a label.
+
+```text
+flowchart LR
+  diet["[P] I have a poor diet"] -.-> energy["[P] I have low energy"]
+  sleep["[A] I sleep 5 hours"] --> j1(("AND"))
+  energy -.-> j1
+  j1 --> late["[D] I miss deadlines"]
+  classDef proposed stroke-dasharray:4 3,stroke:#BA7517
+  classDef accepted stroke:#1D9E75,stroke-width:2px
+  classDef disputed stroke:#E24B4A,stroke-width:2px
+  classDef context stroke-dasharray:2 2,opacity:0.6
+  class diet,energy proposed
+  class sleep accepted
+  class late disputed
+```
+
+## Widget form
+
+Write the status line in the response text, call the widget tool with the diagram only, then continue with the summary sentence and directions. Use a fresh render ID for each widget and replace `SOURCE` with the Mermaid source:
+
+```html
+<h2 class="sr-only">Change-status diagram: LAST CHANGE PROPOSED</h2>
+<p style="margin:0 0 8px;font-size:13px;color:var(--text-secondary)">LAST CHANGE: PROPOSED · [P] proposed · [A] accepted · [D] disputed</p>
+<div id="rc"></div>
+<script type="module">
+import mermaid from 'https://esm.sh/mermaid@11/dist/mermaid.esm.min.mjs';
+const mode = document.documentElement.dataset.mode;
+const dark = mode ? mode === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+await document.fonts.ready;
+mermaid.initialize({startOnLoad: false, theme: 'base', fontFamily: '"anthropic-sans", sans-serif',
+  themeVariables: {darkMode: dark, fontSize: '13px', fontFamily: '"anthropic-sans", sans-serif',
+    lineColor: dark ? '#9c9a92' : '#73726c', textColor: dark ? '#c2c0b6' : '#3d3d3a',
+    primaryColor: dark ? '#2C2C2A' : '#F1EFE8', primaryBorderColor: dark ? '#888780' : '#5F5E5A'}});
+const { svg } = await mermaid.render('rc-1', `SOURCE`);
+document.getElementById('rc').innerHTML = svg;
+</script>
+```
+
+The widget loads mermaid.js from esm.sh, so it needs network access. If it fails to render, show the ASCII form instead in the same response.
+
+## ASCII form
+
+```text
+LAST CHANGE: PROPOSED   [P] proposed
+
++----------------------+       +----------------------+
+| [P] I have a poor    | ----> | [P] I have low      |
+| diet                 |       | energy               |
++----------------------+       +----------------------+
+```
+
+Keep ASCII diagrams ASCII-only. For joint causes, join the arrows at an `(AND)` node before the effect.
