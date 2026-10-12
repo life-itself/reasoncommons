@@ -1158,6 +1158,57 @@ trees:
           id: r-d-no-sales-drive
           entity_id: r-e-no-sales-drive
           role: root_cause
+    - id: r-e-david-low-market-interest
+      kind: cause
+      text: David has limited interest in market testing and selling.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Given 2026-09-29 in reasoncommons-5lo; the save was lost and this was restored from the bead notes on 2026-10-12.
+      accepted_by:
+      - david
+      acceptance_source: 'Conversation 2026-10-12: David accepted the restored 2026-09-29 fragment for now.'
+    - id: r-e-david-demo-confidence
+      kind: cause
+      text: David lacks confidence that there is a coherent product to demo.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Given 2026-09-29 in reasoncommons-5lo; the save was lost and this was restored from the bead notes on 2026-10-12.
+      accepted_by:
+      - david
+      acceptance_source: 'Conversation 2026-10-12: David accepted the restored 2026-09-29 fragment for now.'
+    - id: r-e-david-user-testing-held-back
+      kind: undesirable_effect
+      text: David is held back from testing with potential users.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Given 2026-09-29 in reasoncommons-5lo; the save was lost and this was restored from the bead notes on 2026-10-12.
+      accepted_by:
+      - david
+      acceptance_source: 'Conversation 2026-10-12: David accepted the restored 2026-09-29 fragment for now.'
+    - id: r-e-david-willing-test-coherent-demo
+      kind: observation
+      text: David would want to test with a potential user if he had a demo he felt was coherent.
+      status: accepted
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Given 2026-09-29 in reasoncommons-5lo; the save was lost and this was restored from the bead notes on 2026-10-12.
+      assumptions:
+      - text: Qualifies r-e-david-low-market-interest; limited interest alone may not stop David testing once a coherent demo exists. Conditional willingness, not a scheduled test.
+        by: david
+      accepted_by:
+      - david
+      acceptance_source: 'Conversation 2026-10-12: David accepted the restored 2026-09-29 fragment for now.'
     links:
     - id: r-rel-unclear-drives-redesigning
       from:
@@ -1440,10 +1491,36 @@ trees:
       - by: rufus
         attribution: explicit
         mode: text
+    - id: r-rel-david-low-interest-holds-back-testing
+      from:
+      - r-e-david-low-market-interest
+      to: r-e-david-user-testing-held-back
+      relation: contributes_to
+      status: accepted
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+      accepted_by:
+      - david
+      acceptance_source: 'Conversation 2026-10-12: David accepted the restored 2026-09-29 fragment for now.'
+    - id: r-rel-david-demo-confidence-holds-back-testing
+      from:
+      - r-e-david-demo-confidence
+      to: r-e-david-user-testing-held-back
+      relation: contributes_to
+      status: accepted
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+      accepted_by:
+      - david
+      acceptance_source: 'Conversation 2026-10-12: David accepted the restored 2026-09-29 fragment for now.'
     backlog:
-    - ref: r-e-no-sales-drive
-      work: clarify_with_driver
-      note: 'Current question within reasoncommons-5lo: Rufus supplied this characterization of both collaborators. Ask David whether lack of motivation/fit or lack of available time is the obstacle to market testing.'
+    - ref: r-e-david-demo-confidence
+      work: clarify_demo_gap
+      note: 'Within reasoncommons-5lo: what is missing from demo coherence for David (a clear person it is for, a real task to walk through, confidence in a useful result, or another gap)?'
       beads:
       - reasoncommons-5lo
     - ref: r-rel-no-sales-drive-drives-product-unclear
