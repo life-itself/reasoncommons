@@ -3,6 +3,10 @@
 Notable changes to this project. Not strictly [Keep a Changelog](https://keepachangelog.com/)
 format, but same spirit — human-readable, most recent first.
 
+## 2026-10-12 — Reasoning diagrams drawn in the chat
+
+In the Claude apps, the [`reason-commons` skill](skills/reason-commons/SKILL.md) now draws each turn's change-status diagram as a rendered Mermaid flowchart inside the conversation, with proposed links dashed and accepted, proposed and disputed nodes outlined in different colours. Terminals and other plain-text chats keep the ASCII diagrams.
+
 ## 2026-09-28 — Track the last reasoning change at a glance
 
 Reasoning sessions now put an ASCII status card above the direction choices to summarize the latest proposal, acceptance, dispute, or lack of change, and the final view choice lists available trees with node counts and a direct prompt for viewing one.
