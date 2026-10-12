@@ -1,6 +1,6 @@
 # In-conversation diagrams
 
-The change-status diagram and small view diagrams are written once as a Mermaid `flowchart`, then shown in whatever form the host can display. The topology rules in `SKILL.md` apply in every form: same nodes, same links, same joint conditions, no invented connections.
+The change-status diagram and small view diagrams are written once as a Mermaid `flowchart`, then shown in whatever form the host can display. The topology rules in `SKILL.md` apply in every form: same nodes, same links, same joint conditions, no invented connections. A view diagram shows one standing at a time, as `SKILL.md` describes, with the view heading in place of the change label; endpoints of another standing drawn only for context use the `context` class and keep their marker.
 
 ## Choose the form
 
