@@ -3,6 +3,10 @@
 Notable changes to this project. Not strictly [Keep a Changelog](https://keepachangelog.com/)
 format, but same spirit — human-readable, most recent first.
 
+## 2026-10-13 — Glossary
+
+A new [glossary](glossary.md) explains every Logical Thinking Process term and acronym you meet in the guide, the books and the skills' output — CRT, UDE, injection, evaporating cloud and the rest — each under its own heading so it can be linked to directly, e.g. `reasoncommons.com/glossary#current-reality-tree`.
+
 ## 2026-10-12 — Reasoning diagrams drawn in the chat
 
 In the Claude apps, the [`reason-commons` skill](skills/reason-commons/SKILL.md) now draws each turn's change-status diagram as a rendered Mermaid flowchart inside the conversation, with proposed links dashed and accepted, proposed and disputed nodes outlined in different colours. Terminals and other plain-text chats keep the ASCII diagrams.

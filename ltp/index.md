@@ -7,7 +7,7 @@ description: A plain-language introduction to the Logical Thinking Process (LTP)
 
 The **Logical Thinking Process** (LTP) is the method underneath Reason Commons. It comes from the **Theory of Constraints**, developed by Eliyahu Goldratt and later codified for general problem-solving by H. William Dettmer. It is the most thorough, best-realised way we know of doing what this project is about: laying out a goal, the things blocking it, and the change that gets past them — as connected trees rather than prose.
 
-You do not need any of this vocabulary to use Reason Commons. The site keeps LTP's rigour and hides its jargon. This page is for people who want to know what is under the hood, or who arrived searching for it.
+You do not need any of this vocabulary to use Reason Commons. The site keeps LTP's rigour and hides its jargon. This page is for people who want to know what is under the hood, or who arrived searching for it. The [glossary](/glossary) defines every term and acronym.
 
 ## The core idea
 
