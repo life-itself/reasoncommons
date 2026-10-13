@@ -1,6 +1,6 @@
 # In-conversation diagrams
 
-The change-status diagram and small view diagrams are written once as a Mermaid `flowchart`, then shown in whatever form the host can display. The topology rules in `SKILL.md` apply in every form: same nodes, same links, same joint conditions, no invented connections. A view diagram shows one standing at a time, as `SKILL.md` describes, with the view heading in place of the change label; endpoints of another standing drawn only for context use the `context` class and keep their marker.
+The change-status diagram is written once as a Mermaid `flowchart`, then shown in whatever form the host can display. The topology rules in `SKILL.md` apply in every form: same nodes, same links, same joint conditions, no invented connections. Tree views are generated from the YAML by `scripts/render_view.py` (see the pan-and-zoom section below) rather than drawn by hand; they follow the same conventions.
 
 ## Choose the form
 
@@ -59,52 +59,21 @@ document.getElementById('rc').innerHTML = svg;
 
 The widget loads mermaid.js from esm.sh, so it needs network access. If it fails to render, show the ASCII form instead in the same response.
 
-### Pan and zoom for larger diagrams
+### Pan and zoom for tree views and larger diagrams
 
-Use the plain widget above for small fragments, which covers most change-status diagrams: it sizes itself to fit and reads at a glance. For a tree view, or any diagram of more than about ten nodes or too wide to read at chat width, use this pan-and-zoom frame instead. It opens fitted to the whole diagram. Dragging pans; the buttons, a pinch, or ⌘/Ctrl with the scroll wheel zoom. A plain scroll is left to the conversation so the diagram never traps it. Use the same heading line, initialisation and `SOURCE` substitution as the plain widget:
+Every tree view, and any change-status diagram of more than about ten nodes or too wide to read at chat width, uses a pan-and-zoom frame instead of the plain widget. It opens fitted to the whole diagram. Dragging pans; the buttons, a pinch, or ⌘/Ctrl with the scroll wheel zoom. A plain scroll is left to the conversation so the diagram never traps it. The frame stays near 380px tall so the summary and directions remain in view.
 
-```html
-<style>
-#rcv{position:relative;height:380px;border:0.5px solid var(--border);border-radius:12px;overflow:hidden;cursor:grab;touch-action:none;background:var(--surface-1)}
-#rcv.drag{cursor:grabbing}
-#rcv svg{width:100%;height:100%;max-width:none!important}
-.rcb{position:absolute;top:8px;right:8px;display:flex;gap:4px}
-.rcb button{width:30px;height:30px;border:0.5px solid var(--border-strong);border-radius:var(--radius);background:var(--surface-2);color:var(--text-primary);cursor:pointer;font-size:16px;line-height:1}
-</style>
-<h2 class="sr-only">Goal tree, proposed only, with pan and zoom</h2>
-<p style="margin:0 0 8px;font-size:13px;color:var(--text-secondary)">GOAL — PROPOSED ONLY (12 nodes, 11 links) · drag to pan · pinch or ⌘/Ctrl+scroll to zoom</p>
-<div id="rcv"><div id="rc" style="width:100%;height:100%"></div>
-<div class="rcb"><button id="zin" aria-label="Zoom in"><i class="ti ti-plus" aria-hidden="true"></i></button><button id="zout" aria-label="Zoom out"><i class="ti ti-minus" aria-hidden="true"></i></button><button id="zfit" aria-label="Fit to view"><i class="ti ti-arrows-maximize" aria-hidden="true"></i></button></div></div>
-<script type="module">
-// import, theme detection and mermaid.initialize exactly as in the plain widget
-const { svg } = await mermaid.render('rc-2', `SOURCE`);
-const host = document.getElementById('rc'); host.innerHTML = svg;
-const el = host.querySelector('svg'); el.removeAttribute('style'); el.setAttribute('width','100%'); el.setAttribute('height','100%');
-const [fx,fy,fw,fh] = el.getAttribute('viewBox').split(/[\s,]+/).map(Number);
-const pad = 16, fit = {x:fx-pad,y:fy-pad,w:fw+2*pad,h:fh+2*pad};
-let v = {...fit};
-const set = () => el.setAttribute('viewBox', `${v.x} ${v.y} ${v.w} ${v.h}`);
-const scale = () => { const r = el.getBoundingClientRect(); return Math.max(v.w/r.width, v.h/r.height); };
-const zoom = (f, cx, cy) => { const r = el.getBoundingClientRect(); const s = scale();
-  const px = cx==null ? v.x+v.w/2 : v.x + (cx-r.left)*s - (s*r.width-v.w)/2;
-  const py = cy==null ? v.y+v.h/2 : v.y + (cy-r.top)*s - (s*r.height-v.h)/2;
-  const nw = Math.min(Math.max(v.w*f, fit.w/8), fit.w*4); const k = nw/v.w;
-  v = {x:px-(px-v.x)*k, y:py-(py-v.y)*k, w:v.w*k, h:v.h*k}; set(); };
-set();
-const box = document.getElementById('rcv');
-document.getElementById('zin').onclick = () => zoom(0.8);
-document.getElementById('zout').onclick = () => zoom(1.25);
-document.getElementById('zfit').onclick = () => { v = {...fit}; set(); };
-box.addEventListener('wheel', e => { if (!(e.ctrlKey || e.metaKey)) return; e.preventDefault(); zoom(Math.exp(e.deltaY*0.01), e.clientX, e.clientY); }, {passive:false});
-let last = null;
-box.addEventListener('pointerdown', e => { if (e.target.closest('button')) return; last = [e.clientX,e.clientY]; box.setPointerCapture(e.pointerId); box.classList.add('drag'); });
-box.addEventListener('pointermove', e => { if (!last) return; const s = scale(); v.x -= (e.clientX-last[0])*s; v.y -= (e.clientY-last[1])*s; last = [e.clientX,e.clientY]; set(); });
-const end = () => { last = null; box.classList.remove('drag'); };
-box.addEventListener('pointerup', end); box.addEventListener('pointercancel', end);
-</script>
+Do not write the frame by hand. `scripts/render_view.py` prints it complete, ready to pass unchanged to the widget tool:
+
+```bash
+# A tree view: counts, topology, markers, context endpoints and the "Not shown" line all come from the YAML
+python3 <skill-directory>/scripts/render_view.py <state.yaml> --tree current_reality --standing accepted
+
+# A large change-status diagram you have written as Mermaid
+python3 <skill-directory>/scripts/render_view.py --wrap --heading "LAST CHANGE: PROPOSED · [P] proposed · [A] accepted" < change.mmd
 ```
 
-Keep the frame's height near 380px; a taller frame pushes the summary and directions out of view.
+On a plain-text surface, or if the widget fails to render, use `--format text` for a view: an outline that lists every link once under its effect, with joint causes as `AND( … )` and unlinked nodes at the end. `--counts` prints the per-tree counts the view option in the menu needs.
 
 ## ASCII form
 

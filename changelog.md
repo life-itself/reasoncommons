@@ -3,6 +3,10 @@
 Notable changes to this project. Not strictly [Keep a Changelog](https://keepachangelog.com/)
 format, but same spirit — human-readable, most recent first.
 
+## 2026-10-13 — Tree views you can pan and zoom
+
+When you ask the [`reason-commons` skill](skills/reason-commons/SKILL.md) to show a tree, it now draws the real diagram in the chat, with drag to pan and buttons, pinch or ⌘/Ctrl+scroll to zoom, instead of retelling the tree as a list of chains. The diagram, its node counts and the "Not shown" line are generated straight from the saved reasoning, so smaller models such as Haiku get them right too.
+
 ## 2026-10-13 — Glossary
 
 A new [glossary](glossary.md) explains every Logical Thinking Process term and acronym you meet in the guide, the books and the skills' output — CRT, UDE, injection, evaporating cloud and the rest — each under its own heading so it can be linked to directly, e.g. `reasoncommons.com/glossary#current-reality-tree`.
