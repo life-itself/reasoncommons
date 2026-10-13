@@ -1,6 +1,6 @@
 # In-conversation diagrams
 
-The change-status diagram and small view diagrams are written once as a Mermaid `flowchart`, then shown in whatever form the host can display. The topology rules in `SKILL.md` apply in every form: same nodes, same links, same joint conditions, no invented connections. A view diagram shows one standing at a time, as `SKILL.md` describes, with the view heading in place of the change label; endpoints of another standing drawn only for context use the `context` class and keep their marker.
+The change-status diagram is written once as a Mermaid `flowchart`, then shown in whatever form the host can display. The topology rules in `SKILL.md` apply in every form: same nodes, same links, same joint conditions, no invented connections. Tree views are generated from the YAML by `scripts/render_view.py` (see the pan-and-zoom section below) rather than drawn by hand; they follow the same conventions.
 
 ## Choose the form
 
@@ -58,6 +58,22 @@ document.getElementById('rc').innerHTML = svg;
 ```
 
 The widget loads mermaid.js from esm.sh, so it needs network access. If it fails to render, show the ASCII form instead in the same response.
+
+### Pan and zoom for tree views and larger diagrams
+
+Every tree view, and any change-status diagram of more than about ten nodes or too wide to read at chat width, uses a pan-and-zoom frame instead of the plain widget. It opens fitted to the whole diagram. Dragging pans; the buttons, a pinch, or ⌘/Ctrl with the scroll wheel zoom. A plain scroll is left to the conversation so the diagram never traps it. The frame stays near 380px tall so the summary and directions remain in view.
+
+Do not write the frame by hand. `scripts/render_view.py` prints it complete, ready to pass unchanged to the widget tool:
+
+```bash
+# A tree view: counts, topology, markers, context endpoints and the "Not shown" line all come from the YAML
+python3 <skill-directory>/scripts/render_view.py <state.yaml> --tree current_reality --standing accepted
+
+# A large change-status diagram you have written as Mermaid
+python3 <skill-directory>/scripts/render_view.py --wrap --heading "LAST CHANGE: PROPOSED · [P] proposed · [A] accepted" < change.mmd
+```
+
+On a plain-text surface, or if the widget fails to render, use `--format text` for a view: an outline that lists every link once under its effect, with joint causes as `AND( … )` and unlinked nodes at the end. `--counts` prints the per-tree counts the view option in the menu needs.
 
 ## ASCII form
 
