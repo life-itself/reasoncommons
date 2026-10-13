@@ -69,6 +69,14 @@ flowchart BT
   C1 --> U2
   C1 --> C2
   C2 --> U3
+  classDef evidence fill:#f5f6f7,stroke:#9aa3ad,stroke-dasharray:4 3,color:#17212e
+  classDef key fill:#fff4d6,stroke:#996000,stroke-width:2px,color:#17212e
+  classDef cause fill:#f8fafc,stroke:#475569,color:#17212e
+  classDef ude fill:#fff0f0,stroke:#b23b3b,color:#17212e
+  class O1,O2 evidence
+  class RC key
+  class C1,C2 cause
+  class U1,U2,U3 ude
 ```
 
 This changes what kind of problem it is. "We should be more disciplined" is a resolution. "Nothing requires the connection" is a design gap, and design gaps can be fixed.
@@ -98,6 +106,14 @@ flowchart BT
   W --> S
   I --> T
   I --> N
+  classDef key fill:#fff4d6,stroke:#996000,stroke-width:2px,color:#17212e
+  classDef effect fill:#f8fafc,stroke:#475569,color:#17212e
+  classDef good fill:#eaf7ef,stroke:#18734a,color:#17212e
+  classDef risk fill:#fff0f0,stroke:#b23b3b,stroke-dasharray:4 3,color:#17212e
+  class I key
+  class W effect
+  class S,T good
+  class N risk
 ```
 
 ### 4. Make the change, and let the change prove itself
