@@ -3,6 +3,10 @@
 Notable changes to this project. Not strictly [Keep a Changelog](https://keepachangelog.com/)
 format, but same spirit — human-readable, most recent first.
 
+## 2026-10-13 — Rewind a reasoning session, tree included
+
+In Claude Code, rewinding a [`reason-commons`](skills/reason-commons/SKILL.md) session now offers "Restore code and conversation", so an undone turn also rolls back the tree, and the diagrams are refreshed to match.
+
 ## 2026-09-28 — Track the last reasoning change at a glance
 
 Reasoning sessions now put an ASCII status card above the direction choices to summarize the latest proposal, acceptance, dispute, or lack of change, and the final view choice lists available trees with node counts and a direct prompt for viewing one.
