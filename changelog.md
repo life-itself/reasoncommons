@@ -5,7 +5,7 @@ format, but same spirit — human-readable, most recent first.
 
 ## 2026-10-13 — Glossary
 
-A new [glossary](glossary.md) explains every Logical Thinking Process term and acronym you meet in the guide, the books and the skills' output — CRT, UDE, injection, evaporating cloud and the rest — each under its own heading so it can be linked to directly, e.g. `reasoncommons.com/glossary#current-reality-tree`.
+A new [glossary](glossary.md) explains every Logical Thinking Process term and acronym you meet in the guide, the books and the skills' output — CRT, UDE, injection, evaporating cloud and the rest — each under its own heading so it can be linked to directly, with a small sketch of each tree worked through one running example, e.g. `reasoncommons.com/glossary#current-reality-tree`.
 
 ## 2026-10-12 — Reasoning diagrams drawn in the chat
 
