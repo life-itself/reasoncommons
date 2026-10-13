@@ -1209,6 +1209,68 @@ trees:
       accepted_by:
       - david
       acceptance_source: 'Conversation 2026-10-12: David accepted the restored 2026-09-29 fragment for now.'
+    - id: r-e-prs-without-tree
+      kind: observation
+      text: Rufus and David have opened pull requests to fix issues without connecting them to the trees.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: From David's post blog/making-work-add-up.md and the conversation that revised it, 2026-10-13.
+    - id: r-e-problems-outside-tree
+      kind: observation
+      text: Rufus and David have discussed and written down problems without remembering that a tree already existed for them.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: From David's post blog/making-work-add-up.md and the conversation that revised it, 2026-10-13.
+    - id: r-e-changes-need-no-tree-link
+      kind: cause
+      text: Nothing requires a change to the repository to connect to the trees, and so to the goal; making the connection is left to discipline.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: From David's post blog/making-work-add-up.md and the conversation that revised it, 2026-10-13.
+    - id: r-e-work-missing-from-tree
+      kind: cause
+      text: Work reaches the repository without being recorded anywhere in the trees.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: From David's post blog/making-work-add-up.md and the conversation that revised it, 2026-10-13.
+    - id: r-e-lose-track-of-work
+      kind: undesirable_effect
+      text: Rufus and David, as the project's maintainers, lose track of the work being done in the repository and why it was done.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: From David's post blog/making-work-add-up.md and the conversation that revised it, 2026-10-13.
+    - id: r-e-work-may-miss-goal
+      kind: undesirable_effect
+      text: Rufus and David cannot tell whether the work being done moves the project towards the goal, so it risks drifting from it.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: From David's post blog/making-work-add-up.md and the conversation that revised it, 2026-10-13.
+    - id: r-e-trees-out-of-step
+      kind: cause
+      text: The trees fall out of step with the work actually being done.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     links:
     - id: r-rel-unclear-drives-redesigning
       from:
@@ -1517,6 +1579,84 @@ trees:
       accepted_by:
       - david
       acceptance_source: 'Conversation 2026-10-12: David accepted the restored 2026-09-29 fragment for now.'
+    - id: r-rel-prs-show-no-tree-link
+      from:
+      - r-e-prs-without-tree
+      to: r-e-changes-need-no-tree-link
+      relation: supports
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: From David's post blog/making-work-add-up.md and the conversation that revised it, 2026-10-13.
+    - id: r-rel-problems-show-no-tree-link
+      from:
+      - r-e-problems-outside-tree
+      to: r-e-changes-need-no-tree-link
+      relation: supports
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: From David's post blog/making-work-add-up.md and the conversation that revised it, 2026-10-13.
+    - id: r-rel-no-link-leaves-work-out
+      from:
+      - r-e-changes-need-no-tree-link
+      to: r-e-work-missing-from-tree
+      relation: causes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: From David's post blog/making-work-add-up.md and the conversation that revised it, 2026-10-13.
+    - id: r-rel-missing-work-loses-track
+      from:
+      - r-e-work-missing-from-tree
+      to: r-e-lose-track-of-work
+      relation: causes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: From David's post blog/making-work-add-up.md and the conversation that revised it, 2026-10-13.
+      assumptions:
+      - text: The trees are where Rufus and David look to see what work is happening and why; Git history records what changed but not which reasoning it served.
+        by: assistant
+    - id: r-rel-missing-work-misses-goal
+      from:
+      - r-e-work-missing-from-tree
+      to: r-e-work-may-miss-goal
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: From David's post blog/making-work-add-up.md and the conversation that revised it, 2026-10-13.
+    - id: r-rel-missing-work-stales-trees
+      from:
+      - r-e-work-missing-from-tree
+      to: r-e-trees-out-of-step
+      relation: causes
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: r-rel-stale-trees-no-actioning
+      from:
+      - r-e-trees-out-of-step
+      to: r-e-no-shared-actioning
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     backlog:
     - ref: r-e-david-demo-confidence
       work: clarify_demo_gap
@@ -1633,6 +1773,12 @@ trees:
       note: Existing review bead asks whether using the tree and Beads now resolves the lack of a shared way to turn the goal into action. Integration alone does not establish that it does.
       beads:
       - reasoncommons-5lo
+    - ref: r-rel-missing-work-loses-track
+      work: examine_assumption
+      note: 'Do Rufus and David actually rely on the trees, rather than Git or chat, to know what work is happening?'
+    - ref: r-rel-stale-trees-no-actioning
+      work: test_causality
+      note: 'Assistant-proposed connection to the accepted r-e-no-shared-actioning; bears on the reasoncommons-5lo question of whether that effect remains current.'
   conflict:
     nodes:
     - id: c-e-objective
@@ -2208,6 +2354,51 @@ trees:
       derived_from:
       - c-e-focus-pre-grants
       - c-e-focus-pre-product
+    - id: f-e-changes-name-reasoning
+      kind: injection
+      text: Every change to the repository names the reasoning it serves and the tree updates it makes, and a check confirms those updates against the working YAML.
+      status: proposed
+      addresses:
+      - r-e-changes-need-no-tree-link
+      implements:
+      - f-e-run-collab-through-tree
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: From David's post blog/making-work-add-up.md and the conversation that revised it, 2026-10-13.
+    - id: f-e-work-recorded-in-tree
+      kind: predicted_effect
+      text: Work reaching the repository is recorded in the trees.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-e-see-work-and-why
+      kind: desirable_effect
+      text: Rufus and David can see from the trees what work is being done and why.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-e-change-traces-to-goal
+      kind: desirable_effect
+      text: Each change can be traced to the part of the goal it serves.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-e-citation-overhead
+      kind: undesirable_effect
+      text: Small changes, such as typo fixes, carry the overhead of finding reasoning to cite, which may tempt people to cite something loosely just to pass the check.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     links:
     - id: f-rel-use-makes-users
       from:
@@ -2269,6 +2460,46 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: f-rel-naming-records-work
+      from:
+      - f-e-changes-name-reasoning
+      to: f-e-work-recorded-in-tree
+      relation: causes
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-rel-recorded-work-visible
+      from:
+      - f-e-work-recorded-in-tree
+      to: f-e-see-work-and-why
+      relation: causes
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-rel-naming-traces-goal
+      from:
+      - f-e-changes-name-reasoning
+      to: f-e-change-traces-to-goal
+      relation: causes
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-rel-naming-adds-overhead
+      from:
+      - f-e-changes-name-reasoning
+      to: f-e-citation-overhead
+      relation: causes
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     backlog:
     - ref: f-rel-use-makes-users
       work: test_causality
@@ -2295,6 +2526,12 @@ trees:
     - ref: f-e-use-while-building
       work: test_conflict_resolution
       note: Preserved source assessment c-as-do-both-breaks says both needs are met; check repeated real use, not just one successful session.
+    - ref: f-rel-naming-records-work
+      work: test_causality
+      note: 'The pull request that introduced this change used it once; check whether later pull requests keep the connection without reminders.'
+    - ref: f-e-citation-overhead
+      work: test_negative_branch
+      note: 'Watch the next few small pull requests: do they cite reasoning honestly, or loosely just to pass?'
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
