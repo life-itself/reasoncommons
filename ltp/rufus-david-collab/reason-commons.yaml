@@ -2867,12 +2867,12 @@ trees:
     - ref: f-e-changes-name-reasoning
       work: test_pr_merge_enforcement
       feedback: GitHub reported main as unprotected with no required checks or active rules, despite the Tree check workflow introduced by PRs 58 and 59.
-      note: Applied .github/branch-protection.json and read back main as protected, with required_status_checks.strict true, required tree-check from GitHub Actions app 15368 and enforce_admins.enabled true. PR delivery and required-check inspection are pending; observe real-use merge behavior and retain the existing reasoning review work and proposed standing.
+      note: Applied .github/branch-protection.json and read back main as protected, with required_status_checks.strict true, required tree-check from GitHub Actions app 15368 and enforce_admins.enabled true. PR 61 was BLOCKED while its required check was pending, then CLEAN after the check passed. Existing nodes, links, standings, receipts and collaboration priority match main after merged PR 59. Continue observing real-use merge behavior and retain the existing reasoning review work and proposed standing.
       beads: [reasoncommons-ilh]
     - ref: f-e-pr-diagrams-show-changes
       work: test_pr_diagram_configuration
       feedback: Run 38586022836 rejected PR 59 because added Mermaid display configuration differed from the generated source, although all eight graph bodies matched. The later merged PR corrected its generated configuration.
-      note: All 74 helper tests passed on main after PR 59. Supported wrapping widths, key order, equivalent YAML formatting and omitted optional width pass; changed statements, standings, relations and endpoints still fail. Invalid or unsupported configuration has a specific error. Grouped diagrams, htmlLabels false, unresolved-connection notes, collapsed lists, receipts and coverage checks remain intact. PR delivery and rendered-description inspection are pending; real-use readability review remains open.
+      note: All 74 helper tests passed on main after PR 59, and PR 61 passed the required GitHub Actions Tree check. Supported wrapping widths, key order, equivalent YAML formatting and omitted optional width pass; changed statements, standings, relations and endpoints still fail. Invalid or unsupported configuration has a specific error. Grouped diagrams, htmlLabels false, unresolved-connection notes, collapsed lists, receipts and coverage checks remain intact. Actual GitHub inspection confirmed the rendered no-node/link-change declaration, served reasoning, closed complete-checklist disclosure, backlog and acceptance reference. Real-use readability review remains open.
       beads: [reasoncommons-ilh]
   prerequisite:
     nodes:
