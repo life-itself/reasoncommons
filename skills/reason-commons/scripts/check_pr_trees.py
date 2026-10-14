@@ -187,6 +187,33 @@ DETAILS = re.compile(r"<details\b([^>]*)>.*?<summary\b[^>]*>.*?</summary>(.*?)</
 MERMAID = re.compile(r"^```mermaid\s*\n(.*?)^```\s*$", re.M | re.S)
 
 
+def diagram_graph(source):
+    """Validate bounded display options, then return the unchanged graph source."""
+    lines = source.strip().splitlines()
+    if not lines or lines[0] != "---":
+        raise ValueError("Keep Mermaid frontmatter with config.htmlLabels: false.")
+    try:
+        end = lines.index("---", 1)
+    except ValueError:
+        raise ValueError("Close the Mermaid frontmatter with ---.") from None
+    document = yaml.load("\n".join(lines[1:end]), Loader=views.StateLoader)
+    if not isinstance(document, dict) or set(document) != {"config"}:
+        raise ValueError("Frontmatter may contain only config.")
+    config = document["config"]
+    if not isinstance(config, dict) or set(config) - {"htmlLabels", "flowchart"}:
+        raise ValueError("Supported display options are htmlLabels and flowchart.wrappingWidth.")
+    if config.get("htmlLabels") is not False:
+        raise ValueError("Keep config.htmlLabels: false so complete SVG labels remain visible.")
+    flowchart = config.get("flowchart", {})
+    if not isinstance(flowchart, dict) or set(flowchart) - {"wrappingWidth"}:
+        raise ValueError("The only supported flowchart option is wrappingWidth.")
+    if "wrappingWidth" in flowchart:
+        width = flowchart["wrappingWidth"]
+        if type(width) is not int or width <= 0:
+            raise ValueError("flowchart.wrappingWidth must be a positive integer.")
+    return "\n".join(lines[end + 1:]).strip()
+
+
 def check_presentation(body, before_documents, after_documents, found):
     if not found:
         return []
@@ -195,12 +222,19 @@ def check_presentation(body, before_documents, after_documents, found):
     content = parts.get(DIAGRAMS, "")
     # Diagrams must be visible, rather than inside the collapsed technical list.
     visible = DETAILS.sub("", content)
-    supplied = [source.strip() for source in MERMAID.findall(visible)]
+    supplied = []
+    invalid_configuration = False
+    for number, source in enumerate(MERMAID.findall(visible), 1):
+        try:
+            supplied.append(diagram_graph(source))
+        except (ValueError, TypeError, yaml.YAMLError) as error:
+            invalid_configuration = True
+            problems.append(f"Invalid Mermaid display configuration in diagram {number}: {error}")
     generated = diagrams.fragments(before_documents, after_documents)
-    expected = [diagram["source"] for diagram in generated]
+    expected = [diagram_graph(diagram["source"]) for diagram in generated]
     if any(diagrams.connection_note(diagram) not in visible for diagram in generated):
         problems.append("Show the generated unresolved-connection notes beside the tree diagrams.")
-    if supplied != expected:
+    if not invalid_configuration and supplied != expected:
         problems.append("Reasoning changes must contain the generated, visible Mermaid diagrams matching the YAML diff. Run --suggest --format markdown.")
     if DIAGRAMS not in parts or UPDATES not in parts or list(parts).index(DIAGRAMS) > list(parts).index(UPDATES):
         problems.append("Show Reasoning changes before the collapsed Tree updates list.")

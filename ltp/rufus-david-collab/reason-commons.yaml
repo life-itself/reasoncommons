@@ -2864,6 +2864,16 @@ trees:
       work: test_pr_diagram_readability
       feedback: David's 2026-10-14 screenshot showed four separate single-node Current Reality diagrams obscuring their shared tree. Verify one diagram per affected tree, explicit unresolved connections, preserved topology and readable labels.
       note: All 71 helper tests passed after the grouping correction. Actual GitHub inspection confirmed one diagram per affected tree (Current Reality and Future Reality), complete SVG labels, preserved topology, explicit unresolved-connection notes and a collapsed complete checklist. The larger Future Reality diagram uses GitHub inspection and zoom controls. Keep review of the predicted inspection benefit and real-use readability open; source validation does not establish usability.
+    - ref: f-e-changes-name-reasoning
+      work: test_pr_merge_enforcement
+      feedback: GitHub reported main as unprotected with no required checks or active rules, despite the Tree check workflow introduced by PRs 58 and 59.
+      note: Applied .github/branch-protection.json and read back main as protected, with required_status_checks.strict true, required tree-check from GitHub Actions app 15368 and enforce_admins.enabled true. PR delivery and required-check inspection are pending; observe real-use merge behavior and retain the existing reasoning review work and proposed standing.
+      beads: [reasoncommons-ilh]
+    - ref: f-e-pr-diagrams-show-changes
+      work: test_pr_diagram_configuration
+      feedback: Run 38586022836 rejected PR 59 because added Mermaid display configuration differed from the generated source, although all eight graph bodies matched. The later merged PR corrected its generated configuration.
+      note: All 74 helper tests passed on main after PR 59. Supported wrapping widths, key order, equivalent YAML formatting and omitted optional width pass; changed statements, standings, relations and endpoints still fail. Invalid or unsupported configuration has a specific error. Grouped diagrams, htmlLabels false, unresolved-connection notes, collapsed lists, receipts and coverage checks remain intact. PR delivery and rendered-description inspection are pending; real-use readability review remains open.
+      beads: [reasoncommons-ilh]
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
@@ -4347,3 +4357,23 @@ change_acceptances:
   - skills/reason-commons/scripts/render_pr_diagrams.py
   - skills/reason-commons/tests/test_check_pr_trees.py
   - skills/reason-commons/tests/test_render_pr_diagrams.py
+- proposal_ref: change-pr-check-reliability-2026-10-14
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-14T16:37:47Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: 'i accept these changes - but make sure they are in line with the recent changes. that were merged since our conversation started'
+  scope: 'Allow supported Mermaid display configuration changes without rejecting unchanged generated reasoning, retaining htmlLabels false and the grouped diagrams, unresolved-connection notes, collapsed updates and acceptance checks merged in PR 59. Add the two proposed backlog entries without node/link edits or endorsement. Record and apply main branch protection requiring the GitHub Actions tree-check for an up-to-date branch, including administrators. Add regression tests, update guidance and changelog, record Beads work and handoff, commit, push and open a PR based on current main. Recheck intervening merges before delivery.'
+  node_ids: []
+  link_ids: []
+  approved_paths:
+  - skills/reason-commons/scripts/check_pr_trees.py
+  - skills/reason-commons/tests/test_check_pr_trees.py
+  - skills/reason-commons/references/pull-requests.md
+  - docs/testing-reason-commons-scannability.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+  - changelog.md
+  - .github/branch-protection.json
