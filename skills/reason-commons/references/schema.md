@@ -42,7 +42,7 @@ trees:
         work: test_causality
 ```
 
-`driver` names a configured participant; `active_tree` names a tree present in the file. Each tree has `nodes`, `links`, and `backlog` lists, which may be empty. Give nodes and links stable IDs unique across the whole file. All ID references must resolve.
+`driver` names a configured participant; `active_tree` names a tree present in the file. Each tree has `nodes`, `links`, and `backlog` lists, which may be empty. Give nodes and links stable IDs unique across the whole file. Reasoning references must resolve; acceptance receipts below preserve historical IDs even after removal.
 
 ## Node kinds
 
@@ -94,6 +94,36 @@ Nodes may optionally contain lists of node IDs from any tree:
 | `implements` | A change or objective this item helps put into practice | A prerequisite objective references an injection; a transition action references a prerequisite intermediate objective. |
 
 Use only existing IDs and meaningful traces supported by the discussion. These fields express intended relationships, not proof that a solution works or that a causal claim has been accepted. Test substantive reasoning through proposed links, assumptions, and challenges. No cross-tree link is required merely to fill out the model.
+
+## Project-change acceptance receipts
+
+Use the optional top-level `change_acceptances` list for typed user approval of a displayed Change proposal. It is separate from node/link `status` and `accepted_by`: approving implementation does not endorse the reasoning or verify a prediction. Older working files without receipts remain valid. Follow [responses.md](responses.md) to obtain acceptance from the actual human after the proposal is shown; a validator can check the record's structure, not authenticate its origin or judge consent.
+
+```yaml
+change_acceptances:
+  - proposal_ref: change-quote-approval-2026-10-14
+    proposal_revision: 1
+    by: alice
+    recorded_at: '2026-10-14T12:00:00Z'
+    timezone: Europe/Berlin
+    mode: text
+    source: conversation
+    source_text: Yes, I accept this proposal.
+    scope: Add a pricing-review checklist and the proposed injection n3 with its test backlog.
+    node_ids: [n3]
+    link_ids: []
+    approved_paths: [docs/pricing-review-checklist.md, reason-commons.yaml]
+```
+
+Each receipt requires a nonempty `proposal_ref`, positive integer `proposal_revision`, configured human participant `by`, nonempty exact typed `source_text`, nonempty accepted `scope`, `mode: text`, `source: conversation`, and `node_ids`/`link_ids` lists (empty when appropriate). Use nonempty, unique strings for historical IDs. The participant must be established from the session, not guessed or assigned to `assistant`. Proposal ID, revision and participant together identify a unique receipt; several humans may each accept the same version without implying unanimity is required.
+
+For repository changes, also record `approved_paths`: the exact repository-relative file paths covered by the displayed proposal and typed acceptance, including the reasoning state and any coordination or delivery files the proposal covers. Use normalized paths with `/` separators, no absolute paths, `..` components or duplicates. These are literal file names, not directory or wildcard permissions; a rename needs both the old and new paths. Earlier conversation receipts without this optional field remain valid but cannot supply PR file coverage. Preserve them and obtain a new scoped approval when needed rather than rewriting them.
+
+The PR's **Accepted change proposals** section identifies each receipt by proposal ID, revision and participant. The union of those receipts' `approved_paths`, `node_ids` and `link_ids` must cover the changed files and node/link IDs. A receipt's scope must also describe approved backlog work. The PR checker rejects altered or removed earlier receipts. Coverage checks cannot determine whether code inside an approved file fulfills the intended scope, authenticate the human reply, or prove that acceptance preceded editing; review the conversation and implementation for those questions. Opening or merging a PR does not endorse reasoning or finish its backlog automatically. See [pull-requests.md](pull-requests.md).
+
+`recorded_at` is a quoted ISO 8601 UTC timestamp obtained when recording (`Z` or `+00:00`), not an inferred user submission time. `timezone` records the session's known IANA timezone; use `UTC` if unavailable. Optional `accepted_at` may hold an actual timezone-aware submission timestamp only when supplied by the host; never invent one. A material revision gets a new revision number and fresh typed acceptance.
+
+Append receipts; preserve their reply, scope and time when tree items are revised or removed. `node_ids` and `link_ids` identify the approved tree changes, including removed items, and need not still exist in the working tree. Backlog work and other approved artifacts belong in the scope snapshot. Save the receipt and intended tree updates, then validate before implementation. Recording an already-given acceptance or ordinary conversational capture requires no recursive proposal. Receipt-only changes do not create an accepted-reasoning revision.
 
 ## Snapshots
 

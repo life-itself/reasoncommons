@@ -1,6 +1,14 @@
-# Pull requests that name their reasoning
+# Pull requests that carry reasoning and approval
 
-For a project whose reasoning YAML lives in its own repository. Each pull request says which part of the tree it serves and lists the tree updates it makes, and a check confirms that list against the YAML. The result is that work reaching the repository stays connected to the goal, and anyone reading a pull request can see why it exists.
+For a project whose conversational reasoning YAML lives in its own repository. A PR carries the reviewed implementation, the actual tree updates and the recorded typed acceptance of the displayed proposal versions it implements. It names the reasoning served so reviewers can follow the work toward the goal.
+
+## From proposal to PR
+
+1. Show the Change proposal with its ID, revision, reasoning, tree updates, exact covered file paths and validation plan.
+2. Wait for typed human acceptance; record the reply, participant, scope, proposal version, recording time and `approved_paths` in `change_acceptances`. Save the intended tree updates and validate before implementation.
+3. Implement and test the approved scope. A material expansion needs a revised proposal and fresh acceptance before the extra edits.
+4. Include the implementation, reasoning changes and receipt together in the PR. Cite the existing receipt rather than requesting acceptance again for the same approved version and scope.
+5. Review the final diff against the accepted scope before merging. Implementation approval, PR review and reasoning endorsement are separate decisions. Creating or merging a PR does not set node/link status to accepted or complete unresolved backlog work.
 
 ## The template
 
@@ -13,28 +21,50 @@ Save as `.github/pull_request_template.md`, replacing the state-file path:
 
 ## Reasoning this serves
 
-<!-- Existing node or link IDs from path/to/reason-commons.yaml that this change puts into practice or supports, one per line, e.g. "- `f-e-some-injection` — what it says". Leave empty only if Tree updates lists new reasoning. -->
+<!-- Existing node or link IDs from path/to/reason-commons.yaml, one per line. Leave empty only if Tree updates lists new reasoning. -->
 
 ## Tree updates
 
-<!-- Every node and link this pull request adds, changes or removes in the YAML, one per line, e.g. "- added `r-e-some-effect` — what it says". Write "None" if it changes no reasoning. Generate the list with:
+<!-- Every added, changed or removed node/link, one per line, e.g. - added `n3` — what it says. Write None for no node/link edits, and describe any backlog work separately. Generate with:
 python3 skills/reason-commons/scripts/check_pr_trees.py path/to/reason-commons.yaml --base origin/main --suggest -->
+
+## Accepted change proposals
+
+<!-- One saved acceptance reference per line, using this exact format:
+- `proposal-id` revision 1 by `participant-id`
+The receipt must cover the changed files and tree IDs. -->
+
+## Validation
+
+<!-- Checks completed, remaining uncertainty, and review of implementation against the accepted scope. -->
 ```
 
-GitHub fills a new pull request's description with this template in the browser. `gh pr create --body` and agents that write their own description do not, so tell agents working in the repository (in `AGENTS.md` or equivalent) to use these sections.
+GitHub fills a new PR's description with the template in the browser. Agents or `gh pr create --body-file` must fill these sections themselves. An acceptance reference is not a fresh proposal or a request to endorse the reasoning. Several proposals may be delivered in one PR; list the relevant receipt versions individually.
 
-## The check
+## What the check establishes
 
-`scripts/check_pr_trees.py` compares the working tree with the merge base of `--base` and `HEAD`, across one or more state files. In each section, a list item's first backticked ID is its claim; any later IDs, such as a link's endpoints, are description. HTML comments are ignored, so the template's examples never count. The check fails when:
+`scripts/check_pr_trees.py` compares the working tree with the merge base of `--base` and `HEAD`, across one or more state files. In the reasoning sections, a list item's first backticked ID is its claim; later IDs, such as link endpoints, are description. Template comments are ignored. The checker validates current conversational state using the sibling `update_views.py` helper without writing snapshots or views. Keep both scripts together when using them in another repository.
 
-- a listed tree update has no matching YAML change, or its verb (`added`, `changed`, `removed`) disagrees with the YAML;
-- the YAML adds, changes or removes a node or link that is not listed;
-- a served ID is not a node or link in the YAML;
-- the description has no Tree updates section, or names no reasoning at all.
+The check fails when:
 
-Any difference in a node or link counts as a change, including status, wording, contributions and assumptions. Backlog edits and coordination fields do not.
+- a stated tree update has no matching node/link change, a verb disagrees, an actual node/link change is unstated, a served ID does not exist, or required reasoning sections are missing;
+- the current YAML or acceptance metadata is invalid, or an earlier acceptance receipt has been changed or removed;
+- the Accepted change proposals section is missing, empty or malformed, or names an unrecorded proposal version and participant;
+- a cited receipt lacks `approved_paths`, a changed file is outside the cited paths, or a changed node/link ID is outside the cited tree-item IDs.
 
-To run it on every pull request, save as `.github/workflows/tree-check.yml`:
+Use exact repository-relative paths, including the state file and coordination files covered by the proposal. Paths are literal names, not globs; renames require both the old and new names. Coverage may come from several cited receipts. Uncited receipts cannot supply coverage. Receipt additions and backlog/coordination edits are covered through their file paths and textual scope; the Tree updates list still describes node/link changes. Historical node/link IDs remain valid receipt references after removal.
+
+The working-tree check includes tracked and staged changes, including staged new files. Untracked drafts are outside the PR until explicitly staged. Run after staging the intended files, then repeat against the committed branch if its diff changes. CI checks the committed PR head. Old conversational receipts without `approved_paths` remain valid records, but need a new scoped approval to supply PR file coverage; do not retrofit an earlier reply to an expanded approval.
+
+These checks establish declared coverage, not that code inside an approved file fulfills the intended change, that a stored reply came from the human, or that approval preceded editing. Review the implementation and original conversation for those questions. The checker never changes reasoning standing.
+
+## Run locally and in CI
+
+```sh
+python3 skills/reason-commons/scripts/check_pr_trees.py path/to/reason-commons.yaml --base origin/main --body-file /tmp/pr-body.md
+```
+
+Save as `.github/workflows/tree-check.yml`, adjusting the state-file path:
 
 ```yaml
 name: Tree check
@@ -55,7 +85,9 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install pyyaml
-      - name: Check the stated tree updates against the YAML
+      - name: Test reasoning and approval helpers
+        run: python3 -m unittest discover -s skills/reason-commons/tests
+      - name: Check tree updates and recorded acceptance coverage
         env:
           PR_BODY: ${{ github.event.pull_request.body }}
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
@@ -64,8 +96,8 @@ jobs:
           python3 skills/reason-commons/scripts/check_pr_trees.py path/to/reason-commons.yaml --base "$BASE_SHA" --body-file "$RUNNER_TEMP/pr-body.md"
 ```
 
-The description passes through an environment variable rather than being interpolated into the script, so nothing in it can run as a command. The `edited` trigger re-runs the check when someone fixes the description.
+The description passes through an environment variable rather than being interpolated into executable shell code. The `edited` trigger rechecks corrected descriptions; `synchronize` checks updated commits.
 
 ## Small changes
 
-A typo fix still names what it serves, usually the nearest existing node, with Tree updates set to "None". If citing reasoning for small changes becomes a ritual, record that as a challenge in the tree rather than loosening the check silently.
+A small fix still follows the proposal and typed acceptance rule, names the reasoning served, and makes the meaningful annotation or backlog update described by the proposal. Write None only for no node/link edits, and report backlog work in the proposal, scope and result. Reuse existing reasoning rather than inventing claims to fill a template. If the connection to the goal is missing or the requirement encourages loose citations, record that gap or challenge and resolve it before implementation.

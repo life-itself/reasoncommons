@@ -3,11 +3,14 @@
 
   render_view.py STATE --counts                         view-menu counts per tree
   render_view.py STATE --tree T --standing S            pan-and-zoom widget HTML
+  render_view.py STATE --tree T --standing S --format markdown
+                                                        complete native Mermaid response
   render_view.py STATE --tree T --standing S --format mermaid|text
   render_view.py --wrap --heading "LAST CHANGE: PROPOSED · …" < diagram.mmd
                                                         any Mermaid source in the frame
 
 The widget output is complete: pass it unchanged to the host's widget tool.
+Markdown output is complete too: return it unchanged on a native Mermaid surface.
 Counts, topology, standing markers and the "Not shown" line come from the
 state, so the conversation never has to count or lay out nodes by hand.
 """
@@ -72,8 +75,10 @@ def select(tree, standing):
     return nodes, shown, context, links
 
 
-def label(node, standing):
-    text = f"[{MARK[status(node)]}] {node['text'].strip()}"
+def label(node, standing, tree, multiline=True):
+    metadata = f"[{MARK[status(node)]}] {title(tree).upper()} · {title(node['kind']).upper()}"
+    separator = "\n" if multiline else ": "
+    text = f"{metadata}{separator}{node['text'].strip()}"
     if standing == "disputed":
         for c in node.get("challenges", []):
             text += f"\nObjection ({PEOPLE.get(c['by'], c['by'])}): {c['text'].strip()}"
@@ -112,13 +117,13 @@ def mermaid(name, tree, standing):
     loose = [i for i in shown if i not in linked]
     out = ["flowchart BT"]
     for ident in [i for i in shown + context if i not in loose]:
-        out.append(f'  {short[ident]}["{escape(label(nodes[ident], standing))}"]')
+        out.append(f'  {short[ident]}["{escape(label(nodes[ident], standing, name))}"]')
     if loose and links:
         out.append('  subgraph loose["Not yet linked"]')
-        out += [f'    {short[i]}["{escape(label(nodes[i], standing))}"]' for i in loose]
+        out += [f'    {short[i]}["{escape(label(nodes[i], standing, name))}"]' for i in loose]
         out.append("  end")
     else:
-        out += [f'  {short[i]}["{escape(label(nodes[i], standing))}"]' for i in loose]
+        out += [f'  {short[i]}["{escape(label(nodes[i], standing, name))}"]' for i in loose]
     for j, link in enumerate(links, 1):
         tag = [] if common else [link["relation"].replace("_", " ")]
         if status(link) == "disputed":
@@ -159,16 +164,16 @@ def text_outline(name, tree, standing):
         by_target.setdefault(link["to"], []).append(link)
     for target, incoming in by_target.items():
         lines.append("")
-        lines.append(label(nodes[target], standing).replace("\n", "\n    "))
+        lines.append(label(nodes[target], standing, name, multiline=False).replace("\n", "\n    "))
         for link in incoming:
-            causes = [label(nodes[s], standing).split("\n")[0] for s in link["from"]]
+            causes = [label(nodes[s], standing, name, multiline=False).split("\nObjection (", 1)[0] for s in link["from"]]
             via = "" if common else f" ({link['relation'].replace('_', ' ')})"
             joined = causes[0] if len(causes) == 1 else "AND( " + " + ".join(causes) + " )"
             lines.append(f"  <-{via} {joined}")
     linked = {i for l in links for i in l["from"] + [l["to"]]}
     loose = [i for i in shown if i not in linked]
     if loose:
-        lines += ["", "Not yet linked:"] + [f"  {label(nodes[i], standing)}" for i in loose]
+        lines += ["", "Not yet linked:"] + [f"  {label(nodes[i], standing, name, multiline=False)}" for i in loose]
     lines += ["", not_shown(tree, standing)]
     return "\n".join(lines)
 
@@ -222,6 +227,16 @@ box.addEventListener('pointerup', end); box.addEventListener('pointercancel', en
 """
 
 
+def markdown(name, tree, standing):
+    """Complete native Mermaid response, with the same scope and context as a widget."""
+    source, shown, links, common, context = mermaid(name, tree, standing)
+    lines = [heading(name, standing, shown, links, context)]
+    if common:
+        lines.append(f"Each arrow reads “{common}”.")
+    lines += ["", "```mermaid", source, "```", "", not_shown(tree, standing)]
+    return "\n".join(lines)
+
+
 def widget(name, tree, standing):
     source, shown, links, common, context = mermaid(name, tree, standing)
     relation = f" · each arrow reads “{common}”" if common else ""
@@ -249,7 +264,7 @@ def main():
     parser.add_argument("--counts", action="store_true", help="print per-tree node counts by standing for the view menu")
     parser.add_argument("--tree", help="tree key, such as current_reality")
     parser.add_argument("--standing", choices=STANDINGS, help="default: accepted, or proposed when nothing is accepted")
-    parser.add_argument("--format", choices=("widget", "mermaid", "text"), default="widget")
+    parser.add_argument("--format", choices=("widget", "markdown", "mermaid", "text"), default="widget")
     args = parser.parse_args()
     if args.wrap:
         if not args.heading:
@@ -275,6 +290,8 @@ def main():
         sys.exit(f"{title(args.tree)} has no {standing} nodes. {not_shown(tree, standing)}")
     if args.format == "text":
         print(text_outline(args.tree, tree, standing))
+    elif args.format == "markdown":
+        print(markdown(args.tree, tree, standing))
     elif args.format == "mermaid":
         print(mermaid(args.tree, tree, standing)[0])
     else:

@@ -1,5 +1,5 @@
-# Every pull request names the reasoning it serves and lists its tree updates;
-# this confirms the list against the YAML. See skills/reason-commons/references/pull-requests.md.
+# Check reasoning, tree updates and the approved scope recorded in proposal receipts.
+# See skills/reason-commons/references/pull-requests.md.
 name: Tree check
 on:
   pull_request:
@@ -18,7 +18,9 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install pyyaml
-      - name: Check the stated tree updates against the YAML
+      - name: Test reasoning and approval helpers
+        run: python3 -m unittest discover -s skills/reason-commons/tests
+      - name: Check tree updates and recorded acceptance coverage
         env:
           PR_BODY: ${{ github.event.pull_request.body }}
           BASE_SHA: ${{ github.event.pull_request.base.sha }}

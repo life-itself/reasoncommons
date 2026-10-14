@@ -73,7 +73,7 @@ class RenderViewTests(unittest.TestCase):
     def test_proposed_view_shows_other_standing_endpoints_as_context(self):
         source, shown, links, _, context = render.mermaid("current_reality", self.tree, "proposed")
         self.assertEqual((shown, context), (["g"], ["c"]))
-        self.assertIn("[A] No customers", source)
+        self.assertIn("[A] CURRENT REALITY · CAUSE<br/>No customers", source)
         self.assertRegex(source, r"class n2 context")
         self.assertIn("-.->", source)
 
@@ -81,12 +81,45 @@ class RenderViewTests(unittest.TestCase):
         source = render.mermaid("current_reality", self.tree, "disputed")[0]
         self.assertIn("Objection (Bob): Superseded", source)
 
+    def test_node_metadata_comes_from_tree_and_kind_and_preserves_statement(self):
+        examples = {
+            "goal": "necessary_condition",
+            "current_reality": "undesirable_effect",
+            "conflict": "prerequisite",
+            "future_reality": "injection",
+            "prerequisite": "obstacle",
+            "transition": "expected_effect",
+        }
+        for tree, kind in examples.items():
+            with self.subTest(tree=tree, kind=kind):
+                # The ID deliberately does not encode the tree or kind.
+                item = node("opaque-id", 'A qualified statement: sometimes "this" holds.', "proposed", kind=kind)
+                content = {"nodes": [item], "links": [], "backlog": []}
+                source = render.mermaid(tree, content, "proposed")[0]
+                metadata = f"[P] {tree.replace('_', ' ').upper()} · {kind.replace('_', ' ').upper()}"
+                self.assertIn(metadata + "<br/>", source)
+                self.assertIn(render.escape(item["text"]), source)
+                outline = render.text_outline(tree, content, "proposed")
+                self.assertIn(metadata + ": " + item["text"], outline)
+
+    def test_markdown_view_preserves_topology_and_scope_for_each_standing(self):
+        for standing in render.STANDINGS:
+            with self.subTest(standing=standing):
+                source, shown, links, common, context = render.mermaid("current_reality", self.tree, standing)
+                response = render.markdown("current_reality", self.tree, standing)
+                embedded = response.split("```mermaid\n", 1)[1].split("\n```", 1)[0]
+                self.assertEqual(embedded, source)
+                self.assertEqual(response.splitlines()[0], render.heading("current_reality", standing, shown, links, context))
+                self.assertTrue(response.endswith(render.not_shown(self.tree, standing)))
+                if common:
+                    self.assertIn(f"Each arrow reads “{common}”.", response)
+
     def test_text_outline_lists_each_link_once(self):
         outline = render.text_outline("current_reality", self.tree, "accepted")
         self.assertTrue(outline.startswith("CURRENT REALITY — ACCEPTED ONLY (6 nodes, 3 links)"))
-        self.assertIn("AND( [A] No customers + [A] Funding not applied for )", outline)
+        self.assertIn("AND( [A] CURRENT REALITY · CAUSE: No customers + [A] CURRENT REALITY · CAUSE: Funding not applied for )", outline)
         self.assertEqual(outline.count("<- "), 3)
-        self.assertIn("Not yet linked:\n  [A] Loose accepted fact", outline)
+        self.assertIn("Not yet linked:\n  [A] CURRENT REALITY · CAUSE: Loose accepted fact", outline)
         self.assertTrue(outline.endswith("Not shown: 1 proposed, 1 disputed. Say “show proposed” or “show disputed”."))
 
     def test_widget_embeds_source_safely(self):
@@ -103,6 +136,9 @@ class RenderViewTests(unittest.TestCase):
             path.write_text(yaml.safe_dump(state(), allow_unicode=True))
             run = lambda *a: subprocess.run([sys.executable, str(SCRIPT), str(path), *a], capture_output=True, text=True)
             out = run("--tree", "current_reality")
+            native = run("--tree", "current_reality", "--format", "markdown")
+            self.assertEqual(native.returncode, 0, native.stderr)
+            self.assertEqual(native.stdout.strip(), render.markdown("current_reality", self.tree, "accepted"))
             self.assertEqual(out.returncode, 0, out.stderr)
             self.assertIn("CURRENT REALITY — ACCEPTED ONLY (6 nodes, 3 links)", out.stdout)
             self.assertIn("ti-arrows-maximize", out.stdout)

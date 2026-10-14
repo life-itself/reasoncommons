@@ -1289,6 +1289,24 @@ trees:
         attribution: explicit
         mode: text
         note: 'Operator report in the 2026-10-14 skill UX session: outputs have poor scannability and little semantic marking, making it hard to know where to focus and what to do next.'
+    - id: r-e-desktop-diagrams-ascii
+      kind: observation
+      text: The reason-commons skill showed an ASCII diagram in Codex desktop even though the desktop surface supports Mermaid.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: David supplied a screenshot of the output and asked why it was not rendered, 2026-10-14.
+    - id: r-e-change-reports-hide-reasoning
+      kind: observation
+      text: The desktop diagram fix's completion response omitted its tree updates and the reasoning it served.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+        note: Inspection of the completion response after David questioned whether the fix followed the tree-update rule, 2026-10-14.
     links:
     - id: r-rel-unclear-drives-redesigning
       from:
@@ -1793,10 +1811,10 @@ trees:
       - reasoncommons-5lo
     - ref: r-rel-missing-work-loses-track
       work: examine_assumption
-      note: 'Do Rufus and David actually rely on the trees, rather than Git or chat, to know what work is happening?'
+      note: Do Rufus and David actually rely on the trees, rather than Git or chat, to know what work is happening?
     - ref: r-rel-stale-trees-no-actioning
       work: test_causality
-      note: 'Assistant-proposed connection to the accepted r-e-no-shared-actioning; bears on the reasoncommons-5lo question of whether that effect remains current.'
+      note: Assistant-proposed connection to the accepted r-e-no-shared-actioning; bears on the reasoncommons-5lo question of whether that effect remains current.
     - ref: r-e-skill-no-clear-next
       work: connect_or_explain
       note: 'Assistant question, not yet discussed: does this connect to r-e-unclear-path ("what is next") or to r-e-david-demo-confidence?'
@@ -2465,6 +2483,77 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: f-e-skill-host-aware-diagrams
+      kind: injection
+      text: The skill selects native Mermaid or an available inline widget from the actual conversation surface, and uses text only when supported diagram rendering is unavailable or fails.
+      status: proposed
+      addresses:
+      - r-e-desktop-diagrams-ascii
+      implements:
+      - f-e-skill-scannable-turns
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+        note: Proposed correction implementing David's request to fix desktop diagram output, 2026-10-14; implementation authorization does not endorse the predicted effect.
+    - id: f-e-typed-change-proposals
+      kind: injection
+      text: The skill uses typed response templates and always emits a complete Change proposal with clear tree updates before implementing any requested project change, including terse fixes.
+      status: proposed
+      addresses:
+      - r-e-change-reports-hide-reasoning
+      implements:
+      - f-e-changes-name-reasoning
+      - f-e-skill-scannable-turns
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: David requested Change proposal and Next step response types, a reusable template and a hard pre-edit rule for every requested change, 2026-10-14.
+    - id: f-e-explicit-node-roles
+      kind: injection
+      text: The skill labels each referenced or displayed node with its tree and node kind alongside its statement and standing.
+      status: proposed
+      addresses:
+      - r-e-skill-hard-to-scan
+      implements:
+      - f-e-skill-scannable-turns
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: David requested that node types and the trees they belong to be shown more clearly, 2026-10-14.
+    - id: f-e-recorded-change-acceptance
+      kind: injection
+      text: Every displayed change proposal requires explicit typed user acceptance, recorded with the proposal version, accepted scope, participant identity, exact reply and timestamp before implementation.
+      status: proposed
+      implements:
+      - f-e-typed-change-proposals
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: David requested the acceptance gate and metadata on 2026-10-14, then explicitly accepted implementation of proposal change-recorded-acceptance-2026-10-14.
+    - id: f-e-change-acceptance-traceable
+      kind: desirable_effect
+      text: The acceptance record identifies who approved which version and scope of a proposed change, and when that acceptance was recorded.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-e-prs-reference-change-acceptance
+      kind: injection
+      text: Each pull request names the accepted proposal versions it implements and checks its changed files and tree items against their recorded scope.
+      status: proposed
+      implements:
+      - f-e-recorded-change-acceptance
+      - f-e-changes-name-reasoning
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: David requested completion of the PR integration and accepted proposal change-pr-acceptance-integration-2026-10-14 revision 1 with the typed reply yes i accept.
     links:
     - id: f-rel-use-makes-users
       from:
@@ -2592,6 +2681,71 @@ trees:
       assumptions:
       - text: The host presents the labels and final invitation legibly, and participants can inspect or redirect the reasoning without needing to interpret hidden controls.
         by: assistant
+    - id: f-rel-native-diagrams-aid-inspection
+      from:
+      - f-e-skill-host-aware-diagrams
+      to: f-e-skill-attention-clear
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: The selected diagram form is readable in the actual app and retains topology, standing labels and scope information.
+        by: assistant
+    - id: f-rel-typed-proposals-expose-reasoning
+      from:
+      - f-e-typed-change-proposals
+      to: f-e-change-traces-to-goal
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: The agent loads and follows the templates before edits, and the named tree updates express meaningful connections to the goal rather than ritual citations.
+        by: assistant
+    - id: f-rel-node-roles-aid-inspection
+      from:
+      - f-e-explicit-node-roles
+      to: f-e-skill-attention-clear
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: Tree and kind labels remain readable and help people distinguish reasoning roles without obscuring the statements.
+        by: assistant
+    - id: f-rel-recorded-acceptance-adds-trace
+      from:
+      - f-e-recorded-change-acceptance
+      to: f-e-change-acceptance-traceable
+      relation: produces
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: The agent waits for the actual user response, resolves its proposal and scope correctly, and saves a complete receipt before making implementation edits.
+        by: assistant
+    - id: f-rel-pr-acceptance-aids-traceability
+      from:
+      - f-e-prs-reference-change-acceptance
+      to: f-e-change-acceptance-traceable
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: The check validates receipt metadata, proposal references and declared file/tree scope coverage; human review still judges whether the implementation fulfills the accepted scope and whether the recorded approval is authentic.
+        by: assistant
     backlog:
     - ref: f-rel-use-makes-users
       work: test_causality
@@ -2620,7 +2774,7 @@ trees:
       note: Preserved source assessment c-as-do-both-breaks says both needs are met; check repeated real use, not just one successful session.
     - ref: f-rel-naming-records-work
       work: test_causality
-      note: 'The pull request that introduced this change used it once; check whether later pull requests keep the connection without reminders.'
+      note: The pull request that introduced this change used it once; check whether later pull requests keep the connection without reminders.
     - ref: f-e-citation-overhead
       work: test_negative_branch
       note: 'Watch the next few small pull requests: do they cite reasoning honestly, or loosely just to pass?'
@@ -2638,6 +2792,36 @@ trees:
     - ref: f-e-skill-scannable-turns
       work: test_negative_branch
       note: Check that quieter alternatives and contextual diagrams still let participants redirect, inspect the full reasoning, and challenge a proposal.
+    - ref: f-e-skill-host-aware-diagrams
+      work: review_fragment
+      note: Review the desktop-output observation, proposed correction and connection to f-e-skill-attention-clear together; implementing the correction does not accept this reasoning.
+    - ref: f-rel-native-diagrams-aid-inspection
+      work: test_rendering_and_inspection
+      note: In fresh Codex and Claude desktop sessions, show the remote-work gold fixture and inspect its labels and connections; also check a plain-text fallback. Offline helper checks pass; these do not establish real-user usability.
+    - ref: f-e-typed-change-proposals
+      work: review_fragment
+      note: Review the completion-report observation, typed-response rule and proposed traceability link together. Requesting the implementation does not endorse the predicted effect.
+    - ref: f-rel-typed-proposals-expose-reasoning
+      work: test_response_conformance
+      note: Inspect explicit change requests, terse fixes, next-step requests and completion reports in fresh sessions. Independent gold-fixture runs passed explicit changes, Next step recommendations and a terse fix, including proposal-before-edit and completion reporting; this does not establish reliable conformance across hosts or real-user benefit.
+    - ref: f-e-explicit-node-roles
+      work: review_fragment
+      note: Review the explicit node-metadata proposal and its proposed inspection benefit together. Implementing the labels does not accept the reasoning.
+    - ref: f-rel-node-roles-aid-inspection
+      work: test_metadata_readability
+      note: Inspect mixed-tree proposals and native Mermaid, widget and text views. Confirm that each displayed tree and kind matches the YAML and that labels do not crowd out the statement.
+    - ref: f-e-recorded-change-acceptance
+      work: review_fragment
+      note: Review the acceptance-gate rule and its predicted traceability benefit together. Approval of implementation does not endorse the reasoning predictions.
+    - ref: f-rel-recorded-acceptance-adds-trace
+      work: test_acceptance_conformance
+      note: An independent gold-fixture turn displayed its proposal and changed no files while waiting; its simulated typed acceptance continuation saved and validated the receipt and backlog before editing the README. Metadata, historical-reference preservation and unchanged reasoning standing passed helper tests. Ambiguous replies, material revisions and conformance in real host sessions remain to be checked; these tests do not establish the predicted traceability benefit.
+    - ref: f-e-prs-reference-change-acceptance
+      work: review_fragment
+      note: Review the PR integration rule with its proposed traceability benefit. Approving implementation does not endorse the prediction.
+    - ref: f-rel-pr-acceptance-aids-traceability
+      work: test_pr_acceptance_scope
+      note: All 55 helper tests passed, including missing or malformed approvals, unknown versions, uncovered files and node/link IDs, staged and committed scope, rename coverage, receipt preservation and unchanged reasoning standing. Review the complete PR and observe real use; declared coverage cannot establish semantic conformance, consent authenticity or the predicted traceability benefit.
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
@@ -3989,3 +4173,84 @@ trees:
     - ref: t-e-need-repeated-use
       work: justify_actions
       note: Existing condition and need are not yet connected to the actions; explain why the chosen steps will yield repeated useful use.
+change_acceptances:
+- proposal_ref: change-node-roles-2026-10-14
+  by: david
+  recorded_at: '2026-10-14T11:50:35Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: yes i would like to make these changes.
+  scope: Show explicit tree, node kind and standing in response templates and generated Mermaid, widget and text views.
+  node_ids:
+  - f-e-explicit-node-roles
+  link_ids:
+  - f-rel-node-roles-aid-inspection
+  proposal_revision: 1
+- proposal_ref: change-recorded-acceptance-2026-10-14
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-14T11:59:39Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: i accept the acceptance recording rule
+  scope: Require typed post-proposal acceptance for every project change, record version, scope, identity, reply and time before implementation, and require fresh acceptance for material revisions; update templates, repository rules, schema and validation.
+  node_ids:
+  - f-e-recorded-change-acceptance
+  - f-e-change-acceptance-traceable
+  link_ids:
+  - f-rel-recorded-acceptance-adds-trace
+- proposal_ref: change-pr-acceptance-integration-2026-10-14
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-14T13:38:02Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: yes i accept
+  scope: 'Complete PR acceptance integration: reference accepted proposal versions in PRs; record approved paths; validate receipts and changed-file/tree-item coverage; update guidance, tests and changelog; include the existing local response-type, diagram and acceptance-recording work, commit the completed branch and open a PR against main for review. Automated checks cover declarations; human review judges whether implementation fulfills scope.'
+  node_ids:
+  - r-e-skill-no-clear-next
+  - r-e-skill-hard-to-scan
+  - r-e-desktop-diagrams-ascii
+  - r-e-change-reports-hide-reasoning
+  - f-e-skill-recommends-next
+  - f-e-clear-next-answer
+  - f-e-skill-scannable-turns
+  - f-e-skill-attention-clear
+  - f-e-skill-host-aware-diagrams
+  - f-e-typed-change-proposals
+  - f-e-explicit-node-roles
+  - f-e-recorded-change-acceptance
+  - f-e-change-acceptance-traceable
+  - f-e-prs-reference-change-acceptance
+  link_ids:
+  - f-rel-recommendation-gives-answer
+  - f-rel-scannable-turns-direct-attention
+  - f-rel-native-diagrams-aid-inspection
+  - f-rel-typed-proposals-expose-reasoning
+  - f-rel-node-roles-aid-inspection
+  - f-rel-recorded-acceptance-adds-trace
+  - f-rel-pr-acceptance-aids-traceability
+  approved_paths:
+  - .beads/issues.jsonl
+  - .github/pull_request_template.md
+  - .github/workflows/tree-check.yml
+  - AGENTS.md
+  - changelog.md
+  - docs/testing-reason-commons-scannability.md
+  - ltp/rufus-david-collab/friction-log.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - skills/reason-commons/SKILL.md
+  - skills/reason-commons/references/diagrams.md
+  - skills/reason-commons/references/pull-requests.md
+  - skills/reason-commons/references/responses.md
+  - skills/reason-commons/references/schema.md
+  - skills/reason-commons/references/views.md
+  - skills/reason-commons/scripts/check_pr_trees.py
+  - skills/reason-commons/scripts/render_view.py
+  - skills/reason-commons/scripts/update_views.py
+  - skills/reason-commons/tests/test_check_pr_trees.py
+  - skills/reason-commons/tests/test_render_view.py
+  - skills/reason-commons/tests/test_update_views.py

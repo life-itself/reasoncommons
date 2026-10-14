@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check a pull request's stated tree updates against its changes to the reasoning YAML.
+"""Check PR reasoning, tree updates and recorded acceptance of the declared scope.
 
     check_pr_trees.py --base origin/main --body-file pr.md reason-commons.yaml
     check_pr_trees.py --base origin/main --suggest reason-commons.yaml
@@ -8,14 +8,18 @@ The body's "Reasoning this serves" section names existing node or link IDs; its 
 updates" section lists every node and link the branch adds, changes or removes, optionally
 starting with the verb. Each is one list item whose first backticked ID is the claim.
 
-The check fails when a stated update has no matching YAML change, a YAML change is
-unstated, a served ID does not exist, or the pull request names no reasoning at all.
---suggest prints the Tree updates list instead.
+The Accepted change proposals section names each receipt as:
+    - `proposal-id` revision 1 by `participant-id`
+The check validates working state and receipts, preserves earlier receipts, and
+requires cited approvals to cover changed paths and node/link IDs. Coverage is
+structural; reviewers still judge implementation meaning and approval authenticity.
+--suggest prints the Tree updates list without requiring acceptance.
 
 Compares the working tree with the merge base of --base and HEAD.
 """
 
 import argparse
+import importlib.util
 from pathlib import Path
 import re
 import subprocess
@@ -23,10 +27,16 @@ import sys
 
 import yaml
 
+SPEC = importlib.util.spec_from_file_location("pr_state_views", Path(__file__).with_name("update_views.py"))
+views = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(views)
+
 SERVES = "reasoning this serves"
 UPDATES = "tree updates"
+ACCEPTANCES = "accepted change proposals"
 VERBS = ("added", "changed", "removed")
 ID = re.compile(r"`([A-Za-z0-9][\w-]*)`")
+ACCEPTANCE = re.compile(r"^\s*(?:[-*+]|\d+[.)])\s+`([A-Za-z0-9][\w-]*)`\s+revision\s+([1-9]\d*)\s+by\s+`([A-Za-z0-9][\w-]*)`(?:\s+[—–-]\s+.*)?\s*$")
 
 
 def items(state):
@@ -43,8 +53,8 @@ def git(cwd, *args):
     return subprocess.run(["git", *args], cwd=cwd, capture_output=True, text=True)
 
 
-def load_states(paths, base, cwd):
-    """Items at the merge base and in the working tree, across all state files."""
+def load_documents(paths, base, cwd):
+    """Full documents at the merge base and in the working tree."""
     result = git(cwd, "merge-base", base, "HEAD")
     if result.returncode:
         raise SystemExit(f"Cannot find the merge base of {base} and HEAD: {result.stderr.strip()}")
@@ -52,10 +62,34 @@ def load_states(paths, base, cwd):
     before, after = {}, {}
     for path in paths:
         old = git(cwd, "show", f"{merge_base}:{path}")
-        before.update(items(yaml.safe_load(old.stdout) if old.returncode == 0 else None))
+        before[path] = yaml.load(old.stdout, Loader=views.StateLoader) if old.returncode == 0 else None
         current = Path(cwd or ".") / path
-        after.update(items(yaml.safe_load(current.read_text()) if current.exists() else None))
-    return before, after
+        after[path] = views.load(current) if current.exists() else None
+    return merge_base, before, after
+
+
+def document_items(documents):
+    found = {}
+    for state in documents.values():
+        for ident, item in items(state).items():
+            if ident in found:
+                raise ValueError(f"Duplicate reasoning ID across state files: {ident}")
+            found[ident] = item
+    return found
+
+
+def load_states(paths, base, cwd):
+    """Items at the merge base and in the working tree, across all state files."""
+    _, before, after = load_documents(paths, base, cwd)
+    return document_items(before), document_items(after)
+
+
+def changed_paths(base, cwd):
+    """Include both sides of renames; NUL separators preserve unusual filenames."""
+    result = git(cwd, "diff", "--name-only", "--no-renames", "-z", base, "--")
+    if result.returncode:
+        raise ValueError(f"Cannot read changed paths: {result.stderr.strip()}")
+    return set(filter(None, result.stdout.split("\x00")))
 
 
 def changes(before, after):
@@ -140,6 +174,66 @@ def check(body, before, after):
     return problems
 
 
+def receipt_key(receipt):
+    return (receipt["proposal_ref"], receipt["proposal_revision"], receipt["by"])
+
+
+def check_acceptances(body, before_documents, after_documents, paths, tree_changes):
+    """Check declared approval coverage; do not infer human consent or claim truth."""
+    problems, receipts = [], {}
+    for path, state in after_documents.items():
+        if state is None:
+            problems.append(f"Missing working reasoning state: {path}")
+            continue
+        try:
+            views.validate(state)
+        except (ValueError, KeyError, TypeError, AttributeError) as error:
+            problems.append(f"Invalid state {path}: {error}")
+            continue
+        local = {receipt_key(r): r for r in state.get("change_acceptances", [])}
+        for previous in (before_documents.get(path) or {}).get("change_acceptances", []):
+            if local.get(receipt_key(previous)) != previous:
+                problems.append(f"Earlier acceptance receipt was changed or removed in {path}: {receipt_key(previous)}")
+        for key, receipt in local.items():
+            if key in receipts:
+                problems.append(f"Ambiguous acceptance receipt across state files: {key}")
+            receipts[key] = receipt
+    parts = sections(body)
+    if ACCEPTANCES not in parts:
+        problems.append('The description has no "Accepted change proposals" section.')
+    cited, covered_paths, covered_nodes, covered_links = set(), set(), set(), set()
+    for line in parts.get(ACCEPTANCES, "").splitlines():
+        if not line.strip():
+            continue
+        match = ACCEPTANCE.fullmatch(line)
+        if not match:
+            problems.append(f"Invalid acceptance reference: {line.strip()}. Use - `proposal-id` revision 1 by `participant-id`.")
+            continue
+        key = (match[1], int(match[2]), match[3])
+        if key in cited:
+            problems.append(f"Duplicate acceptance reference: {key}")
+        cited.add(key)
+        receipt = receipts.get(key)
+        if receipt is None:
+            problems.append(f"No recorded acceptance for {key[0]} revision {key[1]} by {key[2]}.")
+            continue
+        if "approved_paths" not in receipt:
+            problems.append(f"Acceptance {key[0]} revision {key[1]} has no approved_paths; capture a scoped approval rather than extending an earlier receipt.")
+            continue
+        covered_paths.update(receipt["approved_paths"])
+        covered_nodes.update(receipt["node_ids"])
+        covered_links.update(receipt["link_ids"])
+    if not cited:
+        problems.append("List at least one recorded acceptance of a displayed proposal version.")
+    for path in sorted(paths - covered_paths):
+        problems.append(f"Changed file is outside the cited approved scope: {path}")
+    for _, ident, _, category, _ in tree_changes:
+        covered = covered_nodes if category == "nodes" else covered_links
+        if ident not in covered:
+            problems.append(f"Changed {category[:-1]} is outside the cited approved scope: {ident}")
+    return problems
+
+
 def main(argv=None, cwd=None):
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("states", nargs="+", help="reasoning YAML files, relative to the repository root")
@@ -148,19 +242,25 @@ def main(argv=None, cwd=None):
     mode.add_argument("--body-file", help="file holding the pull request description")
     mode.add_argument("--suggest", action="store_true", help="print the Tree updates list for this branch")
     args = parser.parse_args(argv)
-    before, after = load_states(args.states, args.base, cwd)
-    if args.suggest:
+    try:
+        base, before_documents, after_documents = load_documents(args.states, args.base, cwd)
+        before, after = document_items(before_documents), document_items(after_documents)
         found = changes(before, after)
-        print("\n".join(describe(change) for change in found) if found else "None")
-        return 0
-    body = Path(args.body_file).read_text()
-    problems = check(body, before, after)
+        if args.suggest:
+            print("\n".join(describe(change) for change in found) if found else "None")
+            return 0
+        body = Path(args.body_file).read_text()
+        paths = changed_paths(base, cwd)
+        problems = check(body, before, after)
+        problems += check_acceptances(body, before_documents, after_documents, paths, found)
+    except (ValueError, KeyError, TypeError, AttributeError, OSError, yaml.YAMLError) as error:
+        problems = [str(error)]
     if problems:
         print("Tree check failed:")
         print("\n".join(f"- {problem}" for problem in problems))
         return 1
     serves = [id_ for _, id_ in claims(sections(body).get(SERVES))]
-    print(f"Tree check passed: serves {len(serves)} existing item(s); {len(changes(before, after))} tree update(s) match the YAML.")
+    print(f"Tree check passed: serves {len(serves)} existing item(s); {len(found)} tree update(s) match the YAML; recorded acceptances cover {len(paths)} changed file(s).")
     return 0
 
 
