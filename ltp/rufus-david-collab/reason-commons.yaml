@@ -4487,7 +4487,7 @@ trees:
       note: Existing condition and need are not yet connected to the actions; explain why the chosen steps will yield repeated useful use.
     - ref: t-e-rewind-implement
       work: review_implementation
-      note: The approved implementation and documentation are complete on codex/rewind-tree-trace; separate implementation bead reasoncommons-909. Review the new comparison PR; implementation completion does not accept the proposed reasoning, and the collaboration priority remains reasoncommons-5lo.
+      note: The approved implementation and documentation are delivered in PR 60 (https://github.com/life-itself/reasoncommons/pull/60) on codex/rewind-tree-trace; separate implementation bead reasoncommons-909 is complete. Review the new comparison PR while PR 56 remains unchanged; implementation completion does not accept the proposed reasoning, and the collaboration priority remains reasoncommons-5lo.
       beads:
       - reasoncommons-909
     - ref: t-e-rewind-test
