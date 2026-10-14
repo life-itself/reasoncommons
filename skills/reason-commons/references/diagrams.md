@@ -37,7 +37,7 @@ flowchart LR
 
 ## Widget form
 
-Write the status line in the response text, call the widget tool with the diagram only, then continue with the summary sentence and directions. Use a fresh render ID for each widget and replace `SOURCE` with the Mermaid source:
+Give the opening answer or recommendation in response text, call the widget tool with the diagram only, then place any necessary save result and alternatives before the final question or selection prompt. Do not repeat the diagram's content as a second report. A routine no-change turn needs no diagram; follow SKILL.md for when a diagram helps. Use a fresh render ID for each widget and replace `SOURCE` with the Mermaid source:
 
 ```html
 <h2 class="sr-only">Change-status diagram: LAST CHANGE PROPOSED</h2>

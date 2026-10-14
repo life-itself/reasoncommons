@@ -1271,6 +1271,24 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: r-e-skill-no-clear-next
+      kind: undesirable_effect
+      text: The skill does not currently do a good job of recommending an unequivocal next step.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Said 2026-10-13 after the skill resumed the collaboration with four directions; its "(Recommended)" label came from the work bead's order, not from an identified constraint.
+    - id: r-e-skill-hard-to-scan
+      kind: undesirable_effect
+      text: The skill outputs are hard to scan, and users cannot easily identify where to focus or what to do next.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: 'Operator report in the 2026-10-14 skill UX session: outputs have poor scannability and little semantic marking, making it hard to know where to focus and what to do next.'
     links:
     - id: r-rel-unclear-drives-redesigning
       from:
@@ -1779,6 +1797,14 @@ trees:
     - ref: r-rel-stale-trees-no-actioning
       work: test_causality
       note: 'Assistant-proposed connection to the accepted r-e-no-shared-actioning; bears on the reasoncommons-5lo question of whether that effect remains current.'
+    - ref: r-e-skill-no-clear-next
+      work: connect_or_explain
+      note: 'Assistant question, not yet discussed: does this connect to r-e-unclear-path ("what is next") or to r-e-david-demo-confidence?'
+    - ref: r-e-skill-hard-to-scan
+      work: examine_usability
+      note: Compare real user reactions and actual host presentation; simulations suggest problems but do not establish real user experience.
+      beads:
+      - reasoncommons-zz2
   conflict:
     nodes:
     - id: c-e-objective
@@ -2399,6 +2425,46 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: f-e-skill-recommends-next
+      kind: injection
+      text: The skill recommends one unequivocal next step.
+      status: proposed
+      addresses:
+      - r-e-skill-no-clear-next
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed by David as an injection to introduce now, 2026-10-13.
+    - id: f-e-clear-next-answer
+      kind: desirable_effect
+      text: People using the skill get a clear answer about what to do next.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+    - id: f-e-skill-scannable-turns
+      kind: injection
+      text: The skill leads with the answer or one recommended next action, states its basis and save status clearly, and keeps alternatives and detailed views available when useful.
+      status: proposed
+      addresses:
+      - r-e-skill-hard-to-scan
+      - r-e-skill-no-clear-next
+      implements:
+      - f-e-skill-recommends-next
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-e-skill-attention-clear
+      kind: desirable_effect
+      text: People using the skill can identify what happened, what remains uncertain or unaccepted, and where to focus next.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     links:
     - id: f-rel-use-makes-users
       from:
@@ -2500,6 +2566,32 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: f-rel-recommendation-gives-answer
+      from:
+      - f-e-skill-recommends-next
+      to: f-e-clear-next-answer
+      relation: produces
+      status: proposed
+      assumptions:
+      - text: Much of the value of the Theory of Constraints is getting a clear answer about what to do next.
+        by: david
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+    - id: f-rel-scannable-turns-direct-attention
+      from:
+      - f-e-skill-scannable-turns
+      to: f-e-skill-attention-clear
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: The host presents the labels and final invitation legibly, and participants can inspect or redirect the reasoning without needing to interpret hidden controls.
+        by: assistant
     backlog:
     - ref: f-rel-use-makes-users
       work: test_causality
@@ -2532,6 +2624,20 @@ trees:
     - ref: f-e-citation-overhead
       work: test_negative_branch
       note: 'Watch the next few small pull requests: do they cite reasoning honestly, or loosely just to pass?'
+    - ref: f-e-skill-recommends-next
+      work: clarify_basis
+      note: 'David asked whether the recommended step is the constraint. Which step should the skill recommend: the one addressing the cause that reaches the most undesirable effects, the core conflict, the widest goal-tree gap, or, when the tree cannot yet tell, the test that would settle it?'
+    - ref: f-e-skill-recommends-next
+      work: test_negative_branch
+      note: 'Assistant-raised: could one firm recommendation pull direction away from participants, against the skill''s rule to keep direction in their hands?'
+    - ref: f-rel-scannable-turns-direct-attention
+      work: test_usability
+      note: Test in Claude Code whether a person can find the next action, distinguish saved from accepted, and identify uncertainty. Branch implementation alone does not establish this effect.
+      beads:
+      - reasoncommons-zz2
+    - ref: f-e-skill-scannable-turns
+      work: test_negative_branch
+      note: Check that quieter alternatives and contextual diagrams still let participants redirect, inspect the full reasoning, and challenge a proposal.
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
