@@ -7,7 +7,7 @@ For a project whose conversational reasoning YAML lives in its own repository. A
 1. Show the Change proposal with its ID, revision, reasoning, tree updates, exact covered file paths and validation plan.
 2. Wait for typed human acceptance; record the reply, participant, scope, proposal version, recording time and `approved_paths` in `change_acceptances`. Save the intended tree updates and validate before implementation.
 3. Implement and test the approved scope. A material expansion needs a revised proposal and fresh acceptance before the extra edits.
-4. Include the implementation, reasoning changes and receipt together in the PR. Cite the existing receipt rather than requesting acceptance again for the same approved version and scope.
+4. Include the implementation, reasoning changes and receipt together in the PR. Show visible rendered diagrams of the changed reasoning before a collapsed complete update list. Cite the existing receipt rather than requesting acceptance again for the same approved version and scope.
 5. Review the final diff against the accepted scope before merging. Implementation approval, PR review and reasoning endorsement are separate decisions. Creating or merging a PR does not set node/link status to accepted or complete unresolved backlog work.
 
 ## The template
@@ -19,14 +19,23 @@ Save as `.github/pull_request_template.md`, replacing the state-file path:
 
 <!-- One or two sentences. -->
 
+## Reasoning changes
+
+<!-- Visible generated Mermaid diagrams of the YAML diff. Generate this section and the collapsed list with:
+python3 skills/reason-commons/scripts/check_pr_trees.py path/to/reason-commons.yaml --base origin/main --suggest --format markdown -->
+
 ## Reasoning this serves
 
 <!-- Existing node or link IDs from path/to/reason-commons.yaml, one per line. Leave empty only if Tree updates lists new reasoning. -->
 
 ## Tree updates
 
-<!-- Every added, changed or removed node/link, one per line, e.g. - added `n3` — what it says. Write None for no node/link edits, and describe any backlog work separately. Generate with:
-python3 skills/reason-commons/scripts/check_pr_trees.py path/to/reason-commons.yaml --base origin/main --suggest -->
+<details>
+<summary>Complete checked change list</summary>
+
+<!-- Every added, changed or removed node/link, or None; keep this list collapsed. Describe backlog work separately. -->
+
+</details>
 
 ## Accepted change proposals
 
@@ -43,11 +52,13 @@ GitHub fills a new PR's description with the template in the browser. Agents or 
 
 ## What the check establishes
 
-`scripts/check_pr_trees.py` compares the working tree with the merge base of `--base` and `HEAD`, across one or more state files. In the reasoning sections, a list item's first backticked ID is its claim; later IDs, such as link endpoints, are description. Template comments are ignored. The checker validates current conversational state using the sibling `update_views.py` helper without writing snapshots or views. Keep both scripts together when using them in another repository.
+`scripts/check_pr_trees.py` compares the working tree with the merge base of `--base` and `HEAD`, across one or more state files. In the reasoning sections, a list item's first backticked ID is its claim; later IDs, such as link endpoints, are description. Template comments are ignored. The checker validates current conversational state using the sibling `update_views.py` helper without writing snapshots or views. `render_pr_diagrams.py` derives compact connected fragments from the old and new YAML, with one-hop context around changed nodes and the old/new endpoints of changed links. Keep all three scripts together when using them in another repository.
 
 The check fails when:
 
 - a stated tree update has no matching node/link change, a verb disagrees, an actual node/link change is unstated, a served ID does not exist, or required reasoning sections are missing;
+- the visible diagrams are missing or differ from the generated YAML-diff source, appear after the update list or are hidden inside a collapsed block;
+- the complete update list is visible, expanded by default or incomplete inside the collapsed block;
 - the current YAML or acceptance metadata is invalid, or an earlier acceptance receipt has been changed or removed;
 - the Accepted change proposals section is missing, empty or malformed, or names an unrecorded proposal version and participant;
 - a cited receipt lacks `approved_paths`, a changed file is outside the cited paths, or a changed node/link ID is outside the cited tree-item IDs.
@@ -57,6 +68,18 @@ Use exact repository-relative paths, including the state file and coordination f
 The working-tree check includes tracked and staged changes, including staged new files. Untracked drafts are outside the PR until explicitly staged. Run after staging the intended files, then repeat against the committed branch if its diff changes. CI checks the committed PR head. Old conversational receipts without `approved_paths` remain valid records, but need a new scoped approval to supply PR file coverage; do not retrofit an earlier reply to an expanded approval.
 
 These checks establish declared coverage, not that code inside an approved file fulfills the intended change, that a stored reply came from the human, or that approval preceded editing. Review the implementation and original conversation for those questions. The checker never changes reasoning standing.
+
+## Generate and inspect the diagrams
+
+```sh
+python3 skills/reason-commons/scripts/check_pr_trees.py path/to/reason-commons.yaml --base origin/main --suggest --format markdown
+```
+
+This emits the visible **Reasoning changes** section and closed **Tree updates** details block together. Put a short change summary before the diagrams, and the served reasoning, backlog, acceptance references and validation afterward. Preserve the generated Mermaid source: CI checks it against the YAML diff, including qualification text, actual topology, tree/kind/standing labels, AND conditions, previous wording and removed items. If the reasoning needs correcting, edit the YAML through the approved workflow and regenerate. `--format diagrams` emits only the diagram section; the original `--format list` remains available for tooling, but a flat list alone is not a complete PR description.
+
+Separate connected fragments keep each diagram readable. Disconnected observations stay disconnected. ADDED, CHANGED and REMOVED describe the PR diff; PREVIOUS shows an earlier version and CONTEXT gives unchanged neighboring reasoning. These are separate from [P] proposed, [A] accepted for now and [D] disputed. Color supplements explicit text labels. A PR with no node/link changes needs no invented diagram; describe its scope and backlog work normally.
+
+Inspect the actual GitHub description for rendered diagrams, readable labels and a collapsed list. A successful source check does not prove rendering or usability. Do not replace generated diagrams with a decorative process chart or expand the technical checklist into the main explanation.
 
 ## Run locally and in CI
 

@@ -30,10 +30,14 @@ import yaml
 SPEC = importlib.util.spec_from_file_location("pr_state_views", Path(__file__).with_name("update_views.py"))
 views = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(views)
+DIAGRAM_SPEC = importlib.util.spec_from_file_location("pr_diagrams", Path(__file__).with_name("render_pr_diagrams.py"))
+diagrams = importlib.util.module_from_spec(DIAGRAM_SPEC)
+DIAGRAM_SPEC.loader.exec_module(diagrams)
 
 SERVES = "reasoning this serves"
 UPDATES = "tree updates"
 ACCEPTANCES = "accepted change proposals"
+DIAGRAMS = "reasoning changes"
 VERBS = ("added", "changed", "removed")
 ID = re.compile(r"`([A-Za-z0-9][\w-]*)`")
 ACCEPTANCE = re.compile(r"^\s*(?:[-*+]|\d+[.)])\s+`([A-Za-z0-9][\w-]*)`\s+revision\s+([1-9]\d*)\s+by\s+`([A-Za-z0-9][\w-]*)`(?:\s+[—–-]\s+.*)?\s*$")
@@ -98,7 +102,7 @@ def changes(before, after):
     for id_, (tree, category, item) in after.items():
         if id_ not in before:
             found.append(("added", id_, tree, category, item))
-        elif before[id_][2] != item:
+        elif before[id_] != (tree, category, item):
             found.append(("changed", id_, tree, category, item))
     for id_, (tree, category, item) in before.items():
         if id_ not in after:
@@ -174,6 +178,40 @@ def check(body, before, after):
     return problems
 
 
+def folded_updates(found):
+    content = "\n".join(describe(change) for change in found) if found else "None"
+    return "## Tree updates\n\n<details>\n<summary>Complete checked change list</summary>\n\n" + content + "\n\n</details>\n"
+
+
+DETAILS = re.compile(r"<details\b([^>]*)>.*?<summary\b[^>]*>.*?</summary>(.*?)</details\s*>", re.S | re.I)
+MERMAID = re.compile(r"^```mermaid\s*\n(.*?)^```\s*$", re.M | re.S)
+
+
+def check_presentation(body, before_documents, after_documents, found):
+    if not found:
+        return []
+    parts = sections(body)
+    problems = []
+    content = parts.get(DIAGRAMS, "")
+    # Diagrams must be visible, rather than inside the collapsed technical list.
+    visible = DETAILS.sub("", content)
+    supplied = [source.strip() for source in MERMAID.findall(visible)]
+    expected = [fragment["source"] for fragment in diagrams.fragments(before_documents, after_documents)]
+    if supplied != expected:
+        problems.append("Reasoning changes must contain the generated, visible Mermaid diagrams matching the YAML diff. Run --suggest --format markdown.")
+    if DIAGRAMS not in parts or UPDATES not in parts or list(parts).index(DIAGRAMS) > list(parts).index(UPDATES):
+        problems.append("Show Reasoning changes before the collapsed Tree updates list.")
+    updates = parts.get(UPDATES, "")
+    folded = DETAILS.findall(updates)
+    if not folded or any(re.search(r"(?:^|\s)open(?:\s|=|$)", attrs, re.I) for attrs, _ in folded):
+        problems.append("Keep the complete Tree updates list in a closed <details> block.")
+    hidden_ids = {ident for attrs, content in folded if not re.search(r"(?:^|\s)open(?:\s|=|$)", attrs, re.I)
+                  for _, ident in claims(content)}
+    if any(change[1] not in hidden_ids for change in found) or claims(DETAILS.sub("", updates)):
+        problems.append("Every declared tree update must be inside the collapsed list, with no visible duplicate list.")
+    return problems
+
+
 def receipt_key(receipt):
     return (receipt["proposal_ref"], receipt["proposal_revision"], receipt["by"])
 
@@ -241,18 +279,27 @@ def main(argv=None, cwd=None):
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--body-file", help="file holding the pull request description")
     mode.add_argument("--suggest", action="store_true", help="print the Tree updates list for this branch")
+    parser.add_argument("--format", choices=("list", "diagrams", "markdown"), default="list", help="suggestion format; markdown includes diagrams and the collapsed list")
     args = parser.parse_args(argv)
     try:
         base, before_documents, after_documents = load_documents(args.states, args.base, cwd)
         before, after = document_items(before_documents), document_items(after_documents)
         found = changes(before, after)
         if args.suggest:
-            print("\n".join(describe(change) for change in found) if found else "None")
+            if args.format == "list":
+                print("\n".join(describe(change) for change in found) if found else "None")
+            else:
+                for state in after_documents.values():
+                    views.validate(state)
+                print(diagrams.markdown(before_documents, after_documents))
+                if args.format == "markdown":
+                    print(folded_updates(found))
             return 0
         body = Path(args.body_file).read_text()
         paths = changed_paths(base, cwd)
         problems = check(body, before, after)
         problems += check_acceptances(body, before_documents, after_documents, paths, found)
+        problems += check_presentation(body, before_documents, after_documents, found)
     except (ValueError, KeyError, TypeError, AttributeError, OSError, yaml.YAMLError) as error:
         problems = [str(error)]
     if problems:

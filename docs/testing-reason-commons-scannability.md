@@ -48,6 +48,8 @@ In the isolated toy repository, prepare a PR description for the already-approve
 
 Stage only the intended fixture files and run `check_pr_trees.py` against the fixture's base branch. Check a matching PR, an omitted receipt, an unknown version, malformed metadata, an additional unapproved file and an additional unapproved node/link. A renamed file needs approval of both names. Earlier receipts must survive intact. Recheck after committing the fixture: all checks should concern the committed PR diff. Do not open a real GitHub PR for this isolated role-play. The repository's helper tests exercise these cases automatically; they do not authenticate consent or judge whether the implementation fulfills the accepted scope.
 
+Generate the toy PR's diagram and list sections with `--suggest --format markdown`. The changed reasoning must be visible as rendered Mermaid before a closed **Complete checked change list** disclosure. Check that the diagram uses the actual tree, kinds, standings, relation and qualifications from the fixture; disconnected observations must not acquire arrows. Missing or altered diagrams, hidden diagrams, an expanded checklist and a visible duplicate list must fail the check. Inspect a changed statement, a removed item and an AND link too: previous/current wording and standing must remain clear. For a real PR, inspect the rendered GitHub page as well as source validation; unit tests do not prove host rendering or legibility.
+
 ## Then test the collaboration
 
 After the toy check, open another fresh session from the same checkout and paste:

@@ -41,8 +41,10 @@ def with_link(state):
     return state
 
 
-def body(serves="", updates="None", acceptances="- `fixture-change` revision 1 by `alice`"):
-    return f"## What this changes\n\nSomething.\n\n## Reasoning this serves\n\n{serves}\n\n## Tree updates\n\n{updates}\n\n## Accepted change proposals\n\n{acceptances}\n"
+def body(serves="", updates="None", acceptances="- `fixture-change` revision 1 by `alice`", diagrams="__FIXTURE_DIAGRAMS__", collapsed=True):
+    if collapsed:
+        updates = f"<details>\n<summary>Complete checked change list</summary>\n\n{updates}\n\n</details>"
+    return f"## What this changes\n\nSomething.\n\n{diagrams}\n\n## Reasoning this serves\n\n{serves}\n\n## Tree updates\n\n{updates}\n\n## Accepted change proposals\n\n{acceptances}\n"
 
 
 class CheckTests(unittest.TestCase):
@@ -69,6 +71,13 @@ class CheckTests(unittest.TestCase):
 
     def run_check(self, *args, text=None):
         if text is not None:
+            if "__FIXTURE_DIAGRAMS__" in text:
+                try:
+                    _, before, after = check.load_documents([STATE], "main", self.repo)
+                    generated = check.diagrams.markdown(before, after)
+                except (ValueError, KeyError, TypeError, yaml.YAMLError):
+                    generated = "## Reasoning changes\n"
+                text = text.replace("__FIXTURE_DIAGRAMS__", generated)
             (self.repo / "pr.md").write_text(text)
             args = ("--body-file", str(self.repo / "pr.md"), *args)
         out = io.StringIO()
@@ -259,6 +268,49 @@ class CheckTests(unittest.TestCase):
         code, out = self.run_check(text=body(serves="- `n1`"))
         self.assertEqual(code, 1)
         self.assertIn("Duplicate YAML key", out)
+
+    def test_generated_markdown_round_trip_keeps_checklist_collapsed(self):
+        self.write(with_link(toy()))
+        code, generated = self.run_check("--suggest", "--format", "markdown")
+        self.assertEqual(code, 0)
+        text = "## What this changes\n\nScope qualification.\n\n" + generated + "\n## Accepted change proposals\n\n- `fixture-change` revision 1 by `alice`\n"
+        code, out = self.run_check(text=text)
+        self.assertEqual(code, 0, out)
+
+    def test_missing_or_altered_diagram_fails(self):
+        self.write(with_link(toy()))
+        _, before, after = check.load_documents([STATE], "main", self.repo)
+        accurate = check.diagrams.markdown(before, after)
+        for diagram in ("", accurate.replace("limits scope", "causes"), accurate.replace("[P] CURRENT REALITY", "[A] CURRENT REALITY")):
+            with self.subTest(diagram=diagram[:80]):
+                code, out = self.run_check(text=body(updates="- added `l1`", diagrams=diagram))
+                self.assertEqual(code, 1)
+                self.assertIn("generated, visible Mermaid diagrams", out)
+
+    def test_diagrams_inside_details_do_not_count_as_visible(self):
+        self.write(with_link(toy()))
+        _, before, after = check.load_documents([STATE], "main", self.repo)
+        diagram = check.diagrams.markdown(before, after).replace("## Reasoning changes\n", "")
+        hidden = "## Reasoning changes\n\n<details><summary>Hidden</summary>\n\n" + diagram + "\n</details>"
+        code, out = self.run_check(text=body(updates="- added `l1`", diagrams=hidden))
+        self.assertEqual(code, 1)
+        self.assertIn("generated, visible Mermaid diagrams", out)
+
+    def test_expanded_or_visible_update_list_fails(self):
+        self.write(with_link(toy()))
+        for text in (body(updates="- added `l1`", collapsed=False), body(updates="- added `l1`").replace("<details>", "<details open>"), body(updates="- added `l1`").replace("</details>", "</details>\n\n- added `l1`")):
+            with self.subTest(text=text[:60]):
+                code, out = self.run_check(text=text)
+                self.assertEqual(code, 1)
+                self.assertTrue("closed <details>" in out or "no visible duplicate list" in out, out)
+
+    def test_tree_move_is_a_declared_change(self):
+        state = toy()
+        moved = state["trees"]["current_reality"]["nodes"].pop()
+        state["trees"]["future_reality"] = {"nodes": [moved], "links": [], "backlog": []}
+        self.write(state)
+        code, out = self.run_check(text=body(updates="- changed `n2`"))
+        self.assertEqual(code, 0, out)
 
 
 if __name__ == "__main__":

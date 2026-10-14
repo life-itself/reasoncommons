@@ -2554,6 +2554,20 @@ trees:
         attribution: explicit
         mode: text
         note: David requested completion of the PR integration and accepted proposal change-pr-acceptance-integration-2026-10-14 revision 1 with the typed reply yes i accept.
+    - id: f-e-pr-diagrams-show-changes
+      kind: injection
+      text: Pull request descriptions display the changed reasoning as rendered diagrams, with the complete checked update list collapsed by default.
+      status: proposed
+      implements:
+      - f-e-changes-name-reasoning
+      - f-e-skill-scannable-turns
+      addresses:
+      - r-e-skill-hard-to-scan
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: David asked to correct the missing PR diagrams, then accepted proposal change-pr-diagrams-2026-10-14 revision 1.
     links:
     - id: f-rel-use-makes-users
       from:
@@ -2746,6 +2760,19 @@ trees:
       assumptions:
       - text: The check validates receipt metadata, proposal references and declared file/tree scope coverage; human review still judges whether the implementation fulfills the accepted scope and whether the recorded approval is authentic.
         by: assistant
+    - id: f-rel-pr-diagrams-aid-inspection
+      from:
+      - f-e-pr-diagrams-show-changes
+      to: f-e-skill-attention-clear
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: Generated diagrams preserve the YAML diff, qualifications, actual topology and reasoning standing, render legibly in GitHub, and help people inspect the changed reasoning; validating source alone does not establish usability.
+        by: assistant
     backlog:
     - ref: f-rel-use-makes-users
       work: test_causality
@@ -2822,6 +2849,12 @@ trees:
     - ref: f-rel-pr-acceptance-aids-traceability
       work: test_pr_acceptance_scope
       note: All 55 helper tests passed, including missing or malformed approvals, unknown versions, uncovered files and node/link IDs, staged and committed scope, rename coverage, receipt preservation and unchanged reasoning standing. Review the complete PR and observe real use; declared coverage cannot establish semantic conformance, consent authenticity or the predicted traceability benefit.
+    - ref: f-e-pr-diagrams-show-changes
+      work: review_fragment
+      note: Review the PR diagram rule and its proposed inspection benefit. Implementation approval does not endorse the prediction.
+    - ref: f-rel-pr-diagrams-aid-inspection
+      work: test_pr_diagram_readability
+      note: Check generated diagram topology, labels and standings, missing or incorrect diagrams, collapsed checklist completeness and actual GitHub rendering. Inspect real review usability after helper tests.
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
@@ -4254,3 +4287,30 @@ change_acceptances:
   - skills/reason-commons/tests/test_check_pr_trees.py
   - skills/reason-commons/tests/test_render_view.py
   - skills/reason-commons/tests/test_update_views.py
+- proposal_ref: change-pr-diagrams-2026-10-14
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-14T14:31:13Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: 'yes accept this '
+  scope: 'Update PR #59 with prominent rendered reasoning diagrams and a collapsed complete checked update list; add a YAML-diff diagram generator and CI checks for missing or altered diagrams; update PR template, skill and repository guidance, tests and changelog; commit and push the correction to the same PR. Validate source topology, labels, standings and actual GitHub rendering.'
+  node_ids:
+  - f-e-pr-diagrams-show-changes
+  link_ids:
+  - f-rel-pr-diagrams-aid-inspection
+  approved_paths:
+  - .beads/issues.jsonl
+  - .github/pull_request_template.md
+  - AGENTS.md
+  - changelog.md
+  - docs/testing-reason-commons-scannability.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - skills/reason-commons/SKILL.md
+  - skills/reason-commons/references/pull-requests.md
+  - skills/reason-commons/references/responses.md
+  - skills/reason-commons/scripts/check_pr_trees.py
+  - skills/reason-commons/scripts/render_pr_diagrams.py
+  - skills/reason-commons/tests/test_check_pr_trees.py
+  - skills/reason-commons/tests/test_render_pr_diagrams.py
