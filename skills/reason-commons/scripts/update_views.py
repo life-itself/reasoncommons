@@ -8,6 +8,7 @@ The working YAML is read-only to this helper; history is never overwritten.
 import argparse
 from copy import deepcopy
 from datetime import datetime, timezone
+import hashlib
 import html
 import json
 import os
@@ -427,17 +428,123 @@ def write_atomic(path, content, exclusive=False):
         temp.unlink(missing_ok=True)
 
 
-def update(state_path, output=None, summary=None):
-    state_path = Path(state_path).resolve()
-    state = load(state_path)
-    validate(state)
-    output = Path(output).resolve() if output else state_path.parent / ("." + state_path.stem)
+def output_directory(state_path, output=None):
+    return Path(output).resolve() if output else state_path.parent / ("." + state_path.stem)
+
+
+def history_snapshots(output):
     history = output / "history"
     paths = sorted(history.glob("[0-9][0-9][0-9][0-9][0-9][0-9].yaml"))
     snapshots = [load(path) for path in paths]
     for i, snap in enumerate(snapshots):
         validate(snap)
         require(snap.get("revision") == i + 1 and paths[i].stem == f"{i + 1:06d}" and snap.get("previous_revision") == (i if i else None), "History is incomplete or inconsistent; do not overwrite it.")
+    return snapshots
+
+
+def acceptance_key(receipt):
+    return (receipt["proposal_ref"], receipt["proposal_revision"], receipt["by"])
+
+
+def acceptance_filename(receipt):
+    key = json.dumps(acceptance_key(receipt), ensure_ascii=False, separators=(",", ":"))
+    return hashlib.sha256(key.encode("utf-8")).hexdigest() + ".yaml"
+
+
+def saved_acceptances(output, snapshots):
+    """Read original receipts from the local ledger and legacy accepted snapshots."""
+    records = {}
+
+    def remember(receipt, participants):
+        key = acceptance_key(receipt)
+        original = records.get(key)
+        require(original is None or original["change_acceptances"][0] == receipt,
+                f"Conflicting saved approval originals for {key}; inspect the ledger and history before recovery.")
+        if original is None:
+            records[key] = {"schema_version": 1, "participants": {receipt["by"]: participants[receipt["by"]]},
+                            "change_acceptances": [deepcopy(receipt)]}
+
+    for path in sorted((output / "acceptances").glob("*.yaml")):
+        record = load(path)
+        require(isinstance(record, dict) and record.get("schema_version") == 1,
+                f"Invalid approval recovery record: {path}")
+        people = record.get("participants")
+        require(isinstance(people, dict) and "assistant" not in people,
+                f"Invalid approval recovery participants: {path}")
+        validate_change_acceptances(record, people)
+        receipts = record.get("change_acceptances", [])
+        require(len(receipts) == 1 and path.name == acceptance_filename(receipts[0]),
+                f"Invalid approval recovery filename or receipt count: {path}")
+        remember(receipts[0], people)
+    for snapshot in snapshots:
+        for receipt in snapshot.get("change_acceptances", []):
+            remember(receipt, snapshot["participants"])
+    return records
+
+
+def acceptance_discrepancies(state, records):
+    current = state.get("change_acceptances", [])
+    require(isinstance(current, list) and all(isinstance(receipt, dict) for receipt in current),
+            "change_acceptances must be a list of mappings before recovery.")
+    # Compare the full immutable receipt, not just its scope or key. This also
+    # exposes duplicate or malformed originals without accepting their contents.
+    return [record for key, record in records.items()
+            if [receipt for receipt in current
+                if (receipt.get("proposal_ref"), receipt.get("proposal_revision"), receipt.get("by")) == key]
+            != record["change_acceptances"]]
+
+
+def preserve_acceptances(state, output, snapshots):
+    """Journal receipts even when accepted reasoning has not changed."""
+    records = saved_acceptances(output, snapshots)
+    discrepancies = acceptance_discrepancies(state, records)
+    for receipt in state.get("change_acceptances", []):
+        key = acceptance_key(receipt)
+        if key not in records:
+            records[key] = {"schema_version": 1, "participants": {receipt["by"]: state["participants"][receipt["by"]]},
+                            "change_acceptances": [deepcopy(receipt)]}
+    # Import originals found in legacy history too. Never replace a ledger file.
+    for record in records.values():
+        receipt = record["change_acceptances"][0]
+        path = output / "acceptances" / acceptance_filename(receipt)
+        if not path.exists():
+            write_atomic(path, yaml.safe_dump(record, sort_keys=False, allow_unicode=True), exclusive=True)
+    require(not discrepancies,
+            "Restored working YAML is missing or has changed saved approval receipts. "
+            "Run this helper with --recover-acceptances and restore the originals "
+            "through file-editing tools before continuing; do not restore undone reasoning.")
+
+
+def recover_acceptances(state_path, output=None):
+    """Print original receipts and missing participant identities; never edit state."""
+    state_path = Path(state_path).resolve()
+    state = load(state_path)
+    require(isinstance(state, dict), "Expected a working YAML mapping for recovery.")
+    output = output_directory(state_path, output)
+    records = saved_acceptances(output, history_snapshots(output))
+    discrepancies = acceptance_discrepancies(state, records)
+    participants = state.get("participants", {})
+    require(isinstance(participants, dict), "participants must be a mapping before recovery.")
+    missing_people = {}
+    for record in discrepancies:
+        for ident, person in record["participants"].items():
+            if ident not in participants:
+                require(ident not in missing_people or missing_people[ident] == person,
+                        f"Conflicting saved participant identities for {ident}; inspect the originals.")
+                missing_people[ident] = person
+    return {"participants": missing_people,
+            "change_acceptances": [record["change_acceptances"][0] for record in discrepancies],
+            "saved_receipt_count": len(records)}
+
+
+def update(state_path, output=None, summary=None):
+    state_path = Path(state_path).resolve()
+    state = load(state_path)
+    validate(state)
+    output = output_directory(state_path, output)
+    snapshots = history_snapshots(output)
+    preserve_acceptances(state, output, snapshots)
+    history = output / "history"
     projections = [accepted(s) for s in snapshots]
     previous = projections[-1] if projections else {}
     current = accepted(state)
@@ -475,9 +582,13 @@ def main():
     parser.add_argument("state", type=Path)
     parser.add_argument("--output-dir", type=Path)
     parser.add_argument("--summary")
+    parser.add_argument("--recover-acceptances", action="store_true",
+                        help="print saved original receipts missing or changed in working YAML; writes no files")
     args = parser.parse_args()
     try:
-        print(json.dumps(update(args.state, args.output_dir, args.summary), indent=2))
+        result = (recover_acceptances(args.state, args.output_dir) if args.recover_acceptances
+                  else update(args.state, args.output_dir, args.summary))
+        print(json.dumps(result, indent=2))
     except (ValueError, KeyError, TypeError, AttributeError, OSError, RuntimeError, yaml.YAMLError) as error:
         print(f"reason-commons: {error}", file=sys.stderr)
         return 1

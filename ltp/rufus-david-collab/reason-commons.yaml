@@ -1307,6 +1307,46 @@ trees:
         attribution: assistant
         mode: text
         note: Inspection of the completion response after David questioned whether the fix followed the tree-update rule, 2026-10-14.
+    - id: r-e-rewind-untracked-saves
+      kind: cause
+      text: Shell-written working YAML is outside Claude Code's file checkpoints.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: r-e-rewind-state-diverges
+      kind: undesirable_effect
+      text: After conversation-only rewind, the working YAML can still contain reasoning from the undone turn.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: r-e-rewind-unreconciled-files
+      kind: cause
+      text: Whole-file restoration can remove later approval receipts while leaving generated diagrams and history untouched.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: r-e-rewind-views-stale
+      kind: undesirable_effect
+      text: After YAML restoration, diagrams can display accepted reasoning that is no longer current.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: r-e-rewind-receipts-lost
+      kind: undesirable_effect
+      text: After YAML restoration, the working record can omit approval receipts for implementation that already happened.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     links:
     - id: r-rel-unclear-drives-redesigning
       from:
@@ -1693,6 +1733,36 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: r-rel-rewind-untracked-diverges
+      from:
+      - r-e-rewind-untracked-saves
+      to: r-e-rewind-state-diverges
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: r-rel-rewind-unreconciled-stales-views
+      from:
+      - r-e-rewind-unreconciled-files
+      to: r-e-rewind-views-stale
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: r-rel-rewind-unreconciled-loses-receipts
+      from:
+      - r-e-rewind-unreconciled-files
+      to: r-e-rewind-receipts-lost
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     backlog:
     - ref: r-e-david-demo-confidence
       work: clarify_demo_gap
@@ -1831,6 +1901,15 @@ trees:
     - ref: r-e-change-reports-hide-reasoning
       work: review_connection
       note: Examine its relationship to the existing work-to-goal traceability branch; a missing completion-report trace does not establish that the work itself was absent from the trees.
+    - ref: r-rel-rewind-untracked-diverges
+      work: test_actual_host_rewind
+      note: Issue 48 and PR 56 report this symptom; confirm in a fresh native host session on a checkpointable regular file.
+    - ref: r-rel-rewind-unreconciled-stales-views
+      work: reproduce_restoration
+      note: Check that restored YAML and derived diagrams disagree before regeneration.
+    - ref: r-rel-rewind-unreconciled-loses-receipts
+      work: review_reproduction
+      note: Gold-fixture regressions reproduced receipt-only approval loss between accepted snapshots and without accepted reasoning, and verified ledger recovery blocks continuation until originals are restored. Native host rewind remains unobserved; causal standing remains proposed.
   conflict:
     nodes:
     - id: c-e-objective
@@ -2576,6 +2655,55 @@ trees:
         attribution: explicit
         mode: text
         note: David asked to correct the missing PR diagrams, then accepted proposal change-pr-diagrams-2026-10-14 revision 1.
+    - id: f-e-rewind-checkpointed-save
+      kind: injection
+      text: Save working YAML through the host's tracked file-editing tools when its rewind depends on them.
+      addresses:
+      - r-e-rewind-untracked-saves
+      - r-e-rewind-state-diverges
+      implements:
+      - f-e-use-while-building
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-e-rewind-refresh-derived-views
+      kind: injection
+      text: After working-YAML restoration, validate and regenerate views before continuing; preserve prior snapshots and record reversals of accepted reasoning as new revisions.
+      addresses:
+      - r-e-rewind-views-stale
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-e-rewind-preserve-approvals
+      kind: injection
+      text: Retain each approval receipt in an immutable local recovery ledger whenever the helper runs; report missing or changed originals for restoration through tracked file edits without reaccepting undone reasoning.
+      addresses:
+      - r-e-rewind-receipts-lost
+      implements:
+      - f-e-recorded-change-acceptance
+      assumptions:
+      - text: The ledger is retained outside native working-file rewind; it preserves recorded approvals but cannot authenticate consent or undo external implementation.
+        by: assistant
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-e-rewind-coherent-traceable
+      kind: desirable_effect
+      text: After code-and-conversation restoration and reconciliation, current reasoning and accepted diagrams agree while earlier revisions and implementation approval receipts remain inspectable.
+      assumptions:
+      - text: Reversing current reasoning does not require erasing its historical occurrence or the approval for implementation already performed.
+        by: assistant
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     links:
     - id: f-rel-use-makes-users
       from:
@@ -2781,6 +2909,31 @@ trees:
       assumptions:
       - text: Generated diagrams preserve the YAML diff, qualifications, actual topology and reasoning standing, render legibly in GitHub, and help people inspect the changed reasoning; validating source alone does not establish usability.
         by: assistant
+    - id: f-rel-rewind-recovery-coherent
+      from:
+      - f-e-rewind-checkpointed-save
+      - f-e-rewind-refresh-derived-views
+      - f-e-rewind-preserve-approvals
+      to: f-e-rewind-coherent-traceable
+      relation: produces
+      assumptions:
+      - text: The user selects code-and-conversation restore for an available checkpoint, the edited file is restorable in the actual host, and validation, ledger reconciliation and view generation succeed.
+        by: assistant
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-rel-rewind-preserves-approval-trace
+      from:
+      - f-e-rewind-preserve-approvals
+      to: f-e-change-acceptance-traceable
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     backlog:
     - ref: f-rel-use-makes-users
       work: test_causality
@@ -2864,6 +3017,15 @@ trees:
       work: test_pr_diagram_readability
       feedback: David's 2026-10-14 screenshot showed four separate single-node Current Reality diagrams obscuring their shared tree. Verify one diagram per affected tree, explicit unresolved connections, preserved topology and readable labels.
       note: All 71 helper tests passed after the grouping correction. Actual GitHub inspection confirmed one diagram per affected tree (Current Reality and Future Reality), complete SVG labels, preserved topology, explicit unresolved-connection notes and a collapsed complete checklist. The larger Future Reality diagram uses GitHub inspection and zoom controls. Keep review of the predicted inspection benefit and real-use readability open; source validation does not establish usability.
+    - ref: f-rel-rewind-recovery-coherent
+      work: review_fragment
+      note: Review both restoration mechanisms and their shared outcome; implementing the fix does not endorse these predictions.
+    - ref: f-rel-rewind-recovery-coherent
+      work: test_recovery_and_real_use
+      note: All 85 helper tests pass, including 14 recovery regressions. Native Claude Code checkpoint restoration and real-user confidence remain unverified; helper simulations do not establish host behavior or adoption.
+    - ref: f-e-rewind-preserve-approvals
+      work: review_recovery_limits
+      note: Regression checks cover receipt-only turns, missing or altered originals, missing participant identities, legacy snapshots, missing ledgers, conflicting originals and read-only CLI output. A lost ledger cannot recover receipt-only approvals absent from accepted snapshots; recovery does not undo external actions or authorize new scope.
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
@@ -3458,6 +3620,39 @@ trees:
       acceptance_source: 'scqh.md: Tree cleanup (2026-09-26).'
       derived_from:
       - r-e-users-candidates
+    - id: p-e-rewind-recovery
+      kind: objective
+      text: Reasoning sessions can resume from a coherent restored state while retaining accepted history and implementation approval records.
+      implements:
+      - f-e-rewind-coherent-traceable
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: p-e-rewind-unreconciled-artifacts
+      kind: obstacle
+      text: Restoring the working YAML alone does not ensure that diagrams and implementation approval records match the recovery requirements.
+      derived_from:
+      - r-e-rewind-views-stale
+      - r-e-rewind-receipts-lost
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: p-e-rewind-recovery-ready
+      kind: intermediate_objective
+      text: Checkpointable working-file edits, intact history, a retained receipt ledger and validated reconciliation are available before resumed work.
+      implements:
+      - f-e-rewind-checkpointed-save
+      - f-e-rewind-refresh-derived-views
+      - f-e-rewind-preserve-approvals
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     links:
     - id: p-rel-both-routes-overcomes
       from:
@@ -3724,6 +3919,26 @@ trees:
       source:
         parent_designation_id: p-d-obj-real-users
         note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    - id: p-rel-rewind-ready-overcomes-artifacts
+      from:
+      - p-e-rewind-recovery-ready
+      to: p-e-rewind-unreconciled-artifacts
+      relation: overcomes
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: p-rel-rewind-ready-for-recovery
+      from:
+      - p-e-rewind-recovery-ready
+      to: p-e-rewind-recovery
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     backlog:
     - ref: p-rel-both-routes-overcomes
       work: review_relation
@@ -3780,6 +3995,9 @@ trees:
     - ref: p-e-licensing-unclear
       work: review_historical_scope
       note: Preserve the recorded correction; decide whether the older claim has any remaining current meaning.
+    - ref: p-rel-rewind-ready-overcomes-artifacts
+      work: test_recovery_conditions
+      note: Automated recovery checks distinguish missing ledger evidence, conflicting originals and invalid receipt metadata. Observe actual host checkpoint availability and keep local recovery artifacts with the working state before claiming recovery readiness.
   transition:
     nodes:
     - id: t-e-used-once
@@ -4072,6 +4290,38 @@ trees:
           id: t-d-eff-applied
           entity_id: t-e-eff-applied
           role: transition_expected_effect
+    - id: t-e-rewind-implement
+      kind: action
+      text: Update the save and recovery instructions and add immutable receipt preservation with read-only recovery output.
+      implements:
+      - p-e-rewind-recovery-ready
+      derived_from:
+      - t-e-act-friction-log
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: t-e-rewind-test
+      kind: action
+      text: Run the remote-work gold-fixture recovery regressions and document the native Claude Code rewind check, recording whether it has actually been performed.
+      implements:
+      - p-e-rewind-recovery-ready
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: t-e-rewind-verified
+      kind: expected_effect
+      text: Helper evidence establishes restoration, receipt preservation and history invariants; native-host verification and remaining usability uncertainty are explicitly reported.
+      implements:
+      - p-e-rewind-recovery
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     links:
     - id: t-rel-funding-produces
       from:
@@ -4183,6 +4433,26 @@ trees:
         attribution: driver_default
         mode: unknown
         note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: t-rel-rewind-implement-before-test
+      from:
+      - t-e-rewind-implement
+      to: t-e-rewind-test
+      relation: precedes
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: t-rel-rewind-test-produces-evidence
+      from:
+      - t-e-rewind-test
+      to: t-e-rewind-verified
+      relation: produces
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     backlog:
     - ref: t-rel-funding-produces
       work: test_causality
@@ -4215,6 +4485,19 @@ trees:
     - ref: t-e-need-repeated-use
       work: justify_actions
       note: Existing condition and need are not yet connected to the actions; explain why the chosen steps will yield repeated useful use.
+    - ref: t-e-rewind-implement
+      work: review_implementation
+      note: The approved implementation and documentation are complete on codex/rewind-tree-trace; separate implementation bead reasoncommons-909. Review the new comparison PR; implementation completion does not accept the proposed reasoning, and the collaboration priority remains reasoncommons-5lo.
+      beads:
+      - reasoncommons-909
+    - ref: t-e-rewind-test
+      work: verify_native_rewind
+      note: All 85 helper tests pass, including 14 remote-work recovery regressions. The native Claude Code procedure is documented in docs/testing-reason-commons-rewind.md and has not been performed; automated helper checks cannot substitute for observing checkpoint restoration.
+      beads:
+      - reasoncommons-909
+    - ref: t-e-rewind-verified
+      work: assess_user_benefit
+      note: Observe whether people can revise reasoning confidently; passing persistence tests does not establish adoption or usability.
 change_acceptances:
 - proposal_ref: change-node-roles-2026-10-14
   by: david
@@ -4347,3 +4630,50 @@ change_acceptances:
   - skills/reason-commons/scripts/render_pr_diagrams.py
   - skills/reason-commons/tests/test_check_pr_trees.py
   - skills/reason-commons/tests/test_render_pr_diagrams.py
+- proposal_ref: change-rewind-with-tree-trace-2026-10-14
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-14T16:27:09Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: I accept
+  scope: 'Implement revision 1 of the displayed rewind proposal on a separate branch and open a new PR against main, leaving PR 56 unchanged: tracked working-file saves, validated view regeneration and append-only accepted-history reversal, immutable local receipt preservation and read-only recovery output, remote-work recovery regressions and native-host test documentation, the 15 proposed nodes and 9 proposed links with their cross-tree traces and review/test backlog, friction log, separate implementation work and existing handoff checkpoint, and changelog. Preserve prior acceptance receipts and existing reasoning standing.'
+  node_ids:
+  - r-e-rewind-untracked-saves
+  - r-e-rewind-state-diverges
+  - r-e-rewind-unreconciled-files
+  - r-e-rewind-views-stale
+  - r-e-rewind-receipts-lost
+  - f-e-rewind-checkpointed-save
+  - f-e-rewind-refresh-derived-views
+  - f-e-rewind-preserve-approvals
+  - f-e-rewind-coherent-traceable
+  - p-e-rewind-recovery
+  - p-e-rewind-unreconciled-artifacts
+  - p-e-rewind-recovery-ready
+  - t-e-rewind-implement
+  - t-e-rewind-test
+  - t-e-rewind-verified
+  link_ids:
+  - r-rel-rewind-untracked-diverges
+  - r-rel-rewind-unreconciled-stales-views
+  - r-rel-rewind-unreconciled-loses-receipts
+  - f-rel-rewind-recovery-coherent
+  - f-rel-rewind-preserves-approval-trace
+  - p-rel-rewind-ready-overcomes-artifacts
+  - p-rel-rewind-ready-for-recovery
+  - t-rel-rewind-implement-before-test
+  - t-rel-rewind-test-produces-evidence
+  approved_paths:
+  - skills/reason-commons/SKILL.md
+  - skills/reason-commons/references/views.md
+  - skills/reason-commons/references/schema.md
+  - skills/reason-commons/scripts/update_views.py
+  - skills/reason-commons/tests/test_update_views.py
+  - docs/testing-reason-commons-rewind.md
+  - docs/beads-reasoning.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - ltp/rufus-david-collab/friction-log.md
+  - .beads/issues.jsonl
+  - changelog.md
