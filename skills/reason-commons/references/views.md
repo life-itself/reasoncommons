@@ -32,7 +32,7 @@ Other state filenames use a matching hidden directory (`workshop.yaml` → `.wor
 
 Compare the accepted portion of working state with the latest saved snapshot. Create one numbered snapshot for all accepted changes from that turn, even when several trees changed. With no previous snapshot, the first accepted content is an addition; a project containing only proposals creates no snapshot yet.
 
-Compare nodes by stable ID, kind, text, cross-tree reference IDs, and assumption text. Compare links by stable ID, endpoints, relation, and assumption text. Additions, changes, removals, and loss of acceptance count. Backlog edits, proposals, contributor corrections, extra endorsers, active-tree switches, and list reordering do not trigger a revision. Challenges trigger a revision when they change accepted status or reasoning. The helper cannot judge whether wording changes are substantive: resolve acceptance in the conversation before running it.
+Compare nodes by stable ID, kind, text, cross-tree reference IDs, and assumption text. Compare links by stable ID, endpoints, relation, and assumption text. Additions, changes, removals, and loss of acceptance count. Backlog edits, proposals, contributor corrections, extra endorsers, project-change acceptance receipts, active-tree switches, and list reordering do not trigger a revision. Challenges trigger a revision when they change accepted status or reasoning. The helper cannot judge whether wording changes are substantive: resolve acceptance in the conversation before running it.
 
 Each snapshot contains the entire working YAML at that moment, including WIP, plus revision metadata. The latest snapshot therefore need not contain subsequent WIP-only edits; resume from the working file. History is never modified in place. No additional previous-state cache is used.
 
@@ -43,7 +43,7 @@ Each snapshot contains the entire working YAML at that moment, including WIP, pl
 
 Color and text labels distinguish added, changed, removed, and context items. Cross-tree traces appear as references on nodes; they do not fabricate causal arrows between trees. The first change view shows all initial accepted content as added. Removing all accepted content leaves an empty full view and a change view showing removals.
 
-Update only affected trees. Keep each tree's latest change view when another tree changes, when users switch focus, or during WIP-only turns. The helper reconstructs that tree's latest change from numbered snapshots if an artifact must be regenerated. Show or link both HTML views when reporting an accepted update; do not read diagram details aloud unless asked. The companion SVGs contain the same diagrams.
+Update only affected trees. Keep each tree's latest change view when another tree changes, when users switch focus, or during WIP-only turns. The helper reconstructs that tree's latest change from numbered snapshots if an artifact must be regenerated. Keep both HTML views available as optional inspection links when useful or requested, labeled accepted-only; opening an export is not required to continue the conversation. Do not read diagram details aloud unless asked. The companion SVGs contain the same diagrams.
 
 ## Failure and retry
 
