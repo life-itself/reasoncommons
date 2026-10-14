@@ -25,6 +25,87 @@ def toy():
     return {"schema_version": 1, "project": "Remote-work toy fixture", "driver": "alice", "participants": {"alice": "Alice", "bob": "Bob"}, "active_tree": "current_reality", "trees": {"current_reality": {"nodes": nodes, "links": [link], "backlog": [{"ref": "l1", "work": "examine_assumption"}]}}}
 
 
+def receipt():
+    return {"proposal_ref": "change-remote-work-scope", "proposal_revision": 1, "by": "alice",
+            "recorded_at": "2026-10-14T12:00:00Z", "timezone": "Europe/Berlin", "mode": "text",
+            "source": "conversation", "source_text": "yes, I accept this proposal",
+            "scope": "Clarify the README's study scope and test the generalisation at l1.",
+            "node_ids": [], "link_ids": ["l1"]}
+
+
+class ChangeAcceptanceTests(unittest.TestCase):
+    def setUp(self):
+        self.state = toy()
+        self.state["change_acceptances"] = [receipt()]
+
+    def test_complete_record_and_legacy_state_are_valid(self):
+        views.validate(self.state)
+        views.validate(toy())
+        self.state["change_acceptances"][0]["accepted_at"] = "2026-10-14T13:59:00+02:00"
+        views.validate(self.state)
+
+    def test_missing_required_metadata_is_rejected(self):
+        for field in receipt():
+            with self.subTest(field=field):
+                state = deepcopy(self.state)
+                del state["change_acceptances"][0][field]
+                with self.assertRaises(ValueError):
+                    views.validate(state)
+
+    def test_invalid_values_are_rejected(self):
+        invalid = {
+            "proposal_ref": ["", " "], "proposal_revision": [0, -1, True, "1"],
+            "by": ["assistant", "unknown", ""], "source_text": ["", " "], "scope": ["", " "],
+            "recorded_at": ["not a time", "2026-10-14T12:00:00", "2026-10-14T14:00:00+02:00"],
+            "timezone": ["", "Unknown/Place"], "mode": ["voice", "unknown"], "source": ["tool", "document"],
+            "node_ids": [None, "n1", [""], ["n1", "n1"], [12]],
+            "link_ids": [None, "l1", [""], ["l1", "l1"], [12]],
+            "accepted_at": ["not a time", "2026-10-14T12:00:00"],
+        }
+        for field, values in invalid.items():
+            for value in values:
+                with self.subTest(field=field, value=value):
+                    state = deepcopy(self.state)
+                    state["change_acceptances"][0][field] = value
+                    with self.assertRaises(ValueError):
+                        views.validate(state)
+        for value in ({}, [None]):
+            with self.subTest(receipts=value):
+                state = deepcopy(self.state)
+                state["change_acceptances"] = value
+                with self.assertRaises(ValueError):
+                    views.validate(state)
+
+    def test_same_version_and_person_cannot_be_recorded_twice(self):
+        self.state["change_acceptances"].append(receipt())
+        with self.assertRaisesRegex(ValueError, "Duplicate change acceptance"):
+            views.validate(self.state)
+        self.state["change_acceptances"][1]["proposal_revision"] = 2
+        views.validate(self.state)
+        self.state["change_acceptances"][1].update(proposal_revision=1, by="bob")
+        views.validate(self.state)
+
+    def test_historical_references_survive_removal(self):
+        self.state["change_acceptances"][0]["node_ids"] = ["removed-node"]
+        self.state["trees"]["current_reality"] = {"nodes": [], "links": [], "backlog": []}
+        views.validate(self.state)
+
+    def test_an_id_cannot_refer_to_both_a_node_and_link(self):
+        self.state["change_acceptances"][0]["node_ids"] = ["l1"]
+        with self.assertRaisesRegex(ValueError, "both node and link"):
+            views.validate(self.state)
+
+    def test_approved_paths_are_optional_but_must_be_exact_relative_paths(self):
+        for paths in ([], ["README.md", "skills/reason-commons/SKILL.md"]):
+            self.state["change_acceptances"][0]["approved_paths"] = paths
+            views.validate(self.state)
+        for paths in (None, "README.md", [""], ["/tmp/file"], ["../file"], ["a/../file"], ["a//file"], ["./file"], ["."], ["a\\file"], ["README.md", "README.md"], [42]):
+            with self.subTest(paths=paths):
+                self.state["change_acceptances"][0]["approved_paths"] = paths
+                with self.assertRaises(ValueError):
+                    views.validate(self.state)
+
+
 class ViewTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
@@ -72,6 +153,28 @@ class ViewTests(unittest.TestCase):
         tree["backlog"].append({"ref": "n4", "work": "clarify"})
         self.assertEqual(self.save()["revision"], 1)
         self.assertEqual(original, {p: (p.read_bytes(), p.stat().st_mtime_ns) for p in original})
+
+    def test_change_receipt_does_not_endorse_proposals_or_create_revision(self):
+        self.save()
+        original = {p: p.read_bytes() for p in self.out.rglob("*") if p.is_file()}
+        self.state["change_acceptances"] = [receipt()]
+        proposal = deepcopy(self.state["trees"]["current_reality"]["nodes"][0])
+        proposal.update(id="n4", status="proposed", text="Check whether the study generalises.")
+        proposal.pop("accepted_by")
+        self.state["trees"]["current_reality"]["nodes"].append(proposal)
+        self.state["change_acceptances"][0]["node_ids"] = ["n4"]
+        result = self.save()
+        self.assertEqual(result["revision"], 1)
+        self.assertEqual(result["changed_trees"], [])
+        self.assertEqual(original, {p: p.read_bytes() for p in original})
+        self.assertNotIn("n4", views.accepted(self.state)["current_reality"]["nodes"])
+        self.assertEqual(yaml.safe_load(self.path.read_text())["change_acceptances"], [dict(receipt(), node_ids=["n4"])])
+
+    def test_invalid_change_receipt_cannot_create_a_snapshot(self):
+        self.state["change_acceptances"] = [dict(receipt(), by="assistant")]
+        with self.assertRaisesRegex(ValueError, "configured human"):
+            self.save()
+        self.assertFalse(self.out.exists())
 
     def test_rewording_shows_old_and_new_with_minimal_context(self):
         self.save()

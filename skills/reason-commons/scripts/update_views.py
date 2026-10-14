@@ -11,10 +11,11 @@ from datetime import datetime, timezone
 import html
 import json
 import os
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import sys
 import tempfile
 import textwrap
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 import yaml
 
@@ -58,11 +59,65 @@ def require(condition, message):
         raise ValueError(message)
 
 
+def acceptance_time(value, field, prefix, utc=False):
+    require(isinstance(value, str), f"{prefix}.{field} must be a quoted ISO 8601 timestamp.")
+    try:
+        stamp = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        raise ValueError(f"{prefix}.{field} must be an ISO 8601 timestamp.") from None
+    require(stamp.tzinfo is not None, f"{prefix}.{field} must include a timezone.")
+    if utc:
+        require(stamp.utcoffset() == timezone.utc.utcoffset(stamp), f"{prefix}.{field} must be UTC.")
+
+
+def validate_change_acceptances(state, people):
+    receipts = state.get("change_acceptances", [])
+    require(isinstance(receipts, list), "change_acceptances must be a list.")
+    seen = set()
+    for index, receipt in enumerate(receipts):
+        prefix = f"change_acceptances[{index}]"
+        require(isinstance(receipt, dict), f"{prefix} must be a mapping.")
+        for field in ("proposal_ref", "source_text", "scope", "timezone"):
+            require(isinstance(receipt.get(field), str) and receipt[field].strip(), f"{prefix}.{field} must be nonempty text.")
+        revision = receipt.get("proposal_revision")
+        require(type(revision) is int and revision > 0, f"{prefix}.proposal_revision must be a positive integer.")
+        by = receipt.get("by")
+        require(isinstance(by, str) and by in people, f"{prefix}.by must identify a configured human participant.")
+        require(receipt.get("mode") == "text", f"{prefix}.mode must be text.")
+        require(receipt.get("source") == "conversation", f"{prefix}.source must be conversation.")
+        acceptance_time(receipt.get("recorded_at"), "recorded_at", prefix, utc=True)
+        if "accepted_at" in receipt:
+            acceptance_time(receipt["accepted_at"], "accepted_at", prefix)
+        try:
+            ZoneInfo(receipt["timezone"])
+        except (ZoneInfoNotFoundError, ValueError):
+            raise ValueError(f"{prefix}.timezone must be an IANA timezone.") from None
+        for field in ("node_ids", "link_ids"):
+            refs = receipt.get(field)
+            require(isinstance(refs, list) and all(isinstance(ref, str) and ref.strip() for ref in refs), f"{prefix}.{field} must be a list of historical IDs.")
+            require(len(refs) == len(set(refs)), f"{prefix}.{field} contains duplicate IDs.")
+        require(not set(receipt["node_ids"]) & set(receipt["link_ids"]), f"{prefix} repeats an ID as both node and link.")
+        if "approved_paths" in receipt:
+            paths = receipt["approved_paths"]
+            require(isinstance(paths, list), f"{prefix}.approved_paths must be a list of exact repository-relative paths.")
+            for path in paths:
+                require(isinstance(path, str) and path and "\x00" not in path and "\\" not in path,
+                        f"{prefix}.approved_paths must contain exact repository-relative paths.")
+                require(not PurePosixPath(path).is_absolute() and ".." not in PurePosixPath(path).parts
+                        and str(PurePosixPath(path)) == path and path != ".",
+                        f"{prefix}.approved_paths must contain normalized repository-relative paths.")
+            require(len(paths) == len(set(paths)), f"{prefix}.approved_paths contains duplicate paths.")
+        key = (receipt["proposal_ref"], revision, by)
+        require(key not in seen, f"Duplicate change acceptance: {key}")
+        seen.add(key)
+
+
 def validate(state):
     require(isinstance(state, dict) and state.get("schema_version") == 1, "Expected schema_version: 1.")
     people = state.get("participants", {})
     require(isinstance(people, dict) and "assistant" not in people, "Configure human participants; assistant is reserved.")
     require(state.get("driver") in people, "Driver must be a configured participant.")
+    validate_change_acceptances(state, people)
     trees = state.get("trees", {})
     require(isinstance(trees, dict) and state.get("active_tree") in trees, "active_tree must exist.")
     all_ids, all_nodes = set(), set()
