@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate compact Mermaid diagrams of a PR's complete conversational YAML diff.
+"""Generate one Mermaid change diagram per affected tree of a PR's complete conversational YAML diff.
 
 Normally called through check_pr_trees.py --suggest --format markdown.
 Standalone: render_pr_diagrams.py --base origin/main path/to/reason-commons.yaml
@@ -157,12 +157,24 @@ def fragments(before_documents, after_documents):
                     selected_links.add(ident)
                     selected_nodes.update(ends(link))
         all_links = [tree["links"][ident] for tree in (old, new) for ident in selected_links if ident in tree["links"]]
-        for group in components(selected_nodes, all_links):
-            links = {ident for tree in (old, new) for ident in selected_links
-                     if ident in tree["links"] and ends(tree["links"][ident]) <= group}
-            result.append({"tree": name, "node_ids": sorted(group), "link_ids": sorted(links),
-                           "source": source(name, old, new, group, links)})
+        groups = components(selected_nodes, all_links)
+        isolated = sorted(next(iter(group)) for group in groups if len(group) == 1
+                          and not any(next(iter(group)) in ends(link) for link in all_links))
+        result.append({"tree": name, "node_ids": sorted(selected_nodes), "link_ids": sorted(selected_links),
+                       "group_count": len(groups), "unconnected_node_ids": isolated,
+                       "source": source(name, old, new, selected_nodes, selected_links)})
     return result
+
+
+def connection_note(diagram):
+    """Describe disconnected display groups without asserting missing causal links."""
+    if diagram["group_count"] <= 1 and not diagram["unconnected_node_ids"]:
+        return ""
+    note = f"This change view has {diagram['group_count']} disconnected group(s); no connecting links are shown between them."
+    if diagram["unconnected_node_ids"]:
+        refs = ", ".join(f"`{ident}`" for ident in diagram["unconnected_node_ids"])
+        note += f" Unconnected statements: {refs}. Their connections remain unresolved."
+    return note
 
 
 def markdown(before_documents, after_documents):
@@ -171,14 +183,13 @@ def markdown(before_documents, after_documents):
     if not diagrams:
         return "\n".join(lines + ["No node/link changes; see the scope and backlog work below.", ""])
     lines += [LEGEND, ""]
-    totals = {name: sum(d["tree"] == name for d in diagrams) for name in {d["tree"] for d in diagrams}}
-    seen = {}
     for diagram in diagrams:
-        name = diagram["tree"]
-        seen[name] = seen.get(name, 0) + 1
-        title = name.replace("_", " ").title()
-        suffix = f" · fragment {seen[name]} of {totals[name]}" if totals[name] > 1 else ""
-        lines += [f"**{title}{suffix}**", "", "```mermaid", diagram["source"], "```", ""]
+        title = diagram["tree"].replace("_", " ").title()
+        lines += [f"**{title} · changed reasoning with neighboring context**", ""]
+        note = connection_note(diagram)
+        if note:
+            lines += [note, ""]
+        lines += ["```mermaid", diagram["source"], "```", ""]
     return "\n".join(lines)
 
 

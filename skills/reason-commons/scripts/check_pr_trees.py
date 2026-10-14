@@ -196,7 +196,10 @@ def check_presentation(body, before_documents, after_documents, found):
     # Diagrams must be visible, rather than inside the collapsed technical list.
     visible = DETAILS.sub("", content)
     supplied = [source.strip() for source in MERMAID.findall(visible)]
-    expected = [fragment["source"] for fragment in diagrams.fragments(before_documents, after_documents)]
+    generated = diagrams.fragments(before_documents, after_documents)
+    expected = [diagram["source"] for diagram in generated]
+    if any(diagrams.connection_note(diagram) not in visible for diagram in generated):
+        problems.append("Show the generated unresolved-connection notes beside the tree diagrams.")
     if supplied != expected:
         problems.append("Reasoning changes must contain the generated, visible Mermaid diagrams matching the YAML diff. Run --suggest --format markdown.")
     if DIAGRAMS not in parts or UPDATES not in parts or list(parts).index(DIAGRAMS) > list(parts).index(UPDATES):

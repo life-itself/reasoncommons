@@ -52,12 +52,13 @@ GitHub fills a new PR's description with the template in the browser. Agents or 
 
 ## What the check establishes
 
-`scripts/check_pr_trees.py` compares the working tree with the merge base of `--base` and `HEAD`, across one or more state files. In the reasoning sections, a list item's first backticked ID is its claim; later IDs, such as link endpoints, are description. Template comments are ignored. The checker validates current conversational state using the sibling `update_views.py` helper without writing snapshots or views. `render_pr_diagrams.py` derives compact connected fragments from the old and new YAML, with one-hop context around changed nodes and the old/new endpoints of changed links. Keep all three scripts together when using them in another repository.
+`scripts/check_pr_trees.py` compares the working tree with the merge base of `--base` and `HEAD`, across one or more state files. In the reasoning sections, a list item's first backticked ID is its claim; later IDs, such as link endpoints, are description. Template comments are ignored. The checker validates current conversational state using the sibling `update_views.py` helper without writing snapshots or views. `render_pr_diagrams.py` derives one change diagram per affected tree from the old and new YAML, with one-hop context around changed nodes and the old/new endpoints of changed links. Keep all three scripts together when using them in another repository.
 
 The check fails when:
 
 - a stated tree update has no matching node/link change, a verb disagrees, an actual node/link change is unstated, a served ID does not exist, or required reasoning sections are missing;
 - the visible diagrams are missing or differ from the generated YAML-diff source, appear after the update list or are hidden inside a collapsed block;
+- generated unresolved-connection notes are missing beside the visible diagrams;
 - the complete update list is visible, expanded by default or incomplete inside the collapsed block;
 - the current YAML or acceptance metadata is invalid, or an earlier acceptance receipt has been changed or removed;
 - the Accepted change proposals section is missing, empty or malformed, or names an unrecorded proposal version and participant;
@@ -77,7 +78,7 @@ python3 skills/reason-commons/scripts/check_pr_trees.py path/to/reason-commons.y
 
 This emits the visible **Reasoning changes** section and closed **Tree updates** details block together. Put a short change summary before the diagrams, and the served reasoning, backlog, acceptance references and validation afterward. Preserve the generated Mermaid source: CI checks it against the YAML diff, including qualification text, actual topology, tree/kind/standing labels, AND conditions, previous wording and removed items. If the reasoning needs correcting, edit the YAML through the approved workflow and regenerate. `--format diagrams` emits only the diagram section; the original `--format list` remains available for tooling, but a flat list alone is not a complete PR description.
 
-Separate connected fragments keep each diagram readable. Disconnected observations stay disconnected. ADDED, CHANGED and REMOVED describe the PR diff; PREVIOUS shows an earlier version and CONTEXT gives unchanged neighboring reasoning. These are separate from [P] proposed, [A] accepted for now and [D] disputed. Color supplements explicit text labels. A PR with no node/link changes needs no invented diagram; describe its scope and backlog work normally.
+Each affected tree has one diagram containing all its changed branches and neighboring context. Disconnected observations stay together in that tree diagram without invented arrows; generated notes identify disconnected display groups and unresolved statement connections. This is a change view, not the whole tree: groups may connect through unchanged reasoning outside the bounded context. ADDED, CHANGED and REMOVED describe the PR diff; PREVIOUS shows an earlier version and CONTEXT gives unchanged neighboring reasoning. These are separate from [P] proposed, [A] accepted for now and [D] disputed. Color supplements explicit text labels. A PR with no node/link changes needs no invented diagram; describe its scope and backlog work normally.
 
 Inspect the actual GitHub description for rendered diagrams, readable labels and a collapsed list. A successful source check does not prove rendering or usability. Do not replace generated diagrams with a decorative process chart or expand the technical checklist into the main explanation.
 

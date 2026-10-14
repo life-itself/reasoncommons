@@ -277,6 +277,19 @@ class CheckTests(unittest.TestCase):
         code, out = self.run_check(text=text)
         self.assertEqual(code, 0, out)
 
+    def test_unresolved_connection_note_is_required(self):
+        state = toy()
+        state["trees"]["current_reality"]["nodes"][0]["text"] += " Scope is still under review."
+        self.write(state)
+        _, before, after = check.load_documents([STATE], "main", self.repo)
+        generated = check.diagrams.markdown(before, after)
+        note = check.diagrams.connection_note(check.diagrams.fragments(before, after)[0])
+        self.assertTrue(note)
+        text = body(serves="- `n1`", updates="- changed `n1`", diagrams=generated.replace(note, ""))
+        code, out = self.run_check(text=text)
+        self.assertEqual(code, 1)
+        self.assertIn("unresolved-connection notes", out)
+
     def test_missing_or_altered_diagram_fails(self):
         self.write(with_link(toy()))
         _, before, after = check.load_documents([STATE], "main", self.repo)

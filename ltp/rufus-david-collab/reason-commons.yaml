@@ -1817,12 +1817,20 @@ trees:
       note: Assistant-proposed connection to the accepted r-e-no-shared-actioning; bears on the reasoncommons-5lo question of whether that effect remains current.
     - ref: r-e-skill-no-clear-next
       work: connect_or_explain
+      connection_review: Examine its relationship to r-e-skill-hard-to-scan and the wider Current Reality tree; keep unresolved connections explicit.
       note: 'Assistant question, not yet discussed: does this connect to r-e-unclear-path ("what is next") or to r-e-david-demo-confidence?'
     - ref: r-e-skill-hard-to-scan
       work: examine_usability
+      connection_review: Examine how the scannability and next-step problems relate to each other and to the wider Current Reality tree; their connections are not established.
       note: Compare real user reactions and actual host presentation; simulations suggest problems but do not establish real user experience.
       beads:
       - reasoncommons-zz2
+    - ref: r-e-desktop-diagrams-ascii
+      work: review_connection
+      note: Examine its relationship to r-e-skill-hard-to-scan; the observed rendering failure does not by itself establish a causal relationship.
+    - ref: r-e-change-reports-hide-reasoning
+      work: review_connection
+      note: Examine its relationship to the existing work-to-goal traceability branch; a missing completion-report trace does not establish that the work itself was absent from the trees.
   conflict:
     nodes:
     - id: c-e-objective
@@ -2556,7 +2564,7 @@ trees:
         note: David requested completion of the PR integration and accepted proposal change-pr-acceptance-integration-2026-10-14 revision 1 with the typed reply yes i accept.
     - id: f-e-pr-diagrams-show-changes
       kind: injection
-      text: Pull request descriptions display the changed reasoning as rendered diagrams, with the complete checked update list collapsed by default.
+      text: Pull request descriptions display the changed reasoning together in one rendered diagram per affected tree, identify unresolved connections explicitly, and collapse the complete checked update list by default.
       status: proposed
       implements:
       - f-e-changes-name-reasoning
@@ -2854,7 +2862,8 @@ trees:
       note: Review the PR diagram rule and its proposed inspection benefit. Implementation approval does not endorse the prediction.
     - ref: f-rel-pr-diagrams-aid-inspection
       work: test_pr_diagram_readability
-      note: All 69 helper tests passed. Actual GitHub inspection confirmed eight rendered fragments and a collapsed complete checklist. Initial HTML labels clipped under the renderer width cap; SVG labels and vertical layout for small fragments displayed the complete statements and metadata. Keep review of the predicted inspection benefit and real-use readability open; source validation does not establish usability.
+      feedback: David's 2026-10-14 screenshot showed four separate single-node Current Reality diagrams obscuring their shared tree. Verify one diagram per affected tree, explicit unresolved connections, preserved topology and readable labels.
+      note: All 71 helper tests passed after the grouping correction. Actual GitHub inspection confirmed one diagram per affected tree (Current Reality and Future Reality), complete SVG labels, preserved topology, explicit unresolved-connection notes and a collapsed complete checklist. The larger Future Reality diagram uses GitHub inspection and zoom controls. Keep review of the predicted inspection benefit and real-use readability open; source validation does not establish usability.
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
@@ -4310,6 +4319,30 @@ change_acceptances:
   - skills/reason-commons/SKILL.md
   - skills/reason-commons/references/pull-requests.md
   - skills/reason-commons/references/responses.md
+  - skills/reason-commons/scripts/check_pr_trees.py
+  - skills/reason-commons/scripts/render_pr_diagrams.py
+  - skills/reason-commons/tests/test_check_pr_trees.py
+  - skills/reason-commons/tests/test_render_pr_diagrams.py
+- proposal_ref: change-pr-tree-grouping-2026-10-14
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-14T15:36:59Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: yes i accept
+  scope: 'Show one diagram per affected tree in PR #59, retaining full statements, types, standing and actual topology; explicitly identify unresolved connections; revise the PR-diagram injection and listed connection/readability backlog; update generator, checks, template, guidance, tests and changelog; validate actual GitHub rendering, commit and push to the same PR.'
+  node_ids:
+  - f-e-pr-diagrams-show-changes
+  link_ids: []
+  approved_paths:
+  - .beads/issues.jsonl
+  - .github/pull_request_template.md
+  - changelog.md
+  - docs/testing-reason-commons-scannability.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - skills/reason-commons/SKILL.md
+  - skills/reason-commons/references/pull-requests.md
   - skills/reason-commons/scripts/check_pr_trees.py
   - skills/reason-commons/scripts/render_pr_diagrams.py
   - skills/reason-commons/tests/test_check_pr_trees.py

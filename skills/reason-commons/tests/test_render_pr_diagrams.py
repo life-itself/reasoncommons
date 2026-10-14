@@ -89,14 +89,33 @@ class PRDiagramTests(unittest.TestCase):
         self.assertEqual(fragment["link_ids"], ["limits"])
         self.assertNotIn("unrelated", fragment["source"])
 
-    def test_disconnected_nodes_stay_disconnected_and_split_into_readable_fragments(self):
+    def test_disconnected_nodes_share_one_tree_diagram_without_invented_edges(self):
         fragments = render.fragments({}, document([self.gain, self.scope]))
-        self.assertEqual(len(fragments), 2)
-        for fragment in fragments:
-            self.assertEqual(len(fragment["node_ids"]), 1)
-            self.assertEqual(fragment["link_ids"], [])
-            self.assertNotIn("-->", fragment["source"])
-            self.assertNotIn(".->", fragment["source"])
+        self.assertEqual(len(fragments), 1)
+        fragment = fragments[0]
+        self.assertEqual(fragment["node_ids"], ["gain", "scope"])
+        self.assertEqual(fragment["link_ids"], [])
+        self.assertNotIn("-->", fragment["source"])
+        self.assertNotIn(".->", fragment["source"])
+        text = render.markdown({}, document([self.gain, self.scope]))
+        self.assertEqual(text.count("```mermaid"), 1)
+        self.assertNotIn("fragment 1", text)
+        self.assertIn("Their connections remain unresolved", text)
+        self.assertIn("`gain`, `scope`", text)
+
+    def test_disconnected_chains_share_a_diagram_but_different_trees_do_not(self):
+        other = node("other", "Another finding with a qualified scope.")
+        scope2 = node("scope2", "Its applicability remains uncertain.")
+        extra = link("extra", ["other"], "scope2")
+        after = document([self.gain, self.scope, other, scope2], [self.limits, extra])
+        after["fixture.yaml"]["trees"]["goal"] = {"nodes": [node("goal", "Understand applicability.")], "links": []}
+        diagrams = render.fragments({}, after)
+        self.assertEqual([d["tree"] for d in diagrams], ["goal", "current_reality"])
+        current = diagrams[1]
+        self.assertEqual(current["link_ids"], ["extra", "limits"])
+        self.assertEqual(current["group_count"], 2)
+        self.assertEqual(current["unconnected_node_ids"], [])
+        self.assertIn("2 disconnected group(s)", render.connection_note(current))
 
     def test_labels_escape_markup_and_opaque_ids_do_not_control_roles(self):
         item = node('end " odd', 'A "quoted" finding & <scope> may apply.')

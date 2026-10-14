@@ -5,7 +5,7 @@ format, but same spirit — human-readable, most recent first.
 
 ## 2026-10-14 — Change proposals before implementation
 
-Reason Commons now presents each requested project change, including “fix it,” as a typed proposal with explicit tree updates, waits for typed acceptance, and records the identity, version, scope, recording time and exact reply before implementation. Pull requests show checked reasoning diagrams with the complete change list collapsed and carry recorded approval; completion reports retain the reasoning trace, next-step recommendations have their own format, and desktop diagrams identify each node's tree and type.
+Reason Commons now presents each requested project change, including “fix it,” as a typed proposal with explicit tree updates, waits for typed acceptance, and records the identity, version, scope, recording time and exact reply before implementation. Pull requests show checked reasoning together in one diagram per affected tree, explicitly identify unresolved connections, keep the complete change list collapsed and carry recorded approval; completion reports retain the reasoning trace, next-step recommendations have their own format, and desktop diagrams identify each node's tree and type.
 
 ## 2026-10-13 — Pull requests name the reasoning they serve
 
