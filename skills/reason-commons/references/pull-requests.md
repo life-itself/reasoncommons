@@ -81,6 +81,8 @@ Separate connected fragments keep each diagram readable. Disconnected observatio
 
 Inspect the actual GitHub description for rendered diagrams, readable labels and a collapsed list. A successful source check does not prove rendering or usability. Do not replace generated diagrams with a decorative process chart or expand the technical checklist into the main explanation.
 
+Keep the generated frontmatter, including the [Mermaid label setting](https://mermaid.js.org/config/schema-docs/config-properties-htmllabels.html) `htmlLabels: false`: SVG labels avoid the clipping observed with GitHub's capped HTML labels. Inspect the full statements, including long metadata lines, rather than counting rendered frames alone.
+
 ## Run locally and in CI
 
 ```sh

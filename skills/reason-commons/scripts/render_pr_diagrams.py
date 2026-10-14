@@ -83,7 +83,9 @@ def node_label(name, item, operation):
 
 
 def source(name, old, new, selected_nodes, selected_links):
-    lines, aliases = ["flowchart LR"], {}
+    # SVG text avoids the host's capped HTML foreignObject labels clipping lines.
+    direction = "TB" if len(selected_nodes) <= 3 else "LR"
+    lines, aliases = ["---", "config:", "  htmlLabels: false", "  flowchart:", "    wrappingWidth: 360", "---", f"flowchart {direction}"], {}
     changed_nodes = differences(old["nodes"], new["nodes"])
     for ident in sorted(selected_nodes):
         before, after = old["nodes"].get(ident), new["nodes"].get(ident)

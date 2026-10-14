@@ -2854,7 +2854,7 @@ trees:
       note: Review the PR diagram rule and its proposed inspection benefit. Implementation approval does not endorse the prediction.
     - ref: f-rel-pr-diagrams-aid-inspection
       work: test_pr_diagram_readability
-      note: Check generated diagram topology, labels and standings, missing or incorrect diagrams, collapsed checklist completeness and actual GitHub rendering. Inspect real review usability after helper tests.
+      note: All 69 helper tests passed. Actual GitHub inspection confirmed eight rendered fragments and a collapsed complete checklist. Initial HTML labels clipped under the renderer width cap; SVG labels and vertical layout for small fragments displayed the complete statements and metadata. Keep review of the predicted inspection benefit and real-use readability open; source validation does not establish usability.
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
