@@ -3,6 +3,10 @@
 Notable changes to this project. Not strictly [Keep a Changelog](https://keepachangelog.com/)
 format, but same spirit — human-readable, most recent first.
 
+## 2026-10-14 — Reliable reasoning checks before merging
+
+Pull requests can adjust supported diagram display settings while the reasoning remains checked against the tree. Merging into main requires a successful reasoning check and an up-to-date branch, including for administrators.
+
 ## 2026-10-14 — Change proposals before implementation
 
 Reason Commons now presents each requested project change, including “fix it,” as a typed proposal with explicit tree updates, waits for typed acceptance, and records the identity, version, scope, recording time and exact reply before implementation. Pull requests show checked reasoning together in one diagram per affected tree, explicitly identify unresolved connections, keep the complete change list collapsed and carry recorded approval; completion reports retain the reasoning trace, next-step recommendations have their own format, and desktop diagrams identify each node's tree and type.
