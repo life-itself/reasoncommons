@@ -114,19 +114,8 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
   the worst case: the page looks wrong in a way that implicates your change.
   Filed upstream as https://github.com/flowershow/flowershow/issues/1363.
 - **Checking phone width.** Use `node scripts/phone-check.mjs <url> [out.png]`, which emulates a 375px device over the DevTools protocol and lists anything overflowing. Plain `chrome --headless --window-size=375,…` screenshots lie: headless Chrome won't size a window below 500px, so you get a cropped 500px layout with text apparently clipped at the right edge. That artefact is what GH #20 was first reported from.
-- Root docs are lowercase (`motivation.md`, `changelog.md`) so Flowershow gives them clean published URLs — except `README.md` and `AGENTS.md`, which keep their exact uppercase names because tooling (GitHub, Flowershow's homepage, Claude Code/Codex) looks them up by that literal filename.
+- Root docs are lowercase (`motivation.md`) so Flowershow gives them clean published URLs — except `README.md` and `AGENTS.md`, which keep their exact uppercase names because tooling (GitHub, Flowershow's homepage, Claude Code/Codex) looks them up by that literal filename.
 
 ## Changelog
 
-This repo keeps a `changelog.md` (dated entries, newest first). At the end
-of a work session, if something worth recording actually shipped — skip
-trivial sessions (typo fixes, dead ends, no visible outcome) — draft a
-dated entry. Match the entry's weight to what a reader would actually care
-about: a real feature/fix/content gets a title, one or two sentences, and a
-screenshot if something visual shipped; small stuff (cleanup, rename,
-reorg, tidying) gets one plain sentence, no bullets, no screenshot — even
-if several small things happened, that's still one combined sentence, not
-a bullet per thing. Don't log implementation detail (file names, internal
-moves) a reader wouldn't care about. First time writing an entry in this
-repo, or if the format is unclear: fetch and follow
-https://raw.githubusercontent.com/life-itself/changelog/main/CONVENTION.md
+This repo follows the [life-itself changelog convention](https://github.com/life-itself/changelog) (`CONVENTION.md`). One file per entry in `changelog/`, named `YYYY-MM-DD-slug.md`, with frontmatter `date`, `title`, `authors` and `promote: false`. Flowershow builds the `/changelog` timeline from the folder, so there is no index file to maintain. Screenshots go in `changelog/images/`. Authors are handles matching a profile page in `people/` (e.g. `rufus-pollock` → `people/rufus-pollock.md`, with `title` and a GitHub `avatar`). At a session checkpoint, if something reader-facing shipped, draft an entry: default to none for routine sessions, and link to the live feature where there is one. Fetch and follow the convention for the full rules.

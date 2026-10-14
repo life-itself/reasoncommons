@@ -2,7 +2,7 @@
 title: We argue badly, and nothing accumulates. How could we do better?
 created: 2026-07-05
 date: 2026-07-05
-authors: [ "Rufus Pollock" ]
+authors: ["rufus-pollock"]
 ---
 
 # We argue badly, and nothing accumulates. How could we do better?

@@ -28,6 +28,10 @@
         "href": "/blog"
       },
       {
+        "name": "Changelog",
+        "href": "/changelog"
+      },
+      {
         "name": "About",
         "href": "/about"
       }
