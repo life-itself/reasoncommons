@@ -1307,6 +1307,38 @@ trees:
         attribution: assistant
         mode: text
         note: Inspection of the completion response after David questioned whether the fix followed the tree-update rule, 2026-10-14.
+    - id: r-e-rewind-untracked-saves
+      kind: cause
+      text: Shell-written working YAML is outside Claude Code's file checkpoints.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: r-e-rewind-state-diverges
+      kind: undesirable_effect
+      text: After conversation-only rewind, the working YAML can still contain reasoning from the undone turn.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: r-e-rewind-unreconciled-files
+      kind: cause
+      text: The working YAML can be restored while the helper-generated diagrams remain from the later state.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: r-e-rewind-views-stale
+      kind: undesirable_effect
+      text: After YAML restoration, diagrams can display accepted reasoning that is no longer current.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     links:
     - id: r-rel-unclear-drives-redesigning
       from:
@@ -1693,6 +1725,26 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: r-rel-rewind-untracked-diverges
+      from:
+      - r-e-rewind-untracked-saves
+      to: r-e-rewind-state-diverges
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: r-rel-rewind-unreconciled-stales-views
+      from:
+      - r-e-rewind-unreconciled-files
+      to: r-e-rewind-views-stale
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     backlog:
     - ref: r-e-david-demo-confidence
       work: clarify_demo_gap
@@ -1831,6 +1883,12 @@ trees:
     - ref: r-e-change-reports-hide-reasoning
       work: review_connection
       note: Examine its relationship to the existing work-to-goal traceability branch; a missing completion-report trace does not establish that the work itself was absent from the trees.
+    - ref: r-rel-rewind-untracked-diverges
+      work: verify_native_rewind
+      note: Issue 48 reports untracked shell saves; native checkpoint capture and restoration remain unobserved.
+    - ref: r-rel-rewind-unreconciled-stales-views
+      work: verify_view_regeneration
+      note: Check the unchanged helper after accepted-state restoration; do not infer native checkpoint behavior from helper simulation.
   conflict:
     nodes:
     - id: c-e-objective
@@ -2576,6 +2634,40 @@ trees:
         attribution: explicit
         mode: text
         note: David asked to correct the missing PR diagrams, then accepted proposal change-pr-diagrams-2026-10-14 revision 1.
+    - id: f-e-rewind-checkpointed-save
+      kind: injection
+      text: Save working YAML through the host's tracked file-editing tools when its rewind depends on them.
+      addresses:
+      - r-e-rewind-untracked-saves
+      - r-e-rewind-state-diverges
+      implements:
+      - f-e-use-while-building
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-e-rewind-refresh-derived-views
+      kind: injection
+      text: After working-YAML restoration, validate and regenerate views before continuing; preserve prior snapshots and record reversals of accepted reasoning as new revisions.
+      addresses:
+      - r-e-rewind-views-stale
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-e-rewind-coherent-traceable
+      kind: desirable_effect
+      text: After code-and-conversation restoration and regeneration, current reasoning and accepted diagrams agree while earlier accepted revisions remain inspectable.
+      assumptions:
+      - text: Reversing current reasoning does not require erasing its earlier accepted revisions.
+        by: assistant
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     links:
     - id: f-rel-use-makes-users
       from:
@@ -2781,6 +2873,20 @@ trees:
       assumptions:
       - text: Generated diagrams preserve the YAML diff, qualifications, actual topology and reasoning standing, render legibly in GitHub, and help people inspect the changed reasoning; validating source alone does not establish usability.
         by: assistant
+    - id: f-rel-rewind-recovery-coherent
+      from:
+      - f-e-rewind-checkpointed-save
+      - f-e-rewind-refresh-derived-views
+      to: f-e-rewind-coherent-traceable
+      relation: produces
+      assumptions:
+      - text: The user selects code-and-conversation restore for an available checkpoint, the edited file is restorable in the actual host, and the existing helper validates and regenerates views successfully.
+        by: assistant
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     backlog:
     - ref: f-rel-use-makes-users
       work: test_causality
@@ -2874,6 +2980,15 @@ trees:
       feedback: Run 38586022836 rejected PR 59 because added Mermaid display configuration differed from the generated source, although all eight graph bodies matched. The later merged PR corrected its generated configuration.
       note: All 74 helper tests passed on main after PR 59, and PR 61 passed the required GitHub Actions Tree check. Supported wrapping widths, key order, equivalent YAML formatting and omitted optional width pass; changed statements, standings, relations and endpoints still fail. Invalid or unsupported configuration has a specific error. Grouped diagrams, htmlLabels false, unresolved-connection notes, collapsed lists, receipts and coverage checks remain intact. Actual GitHub inspection confirmed the rendered no-node/link-change declaration, served reasoning, closed complete-checklist disclosure, backlog and acceptance reference. Real-use readability review remains open.
       beads: [reasoncommons-ilh]
+    - ref: f-rel-rewind-recovery-coherent
+      work: review_fragment
+      note: Review the two existing rewind interventions and their shared outcome; implementation approval does not endorse the prediction.
+    - ref: f-rel-rewind-recovery-coherent
+      work: verify_reversal_and_real_use
+      note: All 74 existing tests pass on current main. A temporary remote-work gold-fixture check of the unchanged helper verified accepted A-B-A revisions 1, 2 and 3, intact earlier snapshots, regenerated current views and no new revision for WIP-only restoration. Native checkpoint and real-user verification remain open.
+    - ref: f-e-rewind-refresh-derived-views
+      work: examine_approval_receipt_loss
+      note: Whole-file restoration may remove later approval receipts. This is a deferred negative-branch inquiry; PR 60 does not implement a receipt ledger or recovery command.
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
@@ -3468,6 +3583,37 @@ trees:
       acceptance_source: 'scqh.md: Tree cleanup (2026-09-26).'
       derived_from:
       - r-e-users-candidates
+    - id: p-e-rewind-recovery
+      kind: objective
+      text: Reasoning sessions can resume from a coherent restored state while retaining accepted history.
+      implements:
+      - f-e-rewind-coherent-traceable
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: p-e-rewind-unreconciled-artifacts
+      kind: obstacle
+      text: Restoring the working YAML alone does not ensure that diagrams reflect the restored accepted reasoning.
+      derived_from:
+      - r-e-rewind-views-stale
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: p-e-rewind-recovery-ready
+      kind: intermediate_objective
+      text: Checkpointable working-file edits, intact accepted history and validated view regeneration are available before resumed work.
+      implements:
+      - f-e-rewind-checkpointed-save
+      - f-e-rewind-refresh-derived-views
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     links:
     - id: p-rel-both-routes-overcomes
       from:
@@ -3734,6 +3880,26 @@ trees:
       source:
         parent_designation_id: p-d-obj-real-users
         note: Explicit rendering of the source hierarchy; no new endorsement inferred.
+    - id: p-rel-rewind-ready-overcomes-artifacts
+      from:
+      - p-e-rewind-recovery-ready
+      to: p-e-rewind-unreconciled-artifacts
+      relation: overcomes
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: p-rel-rewind-ready-for-recovery
+      from:
+      - p-e-rewind-recovery-ready
+      to: p-e-rewind-recovery
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     backlog:
     - ref: p-rel-both-routes-overcomes
       work: review_relation
@@ -3790,6 +3956,9 @@ trees:
     - ref: p-e-licensing-unclear
       work: review_historical_scope
       note: Preserve the recorded correction; decide whether the older claim has any remaining current meaning.
+    - ref: p-rel-rewind-ready-overcomes-artifacts
+      work: verify_recovery_conditions
+      note: Observe actual host checkpoint availability and successful validation and view regeneration; retain earlier accepted snapshots.
   transition:
     nodes:
     - id: t-e-used-once
@@ -4082,6 +4251,38 @@ trees:
           id: t-d-eff-applied
           entity_id: t-e-eff-applied
           role: transition_expected_effect
+    - id: t-e-rewind-implement
+      kind: action
+      text: Update the skill to save working YAML through tracked file-editing tools and rerun the existing views helper after restoration.
+      implements:
+      - p-e-rewind-recovery-ready
+      derived_from:
+      - t-e-act-friction-log
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: t-e-rewind-test
+      kind: action
+      text: Check the original helper on the remote-work gold fixture after accepted-state reversal and report native-host verification separately.
+      implements:
+      - p-e-rewind-recovery-ready
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: t-e-rewind-verified
+      kind: expected_effect
+      text: Evidence distinguishes the helper's accepted-history and regenerated-view behavior from native checkpoint restoration and real-user benefit.
+      implements:
+      - p-e-rewind-recovery
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     links:
     - id: t-rel-funding-produces
       from:
@@ -4193,6 +4394,26 @@ trees:
         attribution: driver_default
         mode: unknown
         note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: t-rel-rewind-implement-before-test
+      from:
+      - t-e-rewind-implement
+      to: t-e-rewind-test
+      relation: precedes
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: t-rel-rewind-test-produces-evidence
+      from:
+      - t-e-rewind-test
+      to: t-e-rewind-verified
+      relation: produces
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     backlog:
     - ref: t-rel-funding-produces
       work: test_causality
@@ -4225,6 +4446,19 @@ trees:
     - ref: t-e-need-repeated-use
       work: justify_actions
       note: Existing condition and need are not yet connected to the actions; explain why the chosen steps will yield repeated useful use.
+    - ref: t-e-rewind-implement
+      work: review_narrowed_implementation
+      note: Revision 2 limits PR 60 to PR 56 behavior plus reasoning and required coordination. Existing implementation bead reasoncommons-909 records the correction; PR 56 remains unchanged.
+      beads:
+      - reasoncommons-909
+    - ref: t-e-rewind-test
+      work: verify_original_helper_and_native_rewind
+      note: All 74 existing tests and a temporary remote-work gold-fixture reversal/WIP check passed with the helper unchanged from current main. Native checkpoint verification is pending and has not been directly observed. No new test module or procedure document is introduced.
+      beads:
+      - reasoncommons-909
+    - ref: t-e-rewind-verified
+      work: assess_user_benefit
+      note: Helper persistence checks do not establish confidence, usability or adoption.
 change_acceptances:
 - proposal_ref: change-node-roles-2026-10-14
   by: david
@@ -4377,3 +4611,91 @@ change_acceptances:
   - .beads/issues.jsonl
   - changelog.md
   - .github/branch-protection.json
+- proposal_ref: change-rewind-with-tree-trace-2026-10-14
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-14T16:27:09Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: I accept
+  scope: 'Implement revision 1 of the displayed rewind proposal on a separate branch and open a new PR against main, leaving PR 56 unchanged: tracked working-file saves, validated view regeneration and append-only accepted-history reversal, immutable local receipt preservation and read-only recovery output, remote-work recovery regressions and native-host test documentation, the 15 proposed nodes and 9 proposed links with their cross-tree traces and review/test backlog, friction log, separate implementation work and existing handoff checkpoint, and changelog. Preserve prior acceptance receipts and existing reasoning standing.'
+  node_ids:
+  - r-e-rewind-untracked-saves
+  - r-e-rewind-state-diverges
+  - r-e-rewind-unreconciled-files
+  - r-e-rewind-views-stale
+  - r-e-rewind-receipts-lost
+  - f-e-rewind-checkpointed-save
+  - f-e-rewind-refresh-derived-views
+  - f-e-rewind-preserve-approvals
+  - f-e-rewind-coherent-traceable
+  - p-e-rewind-recovery
+  - p-e-rewind-unreconciled-artifacts
+  - p-e-rewind-recovery-ready
+  - t-e-rewind-implement
+  - t-e-rewind-test
+  - t-e-rewind-verified
+  link_ids:
+  - r-rel-rewind-untracked-diverges
+  - r-rel-rewind-unreconciled-stales-views
+  - r-rel-rewind-unreconciled-loses-receipts
+  - f-rel-rewind-recovery-coherent
+  - f-rel-rewind-preserves-approval-trace
+  - p-rel-rewind-ready-overcomes-artifacts
+  - p-rel-rewind-ready-for-recovery
+  - t-rel-rewind-implement-before-test
+  - t-rel-rewind-test-produces-evidence
+  approved_paths:
+  - skills/reason-commons/SKILL.md
+  - skills/reason-commons/references/views.md
+  - skills/reason-commons/references/schema.md
+  - skills/reason-commons/scripts/update_views.py
+  - skills/reason-commons/tests/test_update_views.py
+  - docs/testing-reason-commons-rewind.md
+  - docs/beads-reasoning.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - ltp/rufus-david-collab/friction-log.md
+  - .beads/issues.jsonl
+  - changelog.md
+- proposal_ref: change-rewind-with-tree-trace-2026-10-14
+  proposal_revision: 2
+  by: david
+  recorded_at: '2026-10-15T05:30:20Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: 'yes i accept.  also, the current PR shows conflicts to resolve:'
+  scope: Narrow PR 60 to the two instruction changes in PR 56 and its existing reasoning, acceptance and required Beads checkpoint. Remove the receipt ledger, recovery command, added tests and supporting docs; restore the seven implementation/support paths to current main. Revise eight existing proposed nodes, remove two proposed nodes, revise one proposed link and remove two proposed links, with no new node/link IDs. Keep four generated tree diagrams and preserve all earlier acceptance receipts and reasoning standing. Resolve conflicts with current main, retaining its unrelated changes and its migration of the approved changelog note from changelog.md into one dated entry; the final diff remains four files. Leave PR 56 unchanged and update PR 60.
+  node_ids:
+  - r-e-rewind-unreconciled-files
+  - r-e-rewind-receipts-lost
+  - f-e-rewind-preserve-approvals
+  - f-e-rewind-coherent-traceable
+  - p-e-rewind-recovery
+  - p-e-rewind-unreconciled-artifacts
+  - p-e-rewind-recovery-ready
+  - t-e-rewind-implement
+  - t-e-rewind-test
+  - t-e-rewind-verified
+  link_ids:
+  - r-rel-rewind-unreconciled-loses-receipts
+  - f-rel-rewind-recovery-coherent
+  - f-rel-rewind-preserves-approval-trace
+  approved_paths:
+  - skills/reason-commons/SKILL.md
+  - changelog.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+  - docs/beads-reasoning.md
+  - docs/testing-reason-commons-rewind.md
+  - ltp/rufus-david-collab/friction-log.md
+  - skills/reason-commons/references/schema.md
+  - skills/reason-commons/references/views.md
+  - skills/reason-commons/scripts/update_views.py
+  - skills/reason-commons/tests/test_update_views.py
+  - changelog/2026-10-15-rewind-reasoning-sessions.md
+  path_resolution:
+    from: changelog.md
+    to: changelog/2026-10-15-rewind-reasoning-sessions.md
+    reason: Current main migrated the changelog after the displayed proposal; the user also explicitly requested conflict resolution. This keeps the same approved rewind announcement in the current structure.
