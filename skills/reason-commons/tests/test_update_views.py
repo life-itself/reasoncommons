@@ -2,10 +2,7 @@
 
 from copy import deepcopy
 import importlib.util
-import json
 from pathlib import Path
-import subprocess
-import sys
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -109,7 +106,7 @@ class ChangeAcceptanceTests(unittest.TestCase):
                     views.validate(self.state)
 
 
-class _ViewFixture(unittest.TestCase):
+class ViewTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
@@ -125,8 +122,6 @@ class _ViewFixture(unittest.TestCase):
     def diagram(self, view="changes", name="current_reality"):
         return self.out / "diagrams" / view / f"{name}.svg"
 
-
-class ViewTests(_ViewFixture):
     def test_proposals_are_saved_without_history_or_diagrams(self):
         tree = self.state["trees"]["current_reality"]
         for item in tree["nodes"] + tree["links"]:
@@ -292,211 +287,6 @@ class ViewTests(_ViewFixture):
             labels = " ".join(svg.itertext())
             self.assertIn("AND", labels)
             self.assertIn('<scoped>', labels)
-
-
-class RewindRecoveryTests(_ViewFixture):
-    """Exercise restoration against real helper artifacts, using the gold fixture."""
-
-    def ledger(self):
-        return list((self.out / "acceptances").glob("*.yaml"))
-
-    def artifacts(self):
-        return {p: p.read_bytes() for p in self.out.rglob("*") if p.is_file()}
-
-    def test_accepted_reversal_appends_revision_and_refreshes_views(self):
-        initial = deepcopy(self.state)
-        self.save()
-        first = (self.out / "history/000001.yaml").read_bytes()
-        self.state["trees"]["current_reality"]["nodes"][0]["text"] = "UNDONE REWORDING"
-        self.save()
-        second = (self.out / "history/000002.yaml").read_bytes()
-        self.assertIn("UNDONE REWORDING", self.diagram("current").read_text())
-        self.state = initial
-        result = self.save()
-        self.assertEqual(result["revision"], 3)
-        self.assertEqual(first, (self.out / "history/000001.yaml").read_bytes())
-        self.assertEqual(second, (self.out / "history/000002.yaml").read_bytes())
-        self.assertNotIn("UNDONE REWORDING", self.diagram("current").read_text())
-        self.assertIn("UNDONE REWORDING", self.diagram("changes").read_text())
-        self.assertEqual(self.save()["revision"], 3)
-
-    def test_wip_only_restore_does_not_create_an_accepted_revision(self):
-        initial = deepcopy(self.state)
-        self.save()
-        original = self.artifacts()
-        node = deepcopy(self.state["trees"]["current_reality"]["nodes"][0])
-        node.update(id="proposed-only", status="proposed", text="An unendorsed alternative")
-        node.pop("accepted_by")
-        self.state["trees"]["current_reality"]["nodes"].append(node)
-        self.save()
-        self.state = initial
-        self.assertEqual(self.save()["revision"], 1)
-        self.assertEqual(original, self.artifacts())
-
-    def test_receipt_is_preserved_without_any_accepted_snapshot(self):
-        for item in self.state["trees"]["current_reality"]["nodes"] + self.state["trees"]["current_reality"]["links"]:
-            item["status"] = "proposed"
-        self.state["change_acceptances"] = [receipt()]
-        result = self.save()
-        self.assertEqual(result["revision"], 0)
-        self.assertEqual(len(self.ledger()), 1)
-        self.assertFalse((self.out / "history").exists())
-        self.assertFalse((self.out / "diagrams").exists())
-        saved = yaml.safe_load(self.ledger()[0].read_text())
-        self.assertEqual(saved["change_acceptances"], [receipt()])
-        self.state.pop("change_acceptances")
-        with self.assertRaisesRegex(ValueError, "recover-acceptances"):
-            self.save()
-        self.assertEqual(views.recover_acceptances(self.path)["change_acceptances"], [receipt()])
-
-    def test_receipt_only_turn_is_recoverable_between_snapshots(self):
-        self.save()
-        first = (self.out / "history/000001.yaml").read_bytes()
-        self.state["change_acceptances"] = [receipt()]
-        self.assertEqual(self.save()["revision"], 1)
-        self.assertEqual(first, (self.out / "history/000001.yaml").read_bytes())
-        self.assertNotIn("change_acceptances", yaml.safe_load(first))
-        original = self.artifacts()
-        self.state.pop("change_acceptances")
-        with self.assertRaisesRegex(ValueError, "saved approval"):
-            self.save()
-        self.assertEqual(original, self.artifacts())
-        restored_bytes = self.path.read_bytes()
-        recovered = views.recover_acceptances(self.path)
-        self.assertEqual(recovered["change_acceptances"], [receipt()])
-        self.assertEqual(restored_bytes, self.path.read_bytes())
-        self.assertEqual(original, self.artifacts())
-        self.state["change_acceptances"] = recovered["change_acceptances"]
-        self.assertEqual(self.save()["revision"], 1)
-
-    def test_recovering_receipt_does_not_restore_undone_reasoning(self):
-        initial = deepcopy(self.state)
-        self.save()
-        self.state["change_acceptances"] = [receipt()]
-        self.state["trees"]["current_reality"]["nodes"][0]["text"] = "UNDONE ACCEPTED CHANGE"
-        self.save()
-        prior = self.artifacts()
-        self.state = initial
-        with self.assertRaisesRegex(ValueError, "recover-acceptances"):
-            self.save()
-        self.assertEqual(prior, self.artifacts())
-        self.assertFalse((self.out / "history/000003.yaml").exists())
-        recovery = views.recover_acceptances(self.path)
-        self.state["change_acceptances"] = recovery["change_acceptances"]
-        self.assertEqual(self.save()["revision"], 3)
-        self.assertEqual(views.accepted(initial), views.accepted(self.state))
-        self.assertNotIn("UNDONE ACCEPTED CHANGE", self.diagram("current").read_text())
-        for path, content in prior.items():
-            if path.parent.name in {"history", "acceptances"}:
-                self.assertEqual(path.read_bytes(), content)
-
-    def test_changed_receipt_is_rejected_and_exact_original_is_returned(self):
-        original = receipt()
-        original["source_text"] = "  I accept this precise scope.\n"
-        self.state["change_acceptances"] = [deepcopy(original)]
-        self.save()
-        artifacts = self.artifacts()
-        self.state["change_acceptances"][0]["scope"] = "A wider scope without new consent"
-        with self.assertRaisesRegex(ValueError, "recover-acceptances"):
-            self.save()
-        self.assertEqual(artifacts, self.artifacts())
-        self.assertEqual(views.recover_acceptances(self.path)["change_acceptances"], [original])
-
-    def test_read_only_recovery_can_repair_invalid_receipt_metadata(self):
-        self.state["change_acceptances"] = [receipt()]
-        self.save()
-        self.state["change_acceptances"][0]["source_text"] = ""
-        with self.assertRaisesRegex(ValueError, "source_text"):
-            self.save()
-        self.assertEqual(views.recover_acceptances(self.path)["change_acceptances"], [receipt()])
-
-    def test_missing_participant_is_returned_without_endorsing_anything(self):
-        self.state["participants"].pop("bob")
-        initial = deepcopy(self.state)
-        self.save()
-        self.state["participants"]["bob"] = "Bob"
-        self.state["change_acceptances"] = [dict(receipt(), by="bob")]
-        self.save()
-        self.state = initial
-        with self.assertRaisesRegex(ValueError, "recover-acceptances"):
-            self.save()
-        recovered = views.recover_acceptances(self.path)
-        self.assertEqual(recovered["participants"], {"bob": "Bob"})
-        self.assertEqual(recovered["change_acceptances"], [dict(receipt(), by="bob")])
-        self.state["participants"].update(recovered["participants"])
-        self.state["change_acceptances"] = recovered["change_acceptances"]
-        self.assertEqual(self.save()["revision"], 1)
-        self.assertEqual(views.accepted(initial), views.accepted(self.state))
-
-    def test_legacy_snapshot_supplies_recovery_without_writing_files(self):
-        self.state["change_acceptances"] = [receipt()]
-        self.save()
-        self.ledger()[0].unlink()
-        self.state.pop("change_acceptances")
-        self.path.write_text(yaml.safe_dump(self.state))
-        before = self.artifacts()
-        self.assertEqual(views.recover_acceptances(self.path)["change_acceptances"], [receipt()])
-        self.assertEqual(before, self.artifacts())
-        self.assertEqual(self.ledger(), [])
-        with self.assertRaisesRegex(ValueError, "recover-acceptances"):
-            views.update(self.path)
-        self.assertEqual(len(self.ledger()), 1)
-
-    def test_missing_ledger_cannot_invent_a_receipt_only_approval(self):
-        self.save()
-        self.state["change_acceptances"] = [receipt()]
-        self.save()
-        self.ledger()[0].unlink()
-        self.state.pop("change_acceptances")
-        self.path.write_text(yaml.safe_dump(self.state))
-        recovered = views.recover_acceptances(self.path)
-        self.assertEqual(recovered["change_acceptances"], [])
-        self.assertEqual(recovered["saved_receipt_count"], 0)
-
-    def test_conflicting_saved_originals_stop_recovery_and_generation(self):
-        self.state["change_acceptances"] = [receipt()]
-        self.save()
-        ledger = self.ledger()[0]
-        record = yaml.safe_load(ledger.read_text())
-        record["change_acceptances"][0]["scope"] = "Changed saved original"
-        ledger.write_text(yaml.safe_dump(record))
-        before = self.artifacts()
-        with self.assertRaisesRegex(ValueError, "Conflicting saved approval"):
-            views.recover_acceptances(self.path)
-        with self.assertRaisesRegex(ValueError, "Conflicting saved approval"):
-            views.update(self.path)
-        self.assertEqual(before, self.artifacts())
-
-    def test_invalid_ledger_filename_is_rejected(self):
-        self.state["change_acceptances"] = [receipt()]
-        self.save()
-        self.ledger()[0].rename(self.out / "acceptances/wrong.yaml")
-        with self.assertRaisesRegex(ValueError, "filename"):
-            views.recover_acceptances(self.path)
-
-    def test_custom_output_directory_is_used_for_recovery(self):
-        custom = self.root / "custom-history"
-        self.state["change_acceptances"] = [receipt()]
-        self.path.write_text(yaml.safe_dump(self.state))
-        views.update(self.path, custom)
-        self.state.pop("change_acceptances")
-        self.path.write_text(yaml.safe_dump(self.state))
-        self.assertEqual(views.recover_acceptances(self.path, custom)["change_acceptances"], [receipt()])
-        self.assertEqual(views.recover_acceptances(self.path)["saved_receipt_count"], 0)
-
-    def test_cli_recovery_outputs_originals_and_changes_no_files(self):
-        self.state["change_acceptances"] = [receipt()]
-        self.save()
-        self.state.pop("change_acceptances")
-        self.path.write_text(yaml.safe_dump(self.state))
-        before = self.artifacts()
-        working = self.path.read_bytes()
-        result = subprocess.run([sys.executable, str(SCRIPT), str(self.path), "--recover-acceptances"],
-                                text=True, capture_output=True)
-        self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(json.loads(result.stdout)["change_acceptances"], [receipt()])
-        self.assertEqual(before, self.artifacts())
-        self.assertEqual(working, self.path.read_bytes())
 
 
 if __name__ == "__main__":

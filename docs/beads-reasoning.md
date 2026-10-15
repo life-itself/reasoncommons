@@ -39,7 +39,7 @@ The standard views helper validates reasoning and ignores these coordination fie
 
 ## Finish or hand off
 
-1. Save the reasoning YAML through the host's file-editing tools and run `python3 skills/reason-commons/scripts/update_views.py ltp/rufus-david-collab/reason-commons.yaml` as the skill requires. Keep generated `.reason-commons/` history, approval recovery records and diagrams local. After rewind restores the YAML, reconcile saved approval receipts and regenerate views following [the recovery instructions](../skills/reason-commons/references/views.md) before continuing; restoring historical approval does not reaccept undone reasoning or undo completed Beads work.
+1. Save the reasoning YAML atomically and run `python3 skills/reason-commons/scripts/update_views.py ltp/rufus-david-collab/reason-commons.yaml` as the skill requires. Keep generated `.reason-commons/` history and diagrams local.
 2. Update the relevant work bead with what was addressed, what remains and the stable YAML IDs. Complete only work actually finished. A completed task does not make a statement true or accepted; an endorsed statement may still need further testing.
 3. Refresh `reasoncommons-a4l` with the working file, current work bead, next question or step, and any blocker. Update `work_tracking.current` if the selection changed. Keep the handoff open for later sessions and avoid duplicate priority lists.
 4. Record friction when encountered. Reuse or create separate beads for implementation work arising from the reasoning; handle those in separate sessions. Keep issues labelled `human` for Rufus to close.

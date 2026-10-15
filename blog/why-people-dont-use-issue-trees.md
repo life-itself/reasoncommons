@@ -2,7 +2,7 @@
 title: Why don't people use issue trees, even when they help?
 created: 2026-07-06
 date: 2026-07-06
-authors: [ "Rufus Pollock" ]
+authors: ["rufus-pollock"]
 ---
 
 # Why don't people use issue trees, even when they help?

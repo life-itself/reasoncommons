@@ -57,7 +57,7 @@ GitHub fills a new PR's description with the template in the browser. Agents or 
 The check fails when:
 
 - a stated tree update has no matching node/link change, a verb disagrees, an actual node/link change is unstated, a served ID does not exist, or required reasoning sections are missing;
-- the visible diagrams are missing or differ from the generated YAML-diff source, appear after the update list or are hidden inside a collapsed block;
+- the visible diagrams are missing or their graph source differs from the generated YAML diff, their display configuration is unsupported, they appear after the update list or are hidden inside a collapsed block;
 - generated unresolved-connection notes are missing beside the visible diagrams;
 - the complete update list is visible, expanded by default or incomplete inside the collapsed block;
 - the current YAML or acceptance metadata is invalid, or an earlier acceptance receipt has been changed or removed;
@@ -76,13 +76,13 @@ These checks establish declared coverage, not that code inside an approved file 
 python3 skills/reason-commons/scripts/check_pr_trees.py path/to/reason-commons.yaml --base origin/main --suggest --format markdown
 ```
 
-This emits the visible **Reasoning changes** section and closed **Tree updates** details block together. Put a short change summary before the diagrams, and the served reasoning, backlog, acceptance references and validation afterward. Preserve the generated Mermaid source: CI checks it against the YAML diff, including qualification text, actual topology, tree/kind/standing labels, AND conditions, previous wording and removed items. If the reasoning needs correcting, edit the YAML through the approved workflow and regenerate. `--format diagrams` emits only the diagram section; the original `--format list` remains available for tooling, but a flat list alone is not a complete PR description.
+This emits the visible **Reasoning changes** section and closed **Tree updates** details block together. Put a short change summary before the diagrams, and the served reasoning, backlog, acceptance references and validation afterward. Preserve the generated Mermaid graph source: CI checks it against the YAML diff, including qualification text, actual topology, tree/kind/standing labels, AND conditions, previous wording and removed items. Display configuration is validated separately: YAML formatting and key order may vary, and `config.flowchart.wrappingWidth` may be omitted or set to a positive integer. Keep `config.htmlLabels: false`; other configuration fields, malformed YAML and duplicate keys are rejected with a configuration-specific error. If the reasoning needs correcting, edit the YAML through the approved workflow and regenerate. `--format diagrams` emits only the diagram section; the original `--format list` remains available for tooling, but a flat list alone is not a complete PR description.
 
 Each affected tree has one diagram containing all its changed branches and neighboring context. Disconnected observations stay together in that tree diagram without invented arrows; generated notes identify disconnected display groups and unresolved statement connections. This is a change view, not the whole tree: groups may connect through unchanged reasoning outside the bounded context. ADDED, CHANGED and REMOVED describe the PR diff; PREVIOUS shows an earlier version and CONTEXT gives unchanged neighboring reasoning. These are separate from [P] proposed, [A] accepted for now and [D] disputed. Color supplements explicit text labels. A PR with no node/link changes needs no invented diagram; describe its scope and backlog work normally.
 
 Inspect the actual GitHub description for rendered diagrams, readable labels and a collapsed list. A successful source check does not prove rendering or usability. Do not replace generated diagrams with a decorative process chart or expand the technical checklist into the main explanation.
 
-Keep the generated frontmatter, including the [Mermaid label setting](https://mermaid.js.org/config/schema-docs/config-properties-htmllabels.html) `htmlLabels: false`: SVG labels avoid the clipping observed with GitHub's capped HTML labels. Inspect the full statements, including long metadata lines, rather than counting rendered frames alone.
+Keep the generated frontmatter as the starting point, including the [Mermaid label setting](https://mermaid.js.org/config/schema-docs/config-properties-htmllabels.html) `htmlLabels: false`: SVG labels avoid the clipping observed with GitHub's capped HTML labels. Supported wrapping-width changes do not alter the checked reasoning. Inspect the full statements, including long metadata lines, rather than counting rendered frames alone.
 
 ## Run locally and in CI
 
@@ -123,6 +123,19 @@ jobs:
 ```
 
 The description passes through an environment variable rather than being interpolated into executable shell code. The `edited` trigger rechecks corrected descriptions; `synchronize` checks updated commits.
+
+### Require the check before merging
+
+Running the workflow reports a result; branch protection makes that result a merge requirement. This repository records its main-branch protection request in `.github/branch-protection.json`: require `tree-check` from the GitHub Actions app (ID 15368), require the branch to be up to date and enforce these requirements for administrators. This does not add a reviewer-count requirement. Other repositories must verify their own check name and app ID before adopting the configuration.
+
+For this repository, an administrator can apply the recorded configuration with the [Update branch protection API](https://docs.github.com/en/rest/branches/branch-protection#update-branch-protection):
+
+```sh
+gh api --method PUT repos/life-itself/reasoncommons/branches/main/protection --input .github/branch-protection.json
+gh api repos/life-itself/reasoncommons/branches/main/protection
+```
+
+Before applying it, inspect existing protection and active rules and preserve any additional requirements introduced since this configuration was recorded. Confirm the response includes `required_status_checks.strict: true`, `checks` containing `tree-check` with `app_id: 15368`, and `enforce_admins.enabled: true`. The JSON file records the desired settings; committing it alone does not apply them. A PR with a pending or failed required check must be corrected and rechecked before merging. A successful check still does not establish semantic conformance, consent authenticity or reasoning endorsement.
 
 ## Small changes
 

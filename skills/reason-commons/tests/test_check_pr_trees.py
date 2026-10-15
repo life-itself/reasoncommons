@@ -300,6 +300,61 @@ class CheckTests(unittest.TestCase):
                 self.assertEqual(code, 1)
                 self.assertIn("generated, visible Mermaid diagrams", out)
 
+    def test_supported_display_configuration_changes_pass(self):
+        self.write(with_link(toy()))
+        _, before, after = check.load_documents([STATE], "main", self.repo)
+        accurate = check.diagrams.markdown(before, after)
+        original = "---\nconfig:\n  htmlLabels: false\n  flowchart:\n    wrappingWidth: 360\n---"
+        variants = [
+            original.replace("360", "720"),
+            "---\nconfig:\n  flowchart:\n    wrappingWidth: 480\n  htmlLabels: false\n---",
+            "---\nconfig: {flowchart: {wrappingWidth: 480}, htmlLabels: false}\n---",
+            "---\nconfig:\n  htmlLabels: false # Preserve complete SVG labels.\n---",
+        ]
+        for configuration in variants:
+            with self.subTest(configuration=configuration):
+                text = body(updates="- added `l1`", diagrams=accurate.replace(original, configuration))
+                code, out = self.run_check(text=text)
+                self.assertEqual(code, 0, out)
+
+    def test_unsupported_or_malformed_display_configuration_fails_clearly(self):
+        self.write(with_link(toy()))
+        _, before, after = check.load_documents([STATE], "main", self.repo)
+        accurate = check.diagrams.markdown(before, after)
+        original = "---\nconfig:\n  htmlLabels: false\n  flowchart:\n    wrappingWidth: 360\n---"
+        variants = [
+            "", original.replace("false", "true"),
+            original.replace("false", "'false'"),
+            original.replace("  htmlLabels: false\n", ""),
+            original.replace("360", "0"), original.replace("360", "-1"),
+            original.replace("360", "true"), original.replace("360", "'720'"),
+            original.replace("config:", "config: ["),
+            original.replace("config:", "config:\n  themeCSS: '.node { display: none }'"),
+            original.replace("  htmlLabels: false", "  htmlLabels: true\n  htmlLabels: false"),
+            original.replace("config:", "title: Extra diagram text\nconfig:"),
+        ]
+        for configuration in variants:
+            with self.subTest(configuration=configuration):
+                text = body(updates="- added `l1`", diagrams=accurate.replace(original, configuration))
+                code, out = self.run_check(text=text)
+                self.assertEqual(code, 1, out)
+                self.assertIn("Invalid Mermaid display configuration in diagram 1", out)
+
+    def test_display_changes_do_not_allow_altered_reasoning(self):
+        self.write(with_link(toy()))
+        _, before, after = check.load_documents([STATE], "main", self.repo)
+        accurate = check.diagrams.markdown(before, after).replace("wrappingWidth: 360", "wrappingWidth: 720")
+        for diagram in (
+            accurate.replace("limits scope", "causes"),
+            accurate.replace("[P] CURRENT REALITY", "[A] CURRENT REALITY"),
+            accurate.replace("call centre workers only", "all workers"),
+            accurate.replace(".-> n0", ".-> n1"),
+        ):
+            with self.subTest(diagram=diagram[:80]):
+                code, out = self.run_check(text=body(updates="- added `l1`", diagrams=diagram))
+                self.assertEqual(code, 1, out)
+                self.assertIn("generated, visible Mermaid diagrams", out)
+
     def test_diagrams_inside_details_do_not_count_as_visible(self):
         self.write(with_link(toy()))
         _, before, after = check.load_documents([STATE], "main", self.repo)
