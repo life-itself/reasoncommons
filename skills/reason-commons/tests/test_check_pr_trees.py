@@ -162,19 +162,50 @@ class CheckTests(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertIn("List at least one recorded acceptance", out)
 
+    def test_explanatory_paragraphs_with_valid_references_pass(self):
+        # The paragraph that caused PR 60's formatting-only CI failure.
+        explanation = "Revision 2 supersedes the broader implementation scope of revision 1; the earlier receipt remains immutable history and covers retained reasoning. David explicitly accepted revision 2 and also requested conflict resolution. Main had meanwhile migrated changelog.md into individual dated entries, so the approved announcement is now changelog/2026-10-15-rewind-reasoning-sessions.md; the path resolution is recorded in the receipt."
+        reference = "- `fixture-change` revision 1 by `alice`"
+        state = toy()
+        state["change_acceptances"].append(receipt("later-change"))
+        self.write(state)
+        for acceptances in (f"{explanation}\n\n{reference}",
+                            f"{reference}\n\n{explanation}",
+                            f"{reference}\n\n{explanation}\n\n- `later-change` revision 1 by `alice`",
+                            f"Historical context mentions `unknown` revision 9 by `bob`.\n\n{reference}"):
+            with self.subTest(acceptances=acceptances):
+                code, out = self.run_check(text=body(serves="- `n1`", acceptances=acceptances))
+                self.assertEqual(code, 0, out)
+
+    def test_explanatory_paragraph_without_reference_fails(self):
+        code, out = self.run_check(text=body(serves="- `n1`", acceptances="Alice approved this change.\n\nThe receipt is `fixture-change` revision 1 by `alice`."))
+        self.assertEqual(code, 1)
+        self.assertIn("List at least one recorded acceptance", out)
+
     def test_unknown_proposal_version_or_participant_fails(self):
         for reference in ("- `unknown` revision 1 by `alice`", "- `fixture-change` revision 2 by `alice`", "- `fixture-change` revision 1 by `bob`"):
-            with self.subTest(reference=reference):
-                code, out = self.run_check(text=body(serves="- `n1`", acceptances=reference))
-                self.assertEqual(code, 1)
-                self.assertIn("No recorded acceptance", out)
+            for explanation in ("", "This paragraph explains the approval history.\n\n"):
+                with self.subTest(reference=reference, explanation=explanation):
+                    code, out = self.run_check(text=body(serves="- `n1`", acceptances=explanation + reference))
+                    self.assertEqual(code, 1)
+                    self.assertIn("No recorded acceptance", out)
 
     def test_malformed_or_duplicate_reference_fails(self):
-        for reference in ("yes", "- `fixture-change` revision 0 by `alice`", "- `fixture-change` revision 1 by `alice`\n- `fixture-change` revision 1 by `alice`"):
-            with self.subTest(reference=reference):
-                code, out = self.run_check(text=body(serves="- `n1`", acceptances=reference))
-                self.assertEqual(code, 1)
-                self.assertIn("acceptance reference", out)
+        valid = "- `fixture-change` revision 1 by `alice`"
+        for reference in ("- yes", "- `fixture-change` revision 0 by `alice`", f"{valid}\n{valid}", f"{valid}\n\nThis paragraph separates duplicate references.\n\n{valid}"):
+            for explanation in ("", "This paragraph explains the approval history.\n\n"):
+                with self.subTest(reference=reference, explanation=explanation):
+                    code, out = self.run_check(text=body(serves="- `n1`", acceptances=explanation + reference))
+                    self.assertEqual(code, 1)
+                    self.assertIn("acceptance reference", out)
+
+    def test_explanatory_paragraph_cannot_supply_path_coverage(self):
+        (self.repo / "extra.md").write_text("Unapproved change\n")
+        self.git("add", "extra.md")
+        acceptances = "The approval also covers extra.md.\n\n- `fixture-change` revision 1 by `alice`"
+        code, out = self.run_check(text=body(serves="- `n1`", acceptances=acceptances))
+        self.assertEqual(code, 1)
+        self.assertIn("outside the cited approved scope: extra.md", out)
 
     def test_malformed_receipt_metadata_fails(self):
         for field, value in (("mode", "voice"), ("by", "assistant"), ("recorded_at", "2026-10-14T12:00:00"), ("scope", ""), ("proposal_revision", True)):

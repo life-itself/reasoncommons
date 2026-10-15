@@ -50,6 +50,8 @@ The receipt must cover the changed files and tree IDs. -->
 
 GitHub fills a new PR's description with the template in the browser. Agents or `gh pr create --body-file` must fill these sections themselves. An acceptance reference is not a fresh proposal or a request to endorse the reasoning. Several proposals may be delivered in one PR; list the relevant receipt versions individually.
 
+Explanatory paragraphs may appear before, between or after the approval references under **Accepted change proposals**, for example to explain how one revision supersedes another. Only explicit list items declare approval references, and each must use the format above. Prose alone, including an inline mention of a receipt, does not supply approval or scope coverage. Malformed list items, duplicate or unknown references, and uncovered changes still fail the check.
+
 ## What the check establishes
 
 `scripts/check_pr_trees.py` compares the working tree with the merge base of `--base` and `HEAD`, across one or more state files. In the reasoning sections, a list item's first backticked ID is its claim; later IDs, such as link endpoints, are description. Template comments are ignored. The checker validates current conversational state using the sibling `update_views.py` helper without writing snapshots or views. `render_pr_diagrams.py` derives one change diagram per affected tree from the old and new YAML, with one-hop context around changed nodes and the old/new endpoints of changed links. Keep all three scripts together when using them in another repository.
@@ -61,7 +63,7 @@ The check fails when:
 - generated unresolved-connection notes are missing beside the visible diagrams;
 - the complete update list is visible, expanded by default or incomplete inside the collapsed block;
 - the current YAML or acceptance metadata is invalid, or an earlier acceptance receipt has been changed or removed;
-- the Accepted change proposals section is missing, empty or malformed, or names an unrecorded proposal version and participant;
+- the Accepted change proposals section is missing, has no explicit approval reference, contains a malformed approval-reference list item, or names an unrecorded proposal version and participant;
 - a cited receipt lacks `approved_paths`, a changed file is outside the cited paths, or a changed node/link ID is outside the cited tree-item IDs.
 
 Use exact repository-relative paths, including the state file and coordination files covered by the proposal. Paths are literal names, not globs; renames require both the old and new names. Coverage may come from several cited receipts. Uncited receipts cannot supply coverage. Receipt additions and backlog/coordination edits are covered through their file paths and textual scope; the Tree updates list still describes node/link changes. Historical node/link IDs remain valid receipt references after removal.

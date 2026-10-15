@@ -2959,10 +2959,14 @@ trees:
       note: An independent gold-fixture turn displayed its proposal and changed no files while waiting; its simulated typed acceptance continuation saved and validated the receipt and backlog before editing the README. Metadata, historical-reference preservation and unchanged reasoning standing passed helper tests. Ambiguous replies, material revisions and conformance in real host sessions remain to be checked; these tests do not establish the predicted traceability benefit.
     - ref: f-e-prs-reference-change-acceptance
       work: review_fragment
-      note: Review the PR integration rule with its proposed traceability benefit. Approving implementation does not endorse the prediction.
+      note: Review the PR integration rule with its proposed traceability benefit. Approving implementation does not endorse the prediction. PR 60 exposed a formatting-only failure when an explanatory paragraph accompanied valid approval references; David requested allowing such paragraphs while preserving explicit reference and scope checks. The correction passes the regression and helper suite; observe continued use, since implementation approval does not endorse the proposed benefit.
+      beads:
+      - reasoncommons-zfk
     - ref: f-rel-pr-acceptance-aids-traceability
       work: test_pr_acceptance_scope
-      note: All 55 helper tests passed, including missing or malformed approvals, unknown versions, uncovered files and node/link IDs, staged and committed scope, rename coverage, receipt preservation and unchanged reasoning standing. Review the complete PR and observe real use; declared coverage cannot establish semantic conformance, consent authenticity or the predicted traceability benefit.
+      note: All 55 helper tests passed, including missing or malformed approvals, unknown versions, uncovered files and node/link IDs, staged and committed scope, rename coverage, receipt preservation and unchanged reasoning standing. On 2026-10-15 all 77 helper tests pass. PR 60's explanatory paragraph passes before, between and after explicit valid approval references, while prose alone, malformed, duplicate and unknown references and incomplete scope coverage still fail. The regression failed against the previous parser before the correction. Review the complete PR and observe real use; declared coverage cannot establish semantic conformance, consent authenticity or the predicted traceability benefit.
+      beads:
+      - reasoncommons-zfk
     - ref: f-e-pr-diagrams-show-changes
       work: review_fragment
       note: Review the PR diagram rule and its proposed inspection benefit. Implementation approval does not endorse the prediction.
@@ -4699,3 +4703,21 @@ change_acceptances:
     from: changelog.md
     to: changelog/2026-10-15-rewind-reasoning-sessions.md
     reason: Current main migrated the changelog after the displayed proposal; the user also explicitly requested conflict resolution. This keeps the same approved rewind announcement in the current structure.
+- proposal_ref: change-pr-approval-prose-2026-10-15
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-15T06:35:37Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept these changes
+  scope: Allow explanatory paragraphs alongside explicit approval-reference list items in PR descriptions, retaining failures for missing, malformed, duplicate and unknown approvals and changes outside approved scope. Add regression tests and guidance, update the existing Future Reality review backlog on f-e-prs-reference-change-acceptance and test backlog on f-rel-pr-acceptance-aids-traceability without node or link changes or endorsement, record implementation work and the existing Beads handoff, add the small changelog entry, validate the complete final PR description before publication, and open a new PR against current main.
+  node_ids: []
+  link_ids: []
+  approved_paths:
+  - skills/reason-commons/scripts/check_pr_trees.py
+  - skills/reason-commons/tests/test_check_pr_trees.py
+  - skills/reason-commons/references/pull-requests.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+  - changelog/2026-10-15-allow-pr-approval-explanations.md

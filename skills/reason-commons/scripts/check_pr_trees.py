@@ -10,6 +10,7 @@ starting with the verb. Each is one list item whose first backticked ID is the c
 
 The Accepted change proposals section names each receipt as:
     - `proposal-id` revision 1 by `participant-id`
+Explanatory paragraphs may accompany these explicit list items.
 The check validates working state and receipts, preserves earlier receipts, and
 requires cited approvals to cover changed paths and node/link IDs. Coverage is
 structural; reviewers still judge implementation meaning and approval authenticity.
@@ -278,7 +279,8 @@ def check_acceptances(body, before_documents, after_documents, paths, tree_chang
         problems.append('The description has no "Accepted change proposals" section.')
     cited, covered_paths, covered_nodes, covered_links = set(), set(), set(), set()
     for line in parts.get(ACCEPTANCES, "").splitlines():
-        if not line.strip():
+        # Prose explains the approval history; only list items declare receipts.
+        if not re.match(r"\s*(?:[-*+]|\d+[.)])(?:\s|$)", line):
             continue
         match = ACCEPTANCE.fullmatch(line)
         if not match:
