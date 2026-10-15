@@ -1339,6 +1339,35 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: r-e-main-unprotected-2026-10-15
+      kind: observation
+      text: On 2026-10-15, GitHub reports main as unprotected, with no active repository rulesets.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      evidence:
+        branch: https://api.github.com/repos/life-itself/reasoncommons/branches/main
+        rulesets: https://api.github.com/repos/life-itself/reasoncommons/rulesets
+    - id: r-e-main-pr-only-check
+      kind: cause
+      text: The reasoning check runs on pull-request events, so a direct push to main does not trigger it.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      evidence:
+        workflow: https://github.com/life-itself/reasoncommons/blob/f001dbcfd0a41e82b9c1510bfbd1193f0527ae24/.github/workflows/tree-check.yml
+    - id: r-e-main-allows-unchecked-work
+      kind: undesirable_effect
+      text: Work can reach the live branch without passing the reasoning check or independent review.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     links:
     - id: r-rel-unclear-drives-redesigning
       from:
@@ -1745,6 +1774,17 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: r-rel-main-gap-allows-unchecked-work
+      from:
+      - r-e-main-unprotected-2026-10-15
+      - r-e-main-pr-only-check
+      to: r-e-main-allows-unchecked-work
+      relation: allows
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     backlog:
     - ref: r-e-david-demo-confidence
       work: clarify_demo_gap
@@ -1889,6 +1929,9 @@ trees:
     - ref: r-rel-rewind-unreconciled-stales-views
       work: verify_view_regeneration
       note: Check the unchanged helper after accepted-state restoration; do not infer native checkpoint behavior from helper simulation.
+    - ref: r-e-main-allows-unchecked-work
+      work: verify_live_enforcement_gap
+      note: Preserve the dated branch/ruleset readback and direct-push evidence; verify the repair without changing the live branch. The observations remain proposed, separate from approval to implement.
   conflict:
     nodes:
     - id: c-e-objective
@@ -2668,6 +2711,34 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: f-e-main-requires-checked-pr
+      kind: injection
+      text: Require a PR, successful reasoning checks and independent approval before updating main, with no bypass actors.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      implements:
+      - f-e-changes-name-reasoning
+      addresses:
+      - r-e-main-allows-unchecked-work
+    - id: f-e-main-has-reviewed-trace
+      kind: predicted_effect
+      text: Every change entering main carries a checked reasoning record and independent approval.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-e-reviewers-assess-goal
+      kind: existing_condition
+      text: Reviewers assess whether the proposed work plausibly serves the recorded goal.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     links:
     - id: f-rel-use-makes-users
       from:
@@ -2887,6 +2958,33 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: f-rel-main-gate-requires-reviewed-trace
+      from:
+      - f-e-main-requires-checked-pr
+      to: f-e-main-has-reviewed-trace
+      relation: requires
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - by: assistant
+        text: The ruleset stays active, the required check is the intended validator, and rule changes receive independent scrutiny.
+    - id: f-rel-reviewed-trace-supports-goal
+      from:
+      - f-e-main-has-reviewed-trace
+      - f-e-reviewers-assess-goal
+      to: f-e-change-traces-to-goal
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - by: assistant
+        text: The checker validates structure and recorded scope; reviewers examine the meaning of the goal connection and may reject weak reasoning. Neither approval nor a passing check proves the predicted benefit.
     backlog:
     - ref: f-rel-use-makes-users
       work: test_causality
@@ -2977,8 +3075,10 @@ trees:
     - ref: f-e-changes-name-reasoning
       work: test_pr_merge_enforcement
       feedback: GitHub reported main as unprotected with no required checks or active rules, despite the Tree check workflow introduced by PRs 58 and 59.
-      note: Applied .github/branch-protection.json and read back main as protected, with required_status_checks.strict true, required tree-check from GitHub Actions app 15368 and enforce_admins.enabled true. PR 61 was BLOCKED while its required check was pending, then CLEAN after the check passed. Existing nodes, links, standings, receipts and collaboration priority match main after merged PR 59. Continue observing real-use merge behavior and retain the existing reasoning review work and proposed standing.
-      beads: [reasoncommons-ilh]
+      note: 'Applied .github/branch-protection.json and read back main as protected, with required_status_checks.strict true, required tree-check from GitHub Actions app 15368 and enforce_admins.enabled true. PR 61 was BLOCKED while its required check was pending, then CLEAN after the check passed. Existing nodes, links, standings, receipts and collaboration priority match main after merged PR 59. Continue observing real-use merge behavior and retain the existing reasoning review work and proposed standing.
+
+  2026-10-15 repair verified: active repository ruleset 25147483 (https://github.com/life-itself/reasoncommons/rules/25147483) targets only refs/heads/main, bypass_actors is empty and current_user_can_bypass is never. It requires a PR, one approval, stale-review dismissal, approval of the latest push, strict tree-check from GitHub Actions app 15368, and blocks force pushes/deletion. The approved disposable branch codex/enforcement-probe-20261015-083036 was temporarily covered by identical rules. Attempted fast-forward from f001dbcfd0a41e82b9c1510bfbd1193f0527ae24 to the no-content-change commit c4d68df829526cb28067777f1915aee9f849dd16 was rejected with HTTP 422: Changes must be made through a pull request; Required status check tree-check is expected. GitHub rule suite 4537148009 records result fail at 2026-10-15T10:32:04+02:00; the probe ref stayed at f001dbc. Final readback confirms main is protected at unchanged f001dbc, the rules target only main, and the deleted probe ref returns 404. All 77 existing helper tests pass. Prior evidence remains historical; future meaningful goal review and rule persistence still require observation.'
+      beads: [reasoncommons-ilh, reasoncommons-emr]
     - ref: f-e-pr-diagrams-show-changes
       work: test_pr_diagram_configuration
       feedback: Run 38586022836 rejected PR 59 because added Mermaid display configuration differed from the generated source, although all eight graph bodies matched. The later merged PR corrected its generated configuration.
@@ -2993,6 +3093,12 @@ trees:
     - ref: f-e-rewind-refresh-derived-views
       work: examine_approval_receipt_loss
       note: Whole-file restoration may remove later approval receipts. This is a deferred negative-branch inquiry; PR 60 does not implement a receipt ledger or recovery command.
+    - ref: f-rel-main-gate-requires-reviewed-trace
+      work: verify_required_pr_check_and_review
+      note: Read back the active no-bypass ruleset, confirm direct updates are rejected on a disposable branch under the same rules, clean up, and verify the implementation PR requires independent review. Preserve prior enforcement observations.
+    - ref: f-rel-reviewed-trace-supports-goal
+      work: test_meaningful_goal_review
+      note: Observe whether reviewers assess and challenge the proposed contribution to the goal rather than accepting a valid-looking citation. A mechanically valid PR is not proof that the work advances the goal.
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
@@ -4721,3 +4827,30 @@ change_acceptances:
   - ltp/rufus-david-collab/reason-commons.yaml
   - .beads/issues.jsonl
   - changelog/2026-10-15-allow-pr-approval-explanations.md
+- proposal_ref: change-enforce-main-reasoning-2026-10-15
+  proposal_revision: 2
+  by: david
+  recorded_at: '2026-10-15T08:30:36Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: yes i accept
+  scope: 'Implement displayed revision 2: activate the main branch ruleset requiring a PR, successful current-base tree-check from GitHub Actions app 15368, one independent approval covering the latest changes, no bypass actors, and blocked force pushes and deletion. Verify identical enforcement on a disposable branch temporarily covered by the rules, remove that test target and clean up. Replace the old branch-protection request with the ruleset JSON, update PR guidance and the Beads checkpoint, add the displayed dated changelog entry, and open a separate configuration-and-evidence PR. Save the six proposed nodes and three proposed links shown in the two diagrams, preserve their assumptions and cross-tree traces, update the existing enforcement backlog with observations and verification, and add the displayed gate and meaningful-review backlog. Validate state, declaration and approval coverage, live rules and PR review requirements, and inspect actual GitHub diagram rendering. Proposed reasoning remains proposed; approval authorizes implementation only.'
+  node_ids:
+  - r-e-main-unprotected-2026-10-15
+  - r-e-main-pr-only-check
+  - r-e-main-allows-unchecked-work
+  - f-e-main-requires-checked-pr
+  - f-e-main-has-reviewed-trace
+  - f-e-reviewers-assess-goal
+  link_ids:
+  - r-rel-main-gap-allows-unchecked-work
+  - f-rel-main-gate-requires-reviewed-trace
+  - f-rel-reviewed-trace-supports-goal
+  approved_paths:
+  - .github/branch-protection.json
+  - .github/main-ruleset.json
+  - skills/reason-commons/references/pull-requests.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+  - changelog/2026-10-15-require-reviewed-reasoning-before-main.md

@@ -126,18 +126,31 @@ jobs:
 
 The description passes through an environment variable rather than being interpolated into executable shell code. The `edited` trigger rechecks corrected descriptions; `synchronize` checks updated commits.
 
-### Require the check before merging
+### Require checked reasoning and independent review before main changes
 
-Running the workflow reports a result; branch protection makes that result a merge requirement. This repository records its main-branch protection request in `.github/branch-protection.json`: require `tree-check` from the GitHub Actions app (ID 15368), require the branch to be up to date and enforce these requirements for administrators. This does not add a reviewer-count requirement. Other repositories must verify their own check name and app ID before adopting the configuration.
+The workflow reports a result; an active GitHub ruleset makes the PR, check and review requirements conditions of updating main. This repository records its desired configuration in [`.github/main-ruleset.json`](../../../.github/main-ruleset.json), replacing the earlier branch-protection request. The [active ruleset](https://github.com/life-itself/reasoncommons/rules/25147483) targets `refs/heads/main`, with no bypass actors, including administrators and automation.
 
-For this repository, an administrator can apply the recorded configuration with the [Update branch protection API](https://docs.github.com/en/rest/branches/branch-protection#update-branch-protection):
+The rules require a pull request, a successful `tree-check` from GitHub Actions app 15368, an up-to-date branch, and one independent approving review. New reviewable changes dismiss stale approvals, and someone other than the latest pusher must approve the latest change. Force pushes and branch deletion are blocked. Existing contributor and bot access stays in place; integration goes through the same PR process.
+
+A reviewer must assess whether the proposed work plausibly contributes to the recorded project goal, whether the actual diff fits that explanation and approved scope, and whether the assumptions or costs warrant challenge. Check changes to the workflow or validator themselves with the same scrutiny. CI establishes structural consistency and declared coverage; it does not establish that work advances the goal, authenticate consent or endorse reasoning. A successful check without the required review does not permit integration.
+
+Before applying the configuration, inspect existing protection and all inherited rulesets, preserving any additional requirements. An administrator can list current rules and use the [repository rules API](https://docs.github.com/en/rest/repos/rules) to create the ruleset when absent or update its existing ID; do not create a duplicate:
 
 ```sh
-gh api --method PUT repos/life-itself/reasoncommons/branches/main/protection --input .github/branch-protection.json
-gh api repos/life-itself/reasoncommons/branches/main/protection
+gh api 'repos/life-itself/reasoncommons/rulesets?includes_parents=true'
+gh api --method POST repos/life-itself/reasoncommons/rulesets --input .github/main-ruleset.json
 ```
 
-Before applying it, inspect existing protection and active rules and preserve any additional requirements introduced since this configuration was recorded. Confirm the response includes `required_status_checks.strict: true`, `checks` containing `tree-check` with `app_id: 15368`, and `enforce_admins.enabled: true`. The JSON file records the desired settings; committing it alone does not apply them. A PR with a pending or failed required check must be corrected and rechecked before merging. A successful check still does not establish semantic conformance, consent authenticity or reasoning endorsement.
+The POST command is for initial creation only. For an existing ruleset, use PUT on its `repos/life-itself/reasoncommons/rulesets/ID` endpoint with the same input file. Read back that ruleset and the effective rules for main:
+
+```sh
+gh api repos/life-itself/reasoncommons/rulesets
+gh api repos/life-itself/reasoncommons/rules/branches/main
+```
+
+Confirm active enforcement, the main target, an empty bypass list, the exact check and app, strict current-base checks, one approval, stale-review dismissal, latest-push approval, and blocked force pushes/deletion. Committing the JSON records the configuration; it does not activate GitHub settings. People who retain rule-editing authority can still change or disable those settings.
+
+Verify rejection on a disposable branch temporarily covered by the same rules rather than writing a test commit to the live branch. Create the branch before extending the ruleset, attempt a bounded update without a PR, preserve the rejection and unchanged ref, then restore the target to main only and delete the disposable branch. Record the live ruleset link, observations, rejection and cleanup in the reasoning backlog and work checkpoint. Keep the meaningful-review inquiry open; an enforced approval requirement cannot prove what a reviewer considered.
 
 ## Small changes
 
