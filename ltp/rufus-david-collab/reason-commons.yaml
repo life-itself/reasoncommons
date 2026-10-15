@@ -2668,6 +2668,35 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: f-e-changelog-findable-history
+      kind: injection
+      text: Publish recent work as dated, individually linkable changelog entries, with a navigation link and named authors.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+        note: Retrospective hypothesis for Rufus's changelog restructuring in c048772b63310701c7bf02eaf31d6da0b9a0ee09; this does not establish Rufus's original rationale or prior approval.
+    - id: f-e-changelog-find-recent-work
+      kind: predicted_effect
+      text: Visitors can find recent changes and open the work those entries describe.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+        note: Retrospective hypothesis for Rufus's changelog restructuring in c048772b63310701c7bf02eaf31d6da0b9a0ee09; this does not establish Rufus's original rationale or prior approval.
+    - id: f-e-changelog-judge-usefulness
+      kind: desirable_effect
+      text: Visitors can better picture whether Reason Commons would help with their own work.
+      status: proposed
+      derived_from:
+      - g-e-picturable-product
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+        note: Retrospective hypothesis for Rufus's changelog restructuring in c048772b63310701c7bf02eaf31d6da0b9a0ee09; this does not establish Rufus's original rationale or prior approval.
     links:
     - id: f-rel-use-makes-users
       from:
@@ -2887,6 +2916,34 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: f-rel-changelog-helps-find-work
+      from:
+      - f-e-changelog-findable-history
+      to: f-e-changelog-find-recent-work
+      relation: contributes_to
+      status: proposed
+      assumptions:
+      - by: assistant
+        text: Visitors notice the navigation, entries describe useful capabilities, and entry links lead to work they can inspect.
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+        note: Retrospective hypothesis for Rufus's changelog restructuring in c048772b63310701c7bf02eaf31d6da0b9a0ee09; this does not establish Rufus's original rationale or prior approval.
+    - id: f-rel-changelog-helps-judge-use
+      from:
+      - f-e-changelog-find-recent-work
+      to: f-e-changelog-judge-usefulness
+      relation: contributes_to
+      status: proposed
+      assumptions:
+      - by: assistant
+        text: The capabilities described are relevant to a visitor's real task and clear enough for the visitor to understand their possible use.
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+        note: Retrospective hypothesis for Rufus's changelog restructuring in c048772b63310701c7bf02eaf31d6da0b9a0ee09; this does not establish Rufus's original rationale or prior approval.
     backlog:
     - ref: f-rel-use-makes-users
       work: test_causality
@@ -2993,6 +3050,15 @@ trees:
     - ref: f-e-rewind-refresh-derived-views
       work: examine_approval_receipt_loss
       note: Whole-file restoration may remove later approval receipts. This is a deferred negative-branch inquiry; PR 60 does not implement a receipt ledger or recovery command.
+    - ref: f-rel-changelog-helps-find-work
+      work: test_changelog_findability
+      note: Ask a reader starting at the homepage to find a recent change relevant to them and open the work it describes. Record where navigation, wording or links fail.
+    - ref: f-rel-changelog-helps-judge-use
+      work: test_changelog_goal_contribution
+      note: Ask that reader to explain what the capability could help them do. Record whether the changelog helped them picture using Reason Commons; publishing a timeline alone is not adoption evidence.
+    - ref: f-e-changes-name-reasoning
+      work: review_changelog_example
+      note: 'Review this worked example with Rufus: can he explain the changelog''s proposed contribution to the accepted goal condition, identify its assumptions, and judge whether its benefit warrants the effort? Keep the existing reasoning standing unchanged.'
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
@@ -4721,3 +4787,22 @@ change_acceptances:
   - ltp/rufus-david-collab/reason-commons.yaml
   - .beads/issues.jsonl
   - changelog/2026-10-15-allow-pr-approval-explanations.md
+- proposal_ref: change-changelog-example-2026-10-15
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-15T08:04:44Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: Yes, I accept this proposal
+  scope: Create a draft retrospective PR showing the reasoning Rufus's October 14 changelog restructuring should have carried, explaining its proposed contribution to the accepted project goal and picturable-product condition in plain language. Add the three displayed proposed Future Reality nodes, their two proposed contributes_to links, the derived_from trace to g-e-picturable-product, assumptions on reader-visible useful capabilities and inspectable links, reader-check backlog for both links and review_changelog_example backlog on f-e-changes-name-reasoning. Record this acceptance and a separate work checkpoint in the two approved files. Validate state, generated diagrams, declared changes and approval coverage, inspect the published PR, and leave the new reasoning proposed. This approval covers the retrospective example only and does not establish approval before the original implementation.
+  node_ids:
+  - f-e-changelog-findable-history
+  - f-e-changelog-find-recent-work
+  - f-e-changelog-judge-usefulness
+  link_ids:
+  - f-rel-changelog-helps-find-work
+  - f-rel-changelog-helps-judge-use
+  approved_paths:
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
