@@ -1,0 +1,7 @@
+{
+  "name": "reasoncommons-discord-diagrams",
+  "private": true,
+  "description": "Deterministic rendering of canonical Mermaid tree views to Discord attachments",
+  "engines": {"node": ">=22"},
+  "dependencies": {"@mermaid-js/mermaid-cli": "^11.12.0"}
+}

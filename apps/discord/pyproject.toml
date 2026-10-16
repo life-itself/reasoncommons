@@ -1,0 +1,20 @@
+[project]
+name = "reasoncommons-discord"
+version = "0.1.0"
+description = "Explicit-invocation Discord adapter for the canonical reason-commons skill"
+requires-python = ">=3.11"
+dependencies = [
+  "claude-agent-sdk>=0.2.168,<0.3",
+  "discord.py>=2.6,<3",
+  "PyYAML>=6.0.2,<7",
+]
+
+[project.scripts]
+reasoncommons-discord = "reasoncommons_discord.__main__:main"
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["reasoncommons_discord*"]
