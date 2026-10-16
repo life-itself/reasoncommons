@@ -54,3 +54,7 @@ The saved `.beads/issues.jsonl` contains full issue records, including the hando
 For a fresh checkout with no database, back up the saved export before running `bd --sandbox init --skip-agents --skip-hooks --non-interactive --prefix reasoncommons`, which restores the configured remote. Check that the collaboration records are present. If they are missing, preview an import of the saved export with `bd --sandbox import <backup.jsonl> --dry-run --json`, then import the missing records without `--allow-stale`. Preserve any newer database rows. Never discard remote history to make initialization succeed.
 
 The integration session on 2026-09-28 restored the configured remote and recovered the 29 missing issue records from the pre-existing export. This recovered issue records, not any historical Dolt commits absent from the remote.
+
+## Repository boundaries
+
+The shared working YAML and its original conversion evidence stay under `ltp/rufus-david-collab/`. They are outside the `website/` publishing root. Product work is under `docs/product/`, marketing/editorial work under `docs/marketing/`, and public-safe business work under `docs/business/`; app and skill operating instructions stay with their owner. Follow [the publishing cutover](product/repository-boundaries.md) for the migration to `website/`.

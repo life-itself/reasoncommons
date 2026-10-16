@@ -184,3 +184,5 @@ When the question is a choice among options you can name, such as which of the s
   no view holds them
 - assess on the author's behalf, when the source only recommends
 - hand over the YAML without the report
+
+The dashboard interface is the compiled artifact at `website/dashboard/index.html` in this repository. The preview helper reads that file explicitly; the installable skill and helper remain under `skills/`.

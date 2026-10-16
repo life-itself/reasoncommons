@@ -1,60 +1,26 @@
----
-created: 2026-06-06
-status: in-progress
----
-
 # Reason Commons
 
-<div class="rc-hero">
-<p class="rc-h1">A better way to think together — and to act on it.</p>
-<p class="rc-lede">Structure the thinking as trees — a tree of change, and a tree of action — with every claim and every step still connected to the goal it serves. Let ordinary discussion attach where it belongs, and let AI keep the tree current. The point is that our thinking should accumulate.</p>
-<p class="rc-cta-row"><a class="btn-primary btn-primary-lg" href="/explainers">Read the series</a> <a class="btn-secondary" href="/claim-tree-annotation-demo/index.html">See it working</a></p>
-<p class="rc-note">There's no app to log into yet — a way of thinking, and enough built around it to judge whether it's worth adopting.</p>
-</div>
+Reason Commons develops ways to use the Logical Thinking Process with AI so that people can think and act better together. It is a collaboration between Rufus Pollock and David Joseph.
 
-On the questions that matter most, we generate plenty of heat and not much light. There is real discussion — on the forum, in long documents, in calls — but it repeats, it scatters, and it doesn't build; you can't point at a 200,000-word strategy and improve one sentence of it. We never build the cathedral, we just make a bigger mess. Trees are a way out: break a goal into the parts it actually rests on, so the whole and the parts stay connected and you can see how a single step — or a single objection — bears on what you're trying to do. Then the hard part, getting freeform discussion connected back to the tree without anyone doing tedious filing. It has to be close to effortless or it won't happen, and AI is what makes that possible now.
+Read the public introduction at [reasoncommons.com](https://reasoncommons.com). This repository holds the shared reasoning, project work, installable skills and website; the [Reason Commons application](https://github.com/Promise-Foundation/reason-commons) has its own repository.
 
-<div class="rc-cards rc-cards-2">
-<a class="rc-card" href="/explainers"><span class="rc-card-title">The idea</span><p>Break a goal, or a claim, into the parts it rests on — a tree of change, and a tree of action — with the whole and the parts kept connected.</p></a>
-<a class="rc-card" href="/about"><span class="rc-card-title">The AI tooling we're building</span><p>AI drafts the trees from what you already have, and folds ongoing discussion back in — so it enriches the conversation and improves the tree at the same time.</p></a>
-<a class="rc-card" href="/claim-tree-annotation-demo/index.html"><span class="rc-card-title">See it working</span><p>The four steps end to end — claim, tree, sources, evidence — on a worked toy example.</p></a>
-<a class="rc-card" href="/ltp"><span class="rc-card-title">Grounded in the Logical Thinking Process</span><p>A rigorous method from the Theory of Constraints, forty years in the making — it came out of industry, but it applies almost anywhere. We use its rigour and drop its vocabulary.</p></a>
-</div>
+## Project map
 
-## Start here — the three-part series
+| Area | Purpose | Start here |
+| --- | --- | --- |
+| Shared reasoning | Goals, claims, proposed changes, acceptance and reasoning backlog across the project | [Collaboration model](ltp/rufus-david-collab/reason-commons.yaml), Bead `reasoncommons-a4l`, [workflow](docs/beads-reasoning.md) |
+| Project working material | Research, experiments, positioning, plans and references | [Docs map](docs/README.md) |
+| Installable skills | Skills with their own helpers, fixtures and tests | [Installation and usage](skills/README.md) |
+| Runnable applications | Application code, configuration, tests and operating instructions | [Applications](apps/README.md) |
+| Public website | Deliberately published pages, static demos and assets | [Public homepage](website/README.md), [publishing and cutover](docs/product/repository-boundaries.md) |
+| Shared utilities | Tools crossing area boundaries | [Website exports](scripts/export-website.py), [website checks](scripts/check-website.py), [phone checks](scripts/phone-check.mjs) |
 
-The way in is a short scrolling series: [why fixes don't stick](/explainers/01-bottleneck/index.html), [why reasoning has to be made visible](/explainers/02-thinking-made-visible/index.html), and [the forty-year-old method that connects them](/explainers/03-five-shapes/index.html). Then watch the method meet a real movement's strategy in [The Forum Doesn't Remember](/explainers/second-renaissance-plain/). Full contents on [the series page](/explainers).
+[Motivation](motivation.md) explains the project's purpose and framing. [AGENTS.md](AGENTS.md) defines the contribution rules. [NEXT.md](NEXT.md) remains the single generated work view; its model/source declaration is independent of the conversational collaboration model. GitHub issues hold project-level planning and Beads holds agent-executable work, ownership and handoffs.
 
-<p class="rc-eyebrow">Demos &amp; experiments — rough, unfinished, illustrative</p>
+## Working here
 
-<div class="rc-cards rc-cards-2">
-<a class="rc-card" href="/claim-tree-annotation-demo/index.html"><span class="rc-card-tag">Demo</span><span class="rc-card-title">Claim-tree annotation</span><p>The four-step vision as an animated walk-through.</p></a>
-<a class="rc-card" href="/dashboard/index.html"><span class="rc-card-tag">Prototype</span><span class="rc-card-title">Constraints dashboard</span><p>A read-only viewer over a full LTP analysis of one organisation's goals and constraints.</p></a>
-<a class="rc-card" href="/demos/goal-aligner/index.html"><span class="rc-card-tag">Experiment</span><span class="rc-card-title">Goal Aligner</span><p>Turning a room's scattered goals into one tree everyone can sign off on.</p></a>
-<a class="rc-card" href="/talk/index.html"><span class="rc-card-tag">Talk</span><span class="rc-card-title">A talk that performs the method</span><p>Five acts; the audience experiences the process before hearing its name.</p></a>
-</div>
+Resume the collaboration from `bd --sandbox show reasoncommons-a4l`, then read the working YAML and [Beads/reasoning workflow](docs/beads-reasoning.md). Keep one canonical source for each artifact. Project working documents belong in `docs/`; app- and skill-specific helpers, tests and operating instructions stay with their owner. New shared packages or workspace tooling need an actual shared dependency.
 
-## The method underneath
+Install skills from this repository; `.agents/skills/` and local `.claude/skills/` links still resolve to the canonical top-level `skills/` packages. Use the [gold toy fixture](claim-tree-annotation.md) before real applications.
 
-The rigour comes from the [Logical Thinking Process](/ltp) (LTP), part of the Theory of Constraints — a way of laying out a goal, the things blocking it, and the change that gets past them. Our [Guide](/ltp) is a plain-language introduction, with a [reading list](/library) if you want the books.
-
-## About
-
-Reason Commons is a collaboration between **Rufus Pollock** and **David Joseph**. It has three strands: building the AI **tooling**; working with **communities** that already reason hard in public — AI governance, effective altruism, climate; and using **Second Renaissance** as a living laboratory. Rufus's thread: issue trees and structured problem-framing, a tool he wanted for more than ten years. David's thread: "Abductio," a proposition-decomposition process inside his Promise Protocol framework. [More about the project and the people →](/about)
-
-Related: [Promise Foundation](https://www.promise.foundation/how-it-works) · [Provisio](https://praevisio.promise.foundation/) · [issuetrees.com](https://issuetrees.com)
-
-<div class="rc-foot">
-<h2>Stay in touch</h2>
-<p>Occasional updates as the tooling and the writing develop — monthly at most.</p>
-<form className="rc-signup" method="post" action="https://mailer.lifeitself.org/interest/v1">
-<label htmlFor="reasoncommons-email">Email address</label>
-<div className="rc-signup-row"><input id="reasoncommons-email" type="email" name="email" autoComplete="email" required /> <button className="btn-secondary" type="submit">Get updates</button></div>
-<input type="hidden" name="target" value="reason-commons" />
-<input type="hidden" name="project" value="Reason Commons" />
-<input type="hidden" name="consent_copy" value="Get future updates from Reason Commons." />
-<input type="hidden" name="consent_copy_version" value="2026-09-09" />
-<input type="hidden" name="source" value="https://reasoncommons.com/" />
-<p className="rc-signup-note">Get future updates from Reason Commons.</p>
-</form>
-</div>
+The website publishes from `website/`. Run `python3 scripts/export-website.py` after changing an explicitly exported source, then `python3 scripts/check-website.py`. Preview with `fl website --yes` against the separate preview site. The production site's Flowershow root must be switched to `/website` in coordination with merging this migration; see the [cutover instructions](docs/product/repository-boundaries.md).

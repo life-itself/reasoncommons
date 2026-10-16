@@ -3,8 +3,8 @@ You are an unattended scheduled cloud session on the Reason Commons repo, execut
 ## Read first
 
 1. `AGENTS.md` (conventions: never hard-wrap Markdown, no blank lines inside raw HTML in Markdown, the `fl` preview caveats, which apply only to a local checkout).
-2. `docs/plans/2026-09-18-explainers-v2.md` — the plan and its decisions.
-3. `explainers/_process/series/voice-guide.md` and `explainers/_process/series/costar-teardown.md`.
+2. `docs/marketing/plans/2026-09-18-explainers-v2.md` — the plan and its decisions.
+3. `docs/marketing/explainers/series/voice-guide.md` and `docs/marketing/explainers/series/costar-teardown.md`.
 4. `skills/illustrated-chapters/SKILL.md` if it exists yet (the chapter form, once built).
 
 ## Loop
@@ -15,7 +15,7 @@ Repeat until nothing is ready:
 2. `bd ready --label explainers-v2 --exclude-label human --exclude-type epic`. If empty, stop the loop.
 3. Take the top issue: `bd show <id>` (read description, acceptance, notes, comments), `bd update <id> --claim`.
 4. Do the work fully, to the acceptance criteria. Use subagents where the issue asks for an independent critique or read. Invoke relevant skills (e.g. `scrollable-explainer` for stage discipline, `illustrated-chapters` for form).
-5. If it changes anything that renders: there is no preview site in the cloud (`fl` isn't available), so check the rendering another way. If Chrome is available, serve the files locally and check at phone width with `node scripts/phone-check.mjs <url> <out.png>` (emulates a 375px phone, lists overflowing elements, saves a screenshot; look at it). Don't use `--window-size=375`: headless Chrome won't go below 500px, so it crops a 500px layout and fakes clipping. Otherwise read the Markdown/HTML carefully. Rufus previews with `fl . --yes` when reviewing the PR.
+5. If it changes anything that renders: there is no preview site in the cloud (`fl` isn't available), so check the rendering another way. If Chrome is available, serve the files locally and check at phone width with `node scripts/phone-check.mjs <url> <out.png>` (emulates a 375px phone, lists overflowing elements, saves a screenshot; look at it). Don't use `--window-size=375`: headless Chrome won't go below 500px, so it crops a 500px layout and fakes clipping. Otherwise read the Markdown/HTML carefully. Rufus previews with `fl website --yes` when reviewing the PR.
 6. Commit with a conventional message (end it with the `Claude-Session:` line if one is given to you), `git push` to `claude/explainers-v2`. Never push to `main`: it is the live site, and Rufus merges the draft PR after review.
 7. `bd close <id> --reason "<one or two lines: what was done, where>"`, then commit and push the updated `.beads/issues.jsonl` to the branch if it changed.
 8. Go to 1.
@@ -32,3 +32,5 @@ Repeat until nothing is ready:
 ## Finish
 
 End with a short summary: issues closed, what shipped (preview/live URLs), anything waiting on Rufus.
+
+The repository publishes only `website/`. Finished pieces are under `website/explainers/`, working scripts/critiques under `docs/marketing/explainers/`; validate with `python3 scripts/check-website.py` and preview with `fl website --yes`.
