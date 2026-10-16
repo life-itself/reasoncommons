@@ -17,6 +17,11 @@ For the default `reason-commons.yaml`, generated files live alongside it in:
   history/
     000001.yaml
     000002.yaml
+  trees/                # render_view.py's diagram pages: one per tree, fitted to it
+    current_reality.html
+  nodes/                # and one per statement, centred and zoomed on it
+    r-e-example.html
+  diagrams.json         # drawings reused while a tree is unchanged
   diagrams/
     current/
       current_reality.html
@@ -26,7 +31,7 @@ For the default `reason-commons.yaml`, generated files live alongside it in:
       current_reality.svg
 ```
 
-Other state filenames use a matching hidden directory (`workshop.yaml` → `.workshop/`); `--output-dir` overrides this. Keep a separate history directory for each working file. Paths are returned by the helper. These are local generated artifacts; do not commit, publish, or send them elsewhere as part of ordinary facilitation.
+Other state filenames use a matching hidden directory (`workshop.yaml` → `.workshop/`); `--output-dir` overrides this. `trees/`, `nodes/` and `diagrams.json` are written by `render_view.py --page` or by its linked tree formats, not by this helper; unlike the accepted-only views below, the pages show every standing, marked, and are regenerated from the working YAML each time. Keep a separate history directory for each working file. Paths are returned by the helper. These are local generated artifacts; do not commit, publish, or send them elsewhere as part of ordinary facilitation.
 
 ## When a revision is created
 

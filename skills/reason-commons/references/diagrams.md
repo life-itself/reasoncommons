@@ -1,18 +1,79 @@
-# In-conversation diagrams
+# In-conversation trees and diagrams
 
-The change-status diagram is written once as a Mermaid `flowchart`, then shown in whatever form the host can display. The topology rules in `SKILL.md` apply in every form: same nodes, same links, same joint conditions, no invented connections. Tree views are generated from the YAML by `scripts/render_view.py` (see the pan-and-zoom section below) rather than drawn by hand; they follow the same conventions.
+Trees and change fragments are shown by default as text trees read from the top node down. A Mermaid diagram is drawn only when someone asks for one. The topology rules in `SKILL.md` apply in every form: same nodes, same links, same joint conditions, no invented connections. Tree views are generated from the YAML by `scripts/render_view.py` rather than drawn by hand.
 
-## Choose the form
+## Text trees
 
-Choose from the actual conversation surface and its rendering guidance. Codex desktop and Codex CLI are different surfaces; likewise, Claude desktop or Claude Code in a desktop app may expose rendering that a plain terminal does not. A missing widget tool does not make a desktop conversation plain text.
+Each row is one statement. The word at the start of a row names its relation to the row above, so the tree reads top-down in plain words. A rail between two siblings carries the standing of the link to the sibling below it.
 
-1. **Native Mermaid** — in Codex desktop, return a normal fenced ```` ```mermaid ```` block in the response. Use this form on other surfaces with native Mermaid support too, including supporting Claude desktop surfaces, GitHub and Flowershow. No widget tool or HTML file is needed. For a full tree view, use `render_view.py --format markdown` to generate the complete response from the YAML.
+```text
+▼ Rufus and David have not yet run a decision through the tool.  ✓R+D
+├─ because        ◀ The tool is not finished.  ✓R
+┊  └╌ partly because ◁ No one owns the release.
+└╌ because        ∧ all of these together
+   ├╌                □ Time is split across three projects.
+   └╌                ◀ ↑ The tool is not finished.
+```
+
+| Mark | Meaning |
+|------|---------|
+| `◉ ◎` | goal, objective |
+| `◆ ◇` | critical success factor, need, intermediate objective |
+| `■ □` | necessary condition, observation, existing condition |
+| `▼ ▽` | undesirable effect, obstacle |
+| `◀ ◁` | cause |
+| `★ ☆` | injection |
+| `▶ ▷` | action, prerequisite (conflict-cloud action) |
+| `▲ △` | desirable effect |
+| `● ○` | predicted or expected effect |
+| solid / hollow / `✕` | accepted / proposed / disputed statement |
+| `│ ─` / `┊ ╌` / `┆ ┄` | accepted / proposed / disputed link |
+| `∧ all of these together` | one link from joint conditions; its rows sit under it |
+| `↑` | a statement already drawn in full under its first parent |
+| `replaces` and struck text | a superseded statement |
+| `✓R+D` | accepted by Rufus and David (initials) |
+| `⚑ work` | open backlog work on the statement |
+| `↗ addresses Reality` | a cross-tree trace; it is a reference, not a causal link |
+
+The relation words are `needs` (necessary for), `because` (causes), `partly because` (contributes to), `supported by`, `challenged by`, `blocked by`, `cleared by` (overcomes), `then` (precedes), `expect` (produces, in the transition tree; `produced by` elsewhere), `replaces` (supersedes), `possibly partly because` (may contribute to) and `conflicts with`. When several conditions jointly produce, precede or supersede something, the `∧` group sits under the target and reads `produced by`, `after` or `replaced by`. A relation with no wording of its own is shown under its source, so it reads in the link's direction. Highlighting a standing, or open work, dims every other row rather than removing it.
+
+### Choose the form
+
+The text tree is the overview; its links open the graphical diagram for inspecting a statement in place.
+
+1. **Chat reply or other Markdown** — `render_view.py`'s default output is a nested list in which every tree and statement name links to its diagram page. Return it unchanged. Never wrap a tree in a code block: the links become dead text. When the pages lie inside the working directory, the links are relative to it, which is what desktop apps open beside the conversation; otherwise they are `file://` addresses.
+2. **Terminal** — `--format tree-text` prints the tree with OSC 8 hyperlinks when it is printing to the terminal itself. Output an agent captures is not a terminal, so links are off there unless `--links always` is given; ANSI colour follows the same rule and `NO_COLOR`.
+
+```bash
+# A linked nested list for a chat reply; writes the diagram pages beside the state
+python3 <skill-directory>/scripts/render_view.py <state.yaml> --tree future_reality [--highlight disputed] [--focus <node-id>]
+
+# The terminal tree, wrapped to the terminal's width
+python3 <skill-directory>/scripts/render_view.py <state.yaml> --tree transition --format tree-text
+
+# Write the diagram pages and list a link to each tree
+python3 <skill-directory>/scripts/render_view.py <state.yaml> --page
+```
+
+### Diagram pages
+
+The pages are written beside the state file under `.<state-stem>/`, with the other generated files described in [views.md](views.md): `trees/<tree>.html` shows the whole tree fitted to the window, and `nodes/<node-id>.html` shows the same full tree centred and zoomed on that statement, outlined in blue, with its kind, standing, open work and a link to where it was recorded. Each statement has its own page because some hosts drop a URL anchor such as `#<node-id>`. Every standing is marked, as in the text tree. Drag to pan, scroll to move, pinch or ⌘/Ctrl-scroll to zoom; **Whole tree** fits the tree and **Centre statement** returns to the statement.
+
+When Chrome or Chromium is installed, each tree is drawn once while the pages are written and embedded in them, so the pages need no network and open on their statement even where scripts do not run; unchanged trees reuse the drawing kept in `diagrams.json`. Without Chrome, or with `REASON_COMMONS_CHROME=none`, each page draws itself with mermaid.js from the network when opened. Pass `--page-url` when the pages are published at another address, so the links point there. Links to local files open only where the reader can reach that file; in a cloud session they reach the container, not the reader's machine.
+
+A change fragment whose updates are not saved yet, such as the tree updates in a change proposal, cannot be generated from the YAML. Write it by hand as the same nested list: the glyphs and relation words above, every new or revised item marked as such with its standing, and existing statements linked to their pages. Show only the changed items and the context needed to read them.
+
+## Mermaid on request
+
+When someone asks for a Mermaid diagram, choose from the actual conversation surface and its rendering guidance. Codex desktop and Codex CLI are different surfaces; likewise, Claude desktop or Claude Code in a desktop app may expose rendering that a plain terminal does not. A missing widget tool does not make a desktop conversation plain text.
+
+1. **Native Mermaid** — in Codex desktop, return a normal fenced ```` ```mermaid ```` block in the response. Use this form on other surfaces with native Mermaid support too, including supporting Claude desktop surfaces, GitHub and Flowershow. No widget tool or HTML file is needed. For a full tree diagram, use `render_view.py --format markdown` to generate the complete response from the YAML.
 2. **Inline widget** — when the host exposes an HTML rendering tool and native Mermaid is unavailable, or an interactive pan-and-zoom view is useful. In Claude apps this may be `show_widget`; follow the host's current rendering guidance rather than assuming the same tool exists in every desktop app. Render the Mermaid source with mermaid.js, as below.
-3. **ASCII or text outline** — on a surface without diagram rendering, or after its supported rendering forms fail. A terminal with Mermaid support can use the native form; use text when rendering is unavailable or disabled. If the surface's capabilities are unknown, say so and provide a readable fallback.
+3. **ASCII or text outline** — on a surface without diagram rendering, or after its supported rendering forms fail. If the surface's capabilities are unknown, say so and provide a readable fallback.
 
 In voice, follow the voice rules in `SKILL.md` and do not describe the diagram markup.
 
-## Mermaid conventions
+### Mermaid conventions
 
 - `flowchart LR` for short chains; `flowchart TB` when the fragment is deeper than it is wide.
 - One node per statement, with explicit tree and kind above it: `id["[P] CURRENT REALITY · CAUSE<br/>Concise claim"]`. Read both from the YAML; do not infer them from the node ID. Keep the `[P]`, `[A]`, `[D]` markers in the label so standing never depends on colour alone. Mark a revised node `[P] (revised)`. In a mixed-tree diagram, each node names its own tree.
@@ -37,9 +98,9 @@ flowchart LR
   class late disputed
 ```
 
-## Widget form
+### Widget form
 
-Give the opening answer or recommendation in response text, call the widget tool with the diagram only, then place any necessary save result and alternatives before the final question or selection prompt. Do not repeat the diagram's content as a second report. A routine no-change turn needs no diagram; follow SKILL.md for when a diagram helps. Use a fresh render ID for each widget and replace `SOURCE` with the Mermaid source:
+Give the opening answer or recommendation in response text, call the widget tool with the diagram only, then place any necessary save result and alternatives before the final question or selection prompt. Do not repeat the diagram's content as a second report. Use a fresh render ID for each widget and replace `SOURCE` with the Mermaid source:
 
 ```html
 <h2 class="sr-only">Change-status diagram: LAST CHANGE PROPOSED</h2>
@@ -61,18 +122,18 @@ document.getElementById('rc').innerHTML = svg;
 
 The widget loads mermaid.js from esm.sh, so it needs network access. If it fails to render, use a native Mermaid block when the surface supports one; otherwise show the ASCII form in the same response.
 
-### Pan and zoom for tree views and larger diagrams
+#### Pan and zoom for larger diagrams
 
-When an inline widget is available, every tree view, and any change-status diagram of more than about ten nodes or too wide to read at chat width, uses a pan-and-zoom frame instead of the plain widget. It opens fitted to the whole diagram. Dragging pans; the buttons, a pinch, or ⌘/Ctrl with the scroll wheel zoom. A plain scroll is left to the conversation so the diagram never traps it. The frame stays near 380px tall so the summary and directions remain in view. On a native Mermaid surface, return the generated Markdown and use the host's diagram inspection controls; lack of the widget frame is not a reason to switch to text.
+When an inline widget is available, a requested Mermaid tree diagram, and any requested diagram of more than about ten nodes or too wide to read at chat width, uses a pan-and-zoom frame instead of the plain widget. It opens fitted to the whole diagram. Dragging pans; the buttons, a pinch, or ⌘/Ctrl with the scroll wheel zoom. A plain scroll is left to the conversation so the diagram never traps it. The frame stays near 380px tall so the summary and directions remain in view. On a native Mermaid surface, return the generated Markdown and use the host's diagram inspection controls; lack of the widget frame is not a reason to switch to text.
 
 Do not write the frame by hand. `scripts/render_view.py` prints it complete, ready to pass unchanged to the widget tool:
 
 ```bash
-# A native Mermaid tree view: return this complete Markdown unchanged in the response
+# A native Mermaid tree diagram: return this complete Markdown unchanged in the response
 python3 <skill-directory>/scripts/render_view.py <state.yaml> --tree <tree> --standing <standing> --format markdown
 
-# A tree view: counts, topology, markers, context endpoints and the “Not shown” line all come from the YAML
-python3 <skill-directory>/scripts/render_view.py <state.yaml> --tree current_reality --standing accepted
+# A Mermaid tree diagram in the frame: counts, topology, markers, context endpoints and the “Not shown” line all come from the YAML
+python3 <skill-directory>/scripts/render_view.py <state.yaml> --tree current_reality --standing accepted --format widget
 
 # A large change-status diagram you have written as Mermaid
 python3 <skill-directory>/scripts/render_view.py --wrap --heading "LAST CHANGE: PROPOSED · [P] proposed · [A] accepted" < change.mmd
@@ -80,9 +141,9 @@ python3 <skill-directory>/scripts/render_view.py --wrap --heading "LAST CHANGE: 
 
 `--format mermaid` produces only the diagram source for callers that need to embed it. `--format markdown` includes the scope heading, relation key, fenced diagram and omitted-standing guidance, so native rendering retains the same context as a widget.
 
-On a plain-text surface, or after supported diagram rendering fails, use `--format text` for a view: an outline that lists every link once under its effect, with joint causes as `AND( … )` and unlinked nodes at the end. `--counts` prints the per-tree counts the view option in the menu needs.
+Mermaid tree diagrams show one standing at a time, with endpoints of other standings as marked context. On a plain-text surface, or after supported diagram rendering fails, `--format text` gives the same scope as an outline that lists every link once under its effect, with joint causes as `AND( … )` and unlinked nodes at the end. `--counts` prints the per-tree counts the view option in the menu needs.
 
-## ASCII form
+### ASCII form
 
 ```text
 LAST CHANGE: PROPOSED   [P] proposed
