@@ -130,20 +130,177 @@ class RenderViewTests(unittest.TestCase):
         self.assertIn("HEAD &lt;b&gt;", page)
         self.assertNotIn("__", page)
 
-    def test_cli_defaults_to_accepted_and_refuses_empty_standing(self):
+    def test_cli_mermaid_formats_default_to_accepted_and_refuse_empty_tree(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "state.yaml"
             path.write_text(yaml.safe_dump(state(), allow_unicode=True))
             run = lambda *a: subprocess.run([sys.executable, str(SCRIPT), str(path), *a], capture_output=True, text=True)
-            out = run("--tree", "current_reality")
+            out = run("--tree", "current_reality", "--format", "widget")
             native = run("--tree", "current_reality", "--format", "markdown")
             self.assertEqual(native.returncode, 0, native.stderr)
             self.assertEqual(native.stdout.strip(), render.markdown("current_reality", self.tree, "accepted"))
             self.assertEqual(out.returncode, 0, out.stderr)
             self.assertIn("CURRENT REALITY — ACCEPTED ONLY (6 nodes, 3 links)", out.stdout)
             self.assertIn("ti-arrows-maximize", out.stdout)
-            out = run("--tree", "goal")
+            out = run("--tree", "goal", "--format", "widget")
             self.assertNotEqual(out.returncode, 0)
+            self.assertIn("no statements yet", out.stderr)
+
+
+class TreeViewTests(unittest.TestCase):
+    """The default view: a text tree read from the top node down."""
+
+    def setUp(self):
+        render.PEOPLE.clear()
+        render.PEOPLE.update(alice="Alice", bob="Bob")
+        self.state = state()
+
+    def variant(self):
+        """The fixture plus a second parent for a and a supersedes link from h to f."""
+        changed = state()
+        tree = changed["trees"]["current_reality"]
+        tree["links"].append(link("l5", ["a"], "e", "proposed"))
+        tree["links"].append({**link("l6", ["h"], "f", "disputed"), "relation": "supersedes"})
+        return changed
+
+    def drawn(self, model):
+        found = []
+        walk = lambda n: (found.append(n["id"]) if not n.get("ref") and not n.get("group") else None, [walk(c) for c in n["children"]])
+        for n in model["roots"]:
+            walk(n)
+        return found
+
+    def test_model_draws_every_statement_once_and_every_link(self):
+        for current in (self.state, self.variant()):
+            with self.subTest(links=len(current["trees"]["current_reality"]["links"])):
+                model = render.tree_model(current, "current_reality")
+                drawn = self.drawn(model) + [n["id"] for n in model["loose"]]
+                self.assertEqual(sorted(drawn), list("abcdefgh"))
+                self.assertEqual(model["links"], len(current["trees"]["current_reality"]["links"]))
+        model = render.tree_model(self.state, "current_reality")
+        self.assertEqual([n["id"] for n in model["roots"]], ["d"])
+        self.assertEqual([n["id"] for n in model["loose"]], ["f", "h"])
+        self.assertEqual(model["standing"], {"accepted": 6, "proposed": 1, "disputed": 1})
+
+    def test_text_tree_marks_role_standing_and_joint_conditions(self):
+        text = render.text_tree(self.state, "current_reality", width=100)
+        self.assertTrue(text.startswith("CURRENT REALITY TREE  Why are we not there yet?\n8 statements (6 accepted, 1 proposed, 1 disputed)"))
+        self.assertIn("◀ Only own time", text)
+        self.assertRegex(text, r"└─ partly because\s+∧ all of these together")
+        self.assertRegex(text, r"╌ partly because\s+◁ A proposed cause")
+        self.assertIn("✕◁ A disputed claim  disputed", text)
+        self.assertIn("NOT LINKED TO ANYTHING YET", text)
+        self.assertIn("✓A", text)
+        self.assertNotIn("\x1b", text)
+
+    def test_second_parent_is_a_back_reference_and_superseded_text_is_struck(self):
+        changed = self.variant()
+        text = render.text_tree(changed, "current_reality", width=100)
+        self.assertEqual(text.count("Sales is hard"), 2)
+        self.assertIn("◀ ↑ Sales is hard", text)
+        model = render.tree_model(changed, "current_reality")
+        f = next(c for c in model["roots"][1]["children"] if c["id"] == "f")
+        self.assertTrue(f["struck"])
+        self.assertEqual(f["verb"], "replaces")
+        self.assertIn("~~Loose accepted fact~~", render.markdown_tree(changed, "current_reality", "page.html"))
+
+    def test_terminal_links_and_colour_are_opt_in(self):
+        plain = render.text_tree(self.state, "current_reality")
+        self.assertNotIn("\x1b]8;;", plain)
+        linked = render.text_tree(self.state, "current_reality", link_base="file:///x/trees.html")
+        self.assertIn("\x1b]8;;file:///x/trees.html#c\x1b\\No customers\x1b]8;;\x1b\\", linked)
+        self.assertIn("\x1b]8;;file:///x/trees.html#current_reality\x1b\\", linked)
+        self.assertNotRegex(linked, r"\x1b\[[0-9;]*m")
+
+    def test_highlight_dims_other_rows_throughout(self):
+        text = render.text_tree(self.state, "current_reality", ansi=True, highlight="proposed", width=100)
+        dimmed = next(line for line in text.splitlines() if "Sales is hard" in line)
+        self.assertEqual(re.findall(r"\x1b\[[0-9;]*m", dimmed), ["\x1b[2m", "\x1b[0m"])
+        lit = next(line for line in text.splitlines() if "A proposed cause" in line)
+        self.assertIn("\x1b[33m◁", lit)
+
+    def test_objections_show_when_disputed_items_are_highlighted(self):
+        self.assertNotIn("Superseded", render.text_tree(self.state, "current_reality"))
+        for lens in ("disputed", "open"):
+            with self.subTest(lens=lens):
+                self.assertIn("objection (Bob): Superseded", render.text_tree(self.state, "current_reality", highlight=lens))
+                self.assertIn("· objection (Bob): Superseded", render.markdown_tree(self.state, "current_reality", "p.html", highlight=lens))
+
+    def test_markdown_tree_is_a_linked_list_not_a_code_block(self):
+        md = render.markdown_tree(self.state, "current_reality", "file:///x/trees.html")
+        self.assertNotIn("```", md)
+        self.assertTrue(md.startswith("**[Current reality tree](file:///x/trees.html#current_reality)**"))
+        for ident in "abcdefgh":
+            self.assertIn(f"](file:///x/trees.html#{ident})", md)
+        self.assertIn("\n  - *partly because* ∧ *all of these together*", md)
+        changed = state()
+        changed["trees"]["current_reality"]["nodes"][0]["text"] = "Sales *is* [hard]"
+        self.assertIn("[Sales \\*is\\* \\[hard\\]](file:///x/trees.html#a)", render.markdown_tree(changed, "current_reality", "file:///x/trees.html"))
+
+    def test_focus_keeps_the_path_from_the_top_and_the_branch(self):
+        text = render.text_tree(self.state, "current_reality", focus=("c",), width=100)
+        for kept in ("Only own time", "all of these together", "No customers", "Sales is hard", "A proposed cause"):
+            self.assertIn(kept, text)
+        for folded in ("Funding not applied for", "Loose accepted fact", "A disputed claim"):
+            self.assertNotIn(folded, text)
+        self.assertIn("⋯ 3 rows folded", text)
+        md = render.markdown_tree(self.state, "current_reality", "p.html", focus=("c",))
+        self.assertNotIn("Funding not applied for", md)
+        self.assertIn("[Show the whole tree](p.html#current_reality)", md)
+        self.assertIn("A disputed claim", render.text_tree(self.state, "current_reality", focus=("h",)))
+        with self.assertRaises(ValueError):
+            render.text_tree(self.state, "current_reality", focus=("nope",))
+
+    def test_page_carries_every_tree_and_where_each_statement_was_recorded(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "state.yaml"
+            path.write_text(yaml.safe_dump(self.state, allow_unicode=True, sort_keys=False))
+            target = render.write_page(self.state, path)
+            self.assertEqual(target, Path(tmp) / ".state" / "trees.html")
+            page = target.read_text()
+            self.assertTrue(page.startswith("<!doctype html>"))
+            self.assertNotIn("__RID__", page)
+            self.assertNotIn("__DATA__", page)
+            data = json.loads(re.search(r"const D = (.*);\n", page).group(1).replace("<\\/", "</"))
+            self.assertTrue(data["standalone"])
+            self.assertEqual(data["order"], ["current_reality"])
+            self.assertEqual(data["trees"]["current_reality"]["nodes"], 8)
+            line = path.read_text().splitlines().index("    - id: a") + 1
+            self.assertEqual(data["records"]["a"]["yaml"], f"{path.resolve().as_uri()}#L{line}")
+            widget = render.tree_widget(self.state, "current_reality", focus=("c",))
+            self.assertNotIn("<!doctype", widget)
+            data = json.loads(re.search(r"const D = (.*);\n", widget).group(1).replace("<\\/", "</"))
+            self.assertEqual((data["standalone"], data["start"]["focus"]), (False, ["c"]))
+
+    def test_cli_defaults_to_the_tree_view(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "state.yaml"
+            path.write_text(yaml.safe_dump(self.state, allow_unicode=True))
+            run = lambda *a: subprocess.run([sys.executable, str(SCRIPT), str(path), *a], capture_output=True, text=True)
+            page = (Path(tmp) / ".state" / "trees.html").resolve()
+            out = run("--tree", "current_reality")
+            self.assertEqual(out.returncode, 0, out.stderr)
+            self.assertIn('class="rct"', out.stdout)
+            self.assertNotIn("mermaid", out.stdout)
+            self.assertFalse(page.exists())
+            out = run("--format", "tree-markdown")
+            self.assertEqual(out.returncode, 0, out.stderr)
+            self.assertIn(f"]({page.as_uri()}#c)", out.stdout)
+            self.assertTrue(page.exists())
+            out = run("--format", "tree-markdown", "--page-url", "https://example.org/t")
+            self.assertIn("](https://example.org/t#c)", out.stdout)
+            out = run("--format", "tree-text", "--focus", "c")
+            self.assertEqual(out.returncode, 0, out.stderr)
+            self.assertTrue(out.stdout.startswith("CURRENT REALITY TREE"))
+            self.assertNotIn("\x1b", out.stdout)
+            out = run("--format", "tree-text", "--links", "always")
+            self.assertIn(f"\x1b]8;;{page.as_uri()}#a\x1b\\", out.stdout)
+            out = run("--page")
+            self.assertEqual(out.stdout.splitlines()[0], page.as_uri())
+            self.assertIn(f"Current reality tree: {page.as_uri()}#current_reality", out.stdout)
+            self.assertNotEqual(run("--tree", "goal").returncode, 0)
+            self.assertNotEqual(run("--focus", "nope").returncode, 0)
+            self.assertIn("is not a statement in the current reality tree", run("--focus", "nope", "--tree", "current_reality").stderr)
 
 
 if __name__ == "__main__":

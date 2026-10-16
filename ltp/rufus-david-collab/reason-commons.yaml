@@ -1352,6 +1352,24 @@ trees:
         attribution: explicit
         mode: text
         note: On 2026-10-16 David said the scattered structure seems likely to contribute to technical debt and supplied a directory layout separating concerns. This records an anticipated risk, not evidence that technical debt has already increased.
+    - id: r-e-tree-views-need-zoom
+      kind: observation
+      text: In Claude Code desktop, the reason-commons tree views drew each statement as a small box in a pan-and-zoom diagram that David could not read without zooming, and the accepted-only views showed unconnected boxes because no link had been accepted.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: David supplied four screenshots of the Prerequisite and Transition tree views on 2026-10-16 and said the diagrams were not scannable for human eyes.
+    - id: r-e-fragment-not-clickable
+      kind: observation
+      text: The tree fragment in a change proposal was plain text in a Markdown code block, so David could not click a tree or node name to see that tree drawn.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: David reported on 2026-10-16 that he expected to click 'future reality' in the change-tree-view-default-links proposal and see the tree rendered graphically.
     links:
     - id: r-rel-unclear-drives-redesigning
       from:
@@ -1907,6 +1925,12 @@ trees:
       note: The repository previously mixed public method pages and working reasoning under ltp/ and published from the project root with exclusions. The approved migration separates those boundaries and repairs affected paths. David’s concern and anticipated technical-debt risk remain proposed; observe whether this improves actual work rather than inferring the benefit from cleaner folders. No repository split or production cutover was performed.
       beads:
       - reasoncommons-ar1
+    - ref: r-e-tree-views-need-zoom
+      work: review_connection
+      note: Examine its relationship to r-e-skill-hard-to-scan; one person's report on one surface does not establish how other readers experience the views.
+    - ref: r-e-fragment-not-clickable
+      work: review_connection
+      note: Examine its relationship to r-e-skill-hard-to-scan.
   conflict:
     nodes:
     - id: c-e-objective
@@ -2708,6 +2732,43 @@ trees:
         attribution: assistant
         mode: text
         note: 'Implemented revision 1 locally on codex/repository-boundaries: 445 declared moves, a project-map README, product/marketing/business and app ownership maps, four explicit public exports, updated preview/library paths, website CI and current Beads path references. Checks: 77 reasoning-helper tests; 535 local links/assets and migration audit; exporter/checker negative contracts; remote-work and six-tree dashboard toy checks; book checker matches its six-warning baseline. 401 of 445 moves are byte-identical, including dashboard/CSS/JS and all moved media. Local desktop/375px checks had no JavaScript errors and working routes returned 404. Dashboard phone-check flags existing tab children inside an overflow-x:auto nav; document width remains 375px and dashboard bytes match the base. Flowershow CLI is unavailable, so cloud preview and production root cutover remain unverified. Implementation completion does not endorse the injection or establish technical-debt reduction.'
+    - id: f-e-text-tree-default-view
+      kind: injection
+      text: The skill shows each tree by default as an indented text tree read from the top node down, in which glyph shape marks node kind, glyph fill marks node standing and rail texture marks link standing; highlighting a standing dims the other items instead of removing them, and a Mermaid diagram is drawn only when someone asks for one.
+      status: proposed
+      addresses:
+      - r-e-skill-hard-to-scan
+      - r-e-tree-views-need-zoom
+      implements:
+      - f-e-skill-scannable-turns
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: 'David proposed "INJECTION 1: tree view as default" on 2026-10-16, after asking for a tree output that differentiates node and connection types with text and CSS. Wording drafted by the assistant in change-tree-view-default-links-2026-10-16 revision 2.'
+    - id: f-e-tree-view-links
+      kind: injection
+      text: Every tree view, and every reply that names a tree or node, links that name to the graphical view of the tree opened at that node, and links each statement to where it was recorded; in chat and Markdown these are ordinary links outside code blocks, and in a terminal they are OSC 8 hyperlinks.
+      status: proposed
+      addresses:
+      - r-e-skill-hard-to-scan
+      - r-e-fragment-not-clickable
+      implements:
+      - f-e-text-tree-default-view
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: 'David proposed "INJECTION 2: tree views as default with clickable links" on 2026-10-16, with an OSC 8 implementation sketch, then asked that clicking a node open the drawing centred and zoomed on it. Wording drafted by the assistant in change-tree-view-default-links-2026-10-16 revision 2.'
+    - id: f-e-click-through
+      kind: desirable_effect
+      text: People reading a reply or a tree view can open the full tree at any statement it names, and the record behind that statement, without searching for it.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+        note: Proposed effect of f-e-tree-view-links in change-tree-view-default-links-2026-10-16 revision 2.
     links:
     - id: f-rel-use-makes-users
       from:
@@ -2927,6 +2988,32 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: f-rel-text-tree-aids-attention
+      from:
+      - f-e-text-tree-default-view
+      to: f-e-skill-attention-clear
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: Readers decode the glyph set and indented layout faster than labelled boxes in a zoomable diagram, and dimming keeps proposed items distinguishable from accepted ones.
+        by: assistant
+    - id: f-rel-links-click-through
+      from:
+      - f-e-tree-view-links
+      to: f-e-click-through
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: The host opens the links; chat links reach a page the reader can open, and the terminal supports OSC 8 hyperlinks.
+        by: assistant
     backlog:
     - ref: f-rel-use-makes-users
       work: test_causality
@@ -2975,7 +3062,7 @@ trees:
       note: Check that quieter alternatives and contextual diagrams still let participants redirect, inspect the full reasoning, and challenge a proposal.
     - ref: f-e-skill-host-aware-diagrams
       work: review_fragment
-      note: Review the desktop-output observation, proposed correction and connection to f-e-skill-attention-clear together; implementing the correction does not accept this reasoning.
+      note: Review the desktop-output observation, proposed correction and connection to f-e-skill-attention-clear together; implementing the correction does not accept this reasoning. Under f-e-text-tree-default-view the skill draws diagrams only on request, so host-aware selection now applies only then; review whether to narrow this injection's wording.
     - ref: f-rel-native-diagrams-aid-inspection
       work: test_rendering_and_inspection
       note: In fresh Codex and Claude desktop sessions, show the remote-work gold fixture and inspect its labels and connections; also check a plain-text fallback. Offline helper checks pass; these do not establish real-user usability.
@@ -3043,6 +3130,15 @@ trees:
       note: Local export/route/boundary checks and desktop/phone rendering passed. Requests for the working collaboration YAML, project docs, skill internals and NEXT.md returned 404 from the website root. The Flowershow CLI is unavailable here; remote preview is not verified. Follow docs/product/repository-boundaries.md for a separate cloud preview and a coordinated production merge/root-directory switch to /website. The local implementation task does not complete that deployment or demonstrate the predicted benefit.
       beads:
       - reasoncommons-ar1
+    - ref: f-e-text-tree-default-view
+      work: test_negative_branch
+      note: Check whether seeing every standing at once makes proposed items read as accepted, and whether readers decode the glyphs without the legend.
+    - ref: f-e-tree-view-links
+      work: verify_host_support
+      note: Observe which hosts actually open the links, including Claude Code desktop, the Claude Code CLI, Codex and David's terminal. Output an agent captures through a pipe is not a terminal, so OSC 8 links are not expected there.
+    - ref: f-e-click-through
+      work: connect_or_explain
+      note: No path to the goal yet; explain how reaching the full tree and its records serves the goal, or connect it.
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
@@ -5714,3 +5810,30 @@ change_acceptances:
   - website/talk/2r-research-group/demo-c/index.html
   - website/talk/2r-research-group/demo-c/proposals.yaml
   - website/talk/2r-research-group/slides.html
+- proposal_ref: change-tree-view-default-links-2026-10-16
+  proposal_revision: 2
+  by: david
+  recorded_at: '2026-10-16T11:36:42Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: instead of creating a PR can you save this branch in the repo so i can try it out locally
+  scope: 'Implement revision 2 in the reason-commons skill: a tree format in render_view.py writing HTML, ANSI and plain text with one glyph set for all six trees (shape for kind, fill for standing, rail texture for link standing, highlighting that dims), back-references for statements with several parents, Mermaid only on request; render_view.py --page writing a self-contained all-trees page to the gitignored .reason-commons/trees.html with tree and node anchors that open a tree centred and zoomed on a node; chat fragments as nested Markdown lists of links; OSC 8 terminal links into the page when output is a real terminal (--links auto|always|never); tests; skill instructions in SKILL.md, views.md, diagrams.md and responses.md. Save the two observations, two injections, desirable effect, two contributes_to links, and backlog (review_connection on both observations, test_negative_branch, verify_host_support, connect_or_explain, revised review_fragment note on f-e-skill-host-aware-diagrams). Deliver as the pushed branch claude/scannable-tree-views-vw7ukz without opening a PR, as David asked. Implementation does not accept the reasoning.'
+  node_ids:
+  - r-e-tree-views-need-zoom
+  - r-e-fragment-not-clickable
+  - f-e-text-tree-default-view
+  - f-e-tree-view-links
+  - f-e-click-through
+  - f-e-skill-host-aware-diagrams
+  link_ids:
+  - f-rel-text-tree-aids-attention
+  - f-rel-links-click-through
+  approved_paths:
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - skills/reason-commons/SKILL.md
+  - skills/reason-commons/references/diagrams.md
+  - skills/reason-commons/references/responses.md
+  - skills/reason-commons/references/views.md
+  - skills/reason-commons/scripts/render_view.py
+  - skills/reason-commons/tests/test_render_view.py
