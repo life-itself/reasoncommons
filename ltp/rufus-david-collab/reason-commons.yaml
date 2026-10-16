@@ -2732,6 +2732,47 @@ trees:
         attribution: assistant
         mode: text
         note: 'Implemented revision 1 locally on codex/repository-boundaries: 445 declared moves, a project-map README, product/marketing/business and app ownership maps, four explicit public exports, updated preview/library paths, website CI and current Beads path references. Checks: 77 reasoning-helper tests; 535 local links/assets and migration audit; exporter/checker negative contracts; remote-work and six-tree dashboard toy checks; book checker matches its six-warning baseline. 401 of 445 moves are byte-identical, including dashboard/CSS/JS and all moved media. Local desktop/375px checks had no JavaScript errors and working routes returned 404. Dashboard phone-check flags existing tab children inside an overflow-x:auto nav; document width remains 375px and dashboard bytes match the base. Flowershow CLI is unavailable, so cloud preview and production root cutover remain unverified. Implementation completion does not endorse the injection or establish technical-debt reduction.'
+    - id: f-e-discord-on-demand
+      kind: injection
+      text: Collaborators can explicitly invoke reason-commons from Discord to inspect and update shared saved reasoning, with attributed contributions and versioned endorsement.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: David requested an on-demand Discord surface for the existing skill and shared trees in the handoff; he identified the app as a distinct injection during PR review. This does not record endorsement of the proposed reasoning.
+      - by: assistant
+        attribution: assistant
+        mode: text
+      implements:
+      - f-e-use-while-building
+    - id: f-e-discord-reasoning-aligned
+      kind: predicted_effect
+      text: When collaborators use the bot to capture and review relevant discussion, saved reasoning stays aligned with their Discord work.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: f-e-discord-diverts-resources
+      kind: undesirable_effect
+      text: Operating and extending the bot may consume scarce time and money and delay real-work testing.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      derived_from:
+      - r-e-only-own-time
+      - r-e-keep-redesigning
+    - id: f-e-discord-misrepresents-agreement
+      kind: undesirable_effect
+      text: If identity, endorsement or state controls fail, bot-mediated updates may misrepresent collaborators' reasoning or agreement.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     - id: f-e-text-tree-default-view
       kind: injection
       text: The skill shows each tree by default as an indented text tree read from the top node down, in which glyph shape marks node kind, glyph fill marks node standing and rail texture marks link standing; highlighting a standing dims the other items instead of removing them, and a Mermaid diagram is drawn only when someone asks for one.
@@ -2988,6 +3029,60 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: f-rel-discord-supports-alignment
+      from:
+      - f-e-discord-on-demand
+      to: f-e-discord-reasoning-aligned
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: Collaborators actually invoke the bot and capture relevant contributions; channel availability alone does not establish use.
+        by: assistant
+      - text: Live attribution, endorsement and persistence controls work correctly; mocked tests alone do not establish this.
+        by: assistant
+    - id: f-rel-discord-alignment-supports-next
+      from:
+      - f-e-discord-reasoning-aligned
+      to: f-e-know-next
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: The collaborators use the saved reasoning and sufficiently current task information to decide what to do; aligned reasoning alone does not choose an action.
+        by: assistant
+    - id: f-rel-discord-diverts-resources
+      from:
+      - f-e-discord-on-demand
+      to: f-e-discord-diverts-resources
+      relation: may_contribute_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: This branch becomes material if operation or extension displaces scarce resources or testing; no actual displacement has been established.
+        by: assistant
+    - id: f-rel-discord-misrepresents-agreement
+      from:
+      - f-e-discord-on-demand
+      to: f-e-discord-misrepresents-agreement
+      relation: may_contribute_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: This branch requires a control failure or misuse; implemented safeguards have local test evidence, while residual live risk remains unverified.
+        by: assistant
     - id: f-rel-text-tree-aids-attention
       from:
       - f-e-text-tree-default-view
@@ -3040,6 +3135,16 @@ trees:
     - ref: f-e-use-while-building
       work: test_conflict_resolution
       note: Preserved source assessment c-as-do-both-breaks says both needs are met; check repeated real use, not just one successful session.
+    - ref: f-e-discord-on-demand
+      work: verify_discord_adapter
+      note: Local prototype implemented under apps/discord. All 47 mocked application tests and 77 existing reasoning-helper tests pass; a real remote-work PNG was rendered and visually inspected, and local check/task-refresh commands were exercised without credentials. Covers invocation-only transport, canonical skill-loading guards, authenticated attribution without implicit endorsement, version-bound endorsement, restart continuity, serialized duplicate-safe saves, interrupted-save recovery and external-edit conflict detection. Actual model skill use and Discord delivery remain for a separately configured live smoke test; local evidence does not establish model quality or successful deployment.
+      beads:
+      - reasoncommons-oqf
+    - ref: f-e-discord-on-demand
+      work: evaluate_discord_pilot
+      note: After live configuration and funding are separately agreed, test whether Rufus and David successfully use the Discord surface for real collaboration work and record remaining friction. The implementation does not establish usefulness or change reasoning standing.
+      beads:
+      - reasoncommons-oqf
     - ref: f-rel-naming-records-work
       work: test_causality
       note: The pull request that introduced this change used it once; check whether later pull requests keep the connection without reminders.
@@ -3130,6 +3235,18 @@ trees:
       note: Local export/route/boundary checks and desktop/phone rendering passed. Requests for the working collaboration YAML, project docs, skill internals and NEXT.md returned 404 from the website root. The Flowershow CLI is unavailable here; remote preview is not verified. Follow docs/product/repository-boundaries.md for a separate cloud preview and a coordinated production merge/root-directory switch to /website. The local implementation task does not complete that deployment or demonstrate the predicted benefit.
       beads:
       - reasoncommons-ar1
+    - ref: f-rel-discord-supports-alignment
+      work: test_causality
+      note: Observe invocation, relevant capture and review in real work; availability and local code tests do not establish use.
+    - ref: f-rel-discord-alignment-supports-next
+      work: test_causality
+      note: Check whether aligned reasoning plus task context actually helps collaborators choose their next action.
+    - ref: f-e-discord-diverts-resources
+      work: test_negative_branch
+      note: Measure operating/maintenance cost and whether it displaces real-work testing; current reservation is unverified.
+    - ref: f-e-discord-misrepresents-agreement
+      work: test_negative_branch
+      note: Exercise identity, endorsement and persistent-state controls live and assess remaining misuse/failure cases.
     - ref: f-e-text-tree-default-view
       work: test_negative_branch
       note: Check whether seeing every standing at once makes proposed items read as accepted, and whether readers decode the glyphs without the legend.
@@ -3764,6 +3881,24 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: p-e-discord-live-unverified
+      kind: obstacle
+      text: A funded persistent runtime, channel setup and successful live model/Discord checks have not been established.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: p-e-discord-live-ready
+      kind: intermediate_objective
+      text: A funded persistent runtime and configured channel are available, and live identity, endorsement and shared-state checks pass.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      implements:
+      - f-e-discord-on-demand
     links:
     - id: p-rel-both-routes-overcomes
       from:
@@ -4050,6 +4185,19 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: p-rel-discord-readiness-overcomes-gap
+      from:
+      - p-e-discord-live-ready
+      to: p-e-discord-live-unverified
+      relation: overcomes
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: Passing a live smoke test establishes readiness for a bounded pilot, not lasting reliability or usefulness.
+        by: assistant
     backlog:
     - ref: p-rel-both-routes-overcomes
       work: review_relation
@@ -4109,6 +4257,9 @@ trees:
     - ref: p-rel-rewind-ready-overcomes-artifacts
       work: verify_recovery_conditions
       note: Observe actual host checkpoint availability and successful validation and view regeneration; retain earlier accepted snapshots.
+    - ref: p-e-discord-live-ready
+      work: verify_live_prerequisites
+      note: Establish funding/ownership, persistent host/state and channel/identity setup, then obtain passing live checks before a pilot.
   transition:
     nodes:
     - id: t-e-used-once
@@ -4433,6 +4584,53 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: t-e-discord-local-prototype
+      kind: existing_condition
+      text: The local prototype passed 47 application tests and 77 helper tests; live model/Discord behavior remains unverified.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: t-e-discord-configure-test
+      kind: action
+      text: Agree funding and operating ownership, configure the runtime/channel and collaborators, and run live identity, endorsement and persistence checks.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      implements:
+      - p-e-discord-live-ready
+    - id: t-e-discord-live-evidence
+      kind: expected_effect
+      text: Recorded live checks establish whether identity, endorsement and persistence behave correctly.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: t-e-discord-pilot
+      kind: action
+      text: After successful live checks, collaborators use the bot for one real-work session and record usefulness and friction.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      implements:
+      - f-e-discord-on-demand
+      derived_from:
+      - t-e-need-repeated-use
+      - t-e-act-friction-log
+    - id: t-e-discord-pilot-evidence
+      kind: expected_effect
+      text: A recorded session provides evidence about whether Discord supports useful reasoning and what needs improvement.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     links:
     - id: t-rel-funding-produces
       from:
@@ -4564,6 +4762,40 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: t-rel-discord-live-checks-produce-evidence
+      from:
+      - t-e-discord-local-prototype
+      - t-e-discord-configure-test
+      to: t-e-discord-live-evidence
+      relation: produces
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+    - id: t-rel-discord-check-evidence-before-pilot
+      from:
+      - t-e-discord-live-evidence
+      to: t-e-discord-pilot
+      relation: precedes
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: The pilot proceeds only after the required live checks pass and funding/operation are separately agreed. This reasoning update does not authorize live operation.
+        by: assistant
+    - id: t-rel-discord-pilot-produces-evidence
+      from:
+      - t-e-discord-pilot
+      to: t-e-discord-pilot-evidence
+      relation: produces
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     backlog:
     - ref: t-rel-funding-produces
       work: test_causality
@@ -4609,6 +4841,9 @@ trees:
     - ref: t-e-rewind-verified
       work: assess_user_benefit
       note: Helper persistence checks do not establish confidence, usability or adoption.
+    - ref: t-e-discord-pilot-evidence
+      work: assess_pilot_evidence
+      note: Keep local prototype evidence separate from live smoke-test results and usefulness/friction from a real collaboration session.
 change_acceptances:
 - proposal_ref: change-node-roles-2026-10-14
   by: david
@@ -5810,6 +6045,92 @@ change_acceptances:
   - website/talk/2r-research-group/demo-c/index.html
   - website/talk/2r-research-group/demo-c/proposals.yaml
   - website/talk/2r-research-group/slides.html
+- proposal_ref: change-discord-bot-2026-10-16
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-16T10:31:57Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: i accept
+  scope: Build a complete local Python Discord prototype with discord.py and Claude Agent SDK, explicit invocation in configured channels, grounded questions using configured YAML and refreshed Beads snapshots, attributed reasoning capture and version-bound explicit endorsement, deterministic PNG diagrams, restart continuity, serialized duplicate-safe persistence and external-edit conflict detection. Load the canonical skill and verify availability. Add verify_discord_adapter and evaluate_discord_pilot backlog on f-e-use-while-building, track a separate implementation bead, preserve collaboration priority and reasoning standing, run mocked local and repository checks, and deliver a reviewable branch and PR. Live Discord operation, paid model calls and hosting await separate configuration and decision.
+  node_ids: []
+  link_ids: []
+  approved_paths:
+  - apps/README.md
+  - apps/discord/.gitignore
+  - apps/discord/.env.example
+  - apps/discord/README.md
+  - apps/discord/pyproject.toml
+  - apps/discord/uv.lock
+  - apps/discord/package.json
+  - apps/discord/package-lock.json
+  - apps/discord/reasoncommons_discord/__init__.py
+  - apps/discord/reasoncommons_discord/__main__.py
+  - apps/discord/reasoncommons_discord/config.py
+  - apps/discord/reasoncommons_discord/bot.py
+  - apps/discord/reasoncommons_discord/agent.py
+  - apps/discord/reasoncommons_discord/store.py
+  - apps/discord/reasoncommons_discord/service.py
+  - apps/discord/reasoncommons_discord/diagrams.py
+  - apps/discord/tests/test_bot.py
+  - apps/discord/tests/test_agent.py
+  - apps/discord/tests/test_store.py
+  - apps/discord/tests/test_service.py
+  - apps/discord/tests/test_diagrams.py
+  - apps/discord/tests/fixtures/remote-work.yaml
+  - docs/product/plans/2026-10-16-discord-bot.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+- proposal_ref: change-discord-reasoning-diagrams-2026-10-16
+  proposal_revision: 2
+  by: david
+  recorded_at: '2026-10-16T11:12:51Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept
+  scope: 'Update PR66 with the bot-specific reasoning and rendered diagrams: add the displayed 11 proposed Future Reality, Prerequisite and Transition nodes and eight proposed links, their assumptions, cross-tree references and test/reservation backlog; relocate the two Discord backlog entries onto the specific injection; show unchanged relevant Current Reality context separately. Preserve existing reasoning standings, accepted history, prior receipts and collaboration priority. Update the existing product plan and Beads coordination, regenerate actual YAML-diff diagrams with a collapsed complete change list, validate scope, push the existing branch and inspect actual GitHub rendering. Exclude the retrospective CRT observation/link/backlog from revision 1. No bot-code edits, live operation, funding, hosting or model calls are authorized by this revision.'
+  node_ids:
+  - f-e-discord-on-demand
+  - f-e-discord-reasoning-aligned
+  - f-e-discord-diverts-resources
+  - f-e-discord-misrepresents-agreement
+  - p-e-discord-live-unverified
+  - p-e-discord-live-ready
+  - t-e-discord-local-prototype
+  - t-e-discord-configure-test
+  - t-e-discord-live-evidence
+  - t-e-discord-pilot
+  - t-e-discord-pilot-evidence
+  link_ids:
+  - f-rel-discord-supports-alignment
+  - f-rel-discord-alignment-supports-next
+  - f-rel-discord-diverts-resources
+  - f-rel-discord-misrepresents-agreement
+  - p-rel-discord-readiness-overcomes-gap
+  - t-rel-discord-live-checks-produce-evidence
+  - t-rel-discord-check-evidence-before-pilot
+  - t-rel-discord-pilot-produces-evidence
+  approved_paths:
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - docs/product/plans/2026-10-16-discord-bot.md
+  - .beads/issues.jsonl
+- proposal_ref: change-discord-pr-scope-2026-10-16
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-16T11:27:23Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: yes accept
+  scope: 'Remove the unrelated Current Reality context section and diagram from PR66 and its stale-tree justification from the description and product plan. Remove the addresses reference from f-e-discord-on-demand to r-e-trees-out-of-step and the test_discord_connection backlog entry on that existing cause. Preserve underlying existing observations, earlier receipts, the bot-specific injection, reservations, prerequisites and transition diagrams. Add no claims, links or backlog entries. Validate YAML, approval coverage and generated diagrams, push the scoped cleanup and inspect actual GitHub rendering. Keep session coordination notes local.'
+  node_ids:
+  - f-e-discord-on-demand
+  link_ids: []
+  approved_paths:
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - docs/product/plans/2026-10-16-discord-bot.md
 - proposal_ref: change-tree-view-default-links-2026-10-16
   proposal_revision: 2
   by: david

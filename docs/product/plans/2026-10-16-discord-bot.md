@@ -1,0 +1,35 @@
+# On-demand Discord reasoning prototype
+
+David accepted `change-discord-bot-2026-10-16` revision 1 with the exact reply “i accept”, `change-discord-reasoning-diagrams-2026-10-16` revision 2 with “accept”, and `change-discord-pr-scope-2026-10-16` revision 1 with “yes accept”. Their scope/path receipts are in the canonical collaboration YAML. These approvals cover the local implementation, its bot-specific reasoning/PR diagrams and the removal of unrelated PR context; live Discord operation, spending and deployment require separate agreement. The reasoning additions remain proposed.
+
+## Purpose and reasoning
+
+Give the existing collaborators another surface for their saved reasoning: where are we, what should we examine next, what objections remain, and how does a selected channel contribution relate? This serves Future Reality injection `f-e-use-while-building` (accepted): “Rufus and David use the tool on their real work now while they keep building and redesigning it.” A Discord pilot may help that use; implementation alone does not establish the benefit.
+
+Future Reality injection `f-e-discord-on-demand` (proposed) specifies the intervention: collaborators can explicitly invoke reason-commons from Discord to inspect and update shared saved reasoning, with attributed contributions and versioned endorsement. It implements the accepted use-while-building strategy.
+
+Predicted effect `f-e-discord-reasoning-aligned` (proposed) depends on collaborators actually capturing and reviewing relevant discussion. Its proposed connection to existing desirable effect `f-e-know-next` also requires use of the reasoning and sufficiently current task information. Two proposed negative branches remain for testing: `f-e-discord-diverts-resources` covers scarce time/money and delayed real-work testing; `f-e-discord-misrepresents-agreement` covers failures of identity, endorsement or state controls. The resource reservation derives from existing Current Reality concerns `r-e-only-own-time` (undesirable effect, accepted) and `r-e-keep-redesigning` (cause, proposed). Local safeguards/tests are evidence, not proof that either reservation is resolved.
+
+The Prerequisite tree records `p-e-discord-live-unverified` (obstacle, proposed) and `p-e-discord-live-ready` (intermediate objective, proposed). A funded persistent runtime and configured channel, with passing live identity/endorsement/state checks, overcome the immediate readiness gap; a passing smoke test does not establish lasting reliability or usefulness. Transition action `t-e-discord-configure-test` implements that readiness objective.
+
+The Transition tree distinguishes `t-e-discord-local-prototype` (existing condition, proposed, with recorded local test evidence), `t-e-discord-configure-test` (action, proposed), `t-e-discord-live-evidence` (expected effect, proposed), `t-e-discord-pilot` (action, proposed) and `t-e-discord-pilot-evidence` (expected effect, proposed). The local prototype and live configuration/check action jointly produce smoke-test evidence. A real-work pilot follows only successful checks and separately agreed funding/operation; it records usefulness and friction without assuming the outcome. The pilot traces to the existing need for repeated real use and the friction-log action.
+
+The specific Discord injection now owns `verify_discord_adapter` and `evaluate_discord_pilot` backlog, preserving the local evidence linked to implementation bead `reasoncommons-oqf`. Additional backlog covers benefit links, negative branches, live readiness and pilot evidence. Bead `reasoncommons-m4e` tracks recording and publishing this bot-specific reasoning, not performing the future live actions. Existing collaboration priority `reasoncommons-5lo`, prior reasoning standings and earlier approval receipts remain unchanged.
+
+## Bounded implementation
+
+Use one Python/discord.py gateway process with explicit slash commands and a selected-message context action. Claude Agent SDK loads the full canonical reason-commons package from the filesystem into an isolated project. No external MCP server, second provider integration, interactive viewer or hosted Activity is introduced.
+
+The transport supplies authenticated Discord identity, invocation/source references and configured state. A transport-independent service stages edits, validates them with the canonical helper and enforces read-only/attribution/endorsement boundaries. SQLite persists conversation context, review versions and a before/after save journal. Per-state locking, single-runtime ownership, hash comparison and recovery protect sequential state updates. The operating assumption is a single writer/host; uncooperative external editors must be paused.
+
+Questions and reviews do not alter YAML. Capture may add proposed reasoning or revise/challenge existing reasoning; it cannot endorse. Review expands a named fragment, retaining all endpoint conditions, full qualifications and an inspectable version. A typed acceptance command, tied to successful display and that exact version, applies endorsement deterministically with person/source evidence. Project implementation approval remains a separate protocol.
+
+Tree attachments use the canonical one-standing Mermaid generator, a pinned local renderer and actual state. They preserve explicit tree/kind/standing metadata, IDs, context, AND conditions and qualifications; text is the labeled fallback. Beads is an explicit refreshed snapshot, not inferred current truth from YAML or task completion.
+
+## Verification and delivery
+
+Use the remote-work fixture adapted from `claim-tree-annotation.md` before real data. Local tests cover access, invocation-only transport, grounding references, attribution, capture restrictions, version-bound endorsement, pending review publication, restart continuity, duplicate/concurrent invocations, interrupted saves, external conflicts, permission callbacks and failed skill loading. Render and inspect the actual toy PNG separately. Existing reasoning helpers and PR scope/receipt checks must pass.
+
+Deliver the source, dependency locks, tests and operating instructions on a reviewable branch/PR. Live model quality, actual Discord behavior, funded API use, persistent hosting and real collaboration usefulness remain unverified. The API budget estimate is not a hard billing cap. See [app operating instructions](../../../apps/discord/README.md) for configuration, recovery, privacy and the single-writer limitation.
+
+Local evidence: 47 application tests and all 77 existing helper tests pass. A real Mermaid PNG of the remote-work fixture was rendered and visually inspected for qualifications, IDs, standing/context labels and the AND junction. The CLI check and explicit Beads snapshot refresh were exercised without credentials or model calls. The installed/locked versions are Claude Agent SDK 0.2.168, discord.py 2.7.1 and Mermaid CLI 11.17.0. Existing accepted-history revisions 1 and 2 were copied from the prior checkout only after comparing the latest accepted projection; validation still reports revision 2 with no accepted reasoning changes.
