@@ -1,6 +1,6 @@
 ---
 name: scrollable-explainer
-description: Principles and patterns for writing and building long-form scroll-driven visual explainers (scrollytelling) — the ProPublica/NYT article form where prose and graphics interleave and scroll position drives the graphics. Use when drafting, structuring, critiquing or building any explainer in `explainers/`, or whenever asked for a "scrollable article", "scrollytelling piece", "visual explainer" or "NYT-style scrolling article".
+description: Principles and patterns for writing and building long-form scroll-driven visual explainers (scrollytelling) — the ProPublica/NYT article form where prose and graphics interleave and scroll position drives the graphics. Use when drafting, structuring, critiquing or building any explainer in `website/explainers/`, or whenever asked for a "scrollable article", "scrollytelling piece", "visual explainer" or "NYT-style scrolling article".
 ---
 
 # Scrollable explainers — principles & patterns
@@ -46,15 +46,13 @@ real and easy to fall into: if you write text and visual direction together, the
 never judged as writing. Weak prose gets carried into production because it was never
 looked at on its own.
 
-Stage files live in `explainers/_process/<piece>/`, never beside the finished
-piece — only `index.html` sits in the piece's own folder. See AGENTS.md >
-Conventions for the layout.
+Stage files live in `docs/marketing/explainers/<piece>/`, never beside the finished piece — only `index.html` sits in the piece's own folder. See AGENTS.md > Conventions for the layout. The publishing root is `website/`; working prose and critiques stay in `docs/marketing/explainers/`.
 
 | Stage | File | What it is | Gate |
 |---|---|---|---|
-| **1 · Script** | `_process/<piece>/01-script.md` → `03-script-v2.md` | Pure narrative. **No figure slots, no block numbers, no visual direction of any kind.** | Must survive a hard editorial critique before anything else starts |
-| **2 · Visual script** | `_process/<piece>/04-visual-script.md` | The approved script, unchanged, with visuals annotated against it | Reviewed before a line of code |
-| **3 · Build** | `<piece>/index.html` | Implementation | — |
+| **1 · Script** | `docs/marketing/explainers/<piece>/01-script.md` → `03-script-v2.md` | Pure narrative. **No figure slots, no block numbers, no visual direction of any kind.** | Must survive a hard editorial critique before anything else starts |
+| **2 · Visual script** | `docs/marketing/explainers/<piece>/04-visual-script.md` | The approved script, unchanged, with visuals annotated against it | Reviewed before a line of code |
+| **3 · Build** | `website/explainers/<piece>/index.html` | Implementation | — |
 
 Pieces ship as scrolling HTML only. If you ever write markdown with inline SVG,
 **never leave a blank line inside a `<figure>` or `<svg>` block** — it silently
@@ -82,7 +80,7 @@ shared primitives.
 
 Write it as prose that stands alone. Read it aloud; if a sentence is hard to say, it is
 wrong. Then — and this step is not optional — **critique it as a world-class non-fiction
-editor would**, in a separate file (`_process/<piece>/02-critique.md`), and revise.
+editor would**, in a separate file (`docs/marketing/explainers/<piece>/02-critique.md`), and revise.
 
 The critique must be adversarial or it is worthless. Ask specifically:
 

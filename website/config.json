@@ -1,0 +1,52 @@
+{
+  "title": "Reason Commons — Issue Trees & Logical Thinking Process",
+  "analytics": "G-VWH8D9GCYV",
+  "theme": "lessflowery",
+  "favicon": "🌳",
+  "logo": "🌳",
+  "nav": {
+    "title": "Reason Commons",
+    "links": [
+      {
+        "name": "Introduction",
+        "href": "/explainers"
+      },
+      {
+        "name": "Demos",
+        "href": "/demos"
+      },
+      {
+        "name": "Guide",
+        "href": "/ltp"
+      },
+      {
+        "name": "Glossary",
+        "href": "/glossary"
+      },
+      {
+        "name": "Blog",
+        "href": "/blog"
+      },
+      {
+        "name": "Changelog",
+        "href": "/changelog"
+      },
+      {
+        "name": "About",
+        "href": "/about"
+      }
+    ]
+  },
+  "contentExclude": [],
+  "contentHide": [
+    "/dashboard/assets",
+    "/dashboard/projects"
+  ],
+  "social": [
+    {
+      "label": "github",
+      "href": "https://github.com/life-itself/reasoncommons"
+    }
+  ],
+  "showEditLink": true
+}

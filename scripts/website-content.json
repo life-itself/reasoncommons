@@ -1,0 +1,2972 @@
+{
+  "schema_version": 1,
+  "base_commit": "f001dbcfd0a41e82b9c1510bfbd1193f0527ae24",
+  "site_root": "website",
+  "repository_url": "https://github.com/life-itself/reasoncommons/blob/main",
+  "exports": [
+    {
+      "source": "motivation.md",
+      "destination": "website/motivation.md",
+      "format": "markdown"
+    },
+    {
+      "source": "claim-tree-annotation.md",
+      "destination": "website/claim-tree-annotation.md",
+      "format": "markdown"
+    },
+    {
+      "source": "skills/README.md",
+      "destination": "website/skills/README.md",
+      "format": "markdown"
+    },
+    {
+      "source": "ltp/ltp-model.yaml",
+      "destination": "website/ltp/ltp-model.yaml",
+      "format": "copy"
+    }
+  ],
+  "moves": [
+    {
+      "from": ".flowershow",
+      "to": "website/.flowershow"
+    },
+    {
+      "from": "about.md",
+      "to": "website/about.md"
+    },
+    {
+      "from": "alignment/index.html",
+      "to": "website/alignment/index.html"
+    },
+    {
+      "from": "blog/how-we-can-argue-better-with-claim-trees.md",
+      "to": "website/blog/how-we-can-argue-better-with-claim-trees.md"
+    },
+    {
+      "from": "blog/images/making-work-add-up-current-reality.svg",
+      "to": "website/blog/images/making-work-add-up-current-reality.svg"
+    },
+    {
+      "from": "blog/images/making-work-add-up-future-reality.svg",
+      "to": "website/blog/images/making-work-add-up-future-reality.svg"
+    },
+    {
+      "from": "blog/index.md",
+      "to": "website/blog/index.md"
+    },
+    {
+      "from": "blog/making-work-add-up.md",
+      "to": "website/blog/making-work-add-up.md"
+    },
+    {
+      "from": "blog/why-people-dont-use-issue-trees.md",
+      "to": "website/blog/why-people-dont-use-issue-trees.md"
+    },
+    {
+      "from": "changelog/2026-08-15-explainer-trilogy-drafted-built-and-shipped-in-two-formats.md",
+      "to": "website/changelog/2026-08-15-explainer-trilogy-drafted-built-and-shipped-in-two-formats.md"
+    },
+    {
+      "from": "changelog/2026-08-16-repo-gardening.md",
+      "to": "website/changelog/2026-08-16-repo-gardening.md"
+    },
+    {
+      "from": "changelog/2026-08-16-somewhere-to-put-it.md",
+      "to": "website/changelog/2026-08-16-somewhere-to-put-it.md"
+    },
+    {
+      "from": "changelog/2026-08-16-the-explainer-trilogy-finished.md",
+      "to": "website/changelog/2026-08-16-the-explainer-trilogy-finished.md"
+    },
+    {
+      "from": "changelog/2026-08-21-a-talk-that-performs-the-method.md",
+      "to": "website/changelog/2026-08-21-a-talk-that-performs-the-method.md"
+    },
+    {
+      "from": "changelog/2026-08-21-a-way-in-to-every-explainer.md",
+      "to": "website/changelog/2026-08-21-a-way-in-to-every-explainer.md"
+    },
+    {
+      "from": "changelog/2026-08-29-mobile-fixes-to-the-forum-doesn-t-remember.md",
+      "to": "website/changelog/2026-08-29-mobile-fixes-to-the-forum-doesn-t-remember.md"
+    },
+    {
+      "from": "changelog/2026-08-30-plain-versions-of-two-explainers.md",
+      "to": "website/changelog/2026-08-30-plain-versions-of-two-explainers.md"
+    },
+    {
+      "from": "changelog/2026-09-01-landing-page-and-navigation-redesign.md",
+      "to": "website/changelog/2026-09-01-landing-page-and-navigation-redesign.md"
+    },
+    {
+      "from": "changelog/2026-09-04-linkable-dashboard-views.md",
+      "to": "website/changelog/2026-09-04-linkable-dashboard-views.md"
+    },
+    {
+      "from": "changelog/2026-09-04-the-room-s-contributions-proposed-against-the-tree.md",
+      "to": "website/changelog/2026-09-04-the-room-s-contributions-proposed-against-the-tree.md"
+    },
+    {
+      "from": "changelog/2026-09-05-a-claim-tree-for-the-climate-transition.md",
+      "to": "website/changelog/2026-09-05-a-claim-tree-for-the-climate-transition.md"
+    },
+    {
+      "from": "changelog/2026-09-06-one-skill-for-ltp-project-files-and-the-2r-research-circle-leaves-the-dashboard.md",
+      "to": "website/changelog/2026-09-06-one-skill-for-ltp-project-files-and-the-2r-research-circle-leaves-the-dashboard.md"
+    },
+    {
+      "from": "changelog/2026-09-06-the-project-has-a-model-of-itself-and-next-md-is-read-off-it.md",
+      "to": "website/changelog/2026-09-06-the-project-has-a-model-of-itself-and-next-md-is-read-off-it.md"
+    },
+    {
+      "from": "changelog/2026-09-09-future-updates-signup.md",
+      "to": "website/changelog/2026-09-09-future-updates-signup.md"
+    },
+    {
+      "from": "changelog/2026-09-26-preview-ltp-project-files-in-the-dashboard.md",
+      "to": "website/changelog/2026-09-26-preview-ltp-project-files-in-the-dashboard.md"
+    },
+    {
+      "from": "changelog/2026-09-26-see-the-current-reality-causal-graph-on-opening.md",
+      "to": "website/changelog/2026-09-26-see-the-current-reality-causal-graph-on-opening.md"
+    },
+    {
+      "from": "changelog/2026-09-28-build-trees-together-and-see-what-changed.md",
+      "to": "website/changelog/2026-09-28-build-trees-together-and-see-what-changed.md"
+    },
+    {
+      "from": "changelog/2026-09-28-open-reasoning-diagrams-without-installing-a-renderer.md",
+      "to": "website/changelog/2026-09-28-open-reasoning-diagrams-without-installing-a-renderer.md"
+    },
+    {
+      "from": "changelog/2026-09-28-skills-readme-you-can-hand-to-a-colleague.md",
+      "to": "website/changelog/2026-09-28-skills-readme-you-can-hand-to-a-colleague.md"
+    },
+    {
+      "from": "changelog/2026-09-28-track-the-last-reasoning-change-at-a-glance.md",
+      "to": "website/changelog/2026-09-28-track-the-last-reasoning-change-at-a-glance.md"
+    },
+    {
+      "from": "changelog/2026-10-12-reasoning-diagrams-drawn-in-the-chat.md",
+      "to": "website/changelog/2026-10-12-reasoning-diagrams-drawn-in-the-chat.md"
+    },
+    {
+      "from": "changelog/2026-10-13-glossary.md",
+      "to": "website/changelog/2026-10-13-glossary.md"
+    },
+    {
+      "from": "changelog/2026-10-13-pull-requests-name-the-reasoning-they-serve.md",
+      "to": "website/changelog/2026-10-13-pull-requests-name-the-reasoning-they-serve.md"
+    },
+    {
+      "from": "changelog/2026-10-13-tree-views-you-can-pan-and-zoom.md",
+      "to": "website/changelog/2026-10-13-tree-views-you-can-pan-and-zoom.md"
+    },
+    {
+      "from": "changelog/2026-10-14-change-proposals-before-implementation.md",
+      "to": "website/changelog/2026-10-14-change-proposals-before-implementation.md"
+    },
+    {
+      "from": "changelog/2026-10-14-reliable-reasoning-checks-before-merging.md",
+      "to": "website/changelog/2026-10-14-reliable-reasoning-checks-before-merging.md"
+    },
+    {
+      "from": "changelog/2026-10-15-allow-pr-approval-explanations.md",
+      "to": "website/changelog/2026-10-15-allow-pr-approval-explanations.md"
+    },
+    {
+      "from": "changelog/2026-10-15-rewind-reasoning-sessions.md",
+      "to": "website/changelog/2026-10-15-rewind-reasoning-sessions.md"
+    },
+    {
+      "from": "changelog/images/2026-08-16-somewhere-to-put-it.png",
+      "to": "website/changelog/images/2026-08-16-somewhere-to-put-it.png"
+    },
+    {
+      "from": "changelog/images/2026-08-16-trilogy-polish.png",
+      "to": "website/changelog/images/2026-08-16-trilogy-polish.png"
+    },
+    {
+      "from": "changelog/images/2026-08-21-explainer-landings.png",
+      "to": "website/changelog/images/2026-08-21-explainer-landings.png"
+    },
+    {
+      "from": "changelog/images/2026-08-30-plain-explainers.png",
+      "to": "website/changelog/images/2026-08-30-plain-explainers.png"
+    },
+    {
+      "from": "changelog/images/2026-09-01-landing-redesign.png",
+      "to": "website/changelog/images/2026-09-01-landing-redesign.png"
+    },
+    {
+      "from": "changelog/images/2026-09-04-contribution-proposals.png",
+      "to": "website/changelog/images/2026-09-04-contribution-proposals.png"
+    },
+    {
+      "from": "changelog/images/2026-09-09-future-updates-signup.png",
+      "to": "website/changelog/images/2026-09-09-future-updates-signup.png"
+    },
+    {
+      "from": "changelog/images/2026-09-28-reason-commons-changes.png",
+      "to": "website/changelog/images/2026-09-28-reason-commons-changes.png"
+    },
+    {
+      "from": "claim-tree-annotation-demo/index.html",
+      "to": "website/claim-tree-annotation-demo/index.html"
+    },
+    {
+      "from": "claim-tree-annotation-demo/support.js",
+      "to": "website/claim-tree-annotation-demo/support.js"
+    },
+    {
+      "from": "claim-tree-annotation-demo/verify.mjs",
+      "to": "website/claim-tree-annotation-demo/verify.mjs"
+    },
+    {
+      "from": "config.json",
+      "to": "website/config.json"
+    },
+    {
+      "from": "custom.css",
+      "to": "website/custom.css"
+    },
+    {
+      "from": "dashboard/index.html",
+      "to": "website/dashboard/index.html"
+    },
+    {
+      "from": "dashboard/projects/alignments/individual-swe-example__second-renaissance.yaml",
+      "to": "website/dashboard/projects/alignments/individual-swe-example__second-renaissance.yaml"
+    },
+    {
+      "from": "dashboard/projects/individual-swe-example/model.yaml",
+      "to": "website/dashboard/projects/individual-swe-example/model.yaml"
+    },
+    {
+      "from": "dashboard/projects/manifest.json",
+      "to": "website/dashboard/projects/manifest.json"
+    },
+    {
+      "from": "dashboard/projects/second-renaissance/model.yaml",
+      "to": "website/dashboard/projects/second-renaissance/model.yaml"
+    },
+    {
+      "from": "demos/Reason Commons (3).html",
+      "to": "website/demos/Reason Commons (3).html"
+    },
+    {
+      "from": "demos/Reason Commons (4).html",
+      "to": "website/demos/Reason Commons (4).html"
+    },
+    {
+      "from": "demos/Reason Commons (5).html",
+      "to": "website/demos/Reason Commons (5).html"
+    },
+    {
+      "from": "demos/Reason Commons Workspace (standalone).html",
+      "to": "website/demos/Reason Commons Workspace (standalone).html"
+    },
+    {
+      "from": "demos/Reason Commons v2 (1).html",
+      "to": "website/demos/Reason Commons v2 (1).html"
+    },
+    {
+      "from": "demos/Reason Commons — Pencil & Ink.html",
+      "to": "website/demos/Reason Commons — Pencil & Ink.html"
+    },
+    {
+      "from": "demos/Reason Commons — Wireframes v2 (TOC-native) (1).html",
+      "to": "website/demos/Reason Commons — Wireframes v2 (TOC-native) (1).html"
+    },
+    {
+      "from": "demos/goal-aligner/.thumbnail",
+      "to": "website/demos/goal-aligner/.thumbnail"
+    },
+    {
+      "from": "demos/goal-aligner/export/src.html",
+      "to": "docs/product/goal-aligner/export/src.html"
+    },
+    {
+      "from": "demos/goal-aligner/extracted/bundle.html",
+      "to": "docs/product/goal-aligner/extracted/bundle.html"
+    },
+    {
+      "from": "demos/goal-aligner/extracted/template.html",
+      "to": "docs/product/goal-aligner/extracted/template.html"
+    },
+    {
+      "from": "demos/goal-aligner/index.html",
+      "to": "website/demos/goal-aligner/index.html"
+    },
+    {
+      "from": "demos/goal-aligner/support.js",
+      "to": "website/demos/goal-aligner/support.js"
+    },
+    {
+      "from": "demos/goal-aligner/uploads/Goal Aligner (standalone).html",
+      "to": "docs/product/goal-aligner/uploads/Goal Aligner (standalone).html"
+    },
+    {
+      "from": "demos/index.md",
+      "to": "website/demos/index.md"
+    },
+    {
+      "from": "docs/brand-and-domain-naming.md",
+      "to": "docs/marketing/brand-and-domain-naming.md"
+    },
+    {
+      "from": "docs/dashboard.md",
+      "to": "docs/product/dashboard.md"
+    },
+    {
+      "from": "docs/demo-c.md",
+      "to": "docs/product/demo-c.md"
+    },
+    {
+      "from": "docs/naming-the-tree.md",
+      "to": "docs/marketing/naming-the-tree.md"
+    },
+    {
+      "from": "docs/notes/wrong_queue.md",
+      "to": "docs/marketing/explainers/wrong_queue.md"
+    },
+    {
+      "from": "docs/plans/2026-07-06-discord-mcp-agent-access.md",
+      "to": "docs/product/plans/2026-07-06-discord-mcp-agent-access.md"
+    },
+    {
+      "from": "docs/plans/2026-08-14-ltp-explainer-trilogy.md",
+      "to": "docs/marketing/plans/2026-08-14-ltp-explainer-trilogy.md"
+    },
+    {
+      "from": "docs/plans/2026-08-16-second-renaissance-narrative.md",
+      "to": "docs/marketing/plans/2026-08-16-second-renaissance-narrative.md"
+    },
+    {
+      "from": "docs/plans/2026-09-01-site-positioning-and-landing-redesign.md",
+      "to": "docs/marketing/plans/2026-09-01-site-positioning-and-landing-redesign.md"
+    },
+    {
+      "from": "docs/plans/2026-09-05-claim-tree-demo-topics-design.md",
+      "to": "docs/product/plans/2026-09-05-claim-tree-demo-topics-design.md"
+    },
+    {
+      "from": "docs/plans/2026-09-05-claim-tree-demo-topics-implementation.md",
+      "to": "docs/product/plans/2026-09-05-claim-tree-demo-topics-implementation.md"
+    },
+    {
+      "from": "docs/plans/2026-09-18-explainers-v2.md",
+      "to": "docs/marketing/plans/2026-09-18-explainers-v2.md"
+    },
+    {
+      "from": "docs/superpowers/plans/2026-09-08-reasoncommons-future-updates-signup.md",
+      "to": "docs/marketing/site/plans/2026-09-08-reasoncommons-future-updates-signup.md"
+    },
+    {
+      "from": "docs/superpowers/plans/2026-09-09-email-only-stay-in-touch.md",
+      "to": "docs/marketing/site/plans/2026-09-09-email-only-stay-in-touch.md"
+    },
+    {
+      "from": "docs/superpowers/plans/2026-09-09-reasoncommons-open-interest-signup.md",
+      "to": "docs/marketing/site/plans/2026-09-09-reasoncommons-open-interest-signup.md"
+    },
+    {
+      "from": "docs/superpowers/specs/2026-09-05-reasoncommons-email-signup-design.md",
+      "to": "docs/marketing/site/specs/2026-09-05-reasoncommons-email-signup-design.md"
+    },
+    {
+      "from": "docs/testing-reason-commons-scannability.md",
+      "to": "docs/product/testing-reason-commons-scannability.md"
+    },
+    {
+      "from": "explainers/01-bottleneck-plain/img/clinic-pointing.png",
+      "to": "website/explainers/01-bottleneck-plain/img/clinic-pointing.png"
+    },
+    {
+      "from": "explainers/01-bottleneck-plain/img/day-admin.png",
+      "to": "website/explainers/01-bottleneck-plain/img/day-admin.png"
+    },
+    {
+      "from": "explainers/01-bottleneck-plain/img/day-recovered.png",
+      "to": "website/explainers/01-bottleneck-plain/img/day-recovered.png"
+    },
+    {
+      "from": "explainers/01-bottleneck-plain/img/hire-doctor-r.png",
+      "to": "website/explainers/01-bottleneck-plain/img/hire-doctor-r.png"
+    },
+    {
+      "from": "explainers/01-bottleneck-plain/img/hire-frontdesk-r.png",
+      "to": "website/explainers/01-bottleneck-plain/img/hire-frontdesk-r.png"
+    },
+    {
+      "from": "explainers/01-bottleneck-plain/img/moves-1-r.png",
+      "to": "website/explainers/01-bottleneck-plain/img/moves-1-r.png"
+    },
+    {
+      "from": "explainers/01-bottleneck-plain/img/moves-2-r.png",
+      "to": "website/explainers/01-bottleneck-plain/img/moves-2-r.png"
+    },
+    {
+      "from": "explainers/01-bottleneck-plain/img/moves-out-r.png",
+      "to": "website/explainers/01-bottleneck-plain/img/moves-out-r.png"
+    },
+    {
+      "from": "explainers/01-bottleneck-plain/img/reef.png",
+      "to": "website/explainers/01-bottleneck-plain/img/reef.png"
+    },
+    {
+      "from": "explainers/01-bottleneck-plain/img/stations-full.png",
+      "to": "website/explainers/01-bottleneck-plain/img/stations-full.png"
+    },
+    {
+      "from": "explainers/01-bottleneck-plain/index.md",
+      "to": "website/explainers/01-bottleneck-plain/index.md"
+    },
+    {
+      "from": "explainers/01-bottleneck/index.html",
+      "to": "website/explainers/01-bottleneck/index.html"
+    },
+    {
+      "from": "explainers/02-thinking-made-visible/index.html",
+      "to": "website/explainers/02-thinking-made-visible/index.html"
+    },
+    {
+      "from": "explainers/03-five-shapes/index.html",
+      "to": "website/explainers/03-five-shapes/index.html"
+    },
+    {
+      "from": "explainers/_process/01-bottleneck/01-script.md",
+      "to": "docs/marketing/explainers/01-bottleneck/01-script.md"
+    },
+    {
+      "from": "explainers/_process/01-bottleneck/02-critique.md",
+      "to": "docs/marketing/explainers/01-bottleneck/02-critique.md"
+    },
+    {
+      "from": "explainers/_process/01-bottleneck/03-script-v2.md",
+      "to": "docs/marketing/explainers/01-bottleneck/03-script-v2.md"
+    },
+    {
+      "from": "explainers/_process/01-bottleneck/04-critique-independent.md",
+      "to": "docs/marketing/explainers/01-bottleneck/04-critique-independent.md"
+    },
+    {
+      "from": "explainers/_process/01-bottleneck/05-script-v3.md",
+      "to": "docs/marketing/explainers/01-bottleneck/05-script-v3.md"
+    },
+    {
+      "from": "explainers/_process/01-bottleneck/article.md",
+      "to": "docs/marketing/explainers/01-bottleneck/article.md"
+    },
+    {
+      "from": "explainers/_process/01-bottleneck/beats.md",
+      "to": "docs/marketing/explainers/01-bottleneck/beats.md"
+    },
+    {
+      "from": "explainers/_process/01-bottleneck/draft-v1-prose.md",
+      "to": "docs/marketing/explainers/01-bottleneck/draft-v1-prose.md"
+    },
+    {
+      "from": "explainers/_process/01-bottleneck/preview-cold-open.png",
+      "to": "docs/marketing/explainers/01-bottleneck/preview-cold-open.png"
+    },
+    {
+      "from": "explainers/_process/01-bottleneck/preview-stations.png",
+      "to": "docs/marketing/explainers/01-bottleneck/preview-stations.png"
+    },
+    {
+      "from": "explainers/_process/01-bottleneck/shotlist-v1.md",
+      "to": "docs/marketing/explainers/01-bottleneck/shotlist-v1.md"
+    },
+    {
+      "from": "explainers/_process/02-thinking-made-visible/01-script.md",
+      "to": "docs/marketing/explainers/02-thinking-made-visible/01-script.md"
+    },
+    {
+      "from": "explainers/_process/02-thinking-made-visible/02-critique-independent.md",
+      "to": "docs/marketing/explainers/02-thinking-made-visible/02-critique-independent.md"
+    },
+    {
+      "from": "explainers/_process/02-thinking-made-visible/03-script-v2.md",
+      "to": "docs/marketing/explainers/02-thinking-made-visible/03-script-v2.md"
+    },
+    {
+      "from": "explainers/_process/02-thinking-made-visible/article.md",
+      "to": "docs/marketing/explainers/02-thinking-made-visible/article.md"
+    },
+    {
+      "from": "explainers/_process/03-five-shapes/01-script.md",
+      "to": "docs/marketing/explainers/03-five-shapes/01-script.md"
+    },
+    {
+      "from": "explainers/_process/03-five-shapes/02-critique-independent.md",
+      "to": "docs/marketing/explainers/03-five-shapes/02-critique-independent.md"
+    },
+    {
+      "from": "explainers/_process/03-five-shapes/03-script-v2.md",
+      "to": "docs/marketing/explainers/03-five-shapes/03-script-v2.md"
+    },
+    {
+      "from": "explainers/_process/03-five-shapes/article.md",
+      "to": "docs/marketing/explainers/03-five-shapes/article.md"
+    },
+    {
+      "from": "explainers/_process/second-renaissance/01-script.md",
+      "to": "docs/marketing/explainers/second-renaissance/01-script.md"
+    },
+    {
+      "from": "explainers/_process/second-renaissance/02-critique.md",
+      "to": "docs/marketing/explainers/second-renaissance/02-critique.md"
+    },
+    {
+      "from": "explainers/_process/second-renaissance/03-script-v2.md",
+      "to": "docs/marketing/explainers/second-renaissance/03-script-v2.md"
+    },
+    {
+      "from": "explainers/_process/second-renaissance/04-visual-script.md",
+      "to": "docs/marketing/explainers/second-renaissance/04-visual-script.md"
+    },
+    {
+      "from": "explainers/_process/second-renaissance/05-script.md",
+      "to": "docs/marketing/explainers/second-renaissance/05-script.md"
+    },
+    {
+      "from": "explainers/_process/second-renaissance/06-critique.md",
+      "to": "docs/marketing/explainers/second-renaissance/06-critique.md"
+    },
+    {
+      "from": "explainers/_process/second-renaissance/07-script-v2.md",
+      "to": "docs/marketing/explainers/second-renaissance/07-script-v2.md"
+    },
+    {
+      "from": "explainers/_process/second-renaissance/08-visual-script.md",
+      "to": "docs/marketing/explainers/second-renaissance/08-visual-script.md"
+    },
+    {
+      "from": "explainers/_process/second-renaissance/09-ux-fix-plan.md",
+      "to": "docs/marketing/explainers/second-renaissance/09-ux-fix-plan.md"
+    },
+    {
+      "from": "explainers/_process/second-renaissance/README.md",
+      "to": "docs/marketing/explainers/second-renaissance/README.md"
+    },
+    {
+      "from": "explainers/_process/series/01-evaluation.md",
+      "to": "docs/marketing/explainers/series/01-evaluation.md"
+    },
+    {
+      "from": "explainers/_process/series/02-arc.md",
+      "to": "docs/marketing/explainers/series/02-arc.md"
+    },
+    {
+      "from": "explainers/_process/series/03-arc-critique.md",
+      "to": "docs/marketing/explainers/series/03-arc-critique.md"
+    },
+    {
+      "from": "explainers/_process/series/04-arc-v2.md",
+      "to": "docs/marketing/explainers/series/04-arc-v2.md"
+    },
+    {
+      "from": "explainers/_process/series/costar-teardown.md",
+      "to": "docs/marketing/explainers/series/costar-teardown.md"
+    },
+    {
+      "from": "explainers/_process/series/voice-guide.md",
+      "to": "docs/marketing/explainers/series/voice-guide.md"
+    },
+    {
+      "from": "explainers/index.md",
+      "to": "website/explainers/index.md"
+    },
+    {
+      "from": "explainers/scroller.css",
+      "to": "website/explainers/scroller.css"
+    },
+    {
+      "from": "explainers/scroller.js",
+      "to": "website/explainers/scroller.js"
+    },
+    {
+      "from": "explainers/second-renaissance-plain/img/both-directions.png",
+      "to": "website/explainers/second-renaissance-plain/img/both-directions.png"
+    },
+    {
+      "from": "explainers/second-renaissance-plain/img/compounds.png",
+      "to": "website/explainers/second-renaissance-plain/img/compounds.png"
+    },
+    {
+      "from": "explainers/second-renaissance-plain/img/destination-v2.svg",
+      "to": "website/explainers/second-renaissance-plain/img/destination-v2.svg"
+    },
+    {
+      "from": "explainers/second-renaissance-plain/img/five-map.png",
+      "to": "website/explainers/second-renaissance-plain/img/five-map.png"
+    },
+    {
+      "from": "explainers/second-renaissance-plain/img/no-address.png",
+      "to": "website/explainers/second-renaissance-plain/img/no-address.png"
+    },
+    {
+      "from": "explainers/second-renaissance-plain/img/separate-acts.png",
+      "to": "website/explainers/second-renaissance-plain/img/separate-acts.png"
+    },
+    {
+      "from": "explainers/second-renaissance-plain/img/the-conflict.png",
+      "to": "website/explainers/second-renaissance-plain/img/the-conflict.png"
+    },
+    {
+      "from": "explainers/second-renaissance-plain/img/the-stack-v2.svg",
+      "to": "website/explainers/second-renaissance-plain/img/the-stack-v2.svg"
+    },
+    {
+      "from": "explainers/second-renaissance-plain/img/thread-live-r.png",
+      "to": "website/explainers/second-renaissance-plain/img/thread-live-r.png"
+    },
+    {
+      "from": "explainers/second-renaissance-plain/img/thread-lost.png",
+      "to": "website/explainers/second-renaissance-plain/img/thread-lost.png"
+    },
+    {
+      "from": "explainers/second-renaissance-plain/img/three-times.png",
+      "to": "website/explainers/second-renaissance-plain/img/three-times.png"
+    },
+    {
+      "from": "explainers/second-renaissance-plain/index.md",
+      "to": "website/explainers/second-renaissance-plain/index.md"
+    },
+    {
+      "from": "explainers/second-renaissance/index.html",
+      "to": "website/explainers/second-renaissance/index.html"
+    },
+    {
+      "from": "explainers/whose-map-is-it/index.html",
+      "to": "website/explainers/whose-map-is-it/index.html"
+    },
+    {
+      "from": "glossary.md",
+      "to": "website/glossary.md"
+    },
+    {
+      "from": "library/README.md",
+      "to": "website/library/README.md"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/00-front-matter.md",
+      "to": "website/library/logical-thinking-process-dettmer/00-front-matter.md"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/01-chapter-1-introduction-to-toc.md",
+      "to": "website/library/logical-thinking-process-dettmer/01-chapter-1-introduction-to-toc.md"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/02-chapter-2-categories-of-legitimate-reservation.md",
+      "to": "website/library/logical-thinking-process-dettmer/02-chapter-2-categories-of-legitimate-reservation.md"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/03-chapter-3-intermediate-objectives-map.md",
+      "to": "website/library/logical-thinking-process-dettmer/03-chapter-3-intermediate-objectives-map.md"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/04-chapter-4-current-reality-tree.md",
+      "to": "website/library/logical-thinking-process-dettmer/04-chapter-4-current-reality-tree.md"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/05-chapter-5-evaporating-cloud.md",
+      "to": "website/library/logical-thinking-process-dettmer/05-chapter-5-evaporating-cloud.md"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/06-chapter-6-future-reality-tree.md",
+      "to": "website/library/logical-thinking-process-dettmer/06-chapter-6-future-reality-tree.md"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/07-chapter-7-prerequisite-and-transition-trees.md",
+      "to": "website/library/logical-thinking-process-dettmer/07-chapter-7-prerequisite-and-transition-trees.md"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/08-chapter-8-changing-the-status-quo.md",
+      "to": "website/library/logical-thinking-process-dettmer/08-chapter-8-changing-the-status-quo.md"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/09-back-matter.md",
+      "to": "website/library/logical-thinking-process-dettmer/09-back-matter.md"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/README.md",
+      "to": "website/library/logical-thinking-process-dettmer/README.md"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p003.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p003.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p004.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p004.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p007.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p007.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p008.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p008.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p009.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p009.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p010.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p010.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p011.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p011.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p013.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p013.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p016.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p016.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p018.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p018.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p020.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p020.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p023.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p023.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p024.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p024.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p025.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p025.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p026.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p026.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p027.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p027.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p028.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p028.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p029.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p029.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p030.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p030.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p035.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p035.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p036.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p036.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p037.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p037.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p038.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p038.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p039.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p039.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p040.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p040.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p041.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p041.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p042.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p042.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p043.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p043.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p044.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p044.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p045.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p045.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p046.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p046.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p047.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p047.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p048.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p048.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p049.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p049.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p050.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p050.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p051.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p051.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p053.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p053.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p054.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p054.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p055.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p055.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p056.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p056.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p057.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p057.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p060.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p060.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p061.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p061.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p062.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p062.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p063.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p063.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p064.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p064.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p065.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p065.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p067.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p067.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p071.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p071.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p072.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p072.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p073.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p073.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p074.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p074.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p075.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p075.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p077.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p077.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p078.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p078.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p079.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p079.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p080.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p080.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p081.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p081.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p082.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p082.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p083.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p083.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p084.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p084.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p086.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p086.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p088.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p088.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p091.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p091.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p093.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p093.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p095.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p095.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p096.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p096.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p097.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p097.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p099.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p099.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p100.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p100.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p102.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p102.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p103.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p103.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p104.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p104.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p106.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p106.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p107.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p107.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p110.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p110.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p111.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p111.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p112.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p112.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p113.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p113.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p114.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p114.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p116.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p116.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p117.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p117.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p118.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p118.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p119.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p119.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p120.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p120.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p121.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p121.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p123.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p123.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p124.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p124.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p126.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p126.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p127.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p127.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p129.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p129.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p130.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p130.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p131.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p131.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p132.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p132.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p133.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p133.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p134.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p134.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p135.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p135.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p136.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p136.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p137.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p137.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p139.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p139.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p141.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p141.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p142.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p142.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p143.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p143.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p144.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p144.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p145.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p145.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p148.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p148.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p149.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p149.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p150.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p150.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p151.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p151.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p152.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p152.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p153.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p153.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p156.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p156.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p159.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p159.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p160.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p160.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p161.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p161.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p165.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p165.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p166.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p166.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p167.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p167.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p168.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p168.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p169.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p169.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p170.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p170.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p173.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p173.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p174.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p174.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p176.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p176.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p177.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p177.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p178.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p178.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p179.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p179.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p181.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p181.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p182.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p182.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p183.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p183.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p184.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p184.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p185.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p185.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p186.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p186.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p187.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p187.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p188.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p188.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p189.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p189.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p190.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p190.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p191.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p191.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p193.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p193.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p194.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p194.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p196.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p196.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p197.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p197.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p198.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p198.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p199.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p199.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p200.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p200.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p201.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p201.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p202.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p202.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p203.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p203.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p205.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p205.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p207.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p207.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p210.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p210.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p211.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p211.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p212.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p212.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p213.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p213.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p214.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p214.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p215.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p215.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p218.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p218.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p219.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p219.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p220.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p220.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p221.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p221.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p222.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p222.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p223.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p223.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p224.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p224.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p226.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p226.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p227.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p227.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p229.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p229.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p230.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p230.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p231.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p231.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p232.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p232.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p233.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p233.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p234.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p234.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p236.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p236.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p237.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p237.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p239.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p239.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p240.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p240.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p244.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p244.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p245.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p245.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p246.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p246.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p247.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p247.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p248.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p248.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p251.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p251.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p252.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p252.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p261.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p261.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p263.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p263.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p264.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p264.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p266.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p266.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p268.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p268.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p269.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p269.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p271.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p271.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p273.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p273.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p275.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p275.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p276.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p276.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p277.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p277.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p278.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p278.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p279.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p279.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p280.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p280.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p282.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p282.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p283.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p283.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p284.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p284.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p286.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p286.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p287.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p287.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p288.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p288.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p289.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p289.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p291.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p291.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p292.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p292.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p293.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p293.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p296.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p296.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p297.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p297.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p298.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p298.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p299.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p299.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p301.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p301.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p302.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p302.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p303.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p303.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p304.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p304.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p305.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p305.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p306.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p306.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p307.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p307.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p308.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p308.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p311.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p311.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p314.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p314.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p318.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p318.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p319.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p319.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p321.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p321.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p324.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p324.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p326.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p326.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p330.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p330.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p333.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p333.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p334.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p334.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p337.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p337.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p342.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p342.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p345.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p345.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p346.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p346.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p347.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p347.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p348.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p348.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p350.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p350.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p351.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p351.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p352.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p352.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p353.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p353.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p354.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p354.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p371.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p371.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p372.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p372.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p373.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p373.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p374.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p374.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p375.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p375.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p384.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p384.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p385.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p385.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p388.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p388.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p389.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p389.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p390.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p390.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p394.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p394.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/images/p395.png",
+      "to": "website/library/logical-thinking-process-dettmer/images/p395.png"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/scripts/README.md",
+      "to": "docs/references/logical-thinking-process-dettmer/scripts/README.md"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/scripts/build.py",
+      "to": "docs/references/logical-thinking-process-dettmer/scripts/build.py"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/scripts/check.py",
+      "to": "docs/references/logical-thinking-process-dettmer/scripts/check.py"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/scripts/check_baseline.txt",
+      "to": "docs/references/logical-thinking-process-dettmer/scripts/check_baseline.txt"
+    },
+    {
+      "from": "library/logical-thinking-process-dettmer/source/logical-thinking-process-dettmer.pdf",
+      "to": "website/library/logical-thinking-process-dettmer/source/logical-thinking-process-dettmer.pdf"
+    },
+    {
+      "from": "ltp/00-coverage-and-evidence.md",
+      "to": "website/ltp/00-coverage-and-evidence.md"
+    },
+    {
+      "from": "ltp/01-project-model.md",
+      "to": "website/ltp/01-project-model.md"
+    },
+    {
+      "from": "ltp/02-goal-tree.md",
+      "to": "website/ltp/02-goal-tree.md"
+    },
+    {
+      "from": "ltp/03-current-reality-tree.md",
+      "to": "website/ltp/03-current-reality-tree.md"
+    },
+    {
+      "from": "ltp/04-evaporating-clouds.md",
+      "to": "website/ltp/04-evaporating-clouds.md"
+    },
+    {
+      "from": "ltp/05-future-reality-tree.md",
+      "to": "website/ltp/05-future-reality-tree.md"
+    },
+    {
+      "from": "ltp/06-prerequisite-tree.md",
+      "to": "website/ltp/06-prerequisite-tree.md"
+    },
+    {
+      "from": "ltp/07-transition-tree.md",
+      "to": "website/ltp/07-transition-tree.md"
+    },
+    {
+      "from": "ltp/08-next-action.md",
+      "to": "website/ltp/08-next-action.md"
+    },
+    {
+      "from": "ltp/09-assumptions-and-questions.md",
+      "to": "website/ltp/09-assumptions-and-questions.md"
+    },
+    {
+      "from": "ltp/index.md",
+      "to": "website/ltp/index.md"
+    },
+    {
+      "from": "people/david-joseph.md",
+      "to": "website/people/david-joseph.md"
+    },
+    {
+      "from": "people/rufus-pollock.md",
+      "to": "website/people/rufus-pollock.md"
+    },
+    {
+      "from": "talk/2r-research-group/README.md",
+      "to": "website/talk/2r-research-group/README.md"
+    },
+    {
+      "from": "talk/2r-research-group/demo-c/index.html",
+      "to": "website/talk/2r-research-group/demo-c/index.html"
+    },
+    {
+      "from": "talk/2r-research-group/demo-c/proposals.yaml",
+      "to": "website/talk/2r-research-group/demo-c/proposals.yaml"
+    },
+    {
+      "from": "talk/2r-research-group/notes.md",
+      "to": "docs/marketing/talk/2r-research-group/notes.md"
+    },
+    {
+      "from": "talk/2r-research-group/script.md",
+      "to": "docs/marketing/talk/2r-research-group/script.md"
+    },
+    {
+      "from": "talk/2r-research-group/slides-brief.md",
+      "to": "docs/marketing/talk/2r-research-group/slides-brief.md"
+    },
+    {
+      "from": "talk/2r-research-group/slides.html",
+      "to": "website/talk/2r-research-group/slides.html"
+    },
+    {
+      "from": "talk/2r_participant_contributions_test.docx",
+      "to": "docs/product/demo-c/2r_participant_contributions_test.docx"
+    },
+    {
+      "from": "talk/_process/2026-09-01-braindump.md",
+      "to": "docs/marketing/talk/2026-09-01-braindump.md"
+    }
+  ],
+  "preserve_bytes": [
+    {
+      "path": "website/changelog/images/2026-08-16-somewhere-to-put-it.png",
+      "git_blob": "7cec4a8ba0e6df45a3966b95474fe728830ccd33"
+    },
+    {
+      "path": "website/changelog/images/2026-08-16-trilogy-polish.png",
+      "git_blob": "733beb5617efe05229c13366199dfdac64844094"
+    },
+    {
+      "path": "website/changelog/images/2026-08-21-explainer-landings.png",
+      "git_blob": "78ab6d53ab81cf04090960b5970c7fefe06e409b"
+    },
+    {
+      "path": "website/changelog/images/2026-08-30-plain-explainers.png",
+      "git_blob": "dd4ff430ef423e89a65e29540ad4f717bdf7d6fb"
+    },
+    {
+      "path": "website/changelog/images/2026-09-01-landing-redesign.png",
+      "git_blob": "c39d8bb0e36cc3c23a7eb069c0620e9367d4fa0a"
+    },
+    {
+      "path": "website/changelog/images/2026-09-04-contribution-proposals.png",
+      "git_blob": "1c0db3a3acaf7edd7b6754f2701077fc0adfb686"
+    },
+    {
+      "path": "website/changelog/images/2026-09-09-future-updates-signup.png",
+      "git_blob": "7a3a63b4ba88fc09aa0445b906db3092b0b92620"
+    },
+    {
+      "path": "website/changelog/images/2026-09-28-reason-commons-changes.png",
+      "git_blob": "073c10ea5c266e258e55c921c13fce68fb92209e"
+    },
+    {
+      "path": "website/dashboard/index.html",
+      "git_blob": "bf865e45fa0b2f3805ef43cf9bfe7b4a25540f14"
+    },
+    {
+      "path": "website/demos/goal-aligner/.thumbnail",
+      "git_blob": "f0c8063ac5fe0ef05dc3976bfe49e7308bd48d72"
+    },
+    {
+      "path": "website/explainers/01-bottleneck-plain/img/clinic-pointing.png",
+      "git_blob": "f4513fe3ac118afcec58bc93e5e25026f9c1b689"
+    },
+    {
+      "path": "website/explainers/01-bottleneck-plain/img/day-admin.png",
+      "git_blob": "107fc28bd9b018655fc4cf3a9f6726df3d5b479f"
+    },
+    {
+      "path": "website/explainers/01-bottleneck-plain/img/day-recovered.png",
+      "git_blob": "b6e2d134fda51d3d351de6b6e3a173e3e797d9c3"
+    },
+    {
+      "path": "website/explainers/01-bottleneck-plain/img/hire-doctor-r.png",
+      "git_blob": "c19bccfa3d8557a7a5587ff2232afe2340d34f7d"
+    },
+    {
+      "path": "website/explainers/01-bottleneck-plain/img/hire-frontdesk-r.png",
+      "git_blob": "5ef47827f0777d835761cf7e59e6ba2a51582923"
+    },
+    {
+      "path": "website/explainers/01-bottleneck-plain/img/moves-1-r.png",
+      "git_blob": "d12d3e615d85d785a3e3f8f78c5977b40eb9de9f"
+    },
+    {
+      "path": "website/explainers/01-bottleneck-plain/img/moves-2-r.png",
+      "git_blob": "b5243f79866ade694ea1aa25a8799486d9264e2f"
+    },
+    {
+      "path": "website/explainers/01-bottleneck-plain/img/moves-out-r.png",
+      "git_blob": "6c50f64d3d9712e82718faf8c136a3aacc8e8dc2"
+    },
+    {
+      "path": "website/explainers/01-bottleneck-plain/img/reef.png",
+      "git_blob": "9f7e82a7279a87aff4be1fe09afdd9bff7119d0c"
+    },
+    {
+      "path": "website/explainers/01-bottleneck-plain/img/stations-full.png",
+      "git_blob": "ebbf8ad6eca1d309d1e17a2ccc058cc2f0b6c90d"
+    },
+    {
+      "path": "docs/marketing/explainers/01-bottleneck/preview-cold-open.png",
+      "git_blob": "434d4893956d798b0796e20028aa07f28175fbf8"
+    },
+    {
+      "path": "docs/marketing/explainers/01-bottleneck/preview-stations.png",
+      "git_blob": "ef67a75ab5b2fb351df9ad4ab63861e2be962567"
+    },
+    {
+      "path": "website/explainers/second-renaissance-plain/img/both-directions.png",
+      "git_blob": "61dbaa8bcf812c2500cb4d879c7176c0eeddfd10"
+    },
+    {
+      "path": "website/explainers/second-renaissance-plain/img/compounds.png",
+      "git_blob": "5aec0d31bd427e52681f4f7d3dc83cc908499e7d"
+    },
+    {
+      "path": "website/explainers/second-renaissance-plain/img/five-map.png",
+      "git_blob": "e7717b206bac0c3b05f49f06d67bc05e82dffbcd"
+    },
+    {
+      "path": "website/explainers/second-renaissance-plain/img/no-address.png",
+      "git_blob": "544d62e17dd37b851ba92ac0fa6ca2400804aea4"
+    },
+    {
+      "path": "website/explainers/second-renaissance-plain/img/separate-acts.png",
+      "git_blob": "fabf761ede956a31d467111a63945d1a93c29cb9"
+    },
+    {
+      "path": "website/explainers/second-renaissance-plain/img/the-conflict.png",
+      "git_blob": "b088ecd0ebd87cb974cfc025e7271888a28d0dc5"
+    },
+    {
+      "path": "website/explainers/second-renaissance-plain/img/thread-live-r.png",
+      "git_blob": "9938d546e625642b4afc8e280df15b6c47326909"
+    },
+    {
+      "path": "website/explainers/second-renaissance-plain/img/thread-lost.png",
+      "git_blob": "2310fcd49c509717175b572be6d2926ee533f83d"
+    },
+    {
+      "path": "website/explainers/second-renaissance-plain/img/three-times.png",
+      "git_blob": "9b299877d6b11d8e561c94d5cfae9c1e469546df"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p003.png",
+      "git_blob": "8660943c0c9449a14be0901dccaffc11faf147a2"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p004.png",
+      "git_blob": "d98e915b71a3f53be4b4260213fa3fb6a19a678e"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p007.png",
+      "git_blob": "7dfea81b99840d17c59932f3aff04171f9514aac"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p008.png",
+      "git_blob": "356383e6dce167cccb6fdffc5a73380e065541d8"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p009.png",
+      "git_blob": "cdd6ba480428c47adc6a60414d287b0c65f24894"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p010.png",
+      "git_blob": "f1efcd2231b490881c48bd0356abdc198d78b35e"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p011.png",
+      "git_blob": "4feb9871d770b70ffbfc182d6f81c0875631295b"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p013.png",
+      "git_blob": "aee848029d2ec7c45e51e72b1dc4dc9e8fe2c627"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p016.png",
+      "git_blob": "6401088833a73065cce6cf96f6156632a16e80ed"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p018.png",
+      "git_blob": "021755770e136c720141b3981ba67897f69a1c86"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p020.png",
+      "git_blob": "55667b68fc737a1760774572782257c5e4185900"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p023.png",
+      "git_blob": "39ff00708a508a4828ce8a27b35180e886f3d9f2"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p024.png",
+      "git_blob": "ed75d034b88f44acbe8ba86dc347fc80feaeda31"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p025.png",
+      "git_blob": "00a4adc71d0d8e80b09c7ab493872877aa0aba12"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p026.png",
+      "git_blob": "6db5a10f9cd50213621fcadd108f645a24b8a7a7"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p027.png",
+      "git_blob": "40af2fc3fdbe7c228c075108d82c8f881b73c69b"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p028.png",
+      "git_blob": "4e5d15687e5ce12ba596abb8ce9a1574ed8ad497"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p029.png",
+      "git_blob": "ab4228a2f95e35a49ac8f59eec8d30fcf59a8caa"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p030.png",
+      "git_blob": "fd7db9c6b0729f277a296ecf28d1d423058aa1e8"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p035.png",
+      "git_blob": "f28ddb356c774acf0e0ae50d1fe57bb81bbe1783"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p036.png",
+      "git_blob": "71a21ee3e2e342bbc774289041a47a87620312b1"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p037.png",
+      "git_blob": "bed667faea55b381f9ff0a4b9ffca279dcd3b247"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p038.png",
+      "git_blob": "ff65baf93b71478f1fb91ce40a87099c2c17e764"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p039.png",
+      "git_blob": "90aa9a812b8bf6c8d132450052e1d422da9d0b65"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p040.png",
+      "git_blob": "8ef28232dd9042461da9233e21641f2d113a5073"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p041.png",
+      "git_blob": "2456f538292eae2583ed33a77a5a9908456e222c"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p042.png",
+      "git_blob": "533f44f08369a911c06c06e939e3360cfadcfbfd"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p043.png",
+      "git_blob": "588649767454493d0d75e7249f84bbc6b8c25239"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p044.png",
+      "git_blob": "8d34503be649ec3cf88b609b5192d2a145af3032"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p045.png",
+      "git_blob": "c028f5fb80fd5b0f9dc82729d7a2be20309e333e"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p046.png",
+      "git_blob": "eb8bf1686c8a5fd0df8c8b65c35b65ce96407b04"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p047.png",
+      "git_blob": "f44cf818614c095481a7babff3caac85bc349091"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p048.png",
+      "git_blob": "effc199ae764aa1e54dcceb7903797ee4f619cf5"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p049.png",
+      "git_blob": "775ebb76096720338ffa26d61c21f2b2cbcb8d11"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p050.png",
+      "git_blob": "45034173b61ac69660e47760bc85094914426118"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p051.png",
+      "git_blob": "d28998918f8a0399487ab47e9d03bf5ad72a17f0"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p053.png",
+      "git_blob": "6bec91182a0fd532e73c04f1d2af3ecbe42055fe"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p054.png",
+      "git_blob": "9abe3fb32a3650fe47d56ca35a5c114131fc36b3"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p055.png",
+      "git_blob": "3682f3ccddff69ed5ce2feb2ca4d1372dfc9f9c8"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p056.png",
+      "git_blob": "e41e58f1bdb376bd0c43444113f4a4e438380c02"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p057.png",
+      "git_blob": "8b371dce3a2e3cce07bc175d0f7e55b2dd3bdb00"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p060.png",
+      "git_blob": "1d757d4cd6df63260c1b6ec741f9b8942881621a"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p061.png",
+      "git_blob": "f4b4dd8cc212845c8e506693a94caa47099b43d6"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p062.png",
+      "git_blob": "8ad9968bbfdc6184a2187cd2ca0c2bd444228815"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p063.png",
+      "git_blob": "a748c2fd8337e82b468c506d208a17bab82cf2ed"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p064.png",
+      "git_blob": "dea0f5a74f0a8af65e7d18f88e14a360ba0f4aae"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p065.png",
+      "git_blob": "2dfaefd41b057507d7fb0951eb575669b0e6477c"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p067.png",
+      "git_blob": "a5c7eabe3c3dde332ccb5ae3cf984e7e64c2ec81"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p071.png",
+      "git_blob": "fb9eef86485a26597c6248b6b8afdb7481d1d945"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p072.png",
+      "git_blob": "1143cf37f58aee80927191ef21fdecfb326dae10"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p073.png",
+      "git_blob": "5ae896dffc32c9604a3dde77b468ebabf9aa2c53"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p074.png",
+      "git_blob": "9c8fb82fe84e2054eb71248b72b4d74e5d5165a2"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p075.png",
+      "git_blob": "75c98b8789c71a7ae2a8ee8fa9ec5c9b98fb4a08"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p077.png",
+      "git_blob": "4bd3a84792856ee033bc66b4c5f698b523ddd9d1"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p078.png",
+      "git_blob": "c3ee85748983372ee23ff8988d7a6749bd571dce"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p079.png",
+      "git_blob": "25aa814a2e37a92b6c1f25eacc747c8db13e1a0a"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p080.png",
+      "git_blob": "2839cdbf6995ef5e92f7405d53186688fb9a0bab"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p081.png",
+      "git_blob": "947e2b3ead482304303596f846d76d02511a6de5"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p082.png",
+      "git_blob": "b659ad2e2769c29f37322bbd4fc0207237e44b5e"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p083.png",
+      "git_blob": "9f463a28cf75345c526ab24147f99bbb52b42432"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p084.png",
+      "git_blob": "64b522534b3dbd44616769a18340c8af6fc2ba3e"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p086.png",
+      "git_blob": "a21044a3c69ea13b82ae486da9e415d257c79b5e"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p088.png",
+      "git_blob": "d81ed284761dfd94594bf27d82237c0e87bf8cef"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p091.png",
+      "git_blob": "9d83f7170503bf6d326f0ea18ff5f04a7087af8b"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p093.png",
+      "git_blob": "5d08c854d54cb2530935c06c014956accab5d3e0"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p095.png",
+      "git_blob": "bcf082706a5fbc900ac43f46a3f58cc3abaa8dd4"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p096.png",
+      "git_blob": "a4674291fa550e923444d6f9203462f0a3ff367b"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p097.png",
+      "git_blob": "1509c6e5d1bfad71778d7eb00f5ef1b44e1d4657"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p099.png",
+      "git_blob": "f7c107ad398e73c9e4a8a581da7d175d9e97650b"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p100.png",
+      "git_blob": "a3c7b356e90ce8bdcb2eaf6de1d1f8076cf9fe35"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p102.png",
+      "git_blob": "a07928bac2bd73e338f0bda0a54cb38172fabea0"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p103.png",
+      "git_blob": "d4da7024a8b0c77ab02691d456401db067eb94d5"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p104.png",
+      "git_blob": "81fdd10c1dd0eb6e9d550c4d35f6fd35e079d769"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p106.png",
+      "git_blob": "556a953a2edcf73f08f249656a93c678aa7d2100"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p107.png",
+      "git_blob": "a1d91c70e3e0e7a0cd5448aadd759acfcfc3f89c"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p110.png",
+      "git_blob": "e389a0b25656aff07fc5c7ee6970717e80977d99"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p111.png",
+      "git_blob": "f815da158a12dcc33e1c2c6d66cfbb2e20782ecb"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p112.png",
+      "git_blob": "c91ea2b3a42645ef34bad1d96005ff57be0b3b41"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p113.png",
+      "git_blob": "d0eb35906f4e2515d768d49eb61379b7a41e341d"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p114.png",
+      "git_blob": "6c83ff0f79d8248af2781e144e1a5e6cd62cd9fa"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p116.png",
+      "git_blob": "f601048b3c6af2387cabd9b9b7610de5da1664e4"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p117.png",
+      "git_blob": "8c460c8d424c377e0635789730aa6698b0708bd3"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p118.png",
+      "git_blob": "e367101814fd33b2b93950794783b2fd093887d1"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p119.png",
+      "git_blob": "37a26c3de075e69ee3799e50c0e7a2e6f8932736"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p120.png",
+      "git_blob": "8fa17b3a1375881d80dac217fe25ae978e3000d1"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p121.png",
+      "git_blob": "263904880cdc09bc69ae670abc59c41d45884cf2"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p123.png",
+      "git_blob": "6bf66b4a926600fad2121df9df0068d613323bfe"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p124.png",
+      "git_blob": "94363f290c45da9b201f9937139606e4bc947e1d"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p126.png",
+      "git_blob": "c7d95faf5a40885c6c28a094e9b6797d6ffcdd8d"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p127.png",
+      "git_blob": "1ffad9442857425aa486e0a9a792dbbdf6663bdb"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p129.png",
+      "git_blob": "a5bd07f0243d4824751daa515946fc11934a9f16"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p130.png",
+      "git_blob": "d78de86262a6d5982871b0c7c4e8d4edff11a875"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p131.png",
+      "git_blob": "05bd9ba9eff830431c864162d87e940f16033f0d"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p132.png",
+      "git_blob": "0ec4b78a389c7f8f8634db34d967578b6203d118"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p133.png",
+      "git_blob": "3b2fe8c9d248f81e34043563a74f79c780e93372"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p134.png",
+      "git_blob": "5864d0095568ac1b8381957a412ea74a43e60507"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p135.png",
+      "git_blob": "f9b3f53682858f3371abfdf2cd5ad4777e827921"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p136.png",
+      "git_blob": "63044a7ef11ecea8ce49b46f4c1fde515e00302c"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p137.png",
+      "git_blob": "dbd9ccb96c24fb614f80e5ebec364f7397a69b1d"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p139.png",
+      "git_blob": "ba1ff46bffbf43b946a8bbbcd6ff8eeb438dc76b"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p141.png",
+      "git_blob": "f33eccc9b8a9e005f9ba0e8845dbfd4d9ef320a2"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p142.png",
+      "git_blob": "b4d2ef1815a0a52d13da4385e106b538e0d6ce11"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p143.png",
+      "git_blob": "1312d324cb8ea81289cdec0005d232d3ecd837ee"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p144.png",
+      "git_blob": "0c6b317bdd00cb4954d51cfece5ab1c5dca0df43"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p145.png",
+      "git_blob": "2e8ce6a9736103f4f2b9887fc3a5d5c1af206316"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p148.png",
+      "git_blob": "298361e96eafe607887f699786706b3edc426892"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p149.png",
+      "git_blob": "a092d5912e1236aabd8214acce766e966492aec5"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p150.png",
+      "git_blob": "827d9d689cc7db5996976baacaf7d56b6dc9e5fb"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p151.png",
+      "git_blob": "3c6708df0efc7d3d2854bb514899fe8b47ccd7f3"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p152.png",
+      "git_blob": "613c4ddf7d590da4f8d2bf3214f1de1d0e231f67"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p153.png",
+      "git_blob": "ae3837ee850e44bf9810310556508bc78c86eeb1"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p156.png",
+      "git_blob": "1f64d2250e8fd6312dd20f0746955ca6e2d31a0b"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p159.png",
+      "git_blob": "9f0c03597635555d761e853625e54c938e0e80b8"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p160.png",
+      "git_blob": "92365c60c5994bb242afd15ec265c39a7438def3"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p161.png",
+      "git_blob": "9de5b17e23d616df664991c9585ef8db46d4c7a7"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p165.png",
+      "git_blob": "5b44696f5e3d4b84ec626ad3750caf9781582535"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p166.png",
+      "git_blob": "21c67afb4b2d21186e46aaf901638fcf5ffcb301"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p167.png",
+      "git_blob": "3fab56703bbeb9865b069bdaf079f0420478aac3"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p168.png",
+      "git_blob": "0952e5587046feaac680e81c0c0424b6eace26c8"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p169.png",
+      "git_blob": "cc75cb07a36ab3cf434fa1ef15fb367ad040d578"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p170.png",
+      "git_blob": "6846a4d4dfb94dd35fad477779dad564c022dc42"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p173.png",
+      "git_blob": "54e63571d2c2dcc243fb11d5812ee74e2ce55ad7"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p174.png",
+      "git_blob": "43760ad979cb023c383007fecbe0f1911aaffb99"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p176.png",
+      "git_blob": "059e49d82e80db4281c5554d0d2743bb85795c64"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p177.png",
+      "git_blob": "6316a15bac7c2758e67d827ff4bc587cae580ae8"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p178.png",
+      "git_blob": "bcfe79dbad202b316b2ca9b77ca08c1324814b98"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p179.png",
+      "git_blob": "8c95938628308aa81722295ec4487e8276adc632"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p181.png",
+      "git_blob": "7744caa4d83c8fb387e81076b51b0a207974f514"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p182.png",
+      "git_blob": "2f29ae1c982d689c884919edaae9b3e6a102dafe"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p183.png",
+      "git_blob": "e300f9e647a2b441ed8fca15f345c3bece5d0318"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p184.png",
+      "git_blob": "8b1d3b8a65cd21e7fbdb28eec74b120dac1dd981"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p185.png",
+      "git_blob": "0bdc073e556496e35931b3a3bd4394199dde0c8a"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p186.png",
+      "git_blob": "d8d9896ea73d5bd9d7db242990f0c72dd312a7da"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p187.png",
+      "git_blob": "ddb1729aa36234b1b393574efcc40d9822e2f77e"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p188.png",
+      "git_blob": "2b046dad89803800291729257d34d06ddea043df"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p189.png",
+      "git_blob": "3bb1cfdffef141ca5a2fa152b862f67a8450a715"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p190.png",
+      "git_blob": "34f53e365186fcc83c2a7ba3cd4977a3db5cd95b"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p191.png",
+      "git_blob": "67ed46641bd05c270a487f2356347b63c4471709"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p193.png",
+      "git_blob": "cff137bc4646b8c8e6370dbfd255388f8077dcf3"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p194.png",
+      "git_blob": "01cf019b43a6bfff3eb5b479b6cfc775c1e98555"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p196.png",
+      "git_blob": "8fbce206feb8a01b1b98117dad2abcadcd2d9c4d"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p197.png",
+      "git_blob": "388766b091f992a573575e7ffc0f7cd72a0802b4"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p198.png",
+      "git_blob": "8b0ff07d4c5de9a0a5d1904e1d2dce8404b01f3a"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p199.png",
+      "git_blob": "e49655962adc00d7645d3ba3a2b8782cc7604a1c"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p200.png",
+      "git_blob": "5ae51454160da4a55824ff53c2a1ef45dcb720a1"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p201.png",
+      "git_blob": "7e97ccc3d8090e3ea1c896248fb91451daaf6741"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p202.png",
+      "git_blob": "0ffc63c37d82a2424903f422a3c50a00fd15536a"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p203.png",
+      "git_blob": "78f7f4e9321f8715347d588ae4515598aeff6fc1"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p205.png",
+      "git_blob": "833bdd6b464e530e4d3e6c725b5035e81fdda9e1"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p207.png",
+      "git_blob": "db7ed033ca4832dbeb366351bfbf690c578b8d15"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p210.png",
+      "git_blob": "63677f1ba9edeecabf429a2dea9d3cc7ea5fc667"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p211.png",
+      "git_blob": "883ad02ac5e95c2dcc9154a778ffb49145348e31"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p212.png",
+      "git_blob": "8a54a21866c6acfc902b7470e3690203d94f3e39"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p213.png",
+      "git_blob": "214874cee5499b60b83a370c70a9ae689a58dfb3"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p214.png",
+      "git_blob": "62240aab2bd0b48cc00cb7ac84d98b8885fab581"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p215.png",
+      "git_blob": "370fc9419973e07bfc15ea4946fe080a3b45c399"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p218.png",
+      "git_blob": "4754e0d30cca7fb83a67ae3624055fdd99ddab62"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p219.png",
+      "git_blob": "f646641fc0b3a175540f4711d75bc488e054b059"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p220.png",
+      "git_blob": "3ae34b16b2cd402f5ef2b06ad130a68c0e00bafd"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p221.png",
+      "git_blob": "3a6191925291713983c6063a7fac2df735f25fd1"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p222.png",
+      "git_blob": "3241a7070698c03d74837522fdbc36a7cec76f39"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p223.png",
+      "git_blob": "4712f87039cfff16a46493fe66c0e435550f5c97"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p224.png",
+      "git_blob": "61ae34f751111e747fcb214f1939e44debc03cfb"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p226.png",
+      "git_blob": "847319b9183aacf68fa812d1db3361bd9100828c"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p227.png",
+      "git_blob": "ff5469877c84c54ff8acdf86d6b08748e1c73305"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p229.png",
+      "git_blob": "83fffa5edc27c752ecaade94e51613f1f758b443"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p230.png",
+      "git_blob": "e643ac10446ac1a5ac3d228341fd2a44ae0ae1a6"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p231.png",
+      "git_blob": "f670c72cf52ce3535ea0f0aa5084409949b3efde"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p232.png",
+      "git_blob": "c28dfc183573d5d7f238a4c949086498de9fe242"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p233.png",
+      "git_blob": "b6e344132ff4f64d53cf2165ac46580985ceb833"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p234.png",
+      "git_blob": "c9a2771cec8827a64e215cdf8e660f4941969601"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p236.png",
+      "git_blob": "e316be2a25b0ab10688d578f8b620aeeb04ad434"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p237.png",
+      "git_blob": "2ab6d49fa23f7f1dd5ba07fb09e60735df94a9cd"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p239.png",
+      "git_blob": "3857b70ecbb4463e78d7897a0163c60c8f3097ba"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p240.png",
+      "git_blob": "95fe0bb33381c125e1a16625071c78d17c5312c8"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p244.png",
+      "git_blob": "931c791ad6d83ce35e773d51bc82153ae1428b80"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p245.png",
+      "git_blob": "8c6234da91d31ac2b27424db0588eceb56e416b3"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p246.png",
+      "git_blob": "64137efb7dbbea8a495ef9306d66144f79d896ac"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p247.png",
+      "git_blob": "ea78bb0ca2a9197aaa71cd05b121bcca36015de0"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p248.png",
+      "git_blob": "add1f0f9ea5d16e3a36bc3372a504cbfc8054b8a"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p251.png",
+      "git_blob": "a312fa118c7a8fd4b996be0831f93089112430b9"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p252.png",
+      "git_blob": "36cbd5d6ddb5a99e3fdcef3449bf87ac0e47c9f6"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p261.png",
+      "git_blob": "e2d8ddc5ccdfcd917b1429f0e3f48c5441064a02"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p263.png",
+      "git_blob": "65dc6a3c3f502391b161f0b02064a619b0a5676d"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p264.png",
+      "git_blob": "fb5b46262c6a98b3057833f0dd5c8aaacea4f936"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p266.png",
+      "git_blob": "3e143623bb0f2d5200801ac0e6eacf20d259dca2"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p268.png",
+      "git_blob": "805f40f526bf1614a2e3f6c44a4279235012b31d"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p269.png",
+      "git_blob": "2bc001add574e87599a074f041f6355088ad9f74"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p271.png",
+      "git_blob": "4253832e5dd8316ef5323bafb819c1f8981cfa28"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p273.png",
+      "git_blob": "8487580519e80af4320d39bf6a8ba8b32204039f"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p275.png",
+      "git_blob": "3cd174e7b64b9eb7db60ae930dedbf329199b2c3"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p276.png",
+      "git_blob": "5c5aa015b4697b011e16f9fab7acdf266fa6ed93"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p277.png",
+      "git_blob": "746ecf6462cb66c3981f0494b436540ffbef3468"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p278.png",
+      "git_blob": "8eec10930a7bc9acf1c509929df79cb5ea75d644"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p279.png",
+      "git_blob": "32fb4f4b024d772e6f6c6890848cd680ef746c2d"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p280.png",
+      "git_blob": "32b0b28e99f9eeec309f9c72301dbbf4afba6b84"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p282.png",
+      "git_blob": "743d5cfffd034b037fa5b84be00195414d2c9f22"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p283.png",
+      "git_blob": "4f7908d9f476e07b658f80c62373850986ae8730"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p284.png",
+      "git_blob": "0a5212ed92ae9ab85b2234b2bef4a60a7694b4d2"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p286.png",
+      "git_blob": "403129da49a3a489e0eb8bae03cc7c3843026fec"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p287.png",
+      "git_blob": "4369f1f15b7dd8b0b12ed76519f504514ca41d67"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p288.png",
+      "git_blob": "6157a4890a88157d3a7c877d0cedc564e23f3eb9"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p289.png",
+      "git_blob": "e6a8c511f6eed324d5991e7fec2fad4319a4c3a8"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p291.png",
+      "git_blob": "b7206df9581919113605c5086457931e6467b901"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p292.png",
+      "git_blob": "fc1333fe96ea6ad3f586fca18dab865a266d01c1"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p293.png",
+      "git_blob": "7360aadd77bee116f86aa8d34a14b457fd2ebf21"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p296.png",
+      "git_blob": "155a219b7d2d0cdd55a318717b4812361d46c454"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p297.png",
+      "git_blob": "6ea8b12f89671181736a54c29f475597b3cadba0"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p298.png",
+      "git_blob": "e581ab312e459656f35efc331d4c8432c1caa5f2"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p299.png",
+      "git_blob": "d124c161f1d6d5c6a467342796698dd8e53ba72e"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p301.png",
+      "git_blob": "238c6b5a2c11087bfc1b668f6caf140be88236d6"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p302.png",
+      "git_blob": "6507aa9fd992fd1b0abf60a6103cc93951d93e0b"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p303.png",
+      "git_blob": "f79161a0ff833c739e57caacef2a311dcfb3a7c8"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p304.png",
+      "git_blob": "016bfd37bd8950c75fa803020a78b3e6f36c12c3"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p305.png",
+      "git_blob": "10e7d305be9dc08833929159055530be170c578d"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p306.png",
+      "git_blob": "833fbf77136ede0dc3d49200e10267f592820c07"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p307.png",
+      "git_blob": "d673bb99944c212d7ed813d50529c3ec5e25e004"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p308.png",
+      "git_blob": "8511369e24ee7a0c71bf85f92e7d064ddec26c65"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p311.png",
+      "git_blob": "1dab6c726c4a2341edc883a2e775df81e21d96b3"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p314.png",
+      "git_blob": "403906202d56aaed9c5f047f42fc50ec4f457332"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p318.png",
+      "git_blob": "d7baf4f989655081033566cc0bdaed4f954a6138"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p319.png",
+      "git_blob": "3e373b78894bfd53699b861ddfaceaca69fe62b8"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p321.png",
+      "git_blob": "e298ecf613ef1fbc49a51b291ddcfa32d53473d8"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p324.png",
+      "git_blob": "f09fcd8f58847064844d937db45b0e0d929f31d5"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p326.png",
+      "git_blob": "f4267810d56e49e29348bb0f873339aa7a5d7d24"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p330.png",
+      "git_blob": "4e718ada232854fa1d8086be887bbf9588d4d8b8"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p333.png",
+      "git_blob": "d6c1745f3c20edd72f718ccb44c1fc98f3effa1c"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p334.png",
+      "git_blob": "afd49d3c7553a6e764d8928b7378ba96a35b1208"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p337.png",
+      "git_blob": "902a6d26a263d4e356836b34755888f8ff5598ad"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p342.png",
+      "git_blob": "bf6ec9a650fcab0f60269a736a01244cd151990c"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p345.png",
+      "git_blob": "37681a405fe1c045769d3aff981a29295e4a327b"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p346.png",
+      "git_blob": "ffb7028e46dc5f278e3b5de41dd33904ebdc7c5a"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p347.png",
+      "git_blob": "a4d0ca220ee824c4b5e9010940276e9780170c8e"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p348.png",
+      "git_blob": "cca75ab7adb179be3f702fca4e3b262765491d21"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p350.png",
+      "git_blob": "6762c9631997244dd40c0b5e6ed7a38e470632d4"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p351.png",
+      "git_blob": "e1b34d2b78d536a179548ee767d840d553be05b0"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p352.png",
+      "git_blob": "495f7afdd5563c04ecfa3d8b86e2759b45afa1de"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p353.png",
+      "git_blob": "70c02c8b9ede5bd4b1fc084b332b5e68cd976389"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p354.png",
+      "git_blob": "b9f6020cef5ebbbb9a254faa5678ddfb37add80a"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p371.png",
+      "git_blob": "33de34931aea85245c4af6809745dea7531e7b57"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p372.png",
+      "git_blob": "886a3e602424f41fe328ed975bf8e3a5e16b7293"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p373.png",
+      "git_blob": "4d31192bbb0f6ef4cc7ecebbd21666f876b66df6"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p374.png",
+      "git_blob": "9bb3ecfd28685fe9e0dce7f77c08b12d2d664ecd"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p375.png",
+      "git_blob": "f0d37804691e158ce4784d99738ea52f1a628914"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p384.png",
+      "git_blob": "1595a92f8369c234be6e0c5ba2d68d7b416c601c"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p385.png",
+      "git_blob": "89a60e827d43e3708070170ce2922109bbe19d1b"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p388.png",
+      "git_blob": "405b4f0a3989a5b4854920d7f04b9d0e59c6ed6f"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p389.png",
+      "git_blob": "6b5470c11e9d25927f102282775ebdcad5f1f473"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p390.png",
+      "git_blob": "7f0839979ae3ea7bed65249734513e12f12e0a6f"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p394.png",
+      "git_blob": "24798908ee91aa581cfc76c1e4f27a99b76da8c7"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/images/p395.png",
+      "git_blob": "f5546f3e0109b832849c65efb1795f40fbbf6023"
+    },
+    {
+      "path": "website/library/logical-thinking-process-dettmer/source/logical-thinking-process-dettmer.pdf",
+      "git_blob": "6e7cb4e58e7a5c76f63129312f23c817bb705096"
+    },
+    {
+      "path": "docs/product/demo-c/2r_participant_contributions_test.docx",
+      "git_blob": "78bdd10d59dfa33f52295bcfc92bdfcc5a24a77e"
+    }
+  ],
+  "required_routes": [
+    "/",
+    "/about",
+    "/glossary",
+    "/skills",
+    "/ltp",
+    "/library",
+    "/blog",
+    "/changelog",
+    "/explainers",
+    "/dashboard/index.html",
+    "/demos",
+    "/alignment/index.html",
+    "/talk/2r-research-group",
+    "/claim-tree-annotation-demo/index.html"
+  ],
+  "retired_working_routes": [
+    "/docs/",
+    "/NEXT",
+    "/skills/reason-commons/",
+    "/skills/ltp-project/",
+    "/skills/ltp-visualize/",
+    "/skills/scrollable-explainer/"
+  ]
+}

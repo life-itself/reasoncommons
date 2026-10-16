@@ -6,7 +6,7 @@ generated_from: ltp/reason-commons/reason-commons.ltp.yaml @ 5bb59fa89bab
 
 # Next
 
-Open work, read off the transition tree of [the Reason Commons model](ltp/reason-commons/reason-commons.ltp.yaml) ([report](ltp/reason-commons/reason-commons.report.md)). Detail lives in the linked issues; history lives in [`changelog.md`](changelog.md). Regenerated with `bun scripts/next-from-ltp.ts` from a Reason Commons app checkout, so edit the model rather than this file: an action's place here is a consequence of what the model says it waits for, and the report says why.
+Open work, read off the transition tree of [the Reason Commons model](ltp/reason-commons/reason-commons.ltp.yaml) ([report](ltp/reason-commons/reason-commons.report.md)). Detail lives in the linked issues; history lives in [the changelog](website/changelog/). Regenerated with `bun scripts/next-from-ltp.ts` from a Reason Commons app checkout, so edit the model rather than this file: an action's place here is a consequence of what the model says it waits for, and the report says why.
 
 ## Now
 

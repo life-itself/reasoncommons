@@ -13,3 +13,5 @@ Turn an `ltp-project` YAML output into a standalone HTML file that uses the Reas
 - The export is a static preview; it does not edit the YAML or import it into a Reason Commons space. Read `skills/ltp-project/references/preview.md` for what the dashboard format omits and which display defaults it adds.
 
 Run the command when this skill is invoked. Report the generated HTML path and open it in the browser; do not stop after explaining the command.
+
+The dashboard interface is the compiled artifact at `website/dashboard/index.html` in this repository. The preview helper reads that file explicitly; the installable skill and helper remain under `skills/`.

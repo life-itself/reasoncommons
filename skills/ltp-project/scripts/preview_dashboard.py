@@ -20,7 +20,7 @@ except ImportError as exc:
 
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
-DASHBOARD = REPO_ROOT / "dashboard"
+DASHBOARD = REPO_ROOT / "website" / "dashboard"
 TREE_IDS = {
     "goal": "goal-tree",
     "current_reality": "current-reality",

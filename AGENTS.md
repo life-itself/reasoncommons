@@ -15,11 +15,11 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
 | Planning — streams, next actions | [GitHub issues](https://github.com/life-itself/reasoncommons/issues) |
 | Resume the Rufus–David collaboration | Bead `reasoncommons-a4l` (START HERE), then [the Beads/reasoning workflow](docs/beads-reasoning.md) and `ltp/rufus-david-collab/reason-commons.yaml` |
 | Process spec + **gold-standard toy fixture** (tree, doc, annotations) | `claim-tree-annotation.md` |
-| Static animated demo of the 4-step vision | `claim-tree-annotation-demo/` |
+| Static animated demo of the 4-step vision | `website/claim-tree-annotation-demo/` |
 | AI skills (reason-commons, ltp-project, ltp-visualize, scrollable-explainer) — install + copy-paste prompts | `skills/` (see `skills/README.md`) |
-| **Writing a scrolling visual explainer** — principles, patterns, worked teardown | `skills/scrollable-explainer/SKILL.md` — **read before drafting anything in `explainers/`** |
-| The explainer series itself | `explainers/` — see its layout under Conventions below |
-| **Explainers v2** — the rework into short illustrated chapters | `docs/plans/2026-09-18-explainers-v2.md`; state in beads (`bd ready --label explainers-v2`) |
+| **Writing a scrolling visual explainer** — principles, patterns, worked teardown | `skills/scrollable-explainer/SKILL.md` — **read before drafting scrolling explainers** |
+| The explainer series itself | `website/explainers/`; process material in `docs/marketing/explainers/` |
+| **Explainers v2** — the rework into short illustrated chapters | `docs/marketing/plans/2026-09-18-explainers-v2.md`; state in beads (`bd ready --label explainers-v2`) |
 
 ## Conventions
 
@@ -40,25 +40,9 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
   does not appear in the Skills sidebar.
 - **Toy example first.** Validate any AI skill against the gold data in `claim-tree-annotation.md` before touching real applications (e.g. Second Renaissance).
 - Keep `motivation.md` (why + SCQH) current; it's referenced from `README.md`. Plan-of-work tracking (streams, next actions) lives in GitHub issues, not a repo file.
-- **`explainers/` layout.** Only finished, readable pieces live at the top level;
-  everything else is process material and stays out of the way:
-  ```
-  explainers/
-    index.md                     series landing page
-    <nn>-<slug>/
-      index.html                 the piece — scroll-driven, the published form
-                                 (link to it as `<nn>-<slug>/index.html`; bare
-                                 folder URLs only resolve for markdown)
-    _process/<nn>-<slug>/        scripts, critiques, article.md, stills
-    scroller.css, scroller.js    shared assets for the scrolling versions
-  ```
-  `_process/` is in `config.json` > `contentExclude` so Flowershow doesn't
-  publish it. Drafts and critiques go there, never next to the piece.
-  Explainers ship as scrolling HTML only — the markdown articles were retired on
-  2026-08-16 and kept in `_process/<piece>/article.md` as final prose, which is
-  the source to render from if a static or no-JS version is ever wanted. Use
-  `contentExclude`, not `contentHide` — `contentHide` only drops pages from the
-  nav, and the URLs still resolve for anyone who guesses them.
+- **Concern boundaries.** Shared reasoning lives in `ltp/`, project working material in `docs/`, installable packages and their helpers/tests in `skills/`, runnable software with its configuration/tests/operating instructions in `apps/`, deliberate public content in `website/`, and cross-project utilities in `scripts/`. See the root `README.md` map and `docs/product/repository-boundaries.md`. Private funding material retains its existing private locations; a public Git repository is still public outside the website root.
+- **Explainers layout.** Finished scrolling pieces live at `website/explainers/<slug>/index.html`, with the series landing page at `website/explainers/index.md` and shared `scroller.css`/`scroller.js` beside it. Scripts, critiques, visual scripts and retired source articles live at `docs/marketing/explainers/<slug>/`; never put them in the publishing root. Read `skills/scrollable-explainer/SKILL.md` before drafting. Link to the explicit `<slug>/index.html`; bare folders only resolve automatically for Markdown. Public prose and assets use their existing URL paths even though the source is now under `website/`.
+- **Explicit website exports.** Keep `motivation.md`, `claim-tree-annotation.md`, `skills/README.md` and `ltp/ltp-model.yaml` canonical in their project locations. `python3 scripts/export-website.py` refreshes their declared public copies; do not edit those generated copies. `python3 scripts/check-website.py` checks export drift, the publishing boundary, local links/assets and preserved routes. Add a deliberate export rather than a symlink out of `website/`; never publish the working collaboration YAML or a private draft.
 - **No blank lines inside raw HTML in Markdown.** A blank line ends the raw HTML
   block as far as the Markdown parser is concerned. Anything after it that's
   indented four spaces or more — which inline SVG almost always is — then parses
@@ -84,40 +68,11 @@ Logical Thinking Process (LTP) / Issue Tree app — a tool to decompose a top-le
 - **Every pull request names its reasoning and recorded approval.** Fill the sections of `.github/pull_request_template.md`, including when writing the body yourself. Under *Reasoning this serves*, name the node or link IDs in `ltp/rufus-david-collab/reason-commons.yaml` the change supports. Under *Reasoning changes*, show the generated, visible Mermaid diagrams of the actual YAML diff. Keep the complete *Tree updates* list in a closed `<details>` block, or "None" for no node/link edits when meaningful tree work is recorded through backlog. `python3 skills/reason-commons/scripts/check_pr_trees.py ltp/rufus-david-collab/reason-commons.yaml --base origin/main --suggest --format markdown` generates both sections. Under *Accepted change proposals*, cite each saved receipt as ``- `proposal-id` revision 1 by `participant-id` ``. Record the proposal's exact covered paths as `approved_paths` before implementation; cited receipts must cover all changed files and node/link IDs. Run the checker with `--body-file` against the PR base; CI validates diagram source, collapsed list completeness, state, receipts, declaration coverage and preservation of earlier receipts. Inspect the actual GitHub rendering before reporting completion. Review implementation meaning and the actual approval separately. Backlog work belongs in the proposal, scope and result even when no node/link changes appear. Opening or merging a PR does not endorse proposed reasoning, and an unchanged approved scope needs no repeat acceptance. If no node fits, ask rather than citing one loosely.
 - **Resume collaboration through its handoff.** Before choosing a reasoning topic for the Rufus–David collaboration, read `bd show reasoncommons-a4l` and its current work bead, then `skills/reason-commons/SKILL.md` and `ltp/rufus-david-collab/reason-commons.yaml`. Follow [docs/beads-reasoning.md](docs/beads-reasoning.md): Beads owns session priorities, ownership and task completion; the conversational YAML owns reasoning, acceptance and reasoning backlog. Refresh the existing START HERE bead at the end of a meaningful session. Closing a bead never endorses a claim or resolves a challenge automatically. Implementation work arising from tree sessions goes into separate beads and separate sessions. If `bd` is unavailable, read the saved `.beads/issues.jsonl` as a fallback and report that it may be stale; do not silently replace an existing database or start a second task list.
 - There is exactly one `NEXT.md`, at the repo root. Don't create per-folder ones.
-- **Preview before pushing to live.** `main` is the live site
-  (`reasoncommons.com`, Flowershow site `ltp-issue-trees`) — never push to it
-  just to see how something renders. Publish the working tree to a separate
-  preview site instead:
-  ```sh
-  fl . --yes
-  ```
-  The target site name is committed in `.flowershow`, so this syncs only the
-  changed files to https://reasoncommons-preview-rufuspollock.flowershow.me and
-  the loop stays cheap: edit → `fl .` → look → repeat, landing on `main` only
-  once it's right. `fl list` shows existing sites, `fl delete` removes one.
-  Especially worth doing for anything that changes URLs or link structure.
-  Three caveats. `fl` aborts on the tracked `.agents/skills/project-ltp` symlink,
-  so move `.agents` aside for the publish and put it back after — and move it
-  outside the repo, because `fl` still walks it if you merely rename it in place.
-  A preview ignores `contentExclude`, so `_process/` shows up there but not in
-  production; check anything about *excluded* content against the live site.
-  And the preview's asset delivery lags: on 2026-08-20 it served a `scroller.css`
-  several generations old for over an hour, through the edge *and* cache-busted,
-  while `fl` reported the site in sync and production had the correct file. So
-  before concluding a CSS or JS change is broken on the preview, check which
-  bytes you are actually looking at:
-  ```sh
-  md5 -q explainers/scroller.css
-  curl -sL https://reasoncommons-preview-rufuspollock.flowershow.me/explainers/scroller.css | md5 -q
-  ```
-  If they differ, the preview is stale, not the code — the response even carries
-  the *correct* ETag alongside the old body, so nothing looks wrong until you
-  hash it. Markup updates promptly; it is the shared assets that lag, which is
-  the worst case: the page looks wrong in a way that implicates your change.
-  Filed upstream as https://github.com/flowershow/flowershow/issues/1363.
+- **Preview before pushing to live.** `main` serves the live site (`reasoncommons.com`, Flowershow site `ltp-issue-trees`). The publishing root is `website/`; run `python3 scripts/export-website.py`, `python3 scripts/check-website.py`, then `fl website --yes` for the separate preview at https://reasoncommons-preview-rufuspollock.flowershow.me. `website/.flowershow` retains that preview target. Publishing this folder avoids traversing agent skill links and project working material. The initial migration needs a coordinated production root-directory switch to `/website`; follow `docs/product/repository-boundaries.md` before merging or deploying it. Do not change production just to test rendering.
+  Preview asset delivery has served stale CSS/JS despite reporting a sync. If a preview looks wrong, compare the actual bytes, for example `md5 -q website/explainers/scroller.css` against `curl -sL https://reasoncommons-preview-rufuspollock.flowershow.me/explainers/scroller.css | md5 -q`. A stale preview is not evidence that the source is broken. See https://github.com/flowershow/flowershow/issues/1363.
 - **Checking phone width.** Use `node scripts/phone-check.mjs <url> [out.png]`, which emulates a 375px device over the DevTools protocol and lists anything overflowing. Plain `chrome --headless --window-size=375,…` screenshots lie: headless Chrome won't size a window below 500px, so you get a cropped 500px layout with text apparently clipped at the right edge. That artefact is what GH #20 was first reported from.
-- Root docs are lowercase (`motivation.md`) so Flowershow gives them clean published URLs — except `README.md` and `AGENTS.md`, which keep their exact uppercase names because tooling (GitHub, Flowershow's homepage, Claude Code/Codex) looks them up by that literal filename.
+- Root `README.md` and `AGENTS.md` retain their exact uppercase names for tooling. Published prose uses lowercase names where appropriate; the public homepage is `website/README.md`, and root `motivation.md` has an explicit public export at `/motivation`.
 
 ## Changelog
 
-This repo follows the [life-itself changelog convention](https://github.com/life-itself/changelog) (`CONVENTION.md`). One file per entry in `changelog/`, named `YYYY-MM-DD-slug.md`, with frontmatter `date`, `title`, `authors` and `promote: false`. Flowershow builds the `/changelog` timeline from the folder, so there is no index file to maintain. Screenshots go in `changelog/images/`. Authors are handles matching a profile page in `people/` (e.g. `rufus-pollock` → `people/rufus-pollock.md`, with `title` and a GitHub `avatar`). At a session checkpoint, if something reader-facing shipped, draft an entry: default to none for routine sessions, and link to the live feature where there is one. Fetch and follow the convention for the full rules.
+This repo follows the [life-itself changelog convention](https://github.com/life-itself/changelog) (`CONVENTION.md`). One file per entry in `website/changelog/`, named `YYYY-MM-DD-slug.md`, with frontmatter `date`, `title`, `authors` and `promote: false`. Flowershow builds the `/changelog` timeline from the folder, so there is no index file to maintain. Screenshots go in `website/changelog/images/`. Authors are handles matching a profile page in `website/people/` (e.g. `rufus-pollock` → `website/people/rufus-pollock.md`, with `title` and a GitHub `avatar`). At a session checkpoint, if something reader-facing shipped, draft an entry: default to none for routine sessions, and link to the live feature where there is one. Fetch and follow the convention for the full rules.

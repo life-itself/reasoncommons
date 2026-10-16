@@ -50,7 +50,7 @@ An installed copy includes the skill's helper script and references, so installa
 | [`reason-commons`](reason-commons/SKILL.md) | Helps people build and challenge LTP trees through conversation, while keeping attribution, unfinished reasoning, accepted history and diagrams | You want to think through a goal, problem, conflict, proposed change, obstacle or action with one person or a group |
 | [`ltp-project`](ltp-project/SKILL.md) | Reads a document, repository, plan, issue export or notes and writes a candidate `*.ltp.yaml` that the Reason Commons app imports, plus a report naming every judgment call | You already have source material and want a first-draft app project from it |
 | [`ltp-visualize`](ltp-visualize/SKILL.md) | Turns an app-compatible `*.ltp.yaml` into a standalone HTML dashboard and opens it in your browser | You have an `ltp-project` file and want to see its six trees |
-| [`scrollable-explainer`](scrollable-explainer/SKILL.md) | Gives contributors principles and patterns for writing scroll-driven visual explainers | You are drafting in [`explainers/`](../explainers/) |
+| [`scrollable-explainer`](scrollable-explainer/SKILL.md) | Gives contributors principles and patterns for writing scroll-driven visual explainers | You are writing a scrolling explainer for [the public series](../website/explainers/index.md) |
 
 `reason-commons` is a candidate to replace `ltp-project` as the main way people create and develop reasoning. It starts from conversation, keeps work in progress visible, and records only explicitly accepted reasoning in its diagrams. It does not yet replace `ltp-project` for every job: its conversational YAML is independent of the Reason Commons app's import/export format. Use `ltp-project` when you need to extract a first draft from existing material or create a file for the app.
 
@@ -87,7 +87,7 @@ After an accepted change, the helper validates the working YAML and saves one nu
 - The full view shows all currently accepted statements and accepted connections.
 - The latest-change view highlights what was added, changed or removed, with enough neighboring context to review the change.
 
-Proposals, disputes and backlog-only edits stay in the working YAML but do not create a new accepted snapshot. The YAML is the source of truth; the diagrams are derived views. The skill normally runs the helper and links both diagrams when accepted reasoning changes. Python with PyYAML is required, plus Graphviz or the supported JavaScript renderer; see [`reason-commons/references/views.md`](reason-commons/references/views.md) for details.
+Proposals, disputes and backlog-only edits stay in the working YAML but do not create a new accepted snapshot. The YAML is the source of truth; the diagrams are derived views. The skill normally runs the helper and links both diagrams when accepted reasoning changes. Python with PyYAML is required; the current helper draws its SVG directly without Graphviz or a JavaScript renderer; see [`reason-commons/references/views.md`](reason-commons/references/views.md) for details.
 
 ## Turn existing material into a project file
 
@@ -134,3 +134,7 @@ Try the Reason Commons skill to think through a goal, problem, conflict or plan 
 - This repository is the canonical home of `ltp-project`; the copy in `Promise-Foundation/reason-commons` may be older and must not be copied over this one. A standalone validator remains a tracked gap.
 - Skills live at top level so they work outside one agent runtime. Link the skills you use into `.claude/skills/` for Claude Code or `.agents/skills/` for Codex. This repository tracks the Codex links for `reason-commons`, `ltp-project` and `ltp-visualize`.
 - `tree-gen`, `annotation-mapping`, `contribution-proposals`, `goal-alignment` and `project-ltp` are retired and remain in Git history.
+
+## Canonical packages and public guide
+
+Installable packages and their helpers/tests remain under `skills/`. The public `/skills` guide is exported from this file by `python3 scripts/export-website.py`; its package links point to canonical repository sources. Finished website content lives under `website/`.
