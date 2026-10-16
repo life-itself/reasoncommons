@@ -1,38 +1,46 @@
 #!/usr/bin/env python3
 """Render the reasoning trees for reading, straight from the YAML.
 
-The default view is a text tree read from the top node down: glyph shape names
-the role, glyph fill names the standing (solid accepted, hollow proposed,
-✕ disputed) and the rail names the link standing (│ accepted, ┊ proposed,
-┆ disputed). Every standing is shown; a highlight dims the rest.
+The default view is a text tree read from the top node down, for an overview in
+a chat reply or a terminal: glyph shape names the role, glyph fill names the
+standing (solid accepted, hollow proposed, ✕ disputed) and the rail names the
+link standing (│ accepted, ┊ proposed, ┆ disputed). Every standing is shown; a
+highlight dims the rest. Each tree and statement name links to a graphical
+diagram of the full tree: a tree name opens it fitted to the whole tree, and a
+statement name opens it centred and zoomed on that statement, ready to pan and
+zoom.
 
   render_view.py STATE --counts                         view-menu counts per tree
-  render_view.py STATE --tree T                         inline widget HTML (all trees, opened on T)
-  render_view.py STATE --tree T --format tree-markdown  linked nested list for a chat reply
+  render_view.py STATE --tree T                         linked nested list for a chat reply
   render_view.py STATE --tree T --format tree-text      terminal text with OSC 8 links
   render_view.py STATE --focus NODE [--format …]        zoomed to NODE's path and branch
-  render_view.py STATE --page [PATH]                    write the all-trees page and list its links
+  render_view.py STATE --page [DIR]                     write the diagram pages and list them
   render_view.py STATE --tree T --standing S --format widget|markdown|mermaid|text
                                                         one-standing Mermaid views, on request only
   render_view.py --wrap --heading "LAST CHANGE: PROPOSED · …" < diagram.mmd
                                                         any Mermaid source in the frame
 
 Widget and Markdown output is complete: pass it unchanged to the host's widget
-tool or return it unchanged in the reply. Tree-markdown and tree-text link every
-tree and statement name to PAGE#<tree> or PAGE#<node-id>, which opens the page
-zoomed to that statement; they write the page beside the state unless
---page-url names a published copy. Counts, topology and standing markers come
-from the state, so the conversation never has to count or lay out nodes by hand.
+tool or return it unchanged in the reply. The text trees write the diagram pages
+beside the state, DIR/trees/<tree>.html and DIR/nodes/<node-id>.html, unless
+--page-url names a published copy. Separate pages mean no link depends on a URL
+anchor. Counts, topology and standing markers come from the state, so the
+conversation never has to count or lay out nodes by hand.
 """
 
 import argparse
+import hashlib
 import html
 import json
 import os
 from pathlib import Path
+import re
 import shutil
+import subprocess
 import sys
+import tempfile
 import textwrap
+from urllib.parse import quote
 import uuid
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -311,6 +319,7 @@ RELATION_ROWS = {
     "necessary_for": ("to", "needs", False),
     "causes": ("to", "because", False),
     "contributes_to": ("to", "partly because", False),
+    "may_contribute_to": ("to", "possibly partly because", False),
     "supports": ("to", "supported by", False),
     "challenges": ("to", "challenged by", False),
     "supersedes": ("from", "replaces", False),
@@ -319,6 +328,8 @@ RELATION_ROWS = {
     "precedes": ("from", "then", False),
     "conflicts_with": ("from", "conflicts with", True),
 }
+# A relation drawn from its source, read the other way when several sources act together.
+INVERSE_WORDS = {"expect": "produced by", "then": "after", "replaces": "replaced by"}
 TRACE_WORDS = {"addresses": "addresses", "implements": "implements", "derived_from": "from"}
 QUIET_WORK = {"review_relation", "test_causality"}
 
@@ -330,7 +341,8 @@ def tree_info(name):
 def relation_row(tree_name, relation):
     if relation == "produces":
         return ("from", "expect", False) if tree_name == "transition" else ("to", "produced by", False)
-    return RELATION_ROWS.get(relation, ("to", relation.replace("_", " "), False))
+    # A relation with no wording of its own hangs its target under its source, so the row reads in the link's direction.
+    return RELATION_ROWS.get(relation, ("from", relation.replace("_", " "), False))
 
 
 def glyph(node):
@@ -359,10 +371,11 @@ def tree_model(state, name):
             continue
         if end == "to":
             parent, children = l["to"], list(l["from"])
-        else:
-            if len(l["from"]) != 1:
-                raise ValueError(f"{l['id']}: a {l['relation']} link cannot start from joint conditions")
+        elif len(l["from"]) == 1:
             parent, children = l["from"][0], [l["to"]]
+        else:
+            # Joint sources, such as a condition and an action that together produce an effect, are grouped under the target.
+            parent, children, verb = l["to"], list(l["from"]), INVERSE_WORDS.get(verb, f"← {verb}")
         kids.setdefault(parent, []).append((l, children, verb))
         has_parent.update(children)
 
@@ -498,18 +511,19 @@ ANSI = {"dim": "2", "bold": "1", "accepted": "32", "proposed": "33", "disputed":
 
 
 def text_tree(state, name, ansi=False, link_base=None, highlight=None, focus=(), width=80, ids=False):
-    """The tree as indented text; ANSI styling and OSC 8 links into the page are optional."""
+    """The tree as indented text; ANSI styling and OSC 8 links to the diagram pages are optional."""
     model = tree_model(state, name)
     rows = flatten(model)
     keep = focus_rows(model, rows, focus)
     head, _, _, question, reading = tree_info(name)
     verb_width = max([len(r["n"].get("verb", "")) for r in rows] + [4])
     sty = lambda kind, s: f"\x1b[{ANSI[kind]}m{s}\x1b[0m" if ansi and kind and s else s
-    url = lambda ident: f"{link_base}#{ident}" if link_base else None
+    url = lambda ident: page_href(link_base, "nodes", ident) if link_base else None
+    tree_url = page_href(link_base, "trees", name) if link_base else None
     osc = lambda target, s: f"\x1b]8;;{target}\x1b\\{s}\x1b]8;;\x1b\\" if target else s
     pipe = lambda st: "   " if st is None else {"accepted": "│  ", "disputed": "┆  "}.get(st, "┊  ")
     rail_char = lambda st: {"accepted": "│", "disputed": "┆"}.get(st, "┊")
-    out = [osc(url(name), sty("bold", head.upper())) + sty("dim", "  " + question), sty("dim", counts_line(model)),
+    out = [osc(tree_url, sty("bold", head.upper())) + sty("dim", "  " + question), sty("dim", counts_line(model)),
            sty("dim", "Shape = role · filled accepted, hollow proposed, ✕ disputed · rails │ accepted ┊ proposed ┆ disputed"),
            sty("dim", reading)]
     folded = 0
@@ -591,13 +605,14 @@ def md_escape(text):
 
 
 def markdown_tree(state, name, link_base, focus=(), highlight=None):
-    """A nested Markdown list in which every tree and statement name is a link into the page."""
+    """A nested Markdown list in which every tree and statement name links to its diagram page."""
     model = tree_model(state, name)
     rows = flatten(model)
     keep = focus_rows(model, rows, focus)
     head, _, _, question, _ = tree_info(name)
-    href = lambda ident: f"{link_base}#{ident}"
-    out = [f"**[{head}]({href(name)})** · {question}", ""]
+    href = lambda ident: page_href(link_base, "nodes", ident)
+    tree_href = page_href(link_base, "trees", name)
+    out = [f"**[{head}]({tree_href})** · {question}", ""]
 
     def item(n, depth):
         verb = f"*{n['verb']}* " if n.get("verb") else ""
@@ -626,13 +641,8 @@ def markdown_tree(state, name, link_base, focus=(), highlight=None):
     if loose:
         out += ["", "*Not linked to anything yet*"] + [item(n, 0) for n in loose]
     if keep is not None:
-        out += ["", f"Zoomed to {plural(len(focus), 'statement')}, with the path from the top and the whole branch. [Show the whole tree]({href(name)})."]
+        out += ["", f"Zoomed to {plural(len(focus), 'statement')}, with the path from the top and the whole branch. [Show the whole tree]({tree_href})."]
     return "\n".join(out)
-
-
-def page_path(state_path):
-    state_path = Path(state_path)
-    return state_path.parent / f".{state_path.stem}" / "trees.html"
 
 
 def record_links(state, state_path):
@@ -661,292 +671,318 @@ def record_links(state, state_path):
     return records
 
 
-def page_data(state, state_path=None, start_tree=None, focus=(), highlight=None, standalone=True):
-    order = [t for t in ordered(state["trees"]) if state["trees"][t]["nodes"]]
-    return {
-        "rid": f"rct-{uuid.uuid4().hex[:8]}",
-        "standalone": standalone,
-        "order": order,
-        "trees": {t: tree_model(state, t) for t in order},
-        "info": {t: tree_info(t) for t in order},
-        "glyphs": GLYPHS,
-        "people": dict(PEOPLE),
-        "records": record_links(state, state_path) if state_path else {},
-        "start": {"tree": start_tree or (order[0] if order else None), "focus": list(focus), "highlight": highlight or "all"},
-    }
+# ---------------------------------------------------------------------------
+# Diagram pages: what the text tree's links open.
+#
+# Each tree is drawn once as a Mermaid flowchart with every standing marked, then
+# written as one pan-and-zoom page per tree, fitted to the whole tree, and one per
+# statement: the same full tree, opened centred and zoomed on that statement and
+# outlined. Separate files mean no link depends on a URL anchor, which some hosts
+# drop. When Chrome is available the diagram is drawn once at write time and
+# embedded, so the pages work offline and open on their statement even without
+# scripts; otherwise each page draws itself with mermaid.js from the network.
+# ---------------------------------------------------------------------------
+
+MERMAID_JS = "https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs"
+FOCUS_VIEW = (1500, 940)  # diagram units shown around a statement when its page opens
+CHROME_PATHS = ("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", "/Applications/Chromium.app/Contents/MacOS/Chromium")
+CHROME_NAMES = ("google-chrome", "google-chrome-stable", "chromium", "chromium-browser", "chrome")
 
 
-def tree_widget(state, name, state_path=None, focus=(), highlight=None):
-    """Self-contained HTML fragment for a host's inline widget tool: all trees, opened on one."""
-    data = page_data(state, state_path, name, focus, highlight, standalone=False)
-    return TREE_VIEW.replace("__RID__", data["rid"]).replace("__DATA__", json.dumps(data, ensure_ascii=False).replace("</", "<\\/"))
+def pages_dir(state_path):
+    state_path = Path(state_path)
+    return state_path.parent / f".{state_path.stem}"
 
 
-def write_page(state, state_path, out=None):
-    """Write the all-trees page; a link to PAGE#<tree> or PAGE#<node-id> opens it there."""
-    target = Path(out) if out else page_path(state_path)
-    target.parent.mkdir(parents=True, exist_ok=True)
-    data = page_data(state, state_path)
-    body = TREE_VIEW.replace("__RID__", data["rid"]).replace("__DATA__", json.dumps(data, ensure_ascii=False).replace("</", "<\\/"))
-    target.write_text(
-        "<!doctype html>\n<html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">"
-        f"<title>{html.escape(str(state.get('project') or 'Reasoning trees'))} · trees</title></head>\n<body>\n{body}\n</body></html>\n"
-    )
-    return target
+def page_href(base, kind, ident):
+    """Link under base to a tree page (kind "trees") or a statement page (kind "nodes")."""
+    return f"{base}{kind}/{quote(ident)}.html"
 
 
-TREE_FORMATS = ("tree", "tree-markdown", "tree-text")
-MERMAID_FORMATS = ("widget", "markdown", "mermaid", "text")
+def pages_base(root, relative=False):
+    """Base address of the pages: a path relative to the working directory when asked and possible, else a file URI."""
+    root = Path(root).resolve()
+    if relative:
+        rel = os.path.relpath(root, Path.cwd())
+        if not rel.startswith(".."):
+            return quote(Path(rel).as_posix()) + "/"
+    return root.as_uri() + "/"
 
-TREE_VIEW = r"""<style>
-.rct{--ink:var(--text-primary,#1a1e1c);--ink-2:var(--text-secondary,#4f5753);--ink-3:var(--text-tertiary,#7d8681);--panel:var(--surface-1,#ffffff);--rule:var(--border,#dfe3e0);--rail:#a3aba7;
-  --acc:#1d7a5c;--pro:#a7600c;--dis:#c13d36;--flag:#8a5a00;--sel:#e8eff7;--focus:#2d5b8c;
-  font:15px/1.5 var(--font-sans,system-ui,-apple-system,"Segoe UI",sans-serif);color:var(--ink);background:var(--panel);border:1px solid var(--rule);border-radius:10px;overflow:hidden;max-width:1100px;margin:0 auto}
-@media (prefers-color-scheme:dark){.rct{--ink:var(--text-primary,#e4e8e5);--ink-2:var(--text-secondary,#aab3ae);--ink-3:var(--text-tertiary,#78837e);--panel:var(--surface-1,#181c1a);--rule:var(--border,#2c322f);--rail:#5b6560;--acc:#4fc497;--pro:#e2a246;--dis:#f0726a;--flag:#e2b55a;--sel:#1d2833;--focus:#8db6e6;color-scheme:dark}}
-:root[data-mode="dark"] .rct{--rail:#5b6560;--acc:#4fc497;--pro:#e2a246;--dis:#f0726a;--flag:#e2b55a;--sel:#1d2833;--focus:#8db6e6}
-.rct *{box-sizing:border-box}
-.rct a{color:inherit}
-.rct .tabs{display:flex;overflow-x:auto;border-bottom:1px solid var(--rule)}
-.rct .tabs a{flex:0 0 auto;text-decoration:none;padding:10px 13px 8px;font-size:14px;color:var(--ink-2);border-bottom:2px solid transparent;white-space:nowrap}
-.rct .tabs a b{font-family:ui-monospace,Menlo,Consolas,monospace;margin-right:6px;color:var(--ink-3);font-weight:500}
-.rct .tabs a small{display:block;font:11px/1.3 ui-monospace,Menlo,Consolas,monospace;color:var(--ink-3)}
-.rct .tabs a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--ink)}
-.rct .bar{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;padding:9px 14px;border-bottom:1px solid var(--rule);font-size:13px;color:var(--ink-2)}
-.rct .seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--rule);border-radius:7px;overflow:hidden}
-.rct .seg button{font:500 12.5px/1 inherit;font-family:inherit;color:var(--ink-2);background:transparent;border:0;border-right:1px solid var(--rule);padding:7px 9px;cursor:pointer}
-.rct .seg button:last-child{border-right:0}
-.rct .seg button[aria-pressed="true"]{background:var(--ink);color:var(--panel)}
-.rct button:focus-visible,.rct .row:focus-visible,.rct a:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
-.rct .legend{display:flex;flex-wrap:wrap;gap:3px 14px;padding:8px 14px;border-bottom:1px solid var(--rule);font-size:12.5px;color:var(--ink-2)}
-.rct .legend b{font:500 14px ui-monospace,Menlo,Consolas,monospace;color:var(--ink);margin-right:4px}
-.rct .legend .note{flex-basis:100%;color:var(--ink-3)}
-.rct .stage{padding:14px 14px 10px;max-height:min(72vh,860px);overflow:auto;overscroll-behavior:contain}
-.rct .head .q{font-weight:600;font-size:17px}
-.rct .head .q small{font-weight:400;font-size:14px;color:var(--ink-2);margin-left:6px}
-.rct .head .counts{font:12px/1.5 ui-monospace,Menlo,Consolas,monospace;color:var(--ink-2);margin:2px 0 10px}
-.rct .fbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 10px;padding:7px 10px;border-radius:7px;background:var(--sel);font-size:13px;color:var(--ink-2)}
-.rct .fbar:empty{display:none}
-.rct .fbar b{color:var(--ink)}
-.rct .btn{font:500 12.5px inherit;font-family:inherit;background:var(--panel);color:var(--ink);border:1px solid var(--rule);border-radius:6px;padding:4px 9px;cursor:pointer}
-.rct .row{display:flex;align-items:stretch;border-radius:5px}
-.rct .row:hover{background:color-mix(in srgb,var(--sel) 55%,transparent)}
-.rct .row.sel{background:var(--sel);box-shadow:inset 3px 0 0 var(--focus)}
-.rct .row.root{margin-top:12px}
-.rct .row.first{margin-top:0}
-.rct .row.dim{opacity:.28}
-.rct .gap{font:12px ui-monospace,Menlo,Consolas,monospace;color:var(--ink-3);padding:2px 0 2px 2px}
-.rct .rail{flex:0 0 1.35em;position:relative}
-.rct .rail::before,.rct .rail::after{content:"";position:absolute}
-.rct .rail.pipe::before,.rct .rail.tee::before{left:.45em;top:0;bottom:0;border-left:1.5px var(--ls,dashed) var(--rail)}
-.rct .rail.elbow::before{left:.45em;top:0;height:.78em;border-left:1.5px var(--ls,dashed) var(--rail)}
-.rct .rail.tee::after,.rct .rail.elbow::after{left:.45em;top:.78em;width:.8em;border-top:1.5px var(--ls,dashed) var(--rail)}
-.rct .rail.accepted{--ls:solid}
-.rct .rail.disputed{--ls:dotted}
-.rct .verb{flex:0 0 auto;width:var(--vw);font:500 10.5px/2.15 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);padding-left:.25em;white-space:nowrap}
-.rct .glyph{flex:0 0 1.5em;font:500 15px/1.5 ui-monospace,Menlo,Consolas,monospace;text-align:center}
-.rct .glyph.accepted{color:var(--acc)}.rct .glyph.proposed{color:var(--pro)}.rct .glyph.disputed{color:var(--dis)}.rct .glyph.and{color:var(--ink-3)}
-.rct .body{flex:1 1 auto;min-width:0;padding:0 .4em .1em .2em}
-.rct .root>.body{font-weight:600}
-.rct .struck{text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--dis) 70%,transparent);color:var(--ink-2)}
-.rct .ref .body{font-weight:400;color:var(--ink-2)}
-.rct .ref .body a{text-decoration-color:var(--rail);text-underline-offset:3px}
-.rct .group .body{font-style:italic;color:var(--ink-3);font-weight:400}
-.rct .meta{display:inline-flex;flex-wrap:wrap;gap:4px;margin-left:6px;vertical-align:1px;font-weight:400}
-.rct .chip{font:500 11px/1 ui-monospace,Menlo,Consolas,monospace;padding:3px 5px;border-radius:4px;border:1px solid var(--rule);color:var(--ink-2);white-space:nowrap;text-decoration:none}
-.rct a.chip:hover{border-color:var(--ink-3);color:var(--ink)}
-.rct .chip.by{border-color:color-mix(in srgb,var(--acc) 45%,var(--rule));color:var(--acc)}
-.rct .chip.by i{font-style:normal;opacity:.35}
-.rct .chip.flag{border-color:color-mix(in srgb,var(--flag) 45%,var(--rule));color:var(--flag)}
-.rct .chip.dis{border-color:color-mix(in srgb,var(--dis) 45%,var(--rule));color:var(--dis)}
-.rct .id{font:12px ui-monospace,Menlo,Consolas,monospace;color:var(--ink-3);margin-left:6px;font-weight:400}
-.rct .loosehead{font:500 11px/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:20px 0 6px}
-.rct .detail{border-top:1px solid var(--rule);padding:9px 14px 11px;font-size:13px;color:var(--ink-2);min-height:56px}
-.rct .detail b{color:var(--ink);font-weight:600}
-.rct .detail .dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:2px 12px}
-.rct .detail .dl>span:nth-child(odd){font:500 10.5px/1.9 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
-.rct .detail a{color:var(--focus)}
-@media (max-width:560px){.rct .verb{display:none}.rct .stage{max-height:none}}
-</style>
-<div class="rct" id="__RID__">
-<nav class="tabs" aria-label="Trees"></nav>
-<div class="bar"><span>Highlight</span><span class="seg lens"><button data-v="all">Everything</button><button data-v="accepted">Accepted</button><button data-v="proposed">Proposed</button><button data-v="disputed">Disputed</button><button data-v="open">Open work</button></span><span>IDs</span><span class="seg ids"><button data-v="off">Hide</button><button data-v="on">Show</button></span></div>
-<div class="legend"></div>
-<div class="stage" tabindex="-1"></div>
-<div class="detail" aria-live="polite"></div>
-</div>
-<script>
-(() => {
-const D = __DATA__;
-const root = document.getElementById(D.rid), $ = s => root.querySelector(s);
-const S = {tree: D.start.tree, lens: D.start.highlight || "all", ids: "off", sel: null, focus: false};
-const esc = s => String(s).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
-const kname = k => k === "and" ? "conditions acting together" : k.replace(/_/g, " ");
-const glyph = n => { if (n.group) return "∧"; const g = D.glyphs[n.kind] || "•◦"; return (n.standing === "disputed" ? "✕" : "") + (n.standing === "accepted" ? g[0] : g[1]); };
-const ORDER = ["rufus", "david"].filter(p => p in D.people).concat(Object.keys(D.people).filter(p => p !== "rufus" && p !== "david" && p !== "assistant"));
-const ini = p => (D.people[p] || p)[0].toUpperCase();
-const INDEX = {}, ROWS = {};
-for (const t of D.order) {
-  const walk = n => { if (!n.ref && !n.group && !INDEX[n.id]) INDEX[n.id] = {tree: t, n}; n.children.forEach(walk); };
-  D.trees[t].roots.forEach(walk); D.trees[t].loose.forEach(walk);
-}
-function rows(t) {
-  if (ROWS[t]) return ROWS[t];
-  const out = [], st = c => c.link ? c.link.standing : "proposed";
-  const walk = (n, depth, rails, last, cont, parent) => {
-    const r = {n, depth, rails, last, parent, idx: out.length};
-    r.key = n.ref ? n.id + "~" + out.length : (n.group ? "and~" + n.id : n.id);
-    out.push(r);
-    const kids = n.children; r.kidStyle = kids.length ? st(kids[0]) : null;
-    kids.forEach((c, i) => { const l = i === kids.length - 1; walk(c, depth + 1, depth === 0 ? [] : rails.concat([last ? null : cont]), l, l ? null : st(kids[i + 1]), r); });
-    r.end = out.length;
-  };
-  D.trees[t].roots.forEach(n => walk(n, 0, [], true, null, null));
-  const loose = D.trees[t].loose.map(n => ({n, depth: 0, rails: [], last: true, key: n.id, loose: true, parent: null}));
-  return ROWS[t] = {main: out, loose};
-}
-const allRows = t => [...rows(t).main, ...rows(t).loose];
-function matches(r) {
-  const n = r.n;
-  if (S.lens === "all") return true;
-  if (n.group) { const m = rows(S.tree).main; for (let i = r.idx + 1; i < r.end; i++) if (matches(m[i])) return true; return false; }
-  if (S.lens === "open") return n.flags.length > 0 || n.standing === "disputed";
-  return n.standing === S.lens;
-}
-function visible(t) {
-  if (!S.focus || !S.sel) return null;
-  const {main, loose} = rows(t), r = main.find(x => x.key === S.sel);
-  if (!r) return loose.some(x => x.key === S.sel) ? new Set(["__loose__", S.sel]) : null;
-  const v = new Set(); for (let p = r; p; p = p.parent) v.add(p.key);
-  for (let i = r.idx; i < r.end; i++) v.add(main[i].key);
-  return v;
-}
-function counts(t) {
-  const m = D.trees[t], f = o => Object.entries(o).filter(([, n]) => n).map(([s, n]) => n + " " + s).join(", ");
-  return `${m.nodes} statements (${f(m.standing)}) · ${m.links} links (${f(m.link_standing) || "none"})`;
-}
-const refLabel = rf => `↗ ${rf.rel} ${INDEX[rf.id] ? glyph(INDEX[rf.id].n) : ""} ${rf.tree ? D.info[rf.tree][1] : "?"}`;
-function drawTree(t) {
-  const {main, loose} = rows(t), vis = visible(t);
-  const el = document.createElement("div");
-  el.style.setProperty("--vw", (Math.max(4, ...main.map(r => (r.n.verb || "").length)) * 0.72 + 0.6) + "em");
-  let folded = 0, first = true;
-  const gap = () => { if (folded) { const d = document.createElement("div"); d.className = "gap"; d.textContent = `⋯ ${folded} row${folded === 1 ? "" : "s"} folded`; el.appendChild(d); folded = 0; } };
-  const mk = r => {
-    const n = r.n, row = document.createElement("div");
-    row.className = "row" + (r.depth === 0 && !r.loose ? " root" : "") + (r.depth === 0 && first ? " first" : "") + (matches(r) ? "" : " dim") + (S.sel === r.key ? " sel" : "") + (n.ref ? " ref" : "") + (n.group ? " group" : "");
-    if (r.depth === 0) first = false;
-    row.tabIndex = 0; row.dataset.key = r.key; row._r = r;
-    r.rails.forEach(st => { const c = document.createElement("span"); c.className = "rail" + (st ? " pipe " + st : ""); row.appendChild(c); });
-    if (r.depth > 0) {
-      const c = document.createElement("span"); c.className = "rail " + (r.last ? "elbow " : "tee ") + n.link.standing; row.appendChild(c);
-      const v = document.createElement("span"); v.className = "verb"; v.textContent = n.verb || ""; row.appendChild(v);
-    }
-    const g = document.createElement("span"); g.className = "glyph " + (n.group ? "and" : n.standing); g.textContent = glyph(n); g.setAttribute("aria-label", n.standing + " " + kname(n.kind)); row.appendChild(g);
-    const b = document.createElement("span"); b.className = "body";
-    b.innerHTML = n.ref ? `↑ <a href="#${esc(n.id)}" title="Go to where this statement is drawn in full">${esc(n.text)}</a>` : `<span class="${n.struck ? "struck" : ""}">${esc(n.text)}</span>`;
-    if (!n.ref && !n.group) {
-      const m = [];
-      if (n.standing === "accepted" && n.by.length) m.push(`<span class="chip by" title="Accepted by ${esc(n.by.map(p => D.people[p] || p).join(" and "))}">${ORDER.map(p => n.by.includes(p) ? ini(p) : `<i>${ini(p)}</i>`).join(" ")}</span>`);
-      if (n.standing === "disputed") m.push(`<span class="chip dis">disputed</span>`);
-      n.flags.forEach(f => m.push(`<span class="chip flag" title="${esc(f.note)}">⚑ ${esc(f.work)}</span>`));
-      n.refs.forEach(rf => m.push(`<a class="chip" href="#${esc(rf.id)}" title="${esc(INDEX[rf.id] ? INDEX[rf.id].n.text : rf.id)}">${esc(refLabel(rf))}</a>`));
-      if (m.length) b.insertAdjacentHTML("beforeend", `<span class="meta">${m.join("")}</span>`);
-    }
-    if (S.ids === "on" && !n.group) b.insertAdjacentHTML("beforeend", `<span class="id">${esc(n.id)}</span>`);
-    row.appendChild(b);
-    return row;
-  };
-  main.forEach(r => { if (vis && !vis.has(r.key)) { folded++; return; } gap(); el.appendChild(mk(r)); });
-  const shown = vis && !vis.has("__loose__") ? [] : loose.filter(r => !vis || vis.has(r.key));
-  if (!shown.length) folded += loose.length;
-  gap();
-  if (shown.length) {
-    el.insertAdjacentHTML("beforeend", `<div class="loosehead">Not linked to anything yet</div>`);
-    shown.forEach(r => el.appendChild(mk(r)));
-    folded += loose.length - shown.length; gap();
+
+def diagram_source(name, tree):
+    """Mermaid source for the whole tree with every standing marked, and the node-ID map it uses."""
+    short = {n["id"]: f"n{i}" for i, n in enumerate(tree["nodes"], 1)}
+    linked = {i for l in tree["links"] for i in l["from"] + [l["to"]]}
+    box = lambda n: f'{short[n["id"]]}["{escape(label(n, status(n), name))}"]'
+    out = ['%%{init: {"flowchart": {"htmlLabels": true, "wrappingWidth": 300, "nodeSpacing": 40, "rankSpacing": 70}}}%%', "flowchart BT"]
+    out += ["  " + box(n) for n in tree["nodes"] if n["id"] in linked]
+    loose = [n for n in tree["nodes"] if n["id"] not in linked]
+    if loose:
+        out += ['  subgraph loose["Not linked to anything yet"]'] + ["    " + box(n) for n in loose] + ["  end"]
+    for j, l in enumerate(tree["links"], 1):
+        solid = status(l) == "accepted"
+        tag = ("disputed · " if status(l) == "disputed" else "") + l["relation"].replace("_", " ")
+        arrow = f"-- {tag} -->" if solid else f"-. {tag} .->"
+        if len(l["from"]) > 1:
+            out.append(f'  j{j}(("AND"))')
+            out += [f"  {short[s]} {'-->' if solid else '-.->'} j{j}" for s in l["from"]]
+            out.append(f"  j{j} {arrow} {short[l['to']]}")
+        else:
+            out.append(f"  {short[l['from'][0]]} {arrow} {short[l['to']]}")
+    out += [
+        "  classDef proposed stroke-dasharray:5 4,stroke:#BA7517,stroke-width:2px,fill:#fffdf7",
+        "  classDef accepted stroke:#1D9E75,stroke-width:2.5px,fill:#f3fbf7",
+        "  classDef disputed stroke:#E24B4A,stroke-width:2.5px,fill:#fff5f5",
+    ]
+    for s in STANDINGS:
+        ids = [short[n["id"]] for n in tree["nodes"] if status(n) == s]
+        if ids:
+            out.append(f"  class {','.join(ids)} {s}")
+    return "\n".join(out), short
+
+
+# Shared by the write-time render and the in-page fallback: the SVG, its extent and each statement's box, in diagram units.
+MEASURE_JS = r"""function rcMeasure(svg) {
+  const sr = svg.getBoundingClientRect(), vb = svg.viewBox.baseVal, k = vb.width / sr.width, nodes = {};
+  for (const g of svg.querySelectorAll("g.node")) {
+    const m = g.id.match(/flowchart-(n\d+)-\d+$/); if (!m) continue;
+    const r = g.getBoundingClientRect();
+    nodes[m[1]] = [vb.x + (r.x - sr.x) * k, vb.y + (r.y - sr.y) * k, r.width * k, r.height * k];
   }
-  return el;
+  return { svg: svg.outerHTML, full: [vb.x, vb.y, vb.width, vb.height], nodes };
 }
-function detail(r) {
-  const d = $(".detail");
-  if (!r) { d.textContent = "Click a row, or focus one and use ↑ ↓, to see its ID, its links and where it was recorded. Enter zooms to its branch; Esc zooms out."; return; }
-  const n = r.n, t = S.tree, rec = D.records[n.id], out = [];
-  if (n.group) out.push(["Link", `<b>conditions acting together</b> · <code>${esc(n.id)}</code> · ${n.standing}`]);
-  else out.push(["Statement", `<b>${esc(kname(n.kind))}</b> in the <a href="#${t}">${esc(D.info[t][0])}</a> · ${n.standing}${n.standing === "accepted" && n.by.length ? " by " + esc(n.by.map(p => D.people[p] || p).join(" and ")) : ""} · <code>${esc(n.id)}</code>`]);
-  if (n.ref) out.push(["Drawn in full", `<a href="#${esc(n.id)}">under its first parent</a>`]);
-  if (n.link) out.push(["Link", `${n.verb ? esc(n.verb) + " the row above" : "part of the group above"} · <code>${esc(n.link.id)}</code> · ${n.link.standing}`]);
-  n.challenges.forEach(c => out.push(["Challenge", esc(c.text) + (c.by ? ` <span style="color:var(--ink-3)">· ${esc(D.people[c.by] || c.by)}</span>` : "")]));
-  n.flags.forEach(f => out.push(["Open work", `<b>${esc(f.work)}</b>${f.note ? " · " + esc(f.note) : ""}`]));
-  n.refs.forEach(rf => out.push([rf.rel, `<a href="#${esc(rf.id)}">${esc(INDEX[rf.id] ? INDEX[rf.id].n.text : rf.id)}</a> <span style="color:var(--ink-3)">· ${rf.tree ? esc(D.info[rf.tree][0]) : "unknown tree"}</span>`]));
-  if (rec) out.push(["Recorded in", `<a href="${esc(rec.yaml)}">${esc(rec.yaml_label)}</a>${rec.source ? ` · source <a href="${esc(rec.source)}">${esc(rec.source_label)}</a>` : ""}`]);
-  d.innerHTML = `<div class="dl">${out.map(([k, v]) => `<span>${esc(k)}</span><span>${v}</span>`).join("")}</div>`;
-}
-function fbar() {
-  const fb = $(".fbar"), r = S.sel ? allRows(S.tree).find(x => x.key === S.sel) : null;
-  if (!fb) return;
-  if (!r) { fb.innerHTML = ""; return; }
-  const label = esc(glyph(r.n)) + " " + esc(r.n.text.length > 90 ? r.n.text.slice(0, 88) + "…" : r.n.text);
-  fb.innerHTML = S.focus ? `<span>Zoomed to <b>${label}</b>: its path from the top and its whole branch.</span><button class="btn" data-act="out">Show whole tree</button>`
-    : `<span>Selected <b>${label}</b></span><button class="btn" data-act="in">Zoom to its branch</button>`;
-}
-function render(center) {
-  const t = S.tree, st = $(".stage");
-  $(".tabs").innerHTML = D.order.map(x => `<a href="#${x}" ${x === t ? 'aria-current="page"' : ""}><b>${D.info[x][2]}</b>${esc(D.info[x][0])}<small>${D.trees[x].nodes} statements</small></a>`).join("");
-  const kinds = new Set(), walk = n => { if (!n.group) kinds.add(n.kind); n.children.forEach(walk); };
-  D.trees[t].roots.forEach(walk); D.trees[t].loose.forEach(walk);
-  $(".legend").innerHTML = [...kinds].map(k => `<span><b>${(D.glyphs[k] || "•◦")[0]} ${(D.glyphs[k] || "•◦")[1]}</b>${esc(kname(k))}</span>`).join("")
-    + `<span><b style="color:var(--acc)">●</b>accepted</span><span><b style="color:var(--pro)">○</b>proposed</span><span><b style="color:var(--dis)">✕</b>disputed</span><span><b>│ ┊ ┆</b>link accepted, proposed, disputed</span><span class="note">${esc(D.info[t][4])}</span>`;
-  st.innerHTML = `<div class="fbar"></div><div class="head"><div class="q"><a href="#${t}" style="text-decoration:none">${esc(D.info[t][0])}</a><small>${esc(D.info[t][3])}</small></div><div class="counts">${esc(counts(t))}</div></div>`;
-  st.appendChild(drawTree(t));
-  fbar(); detail(allRows(t).find(x => x.key === S.sel) || null);
-  root.querySelectorAll(".lens button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === S.lens)));
-  root.querySelectorAll(".ids button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === S.ids)));
-  if (center) centre();
-}
-function centre() {
-  const st = $(".stage"), el = S.sel ? [...st.querySelectorAll(".row")].find(x => x.dataset.key === S.sel) : null;
-  if (!el) { st.scrollTop = 0; return; }
-  st.scrollTop = Math.max(0, el.offsetTop - st.offsetTop - st.clientHeight / 2 + el.offsetHeight / 2);
-  el.focus({preventScroll: true});
-}
-function select(key) {
-  S.sel = key;
-  root.querySelectorAll(".row.sel").forEach(x => x.classList.remove("sel"));
-  const row = [...root.querySelectorAll(".row")].find(x => x.dataset.key === key); if (row) row.classList.add("sel");
-  fbar(); detail(allRows(S.tree).find(x => x.key === key) || null);
-  if (D.standalone && !key.includes("~")) try { history.replaceState(null, "", "#" + key); } catch (e) {}
-}
-function route(hash) {
-  const h = decodeURIComponent((hash || "").replace(/^#/, ""));
-  if (D.trees[h]) { S.tree = h; S.sel = null; S.focus = false; }
-  else if (INDEX[h]) { S.tree = INDEX[h].tree; S.sel = h; S.focus = true; }
-  else return false;
-  render(true);
-  return true;
-}
-root.addEventListener("click", e => {
-  const a = e.target.closest('a[href^="#"]');
-  if (a) { const h = a.getAttribute("href"); if (D.trees[h.slice(1)] || INDEX[h.slice(1)]) { e.preventDefault(); if (D.standalone) try { history.replaceState(null, "", h); } catch (_) {} route(h); } return; }
-  const act = e.target.closest("button[data-act]"); if (act) { S.focus = act.dataset.act === "in"; render(true); return; }
-  const lens = e.target.closest(".lens button"); if (lens) { S.lens = lens.dataset.v; render(!!S.sel); return; }
-  const ids = e.target.closest(".ids button"); if (ids) { S.ids = ids.dataset.v; render(!!S.sel); return; }
-  const row = e.target.closest(".row"); if (row) select(row.dataset.key);
-});
-root.addEventListener("focusin", e => { const row = e.target.closest(".row"); if (row && !row.classList.contains("sel")) select(row.dataset.key); });
-root.addEventListener("keydown", e => {
-  if (e.key === "Escape" && S.focus) { S.focus = false; render(true); return; }
-  if (e.key === "Enter" && S.sel && !S.focus && e.target.closest(".row")) { S.focus = true; render(true); return; }
-  if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
-  const all = [...root.querySelectorAll(".row")], i = all.indexOf(document.activeElement); if (i < 0) return;
-  e.preventDefault(); const n = all[Math.max(0, Math.min(all.length - 1, i + (e.key === "ArrowDown" ? 1 : -1)))]; n.focus(); n.scrollIntoView({block: "nearest"});
-});
-if (D.standalone) window.addEventListener("hashchange", () => route(location.hash));
-if (!(D.standalone && route(location.hash))) {
-  const f = D.start.focus[0];
-  if (f && INDEX[f]) route("#" + f); else render(false);
-}
-})();
+const rcConfig = { startOnLoad: false, securityLevel: "strict", flowchart: { useMaxWidth: false }, themeVariables: { fontSize: "16px" } };"""
+
+RENDER_PAGE = """<!doctype html><meta charset="utf-8"><body><pre id="rc-out"></pre>
+<script type="module">
+__MEASURE__
+const out = document.getElementById("rc-out");
+try {
+  const { default: mermaid } = await import(__MERMAID__);
+  mermaid.initialize(rcConfig);
+  const result = {};
+  for (const [name, source] of Object.entries(__SOURCES__)) {
+    const host = document.createElement("div"); document.body.append(host);
+    host.innerHTML = (await mermaid.render("rc-" + name, source)).svg;
+    result[name] = rcMeasure(host.querySelector("svg"));
+  }
+  out.textContent = JSON.stringify(result);
+} catch (e) { out.textContent = JSON.stringify({ error: String(e) }); }
 </script>"""
+
+
+def chrome_path():
+    """Chrome or Chromium for drawing diagrams at write time; REASON_COMMONS_CHROME=none turns it off."""
+    chosen = os.environ.get("REASON_COMMONS_CHROME")
+    if chosen:
+        return None if chosen == "none" else chosen
+    return next((p for p in CHROME_PATHS if Path(p).exists()), None) or next((shutil.which(n) for n in CHROME_NAMES if shutil.which(n)), None)
+
+
+def prerender(sources, chrome):
+    """Draw each tree once in headless Chrome; None when Chrome or the network is unavailable."""
+    with tempfile.TemporaryDirectory() as tmp:
+        page = Path(tmp) / "render.html"
+        page.write_text(RENDER_PAGE.replace("__MEASURE__", MEASURE_JS).replace("__MERMAID__", json.dumps(MERMAID_JS))
+                        .replace("__SOURCES__", json.dumps(sources).replace("</", "<\\/")))
+        try:
+            run = subprocess.run([chrome, "--headless=new", "--disable-gpu", "--no-first-run", "--no-default-browser-check",
+                                  f"--user-data-dir={Path(tmp) / 'profile'}", "--virtual-time-budget=60000", "--dump-dom", page.as_uri()],
+                                 capture_output=True, text=True, timeout=180)
+        except (OSError, subprocess.TimeoutExpired):
+            return None
+    found = re.search(r'<pre id="rc-out">(.*?)</pre>', run.stdout, re.S)
+    try:
+        data = json.loads(html.unescape(found.group(1))) if found else None
+    except ValueError:
+        return None
+    return None if not data or "error" in data else data
+
+
+def drawn_trees(root, sources, chrome):
+    """Write-time drawings of each tree, reused while its source is unchanged."""
+    cache_file = root / "diagrams.json"
+    try:
+        cache = json.loads(cache_file.read_text())
+    except (OSError, ValueError):
+        cache = {}
+    key = lambda src: hashlib.sha256((MERMAID_JS + src).encode()).hexdigest()
+    missing = {t: src for t, src in sources.items() if cache.get(t, {}).get("key") != key(src)}
+    if missing and chrome:
+        fresh = prerender(missing, chrome) or {}
+        for t, drawing in fresh.items():
+            cache[t] = {"key": key(sources[t]), **drawing}
+        if fresh:
+            cache = {t: cache[t] for t in sources if t in cache}
+            cache_file.write_text(json.dumps(cache))
+    return {t: cache[t] for t in sources if cache.get(t, {}).get("key") == key(sources[t])}
+
+
+def fit(box, aspect=16 / 10):
+    x, y, w, h = box
+    if w / h > aspect:
+        y, h = y - (w / aspect - h) / 2, w / aspect
+    else:
+        x, w = x - (h * aspect - w) / 2, h * aspect
+    return [x, y, w, h]
+
+
+def diagram_page(name, source, drawing, focus=None, record=None):
+    """One self-contained pan-and-zoom page for a tree, opened on the whole tree or centred on a statement."""
+    head = tree_info(name)[0]
+    node, short = focus or (None, None)
+    data = {"focus": short, "source": None if drawing else source, "mermaid": MERMAID_JS, "view": FOCUS_VIEW}
+    body = '<p class="wait">Drawing the diagram… this needs network access to load mermaid.js.</p>'
+    if drawing:
+        full, box = drawing["full"], drawing["nodes"].get(short) if short else None
+        start = fit([box[0] + box[2] / 2 - FOCUS_VIEW[0] / 2, box[1] + box[3] / 2 - FOCUS_VIEW[1] / 2, *FOCUS_VIEW] if box else [full[0] - 40, full[1] - 40, full[2] + 80, full[3] + 80])
+        svg = drawing["svg"]
+        tag = re.match(r"<svg[^>]*>", svg).group(0)
+        opened = re.sub(r'\s(width|height|style|viewBox)="[^"]*"', "", tag)[:-1] + f' width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="{" ".join(f"{v:g}" for v in start)}">'
+        outline = f'<rect class="rc-focus" x="{box[0] - 6:g}" y="{box[1] - 6:g}" width="{box[2] + 12:g}" height="{box[3] + 12:g}" rx="8" fill="none" stroke="#2563eb" stroke-width="8" pointer-events="none"/>' if box else ""
+        body = svg.replace(tag, opened, 1).rpartition("</svg>")
+        body = body[0] + outline + "</svg>" + body[2]
+        data.update(full=full, box=box)
+    title_text = f"{head} — {node['text']}" if node else f"{head} — whole tree"
+    meta = ""
+    if node:
+        work = " · ".join("⚑ " + t["work"].replace("_", " ") for t in node.get("_work", []))
+        where = f' · <a href="{html.escape(record["yaml"])}">recorded in {html.escape(record["yaml_label"])}</a>' if record else ""
+        meta = (f'<div class="meta">{html.escape(title(node["kind"]))} · {status(node)} · <code>{html.escape(node["id"])}</code>'
+                f'{" · " + html.escape(work) if work else ""}{where}</div>')
+    statement = f'<span class="s" title="{html.escape(node["text"])}">Centred on: {html.escape(node["text"])}</span>' if node else '<span class="s">Whole tree</span>'
+    page = DIAGRAM_PAGE
+    for k, v in (("__TITLE__", html.escape(title_text)), ("__HEAD__", html.escape(head)), ("__STATEMENT__", statement), ("__META__", meta),
+                 ("__HOME__", '<button id="home" title="Back to the statement (C)">Centre statement</button>' if node else ""),
+                 ("__BODY__", body), ("__MEASURE__", MEASURE_JS), ("__DATA__", json.dumps(data, ensure_ascii=False).replace("</", "<\\/"))):
+        page = page.replace(k, v)
+    return page
+
+
+def write_pages(state, state_path, out=None, chrome="auto"):
+    """Write one diagram page per tree and one per statement; returns the directory holding trees/ and nodes/."""
+    root = Path(out) if out else pages_dir(state_path)
+    (root / "trees").mkdir(parents=True, exist_ok=True)
+    (root / "nodes").mkdir(parents=True, exist_ok=True)
+    names = [t for t in ordered(state["trees"]) if state["trees"][t]["nodes"]]
+    built = {t: diagram_source(t, state["trees"][t]) for t in names}
+    drawings = drawn_trees(root, {t: src for t, (src, _) in built.items()}, chrome_path() if chrome == "auto" else chrome)
+    records = record_links(state, state_path) if state_path else {}
+    keep = set()
+    for t in names:
+        source, short = built[t]
+        tree = state["trees"][t]
+        (root / "trees" / f"{t}.html").write_text(diagram_page(t, source, drawings.get(t)))
+        work = {}
+        for task in tree["backlog"]:
+            work.setdefault(task["ref"], []).append(task)
+        for n in tree["nodes"]:
+            keep.add(f"{n['id']}.html")
+            node = {**n, "_work": [w for w in work.get(n["id"], []) if w["work"] not in QUIET_WORK]}
+            (root / "nodes" / f"{n['id']}.html").write_text(diagram_page(t, source, drawings.get(t), (node, short[n["id"]]), records.get(n["id"])))
+    for stale in [*(root / "nodes").glob("*.html"), *(root / "trees").glob("*.html")]:
+        if stale.parent.name == "nodes" and stale.name not in keep or stale.parent.name == "trees" and stale.stem not in names:
+            stale.unlink()
+    (root / "trees.html").unlink(missing_ok=True)  # the retired text-tree page
+    return root
+
+
+DIAGRAM_PAGE = r"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>__TITLE__</title>
+<style>
+html,body{margin:0;height:100%;background:#fff;color:#17212e;font:14px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+body{display:flex;flex-direction:column}
+header{flex:none;display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;padding:8px 12px;border-bottom:1px solid #e3e6ea;background:#fafbfc}
+header .t{font-weight:600;margin-right:4px}
+header .s{color:#3d4652;flex:1 1 20ch;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+header .meta{flex-basis:100%;color:#5b6573;font-size:12.5px}
+header .meta code{font-size:12px}
+header .hint{color:#5b6573;font-size:12.5px}
+button{font:inherit;min-width:34px;padding:4px 10px;border:1px solid #c9ced6;border-radius:6px;background:#fff;color:inherit;cursor:pointer}
+button:hover{background:#eef1f5}
+#view{flex:1;min-height:0;overflow:hidden;cursor:grab;touch-action:none;user-select:none}
+#view.drag{cursor:grabbing}
+#view svg{display:block}
+#view .wait{padding:24px;color:#5b6573}
+</style></head><body>
+<header><span class="t">__HEAD__</span>__STATEMENT__
+<button id="zin" title="Zoom in (+)" aria-label="Zoom in">+</button><button id="zout" title="Zoom out (−)" aria-label="Zoom out">−</button>
+<button id="fit" title="Whole tree (0)">Whole tree</button>__HOME__
+<span class="hint">Drag to pan · scroll to move · pinch or ⌘/Ctrl-scroll to zoom</span>__META__</header>
+<div id="view" role="img" aria-label="__TITLE__">__BODY__</div>
+<script type="module">
+__MEASURE__
+const D = __DATA__, box = document.getElementById("view");
+if (D.source) {
+  try {
+    const { default: mermaid } = await import(D.mermaid);
+    mermaid.initialize(rcConfig);
+    box.innerHTML = (await mermaid.render("rc-diagram", D.source)).svg;
+    const m = rcMeasure(box.querySelector("svg"));
+    D.full = m.full; D.box = D.focus ? m.nodes[D.focus] : null;
+    const svg = box.querySelector("svg");
+    for (const a of ["width", "height", "style"]) svg.removeAttribute(a);
+    svg.setAttribute("width", "100%"); svg.setAttribute("height", "100%");
+    if (D.box) {
+      const r = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+      for (const [k, v] of Object.entries({ class: "rc-focus", x: D.box[0] - 6, y: D.box[1] - 6, width: D.box[2] + 12, height: D.box[3] + 12, rx: 8, fill: "none", stroke: "#2563eb", "stroke-width": 8, "pointer-events": "none" })) r.setAttribute(k, v);
+      svg.append(r);
+    }
+  } catch (e) { box.innerHTML = '<p class="wait">The diagram could not be drawn here: ' + String(e).replace(/</g, "&lt;") + "</p>"; throw e; }
+}
+const svg = box.querySelector("svg"), full = D.full;
+const START = D.box ? [D.box[0] + D.box[2] / 2 - D.view[0] / 2, D.box[1] + D.box[3] / 2 - D.view[1] / 2, ...D.view] : [full[0] - 40, full[1] - 40, full[2] + 80, full[3] + 80];
+let v;
+const size = () => [box.clientWidth || 1, box.clientHeight || 1];
+function show([x, y, w, h]) {
+  const [cw, ch] = size(), a = cw / ch;
+  if (w / h > a) { y -= (w / a - h) / 2; h = w / a; } else { x -= (h * a - w) / 2; w = h * a; }
+  v = [x, y, w, h]; svg.setAttribute("viewBox", v.join(" "));
+}
+function zoom(f, px, py) {
+  const [cw, ch] = size(); if (px == null) { px = cw / 2; py = ch / 2; }
+  const k = Math.min(Math.max(v[2] * f, 150), full[2] * 4) / v[2];
+  const ux = v[0] + px / cw * v[2], uy = v[1] + py / ch * v[3];
+  show([ux - px / cw * v[2] * k, uy - py / ch * v[3] * k, v[2] * k, v[3] * k]);
+}
+function pan(dx, dy) { const s = v[2] / size()[0]; show([v[0] - dx * s, v[1] - dy * s, v[2], v[3]]); }
+const whole = () => show([full[0] - 40, full[1] - 40, full[2] + 80, full[3] + 80]), home = () => show(START);
+home();
+addEventListener("resize", () => show(v));
+box.addEventListener("wheel", e => {
+  e.preventDefault(); const r = box.getBoundingClientRect();
+  if (e.ctrlKey || e.metaKey) zoom(Math.exp(Math.max(-25, Math.min(25, e.deltaY)) * 0.01), e.clientX - r.left, e.clientY - r.top);
+  else pan(-e.deltaX, -e.deltaY);
+}, { passive: false });
+const pts = new Map(); let span = null;
+box.addEventListener("pointerdown", e => { box.setPointerCapture(e.pointerId); pts.set(e.pointerId, [e.clientX, e.clientY]); box.classList.add("drag"); span = null; });
+box.addEventListener("pointermove", e => {
+  if (!pts.has(e.pointerId)) return;
+  const prev = pts.get(e.pointerId); pts.set(e.pointerId, [e.clientX, e.clientY]);
+  if (pts.size === 1) return pan(e.clientX - prev[0], e.clientY - prev[1]);
+  const [a, b] = [...pts.values()], d = Math.hypot(a[0] - b[0], a[1] - b[1]), r = box.getBoundingClientRect();
+  if (span) zoom(span / d, (a[0] + b[0]) / 2 - r.left, (a[1] + b[1]) / 2 - r.top);
+  span = d;
+});
+const up = e => { pts.delete(e.pointerId); span = null; if (!pts.size) box.classList.remove("drag"); };
+box.addEventListener("pointerup", up); box.addEventListener("pointercancel", up);
+document.getElementById("zin").onclick = () => zoom(1 / 1.25);
+document.getElementById("zout").onclick = () => zoom(1.25);
+document.getElementById("fit").onclick = whole;
+const homeButton = document.getElementById("home"); if (homeButton) homeButton.onclick = home;
+addEventListener("keydown", e => {
+  if (e.key === "+" || e.key === "=") zoom(1 / 1.25); else if (e.key === "-") zoom(1.25);
+  else if (e.key === "0") whole(); else if ((e.key === "c" || e.key === "C") && homeButton) home();
+  else if (e.key.startsWith("Arrow")) pan({ ArrowLeft: 80, ArrowRight: -80 }[e.key] || 0, { ArrowUp: 80, ArrowDown: -80 }[e.key] || 0);
+});
+</script>
+</body></html>
+"""
+
+
+TREE_FORMATS = ("tree-markdown", "tree-text")
+MERMAID_FORMATS = ("widget", "markdown", "mermaid", "text")
 
 
 def tree_of(state, ident):
@@ -962,13 +998,13 @@ def main():
     parser.add_argument("--counts", action="store_true", help="print per-tree node counts by standing for the view menu")
     parser.add_argument("--tree", help="tree key, such as current_reality; tree views default to the tree of --focus, else the first tree with statements")
     parser.add_argument("--format", choices=TREE_FORMATS + MERMAID_FORMATS,
-                        help="tree (default): inline widget HTML; tree-markdown: linked nested list for chat; tree-text: terminal text; "
+                        help="tree-markdown (default): linked nested list for a chat reply; tree-text: terminal text; "
                              "widget, markdown, mermaid, text: one-standing Mermaid views, drawn only on request")
     parser.add_argument("--standing", choices=STANDINGS, help="Mermaid formats: the one standing drawn (default accepted, or proposed when nothing is accepted); tree formats: the standing highlighted")
     parser.add_argument("--highlight", choices=("all",) + STANDINGS + ("open",), help="tree formats: dim everything else; open = disputed or flagged for work")
     parser.add_argument("--focus", action="append", default=[], metavar="NODE", help="tree formats: zoom to this statement's path and branch (repeatable)")
-    parser.add_argument("--page", nargs="?", const=True, metavar="PATH", help="write the all-trees page (default .<state-stem>/trees.html beside the state); links to PAGE#tree or PAGE#node-id open it there")
-    parser.add_argument("--page-url", help="tree-text and tree-markdown: link to this page address instead of writing the local page")
+    parser.add_argument("--page", nargs="?", const=True, metavar="DIR", help="write the diagram pages, DIR/trees/<tree>.html and DIR/nodes/<node-id>.html (default DIR: .<state-stem>/ beside the state)")
+    parser.add_argument("--page-url", help="tree-text and tree-markdown: link to the diagram pages published under this address instead of writing them locally")
     parser.add_argument("--links", choices=("auto", "always", "never"), default="auto", help="tree-text: OSC 8 hyperlinks (auto: only when printing to a terminal)")
     parser.add_argument("--width", type=int, help="tree-text: wrap width (default: the terminal width, else 100)")
     parser.add_argument("--ids", action="store_true", help="tree-text: show statement IDs")
@@ -990,14 +1026,15 @@ def main():
         print(counts(state))
         return
     page_only = args.page and not args.tree and not args.focus and args.format is None
-    args.format = args.format or "tree"
+    args.format = args.format or "tree-markdown"
     tree_format = args.format in TREE_FORMATS
+    pages = lambda: write_pages(state, args.state, None if args.page in (None, True) else args.page)
     if page_only:
-        target = write_page(state, args.state, None if args.page is True else args.page)
-        print(target.resolve().as_uri())
+        root = pages()
+        print(root.resolve().as_uri() + "/")
         for name in ordered(state["trees"]):
             if state["trees"][name]["nodes"]:
-                print(f"  {tree_info(name)[0]}: {target.resolve().as_uri()}#{name}")
+                print(f"  {tree_info(name)[0]}: {page_href(pages_base(root), 'trees', name)}")
         return
     if args.focus and not tree_format:
         parser.error("--focus works with the tree formats only")
@@ -1021,7 +1058,7 @@ def main():
         if not any(status(n) == standing for n in tree["nodes"]):
             sys.exit(f"{title(args.tree)} has no {standing} nodes. {not_shown(tree, standing)}")
         if args.page:
-            write_page(state, args.state, None if args.page is True else args.page)
+            pages()
         if args.format == "text":
             print(text_outline(args.tree, tree, standing))
         elif args.format == "markdown":
@@ -1036,15 +1073,15 @@ def main():
     links = args.links == "always" or (args.links == "auto" and tty)
     wants_page = args.page or (not args.page_url and (args.format == "tree-markdown" or (args.format == "tree-text" and links)))
     try:
-        page = write_page(state, args.state, None if args.page in (None, True) else args.page).resolve().as_uri() if wants_page else None
-        base = args.page_url or page
-        if args.format == "tree":
-            print(tree_widget(state, args.tree, args.state, args.focus, highlight))
-        elif args.format == "tree-markdown":
-            print(markdown_tree(state, args.tree, base, args.focus, highlight))
+        root = pages() if wants_page else None
+        published = args.page_url.rstrip("/") + "/" if args.page_url else None
+        if args.format == "tree-markdown":
+            # In a chat reply, a path relative to the working directory is what desktop apps open beside the conversation.
+            print(markdown_tree(state, args.tree, published or pages_base(root, relative=True), args.focus, highlight))
         else:
             width = args.width or (shutil.get_terminal_size((100, 24)).columns if tty else 100)
             ansi = tty and not os.environ.get("NO_COLOR")
+            base = published or (pages_base(root) if root else None)
             print(text_tree(state, args.tree, ansi, base if links else None, highlight, args.focus, width, args.ids))
     except ValueError as error:
         sys.exit(str(error))

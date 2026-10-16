@@ -35,31 +35,33 @@ Each row is one statement. The word at the start of a row names its relation to 
 | `⚑ work` | open backlog work on the statement |
 | `↗ addresses Reality` | a cross-tree trace; it is a reference, not a causal link |
 
-The relation words are `needs` (necessary for), `because` (causes), `partly because` (contributes to), `supported by`, `challenged by`, `blocked by`, `cleared by` (overcomes), `then` (precedes), `expect` (produces, in the transition tree; `produced by` elsewhere), `replaces` (supersedes) and `conflicts with`. Highlighting a standing, or open work, dims every other row rather than removing it.
+The relation words are `needs` (necessary for), `because` (causes), `partly because` (contributes to), `supported by`, `challenged by`, `blocked by`, `cleared by` (overcomes), `then` (precedes), `expect` (produces, in the transition tree; `produced by` elsewhere), `replaces` (supersedes), `possibly partly because` (may contribute to) and `conflicts with`. When several conditions jointly produce, precede or supersede something, the `∧` group sits under the target and reads `produced by`, `after` or `replaced by`. A relation with no wording of its own is shown under its source, so it reads in the link's direction. Highlighting a standing, or open work, dims every other row rather than removing it.
 
 ### Choose the form
 
-1. **Inline widget** — when the host exposes an HTML rendering tool, pass `render_view.py`'s default output to it unchanged. It holds every tree, opens on the requested one, and has highlight, ID and zoom controls; clicking a statement shows its links, open work and where it was recorded.
-2. **Chat reply or other Markdown** — `--format tree-markdown` prints a nested list in which every tree and statement name links to the graphical page opened at that tree or statement. Return it unchanged. Never wrap a tree in a code block: the links become dead text.
-3. **Terminal** — `--format tree-text` prints the tree with OSC 8 hyperlinks when it is printing to the terminal itself. Output an agent captures is not a terminal, so links are off there unless `--links always` is given; ANSI colour follows the same rule and `NO_COLOR`.
+The text tree is the overview; its links open the graphical diagram for inspecting a statement in place.
+
+1. **Chat reply or other Markdown** — `render_view.py`'s default output is a nested list in which every tree and statement name links to its diagram page. Return it unchanged. Never wrap a tree in a code block: the links become dead text. When the pages lie inside the working directory, the links are relative to it, which is what desktop apps open beside the conversation; otherwise they are `file://` addresses.
+2. **Terminal** — `--format tree-text` prints the tree with OSC 8 hyperlinks when it is printing to the terminal itself. Output an agent captures is not a terminal, so links are off there unless `--links always` is given; ANSI colour follows the same rule and `NO_COLOR`.
 
 ```bash
-# The widget: every tree, opened on one, optionally zoomed to a statement
-python3 <skill-directory>/scripts/render_view.py <state.yaml> --tree current_reality [--highlight disputed] [--focus <node-id>]
-
-# A linked nested list for a chat reply; writes the page beside the state
-python3 <skill-directory>/scripts/render_view.py <state.yaml> --tree future_reality --format tree-markdown
+# A linked nested list for a chat reply; writes the diagram pages beside the state
+python3 <skill-directory>/scripts/render_view.py <state.yaml> --tree future_reality [--highlight disputed] [--focus <node-id>]
 
 # The terminal tree, wrapped to the terminal's width
 python3 <skill-directory>/scripts/render_view.py <state.yaml> --tree transition --format tree-text
 
-# Write the graphical page and list a link to each tree
+# Write the diagram pages and list a link to each tree
 python3 <skill-directory>/scripts/render_view.py <state.yaml> --page
 ```
 
-The page is written to `.<state-stem>/trees.html` beside the state file, with the other generated files described in [views.md](views.md). A link to `trees.html#<tree>` opens that tree; `trees.html#<node-id>` opens the statement's tree zoomed to its path from the top node and its whole branch, centred on it. Pass `--page-url` when the page is published at another address, so the links point there. Links to local files open only where the reader can reach that file; in a cloud session they reach the container, not the reader's machine.
+### Diagram pages
 
-A change fragment whose updates are not saved yet, such as the tree updates in a change proposal, cannot be generated from the YAML. Write it by hand as the same nested list: the glyphs and relation words above, every new item marked with its standing, and existing statements linked to the page when it exists. Show only the changed items and the context needed to read them.
+The pages are written beside the state file under `.<state-stem>/`, with the other generated files described in [views.md](views.md): `trees/<tree>.html` shows the whole tree fitted to the window, and `nodes/<node-id>.html` shows the same full tree centred and zoomed on that statement, outlined in blue, with its kind, standing, open work and a link to where it was recorded. Each statement has its own page because some hosts drop a URL anchor such as `#<node-id>`. Every standing is marked, as in the text tree. Drag to pan, scroll to move, pinch or ⌘/Ctrl-scroll to zoom; **Whole tree** fits the tree and **Centre statement** returns to the statement.
+
+When Chrome or Chromium is installed, each tree is drawn once while the pages are written and embedded in them, so the pages need no network and open on their statement even where scripts do not run; unchanged trees reuse the drawing kept in `diagrams.json`. Without Chrome, or with `REASON_COMMONS_CHROME=none`, each page draws itself with mermaid.js from the network when opened. Pass `--page-url` when the pages are published at another address, so the links point there. Links to local files open only where the reader can reach that file; in a cloud session they reach the container, not the reader's machine.
+
+A change fragment whose updates are not saved yet, such as the tree updates in a change proposal, cannot be generated from the YAML. Write it by hand as the same nested list: the glyphs and relation words above, every new or revised item marked as such with its standing, and existing statements linked to their pages. Show only the changed items and the context needed to read them.
 
 ## Mermaid on request
 

@@ -1370,6 +1370,24 @@ trees:
         attribution: explicit
         mode: text
         note: David reported on 2026-10-16 that he expected to click 'future reality' in the change-tree-view-default-links proposal and see the tree rendered graphically.
+    - id: r-e-tree-links-miss-node
+      kind: observation
+      text: In Claude Code desktop, the statement links in a proposal's text tree opened the tree page without going to the statement.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: David reported on 2026-10-16, after clicking trees.html#<node-id> links in a change proposal's fragment, that the links did not open up to the nodes he asked for.
+    - id: r-e-page-not-graphical
+      kind: observation
+      text: The page those links open shows a more detailed text tree, where David wanted a graphical diagram of the full tree centred and zoomed on the chosen statement.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: On 2026-10-16 David said the text tree was meant as the scannable overview in the terminal or Claude Code desktop, and that opening a statement should show a graphical representation of the full tree centred and zoomed on it, not a more complicated tree.
     links:
     - id: r-rel-unclear-drives-redesigning
       from:
@@ -2789,11 +2807,13 @@ trees:
         note: 'David proposed "INJECTION 1: tree view as default" on 2026-10-16, after asking for a tree output that differentiates node and connection types with text and CSS. Wording drafted by the assistant in change-tree-view-default-links-2026-10-16 revision 2.'
     - id: f-e-tree-view-links
       kind: injection
-      text: Every tree view, and every reply that names a tree or node, links that name to the graphical view of the tree opened at that node, and links each statement to where it was recorded; in chat and Markdown these are ordinary links outside code blocks, and in a terminal they are OSC 8 hyperlinks.
+      text: 'Every tree view, and every reply that names a tree or statement, links that name to a graphical diagram of the full tree: a tree name opens it fitted to the whole tree, and a statement name opens it centred and zoomed on that statement, without depending on URL anchors.'
       status: proposed
       addresses:
       - r-e-skill-hard-to-scan
       - r-e-fragment-not-clickable
+      - r-e-tree-links-miss-node
+      - r-e-page-not-graphical
       implements:
       - f-e-text-tree-default-view
       contributions:
@@ -2801,6 +2821,10 @@ trees:
         attribution: explicit
         mode: text
         note: 'David proposed "INJECTION 2: tree views as default with clickable links" on 2026-10-16, with an OSC 8 implementation sketch, then asked that clicking a node open the drawing centred and zoomed on it. Wording drafted by the assistant in change-tree-view-default-links-2026-10-16 revision 2.'
+      - by: david
+        attribution: explicit
+        mode: text
+        note: 'On 2026-10-16 David clarified that the text tree is the overview, and that a statement link should open a graphical diagram of the full tree centred and zoomed on it, which he can pan and zoom. Revised wording drafted by the assistant in change-tree-diagram-links-2026-10-16 revision 2; implementation approval does not endorse it.'
     - id: f-e-click-through
       kind: desirable_effect
       text: People reading a reply or a tree view can open the full tree at any statement it names, and the record behind that statement, without searching for it.
@@ -3107,7 +3131,7 @@ trees:
         attribution: assistant
         mode: text
       assumptions:
-      - text: The host opens the links; chat links reach a page the reader can open, and the terminal supports OSC 8 hyperlinks.
+      - text: The host opens the links and they land on the linked statement, and the terminal supports OSC 8 hyperlinks. Claude Code desktop did not follow trees.html#<node-id> anchors on 2026-10-16, so each statement now gets its own page.
         by: assistant
     backlog:
     - ref: f-rel-use-makes-users
@@ -3252,7 +3276,10 @@ trees:
       note: Check whether seeing every standing at once makes proposed items read as accepted, and whether readers decode the glyphs without the legend.
     - ref: f-e-tree-view-links
       work: verify_host_support
-      note: Observe which hosts actually open the links, including Claude Code desktop, the Claude Code CLI, Codex and David's terminal. Output an agent captures through a pipe is not a terminal, so OSC 8 links are not expected there.
+      note: Observe which hosts actually open the links and land on the statement, including Claude Code desktop, the Claude Code CLI, Codex and David's terminal. On 2026-10-16 Claude Code desktop opened trees.html#<node-id> without going to the statement; statement pages no longer need an anchor. Also check whether the desktop file pane runs the pan-and-zoom script. Output an agent captures through a pipe is not a terminal, so OSC 8 links are not expected there.
+    - ref: f-e-text-tree-default-view
+      work: fix_rendering
+      note: 'Against main''s state after PR 66, the text tree stopped with an error on t-rel-discord-live-checks-produce-evidence, a transition produces link with two sources, and relations it has no wording for, such as may_contribute_to, read backwards so a harm appeared to cause its injection. Both fixed under change-tree-diagram-links-2026-10-16 revision 2, with regression tests; all six trees of the collaboration state now render. Remove this item once the fix reaches main.'
     - ref: f-e-click-through
       work: connect_or_explain
       note: No path to the goal yet; explain how reaching the full tree and its records serves the goal, or connect it.
@@ -6158,3 +6185,31 @@ change_acceptances:
   - skills/reason-commons/references/views.md
   - skills/reason-commons/scripts/render_view.py
   - skills/reason-commons/tests/test_render_view.py
+- proposal_ref: change-tree-diagram-links-2026-10-16
+  proposal_revision: 2
+  by: david
+  recorded_at: '2026-10-16T12:58:23Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: i accept
+  scope: 'Revise claude/scannable-tree-views-vw7ukz so the text tree stays the overview in chat and the terminal and its links open graphical diagrams. render_view.py --page writes one pan-and-zoom diagram page per tree, fitted to the whole tree, and one per statement, showing the full tree centred and zoomed on that statement with it highlighted; every standing is marked; separate files replace #anchors; each diagram is drawn once with headless Chrome when available so pages work offline, otherwise the page draws itself with mermaid.js from the network. Text-tree links in tree-markdown and tree-text point to those pages, and the HTML text-tree page is retired. Fix the transition crash on produces links with several sources and the backwards wording for relations such as may_contribute_to, with regression tests. The Change proposal template leads with the change fragment and marks each update on it. Update SKILL.md, diagrams.md, views.md and responses.md to match. Save the two new current-reality observations, the revised f-e-tree-view-links injection and f-rel-links-click-through assumption, the revised verify_host_support backlog note and the new fix_rendering backlog item. Merge main into the branch, push it, and open a draft PR to main that notes David is not yet sure this is a better UX for the skill, requests review from Rufus (@rufuspollock), and shows before and after screenshots committed under docs/product/images/tree-views/. Implementation does not accept the reasoning.'
+  node_ids:
+  - r-e-tree-links-miss-node
+  - r-e-page-not-graphical
+  - f-e-tree-view-links
+  link_ids:
+  - f-rel-links-click-through
+  approved_paths:
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - skills/reason-commons/SKILL.md
+  - skills/reason-commons/references/diagrams.md
+  - skills/reason-commons/references/responses.md
+  - skills/reason-commons/references/views.md
+  - skills/reason-commons/scripts/render_view.py
+  - skills/reason-commons/tests/test_render_view.py
+  - docs/product/images/tree-views/1-before-main-mermaid-view.png
+  - docs/product/images/tree-views/2-before-branch-text-page.png
+  - docs/product/images/tree-views/3-after-text-tree-in-chat.png
+  - docs/product/images/tree-views/4-after-diagram-centred.png
+  - docs/product/images/tree-views/5-after-whole-tree.png

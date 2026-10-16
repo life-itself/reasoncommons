@@ -6,9 +6,9 @@ Use a visible `Type` label so the reader can distinguish a suggested change, a r
 
 For every referenced node, show **Tree · Node kind · Standing**, followed by its ID and statement: **Current Reality · Observation · Proposed** — `r-e-example`: the recorded observation. Get the tree from its containing YAML tree and the kind from its `kind` field; never guess either from the ID. Keep the response type, node kind and reasoning standing distinct.
 
-Use a table for several updates, with separate **Operation**, **Tree**, **Item type**, **Standing**, **ID** and **Update** columns. For a node, the item type is its kind, such as **Injection** or **Undesirable effect**. For a link, write **Link · relation** and name its source and target IDs. Backlog entries are work on referenced items; identify the owning tree and work remaining without giving them a node kind.
+In a Change proposal the change fragment carries the updates, so do not repeat its statements in a table. Elsewhere, such as a Change result, use a table for several updates, with separate **Operation**, **Tree**, **Item type**, **Standing**, **ID** and **Update** columns. For a node, the item type is its kind, such as **Injection** or **Undesirable effect**. For a link, write **Link · relation** and name its source and target IDs. Backlog entries are work on referenced items; identify the owning tree and work remaining without giving them a node kind.
 
-In a tree or change fragment, the tree heading names the tree, and each row's glyph names the node kind and standing as explained in [diagrams.md](diagrams.md); keep the one-line legend with it, and in a chat reply link each tree and statement name to the graphical page rather than putting the tree in a code block. In a Mermaid diagram drawn on request, put `[P] TREE · KIND`, `[A] TREE · KIND` or `[D] TREE · KIND` on a separate line above the full statement. Retain the explicit standing key and the actual topology in every form. Generated views derive these labels from the YAML; a fragment spanning several trees groups its rows under each tree's own heading.
+In a tree or change fragment, the tree heading names the tree, and each row's glyph names the node kind and standing as explained in [diagrams.md](diagrams.md); keep the one-line legend with it, and in a chat reply link each tree and statement name to its diagram page rather than putting the tree in a code block. In a Mermaid diagram drawn on request, put `[P] TREE · KIND`, `[A] TREE · KIND` or `[D] TREE · KIND` on a separate line above the full statement. Retain the explicit standing key and the actual topology in every form. Generated views derive these labels from the YAML; a fragment spanning several trees groups its rows under each tree's own heading.
 
 ## Choose the type
 
@@ -22,22 +22,17 @@ In a tree or change fragment, the tree heading names the tree, and each row's gl
 Required before editing project files. Read-only inspection may come first. Show the complete proposal in an assistant response and wait for typed user acceptance of its version and scope. Record that acceptance and save the stated tree updates, validate the state, then implement. If the scope or intended tree updates change materially, show a revised proposal and obtain fresh typed acceptance before those changes. An internal plan, a tool result, or a report written after editing is insufficient.
 
 ```markdown
-**Type: Change proposal**
+**Type: Change proposal** · [Stable proposal ID] · revision [positive integer, initially 1]
 
-**Proposal:** [Stable proposal ID] · revision [positive integer, initially 1].
+[The change fragment first: a nested-list tree under each affected tree's heading, showing the changed nodes and links with only the context needed to read them. Mark each changed item *new* or *revised* with its ID beside the full statement; its glyph shows its kind and standing and ⚑ its backlog work. Link existing statements to their diagram pages. A Mermaid diagram only when asked for one.]
 
-**Change:** [Concrete behavior to change and the bounded implementation scope.]
+**Change:** [Concrete behavior to change and the bounded implementation scope, in a few short lines.]
 
 **Files:** [For repository changes, the exact repository-relative paths covered, including reasoning and coordination files. Include both paths for a rename.]
 
-**Reasoning served:** [Existing node/link IDs with their tree, kind or relation, plain-language meaning and standing, and how this work serves the goal or addresses its obstacles.]
+**Reasoning served:** [Existing node/link IDs with their tree, kind or relation and standing, and how this work serves the goal or addresses its obstacles; one line when the fragment already shows them.]
 
-**Tree updates — [standing]:**
-
-- [Add/change/remove] [tree · node kind or link relation · standing · ID]: [full statement, or endpoints and relation; retain qualifications and important assumptions].
-- [Backlog additions, revisions or completed work, with the referenced IDs and the work remaining.]
-
-[Change fragment as a linked nested-list tree showing the same nodes, links and topology, with existing statements linked to the graphical page; a Mermaid diagram only when asked for one.]
+**Tree updates:** [Only what the fragment cannot show: removals, changed assumptions, and backlog additions, revisions or completed work, each with the referenced ID. Do not repeat statements the fragment shows.]
 
 **Validation:** [Behavior or evidence to check, including what remains uncertain.]
 
