@@ -1907,9 +1907,6 @@ trees:
       note: The repository previously mixed public method pages and working reasoning under ltp/ and published from the project root with exclusions. The approved migration separates those boundaries and repairs affected paths. David’s concern and anticipated technical-debt risk remain proposed; observe whether this improves actual work rather than inferring the benefit from cleaner folders. No repository split or production cutover was performed.
       beads:
       - reasoncommons-ar1
-    - ref: r-e-trees-out-of-step
-      work: test_discord_connection
-      note: Check whether a real Discord-to-reasoning workflow has a capture/access gap. Do not assume channel access is the cause of stale trees.
   conflict:
     nodes:
     - id: c-e-objective
@@ -2723,8 +2720,6 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
-      addresses:
-      - r-e-trees-out-of-step
       implements:
       - f-e-use-while-building
     - id: f-e-discord-reasoning-aligned
@@ -6025,3 +6020,18 @@ change_acceptances:
   - ltp/rufus-david-collab/reason-commons.yaml
   - docs/product/plans/2026-10-16-discord-bot.md
   - .beads/issues.jsonl
+- proposal_ref: change-discord-pr-scope-2026-10-16
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-16T11:27:23Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: yes accept
+  scope: 'Remove the unrelated Current Reality context section and diagram from PR66 and its stale-tree justification from the description and product plan. Remove the addresses reference from f-e-discord-on-demand to r-e-trees-out-of-step and the test_discord_connection backlog entry on that existing cause. Preserve underlying existing observations, earlier receipts, the bot-specific injection, reservations, prerequisites and transition diagrams. Add no claims, links or backlog entries. Validate YAML, approval coverage and generated diagrams, push the scoped cleanup and inspect actual GitHub rendering. Keep session coordination notes local.'
+  node_ids:
+  - f-e-discord-on-demand
+  link_ids: []
+  approved_paths:
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - docs/product/plans/2026-10-16-discord-bot.md
