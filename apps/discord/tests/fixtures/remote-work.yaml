@@ -1,0 +1,39 @@
+# Isolated conversational fixture adapted from claim-tree-annotation.md.
+# Acceptance here is test setup, not an assessment of the real study.
+schema_version: 1
+project: Does remote work increase productivity?
+driver: alice
+participants:
+  alice: Alice
+  bob: Bob
+active_tree: current_reality
+trees:
+  current_reality:
+    nodes:
+    - id: r-call-centre
+      kind: observation
+      text: The cited Ctrip study concerned call-centre workers, which limits generalisation to other knowledge workers.
+      status: accepted
+      accepted_by: [alice]
+      contributions: [{by: alice, attribution: explicit, mode: text}]
+    - id: r-solo-tasks
+      kind: observation
+      text: The reported gain was on solo call-handling tasks specifically.
+      status: accepted
+      accepted_by: [alice]
+      contributions: [{by: alice, attribution: explicit, mode: text}]
+    - id: r-productivity-gain
+      kind: observation
+      text: The cited study reported a 13% productivity gain for remote workers under its studied conditions.
+      status: proposed
+      contributions: [{by: bob, attribution: explicit, mode: text}]
+    links:
+    - id: r-scope
+      from: [r-call-centre, r-solo-tasks]
+      to: r-productivity-gain
+      relation: jointly_qualify
+      status: proposed
+      contributions: [{by: alice, attribution: explicit, mode: text}]
+    backlog:
+    - ref: r-scope
+      work: examine_generalisation

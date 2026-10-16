@@ -2953,6 +2953,16 @@ trees:
     - ref: f-e-use-while-building
       work: test_conflict_resolution
       note: Preserved source assessment c-as-do-both-breaks says both needs are met; check repeated real use, not just one successful session.
+    - ref: f-e-use-while-building
+      work: verify_discord_adapter
+      note: Local prototype implemented under apps/discord. All 47 mocked application tests and 77 existing reasoning-helper tests pass; a real remote-work PNG was rendered and visually inspected, and local check/task-refresh commands were exercised without credentials. Covers invocation-only transport, canonical skill-loading guards, authenticated attribution without implicit endorsement, version-bound endorsement, restart continuity, serialized duplicate-safe saves, interrupted-save recovery and external-edit conflict detection. Actual model skill use and Discord delivery remain for a separately configured live smoke test; local evidence does not establish model quality or successful deployment.
+      beads:
+      - reasoncommons-oqf
+    - ref: f-e-use-while-building
+      work: evaluate_discord_pilot
+      note: After live configuration and funding are separately agreed, test whether Rufus and David successfully use the Discord surface for real collaboration work and record remaining friction. The implementation does not establish usefulness or change reasoning standing.
+      beads:
+      - reasoncommons-oqf
     - ref: f-rel-naming-records-work
       work: test_causality
       note: The pull request that introduced this change used it once; check whether later pull requests keep the connection without reminders.
@@ -5714,3 +5724,40 @@ change_acceptances:
   - website/talk/2r-research-group/demo-c/index.html
   - website/talk/2r-research-group/demo-c/proposals.yaml
   - website/talk/2r-research-group/slides.html
+- proposal_ref: change-discord-bot-2026-10-16
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-16T10:31:57Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: i accept
+  scope: Build a complete local Python Discord prototype with discord.py and Claude Agent SDK, explicit invocation in configured channels, grounded questions using configured YAML and refreshed Beads snapshots, attributed reasoning capture and version-bound explicit endorsement, deterministic PNG diagrams, restart continuity, serialized duplicate-safe persistence and external-edit conflict detection. Load the canonical skill and verify availability. Add verify_discord_adapter and evaluate_discord_pilot backlog on f-e-use-while-building, track a separate implementation bead, preserve collaboration priority and reasoning standing, run mocked local and repository checks, and deliver a reviewable branch and PR. Live Discord operation, paid model calls and hosting await separate configuration and decision.
+  node_ids: []
+  link_ids: []
+  approved_paths:
+  - apps/README.md
+  - apps/discord/.gitignore
+  - apps/discord/.env.example
+  - apps/discord/README.md
+  - apps/discord/pyproject.toml
+  - apps/discord/uv.lock
+  - apps/discord/package.json
+  - apps/discord/package-lock.json
+  - apps/discord/reasoncommons_discord/__init__.py
+  - apps/discord/reasoncommons_discord/__main__.py
+  - apps/discord/reasoncommons_discord/config.py
+  - apps/discord/reasoncommons_discord/bot.py
+  - apps/discord/reasoncommons_discord/agent.py
+  - apps/discord/reasoncommons_discord/store.py
+  - apps/discord/reasoncommons_discord/service.py
+  - apps/discord/reasoncommons_discord/diagrams.py
+  - apps/discord/tests/test_bot.py
+  - apps/discord/tests/test_agent.py
+  - apps/discord/tests/test_store.py
+  - apps/discord/tests/test_service.py
+  - apps/discord/tests/test_diagrams.py
+  - apps/discord/tests/fixtures/remote-work.yaml
+  - docs/product/plans/2026-10-16-discord-bot.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
