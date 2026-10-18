@@ -40,7 +40,7 @@ npx skills use life-itself/reasoncommons@reason-commons
 ```
 
 ```text
-https://reasoncommons.com/skills/reason-commons/SKILL.md
+https://raw.githubusercontent.com/life-itself/reasoncommons/main/skills/reason-commons/SKILL.md
 ```
 
 An installed copy includes the skill's helper script and references, so installation is the best option.
