@@ -6035,3 +6035,18 @@ change_acceptances:
   approved_paths:
   - ltp/rufus-david-collab/reason-commons.yaml
   - docs/product/plans/2026-10-16-discord-bot.md
+- proposal_ref: fix-skill-raw-url-2026-10-18
+  proposal_revision: 1
+  by: rufus
+  recorded_at: '2026-10-18T06:40:15Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept A and B, yes that's the plan
+  scope: 'Fix the paste-a-URL line in skills/README.md, which points at reasoncommons.com/skills/reason-commons/SKILL.md (404 since the website moved to website/), to the GitHub raw URL; refresh the exported website copy with scripts/export-website.py and run scripts/check-website.py; record this acceptance; commit on its own branch off main and open a PR. Serves f-e-repo-concern-boundaries by repairing a regression from its implementation. No tree node/link changes.'
+  node_ids: []
+  link_ids: []
+  approved_paths:
+  - skills/README.md
+  - website/skills/README.md
+  - ltp/rufus-david-collab/reason-commons.yaml
