@@ -6050,3 +6050,111 @@ change_acceptances:
   - skills/README.md
   - website/skills/README.md
   - ltp/rufus-david-collab/reason-commons.yaml
+- proposal_ref: change-brand-redesign-plan-2026-10-14
+  proposal_revision: 1
+  by: rufus
+  recorded_at: '2026-10-14T18:53:41Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept chunk 1
+  scope: 'Chunk 1 of the brand and site redesign: create a Beads epic with seven stage beads (brand narrative; positioning; red-team and revise; site structure and key page content; look and feel; build key pages and preview; ship with changelog) plus a side bead for removing copyright-risk and private files from the live site, with human review gates; write a one-page plan with a running decision log in docs/plans; sync the local Beads database from the committed issues.jsonl; record this acceptance. No narrative, site or tree node/link changes.'
+  node_ids: []
+  link_ids: []
+  approved_paths:
+  - docs/plans/2026-10-14-brand-and-site-redesign.md
+  - .beads/issues.jsonl
+  - ltp/rufus-david-collab/reason-commons.yaml
+- proposal_ref: change-brand-narrative-draft-2026-10-17
+  proposal_revision: 1
+  by: rufus
+  recorded_at: '2026-10-17T17:16:20Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept
+  scope: 'Write a one-page brand narrative draft at docs/brand/brand-narrative.md from the six core ideas (loop as spine) with open questions; add /docs/brand to contentExclude in config.json; append a decision-log entry to the redesign plan; mark bead reasoncommons-91c.1 in progress; record this acceptance. No site pages or tree node/link changes.'
+  node_ids: []
+  link_ids: []
+  approved_paths:
+  - docs/brand/brand-narrative.md
+  - config.json
+  - docs/plans/2026-10-14-brand-and-site-redesign.md
+  - .beads/issues.jsonl
+  - ltp/rufus-david-collab/reason-commons.yaml
+- proposal_ref: change-brand-narrative-positioning-2026-10-17
+  proposal_revision: 1
+  by: rufus
+  recorded_at: '2026-10-17T21:15:10Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept ...
+  scope: 'Update docs/brand/brand-narrative.md keeping the six core ideas verbatim and adding the 2026-10-17 calls (one story; the line; TOC history fix; app retired in favour of skills and integrations; vision may lead a little); add docs/brand/positioning.md (positioning v2 with corrections); add docs/brand/redteam/ with the four critiques; append decision-log lines to the plan; close bead reasoncommons-91c.3 and leave reasoncommons-91c.4 open for review; record this acceptance. Unpublished, uncommitted, on branch brand/redesign. No site pages or tree node/link changes.'
+  node_ids: []
+  link_ids: []
+  approved_paths:
+  - docs/brand/brand-narrative.md
+  - docs/brand/positioning.md
+  - docs/brand/redteam/newcomer.md
+  - docs/brand/redteam/practitioner.md
+  - docs/brand/redteam/funder.md
+  - docs/brand/redteam/excitement.md
+  - docs/plans/2026-10-14-brand-and-site-redesign.md
+  - .beads/issues.jsonl
+  - ltp/rufus-david-collab/reason-commons.yaml
+- proposal_ref: change-brand-idea-map-2026-10-17
+  proposal_revision: 2
+  by: rufus
+  recorded_at: '2026-10-17T21:24:56Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: 'one small addition re Trees → AI - just to add this can help address some of the "memory" issues we have with current ai where you end up with sprawling threads and dozens of markdown fiels that gradually become a morass especially as project grows ... and btw that table should show up somewhere. (and simple tables like this and simple bullets points often make docs more readable vs paragraphs of text) --- generally agree on your approach and i think we can move forward ...'
+  scope: 'Revision 1 (add the two-by-two idea map — AI→trees, trees→AI, discourse→tree, tree→discourse — and what to foreground where, to docs/brand/brand-narrative.md; add trees→AI and tree→discourse value propositions to docs/brand/positioning.md; decision-log line; record acceptance) plus Rufus''s addition: trees→AI also addresses AI "memory" problems (sprawling threads and markdown files that become a morass as projects grow); the idea-map table must appear in the docs; prefer simple tables and bullets. No site pages or tree node/link changes.'
+  node_ids: []
+  link_ids: []
+  approved_paths:
+  - docs/brand/brand-narrative.md
+  - docs/brand/positioning.md
+  - docs/plans/2026-10-14-brand-and-site-redesign.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+- proposal_ref: change-brand-relocate-2026-10-18
+  proposal_revision: 1
+  by: rufus
+  recorded_at: '2026-10-18T06:14:59Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept ...
+  scope: 'Rebuild branch brand/redesign on the refactored main, carrying the same brand work to the new layout: plan to docs/marketing/plans/2026-10-14-brand-and-site-redesign.md; narrative, positioning and red-team critiques to docs/marketing/brand/; link the brand folder from docs/marketing/README.md; drop the now-unneeded config.json contentExclude change; merge the earlier brand approval receipts into the working YAML; fix path references in the brand-redesign beads; commit on the branch without pushing. No site pages or tree node/link changes.'
+  node_ids: []
+  link_ids: []
+  approved_paths:
+  - docs/marketing/plans/2026-10-14-brand-and-site-redesign.md
+  - docs/marketing/brand/brand-narrative.md
+  - docs/marketing/brand/positioning.md
+  - docs/marketing/brand/redteam/newcomer.md
+  - docs/marketing/brand/redteam/practitioner.md
+  - docs/marketing/brand/redteam/funder.md
+  - docs/marketing/brand/redteam/excitement.md
+  - docs/marketing/README.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+- proposal_ref: change-brand-stage4-2026-10-18
+  proposal_revision: 1
+  by: rufus
+  recorded_at: '2026-10-18T06:40:48Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept A and B, yes that's the plan
+  scope: 'Save the stage 4 drafts (site structure and key page content, adapted to the website/ layout, with the 2026-10-18 choices recorded) to docs/marketing/brand/ia.md and docs/marketing/brand/pages.md; add a decision-log line to the plan; record this acceptance; commit on brand/redesign. Gate bead reasoncommons-91c.5 stays open for Rufus after the mockups. No site pages or tree node/link changes.'
+  node_ids: []
+  link_ids: []
+  approved_paths:
+  - docs/marketing/brand/ia.md
+  - docs/marketing/brand/pages.md
+  - docs/marketing/plans/2026-10-14-brand-and-site-redesign.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
