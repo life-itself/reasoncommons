@@ -6141,3 +6141,20 @@ change_acceptances:
   - docs/marketing/README.md
   - ltp/rufus-david-collab/reason-commons.yaml
   - .beads/issues.jsonl
+- proposal_ref: change-brand-stage4-2026-10-18
+  proposal_revision: 1
+  by: rufus
+  recorded_at: '2026-10-18T06:40:48Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept A and B, yes that's the plan
+  scope: 'Save the stage 4 drafts (site structure and key page content, adapted to the website/ layout, with the 2026-10-18 choices recorded) to docs/marketing/brand/ia.md and docs/marketing/brand/pages.md; add a decision-log line to the plan; record this acceptance; commit on brand/redesign. Gate bead reasoncommons-91c.5 stays open for Rufus after the mockups. No site pages or tree node/link changes.'
+  node_ids: []
+  link_ids: []
+  approved_paths:
+  - docs/marketing/brand/ia.md
+  - docs/marketing/brand/pages.md
+  - docs/marketing/plans/2026-10-14-brand-and-site-redesign.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
