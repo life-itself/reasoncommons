@@ -6174,3 +6174,21 @@ change_acceptances:
   - .gitignore
   - ltp/rufus-david-collab/reason-commons.yaml
   - .beads/issues.jsonl
+- proposal_ref: change-brand-merge-2026-10-18
+  proposal_revision: 1
+  by: rufus
+  recorded_at: '2026-10-18T12:27:52Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: Accept rev merge 1 but note this is still being discussed.
+  scope: 'Merge brand-narrative.md and positioning.md into docs/marketing/brand/brand.md, rearranging and trimming existing text only (no new claims): a one-screen core at the top (the line, story in one breath, six ideas in short, positioning statement, true today vs next, value props, tone, what we are not) and appendices (A fuller ideas, loop, idea map, foreground table; B red-team corrections, calls made, settled; C still open). Mark the page as still under discussion. Replace the two old files with one-line pointers; update docs/marketing/README.md and the plan decision log; record this acceptance; land via PR. redteam/ files unchanged. No site pages or tree node/link changes.'
+  node_ids: []
+  link_ids: []
+  approved_paths:
+  - docs/marketing/brand/brand.md
+  - docs/marketing/brand/brand-narrative.md
+  - docs/marketing/brand/positioning.md
+  - docs/marketing/README.md
+  - docs/marketing/plans/2026-10-14-brand-and-site-redesign.md
+  - ltp/rufus-david-collab/reason-commons.yaml
