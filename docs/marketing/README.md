@@ -4,6 +4,7 @@ Keep positioning, outreach planning, editorial briefs, draft scripts and critiqu
 
 - [Brand and domain naming](brand-and-domain-naming.md)
 - [Naming the tree](naming-the-tree.md)
+- `brand/`: the [brand narrative](brand/brand-narrative.md), [positioning](brand/positioning.md) and red-team critiques for the 2026-10 brand and site redesign ([plan](plans/2026-10-14-brand-and-site-redesign.md))
 - `plans/`: editorial and website positioning plans, including Explainers v2
 - `explainers/`: the former explainer process material, scripts, critiques and source prose
 - `talk/`: talk working notes, scripts and briefs
