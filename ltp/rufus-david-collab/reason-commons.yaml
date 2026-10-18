@@ -3121,6 +3121,7 @@ trees:
       note: All 71 helper tests passed after the grouping correction. Actual GitHub inspection confirmed one diagram per affected tree (Current Reality and Future Reality), complete SVG labels, preserved topology, explicit unresolved-connection notes and a collapsed complete checklist. The larger Future Reality diagram uses GitHub inspection and zoom controls. Keep review of the predicted inspection benefit and real-use readability open; source validation does not establish usability.
     - ref: f-e-changes-name-reasoning
       work: test_pr_merge_enforcement
+      direct_push_test: On 2026-10-18 David accepted test-main-push-2026-10-18 revision 1 after the unintended main ruleset was disabled. This test starts from current origin/main in an isolated checkout and changes only a .gitignore comment plus this minimal approval and test record. Pre-push validation confirms identical ignore patterns, valid YAML, unchanged reasoning and a two-file scoped diff; the website check reports 535 links/assets and zero errors. The presence of this commit on remote main supplies evidence of delivery by an ordinary direct push without a PR; the local session record retains the verification result. No node, link or standing changes.
       feedback: GitHub reported main as unprotected with no required checks or active rules, despite the Tree check workflow introduced by PRs 58 and 59.
       note: Applied .github/branch-protection.json and read back main as protected, with required_status_checks.strict true, required tree-check from GitHub Actions app 15368 and enforce_admins.enabled true. PR 61 was BLOCKED while its required check was pending, then CLEAN after the check passed. Existing nodes, links, standings, receipts and collaboration priority match main after merged PR 59. Continue observing real-use merge behavior and retain the existing reasoning review work and proposed standing.
       beads: [reasoncommons-ilh]
@@ -6156,5 +6157,20 @@ change_acceptances:
   - docs/marketing/brand/ia.md
   - docs/marketing/brand/pages.md
   - docs/marketing/plans/2026-10-14-brand-and-site-redesign.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+- proposal_ref: test-main-push-2026-10-18
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-18T11:53:55Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept
+  scope: Change the .gitignore comment from macOS metadata to macOS filesystem metadata, preserving every ignore pattern and all functional and visible website behavior. Start from current origin/main in an isolated checkout, commit only that comment and the minimal approval/test record in ltp/rufus-david-collab/reason-commons.yaml, and push directly to main without force. Record the direct-push test in the existing test_pr_merge_enforcement backlog on proposed Future Reality injection f-e-changes-name-reasoning; add no nodes or links and change no standings. Keep .beads/issues.jsonl coordination local. Validate identical ignore patterns, valid YAML and the scoped commit, then verify the commit on remote main.
+  node_ids: []
+  link_ids: []
+  approved_paths:
+  - .gitignore
   - ltp/rufus-david-collab/reason-commons.yaml
   - .beads/issues.jsonl

@@ -17,7 +17,7 @@ skills/project-ltp/dashboard/vite.config.d.ts
 # repo's history. See skills/contribution-proposals/SKILL.md.
 website/talk/2r-research-group/demo-c-test/
 
-# macOS metadata.
+# macOS filesystem metadata.
 .DS_Store
 
 drafts
