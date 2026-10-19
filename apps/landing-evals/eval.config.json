@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "study_id": "reasoncommons-landing-v1",
+  "standing": "Provisional evaluation contract; no visitor calibration has been established.",
+  "audience": "A curious newcomer with no Logical Thinking Process background, evaluating whether Reason Commons could help with a real problem or decision.",
+  "objective": "Understand what Reason Commons is, picture using it on a concrete problem, distinguish current functionality from ambitions, and find an appropriate next step.",
+  "primary_action": "Find how to try or install the current skill. Record alternative actions separately; the project can revise this objective before a new experiment.",
+  "viewports": [
+    { "id": "desktop", "width": 1440, "height": 900, "isMobile": false },
+    { "id": "phone", "width": 375, "height": 812, "isMobile": true }
+  ],
+  "capture": { "settle_ms": 1500, "max_tiles": 48, "overlap_px": 80, "max_text_chars": 120000 },
+  "judge": { "model": null, "max_calls": 10, "max_images_per_candidate": 4, "max_output_tokens": 6000, "timeout_ms": 120000 },
+  "baseline_url": "https://reasoncommons.com/",
+  "visitor_questions": [
+    { "id": "what", "prompt": "In your own words, what is this project?", "reference": "An AI-assisted reasoning skill or approach used in conversation; it records structured reasoning rather than merely supplying an answer.", "fact_ids": ["current-skill", "reasoning-record"] },
+    { "id": "problem", "prompt": "What problem could it help you with?", "reference": "A concrete problem, goal, disagreement, proposed change, or obstacle that benefits from examining reasoning; do not require specific marketing terminology.", "fact_ids": ["use-cases"] },
+    { "id": "how", "prompt": "How would you use it, and what would you get from it?", "reference": "Discuss a situation with an AI assistant; inspect, test or revise the reasoning and preserve a structured record with explicit agreement and objections.", "fact_ids": ["current-skill", "reasoning-record", "explicit-agreement"] },
+    { "id": "today", "prompt": "What do you think is available to use today?", "reference": "A downloadable/installable skill with local reasoning files and helpers. Do not credit claims that a multi-user hosted collaborative application or automatic improvement in decisions has been demonstrated.", "fact_ids": ["current-skill", "local-storage", "evidence-limit"] }
+  ]
+}

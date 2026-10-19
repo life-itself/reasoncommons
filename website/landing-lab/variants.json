@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "study_id": "reasoncommons-landing-v1",
+  "study": {
+    "exposure_seconds": 20,
+    "questions": [
+      {
+        "id": "what",
+        "prompt": "In your own words, what is this project?"
+      },
+      {
+        "id": "problem",
+        "prompt": "What problem could it help you with?"
+      },
+      {
+        "id": "how",
+        "prompt": "How would you use it, and what would you get from it?"
+      },
+      {
+        "id": "today",
+        "prompt": "What do you think is available to use today?"
+      }
+    ]
+  },
+  "imported_at": "2026-10-19T07:35:22.554Z",
+  "supplied_file_count": 6,
+  "variants": [
+    {
+      "id": "test-the-assumption",
+      "name": "Test the Assumption",
+      "framing": "Find the assumption to test before adding more effort.",
+      "notes": "Original export contains separate desktop and phone boards. The phone companion is the supplied composition; primary phone captures test the actual desktop entry at phone width.",
+      "original_files": [
+        "Reason Commons (5).html"
+      ],
+      "source_path": "sources/test-the-assumption.html",
+      "source_sha256": "9043a07028ba08ffd493e37015c74d86c1cb8cadbc2587b9b47bc23f74cbc83c",
+      "source_bytes": 1444990,
+      "entry_path": "test-the-assumption/index.html",
+      "entry_sha256": "9ed6b3cd0f45099a2df37635fdba98c4e6aa881b4359f6b596b1df5236ac05dd",
+      "envelope_normalization": "Added viewport metadata to the outer download wrapper. Page copy, styling, scripts and embedded resources are unchanged.",
+      "phone_path": "test-the-assumption/phone.html",
+      "phone_sha256": "e35d53478b60ecc6367df241ba8da65574f654885951a106dc6f284d126039a4"
+    },
+    {
+      "id": "make-work-add-up",
+      "name": "Make Work Add Up",
+      "framing": "Connect a team’s work to its goals and reasoning.",
+      "notes": "The export has team, builder and facilitator message states. Capture the default state and record visible text; hidden alternatives are not visitor evidence.",
+      "original_files": [
+        "# Reason Commons Landing Page.html"
+      ],
+      "source_path": "sources/make-work-add-up.html",
+      "source_sha256": "eb5b5fc665362116ff4ab4d2567788ee447d7ec0ec2dff42f849a454efd84726",
+      "source_bytes": 1561822,
+      "entry_path": "make-work-add-up/index.html",
+      "entry_sha256": "83922a2002b6204343e865ce3c44ae40a1bb9374c8120b97da8fe7ee61f68af2",
+      "envelope_normalization": "Added viewport metadata to the outer download wrapper. Page copy, styling, scripts and embedded resources are unchanged."
+    },
+    {
+      "id": "untangle-the-problem",
+      "name": "Untangle the Problem",
+      "framing": "Guided reasoning for recurring problems and stuck decisions.",
+      "notes": "Two supplied files are byte-identical. The live Claude-account preview depends on its original host; ordinary browser availability must be checked.",
+      "original_files": [
+        "Reason Commons (4).html",
+        "Reason Commons (3).html"
+      ],
+      "source_path": "sources/untangle-the-problem.html",
+      "source_sha256": "df0ecd31046f5db32df56645f27bc00e7edbfc33afd676af2ce70b5b57bc8f56",
+      "source_bytes": 258697,
+      "entry_path": "untangle-the-problem/index.html",
+      "entry_sha256": "df0ecd31046f5db32df56645f27bc00e7edbfc33afd676af2ce70b5b57bc8f56",
+      "envelope_normalization": "None"
+    },
+    {
+      "id": "common-sense-renaissance",
+      "name": "A Renaissance of Common Sense",
+      "framing": "A broader movement, illustrated through a hospital bottleneck exercise.",
+      "notes": "A movement-oriented concept evaluated against the same stated audience and objective as the other pages.",
+      "original_files": [
+        "Reason Commons Landing Page – Landing page (1).html"
+      ],
+      "source_path": "sources/common-sense-renaissance.html",
+      "source_sha256": "1a42e7f22eae1d5e42692018474d049cda920877be75cb6fb6390948d50f43fd",
+      "source_bytes": 598319,
+      "entry_path": "common-sense-renaissance/index.html",
+      "entry_sha256": "e821986c0234c9615548a3bfa2389f63066a796b6bc1ab68a56b7e8645b2c969",
+      "envelope_normalization": "Added viewport metadata to the outer download wrapper. Page copy, styling, scripts and embedded resources are unchanged."
+    },
+    {
+      "id": "check-the-because",
+      "name": "Check the Because",
+      "framing": "A volunteer kitchen example examines competing explanations.",
+      "notes": "Worked example with a funder section; record its purpose without changing the common evaluation contract.",
+      "original_files": [
+        "Reason Commons landing page – Landing page.html"
+      ],
+      "source_path": "sources/check-the-because.html",
+      "source_sha256": "b1e15f8f7165261d01dc2711a99f33765a4d724d16008c68b5e16b8bb0ded875",
+      "source_bytes": 198735,
+      "entry_path": "check-the-because/index.html",
+      "entry_sha256": "7a7e7eec97dbbadbaaba963a13942bba68163d90755519242da4e72774ff2455",
+      "envelope_normalization": "Added viewport metadata to the outer download wrapper. Page copy, styling, scripts and embedded resources are unchanged."
+    }
+  ]
+}

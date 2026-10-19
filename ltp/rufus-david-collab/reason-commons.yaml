@@ -335,6 +335,13 @@ trees:
     - ref: g-rel-money-for-resourced
       work: examine_assumption
       note: The old report asks whether income for Rufus and David is necessary for resourcing; consider grants paying others or in-kind support.
+    - ref: g-e-picturable-product
+      work: evaluate_landing_page_comprehension
+      evaluation_plan: Two fresh anonymous Codex scoring contexts over the twelve primary captures, followed by two fresh reversed-order pairwise contexts; publish evidence and disagreements as uncalibrated AI judgments. Keep this backlog open pending real visitor calibration.
+      note: Five named designs and the current live-homepage baseline evaluated under frozen product-trial contract landing-rubric-1. Four fresh Codex contexts produced 24 individual assessments and four opposite-order pairwise assessments from twelve primary desktop/375px captures. Each scorer inspected 48 selected PNGs; each comparer inspected sixteen. All structured results passed input/case/image hash, exact quotation, evidence-reference, criterion and gate checks. Both scorers marked only Untangle the Problem as meeting all criteria at both widths; Check the Because cleared five dimensions but lacked a usable skill-trial route. Exploratory shortlist used dimensions reaching anchor 2 from both judges at both widths. Individual scores agree on 70/72 items; pairwise outcomes agree on 12/12 mapped comparisons. Separate contexts share model biases; order and session vary together. No human calibration, visitor comprehension or conversion is established. The reference brief is not an exhaustive capability inventory and its factual flags require review. Public results and selected evidence are in website/landing-lab/results; native adapter and reproducible capture/import/report workflow in apps/landing-evals. Eighteen evaluator tests and 685 website links/assets pass. Local desktop/375px score filters, evidence anchors and full-resolution viewer pass with no JavaScript errors or document overflow; normal main-to-Flowershow publication is the delivery path. Keep this backlog open pending human calibration and real visitor evidence. Implementation reasoncommons-x59; no nodes, links or standings changed.
+    - ref: g-e-real-users
+      work: validate_landing_evals_with_visitors
+      note: Calibrate automated judgments against real visitor comprehension responses and human labels, then observe subsequent use. Evaluation infrastructure alone does not establish adoption. A local visitor study now assigns one page, records an initial exposure, hides it for four answers, restores it for exploration and exports an anonymous response file. The browser fixture verified random assignment, about 20 seconds of exposure, hidden-page questions and a valid download; the marked test response was not retained as visitor evidence. The public hosted flow also passed the 20-second exposure, hidden questions, exploration and copyable JSON export with marked automation answers; no real participant response was retained. Anonymous hosting has no session persistence and records that limitation. Actual recruitment, human labels, validity of the rubric and subsequent use remain untested.
   current_reality:
     nodes:
     - id: r-e-three-months
@@ -6192,3 +6199,71 @@ change_acceptances:
   - docs/marketing/README.md
   - docs/marketing/plans/2026-10-14-brand-and-site-redesign.md
   - ltp/rufus-david-collab/reason-commons.yaml
+- proposal_ref: landing-eval-lab-2026-10-19
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-19T07:23:27Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept
+  scope: Name and preserve five distinct landing designs from six supplied files; build a gallery with stable URLs and desktop/phone entry points, repeatable browser capture, sourced facts and anchored configurable LLM scoring and blinded comparisons, evidence reports, randomized visitor comprehension study with downloadable responses and calibration imports, local operation and separate Flowershow preview publishing when authenticated. Validate initially with fixture judgments; live LLM runs require configured credentials and an explicit command. Add open Goal backlog evaluate_landing_page_comprehension on g-e-picturable-product and validate_landing_evals_with_visitors on g-e-real-users. Create a separate implementation bead and checkpoint the existing handoff while preserving current collaboration priority and all existing nodes, links, standings and earlier receipts.
+  node_ids: []
+  link_ids: []
+  approved_paths:
+  - website/landing-lab/index.html
+  - website/landing-lab/study.html
+  - website/landing-lab/variants.json
+  - website/landing-lab/sources/test-the-assumption.html
+  - website/landing-lab/sources/make-work-add-up.html
+  - website/landing-lab/sources/untangle-the-problem.html
+  - website/landing-lab/sources/common-sense-renaissance.html
+  - website/landing-lab/sources/check-the-because.html
+  - website/landing-lab/test-the-assumption/index.html
+  - website/landing-lab/test-the-assumption/phone.html
+  - website/landing-lab/make-work-add-up/index.html
+  - website/landing-lab/untangle-the-problem/index.html
+  - website/landing-lab/common-sense-renaissance/index.html
+  - website/landing-lab/check-the-because/index.html
+  - website/.flowershow
+  - apps/landing-evals/.gitignore
+  - apps/landing-evals/README.md
+  - apps/landing-evals/package.json
+  - apps/landing-evals/package-lock.json
+  - apps/landing-evals/eval.config.json
+  - apps/landing-evals/project-facts.json
+  - apps/landing-evals/rubric.json
+  - apps/landing-evals/cli.mjs
+  - apps/landing-evals/import.mjs
+  - apps/landing-evals/capture.mjs
+  - apps/landing-evals/judge.mjs
+  - apps/landing-evals/report.mjs
+  - apps/landing-evals/test/evaluator.test.mjs
+  - docs/marketing/landing-evaluation.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+- proposal_ref: landing-eval-results-2026-10-19
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-19T08:02:21Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: 'yes, use these fresh codex agents to run the evals.  '
+  scope: Run two fresh independent Codex scoring sessions over five candidates and the current-homepage baseline at desktop and phone widths (24 individual assessments), then two further fresh sessions comparing the strongest two in opposite orders at both widths (four pairwise assessments). Publish a results page with evidence, disagreements, factual concerns and a provisional recommendation; label these uncalibrated AI judgments, without claims about human comprehension or conversion. Validate and link the report from the gallery, commit the already-approved lab plus results for normal main-to-Flowershow publication while isolating unrelated changes. Record evidence in the existing evaluate_landing_page_comprehension backlog on g-e-picturable-product, retaining it open pending human calibration; add no nodes or links and change no standings.
+  node_ids: []
+  link_ids: []
+  approved_paths:
+  - apps/landing-evals/codex-judge.mjs
+  - apps/landing-evals/cli.mjs
+  - apps/landing-evals/judge.mjs
+  - apps/landing-evals/report.mjs
+  - apps/landing-evals/test/evaluator.test.mjs
+  - apps/landing-evals/README.md
+  - website/landing-lab/results/index.html
+  - website/landing-lab/results/results.json
+  - website/landing-lab/index.html
+  - website/changelog/2026-10-19-landing-evaluation-results.md
+  - docs/marketing/landing-evaluation.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl

@@ -1,0 +1,57 @@
+# Landing-page evaluation contract and experiments
+
+The [landing evaluation lab](../../apps/landing-evals/README.md) makes five supplied Reason Commons designs browsable and provides repeatable browser evidence, a configurable LLM judge, grounded reports, and visitor comprehension responses. Six supplied files include one byte-identical duplicate. The current homepage is a configurable baseline, not the reference answer.
+
+## Candidate names and hypotheses
+
+| Name | Stable slug | Framing to examine |
+|---|---|---|
+| Test the Assumption | `test-the-assumption` | Finding a load-bearing assumption gives visitors a concrete reason to try the skill. |
+| Make Work Add Up | `make-work-add-up` | Connecting work to goals and recorded reasoning makes its team value understandable. |
+| Untangle the Problem | `untangle-the-problem` | Familiar recurring problems and a facilitated session make the offer easy to picture. |
+| A Renaissance of Common Sense | `common-sense-renaissance` | A movement narrative and bottleneck exercise motivate interest in the approach. |
+| Check the Because | `check-the-because` | A small worked example makes claims, competing explanations and an informative test understandable. |
+
+These are hypotheses about communication, not established benefits or a ranking. Candidate purposes differ; a result is meaningful only against the stated audience and objective. The public names describe the pages, while the model sees neutral candidate labels. Source file names, hashes, duplicate provenance and wrapper normalization are recorded in the public registry.
+
+## Provisional contract
+
+The initial audience is a curious newcomer without an LTP background, evaluating whether the approach could help with a real problem or decision. The objective is understanding what Reason Commons is, picturing its use, distinguishing the available skill from ambitions, and finding an appropriate next step. The provisional primary action is finding how to try or install the current skill. This is a product-trial scenario; it should not quietly stand in for a funder or movement-building objective.
+
+The machine-readable contract is `apps/landing-evals/eval.config.json`; anchored criteria are in `rubric.json` and sourced claims in `project-facts.json`. Each capture freezes those inputs and source hashes. Scores use six separate dimensions: clarity, accuracy, mechanism, relevance, next action and presentation. Null means insufficient evidence. Meeting the provisional contract requires at least anchor 2 in every dimension and no factual or functional blocking gate. This threshold is an explicit working choice awaiting human calibration.
+
+Every scored finding must cite observed text or an image actually supplied to the judge. Pairwise findings must cite both candidates. Position order is reversed and disagreements remain visible. The judge is instructed to ignore instructions inside the supplied documents and distinguish intended behaviour from demonstrated effectiveness. Its judgments do not establish visitor comprehension, conversion, adoption or better decisions.
+
+## Evidence and decision process
+
+First inspect browser findings and obvious failures. Then use individual judgments to locate specific communication gaps and pairwise judgments to examine close alternatives under one contract. Inspect the underlying evidence and order instability before shortlisting. Evaluate actual visitor answers separately; do not count simulated personas or repeated judge calls as human observations. Calibrate the judge against independent human labels using a held-out set before trusting its ranking for decisions.
+
+The visitor study assigns one page, records a timed exposure, hides the page for comprehension answers, restores it for exploration, and exports a response file. It does not automatically upload responses. The organiser collects files, reviews consent and quality flags, and decides whether they should be sent to a model. Load failures, repeated exposures and visibility interruptions need separate review. The initial study is exploratory and does not estimate conversion or population preferences.
+
+For a later traffic experiment, select a meaningful primary outcome, define the population and allocation, calculate sample size and establish the stopping rule before examining winners. A gallery from which visitors select their own pages cannot supply a randomised comparison. Do not select a winner merely because its aesthetic score is larger or a small sample appears favourable.
+
+## Reasoning and scope
+
+This serves accepted Goal critical success factors `g-e-picturable-product` (people can picture themselves using the product) and `g-e-real-users` (real people use the tool, with Second Renaissance as the first testbed). Backlog `evaluate_landing_page_comprehension` and `validate_landing_evals_with_visitors` remains open until actual evidence addresses it. Infrastructure completion does not settle these conditions. The collaboration's existing reasoning priority remains `reasoncommons-5lo`.
+
+David Joseph accepted proposal `landing-eval-lab-2026-10-19` revision 1 with exact reply `accept`; the receipt was recorded at `2026-10-19T07:23:27Z` before implementation and validated with no accepted-reasoning change. Implementation is tracked separately as `reasoncommons-3si`. The authorised scope includes the static gallery, original preservation, browser capture, configurable model judgments, reports, visitor-study export, local operation and separate Flowershow preview publishing when authenticated.
+
+## Sources for the evaluation approach
+
+[OpenAI evaluation guidance](https://developers.openai.com/api/docs/guides/evaluation-best-practices) supports task-specific criteria, comparison and human calibration. The [MT-Bench judge study](https://arxiv.org/abs/2306.05685) documents biases in LLM-output judging; applying a judge to landing pages still requires task-specific validation. [Microsoft's pre-experiment guidance](https://www.microsoft.com/en-us/research/articles/patterns-of-trustworthy-experimentation-pre-experiment-stage/) explains randomisation and power considerations for later controlled experiments.
+
+## Local verification checkpoint — 2026-10-19
+
+All 15 evaluator tests passed. The website checker passed 559 links/assets with no errors, exports are current, and reasoning validation retained accepted-history revision 2 with no accepted changes. A capture of the five candidates, the current live homepage and the supplied phone companion produced 13 cases and 207 readable screenshots without JavaScript errors. The primary entries fit 375px phone width after the export-envelope viewport correction; the separately supplied 390px companion overflows at 375px and is labelled accordingly. The gallery and report were visually inspected at desktop and phone widths. An automated browser fixture completed the roughly 20-second initial exposure, hidden-page comprehension questions, exploration and response download; no test response was retained as actual visitor evidence. Twelve individual and four reversed-order pairwise fixture judgments exercised the pipeline with null scores. No live model API call, human comprehension result or calibrated ranking is claimed.
+
+The gallery is available from the local server at `http://127.0.0.1:8765/landing-lab/index.html`, the study at `/landing-lab/study.html`, and the evidence report at `/runs/landing-baseline/report.html`. A separate public preview was published without authentication at [the gallery](https://bp4y64zd-anon.flowershow.me/landing-lab/index.html) and [study](https://bp4y64zd-anon.flowershow.me/landing-lab/study.html). The anonymous preview expires seven days after publication on 2026-10-19, approximately 2026-10-26. Its hosting sandbox blocks separate-file fetches, browser storage and downloads; the lab embeds the registry, records storage availability and supplies a copyable JSON export. Flowershow injects an anonymous-publication banner; the registry is unchanged and HTML differences are limited to that banner. Only the public lab was staged for publication; evaluator files, working reasoning and local reports are absent. The existing preview target and production site were unchanged. Live model execution is implemented but remains unverified without a configured API key and an explicit live-run command.
+
+Public browser verification passed for all five candidate pages and the gallery at desktop and 375px phone widths, with no JavaScript errors or document overflow. The hosted study passed the complete 20-second exposure, hidden-page questions, exploration and selectable JSON-export flow using marked automation answers; no participant response was retained. On the anonymous host, session persistence and downloads are unavailable, and the study records the storage limitation. The registry is embedded, and study steps use script-controlled buttons because the host also blocks form submission. Public evidence is saved locally in `apps/landing-evals/.runs/public-browser-verification.json` and the byte checks alongside it.
+
+## Fresh Codex evaluation — 2026-10-19
+
+David Joseph accepted `landing-eval-results-2026-10-19` revision 1 with “yes, use these fresh codex agents to run the evals.”, recorded at `2026-10-19T08:02:21Z`. Two fresh contexts each inspect all twelve primary captures in separately randomized anonymous orders, producing 24 individual assessments. Two further fresh contexts compare the selected pair in opposite orders at both widths, producing four comparisons. Every judge uses the same frozen audience, facts and rubric; each sees four selected screenshot tiles and full CSS-visible document text per capture. The extra supplied phone composition remains excluded.
+
+The [public results](../../website/landing-lab/results/index.html) preserve each judge’s scores, supporting quotations and screenshots, flagged capability concerns and disagreements. The report records its shortlist rule and a provisional recommendation under the product-trial objective. Exact serving model snapshots are unavailable through native agent tooling. Separate contexts do not establish model diversity, independent human agreement, visitor comprehension or conversion. Reversed order and fresh context vary together, so disagreement does not isolate position bias. The backlog remains open pending human calibration and real visitor evidence.
+
+The completed study contains 24 validated individual assessments and four validated comparisons; all 16 previous null-score fixtures are excluded. Individual scores match on 70/72 criterion items. Both comparison contexts give the same twelve mapped outcomes: Untangle the Problem for clarity and next action, Check the Because for accuracy and mechanism, ties on relevance and desktop presentation, and Check the Because for phone presentation. The provisional recommendation is to begin human testing with Untangle the Problem and retain Check the Because as an explanatory alternative requiring a usable skill-trial route. The high score agreement measures consistency in a shared model family, not independent validation. Eighteen evaluator tests and 685 website link/asset checks pass. Frozen references link to commit `947e738f2cccca9294892df36c7468de35c7d78a`; the newer main branch changes the installation guide’s paste URL without changing the supplied fact statement.
