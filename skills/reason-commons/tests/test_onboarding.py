@@ -88,6 +88,59 @@ class OnboardingTests(unittest.TestCase):
         self.assertIn(f"using the authorisation you gave in your main checkout, `{main.resolve()}`", text)
         self.assertFalse((onboarding.feedback_sync.local_dir((tree / "reason-commons.yaml").resolve()) / "feedback-sync.json").exists())
 
+    def repository(self, *worktrees):
+        """A main checkout holding the state file, with linked worktrees."""
+        main = self.root / "main"
+        main.mkdir()
+        (main / "reason-commons.yaml").write_text(self.state.read_text())
+        git(main, "init", "-q", "-b", "main")
+        git(main, "remote", "add", "origin", "https://example.invalid/shared.git")
+        git(main, "add", "reason-commons.yaml")
+        git(main, "-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid", "commit", "-q", "-m", "State")
+        for name in worktrees:
+            git(main, "worktree", "add", "-q", "-b", name, str(self.root / name))
+        return main
+
+    def test_one_showing_per_person_across_worktrees(self):
+        main = self.repository("first", "second")
+        self.assertIsNotNone(onboarding.show(self.root / "first" / "reason-commons.yaml", "alice"))
+        self.assertIsNone(onboarding.show(self.root / "second" / "reason-commons.yaml", "alice"))
+        self.assertIsNone(onboarding.show(main / "reason-commons.yaml", "alice"))
+        record = onboarding.feedback_sync.local_dir((main / "reason-commons.yaml").resolve()) / "onboarding.json"
+        self.assertEqual(set(json.loads(record.read_text())), {"alice"})
+        git(main, "worktree", "remove", "--force", str(self.root / "first"))
+        git(main, "worktree", "add", "-q", "-b", "third", str(self.root / "third"))
+        self.assertIsNone(onboarding.show(self.root / "third" / "reason-commons.yaml", "alice"))
+        self.assertIsNotNone(onboarding.show(self.root / "third" / "reason-commons.yaml", "bob"))
+
+    def test_records_left_in_a_worktree_still_count(self):
+        self.repository("earlier", "later")
+        old = onboarding.feedback_sync.local_dir((self.root / "earlier" / "reason-commons.yaml").resolve()) / "onboarding.json"
+        old.parent.mkdir()
+        old.write_text(json.dumps({"alice": "2026-10-20T15:35:13+00:00"}))
+        self.assertIsNone(onboarding.show(self.root / "later" / "reason-commons.yaml", "alice"))
+
+    def test_file_only_in_a_worktree_creates_nothing_in_the_main_checkout(self):
+        main = self.repository("session")
+        only = self.root / "session" / "notes" / "new.yaml"
+        only.parent.mkdir()
+        only.write_text(self.state.read_text())
+        self.assertIsNotNone(onboarding.show(only, "alice"))
+        self.assertFalse((main / "notes").exists())
+        self.assertTrue((onboarding.feedback_sync.local_dir(only.resolve()) / "onboarding.json").exists())
+        self.assertIsNone(onboarding.show(only, "alice"))
+
+    def test_worktree_setup_command_configures_the_main_checkout(self):
+        main = self.repository("session")
+        text = onboarding.show(self.root / "session" / "reason-commons.yaml", "alice")
+        self.assertIn(f"{(main / 'reason-commons.yaml').resolve()} configure --remote origin", text)
+        self.assertIn("It sets up your main checkout, so sessions in other worktrees share too.", text)
+        # What that command records is what a worktree inherits.
+        granted = onboarding.feedback_sync.local_dir((main / "reason-commons.yaml").resolve()) / "feedback-sync.json"
+        granted.write_text(json.dumps({"repo": str(main.resolve()), "path": "reason-commons.yaml", "remote": "origin",
+                                       "url": "https://example.invalid/shared.git", "branch": "main"}))
+        self.assertIn("**Sharing:** on.", onboarding.show(self.root / "session" / "reason-commons.yaml", "alice", again=True))
+
     def test_shared_reasoning_is_only_read(self):
         before = self.state.read_bytes()
         onboarding.show(self.state, "alice")

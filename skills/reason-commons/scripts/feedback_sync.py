@@ -141,6 +141,17 @@ def _configure(state, remote, branch, by, source_text, **extra):
     return policy
 
 
+def checkouts(state):
+    """(this checkout's root, every checkout's root with the main checkout first), or None outside Git."""
+    try:
+        repo = Path(git(state.parent, "rev-parse", "--show-toplevel")).resolve()
+        listing = git(repo, "worktree", "list", "--porcelain").splitlines()
+    except SyncError:
+        return None
+    roots = [Path(line.split(" ", 1)[1]).resolve() for line in listing if line.startswith("worktree ")]
+    return (repo, roots) if roots else None
+
+
 def main_grant(state):
     """The main checkout's standing authorisation for this file, when state is in a linked worktree.
 
@@ -148,11 +159,10 @@ def main_grant(state):
     a remote with the same URL here. The participant's words name the destination, so
     a worktree of the same repository reuses them; anything else needs its own consent.
     """
-    try:
-        repo = Path(git(state.parent, "rev-parse", "--show-toplevel")).resolve()
-        main = Path(git(repo, "worktree", "list", "--porcelain").splitlines()[0].split(" ", 1)[1]).resolve()
-    except (SyncError, IndexError):
+    found = checkouts(state)
+    if not found:
         return None
+    repo, (main, *_) = found
     if main == repo:
         return None
     relative = state.relative_to(repo).as_posix()
