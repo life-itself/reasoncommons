@@ -6,9 +6,9 @@ Use a visible `Type` label so the reader can distinguish a suggested change, a r
 
 For every referenced node, show **Tree · Node kind · Standing**, followed by its ID and statement: **Current Reality · Observation · Proposed** — `r-e-example`: the recorded observation. Get the tree from its containing YAML tree and the kind from its `kind` field; never guess either from the ID. Keep the response type, node kind and reasoning standing distinct.
 
-Use a table for several updates, with separate **Operation**, **Tree**, **Item type**, **Standing**, **ID** and **Update** columns. For a node, the item type is its kind, such as **Injection** or **Undesirable effect**. For a link, write **Link · relation** and name its source and target IDs. Backlog entries are work on referenced items; identify the owning tree and work remaining without giving them a node kind.
+In a Change proposal the change fragment carries the updates, so do not repeat its statements in a table. Elsewhere, such as a Change result, use a table for several updates, with separate **Operation**, **Tree**, **Item type**, **Standing**, **ID** and **Update** columns. For a node, the item type is its kind, such as **Injection** or **Undesirable effect**. For a link, write **Link · relation** and name its source and target IDs. Backlog entries are work on referenced items; identify the owning tree and work remaining without giving them a node kind.
 
-In diagrams, put `[P] TREE · KIND`, `[A] TREE · KIND` or `[D] TREE · KIND` on a separate line above the full statement. Retain the explicit standing key and the actual topology. In text-only views, use `Tree · Kind · Standing: statement` or the equivalent bracket marker. Generated views derive these labels from the YAML; mixed-tree change diagrams must show each node's own tree.
+In a tree or change fragment, the tree heading names the tree, and each row's glyph names the node kind and standing as explained in [diagrams.md](diagrams.md); keep the one-line legend with it, and in a chat reply link each tree and statement name to its diagram page rather than putting the tree in a code block. In a Mermaid diagram drawn on request, put `[P] TREE · KIND`, `[A] TREE · KIND` or `[D] TREE · KIND` on a separate line above the full statement. Retain the explicit standing key and the actual topology in every form. Generated views derive these labels from the YAML; a fragment spanning several trees groups its rows under each tree's own heading.
 
 ## Choose the type
 
@@ -22,22 +22,17 @@ In diagrams, put `[P] TREE · KIND`, `[A] TREE · KIND` or `[D] TREE · KIND` on
 Required before editing project files. Read-only inspection may come first. Show the complete proposal in an assistant response and wait for typed user acceptance of its version and scope. Record that acceptance and save the stated tree updates, validate the state, then implement. If the scope or intended tree updates change materially, show a revised proposal and obtain fresh typed acceptance before those changes. An internal plan, a tool result, or a report written after editing is insufficient.
 
 ```markdown
-**Type: Change proposal**
+**Type: Change proposal** · [Stable proposal ID] · revision [positive integer, initially 1]
 
-**Proposal:** [Stable proposal ID] · revision [positive integer, initially 1].
+[The change fragment first: a nested-list tree under each affected tree's heading, showing the changed nodes and links with only the context needed to read them. Mark each changed item *new* or *revised* with its ID beside the full statement; its glyph shows its kind and standing and ⚑ its backlog work. Link existing statements to their diagram pages. A Mermaid diagram only when asked for one.]
 
-**Change:** [Concrete behavior to change and the bounded implementation scope.]
+**Change:** [Concrete behavior to change and the bounded implementation scope, in a few short lines.]
 
 **Files:** [For repository changes, the exact repository-relative paths covered, including reasoning and coordination files. Include both paths for a rename.]
 
-**Reasoning served:** [Existing node/link IDs with their tree, kind or relation, plain-language meaning and standing, and how this work serves the goal or addresses its obstacles.]
+**Reasoning served:** [Existing node/link IDs with their tree, kind or relation and standing, and how this work serves the goal or addresses its obstacles; one line when the fragment already shows them.]
 
-**Tree updates — [standing]:**
-
-- [Add/change/remove] [tree · node kind or link relation · standing · ID]: [full statement, or endpoints and relation; retain qualifications and important assumptions].
-- [Backlog additions, revisions or completed work, with the referenced IDs and the work remaining.]
-
-[Rendered change-status diagram showing the same nodes, links and topology; use a readable fallback when rendering is unavailable.]
+**Tree updates:** [Only what the fragment cannot show: removals, changed assumptions, and backlog additions, revisions or completed work, each with the referenced ID. Do not repeat statements the fragment shows.]
 
 **Validation:** [Behavior or evidence to check, including what remains uncertain.]
 
@@ -52,7 +47,7 @@ Every displayed Change proposal requires a subsequent typed acceptance from the 
 
 Record acceptance once in the top-level `change_acceptances` log specified in [schema.md](schema.md). Resolve the human participant from the established session identity; ask only for identity if it is missing. Keep the exact typed reply, accepted scope, proposal revision and, for repository changes, the displayed file paths as `approved_paths`. Read the clock when saving and label that time `recorded_at`; do not invent a precise user submission time. Preserve earlier receipts when nodes change or are removed. Recording this already-given acceptance needs no further approval, and implementation approval does not change reasoning standing.
 
-Before implementation, check that the proposal has been sent, each required field is concrete, served IDs resolve, new IDs are stable, each item's tree and kind or relation match the YAML, the diagram agrees with the updates, and a real typed acceptance covers this version and scope. Save the acceptance receipt and intended tree updates, then run `update_views.py` to validate them before editing implementation files. If recording or validation fails, report and resolve the failure before implementation; do not claim the trace was persisted. Keep the later result and any PR description consistent with the actual saved diff. Ordinary capture and reasoning endorsement retain their existing rules without this project-change approval gate.
+Before implementation, check that the proposal has been sent, each required field is concrete, served IDs resolve, new IDs are stable, each item's tree and kind or relation match the YAML, the change fragment agrees with the updates, and a real typed acceptance covers this version and scope. Save the acceptance receipt and intended tree updates, then run `update_views.py` to validate them before editing implementation files. If recording or validation fails, report and resolve the failure before implementation; do not claim the trace was persisted. Keep the later result and any PR description consistent with the actual saved diff. Ordinary capture and reasoning endorsement retain their existing rules without this project-change approval gate.
 
 ## Next step
 
@@ -69,7 +64,7 @@ Recommend one useful action or inquiry without implying it was performed. Keep t
 
 **State:** [Relevant save result and standing, or no change; the recommended action has not been performed.]
 
-[Optional quieter alternative or diagram, when useful. End with the one invitation that needs a reply.]
+[Optional quieter alternative or tree fragment, when useful. End with the one invitation that needs a reply.]
 ```
 
 Do not manufacture a tree update merely to recommend a next step. Capture any new substantive reasoning normally and report what was saved. If the recommendation is later requested as implementation, issue its **Change proposal** before editing.
