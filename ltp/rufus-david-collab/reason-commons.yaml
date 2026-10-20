@@ -1410,6 +1410,13 @@ trees:
       status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text, note: Inspected the installed schema and helpers during David's discussion of forgotten outcomes on 2026-10-20.}
+    - id: r-e-pr-expectations-hidden
+      kind: undesirable_effect
+      text: PR descriptions do not show the feedback commitments a change carries, and the PR check does not verify them.
+      label: PRs hide the feedback commitments they carry.
+      status: proposed
+      contributions:
+      - {by: david, attribution: explicit, mode: text, note: 'On 2026-10-20 David said a prediction with expected feedback should be properly recorded in the PR, citing PR 74, whose commitment section was hand-written and stale, and PR 76, which omitted it.'}
     - id: r-e-repo-feels-scattered
       kind: observation
       text: David finds the Reason Commons repository increasingly scattered as it contains the public website, skills and prospective Discord-bot work.
@@ -2869,6 +2876,28 @@ trees:
       status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text}
+    - id: f-e-pr-expected-outcomes
+      kind: injection
+      text: PR descriptions include a generated Expected outcomes section for each feedback commitment in the diff, and the PR check requires it to match the reasoning YAML.
+      label: PRs show generated, checked expected outcomes.
+      status: proposed
+      addresses: [r-e-pr-expectations-hidden]
+      contributions:
+      - {by: david, attribution: explicit, mode: text}
+    - id: f-e-pr-expectations-visible
+      kind: predicted_effect
+      text: Reviewers can see what a change is expected to achieve, what could go wrong and who will judge it.
+      label: Reviewers see what is expected and who judges.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text}
+    - id: f-e-pr-outcomes-overhead
+      kind: undesirable_effect
+      text: Requiring an explanation for predictions without a feedback commitment can add PR-writing overhead.
+      label: Explaining unassigned predictions adds overhead.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text}
     - id: f-e-discord-diverts-resources
       kind: undesirable_effect
       text: Operating and extending the bot may consume scarce time and money and delay real-work testing.
@@ -2945,6 +2974,26 @@ trees:
       from: [f-e-feedback-controls]
       to: f-e-feedback-burden
       relation: reduces_risk_of
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+    - id: f-rel-pr-outcomes-visible
+      from: [f-e-pr-expected-outcomes]
+      to: f-e-pr-expectations-visible
+      relation: contributes_to
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+      assumptions:
+      - {text: Reviewers read the section and the generated text stays legible., by: assistant}
+    - id: f-rel-pr-visible-supports-learning
+      from: [f-e-pr-expectations-visible]
+      to: f-e-learn-from-use
+      relation: contributes_to
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+    - id: f-rel-pr-outcomes-overhead
+      from: [f-e-pr-expected-outcomes]
+      to: f-e-pr-outcomes-overhead
+      relation: can_cause
       status: proposed
       contributions: [{by: assistant, attribution: assistant, mode: text}]
     - id: f-rel-use-makes-users
@@ -3432,6 +3481,14 @@ trees:
       work: evaluate_feedback_controls
       label: Check whether deferral and bounded delivery reduce burden.
       note: Mocked delivery checks verify implementation only; actual interruption burden remains to be assessed.
+    - ref: f-rel-pr-outcomes-visible
+      work: verify_pr_expected_outcomes
+      label: Check the section against real PRs.
+      note: Regenerate PR 74 and PR 76 descriptions with the new section and inspect GitHub rendering; then judge readability on the next PR that carries a prediction under pr-expected-outcomes-check revision 1.
+    - ref: f-rel-pr-outcomes-overhead
+      work: test_negative_branch
+      label: Assess the overhead of explaining unassigned predictions.
+      note: Ask David whether writing No feedback commitment reasons felt useful or like busywork; no report is not evidence of no overhead.
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
@@ -5051,6 +5108,36 @@ feedback_requests:
     surface: conversation
     source_text: yes this looks good - add it to the PR
     note: David approved the displayed self-test commitment. No outcome feedback or completed trial is recorded.
+- id: pr-expected-outcomes-check
+  revision: 1
+  created_by: david
+  recorded_at: '2026-10-20T13:37:37Z'
+  about:
+    ref: f-e-pr-expected-outcomes
+    tree: future_reality
+    kind: injection
+    standing: proposed
+    text: PR descriptions include a generated Expected outcomes section for each feedback commitment in the diff, and the PR check requires it to match the reasoning YAML.
+  feedback_from:
+  - david
+  benefits:
+  - ref: f-e-pr-expectations-visible
+    tree: future_reality
+    kind: predicted_effect
+    standing: proposed
+    text: Reviewers can see what a change is expected to achieve, what could go wrong and who will judge it.
+  reservations:
+  - ref: f-e-pr-outcomes-overhead
+    tree: future_reality
+    kind: undesirable_effect
+    standing: proposed
+    text: Requiring an explanation for predictions without a feedback commitment can add PR-writing overhead.
+  reports: []
+  ready_when: After the next PR that carries a prediction uses the generated Expected outcomes section, judge whether a reviewer can see from the description what the change is expected to achieve, what could go wrong and who will judge it. Separately, judge whether writing a No feedback commitment reason felt useful or like busywork. Regenerating the PR 74 and PR 76 descriptions is part of this change, not the trial.
+  source:
+    surface: conversation
+    source_text: accept
+    note: Included in the displayed pr-expected-outcomes-2026-10-20 revision 1 proposal that David accepted. No outcome is inferred.
 change_acceptances:
 - proposal_ref: change-node-roles-2026-10-14
   by: david
@@ -6799,5 +6886,25 @@ change_acceptances:
   - apps/discord/tests/test_store.py
   - apps/discord/README.md
   - apps/discord/.env.example
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+- proposal_ref: pr-expected-outcomes-2026-10-20
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-20T13:37:37Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept
+  scope: 'In a separate PR from main, make check_pr_trees.py --suggest --format markdown generate an Expected outcomes section from feedback_requests in the diff (each new request version with change, benefits, reservations, providers, timing and observation opportunity; reports added to existing versions with author, time, readiness, words and per-outcome verdicts), and make --body-file require it to match, failing added Future Reality predicted or undesirable effects not covered by any commitment unless the section states No feedback commitment: <reason>. Update the PR template, pull-requests reference, SKILL.md and AGENTS.md PR rule, and tests. Add the displayed four proposed nodes, three proposed links, addresses reference, backlog and feedback commitment pr-expected-outcomes-check revision 1 for David. Then regenerate the PR 74 description section from its own diff, replacing its hand-written feedback commitment section, and add the generated section to the PR 76 description. No code changes to PR 74 or PR 76.'
+  node_ids: [r-e-pr-expectations-hidden, f-e-pr-expected-outcomes, f-e-pr-expectations-visible, f-e-pr-outcomes-overhead]
+  link_ids: [f-rel-pr-outcomes-visible, f-rel-pr-visible-supports-learning, f-rel-pr-outcomes-overhead]
+  approved_paths:
+  - skills/reason-commons/scripts/check_pr_trees.py
+  - skills/reason-commons/tests/test_check_pr_trees.py
+  - skills/reason-commons/references/pull-requests.md
+  - skills/reason-commons/SKILL.md
+  - .github/pull_request_template.md
+  - AGENTS.md
   - ltp/rufus-david-collab/reason-commons.yaml
   - .beads/issues.jsonl
