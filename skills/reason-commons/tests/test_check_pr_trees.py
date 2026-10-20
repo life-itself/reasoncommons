@@ -4,6 +4,7 @@ from contextlib import redirect_stdout
 from copy import deepcopy
 import importlib.util
 import io
+import re
 from pathlib import Path
 import subprocess
 import tempfile
@@ -425,3 +426,89 @@ class CheckTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def predicted(commitment=True, reports=()):
+    """A toy injection with a predicted benefit and a reservation, optionally with a feedback commitment."""
+    state = toy()
+    contribution = [{"by": "alice", "attribution": "explicit", "mode": "text"}]
+    nodes = [("i1", "injection", "Alice tries remote work on one comparable shift."),
+             ("p1", "predicted_effect", "Alice completes more comparable calls during that shift."),
+             ("u1", "undesirable_effect", "Alice may find help harder to get | remotely.")]
+    state["trees"]["future_reality"] = {"nodes": [{"id": i, "kind": k, "text": t, "status": "proposed", "contributions": deepcopy(contribution)} for i, k, t in nodes],
+                                        "links": [], "backlog": []}
+    state["change_acceptances"].append(dict(receipt("outcome-change"), node_ids=["i1", "p1", "u1"], link_ids=[]))
+    if commitment:
+        snap = lambda i, k, t: {"ref": i, "tree": "future_reality", "kind": k, "standing": "proposed", "text": t}
+        state["feedback_requests"] = [{"id": "remote-trial", "revision": 1, "created_by": "alice", "recorded_at": "2026-10-20T10:00:00Z",
+                                       "about": snap(*nodes[0]), "feedback_from": ["alice"], "ready_when": "After the shift.",
+                                       "benefits": [snap(*nodes[1])], "reservations": [snap(*nodes[2])], "reports": list(reports)}]
+    return state
+
+
+REPORT = {"id": "r1", "by": "alice", "recorded_at": "2026-10-21T15:00:00Z", "readiness": "experienced",
+          "text": "I finished more calls,\nbut have not checked help.", "evidence_type": "self_report",
+          "outcomes": [{"ref": "p1", "verdict": "observed", "note": "Shift record."}, {"ref": "u1", "verdict": "not_assessed", "note": "Not yet."}]}
+
+
+class ExpectedOutcomeTests(unittest.TestCase):
+    setUp, tearDown, git, write, run_check = CheckTests.setUp, CheckTests.tearDown, CheckTests.git, CheckTests.write, CheckTests.run_check
+
+    def full_body(self, outcomes=None, serves=""):
+        code, suggestion = self.run_check("--suggest", "--format", "markdown")
+        self.assertEqual(code, 0, suggestion)
+        if outcomes is not None:
+            suggestion = re.sub(r"## Expected outcomes\n.*?(?=## Reasoning changes)", outcomes, suggestion, flags=re.S)
+        acceptances = "- `fixture-change` revision 1 by `alice`\n- `outcome-change` revision 1 by `alice`"
+        return f"## What this changes\n\nSomething.\n\n{suggestion}\n\n## Reasoning this serves\n\n{serves}\n\n## Accepted change proposals\n\n{acceptances}\n"
+
+    def test_generated_commitment_section_passes_and_shows_both_outcomes(self):
+        self.write(predicted())
+        text = self.full_body()
+        self.assertIn("**`remote-trial` revision 1**: new feedback commitment", text)
+        self.assertIn("| Expected benefit | Future Reality · Predicted effect · Proposed: Alice completes more", text)
+        self.assertIn("| Possible harmful consequence | Future Reality · Undesirable effect · Proposed: Alice may find help harder to get \\| remotely. |", text)
+        self.assertIn("| Feedback from | Alice |", text)
+        code, out = self.run_check(text=text)
+        self.assertEqual(code, 0, out)
+
+    def test_missing_or_altered_commitment_section_fails(self):
+        self.write(predicted())
+        code, out = self.run_check(text=self.full_body(outcomes=""))
+        self.assertEqual(code, 1)
+        self.assertIn('no "Expected outcomes" section', out)
+        text = self.full_body().replace("After the shift.", "Whenever.")
+        code, out = self.run_check(text=text)
+        self.assertEqual(code, 1)
+        self.assertIn("generated block `remote-trial` revision 1", out)
+
+    def test_reports_added_to_an_existing_commitment_are_shown(self):
+        base = predicted()
+        self.write(base)
+        self.git("add", STATE)
+        self.git("commit", "-q", "-m", "commitment")
+        self.git("branch", "-f", "main")
+        self.write(predicted(reports=[REPORT]))
+        text = self.full_body(serves="- `i1`")
+        self.assertNotIn("new feedback commitment", text)
+        self.assertIn("**Feedback recorded for `remote-trial` revision 1**", text)
+        self.assertIn("- Alice · 2026-10-21T15:00:00Z · experienced: “I finished more calls, but have not checked help.”", text)
+        self.assertIn("  - Expected benefit `p1`: observed", text)
+        self.assertIn("  - Possible harmful consequence `u1`: not assessed", text)
+        code, out = self.run_check(text=self.full_body(serves="- `i1`"))
+        self.assertEqual(code, 0, out)
+
+    def test_prediction_without_commitment_needs_a_reason(self):
+        self.write(predicted(commitment=False))
+        text = self.full_body()
+        self.assertIn("No feedback commitment: REPLACE WITH REASON (predictions: `p1`, `u1`)", text)
+        code, out = self.run_check(text=text)
+        self.assertEqual(code, 1)
+        self.assertIn("Predictions without a feedback commitment: `p1`, `u1`", out)
+        code, out = self.run_check(text=text.replace("REPLACE WITH REASON", "Generic historical prediction; nobody can observe it"))
+        self.assertEqual(code, 0, out)
+
+    def test_change_without_predictions_needs_no_section(self):
+        self.write(with_link(toy()))
+        code, out = self.run_check(text=body(updates="- added `l1` — `n2` limits the scope of `n1`"))
+        self.assertEqual(code, 0, out)

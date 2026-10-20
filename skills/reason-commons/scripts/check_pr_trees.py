@@ -14,7 +14,10 @@ Explanatory paragraphs may accompany these explicit list items.
 The check validates working state and receipts, preserves earlier receipts, and
 requires cited approvals to cover changed paths and node/link IDs. Coverage is
 structural; reviewers still judge implementation meaning and approval authenticity.
---suggest prints the Tree updates list without requiring acceptance.
+--suggest prints the Tree updates list without requiring acceptance; with --format markdown it
+also prints the Expected outcomes section generated from feedback commitments and reports in the
+diff. The body must contain those generated blocks, and Future Reality predicted or undesirable
+effects added without any commitment need a "No feedback commitment: <reason>" line.
 
 Compares the working tree with the merge base of --base and HEAD.
 """
@@ -39,6 +42,7 @@ SERVES = "reasoning this serves"
 UPDATES = "tree updates"
 ACCEPTANCES = "accepted change proposals"
 DIAGRAMS = "reasoning changes"
+EXPECTED = "expected outcomes"
 VERBS = ("added", "changed", "removed")
 ID = re.compile(r"`([A-Za-z0-9][\w-]*)`")
 ACCEPTANCE = re.compile(r"^\s*(?:[-*+]|\d+[.)])\s+`([A-Za-z0-9][\w-]*)`\s+revision\s+([1-9]\d*)\s+by\s+`([A-Za-z0-9][\w-]*)`(?:\s+[—–-]\s+.*)?\s*$")
@@ -182,6 +186,105 @@ def check(body, before, after):
 def folded_updates(found):
     content = "\n".join(describe(change) for change in found) if found else "None"
     return "## Tree updates\n\n<details>\n<summary>Complete checked change list</summary>\n\n" + content + "\n\n</details>\n"
+
+
+PREDICTIONS = {"predicted_effect", "undesirable_effect"}
+NO_COMMITMENT = re.compile(r"^\s*No feedback commitment:\s*(.+?)\s*$", re.M)
+PLACEHOLDER = "REPLACE WITH REASON"
+
+
+def cell(text):
+    """One table cell or quote: whitespace collapsed, pipes escaped."""
+    return " ".join(str(text).split()).replace("|", "\\|")
+
+
+def outcome_item(item):
+    return (f"{item['tree'].replace('_', ' ').title()} · {item['kind'].replace('_', ' ').capitalize()} · "
+            f"{item['standing'].capitalize()}: {cell(item['text'])}")
+
+
+def request_versions(documents):
+    found = {}
+    for state in documents.values():
+        for request in (state or {}).get("feedback_requests") or []:
+            found[(request["id"], request["revision"])] = (request, state)
+    return found
+
+
+def commitment_block(request, state):
+    names = (state.get("participants") or {})
+    rows = [("Change being evaluated", outcome_item(request["about"]))]
+    for label, field in (("Expected benefit", "benefits"), ("Possible harmful consequence", "reservations")):
+        rows += [(label, outcome_item(item)) for item in request[field]] or [(label, "None recorded.")]
+    rows.append(("Feedback from", ", ".join(cell(names.get(person, person)) for person in request["feedback_from"])))
+    if request.get("ask_after"):
+        rows.append(("Ask after", cell(request["ask_after"])))
+    rows.append(("Observation opportunity", cell(request.get("ready_when") or "Not recorded.")))
+    lines = [f"**`{request['id']}` revision {request['revision']}**: new feedback commitment", "",
+             "| | Recorded expectation |", "| --- | --- |"]
+    return "\n".join(lines + [f"| {label} | {value} |" for label, value in rows])
+
+
+def reports_block(request, state, reports):
+    names = (state.get("participants") or {})
+    labels = {item["ref"]: label for label, field in (("Expected benefit", "benefits"), ("Possible harmful consequence", "reservations"))
+              for item in request[field]}
+    lines = [f"**Feedback recorded for `{request['id']}` revision {request['revision']}**", ""]
+    for report in reports:
+        lines.append(f"- {cell(names.get(report['by'], report['by']))} · {report['recorded_at']} · "
+                     f"{report['readiness'].replace('_', ' ')}: “{cell(report['text'])}”")
+        for outcome in report.get("outcomes") or []:
+            lines.append(f"  - {labels.get(outcome['ref'], 'Outcome')} `{outcome['ref']}`: {outcome['verdict'].replace('_', ' ')}")
+    return "\n".join(lines)
+
+
+def expected_outcomes(before_documents, after_documents, found):
+    """Generated blocks for feedback commitments and reports in the diff, and uncovered predictions."""
+    before, after = request_versions(before_documents), request_versions(after_documents)
+    blocks = []
+    for key, (request, state) in after.items():
+        if key not in before:
+            blocks.append(commitment_block(request, state))
+        seen = {report["id"] for report in before[key][0]["reports"]} if key in before else set()
+        added = [report for report in request["reports"] if report["id"] not in seen]
+        if added:
+            blocks.append(reports_block(request, state, added))
+    covered = {item["ref"] for request, _ in after.values() for field in ("benefits", "reservations") for item in request[field]}
+    uncovered = [ident for verb, ident, tree, category, item in found
+                 if verb == "added" and category == "nodes" and tree == "future_reality"
+                 and item.get("kind") in PREDICTIONS and ident not in covered]
+    return blocks, uncovered
+
+
+def outcomes_section(blocks, uncovered):
+    content = list(blocks)
+    if uncovered:
+        content.append(f"No feedback commitment: {PLACEHOLDER} (predictions: " + ", ".join(f"`{i}`" for i in uncovered) + ")")
+    if not content:
+        content = ["None: this change adds no feedback commitments, reports or predictions."]
+    return "## Expected outcomes\n\n" + "\n\n".join(content) + "\n"
+
+
+def normalized(text):
+    return "\n".join(line.rstrip() for line in (text or "").splitlines())
+
+
+def check_outcomes(body, blocks, uncovered):
+    if not blocks and not uncovered:
+        return []
+    parts = sections(body)
+    if EXPECTED not in parts:
+        return ['The description has no "Expected outcomes" section. Run --suggest --format markdown.']
+    content, problems = normalized(parts[EXPECTED]), []
+    for block in blocks:
+        if normalized(block) not in content:
+            title = block.splitlines()[0].strip("*")
+            problems.append(f"Expected outcomes must contain the generated block {title}, matching the YAML. Run --suggest --format markdown.")
+    reasons = [reason for reason in NO_COMMITMENT.findall(content) if PLACEHOLDER not in reason]
+    if uncovered and not reasons:
+        problems.append("Predictions without a feedback commitment: " + ", ".join(f"`{i}`" for i in uncovered)
+                        + '. Add a commitment, or state "No feedback commitment: <reason>" under Expected outcomes.')
+    return problems
 
 
 DETAILS = re.compile(r"<details\b([^>]*)>.*?<summary\b[^>]*>.*?</summary>(.*?)</details\s*>", re.S | re.I)
@@ -331,6 +434,8 @@ def main(argv=None, cwd=None):
             else:
                 for state in after_documents.values():
                     views.validate(state)
+                if args.format == "markdown":
+                    print(outcomes_section(*expected_outcomes(before_documents, after_documents, found)))
                 print(diagrams.markdown(before_documents, after_documents))
                 if args.format == "markdown":
                     print(folded_updates(found))
@@ -340,6 +445,7 @@ def main(argv=None, cwd=None):
         problems = check(body, before, after)
         problems += check_acceptances(body, before_documents, after_documents, paths, found)
         problems += check_presentation(body, before_documents, after_documents, found)
+        problems += check_outcomes(body, *expected_outcomes(before_documents, after_documents, found))
     except (ValueError, KeyError, TypeError, AttributeError, OSError, yaml.YAMLError) as error:
         problems = [str(error)]
     if problems:

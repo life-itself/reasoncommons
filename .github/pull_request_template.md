@@ -2,6 +2,10 @@
 
 <!-- One or two sentences. -->
 
+## Expected outcomes
+
+<!-- Generated with the Reasoning changes section below. For each feedback commitment this PR adds or revises: the change being evaluated, its expected benefit and possible harmful consequence, who gives feedback and how they can observe it. Feedback reports added to an existing commitment are listed with their verdicts. If the PR adds Future Reality predicted or undesirable effects with no commitment, replace the placeholder in "No feedback commitment: <reason>". Otherwise write None. -->
+
 ## Reasoning changes
 
 <!-- One rendered Mermaid diagram per affected tree in the actual YAML diff, with tree, kind, standing and change labels. Generate this section and the collapsed list with:
