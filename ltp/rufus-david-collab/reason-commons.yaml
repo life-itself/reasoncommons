@@ -4009,6 +4009,13 @@ trees:
       work: verify_feedback_sync
       label: Verify that sharing is on in a fresh session worktree.
       note: After the change merges and the installed skill is updated, start a new session; check that sync reports sharing on through the main checkout's authorisation and that a feedback reply reaches origin/main. Also check whether the session branch's copy of the reasoning file conflicts with the shared feedback when that session's PR merges.
+    - ref: f-e-feedback-sync
+      work: review_outcome_feedback
+      label: Review recorded outcome feedback against the original reasoning.
+      feedback_request: feedback-sync-pilot
+      feedback_revision: 1
+      feedback_report: david-feedback-sync-first-session-2026-10-20
+      note: Compare this attributed self-report with the original expectation and the trial conditions; no endorsement or causal conclusion was inferred.
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
@@ -5699,7 +5706,23 @@ feedback_requests:
     kind: undesirable_effect
     standing: proposed
     text: Failed or conflicting synchronisation can delay sharing feedback and add recovery work.
-  reports: []
+  reports:
+  - id: david-feedback-sync-first-session-2026-10-20
+    by: david
+    recorded_at: '2026-10-20T15:51:18Z'
+    readiness: experienced
+    text: In the new session sharing switched on by itself and sync checked origin/main without any Git steps from me. I haven’t yet seen an answer of mine show up in another checkout, so the benefit is only partly seen. No sync failures or conflicts in that session, but before it I had to pull my main checkout manually after merging and discard an auto-exported beads file, which was setup work.
+    evidence_type: self_report
+    outcomes:
+    - ref: f-e-shared-feedback-current
+      verdict: unclear
+      note: Partly seen. Sharing activated through the main checkout's authorisation and sync checked origin/main with no Git steps from David, but he has not yet seen one of his answers appear in another checkout, which is the predicted benefit.
+    - ref: f-e-feedback-sync-friction
+      verdict: not_observed
+      note: No sync failure or conflict in this session. David separately reports setup work before it, a manual pull of his main checkout after merging and discarding an auto-exported beads file; that is activation burden rather than a failed or conflicting sync, and remains for review.
+    source:
+      surface: conversation
+      note: Answered in the Claude desktop session resuming the collaboration in worktree rufus-david-reason-commons-262cf1.
   ready_when: After the merged implementation is active, enter feedback in one checkout and resume with the same shared destination in another. Assess whether the reply and outstanding reservation appear without manual Git operations. Record any activation step, sync failure, conflict, delay or recovery work; report benefit and burden separately and leave insufficient evidence unassessed.
   source: {surface: conversation, source_text: accept, note: David accepted feedback-sync-2026-10-20 revision 1, including this trial assignment; no trial outcome is inferred.}
 - id: pr-expected-outcomes-check
