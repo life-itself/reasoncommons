@@ -29,6 +29,17 @@ KINDS = {
     "transition": {"existing_condition", "need", "action", "expected_effect"},
 }
 TRACES = ("addresses", "derived_from", "implements")
+TREE_OF = {}  # node ID -> tree name for the state being rendered; lets views describe traces without IDs.
+
+
+def trace_line(key, refs):
+    """Describe cross-tree traces by count and tree, e.g. "Addresses 2 Current Reality statements"."""
+    groups = {}
+    for ref in refs:
+        groups[TREE_OF.get(ref)] = groups.get(TREE_OF.get(ref), 0) + 1
+    parts = [f"{n} {name.replace('_', ' ').title() + ' ' if name else ''}statement{'' if n == 1 else 's'}"
+             for name, n in sorted(groups.items(), key=lambda item: (item[0] is None, item[0] or ""))]
+    return f"{key.replace('_', ' ').capitalize()} {' and '.join(parts)}"
 EMPTY = {"nodes": {}, "links": {}}
 
 
@@ -211,7 +222,7 @@ def node_text(node):
     lines.extend(textwrap.wrap(node["text"], 44, break_long_words=True) or [""])
     for key in TRACES:
         if node.get(key):
-            lines.extend(textwrap.wrap(f"{key}: {', '.join(node[key])}", 44))
+            lines.extend(textwrap.wrap(trace_line(key, node[key]), 44))
     for assumption in node.get("assumptions", []):
         lines.extend(textwrap.wrap(f"Assumes: {assumption}", 44))
     return "\n".join(lines)
@@ -343,7 +354,7 @@ def svg_graph(name, before, after, changes=False):
         lines = [node["kind"].replace("_", " ").upper()] + wrap_svg(node["text"])
         for key in TRACES:
             if node.get(key):
-                lines.extend(wrap_svg(key + ": " + ", ".join(node[key])))
+                lines.extend(wrap_svg(trace_line(key, node[key])))
         for assumption in node.get("assumptions", []):
             lines.extend(wrap_svg("Assumes: " + assumption))
         status = diff["nodes"].get(ident, "context") if changes else "accepted"
@@ -450,6 +461,8 @@ def update(state_path, output=None, summary=None):
         write_atomic(history / f"{revision:06d}.yaml", yaml.safe_dump(snapshot, sort_keys=False, allow_unicode=True), exclusive=True)
         projections.append(current)
     # For each tree, keep its latest actual change even when another tree changes.
+    TREE_OF.clear()
+    TREE_OF.update({node["id"]: name for name, tree in state.get("trees", {}).items() for node in tree["nodes"]})
     rendered = []
     for name in sorted({n for projection in projections for n in projection}):
         for index in range(len(projections) - 1, -1, -1):

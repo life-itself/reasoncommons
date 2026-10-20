@@ -321,11 +321,22 @@ class CheckTests(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertIn("unresolved-connection notes", out)
 
+    def test_backlog_only_change_requires_its_generated_diagram(self):
+        state = toy()
+        state["trees"]["current_reality"]["backlog"].append({"ref": "n1", "work": "check_sample", "note": "Find whether the study sampled other roles."})
+        self.write(state)
+        code, out = self.run_check(text=body(serves="- `n1` — the study result"))
+        self.assertEqual(code, 0, out)
+        for diagram in ("## Reasoning changes\n\nNo node, link or backlog changes; see the scope below.\n",):
+            code, out = self.run_check(text=body(serves="- `n1` — the study result", diagrams=diagram))
+            self.assertEqual(code, 1, out)
+            self.assertIn("generated, visible Mermaid diagrams", out)
+
     def test_missing_or_altered_diagram_fails(self):
         self.write(with_link(toy()))
         _, before, after = check.load_documents([STATE], "main", self.repo)
         accurate = check.diagrams.markdown(before, after)
-        for diagram in ("", accurate.replace("limits scope", "causes"), accurate.replace("[P] CURRENT REALITY", "[A] CURRENT REALITY")):
+        for diagram in ("", accurate.replace("limits scope", "causes"), accurate.replace("[Proposed]", "[Accepted]")):
             with self.subTest(diagram=diagram[:80]):
                 code, out = self.run_check(text=body(updates="- added `l1`", diagrams=diagram))
                 self.assertEqual(code, 1)
@@ -377,7 +388,7 @@ class CheckTests(unittest.TestCase):
         accurate = check.diagrams.markdown(before, after).replace("wrappingWidth: 360", "wrappingWidth: 720")
         for diagram in (
             accurate.replace("limits scope", "causes"),
-            accurate.replace("[P] CURRENT REALITY", "[A] CURRENT REALITY"),
+            accurate.replace("[Proposed]", "[Accepted]"),
             accurate.replace("call centre workers only", "all workers"),
             accurate.replace(".-> n0", ".-> n1"),
         ):

@@ -1315,6 +1315,33 @@ trees:
         attribution: assistant
         mode: text
         note: Inspection of the completion response after David questioned whether the fix followed the tree-update rule, 2026-10-14.
+    - id: r-e-claude-desktop-diagrams-ascii
+      kind: observation
+      text: In the Claude desktop app's Code tab on 20 October 2026, a change proposal showed its tree as ASCII text, although the inline widget then rendered the same tree as a Mermaid diagram.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: David asked why the proposal tree was not shown as a Mermaid diagram and later noted that Codex renders it, 2026-10-20.
+    - id: r-e-backlog-pr-no-diagram
+      kind: observation
+      text: 'Pull request 71 revised only backlog work, so its description showed no diagram: the generator draws only node and link changes, and the check rejects any diagram it did not generate.'
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: David noted that the PR lacked the diagrams his Codex PRs show; inspection traced it to the generator and checker, 2026-10-20.
+    - id: r-e-diagram-labels-cluttered
+      kind: observation
+      text: In the Claude desktop app on 20 October 2026, proposal diagrams cut statements off mid-line, including when drawn with the widget's documented settings, and spent node space on identifiers and on the tree name repeated in every node.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: David supplied screenshots of two clipped proposal diagrams and named the three problems, 2026-10-20.
     - id: r-e-rewind-untracked-saves
       kind: cause
       text: Shell-written working YAML is outside Claude Code's file checkpoints.
@@ -2648,7 +2675,7 @@ trees:
         note: David requested completion of the PR integration and accepted proposal change-pr-acceptance-integration-2026-10-14 revision 1 with the typed reply yes i accept.
     - id: f-e-pr-diagrams-show-changes
       kind: injection
-      text: Pull request descriptions display the changed reasoning together in one rendered diagram per affected tree, identify unresolved connections explicitly, and collapse the complete checked update list by default.
+      text: Pull request descriptions display the changed reasoning, including added, revised or removed backlog work beside the statements it refers to, together in one rendered diagram per affected tree, identify unresolved connections explicitly, and collapse the complete checked update list by default.
       status: proposed
       implements:
       - f-e-changes-name-reasoning
@@ -2660,6 +2687,21 @@ trees:
         attribution: explicit
         mode: text
         note: David asked to correct the missing PR diagrams, then accepted proposal change-pr-diagrams-2026-10-14 revision 1.
+      - by: david
+        attribution: explicit
+        mode: text
+        note: David asked for backlog-only PRs to show diagrams as well, then accepted proposal pr-backlog-diagrams-2026-10-20 revision 3.
+    - id: f-e-readable-diagram-labels
+      kind: injection
+      text: Every diagram the skill or its scripts produce shows complete, unclipped statements labelled by standing and kind, names each tree once rather than in every node, and keeps identifiers out of nodes.
+      status: proposed
+      addresses:
+      - r-e-diagram-labels-cluttered
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: David asked for unclipped statements, no identifiers in nodes and the tree named once with the standing spelled out, 2026-10-20.
     - id: f-e-rewind-checkpointed-save
       kind: injection
       text: Save working YAML through the host's tracked file-editing tools when its rewind depends on them.
@@ -2962,6 +3004,19 @@ trees:
       assumptions:
       - text: Generated diagrams preserve the YAML diff, qualifications, actual topology and reasoning standing, render legibly in GitHub, and help people inspect the changed reasoning; validating source alone does not establish usability.
         by: assistant
+    - id: f-rel-readable-labels-aid-inspection
+      from:
+      - f-e-readable-diagram-labels
+      to: f-e-skill-attention-clear
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: Complete statements with plain standing and kind labels are easier to judge than clipped statements beside identifiers; rendering checks do not establish that people find them easier.
+        by: assistant
     - id: f-rel-rewind-recovery-coherent
       from:
       - f-e-rewind-checkpointed-save
@@ -3089,6 +3144,9 @@ trees:
     - ref: f-e-skill-host-aware-diagrams
       work: review_fragment
       note: Review the desktop-output observation, proposed correction and connection to f-e-skill-attention-clear together; implementing the correction does not accept this reasoning.
+    - ref: f-e-skill-host-aware-diagrams
+      work: test_claude_desktop_rendering
+      note: In a fresh Claude desktop Code-tab session, check that the first change proposal renders as a readable diagram without the user asking, following the AGENTS.md line added by pr-backlog-diagrams-2026-10-20.
     - ref: f-rel-native-diagrams-aid-inspection
       work: test_rendering_and_inspection
       note: In fresh Codex and Claude desktop sessions, show the remote-work gold fixture and inspect its labels and connections; also check a plain-text fallback. Offline helper checks pass; these do not establish real-user usability.
@@ -6295,5 +6353,73 @@ change_acceptances:
   - website/landing-lab/results/index.html
   - website/landing-lab/results/results.json
   - website/changelog/2026-10-19-landing-evaluation-results.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+- proposal_ref: pr-backlog-diagrams-2026-10-20
+  proposal_revision: 3
+  by: david
+  recorded_at: '2026-10-20T06:15:13Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept these changes
+  scope: Generate PR diagrams for added, revised or removed backlog work attached to its referenced statement or link, so the check requires them; add an AGENTS.md rule to render proposal and tree diagrams (fenced Mermaid in Codex, inline widget in the Claude desktop app, text only on failure). Break widget label lines at 26 characters and keep edge labels short because the Claude widget host does not wrap node or edge text; keep 38-character SVG lines in PR diagrams. Keep identifiers out of nodes (backlog notes show text; unconnected PR statements grouped as not yet connected instead of listed by ID; standalone views replace trace IDs with counts by tree). Label nodes with the change and expanded standing on one line and the kind on the next, naming each tree once in the diagram title or a per-tree group. Update skill conventions, PR guidance and template, and tests. Add observations r-e-claude-desktop-diagrams-ascii, r-e-backlog-pr-no-diagram and r-e-diagram-labels-cluttered; revise f-e-pr-diagrams-show-changes; add injection f-e-readable-diagram-labels with link f-rel-readable-labels-aid-inspection to f-e-skill-attention-clear; add backlog test_claude_desktop_rendering on f-e-skill-host-aware-diagrams. Deliver as a second commit on PR 71 with a regenerated description and a separate implementation bead.
+  node_ids:
+  - r-e-claude-desktop-diagrams-ascii
+  - r-e-backlog-pr-no-diagram
+  - r-e-diagram-labels-cluttered
+  - f-e-pr-diagrams-show-changes
+  - f-e-readable-diagram-labels
+  link_ids:
+  - f-rel-readable-labels-aid-inspection
+  approved_paths:
+  - skills/reason-commons/scripts/render_pr_diagrams.py
+  - skills/reason-commons/scripts/render_view.py
+  - skills/reason-commons/scripts/update_views.py
+  - skills/reason-commons/scripts/check_pr_trees.py
+  - skills/reason-commons/tests/test_render_pr_diagrams.py
+  - skills/reason-commons/tests/test_render_view.py
+  - skills/reason-commons/tests/test_update_views.py
+  - skills/reason-commons/tests/test_check_pr_trees.py
+  - skills/reason-commons/references/pull-requests.md
+  - skills/reason-commons/references/diagrams.md
+  - skills/reason-commons/references/responses.md
+  - skills/reason-commons/SKILL.md
+  - .github/pull_request_template.md
+  - AGENTS.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+- proposal_ref: pr-backlog-diagrams-2026-10-20
+  proposal_revision: 4
+  by: david
+  recorded_at: '2026-10-20T06:27:40Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept revision 4
+  scope: Same implementation, files and tree updates as revision 3. Because PR 71 was merged before revision 3 was accepted, deliver as one commit on a new branch off main in a new PR whose description is generated by the new checker, include under Validation the backlog diagram PR 71 would now receive (generated against its base), leave PR 71's merged description unchanged, and record this receipt beside the revision 3 receipt.
+  node_ids:
+  - r-e-claude-desktop-diagrams-ascii
+  - r-e-backlog-pr-no-diagram
+  - r-e-diagram-labels-cluttered
+  - f-e-pr-diagrams-show-changes
+  - f-e-readable-diagram-labels
+  link_ids:
+  - f-rel-readable-labels-aid-inspection
+  approved_paths:
+  - skills/reason-commons/scripts/render_pr_diagrams.py
+  - skills/reason-commons/scripts/render_view.py
+  - skills/reason-commons/scripts/update_views.py
+  - skills/reason-commons/scripts/check_pr_trees.py
+  - skills/reason-commons/tests/test_render_pr_diagrams.py
+  - skills/reason-commons/tests/test_render_view.py
+  - skills/reason-commons/tests/test_update_views.py
+  - skills/reason-commons/tests/test_check_pr_trees.py
+  - skills/reason-commons/references/pull-requests.md
+  - skills/reason-commons/references/diagrams.md
+  - skills/reason-commons/references/responses.md
+  - skills/reason-commons/SKILL.md
+  - .github/pull_request_template.md
+  - AGENTS.md
   - ltp/rufus-david-collab/reason-commons.yaml
   - .beads/issues.jsonl
