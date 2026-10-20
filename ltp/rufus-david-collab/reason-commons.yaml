@@ -1431,6 +1431,13 @@ trees:
       status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text, note: 'Observed in shared commit 34fa839: quoting and list style changed with no change of content.'}
+    - id: r-e-newcomer-lacks-context
+      kind: undesirable_effect
+      text: A participant opening Reason Commons for the first time gets no introduction to what the skill does or what each type of message asks of them.
+      label: Newcomers get no intro to what messages ask.
+      status: proposed
+      contributions:
+      - {by: david, attribution: explicit, mode: text, note: 'On 2026-10-20 David proposed basic onboarding so that Rufus has enough context to review a feedback request when he first opens a session.'}
     - id: r-e-repo-feels-scattered
       kind: observation
       text: David finds the Reason Commons repository increasingly scattered as it contains the public website, skills and prospective Discord-bot work.
@@ -3176,6 +3183,28 @@ trees:
       addresses: [r-e-sync-reformatted-backlog]
       contributions:
       - {by: assistant, attribution: assistant, mode: text}
+    - id: f-e-first-session-onboarding
+      kind: injection
+      text: On a participant's first session in a checkout, the skill shows a short introduction to what Reason Commons does, what each type of message asks of them, how feedback works and whether sharing is set up.
+      label: First session shows a short introduction.
+      status: proposed
+      addresses: [r-e-newcomer-lacks-context]
+      contributions:
+      - {by: david, attribution: explicit, mode: text}
+    - id: f-e-newcomer-reads-messages
+      kind: predicted_effect
+      text: A first-time participant understands what each type of message asks of them well enough to answer a feedback request without asking another participant what it means.
+      label: Newcomer can answer a feedback request unaided.
+      status: proposed
+      contributions:
+      - {by: david, attribution: explicit, mode: text}
+    - id: f-e-onboarding-delays-start
+      kind: undesirable_effect
+      text: Reading an introduction up front delays or discourages a busy first-time participant before they reach anything useful.
+      label: Up-front reading can put off a busy newcomer.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text}
     - id: f-e-discord-diverts-resources
       kind: undesirable_effect
       text: Operating and extending the bot may consume scarce time and money and delay real-work testing.
@@ -3334,6 +3363,26 @@ trees:
       contributions: [{by: assistant, attribution: assistant, mode: text}]
       assumptions:
       - {text: Rewriting whole blocks makes textual conflicts between checkouts and noisy reviews more likely., by: assistant}
+    - id: f-rel-onboarding-reads-messages
+      from: [f-e-first-session-onboarding]
+      to: f-e-newcomer-reads-messages
+      relation: contributes_to
+      status: proposed
+      contributions: [{by: david, attribution: explicit, mode: text}]
+      assumptions:
+      - {text: The participant reads the introduction before their first request., by: assistant}
+    - id: f-rel-reads-messages-reviewable
+      from: [f-e-newcomer-reads-messages]
+      to: f-e-outcomes-reviewable
+      relation: contributes_to
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+    - id: f-rel-onboarding-delays-start
+      from: [f-e-first-session-onboarding]
+      to: f-e-onboarding-delays-start
+      relation: can_cause
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
     - id: f-rel-use-makes-users
       from:
       - f-e-use-while-building
@@ -3858,6 +3907,14 @@ trees:
       work: test_negative_branch
       label: Assess the overhead of explaining unassigned predictions.
       note: Ask David whether writing No feedback commitment reasons felt useful or like busywork; no report is not evidence of no overhead.
+    - ref: f-rel-onboarding-reads-messages
+      work: test_lasting_effect
+      label: Ask whether the introduction keeps helping later.
+      note: The first-session commitments test only a first reading. After a later session, ask whether the introduction still helps with change proposals and next steps, as a separate observation.
+    - ref: f-e-first-session-onboarding
+      work: connect_or_explain
+      label: Would the same introduction serve a first demo user?
+      note: Relate onboarding to demo coherence (r-e-david-demo-confidence, r-e-bot-needs-work-for-cold-testers) without assuming it closes that gap.
     - ref: f-e-feedback-cycle
       work: review_outcome_feedback
       label: Review recorded outcome feedback against the original reasoning.
@@ -5587,6 +5644,61 @@ feedback_requests:
     surface: conversation
     source_text: accept
     note: Included in the displayed pr-expected-outcomes-2026-10-20 revision 1 proposal that David accepted. No outcome is inferred.
+- id: onboarding-first-session-rufus
+  revision: 1
+  created_by: david
+  recorded_at: '2026-10-20T14:55:08Z'
+  about:
+    ref: f-e-first-session-onboarding
+    tree: future_reality
+    kind: injection
+    standing: proposed
+    text: On a participant's first session in a checkout, the skill shows a short introduction to what Reason Commons does, what each type of message asks of them, how feedback works and whether sharing is set up.
+  feedback_from:
+  - rufus
+  benefits:
+  - ref: f-e-newcomer-reads-messages
+    tree: future_reality
+    kind: predicted_effect
+    standing: proposed
+    text: A first-time participant understands what each type of message asks of them well enough to answer a feedback request without asking another participant what it means.
+  reservations:
+  - ref: f-e-onboarding-delays-start
+    tree: future_reality
+    kind: undesirable_effect
+    standing: proposed
+    text: Reading an introduction up front delays or discourages a busy first-time participant before they reach anything useful.
+  reports: []
+  ready_when: Right after Rufus's first session with the updated skill, once he has seen the introduction and then this request. Judge whether the introduction let him understand what this request asks without asking David, and separately whether reading it first delayed or put him off. Whether it keeps helping in later sessions is a separate question, not part of this request.
+  source:
+    surface: conversation
+    source_text: accept first-session-onboarding-2026-10-20 revision 1
+    note: Included in the displayed proposal David accepted. Assigning Rufus records who can give this feedback, not that he has agreed to; no outcome is inferred.
+- id: onboarding-clarification-check
+  revision: 1
+  created_by: david
+  recorded_at: '2026-10-20T14:55:08Z'
+  about:
+    ref: f-e-first-session-onboarding
+    tree: future_reality
+    kind: injection
+    standing: proposed
+    text: On a participant's first session in a checkout, the skill shows a short introduction to what Reason Commons does, what each type of message asks of them, how feedback works and whether sharing is set up.
+  feedback_from:
+  - david
+  benefits:
+  - ref: f-e-newcomer-reads-messages
+    tree: future_reality
+    kind: predicted_effect
+    standing: proposed
+    text: A first-time participant understands what each type of message asks of them well enough to answer a feedback request without asking another participant what it means.
+  reservations: []
+  ready_when: After Rufus's first session with the updated skill. Record whether Rufus asked David to explain any message, and which. David cannot judge Rufus's reading burden, so no reservation is assigned here.
+  reports: []
+  source:
+    surface: conversation
+    source_text: accept first-session-onboarding-2026-10-20 revision 1
+    note: Included in the displayed proposal David accepted. No outcome is inferred.
 change_acceptances:
 - proposal_ref: change-node-roles-2026-10-14
   by: david
@@ -7402,5 +7514,24 @@ change_acceptances:
   - skills/reason-commons/tests/test_feedback_sync.py
   - skills/reason-commons/references/feedback-sync.md
   - apps/discord/tests/test_diagrams.py
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+- proposal_ref: first-session-onboarding-2026-10-20
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-20T14:55:08Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept first-session-onboarding-2026-10-20 revision 1
+  scope: 'Add scripts/onboarding.py, which prints a short Introduction from references/onboarding.md on a participant''s first session in a checkout (and again on request), recording who has seen it only in the local gitignored state folder and never writing the shared YAML. The introduction covers what Reason Commons is (project and participants filled in), what each message type asks of the reader, how feedback works, whether sharing is configured with the configure command for the reader to run in their own words, and how many feedback requests are waiting. Session start becomes sync, introduction, feedback queue, ordinary agenda; add the Introduction response type. Add the displayed undesirable effect, injection, predicted effect and reservation nodes, three links and addresses reference, two backlog items, and feedback commitments onboarding-first-session-rufus revision 1 (Rufus) and onboarding-clarification-check revision 1 (David). Discord onboarding and input requests are out of scope.'
+  node_ids: [r-e-newcomer-lacks-context, f-e-first-session-onboarding, f-e-newcomer-reads-messages, f-e-onboarding-delays-start]
+  link_ids: [f-rel-onboarding-reads-messages, f-rel-reads-messages-reviewable, f-rel-onboarding-delays-start]
+  approved_paths:
+  - skills/reason-commons/scripts/onboarding.py
+  - skills/reason-commons/tests/test_onboarding.py
+  - skills/reason-commons/references/onboarding.md
+  - skills/reason-commons/references/responses.md
+  - skills/reason-commons/SKILL.md
   - ltp/rufus-david-collab/reason-commons.yaml
   - .beads/issues.jsonl

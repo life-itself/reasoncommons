@@ -15,6 +15,8 @@ Before selecting feedback, run `python3 <skill-directory>/scripts/feedback_sync.
 
 Use the user's chosen state file; otherwise use `reason-commons.yaml` in the working directory. Read existing state before continuing. Establish the subject, participants, and driver from context; ask only for missing information needed now. One participant is enough. The driver is the person operating the signed-in session: ask their name if unavailable, and update it when someone takes over.
 
+Once the driver is known, run `python3 <skill-directory>/scripts/onboarding.py <state.yaml> --participant <driver>`. If it prints an **Introduction**, show it unchanged before anything else; it prints nothing for someone who has already seen it in this checkout. Run it with `--again` when someone asks to see the introduction. See [references/onboarding.md](references/onboarding.md).
+
 At session entry, check outstanding feedback for the actual driver before selecting the ordinary reasoning agenda: `python3 <skill-directory>/scripts/feedback.py <state.yaml> --participant <driver>`. Present the first ready **Feedback request**, keeping other requests in the shared file; follow an explicit user direction first and do not block their work. Undated requests are eligible too. When experience is unknown, ask whether the person has experienced the change rather than assuming an outcome. Respect saved deferrals. This checks on session entry; between-session delivery requires an explicitly configured running host such as the Discord dispatcher.
 
 Choose the tree that fits the question, without making users learn the terminology. Start with the information they already have. Create only trees in use; there is no mandatory six-tree sequence. If a prerequisite is missing, help establish it rather than filling it in yourself.
@@ -27,6 +29,7 @@ Label each substantive response by its purpose. Use the templates and conformanc
 |---|---|
 | **Change proposal** | Lay out a project change, its reasoning and tree updates; wait for recorded typed acceptance before implementation. |
 | **Next step** | Recommend one action or inquiry and explain its basis; the recommendation has not been carried out. |
+| **Introduction** | Show the first-session introduction unchanged: what the skill is for, what each message type asks of the reader, and whether sharing is on. |
 | **Feedback request** | Show the original expected benefit and reservation together and ask an assigned participant for their experience. |
 | **Change result** | Report implemented work, its actual tree updates and standing, and validation. |
 | **Answer** | Explain something or answer a question. |

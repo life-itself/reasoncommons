@@ -16,6 +16,7 @@ In diagrams, name each tree once, in the heading or one group per tree, and insi
 - A request for what to do next requires **Next step**. Recommending implementation does not authorize performing it. If the user has already requested the implementation, use **Change proposal** first.
 - Completed implementation requires **Change result**. Retain its reasoning trace in the final response even when the proposal was already shown in commentary.
 - Use **Answer**, **Tree view** or **Capture result** for those purposes. Conversational capture and endorsement follow the skill's existing standing rules. Routine progress notes can stay brief; they do not replace a required proposal or result.
+- Use **Introduction** only for the unchanged output of `scripts/onboarding.py` on a participant's first session, or when they ask to see it again; see [onboarding.md](onboarding.md).
 - Use **Feedback request** when asking a named provider to assess recorded expected outcomes; this does not endorse reasoning, approve implementation or imply that the change has been experienced.
 
 ## Feedback request
