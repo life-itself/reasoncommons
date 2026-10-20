@@ -3366,7 +3366,7 @@ trees:
     - ref: f-rel-feedback-supports-learning
       work: evaluate_real_feedback
       label: Review actual feedback and its effect on reasoning.
-      note: A real participant trial remains pending; code checks do not establish usefulness or that observations change reasoning.
+      note: 'A real participant trial remains pending; code checks do not establish usefulness or that observations change reasoning. Feedback commitment pr-74-feedback-cycle-self-test revision 1 assigns David to assess this PR after using the updated skill on a separate real expectation, returning in a later session with the same actual reasoning file, and having an opportunity to answer its feedback. Compare automatic resurfacing, display of both original outcomes and persistence of his response; record manual prompting or deviations and assess request burden separately. Timing is event-based with no calendar deadline. No outcome report has been recorded.'
     - ref: f-rel-feedback-adds-burden
       work: test_negative_branch
       label: Assess premature requests and reminder burden.
@@ -4963,6 +4963,37 @@ trees:
     - ref: t-e-discord-pilot-evidence
       work: assess_pilot_evidence
       note: Keep local prototype evidence separate from live smoke-test results and usefulness/friction from a real collaboration session.
+feedback_requests:
+- id: pr-74-feedback-cycle-self-test
+  revision: 1
+  created_by: david
+  recorded_at: '2026-10-20T11:51:00Z'
+  about:
+    ref: f-e-feedback-cycle
+    tree: future_reality
+    kind: injection
+    standing: proposed
+    text: The skill assigns feedback providers and uses shared reasoning files to request, capture and revisit feedback on expected benefits and harmful consequences across sessions and Discord.
+  feedback_from:
+  - david
+  benefits:
+  - ref: f-e-outcomes-reviewable
+    tree: future_reality
+    kind: predicted_effect
+    standing: proposed
+    text: When assigned participants supply feedback, their observations about expected benefits and harms are available beside the original expectations for review.
+  reservations:
+  - ref: f-e-feedback-burden
+    tree: future_reality
+    kind: undesirable_effect
+    standing: proposed
+    text: Feedback requests that arrive before someone can judge a change or recur too often can increase collaboration burden.
+  reports: []
+  ready_when: 'After David uses PR #74''s updated skill with a separate real expectation: records it with named feedback providers, leaves the session, and returns in a later session using the updated skill and the same actual reasoning file, with an opportunity to answer that expectation''s feedback. Compare the original expectation with what actually happens: whether outstanding feedback returns without David remembering to ask; whether both the original benefit and reservation are displayed; and whether his response survives a further session. Record any manual prompting, intervention, or deviation from these conditions. Assess separately whether requests are premature, repetitive, or make maintaining the reasoning burdensome. If the experience or evidence is insufficient, record not experienced yet, not assessed, unclear, or unavailable rather than inferring an outcome.'
+  source:
+    surface: conversation
+    source_text: yes this looks good - add it to the PR
+    note: David approved the displayed self-test commitment. No outcome feedback or completed trial is recorded.
 change_acceptances:
 - proposal_ref: change-node-roles-2026-10-14
   by: david
