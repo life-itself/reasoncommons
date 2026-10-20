@@ -1355,6 +1355,16 @@ trees:
         attribution: explicit
         mode: text
         note: David supplied a screenshot of the PR 72 Future Reality diagram and proposed one-sentence labels with full statements kept in the YAML, 2026-10-20.
+    - id: r-e-expanded-diagram-frame-small
+      kind: observation
+      text: In the Claude desktop app on 20 October 2026, a pan-and-zoom diagram opened in the expanded side window stayed at its 380-pixel chat height, leaving most of the window empty and the diagram hard to read.
+      label: "Expanded diagrams kept their small chat frame, leaving the window empty."
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: David supplied a screenshot of an expanded proposal diagram and asked why it did not take up the full space, 2026-10-20.
     - id: r-e-rewind-untracked-saves
       kind: cause
       text: Shell-written working YAML is outside Claude Code's file checkpoints.
@@ -2723,6 +2733,18 @@ trees:
         attribution: explicit
         mode: text
         note: David asked for one-sentence diagram labels with full statements kept in the YAML, then accepted short-diagram-labels-2026-10-20 revision 1.
+    - id: f-e-taller-diagram-frame
+      kind: injection
+      text: Pan-and-zoom diagrams offer a Taller control that switches the frame between its compact chat height and a tall height that fills most of an expanded window, rather than sizing the frame to the window, which the host does not support.
+      label: "A Taller button lets the diagram frame fill an expanded window."
+      status: proposed
+      addresses:
+      - r-e-expanded-diagram-frame-small
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+        note: Proposed in taller-diagram-frame-2026-10-20 revision 1, which David accepted for implementation.
     - id: f-e-rewind-checkpointed-save
       kind: injection
       text: Save working YAML through the host's tracked file-editing tools when its rewind depends on them.
@@ -3037,6 +3059,19 @@ trees:
         mode: text
       assumptions:
       - text: Complete statements with plain standing and kind labels are easier to judge than clipped statements beside identifiers; rendering checks do not establish that people find them easier.
+        by: assistant
+    - id: f-rel-taller-frame-aid-inspection
+      from:
+      - f-e-taller-diagram-frame
+      to: f-e-skill-attention-clear
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: A diagram that fills the expanded window is easier to read than one confined to the chat-height frame; the fixed tall height may still need some scrolling on shorter screens.
         by: assistant
     - id: f-rel-rewind-recovery-coherent
       from:
@@ -6486,3 +6521,23 @@ change_acceptances:
   - AGENTS.md
   - ltp/rufus-david-collab/reason-commons.yaml
   - .beads/issues.jsonl
+- proposal_ref: taller-diagram-frame-2026-10-20
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-20T09:37:43Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept revision 1
+  scope: Pan-and-zoom diagrams get a Taller button beside the zoom buttons that switches the frame between 380px and 720px, the diagram scaling to fill it and the label flipping to Shorter; diagrams in the chat still open at 380px. Add a test for the toggle and its two heights and document it in the diagram reference. Add observation r-e-expanded-diagram-frame-small, injection f-e-taller-diagram-frame addressing it, and link f-rel-taller-frame-aid-inspection to f-e-skill-attention-clear. Deliver as a PR from this branch.
+  node_ids:
+  - r-e-expanded-diagram-frame-small
+  - f-e-taller-diagram-frame
+  - f-e-skill-attention-clear
+  link_ids:
+  - f-rel-taller-frame-aid-inspection
+  approved_paths:
+  - skills/reason-commons/scripts/render_view.py
+  - skills/reason-commons/tests/test_render_view.py
+  - skills/reason-commons/references/diagrams.md
+  - ltp/rufus-david-collab/reason-commons.yaml
