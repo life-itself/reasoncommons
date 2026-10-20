@@ -137,16 +137,20 @@ def guard_transition(before, after, authors=None):
     previous = {key(r): r for r in before.get("feedback_requests", [])}
     current = {key(r): r for r in after.get("feedback_requests", [])}
     require(previous.keys() <= current.keys(), "Feedback versions cannot be removed; preserve their evidence.")
+    for name in {ident[0] for ident in current if ident not in previous}:
+        last = max((revision for ident, revision in previous if ident == name), default=0)
+        new = sorted(revision for ident, revision in current if ident == name and (ident, revision) not in previous)
+        require(new == list(range(last + 1, last + 1 + len(new))), "New feedback revision must follow the previous saved revision.")
     for ident, request in current.items():
         old = previous.get(ident)
         if old:
             require({k: v for k, v in request.items() if k != "reports"} == {k: v for k, v in old.items() if k != "reports"},
                     "Original feedback expectations are immutable; add a new revision.")
-            require(request["reports"][:len(old["reports"])] == old["reports"], "Previous feedback reports are append-only.")
-            added = request["reports"][len(old["reports"]):]
+            previous_reports = {report["id"]: report for report in old["reports"]}
+            current_reports = {report["id"]: report for report in request["reports"]}
+            require(all(current_reports.get(ident) == report for ident, report in previous_reports.items()), "Previous feedback reports are append-only.")
+            added = [report for report in request["reports"] if report["id"] not in previous_reports]
         else:
-            require(request["revision"] == 1 + max((r["revision"] for r in before.get("feedback_requests", []) if r["id"] == request["id"]), default=0),
-                    "New feedback revision must follow the previous saved revision.")
             for item in [request["about"]] + outcomes(request):
                 require(item == snapshot(after, item["ref"]), "New expectation snapshots must match actual saved reasoning.")
             if authors is not None:
@@ -181,7 +185,8 @@ def queue(state, person, now=None, *, include_waiting=False):
         own_reports = [r for r in request["reports"] if r["by"] == person]
         dates = [request.get("ask_after")]
         if own_reports:
-            dates.append(own_reports[-1].get("defer_until"))
+            latest = max(own_reports, key=lambda report: (timestamp(report["recorded_at"]), report["id"]))
+            dates.append(latest.get("defer_until"))
         dates = [timestamp(d) for d in dates if d]
         available = max(dates) if dates else None
         waiting = available is not None and available > now

@@ -2876,6 +2876,30 @@ trees:
       status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text}
+    - id: f-e-feedback-sync
+      kind: injection
+      text: Sessions synchronise authorised feedback records with shared Git state before checking outstanding feedback and after saving responses.
+      label: Sessions synchronise authorised feedback before review and after saving.
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+    - id: f-e-shared-feedback-current
+      kind: predicted_effect
+      text: Participants returning through separate checkouts can review the latest shared feedback without performing Git operations themselves.
+      label: Returning participants can review current feedback without Git operations.
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+    - id: f-e-feedback-sync-friction
+      kind: undesirable_effect
+      text: Failed or conflicting synchronisation can delay sharing feedback and add recovery work.
+      label: Sync failures can delay feedback sharing and add recovery work.
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+    - id: f-e-feedback-sync-preservation
+      kind: injection
+      text: Synchronisation preserves unsent contributions, validates reconciled state and reports incomplete sharing explicitly.
+      label: Sync preserves contributions and reports incomplete sharing.
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
     - id: f-e-pr-expected-outcomes
       kind: injection
       text: PR descriptions include a generated Expected outcomes section for each feedback commitment in the diff, and the PR check requires it to match the reasoning YAML.
@@ -2973,6 +2997,31 @@ trees:
     - id: f-rel-feedback-controls-reduce-burden
       from: [f-e-feedback-controls]
       to: f-e-feedback-burden
+      relation: reduces_risk_of
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+    - id: f-rel-sync-shares-feedback
+      from: [f-e-feedback-sync]
+      to: f-e-shared-feedback-current
+      relation: contributes_to
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+      assumptions: [{text: Participants use the configured shared destination and synchronisation succeeds., by: assistant}]
+    - id: f-rel-shared-feedback-reviewable
+      from: [f-e-shared-feedback-current]
+      to: f-e-outcomes-reviewable
+      relation: contributes_to
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+    - id: f-rel-sync-friction
+      from: [f-e-feedback-sync]
+      to: f-e-feedback-sync-friction
+      relation: can_cause
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+    - id: f-rel-sync-preservation
+      from: [f-e-feedback-sync-preservation]
+      to: f-e-feedback-sync-friction
       relation: reduces_risk_of
       status: proposed
       contributions: [{by: assistant, attribution: assistant, mode: text}]
@@ -3472,7 +3521,7 @@ trees:
     - ref: f-rel-feedback-supports-learning
       work: evaluate_real_feedback
       label: Review actual feedback and its effect on reasoning.
-      note: 'A real participant trial remains pending; code checks do not establish usefulness or that observations change reasoning. Feedback commitment pr-74-feedback-cycle-self-test revision 1 assigns David to assess this PR after using the updated skill on a separate real expectation, returning in a later session with the same actual reasoning file, and having an opportunity to answer its feedback. Compare automatic resurfacing, display of both original outcomes and persistence of his response; record manual prompting or deviations and assess request burden separately. Timing is event-based with no calendar deadline. No outcome report has been recorded.'
+      note: 'David supplied report david-pr74-works-as-expected-2026-10-20 after the request resurfaced with both original outcomes; this separate session read the saved report. The report is positive self-report, with the separate real-expectation trial still unverified and burden unassessed. Review the observations against pr-74-feedback-cycle-self-test revision 1, including the earlier manual activation and any deviations. Implementation checks and sharing receipts do not establish usefulness, absence of harm or endorsement.'
     - ref: f-rel-feedback-adds-burden
       work: test_negative_branch
       label: Assess premature requests and reminder burden.
@@ -3481,6 +3530,23 @@ trees:
       work: evaluate_feedback_controls
       label: Check whether deferral and bounded delivery reduce burden.
       note: Mocked delivery checks verify implementation only; actual interruption burden remains to be assessed.
+    - ref: f-rel-sync-shares-feedback
+      work: verify_feedback_sync
+      beads: [reasoncommons-g32]
+      label: Verify current feedback across two checkouts.
+      note: Test sharing, independent concurrent reports, preserved predictions, deferrals, offline operation, retries without duplication and exclusion of unrelated files with the remote-work fixture and temporary Git remotes.
+    - ref: f-rel-shared-feedback-reviewable
+      work: evaluate_feedback_sync_trial
+      label: Review whether sharing makes feedback available for reasoning.
+      note: David will assess feedback-sync-pilot revision 1 after the updated skill is installed and used across two checkouts. Keep automated sharing tests separate from his benefit assessment and retain work to interpret observations.
+    - ref: f-rel-sync-friction
+      work: evaluate_sync_recovery_burden
+      label: Assess delays and recovery work from sync failures.
+      note: Record failed sharing, conflicts and manual intervention separately from benefit; do not infer absence of burden from a successful push.
+    - ref: f-rel-sync-preservation
+      work: verify_sync_preservation
+      label: Verify unsent observations survive interrupted sharing.
+      note: Exercise conflict, offline and uncertain-delivery recovery without losing observations, rewriting prediction versions or endorsing reasoning.
     - ref: f-rel-pr-outcomes-visible
       work: verify_pr_expected_outcomes
       label: Check the section against real PRs.
@@ -5102,12 +5168,73 @@ feedback_requests:
     kind: undesirable_effect
     standing: proposed
     text: Feedback requests that arrive before someone can judge a change or recur too often can increase collaboration burden.
-  reports: []
+  reports:
+  - id: david-pr74-startup-2026-10-20
+    by: david
+    recorded_at: '2026-10-20T12:09:50Z'
+    readiness: not_yet
+    text: "i just opened up a new session after merging this, and i expected a feedback request. shouldn't i have expected this?\n\ninstead i got the attached."
+    evidence_type: self_report
+    outcomes:
+    - ref: f-e-outcomes-reviewable
+      verdict: not_assessed
+      note: David reports receiving the old demo-readiness Next step instead of the expected feedback request. Inspection of that session's tool output and local Git state showed that it read the pre-PR74 skill and reasoning file, so the updated-feature trial conditions were not met.
+    - ref: f-e-feedback-burden
+      verdict: not_assessed
+      note: David has not assessed premature or repetitive requests or the maintenance burden of the updated feature in this report.
+    source:
+      surface: conversation
+      thread_id: 01a158d9-b9fe-7ae0-817a-77eff2714f1f
+      observed_session: 01a15932-2a68-7243-add9-b2018e57f833
+      attachment: Bildschirmfoto 2026-10-20 um 14.05.38.png
+      diagnostic_note: Agent inspection found PR74 merged on GitHub at 992f4ff while the installed skill symlink still used local main at 999c527. The agent then fast-forwarded that checkout to 992f4ff and verified that the shared-file queue returns this request for david. This manual intervention is recorded separately from David's report; no outcome of a fresh updated session is inferred.
+  - id: david-pr74-works-as-expected-2026-10-20
+    by: david
+    recorded_at: '2026-10-20T12:19:48Z'
+    readiness: experienced
+    text: yes, it works as expected!
+    evidence_type: self_report
+    outcomes:
+    - ref: f-e-outcomes-reviewable
+      verdict: observed
+      note: David reports that the change works as expected after this session resurfaced the saved feedback request with both original outcome statements. This is his qualitative assessment of the expected benefit; he has not supplied details of a separate real-expectation trial or persistence across a further session, so those checks remain unverified.
+    - ref: f-e-feedback-burden
+      verdict: not_assessed
+      note: David's general positive report does not separately assess premature or repetitive requests or the burden of maintaining the reasoning. No absence of harm is inferred.
+    source:
+      surface: conversation
+      note: Reply to the displayed pr-74-feedback-cycle-self-test revision 1 Feedback request in the Rufus and David collaboration session.
   ready_when: 'After David uses PR #74''s updated skill with a separate real expectation: records it with named feedback providers, leaves the session, and returns in a later session using the updated skill and the same actual reasoning file, with an opportunity to answer that expectation''s feedback. Compare the original expectation with what actually happens: whether outstanding feedback returns without David remembering to ask; whether both the original benefit and reservation are displayed; and whether his response survives a further session. Record any manual prompting, intervention, or deviation from these conditions. Assess separately whether requests are premature, repetitive, or make maintaining the reasoning burdensome. If the experience or evidence is insufficient, record not experienced yet, not assessed, unclear, or unavailable rather than inferring an outcome.'
   source:
     surface: conversation
     source_text: yes this looks good - add it to the PR
     note: David approved the displayed self-test commitment. No outcome feedback or completed trial is recorded.
+- id: feedback-sync-pilot
+  revision: 1
+  created_by: david
+  recorded_at: '2026-10-20T12:36:47Z'
+  about:
+    ref: f-e-feedback-sync
+    tree: future_reality
+    kind: injection
+    standing: proposed
+    text: Sessions synchronise authorised feedback records with shared Git state before checking outstanding feedback and after saving responses.
+  feedback_from: [david]
+  benefits:
+  - ref: f-e-shared-feedback-current
+    tree: future_reality
+    kind: predicted_effect
+    standing: proposed
+    text: Participants returning through separate checkouts can review the latest shared feedback without performing Git operations themselves.
+  reservations:
+  - ref: f-e-feedback-sync-friction
+    tree: future_reality
+    kind: undesirable_effect
+    standing: proposed
+    text: Failed or conflicting synchronisation can delay sharing feedback and add recovery work.
+  reports: []
+  ready_when: After the merged implementation is active, enter feedback in one checkout and resume with the same shared destination in another. Assess whether the reply and outstanding reservation appear without manual Git operations. Record any activation step, sync failure, conflict, delay or recovery work; report benefit and burden separately and leave insufficient evidence unassessed.
+  source: {surface: conversation, source_text: accept, note: David accepted feedback-sync-2026-10-20 revision 1, including this trial assignment; no trial outcome is inferred.}
 - id: pr-expected-outcomes-check
   revision: 1
   created_by: david
@@ -6886,6 +7013,35 @@ change_acceptances:
   - apps/discord/tests/test_store.py
   - apps/discord/README.md
   - apps/discord/.env.example
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+- proposal_ref: feedback-sync-2026-10-20
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-20T12:36:47Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept
+  scope: Implement the displayed feedback synchronisation workflow for native sessions and the Discord host using the configured shared reasoning file, standing authorisation for relevant validated Git commits and pushes, current-state reconciliation before feedback selection, independent outcomes and deferrals, preserved concurrent and unsent contributions, explicit local-versus-shared status and review against original predictions. Add the displayed four proposed Future Reality nodes and four proposed links, verification and review backlog and David's two-checkout feedback commitment. Preserve the saved PR74 feedback and existing reasoning/receipts. Validate with temporary Git repositories and the fictional remote-work fixture, then deliver a feature branch and PR; routine feedback sharing needs no separate PR and implementation changes retain the existing approval process.
+  node_ids: [f-e-feedback-sync, f-e-shared-feedback-current, f-e-feedback-sync-friction, f-e-feedback-sync-preservation]
+  link_ids: [f-rel-sync-shares-feedback, f-rel-shared-feedback-reviewable, f-rel-sync-friction, f-rel-sync-preservation]
+  approved_paths:
+  - skills/reason-commons/SKILL.md
+  - skills/reason-commons/references/feedback.md
+  - skills/reason-commons/references/feedback-sync.md
+  - skills/reason-commons/references/responses.md
+  - skills/reason-commons/references/views.md
+  - skills/reason-commons/scripts/feedback.py
+  - skills/reason-commons/scripts/feedback_sync.py
+  - skills/reason-commons/tests/test_feedback.py
+  - skills/reason-commons/tests/test_feedback_sync.py
+  - apps/discord/README.md
+  - apps/discord/reasoncommons_discord/service.py
+  - apps/discord/reasoncommons_discord/feedback.py
+  - apps/discord/tests/test_service.py
+  - apps/discord/tests/test_feedback.py
+  - docs/beads-reasoning.md
   - ltp/rufus-david-collab/reason-commons.yaml
   - .beads/issues.jsonl
 - proposal_ref: pr-expected-outcomes-2026-10-20
