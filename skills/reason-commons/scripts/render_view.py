@@ -20,6 +20,7 @@ import html
 import json
 from pathlib import Path
 import sys
+import textwrap
 import uuid
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -27,7 +28,10 @@ from update_views import load, validate  # noqa: E402
 
 PEOPLE = {}
 STANDINGS = ("accepted", "proposed", "disputed")
-MARK = {"accepted": "A", "proposed": "P", "disputed": "D"}
+STANDING_NAME = {"accepted": "Accepted", "proposed": "Proposed", "disputed": "Disputed"}
+# The Claude widget host neither wraps node or edge text nor widens labels past about 200px,
+# so widget labels are broken into lines that fit; 28 characters fit in testing, 26 leaves margin.
+WIDTH = 26
 TREE_ORDER = ("goal", "current_reality", "conflict", "future_reality", "prerequisite", "transition")
 
 
@@ -75,14 +79,20 @@ def select(tree, standing):
     return nodes, shown, context, links
 
 
-def label(node, standing, tree, multiline=True):
-    metadata = f"[{MARK[status(node)]}] {title(tree).upper()} · {title(node['kind']).upper()}"
-    separator = "\n" if multiline else ": "
-    text = f"{metadata}{separator}{node['text'].strip()}"
+def label(node, standing, tree, multiline=True, width=None):
+    # The view heading names the tree, so a node carries only its standing, kind and statement.
+    head, kind = f"[{STANDING_NAME[status(node)]}]", title(node["kind"])
+    parts = [node["text"].strip()]
     if standing == "disputed":
-        for c in node.get("challenges", []):
-            text += f"\nObjection ({PEOPLE.get(c['by'], c['by'])}): {c['text'].strip()}"
-    return text
+        parts += [f"Objection ({PEOPLE.get(c['by'], c['by'])}): {c['text'].strip()}" for c in node.get("challenges", [])]
+    if not multiline:
+        return f"{head} {kind}: " + "\n".join(parts)
+    # Diagrams draw the one-sentence label when there is one; the text outline keeps the full statement.
+    parts[0] = (node.get("label") or node["text"]).strip()
+    lines = [head, kind]
+    for part in parts:
+        lines += textwrap.wrap(part, width, break_long_words=False, break_on_hyphens=False) if width else [part]
+    return "\n".join(lines)
 
 
 def escape(text):
@@ -109,7 +119,7 @@ def relations(links):
     return names.pop().replace("_", " ") if len(names) == 1 else None
 
 
-def mermaid(name, tree, standing):
+def mermaid(name, tree, standing, width=None):
     nodes, shown, context, links = select(tree, standing)
     common = relations(links)
     short = {ident: f"n{i}" for i, ident in enumerate(shown + context, 1)}
@@ -117,13 +127,13 @@ def mermaid(name, tree, standing):
     loose = [i for i in shown if i not in linked]
     out = ["flowchart BT"]
     for ident in [i for i in shown + context if i not in loose]:
-        out.append(f'  {short[ident]}["{escape(label(nodes[ident], standing, name))}"]')
+        out.append(f'  {short[ident]}["{escape(label(nodes[ident], standing, name, width=width))}"]')
     if loose and links:
         out.append('  subgraph loose["Not yet linked"]')
-        out += [f'    {short[i]}["{escape(label(nodes[i], standing, name))}"]' for i in loose]
+        out += [f'    {short[i]}["{escape(label(nodes[i], standing, name, width=width))}"]' for i in loose]
         out.append("  end")
     else:
-        out += [f'  {short[i]}["{escape(label(nodes[i], standing, name))}"]' for i in loose]
+        out += [f'  {short[i]}["{escape(label(nodes[i], standing, name, width=width))}"]' for i in loose]
     for j, link in enumerate(links, 1):
         tag = [] if common else [link["relation"].replace("_", " ")]
         if status(link) == "disputed":
@@ -238,7 +248,7 @@ def markdown(name, tree, standing):
 
 
 def widget(name, tree, standing):
-    source, shown, links, common, context = mermaid(name, tree, standing)
+    source, shown, links, common, context = mermaid(name, tree, standing, width=WIDTH)
     relation = f" · each arrow reads “{common}”" if common else ""
     return frame(source, heading(name, standing, shown, links, context) + relation, not_shown(tree, standing))
 

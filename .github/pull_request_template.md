@@ -6,7 +6,7 @@
 
 <!-- One rendered Mermaid diagram per affected tree in the actual YAML diff, with tree, kind, standing and change labels. Generate this section and the collapsed list with:
 python3 skills/reason-commons/scripts/check_pr_trees.py ltp/rufus-david-collab/reason-commons.yaml --base origin/main --suggest --format markdown
-Keep the generated diagrams and unresolved-connection notes visible here. With no node/link changes, state that and describe the scope/backlog work. -->
+Keep the generated diagrams and unresolved-connection notes visible here. Backlog-only changes still get a generated diagram. With no node, link or backlog changes, state that and describe the scope. -->
 
 ## Reasoning this serves
 

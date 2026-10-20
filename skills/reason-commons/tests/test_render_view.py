@@ -73,7 +73,8 @@ class RenderViewTests(unittest.TestCase):
     def test_proposed_view_shows_other_standing_endpoints_as_context(self):
         source, shown, links, _, context = render.mermaid("current_reality", self.tree, "proposed")
         self.assertEqual((shown, context), (["g"], ["c"]))
-        self.assertIn("[A] CURRENT REALITY · CAUSE<br/>No customers", source)
+        self.assertIn("[Accepted]<br/>Cause<br/>No customers", source)
+        self.assertNotIn("CURRENT REALITY", source)
         self.assertRegex(source, r"class n2 context")
         self.assertIn("-.->", source)
 
@@ -81,7 +82,7 @@ class RenderViewTests(unittest.TestCase):
         source = render.mermaid("current_reality", self.tree, "disputed")[0]
         self.assertIn("Objection (Bob): Superseded", source)
 
-    def test_node_metadata_comes_from_tree_and_kind_and_preserves_statement(self):
+    def test_node_metadata_names_standing_and_kind_not_tree_and_preserves_statement(self):
         examples = {
             "goal": "necessary_condition",
             "current_reality": "undesirable_effect",
@@ -96,11 +97,13 @@ class RenderViewTests(unittest.TestCase):
                 item = node("opaque-id", 'A qualified statement: sometimes "this" holds.', "proposed", kind=kind)
                 content = {"nodes": [item], "links": [], "backlog": []}
                 source = render.mermaid(tree, content, "proposed")[0]
-                metadata = f"[P] {tree.replace('_', ' ').upper()} · {kind.replace('_', ' ').upper()}"
-                self.assertIn(metadata + "<br/>", source)
+                kind_name = kind.replace("_", " ").capitalize()
+                self.assertIn(f"[Proposed]<br/>{kind_name}<br/>", source)
+                self.assertNotIn(tree.replace("_", " ").upper(), source)
+                self.assertNotIn("opaque-id", source)
                 self.assertIn(render.escape(item["text"]), source)
                 outline = render.text_outline(tree, content, "proposed")
-                self.assertIn(metadata + ": " + item["text"], outline)
+                self.assertIn(f"[Proposed] {kind_name}: " + item["text"], outline)
 
     def test_markdown_view_preserves_topology_and_scope_for_each_standing(self):
         for standing in render.STANDINGS:
@@ -117,10 +120,31 @@ class RenderViewTests(unittest.TestCase):
     def test_text_outline_lists_each_link_once(self):
         outline = render.text_outline("current_reality", self.tree, "accepted")
         self.assertTrue(outline.startswith("CURRENT REALITY — ACCEPTED ONLY (6 nodes, 3 links)"))
-        self.assertIn("AND( [A] CURRENT REALITY · CAUSE: No customers + [A] CURRENT REALITY · CAUSE: Funding not applied for )", outline)
+        self.assertIn("AND( [Accepted] Cause: No customers + [Accepted] Cause: Funding not applied for )", outline)
         self.assertEqual(outline.count("<- "), 3)
-        self.assertIn("Not yet linked:\n  [A] CURRENT REALITY · CAUSE: Loose accepted fact", outline)
+        self.assertIn("Not yet linked:\n  [Accepted] Cause: Loose accepted fact", outline)
         self.assertTrue(outline.endswith("Not shown: 1 proposed, 1 disputed. Say “show proposed” or “show disputed”."))
+
+    def test_widget_labels_fit_the_host_without_wrapping(self):
+        # The Claude widget host neither wraps label text nor widens labels past about 200px.
+        long = node("long", "A statement long enough that it would run far past the width the widget host gives each label line.", "accepted")
+        tree = {"nodes": [long], "links": [], "backlog": []}
+        page = render.widget("current_reality", tree, "accepted")
+        source = json.loads(page.split("mermaid.render('", 1)[1].split("', ", 1)[1].rsplit(");\nconst host", 1)[0])
+        lines = [line for label in re.findall(r'\["(.*?)"\]', source) for line in label.split("<br/>")]
+        self.assertLessEqual(max(map(len, lines)), render.WIDTH)
+        self.assertIn("A statement long enough that it would run far past the width the widget host gives each label line.", " ".join(lines[2:]))
+        markdown = render.markdown("current_reality", tree, "accepted")
+        self.assertIn(long["text"], markdown)
+
+    def test_views_draw_short_labels_but_the_outline_keeps_full_statements(self):
+        item = node("x", "A long statement whose qualification matters: only for call-centre work.", "accepted")
+        item["label"] = "The gain holds only for call-centre work."
+        tree = {"nodes": [item], "links": [], "backlog": []}
+        source = render.mermaid("current_reality", tree, "accepted")[0]
+        self.assertIn("The gain holds only for call-centre work.", source)
+        self.assertNotIn("A long statement", source)
+        self.assertIn("A long statement whose qualification matters", render.text_outline("current_reality", tree, "accepted"))
 
     def test_widget_embeds_source_safely(self):
         page = render.frame('flowchart LR\n  a["</script> `${x}`"]', "HEAD <b>")

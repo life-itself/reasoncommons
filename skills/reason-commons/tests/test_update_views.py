@@ -140,6 +140,32 @@ class ViewTests(unittest.TestCase):
         self.assertEqual(snapshot["trees"], self.state["trees"])
         self.assertNotIn("revision", yaml.safe_load(self.path.read_text()))
 
+    def test_labels_are_short_single_lines_and_views_draw_them(self):
+        node = self.state["trees"]["current_reality"]["nodes"][0]
+        for bad in ("", "x" * (views.LABEL_MAX + 1), "two\nlines", 7):
+            node["label"] = bad
+            with self.subTest(label=bad), self.assertRaises(ValueError):
+                views.validate(self.state)
+        self.state["trees"]["current_reality"]["backlog"][0]["label"] = "y" * (views.LABEL_MAX + 1)
+        node["label"] = "Remote workers gained 13%."
+        with self.assertRaises(ValueError):
+            views.validate(self.state)
+        self.state["trees"]["current_reality"]["backlog"][0]["label"] = "Test the limit."
+        self.save()
+        current = self.diagram("current").read_text()
+        self.assertIn("Remote workers gained 13%.", current)
+        self.assertNotIn("13% productivity gain for remote workers", current)
+
+    def test_traces_are_described_by_tree_and_count_not_ids(self):
+        goal = {"id": "goal-node-xyz", "kind": "goal", "text": "Understand where remote work helps.", "status": "accepted",
+                "accepted_by": ["alice"], "contributions": [{"by": "alice", "attribution": "explicit", "mode": "text"}]}
+        self.state["trees"]["goal"] = {"nodes": [goal], "links": [], "backlog": []}
+        self.state["trees"]["current_reality"]["nodes"][0]["addresses"] = ["goal-node-xyz"]
+        self.save()
+        current = self.diagram("current").read_text()
+        self.assertIn("Addresses 1 Goal statement", current)
+        self.assertNotIn("goal-node-xyz", "".join(ET.fromstring(current).itertext()))
+
     def test_wip_attribution_and_reordering_do_not_clear_delta(self):
         self.save()
         original = {p: (p.read_bytes(), p.stat().st_mtime_ns) for p in self.out.rglob("*") if p.is_file()}

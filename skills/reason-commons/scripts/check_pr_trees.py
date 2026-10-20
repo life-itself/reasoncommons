@@ -216,7 +216,9 @@ def diagram_graph(source):
 
 
 def check_presentation(body, before_documents, after_documents, found):
-    if not found:
+    # Backlog-only changes have no node/link updates but still get a generated diagram.
+    generated = diagrams.fragments(before_documents, after_documents)
+    if not found and not generated:
         return []
     parts = sections(body)
     problems = []
@@ -231,7 +233,6 @@ def check_presentation(body, before_documents, after_documents, found):
         except (ValueError, TypeError, yaml.YAMLError) as error:
             invalid_configuration = True
             problems.append(f"Invalid Mermaid display configuration in diagram {number}: {error}")
-    generated = diagrams.fragments(before_documents, after_documents)
     expected = [diagram_graph(diagram["source"]) for diagram in generated]
     if any(diagrams.connection_note(diagram) not in visible for diagram in generated):
         problems.append("Show the generated unresolved-connection notes beside the tree diagrams.")

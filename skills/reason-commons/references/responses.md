@@ -8,7 +8,7 @@ For every referenced node, show **Tree · Node kind · Standing**, followed by i
 
 Use a table for several updates, with separate **Operation**, **Tree**, **Item type**, **Standing**, **ID** and **Update** columns. For a node, the item type is its kind, such as **Injection** or **Undesirable effect**. For a link, write **Link · relation** and name its source and target IDs. Backlog entries are work on referenced items; identify the owning tree and work remaining without giving them a node kind.
 
-In diagrams, put `[P] TREE · KIND`, `[A] TREE · KIND` or `[D] TREE · KIND` on a separate line above the full statement. Retain the explicit standing key and the actual topology. In text-only views, use `Tree · Kind · Standing: statement` or the equivalent bracket marker. Generated views derive these labels from the YAML; mixed-tree change diagrams must show each node's own tree.
+In diagrams, name each tree once, in the heading or one group per tree, and inside each node put the change and spelled-out standing (`ADDED · [Proposed]`, or just `[Accepted]` in a tree view) and then the kind on separate lines above the full statement. Draw each statement's one-sentence label, keep identifiers out of node text and break label lines so nothing is cut off; see [diagrams.md](diagrams.md). Give the full statements of added or changed nodes in the proposal text, because acceptance concerns them. Retain the actual topology. In text-only views, use `Tree · Kind · Standing: statement` or `[Standing] Kind: statement` under a tree heading. Generated views derive these labels from the YAML; mixed-tree change diagrams group nodes by tree.
 
 ## Choose the type
 
