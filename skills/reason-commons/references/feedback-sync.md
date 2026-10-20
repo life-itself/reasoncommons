@@ -12,6 +12,8 @@ python3 <skill-directory>/scripts/feedback_sync.py <state.yaml> configure --remo
 
 Configuration validates the existing shared file and records the remote URL, branch, path, participant and reply in the state file's local hidden directory. It fetches but does not publish. Each machine needs its own Git credentials and this one-time configuration. A changed remote URL requires explicit reconfiguration. `disable` removes the policy and retains the reasoning file. This neither installs the skill nor enables Discord messaging.
 
+A linked Git worktree, such as the fresh one a Claude Code session creates, uses its main checkout's authorisation for the same reasoning file when the remote URL matches, so sharing does not silently stop in every new session. The first sync records the inherited policy locally with `inherited_from`, and each sync result says which checkout's authorisation it used. Inheritance never covers a different file or remote URL. When the main checkout disables or changes its authorisation, worktrees stop sharing at their next sync. `disable` in a worktree stays in force there until that worktree is configured again. When suggesting a configure command, name the branch other participants read (the remote's default branch), not a session's own branch.
+
 ## Session entry and capture
 
 Run `python3 <skill-directory>/scripts/feedback_sync.py <state.yaml> sync` before selecting feedback and again after a feedback save and normal view validation. Reread the resulting YAML before deriving the recipient's queue. Without configuration the command stays local and makes no network request. A standing policy needs no repeat approval or PR for routine sharing.

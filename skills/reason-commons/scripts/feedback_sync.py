@@ -114,6 +114,13 @@ def fetch(repo, policy):
 def configure(state, remote, branch, by, source_text):
     """Call once per checkout after the human authorises this destination."""
     state = Path(state).expanduser().resolve()
+    with state_lock(state):
+        _configure(state, remote, branch, by, source_text)
+        (local_dir(state) / "feedback-sync-off.json").unlink(missing_ok=True)
+    return {"state": "configured", "message": "Standing feedback sync configured for " + remote + "/" + branch + "."}
+
+
+def _configure(state, remote, branch, by, source_text, **extra):
     current = load_text(state.read_text())
     if by not in current["participants"] or not source_text.strip():
         raise SyncError("Configuration needs a known human and their actual standing authorisation.")
@@ -123,16 +130,58 @@ def configure(state, remote, branch, by, source_text):
     git(repo, "check-ref-format", "refs/heads/" + branch)
     policy = {"repo": str(repo), "path": state.relative_to(repo).as_posix(), "remote": remote,
               "url": git(repo, "remote", "get-url", remote), "branch": branch, "by": by,
-              "source_text": source_text, "recorded_at": datetime.now(timezone.utc).isoformat()}
-    with state_lock(state):
-        tip, text, _ = fetch(repo, policy)
-        ancestor = git(repo, "merge-base", "HEAD", tip)
-        base_text = git(repo, "show", ancestor + ":" + policy["path"], raw=True)
-        # Validate compatibility before enabling any future writes.
-        reconcile(load_text(base_text), current, load_text(text))
-        atomic(local_dir(state) / "feedback-sync.json", json.dumps(policy, indent=2) + "\n")
-        atomic(local_dir(state) / "feedback-sync-base.json", json.dumps({"commit": ancestor, "text": base_text}) + "\n")
-    return {"state": "configured", "message": "Standing feedback sync configured for " + remote + "/" + branch + "."}
+              "source_text": source_text, "recorded_at": datetime.now(timezone.utc).isoformat(), **extra}
+    tip, text, _ = fetch(repo, policy)
+    ancestor = git(repo, "merge-base", "HEAD", tip)
+    base_text = git(repo, "show", ancestor + ":" + policy["path"], raw=True)
+    # Validate compatibility before enabling any future writes.
+    reconcile(load_text(base_text), current, load_text(text))
+    atomic(local_dir(state) / "feedback-sync.json", json.dumps(policy, indent=2) + "\n")
+    atomic(local_dir(state) / "feedback-sync-base.json", json.dumps({"commit": ancestor, "text": base_text}) + "\n")
+    return policy
+
+
+def main_grant(state):
+    """The main checkout's standing authorisation for this file, when state is in a linked worktree.
+
+    Returns None unless the main checkout authorised exactly this reasoning file, through
+    a remote with the same URL here. The participant's words name the destination, so
+    a worktree of the same repository reuses them; anything else needs its own consent.
+    """
+    try:
+        repo = Path(git(state.parent, "rev-parse", "--show-toplevel")).resolve()
+        main = Path(git(repo, "worktree", "list", "--porcelain").splitlines()[0].split(" ", 1)[1]).resolve()
+    except (SyncError, IndexError):
+        return None
+    if main == repo:
+        return None
+    relative = state.relative_to(repo).as_posix()
+    source = local_dir(main / relative) / "feedback-sync.json"
+    try:
+        granted = json.loads(source.read_text())
+        url = git(repo, "remote", "get-url", granted["remote"])
+    except (OSError, ValueError, KeyError):
+        return None
+    if granted.get("inherited_from") or granted.get("repo") != str(main) or granted.get("path") != relative or granted.get("url") != url:
+        return None
+    return granted
+
+
+def inherit(state):
+    """Adopt the main checkout's authorisation in a linked worktree; caller holds the state lock."""
+    if (local_dir(state) / "feedback-sync-off.json").exists():
+        return None
+    granted = main_grant(state)
+    if not granted:
+        return None
+    return _configure(state, granted["remote"], granted["branch"], granted["by"], granted["source_text"],
+                      inherited_from=granted["repo"], authorised_at=granted["recorded_at"])
+
+
+def still_granted(state, policy):
+    """An inherited authorisation lapses when the main checkout withdraws or changes it."""
+    granted = main_grant(state)
+    return bool(granted) and all(granted[key] == policy[key] for key in ("remote", "url", "branch", "by", "source_text"))
 
 
 def definitions(state):
@@ -340,9 +389,26 @@ def checkout_state(repo, policy, tip):
 def _sync(state):
     directory = local_dir(state)
     policy_path = directory / "feedback-sync.json"
-    if not policy_path.exists():
-        return {"state": "local", "message": "Saved locally; feedback sharing is not configured."}
-    policy = json.loads(policy_path.read_text())
+    if policy_path.exists():
+        policy = json.loads(policy_path.read_text())
+        if policy.get("inherited_from") and not still_granted(state, policy):
+            policy_path.unlink()
+            return {"state": "local", "message": "Saved locally; the main checkout no longer authorises sharing, so this worktree stopped too."}
+    else:
+        try:
+            policy = inherit(state)
+        except ValueError as exc:
+            return {"state": "local", "message": "Saved locally; the main checkout authorises sharing, but this worktree's feedback cannot be shared yet: " + str(exc)}
+        if not policy:
+            return {"state": "local", "message": "Saved locally; feedback sharing is not configured."}
+    result = _share(state, directory, policy)
+    if policy.get("inherited_from"):
+        result["inherited_from"] = policy["inherited_from"]
+        result["message"] += " Sharing uses the authorisation recorded in " + policy["inherited_from"] + "."
+    return result
+
+
+def _share(state, directory, policy):
     repo, _ = destination(state, policy)
     if policy["by"] not in load_text(state.read_text())["participants"]:
         raise SyncError("The standing authorisation no longer names a project participant.")
@@ -427,6 +493,9 @@ def main():
         elif args.command == "disable":
             with state_lock(state):
                 (local_dir(state) / "feedback-sync.json").unlink(missing_ok=True)
+                if main_grant(state):
+                    # Otherwise the next sync would inherit the main checkout's authorisation again.
+                    atomic(local_dir(state) / "feedback-sync-off.json", json.dumps({"disabled_at": datetime.now(timezone.utc).isoformat()}) + "\n")
             result = {"state": "local", "message": "Automatic sharing disabled; the reasoning file was retained."}
         else:
             result = sync(state)

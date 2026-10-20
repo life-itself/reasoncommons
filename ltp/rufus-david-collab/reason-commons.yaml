@@ -1438,6 +1438,20 @@ trees:
       status: proposed
       contributions:
       - {by: david, attribution: explicit, mode: text, note: 'On 2026-10-20 David proposed basic onboarding so that Rufus has enough context to review a feedback request when he first opens a session.'}
+    - id: r-e-worktree-sharing-off
+      kind: observation
+      text: Feedback sharing that David authorised in his main checkout on 2026-10-20 was off in a Claude Code session worktree of the same repository, because the authorisation is stored per checkout and each session gets a fresh worktree.
+      label: Sharing set up in the main checkout was off in a session worktree.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text, note: 'Observed on 2026-10-20 in worktree claude/reason-commons-collab-b055fa: sync reported sharing not configured while the main checkout held an authorisation for origin/main. David asked whether sharing could be turned on automatically.'}
+    - id: r-e-onboarding-suggests-session-branch
+      kind: observation
+      text: In a session worktree, the first-session introduction suggested authorising sharing to the worktree's own session branch rather than the shared branch other participants read.
+      label: The introduction suggested the session's own branch for sharing.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text, note: 'Observed on 2026-10-20: the introduction printed --branch claude/reason-commons-collab-b055fa.'}
     - id: r-e-repo-feels-scattered
       kind: observation
       text: David finds the Reason Commons repository increasingly scattered as it contains the public website, skills and prospective Discord-bot work.
@@ -3205,6 +3219,29 @@ trees:
       status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text}
+    - id: f-e-worktree-inherits-sharing
+      kind: injection
+      text: A linked worktree whose main checkout holds a standing feedback-sharing authorisation for the same reasoning file, remote URL and branch uses that authorisation, records that it was inherited, and reports this in the sync result and the introduction.
+      label: Worktrees use the main checkout's sharing authorisation.
+      status: proposed
+      addresses: [r-e-worktree-sharing-off]
+      contributions:
+      - {by: david, attribution: explicit, mode: text, note: 'David asked on 2026-10-20 whether sharing could be turned on automatically and chose the permanent fix; the assistant drafted the mechanism.'}
+    - id: f-e-onboarding-suggests-default-branch
+      kind: injection
+      text: When no sharing authorisation exists, the introduction's setup command names the repository's default branch rather than the checkout's current branch.
+      label: The introduction suggests the shared default branch.
+      status: proposed
+      addresses: [r-e-onboarding-suggests-session-branch]
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text}
+    - id: f-e-inherited-sharing-unnoticed
+      kind: undesirable_effect
+      text: A session worktree may share feedback without the participant realising sharing is on there.
+      label: A worktree may share feedback without the person noticing.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text}
     - id: f-e-discord-diverts-resources
       kind: undesirable_effect
       text: Operating and extending the bot may consume scarce time and money and delay real-work testing.
@@ -3380,6 +3417,33 @@ trees:
     - id: f-rel-onboarding-delays-start
       from: [f-e-first-session-onboarding]
       to: f-e-onboarding-delays-start
+      relation: can_cause
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+    - id: f-rel-worktree-inherit-current
+      from: [f-e-worktree-inherits-sharing]
+      to: f-e-shared-feedback-current
+      relation: contributes_to
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+    - id: f-rel-default-branch-current
+      from: [f-e-onboarding-suggests-default-branch]
+      to: f-e-shared-feedback-current
+      relation: contributes_to
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+    - id: f-rel-worktree-inherit-less-friction
+      from: [f-e-worktree-inherits-sharing]
+      to: f-e-feedback-sync-friction
+      relation: reduces_risk_of
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+      assumptions:
+      - text: Sharing that is silently off in a worktree counts as delayed sharing, and re-authorising each worktree counts as setup work.
+        by: assistant
+    - id: f-rel-worktree-inherit-unnoticed
+      from: [f-e-worktree-inherits-sharing]
+      to: f-e-inherited-sharing-unnoticed
       relation: can_cause
       status: proposed
       contributions: [{by: assistant, attribution: assistant, mode: text}]
@@ -3922,6 +3986,13 @@ trees:
       feedback_revision: 1
       feedback_report: david-pr74-works-as-expected-2026-10-20
       note: Compare this attributed self-report with the original expectation and the trial conditions; no endorsement or causal conclusion was inferred.
+    - ref: f-e-feedback-cycle
+      work: review_outcome_feedback
+      label: Review recorded outcome feedback against the original reasoning.
+      feedback_request: pr-74-feedback-cycle-self-test
+      feedback_revision: 1
+      feedback_report: david-pr74-burden-satisfactory-2026-10-20
+      note: Compare this attributed self-report with the original expectation and the trial conditions; no endorsement or causal conclusion was inferred.
     - ref: f-e-rufus-attention-pointer
       work: trace_effects
       label: "Would knowing where to look get David timely feedback, and what could go wrong?"
@@ -3934,6 +4005,10 @@ trees:
       work: connect_or_explain
       label: "Relate this to the Discord bot and to recommending one next step."
       note: Possible relationships to f-e-discord-on-demand, f-rel-discord-alignment-supports-next and f-e-skill-recommends-next are not established.
+    - ref: f-rel-worktree-inherit-current
+      work: verify_feedback_sync
+      label: Verify that sharing is on in a fresh session worktree.
+      note: After the change merges and the installed skill is updated, start a new session; check that sync reports sharing on through the main checkout's authorisation and that a feedback reply reaches origin/main. Also check whether the session branch's copy of the reasoning file conflicts with the shared feedback when that session's PR merges.
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
@@ -5583,6 +5658,19 @@ feedback_requests:
     source:
       surface: conversation
       note: Reply to the displayed pr-74-feedback-cycle-self-test revision 1 Feedback request in the Rufus and David collaboration session.
+  - id: david-pr74-burden-satisfactory-2026-10-20
+    by: david
+    recorded_at: '2026-10-20T15:19:37Z'
+    readiness: experienced
+    text: i have used it enough and the requests do not feel repetitive or burdensome - they're satisfactory.
+    evidence_type: self_report
+    outcomes:
+    - ref: f-e-feedback-burden
+      verdict: not_observed
+      note: David reports sufficient use and that the requests do not feel repetitive or burdensome. He did not separately mention whether any request arrived too early to judge. This is his scoped self-report, not proof that the burden is absent for other participants such as Rufus.
+    source:
+      surface: conversation
+      note: Reply to the displayed pr-74-feedback-cycle-self-test revision 1 Feedback request, shown at session entry in the Rufus and David collaboration session without David asking for it.
   ready_when: 'After David uses PR #74''s updated skill with a separate real expectation: records it with named feedback providers, leaves the session, and returns in a later session using the updated skill and the same actual reasoning file, with an opportunity to answer that expectation''s feedback. Compare the original expectation with what actually happens: whether outstanding feedback returns without David remembering to ask; whether both the original benefit and reservation are displayed; and whether his response survives a further session. Record any manual prompting, intervention, or deviation from these conditions. Assess separately whether requests are premature, repetitive, or make maintaining the reasoning burdensome. If the experience or evidence is insufficient, record not experienced yet, not assessed, unclear, or unavailable rather than inferring an outcome.'
   source:
     surface: conversation
@@ -5699,6 +5787,36 @@ feedback_requests:
     surface: conversation
     source_text: accept first-session-onboarding-2026-10-20 revision 1
     note: Included in the displayed proposal David accepted. No outcome is inferred.
+- id: worktree-sharing-check
+  revision: 1
+  created_by: david
+  recorded_at: '2026-10-20T15:31:58Z'
+  about:
+    ref: f-e-worktree-inherits-sharing
+    tree: future_reality
+    kind: injection
+    standing: proposed
+    text: A linked worktree whose main checkout holds a standing feedback-sharing authorisation for the same reasoning file, remote URL and branch uses that authorisation, records that it was inherited, and reports this in the sync result and the introduction.
+  feedback_from:
+  - david
+  benefits:
+  - ref: f-e-shared-feedback-current
+    tree: future_reality
+    kind: predicted_effect
+    standing: proposed
+    text: Participants returning through separate checkouts can review the latest shared feedback without performing Git operations themselves.
+  reservations:
+  - ref: f-e-inherited-sharing-unnoticed
+    tree: future_reality
+    kind: undesirable_effect
+    standing: proposed
+    text: A session worktree may share feedback without the participant realising sharing is on there.
+  ready_when: After this change is merged and the installed skill updated, when David answers a feedback request in a new session worktree. Judge whether the answer reached the shared branch without any setup or Git steps, and separately whether it was clear that sharing was on in that session.
+  reports: []
+  source:
+    surface: conversation
+    source_text: accept
+    note: Included in displayed proposal change-worktree-sharing-2026-10-20 revision 1, which David accepted. No outcome is inferred.
 change_acceptances:
 - proposal_ref: change-node-roles-2026-10-14
   by: david
@@ -7533,5 +7651,25 @@ change_acceptances:
   - skills/reason-commons/references/onboarding.md
   - skills/reason-commons/references/responses.md
   - skills/reason-commons/SKILL.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+- proposal_ref: change-worktree-sharing-2026-10-20
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-20T15:32:31Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept
+  scope: 'One PR from this branch to main. (1) feedback_sync.py: when a checkout is a linked worktree with no local sharing policy and its main checkout holds a standing authorisation for the same reasoning file path, remote URL and branch, the worktree uses that authorisation, records that it was inherited (from which checkout) in its local policy, and reports this; it never inherits for a different remote, branch or file. (2) onboarding.py: report inherited sharing as on, and when no authorisation exists name the repository default branch rather than the current branch in the setup command. (3) Tests for inheritance, refusal on mismatch, unchanged behaviour without an authorisation, and onboarding wording. (4) Update references/feedback-sync.md and references/onboarding.md. Add the displayed two observations, two injections, one undesirable effect, four links, one backlog item and feedback commitment worktree-sharing-check revision 1 (David), plus an implementation bead.'
+  node_ids: [r-e-worktree-sharing-off, r-e-onboarding-suggests-session-branch, f-e-worktree-inherits-sharing, f-e-onboarding-suggests-default-branch, f-e-inherited-sharing-unnoticed]
+  link_ids: [f-rel-worktree-inherit-current, f-rel-default-branch-current, f-rel-worktree-inherit-less-friction, f-rel-worktree-inherit-unnoticed]
+  approved_paths:
+  - skills/reason-commons/scripts/feedback_sync.py
+  - skills/reason-commons/scripts/onboarding.py
+  - skills/reason-commons/tests/test_feedback_sync.py
+  - skills/reason-commons/tests/test_onboarding.py
+  - skills/reason-commons/references/feedback-sync.md
+  - skills/reason-commons/references/onboarding.md
   - ltp/rufus-david-collab/reason-commons.yaml
   - .beads/issues.jsonl

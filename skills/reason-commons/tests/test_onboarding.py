@@ -60,6 +60,34 @@ class OnboardingTests(unittest.TestCase):
         policy.write_text(json.dumps({"remote": "origin", "branch": "main"}))
         self.assertIn("**Sharing:** on.", onboarding.show(self.state, "alice", again=True))
 
+    def test_setup_command_names_the_shared_default_branch_not_a_session_branch(self):
+        remote = self.root / "shared.git"
+        subprocess.run(["git", "init", "-q", "--bare", "-b", "trunk", str(remote)], check=True)
+        git(self.root, "init", "-q", "-b", "trunk")
+        git(self.root, "remote", "add", "origin", str(remote))
+        git(self.root, "symbolic-ref", "refs/remotes/origin/HEAD", "refs/remotes/origin/trunk")
+        git(self.root, "checkout", "-q", "-b", "claude/session")
+        self.assertIn("configure --remote origin --branch trunk --by alice", onboarding.show(self.state, "alice"))
+
+    def test_worktree_reports_the_main_checkouts_authorisation(self):
+        main, tree = self.root / "main", self.root / "session"
+        main.mkdir()
+        state = main / "reason-commons.yaml"
+        state.write_text(self.state.read_text())
+        git(main, "init", "-q", "-b", "main")
+        git(main, "remote", "add", "origin", "https://example.invalid/shared.git")
+        git(main, "add", "reason-commons.yaml")
+        git(main, "-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid", "commit", "-q", "-m", "State")
+        git(main, "worktree", "add", "-q", "-b", "session", str(tree))
+        granted = onboarding.feedback_sync.local_dir(state.resolve()) / "feedback-sync.json"
+        granted.parent.mkdir()
+        granted.write_text(json.dumps({"repo": str(main.resolve()), "path": "reason-commons.yaml", "remote": "origin",
+                                       "url": "https://example.invalid/shared.git", "branch": "main"}))
+        text = onboarding.show(tree / "reason-commons.yaml", "alice")
+        self.assertIn("**Sharing:** on. Your answers reach the other participants automatically through `origin/main`", text)
+        self.assertIn(f"using the authorisation you gave in your main checkout, `{main.resolve()}`", text)
+        self.assertFalse((onboarding.feedback_sync.local_dir((tree / "reason-commons.yaml").resolve()) / "feedback-sync.json").exists())
+
     def test_shared_reasoning_is_only_read(self):
         before = self.state.read_bytes()
         onboarding.show(self.state, "alice")

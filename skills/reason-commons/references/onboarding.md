@@ -6,7 +6,7 @@ A participant opening Reason Commons for the first time needs to know what the s
 
 Once the driver is known, run `python3 <skill-directory>/scripts/onboarding.py <state.yaml> --participant <driver>`. If it prints an **Introduction**, show it unchanged as the first substantive response, then continue to the driver's feedback queue. It prints nothing for someone who has already seen it in this checkout. When someone asks to see the introduction again, run it with `--again`.
 
-The script records who has seen it only in the state file's local, gitignored folder (`.reason-commons/onboarding.json` for `reason-commons.yaml`), so it never changes the shared reasoning and each new checkout shows it once. It reads whether feedback sharing is configured but never configures it: a participant turns sharing on by running the printed command with their own words of authorisation.
+The script records who has seen it only in the state file's local, gitignored folder (`.reason-commons/onboarding.json` for `reason-commons.yaml`), so it never changes the shared reasoning and each new checkout shows it once. It reads whether feedback sharing is configured but never configures it: a participant turns sharing on by running the printed command with their own words of authorisation. The command names the remote's default branch, the one other participants read, rather than the checkout's current branch. In a linked worktree whose main checkout already authorised sharing for this file, the introduction reports sharing as on and names that checkout; see [feedback-sync.md](feedback-sync.md).
 
 ## Introduction
 
