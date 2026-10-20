@@ -137,6 +137,15 @@ class RenderViewTests(unittest.TestCase):
         markdown = render.markdown("current_reality", tree, "accepted")
         self.assertIn(long["text"], markdown)
 
+    def test_views_draw_short_labels_but_the_outline_keeps_full_statements(self):
+        item = node("x", "A long statement whose qualification matters: only for call-centre work.", "accepted")
+        item["label"] = "The gain holds only for call-centre work."
+        tree = {"nodes": [item], "links": [], "backlog": []}
+        source = render.mermaid("current_reality", tree, "accepted")[0]
+        self.assertIn("The gain holds only for call-centre work.", source)
+        self.assertNotIn("A long statement", source)
+        self.assertIn("A long statement whose qualification matters", render.text_outline("current_reality", tree, "accepted"))
+
     def test_widget_embeds_source_safely(self):
         page = render.frame('flowchart LR\n  a["</script> `${x}`"]', "HEAD <b>")
         embedded = re.search(r"mermaid\.render\('rc-[0-9a-f]+', (.*)\);", page).group(1)

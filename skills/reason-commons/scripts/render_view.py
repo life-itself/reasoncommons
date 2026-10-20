@@ -87,6 +87,8 @@ def label(node, standing, tree, multiline=True, width=None):
         parts += [f"Objection ({PEOPLE.get(c['by'], c['by'])}): {c['text'].strip()}" for c in node.get("challenges", [])]
     if not multiline:
         return f"{head} {kind}: " + "\n".join(parts)
+    # Diagrams draw the one-sentence label when there is one; the text outline keeps the full statement.
+    parts[0] = (node.get("label") or node["text"]).strip()
     lines = [head, kind]
     for part in parts:
         lines += textwrap.wrap(part, width, break_long_words=False, break_on_hyphens=False) if width else [part]

@@ -141,6 +141,46 @@ class PRDiagramTests(unittest.TestCase):
         after["fixture.yaml"]["trees"]["current_reality"]["nodes"].reverse()
         self.assertEqual(first, render.markdown({}, after))
 
+    def test_nodes_show_their_short_label_and_fall_back_to_text(self):
+        labelled = deepcopy(self.scope)
+        labelled["label"] = "The gain may not hold for creative work."
+        source = render.fragments({}, document([self.gain, labelled], [self.limits]))[0]["source"]
+        self.assertIn("ADDED · [Proposed]<br/>Observation<br/>The gain may not hold for creative<br/>work.", source)
+        self.assertNotIn("collaborative knowledge", source)
+        self.assertIn("13% productivity gain", source.replace("<br/>", " "))
+
+    def test_label_only_edit_is_one_relabelled_node(self):
+        before = document([self.gain, self.scope], [self.limits])
+        after = deepcopy(before)
+        after["fixture.yaml"]["trees"]["current_reality"]["nodes"][1]["label"] = "The gain may not hold for creative work."
+        source = render.fragments(before, after)[0]["source"]
+        self.assertIn("RELABELLED · [Proposed]", source)
+        self.assertNotIn("PREVIOUS", source)
+        self.assertEqual(source.count('%% node "scope"'), 1)
+        self.assertEqual(source.count('%% link "limits"'), 1)
+        revised = deepcopy(after)
+        revised["fixture.yaml"]["trees"]["current_reality"]["nodes"][1]["text"] += " It concerned solo tasks."
+        source = render.fragments(before, revised)[0]["source"]
+        self.assertIn("PREVIOUS · [Proposed]", source)
+        self.assertIn("CHANGED · [Proposed]", source)
+
+    def test_relabelled_node_does_not_widen_the_view(self):
+        other = node("other", "An unrelated study result.")
+        extra = link("extra", ["other"], "scope")
+        before = document([self.gain, self.scope, other], [self.limits, extra])
+        after = deepcopy(before)
+        nodes = after["fixture.yaml"]["trees"]["current_reality"]["nodes"]
+        nodes[0]["text"] += " The study was specific to that setting."
+        nodes[1]["label"] = "The gain may not hold for creative work."
+        fragment = render.fragments(before, after)[0]
+        self.assertEqual(fragment["node_ids"], ["gain", "scope"])
+        self.assertNotIn("unrelated", fragment["source"])
+        alone = deepcopy(before)
+        alone["fixture.yaml"]["trees"]["current_reality"]["nodes"][2]["label"] = "Another study."
+        fragment = render.fragments(before, alone)[0]
+        self.assertEqual(fragment["node_ids"], ["other", "scope"])
+        self.assertEqual(fragment["unconnected_node_ids"], [])
+
     def test_receipts_do_not_fabricate_tree_changes(self):
         before = document([self.gain])
         after = deepcopy(before)
@@ -158,9 +198,13 @@ class PRDiagramTests(unittest.TestCase):
         self.assertEqual(fragment["backlog_keys"], ["gain|test_scope", "limits|find_counterexample"])
         self.assertEqual(fragment["node_ids"], ["gain", "scope"])
         source = fragment["source"]
-        self.assertIn("CHANGED · Backlog<br/>Note extended: Then compare with a<br/>creative-work sample.", source)
-        self.assertNotIn("Check the original study", source)
-        self.assertIn("ADDED · Backlog<br/>Evaluation plan: Look for a creative", source)
+        # Notes stay in the YAML; diagrams show the label, or the work named in words.
+        self.assertIn("CHANGED · Backlog<br/>Test scope", source)
+        self.assertNotIn("creative-work sample", source)
+        after["fixture.yaml"]["trees"]["current_reality"]["backlog"][1]["label"] = "Find a creative team that kept the gain."
+        source = render.fragments(before, after)[0]["source"]
+        self.assertIn("ADDED · Backlog<br/>Find a creative team that kept the<br/>gain.", source)
+        self.assertNotIn("Look for a creative", source)
         self.assertIn("b0 -.- n0", source)
         self.assertIn("b1 -.- n0", source)
         self.assertIn("b1 -.- n1", source)

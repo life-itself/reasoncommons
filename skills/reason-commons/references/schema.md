@@ -59,7 +59,7 @@ Use these exact tree keys and kinds. `observation` is also allowed in every tree
 
 In a conflict cloud, `prerequisite` represents either of the incompatible actions or positions believed necessary to meet the respective needs. In future reality, `injection` is the proposed change; `predicted_effect` is an intermediate consequence, and `undesirable_effect` describes a potential harmful consequence. These kinds describe roles, not truth or acceptance.
 
-Each node has `id`, `kind`, `text`, `status`, and `contributions`. Node capture records a contribution, not a verified fact.
+Each node has `id`, `kind`, `text`, `status`, and `contributions`. Node capture records a contribution, not a verified fact. A node may also have `label`: one sentence, one line and at most 100 characters, that diagrams show in place of `text` so they stay scannable. Write it when capturing or revising the statement, keep any qualifier its accuracy depends on, and revisit it whenever `text` changes. `text` remains the full statement of record: acceptance, challenges, text outlines and PR update lists use it. Labels are presentation, so editing one does not create an accepted revision, although views draw the current label. Diagrams fall back to `text` when a node has no label.
 
 ## Links and attribution
 
@@ -75,7 +75,7 @@ Nodes and links may have `assumptions: [{text: ..., by: ...}]` and `challenges: 
 
 ## Backlog is reasoning work
 
-Each entry has `ref` (a node or link ID in this tree) and `work` (a short description of the remaining work). Useful labels include `connect_or_explain`, `test_causality`, `resolve_challenge`, and `examine_assumption`; these are examples, not an exhaustive vocabulary. Multiple tasks may reference the same item.
+Each entry has `ref` (a node or link ID in this tree) and `work` (a short description of the remaining work), and may have a one-sentence `label` (at most 100 characters) that diagrams show instead of the work name. Useful labels include `connect_or_explain`, `test_causality`, `resolve_challenge`, and `examine_assumption`; these are examples, not an exhaustive vocabulary. Multiple tasks may reference the same item.
 
 Assumptions and challenges stay on their owning node or link. Reference that owner in the backlog and add an optional `note` identifying the particular assumption or objection when needed. They do not need separate IDs.
 

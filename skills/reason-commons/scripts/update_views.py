@@ -30,6 +30,17 @@ KINDS = {
 }
 TRACES = ("addresses", "derived_from", "implements")
 TREE_OF = {}  # node ID -> tree name for the state being rendered; lets views describe traces without IDs.
+LABEL_MAX = 100  # A label is the one-sentence form diagrams show; text stays the full statement of record.
+
+
+def valid_label(item):
+    label = item.get("label")
+    return label is None or (isinstance(label, str) and bool(label.strip()) and len(label) <= LABEL_MAX and "\n" not in label)
+
+
+def shown(node):
+    """What a diagram draws for a statement: its short label when one exists, otherwise the full text."""
+    return node.get("label") or node["text"]
 
 
 def trace_line(key, refs):
@@ -142,6 +153,7 @@ def validate(state):
             require(isinstance(ident, str) and ident and ident not in all_ids, f"Invalid or duplicate ID: {ident}")
             all_ids.add(ident)
             require(item.get("status", "proposed") in {"proposed", "accepted", "disputed"}, f"Invalid status: {ident}")
+            require(valid_label(item), f"A label must be one line of at most {LABEL_MAX} characters: {ident}")
             require(isinstance(item.get("contributions"), list) and item["contributions"], f"Missing contributions: {ident}")
             for c in item["contributions"]:
                 require(c.get("by") in people or c.get("by") == "assistant", f"Unknown contributor: {ident}")
@@ -170,6 +182,7 @@ def validate(state):
         local_ids = set(nodes) | {link["id"] for link in tree["links"]}
         for task in tree["backlog"]:
             require(task.get("ref") in local_ids and isinstance(task.get("work"), str) and task["work"], f"Invalid backlog reference/work in {name}.")
+            require(valid_label(task), f"A backlog label must be one line of at most {LABEL_MAX} characters: {task.get('work')}")
     for tree in trees.values():
         for node in tree["nodes"]:
             for key in TRACES:
@@ -219,7 +232,7 @@ def attrs(**values):
 
 def node_text(node):
     lines = [node["kind"].replace("_", " ").upper()]
-    lines.extend(textwrap.wrap(node["text"], 44, break_long_words=True) or [""])
+    lines.extend(textwrap.wrap(shown(node), 44, break_long_words=True) or [""])
     for key in TRACES:
         if node.get(key):
             lines.extend(textwrap.wrap(trace_line(key, node[key]), 44))
@@ -351,7 +364,7 @@ def svg_graph(name, before, after, changes=False):
         grouped.setdefault(ranks[ident], []).append(ident)
     heights, wrapped = {}, {}
     for ident, node in nodes.items():
-        lines = [node["kind"].replace("_", " ").upper()] + wrap_svg(node["text"])
+        lines = [node["kind"].replace("_", " ").upper()] + wrap_svg(shown(node))
         for key in TRACES:
             if node.get(key):
                 lines.extend(wrap_svg(trace_line(key, node[key])))
@@ -361,7 +374,7 @@ def svg_graph(name, before, after, changes=False):
         if changes:
             lines.insert(0, status.upper())
         if status == "changed":
-            lines.extend(["PREVIOUSLY:"] + wrap_svg(before["nodes"][ident]["text"]))
+            lines.extend(["PREVIOUSLY:"] + wrap_svg(shown(before["nodes"][ident])))
         wrapped[ident] = lines
         heights[ident] = max(94, 42 + len(lines) * 18)
     positions = {}
@@ -463,6 +476,11 @@ def update(state_path, output=None, summary=None):
     # For each tree, keep its latest actual change even when another tree changes.
     TREE_OF.clear()
     TREE_OF.update({node["id"]: name for name, tree in state.get("trees", {}).items() for node in tree["nodes"]})
+    # Labels are presentation: they do not create accepted revisions, but views draw the current ones.
+    labels = {node["id"]: node["label"] for tree in state.get("trees", {}).values() for node in tree["nodes"] if node.get("label")}
+
+    def labelled(view):
+        return {**view, "nodes": {i: {**n, "label": labels[i]} if i in labels else n for i, n in view["nodes"].items()}}
     rendered = []
     for name in sorted({n for projection in projections for n in projection}):
         for index in range(len(projections) - 1, -1, -1):
@@ -470,7 +488,7 @@ def update(state_path, output=None, summary=None):
             before = projections[index - 1].get(name, EMPTY) if index else EMPTY
             if after != before:
                 break
-        svgs = {view: svg_graph(name, before, after, changes=view == "changes") for view in ("current", "changes")}
+        svgs = {view: svg_graph(name, labelled(before), labelled(after), changes=view == "changes") for view in ("current", "changes")}
         bases = {view: output / "diagrams" / view / name for view in svgs}
         if all(base.with_suffix(".svg").exists() and base.with_suffix(".html").exists()
                and base.with_suffix(".svg").read_text() == svgs[view]

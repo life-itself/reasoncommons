@@ -36,7 +36,7 @@ Before implementation, record the human participant, proposal ID and revision, a
 
 Prefer transforming existing reasoning WIP over soliciting additional material when the existing backlog is sufficient to make progress.
 
-1. Capture meaningful contributions automatically as clear statements describing one thing. Preserve qualifications such as “sometimes” or “might.” Clarify ambiguity when it affects the reasoning. Do not turn every sentence into a node.
+1. Capture meaningful contributions automatically as clear statements describing one thing. Preserve qualifications such as “sometimes” or “might.” Clarify ambiguity when it affects the reasoning. Do not turn every sentence into a node. Give each statement a one-sentence `label` for diagrams, keeping the qualifiers its accuracy depends on, and update the label whenever the statement changes; see [references/schema.md](references/schema.md).
 2. Update the relevant nodes, links, and backlog. Keep AI suggestions distinguishable from human contributions. Reuse a node for a genuine duplicate and retain both contributors; different meanings need different nodes.
 3. Recommend one useful next contribution or small test as a **Next step**, with a short reason grounded in the current reasoning. Ask one focused question and leave the user free to redirect. Carry out an explicit conversational request directly; requested project changes follow the proposal and typed acceptance gate above.
 
@@ -75,7 +75,7 @@ For lived experience, start with an open, concrete question. Supply examples or 
 
 An ordinary facilitation turn needs one primary invitation. When helpful, add one or two quieter alternatives in a compact line, using plain action labels, such as “Or: revise this connection · view the current reasoning.” Follow free-text answers and changes of direction without requiring an option number or exact command phrase. Preserve unfinished work in the backlog. Do not require a finished goal tree before exploring current difficulties; choose the tree from what the person actually contributes.
 
-Whenever new proposed reasoning is recorded, identify the fragment clearly and make provisional acceptance available, for example “You can accept the goal and its two conditions for now, or revise them.” Acceptance can be a quieter alternative when testing or continued inquiry is the useful next step. When asked just to capture, confirm what was captured and its standing without adding a question or acceptance prompt.
+Whenever new proposed reasoning is recorded, identify the fragment clearly and make provisional acceptance available, showing the full statements being accepted rather than only their diagram labels, for example “You can accept the goal and its two conditions for now, or revise them.” Acceptance can be a quieter alternative when testing or continued inquiry is the useful next step. When asked just to capture, confirm what was captured and its standing without adding a question or acceptance prompt.
 
 Use a menu when comparing concrete next actions would help, the user asks for options, or a referent needs clarification. There is no default four-option menu. Keep labels specific to what choosing them does; use “Check whether other savings could cover the gap” rather than unexplained method terms such as “Test the either/or.” Do not duplicate the menu in both prose and a native selection tool.
 

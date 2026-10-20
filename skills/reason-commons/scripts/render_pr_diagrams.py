@@ -20,10 +20,11 @@ STYLES = {
     "added": "fill:#eef9f0,stroke:#238636,color:#17212e,stroke-width:2px",
     "changed": "fill:#eef5ff,stroke:#0969da,color:#17212e,stroke-width:2px",
     "removed": "fill:#fff1f0,stroke:#cf222e,color:#17212e,stroke-dasharray:5 3",
+    "relabelled": "fill:#eef5ff,stroke:#0969da,color:#17212e,stroke-dasharray:4 2",
     "previous": "fill:#f6f8fa,stroke:#6e7781,color:#17212e,stroke-dasharray:3 3",
     "context": "fill:#f6f8fa,stroke:#8c959f,color:#17212e",
 }
-LEGEND = "ADDED / CHANGED / REMOVED describe this PR; PREVIOUS shows the earlier version; CONTEXT is unchanged neighboring reasoning. Each statement shows its standing ([Accepted] for now, [Proposed] or [Disputed]) and kind. Solid arrows are accepted links and dotted arrows proposed ones; disputed links say so. Joint conditions use AND. Backlog notes hang from the statement or link they concern by a dotted line."
+LEGEND = "ADDED / CHANGED / REMOVED describe this PR; PREVIOUS shows the earlier version; RELABELLED gives an unchanged statement a new short label; CONTEXT is unchanged neighboring reasoning. Nodes show each statement's one-sentence label where it has one; the full statements are in the update list below. Each statement shows its standing ([Accepted] for now, [Proposed] or [Disputed]) and kind. Solid arrows are accepted links and dotted arrows proposed ones; disputed links say so. Joint conditions use AND. Backlog notes hang from the statement or link they concern by a dotted line."
 
 
 def escape(value):
@@ -90,35 +91,20 @@ def components(nodes, links):
 def node_label(item, operation):
     # The diagram title names the tree, so nodes carry only change, standing, kind and statement.
     standing = item.get("status", "proposed")
-    lines = [f"{operation.upper()} · [{STANDING[standing]}]", human(item["kind"])] + wrap(item["text"])
+    lines = [f"{operation.upper()} · [{STANDING[standing]}]", human(item["kind"])] + wrap(item.get("label") or item["text"])
     for objection in item.get("challenges", []) if standing == "disputed" else []:
         lines += wrap(f"Objection ({objection['by']}): {objection['text']}")
     return escape("\n".join(lines))
 
 
 def backlog_label(before, after, operation):
-    """Describe the backlog work in its own words: changed fields only, appended text as the addition."""
-    lines = [f"{operation.upper()} · Backlog"]
-    for field in [f for f in (after or before) if f not in ("ref", "work")] + [f for f in (before or {}) if after and f not in after and f not in ("ref", "work")]:
-        old, new = (before or {}).get(field), (after or {}).get(field)
-        if before and after and old == new:
-            continue
-        text = new if new is not None else old
-        text = ", ".join(map(str, text)) if isinstance(text, list) else str(text)
-        if not before or not after:
-            heading = human(field)
-        elif old is None:
-            heading = f"{human(field)} added"
-        elif new is None:
-            heading = f"{human(field)} removed"
-        elif isinstance(old, str) and isinstance(new, str) and new.startswith(old):
-            heading, text = f"{human(field)} extended", new[len(old):].strip()
-        else:
-            heading = f"{human(field)} now"
-        lines += wrap(f"{heading}: {text}")
-    if len(lines) == 1:
-        lines += wrap(human((after or before)["work"]))
-    return escape("\n".join(lines))
+    """A backlog note shows its one-sentence label, or the work named in words; the full note stays in the YAML."""
+    item = after or before
+    return escape("\n".join([f"{operation.upper()} · Backlog"] + wrap(item.get("label") or human(item["work"]))))
+
+
+def without_label(item):
+    return {key: value for key, value in item.items() if key != "label"}
 
 
 def source(name, old, new, selected_nodes, selected_links, changed_backlog=(), loose=()):
@@ -126,12 +112,18 @@ def source(name, old, new, selected_nodes, selected_links, changed_backlog=(), l
     direction = "TB" if len(selected_nodes) <= 3 else "LR"
     lines, aliases = ["---", "config:", "  htmlLabels: false", "  flowchart:", "    wrappingWidth: 360", "---", f"flowchart {direction}"], {}
     changed_nodes = differences(old["nodes"], new["nodes"])
+    # A label-only edit leaves the statement itself unchanged: draw it once, not as a before/after pair.
+    relabelled = {i for i in changed_nodes if i in old["nodes"] and i in new["nodes"]
+                  and without_label(old["nodes"][i]) == without_label(new["nodes"][i])}
+    changed_nodes -= relabelled
     for ident in sorted(selected_nodes, key=lambda i: (i in loose, i)):
         if ident in loose and ident == min(loose):
             lines.append('  subgraph loose["Not yet connected"]')
         before, after = old["nodes"].get(ident), new["nodes"].get(ident)
         if before and after and ident in changed_nodes:
             variants = [("old", before, "previous"), ("new", after, "changed")]
+        elif ident in relabelled:
+            variants = [("new", after, "relabelled")]
         elif after:
             variants = [("new", after, "added" if before is None else "context")]
         else:
@@ -204,16 +196,25 @@ def fragments(before_documents, after_documents):
             continue
         # A backlog change brings in the statement or link it concerns, with the same one-hop context.
         refs = {(new["backlog"].get(k) or old["backlog"][k])["ref"] for k in changed_backlog}
-        focus = changed_nodes | {r for r in refs if r in old["nodes"] or r in new["nodes"]}
+        # A label-only edit is presentation: show the node, but do not widen the view around it.
+        relabel_only = {i for i in changed_nodes if i in old["nodes"] and i in new["nodes"]
+                        and without_label(old["nodes"][i]) == without_label(new["nodes"][i])}
+        focus = (changed_nodes - relabel_only) | {r for r in refs if r in old["nodes"] or r in new["nodes"]}
         selected_links = set(changed_links) | {r for r in refs if r in old["links"] or r in new["links"]}
         selected_nodes = set(focus)
-        # One hop around focus nodes, plus every selected link's old/new endpoints.
-        # Context endpoints do not pull in unrelated branches of the full tree.
-        for tree in (old, new):
-            for ident, link in tree["links"].items():
-                if ident in selected_links or ends(link) & focus:
-                    selected_links.add(ident)
-                    selected_nodes.update(ends(link))
+
+        def expand(around):
+            # One hop around these nodes, plus every selected link's old/new endpoints.
+            # Context endpoints do not pull in unrelated branches of the full tree.
+            for tree in (old, new):
+                for ident, link in tree["links"].items():
+                    if ident in selected_links or ends(link) & around:
+                        selected_links.add(ident)
+                        selected_nodes.update(ends(link))
+        expand(focus)
+        # A relabelled node outside the view keeps its links, so it is not shown as unconnected.
+        expand({i for i in relabel_only if i not in selected_nodes})
+        selected_nodes |= relabel_only
         all_links = [tree["links"][ident] for tree in (old, new) for ident in selected_links if ident in tree["links"]]
         groups = components(selected_nodes, all_links)
         isolated = sorted(next(iter(group)) for group in groups if len(group) == 1
