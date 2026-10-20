@@ -9,6 +9,7 @@ import argparse
 from copy import deepcopy
 from datetime import datetime, timezone
 import html
+import importlib.util
 import json
 import os
 from pathlib import Path, PurePosixPath
@@ -18,6 +19,10 @@ import textwrap
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 import yaml
+
+_feedback_spec = importlib.util.spec_from_file_location("reason_commons_feedback", Path(__file__).with_name("feedback.py"))
+feedback = importlib.util.module_from_spec(_feedback_spec)
+_feedback_spec.loader.exec_module(feedback)
 
 
 KINDS = {
@@ -140,6 +145,7 @@ def validate(state):
     require(isinstance(people, dict) and "assistant" not in people, "Configure human participants; assistant is reserved.")
     require(state.get("driver") in people, "Driver must be a configured participant.")
     validate_change_acceptances(state, people)
+    feedback.validate(state)
     trees = state.get("trees", {})
     require(isinstance(trees, dict) and state.get("active_tree") in trees, "active_tree must exist.")
     all_ids, all_nodes = set(), set()

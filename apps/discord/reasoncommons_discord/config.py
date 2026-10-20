@@ -19,6 +19,9 @@ class Config:
     timeout: float = 120
     token: str = field(default="", repr=False)
     api_key: str = field(default="", repr=False)
+    feedback_channel: int | None = None
+    feedback_interval: float = 300
+    feedback_cooldown: float = 86400
 
     @property
     def skill(self):
@@ -43,11 +46,17 @@ class Config:
             raise ValueError("Discord IDs must map to existing human participants.")
         if not math.isfinite(self.timeout) or self.timeout <= 0:
             raise ValueError("AGENT_TIMEOUT_SECONDS must be positive.")
+        if self.feedback_channel is not None and self.feedback_channel not in self.channels:
+            raise ValueError("DISCORD_FEEDBACK_CHANNEL_ID must be an explicitly configured reasoning channel.")
+        if not math.isfinite(self.feedback_interval) or self.feedback_interval < 30:
+            raise ValueError("FEEDBACK_POLL_SECONDS must be at least 30 seconds.")
+        if not math.isfinite(self.feedback_cooldown) or self.feedback_cooldown < 0:
+            raise ValueError("FEEDBACK_PROMPT_COOLDOWN_SECONDS must be nonnegative.")
         if self.state == self.runtime or self.runtime in self.state.parents:
             raise ValueError("Keep the canonical state outside the runtime directory.")
         for relative in ("SKILL.md", "references/schema.md", "references/responses.md",
                          "references/diagrams.md", "references/views.md", "scripts/render_view.py",
-                         "scripts/update_views.py"):
+                         "scripts/update_views.py", "scripts/feedback.py", "references/feedback.md"):
             if not (self.skill / relative).is_file():
                 raise ValueError(f"Incomplete skill package: {relative}")
         if live and (not self.token or not self.api_key or not self.model or not math.isfinite(self.budget_usd) or self.budget_usd <= 0):
@@ -71,6 +80,9 @@ class Config:
                 timeout=float(os.environ.get("AGENT_TIMEOUT_SECONDS", "120")),
                 token=os.environ.get("DISCORD_TOKEN", ""),
                 api_key=os.environ.get("ANTHROPIC_API_KEY", ""),
+                feedback_channel=int(os.environ["DISCORD_FEEDBACK_CHANNEL_ID"]) if os.environ.get("DISCORD_FEEDBACK_CHANNEL_ID") else None,
+                feedback_interval=float(os.environ.get("FEEDBACK_POLL_SECONDS", "300")),
+                feedback_cooldown=float(os.environ.get("FEEDBACK_PROMPT_COOLDOWN_SECONDS", "86400")),
             ).validate()
         except (KeyError, TypeError, json.JSONDecodeError) as exc:
             raise ValueError("Missing or invalid configuration; see .env.example.") from exc

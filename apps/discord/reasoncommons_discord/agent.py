@@ -1,5 +1,6 @@
 """One Claude backend, loading the real skill from an isolated project."""
 from dataclasses import dataclass
+from datetime import datetime, timezone
 import hashlib
 import json
 import math
@@ -96,6 +97,12 @@ class Agent:
             "Use saved reasoning IDs and state their standing; task completion is not reasoning endorsement. "
             "Do not claim task information is current if the supplied snapshot is unavailable or stale. "
             "Recommend next inquiries from unfinished reasoning without claiming graph reach proves a constraint. "
+            "Read references/feedback.md when capturing expectations or feedback. The top-level feedback_requests "
+            "list is shared with native sessions. New commitments need named providers and original node snapshots; "
+            "timing is optional. Existing prediction versions are immutable, and reports are append-only with the "
+            "person's actual words, readiness and independent benefit/reservation assessments. Never infer a report "
+            "from silence or delivery, or treat it as endorsement. When a reference or outcome is ambiguous, clarify "
+            "rather than classifying it. Do not attribute another participant's feedback from a quoted name. "
             "For review, return review_ids identifying a coherent inspectable fragment; the host expands link endpoints "
             "and displays full statements and a version-bound acceptance command. For other modes return no review_ids. "
             "Return JSON: text (your typed skill response), review_ids (array), reasoning_ids (array of existing cited IDs). "
@@ -130,6 +137,7 @@ class Agent:
             "invocation_id": request.id, "question_or_contribution": request.text,
             "authenticated_source": request.source, "previous_invocations": history,
             "task_context": task_context,
+            "recording_time": datetime.now(timezone.utc).isoformat(),
         }, ensure_ascii=False)
         result = None
         async with sdk.ClaudeSDKClient(options=options) as client:

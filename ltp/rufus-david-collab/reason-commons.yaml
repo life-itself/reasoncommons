@@ -1397,6 +1397,13 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: r-e-feedback-followup-missing
+      kind: undesirable_effect
+      text: The installed skill lacks a structured assignment and follow-up mechanism for feedback on expected benefits and harmful consequences.
+      label: Feedback lacks structured assignment and follow-up.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text, note: Inspected the installed schema and helpers during David's discussion of forgotten outcomes on 2026-10-20.}
     - id: r-e-repo-feels-scattered
       kind: observation
       text: David finds the Reason Commons repository increasingly scattered as it contains the public website, skills and prospective Discord-bot work.
@@ -1965,6 +1972,10 @@ trees:
       note: The repository previously mixed public method pages and working reasoning under ltp/ and published from the project root with exclusions. The approved migration separates those boundaries and repairs affected paths. David’s concern and anticipated technical-debt risk remain proposed; observe whether this improves actual work rather than inferring the benefit from cleaner folders. No repository split or production cutover was performed.
       beads:
       - reasoncommons-ar1
+    - ref: r-e-feedback-followup-missing
+      work: review_feedback_gap
+      label: Review the observed feedback-infrastructure gap.
+      note: Review the inspected gap and its relationship to existing reasoning; implementation does not establish that real feedback is collected.
   conflict:
     nodes:
     - id: c-e-objective
@@ -2823,6 +2834,35 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: f-e-feedback-cycle
+      kind: injection
+      text: The skill assigns feedback providers and uses shared reasoning files to request, capture and revisit feedback on expected benefits and harmful consequences across sessions and Discord.
+      label: Assign, request and preserve feedback in shared reasoning.
+      status: proposed
+      addresses: [r-e-feedback-followup-missing]
+      contributions:
+      - {by: david, attribution: explicit, mode: text, note: Requested named feedback providers, optional timing and shared-file feedback across sessions and Discord; implementation approval does not endorse this reasoning.}
+    - id: f-e-outcomes-reviewable
+      kind: predicted_effect
+      text: When assigned participants supply feedback, their observations about expected benefits and harms are available beside the original expectations for review.
+      label: Reported outcomes remain beside original expectations.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text}
+    - id: f-e-feedback-burden
+      kind: undesirable_effect
+      text: Feedback requests that arrive before someone can judge a change or recur too often can increase collaboration burden.
+      label: Premature or excessive requests can add burden.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text}
+    - id: f-e-feedback-controls
+      kind: injection
+      text: Feedback requests support explicit deferral and use configured, bounded delivery to limit unnecessary interruptions.
+      label: Allow deferral and bound feedback delivery.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text}
     - id: f-e-discord-diverts-resources
       kind: undesirable_effect
       text: Operating and extending the bot may consume scarce time and money and delay real-work testing.
@@ -2843,6 +2883,36 @@ trees:
         attribution: assistant
         mode: text
     links:
+    - id: f-rel-feedback-reviewable
+      from: [f-e-feedback-cycle]
+      to: f-e-outcomes-reviewable
+      relation: contributes_to
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+      assumptions:
+      - {text: Assigned participants respond and their reports are preserved accurately., by: assistant}
+    - id: f-rel-feedback-supports-learning
+      from: [f-e-outcomes-reviewable]
+      to: f-e-learn-from-use
+      relation: contributes_to
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+      assumptions:
+      - {text: Observations are reviewed and affect the reasoning where warranted., by: assistant}
+    - id: f-rel-feedback-adds-burden
+      from: [f-e-feedback-cycle]
+      to: f-e-feedback-burden
+      relation: can_cause
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+      assumptions:
+      - {text: Requests are premature or excessive; actual burden remains unobserved., by: assistant}
+    - id: f-rel-feedback-controls-reduce-burden
+      from: [f-e-feedback-controls]
+      to: f-e-feedback-burden
+      relation: reduces_risk_of
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
     - id: f-rel-use-makes-users
       from:
       - f-e-use-while-building
@@ -3288,6 +3358,23 @@ trees:
     - ref: f-e-discord-misrepresents-agreement
       work: test_negative_branch
       note: Exercise identity, endorsement and persistent-state controls live and assess remaining misuse/failure cases.
+    - ref: f-rel-feedback-reviewable
+      work: verify_feedback_cycle
+      beads: [reasoncommons-foj]
+      label: Verify shared feedback across sessions and Discord.
+      note: Test participant filtering, optional timing, resumption, independent benefit/harm reports, deferral, version preservation, duplicates and interrupted saves using the toy fixture, then a real participant trial.
+    - ref: f-rel-feedback-supports-learning
+      work: evaluate_real_feedback
+      label: Review actual feedback and its effect on reasoning.
+      note: A real participant trial remains pending; code checks do not establish usefulness or that observations change reasoning.
+    - ref: f-rel-feedback-adds-burden
+      work: test_negative_branch
+      label: Assess premature requests and reminder burden.
+      note: Obtain feedback from people who experience requests; absence of a report is not evidence of absence of harm.
+    - ref: f-rel-feedback-controls-reduce-burden
+      work: evaluate_feedback_controls
+      label: Check whether deferral and bounded delivery reduce burden.
+      note: Mocked delivery checks verify implementation only; actual interruption burden remains to be assessed.
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
@@ -6541,3 +6628,39 @@ change_acceptances:
   - skills/reason-commons/tests/test_render_view.py
   - skills/reason-commons/references/diagrams.md
   - ltp/rufus-david-collab/reason-commons.yaml
+- proposal_ref: expectation-feedback-2026-10-20
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-20T11:19:01Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept revision 1
+  scope: Implement the displayed persistent expectation-feedback cycle with required named feedback providers, optional timing, Feedback request responses, recipient-specific session-entry requests, independent benefit and reservation feedback, attributed version-bound reports in the shared reasoning YAML, Discord inspection/submission and opt-in bounded prompting with existing save/recovery controls. Add the displayed five proposed nodes and four proposed links and their gap-review, verification, real-trial and burden-assessment backlog. Preserve existing reasoning standing, prior acceptance receipts, unrelated work and collaboration priority. Validate with the remote-work toy fixture and existing skill/bot checks, then deliver a feature branch and draft PR. Exclude Discord constraint marking, live operation, sending real messages, deployment and invented participant outcomes. Beads records implementation coordination separately from reasoning.
+  node_ids: [r-e-feedback-followup-missing, f-e-feedback-cycle, f-e-outcomes-reviewable, f-e-feedback-burden, f-e-feedback-controls]
+  link_ids: [f-rel-feedback-reviewable, f-rel-feedback-supports-learning, f-rel-feedback-adds-burden, f-rel-feedback-controls-reduce-burden]
+  approved_paths:
+  - skills/reason-commons/SKILL.md
+  - skills/reason-commons/references/schema.md
+  - skills/reason-commons/references/responses.md
+  - skills/reason-commons/references/feedback.md
+  - skills/reason-commons/scripts/feedback.py
+  - skills/reason-commons/scripts/update_views.py
+  - skills/reason-commons/tests/test_feedback.py
+  - skills/reason-commons/tests/test_update_views.py
+  - apps/discord/reasoncommons_discord/config.py
+  - apps/discord/reasoncommons_discord/__main__.py
+  - apps/discord/reasoncommons_discord/agent.py
+  - apps/discord/reasoncommons_discord/service.py
+  - apps/discord/reasoncommons_discord/bot.py
+  - apps/discord/reasoncommons_discord/store.py
+  - apps/discord/reasoncommons_discord/feedback.py
+  - apps/discord/tests/test_feedback.py
+  - apps/discord/tests/test_service.py
+  - apps/discord/tests/test_bot.py
+  - apps/discord/tests/test_agent.py
+  - apps/discord/tests/test_store.py
+  - apps/discord/README.md
+  - apps/discord/.env.example
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl

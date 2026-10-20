@@ -16,6 +16,27 @@ In diagrams, name each tree once, in the heading or one group per tree, and insi
 - A request for what to do next requires **Next step**. Recommending implementation does not authorize performing it. If the user has already requested the implementation, use **Change proposal** first.
 - Completed implementation requires **Change result**. Retain its reasoning trace in the final response even when the proposal was already shown in commentary.
 - Use **Answer**, **Tree view** or **Capture result** for those purposes. Conversational capture and endorsement follow the skill's existing standing rules. Routine progress notes can stay brief; they do not replace a required proposal or result.
+- Use **Feedback request** when asking a named provider to assess recorded expected outcomes; this does not endorse reasoning, approve implementation or imply that the change has been experienced.
+
+## Feedback request
+
+Read [feedback.md](feedback.md). Use `scripts/feedback.py` to derive the recipient's requests from the current shared reasoning. Show the exact captured prediction version, including full expected-benefit and reservation statements and their tree, kind and standing at capture. State when no benefit or reservation was recorded; do not create one to fill the template. Keep both sides visible even if only one still awaits feedback. Ask a single open invitation covering readiness and experience; allow partial feedback, unexpected outcomes, explicit uncertainty, unavailable evidence and deferral. A requested judgment may be qualitative. Respect optional dates and do not manufacture deadlines.
+
+```markdown
+**Type: Feedback request**
+
+**For:** [Actual assigned participant.]
+**Request:** [Saved request ID and revision.]
+**Change being evaluated:** [Original intervention statement with tree, kind and standing at capture.]
+**Expected benefit:** [Full original statement(s), or none recorded.]
+**Possible harmful consequence:** [Full original statement(s), or none recorded.]
+**Observation opportunity:** [How to judge the outcome; timing only if recorded.]
+**Still awaiting your assessment:** [Specific outcomes.]
+
+[One invitation: whether they have experienced the change and what happened, including unexpected effects. Allow not yet, uncertainty and deferral.]
+```
+
+After a reply, use **Capture result** to say what was actually saved, its self-report basis, which outcomes remain unassessed and any deferral. Retain the original prediction and separately identify any proposed interpretation or reasoning revision; a positive report does not automatically accept the causal link.
 
 ## Change proposal
 

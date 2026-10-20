@@ -37,6 +37,7 @@ class Invocation:
     mode: str = "ask"
     source: dict | None = None
     standing: str | None = None
+    feedback: dict | None = None
 
 
 def index(state):
@@ -80,8 +81,11 @@ def describe(items):
 def guard_capture(before, after, authors):
     """Enforce attribution/endorsement boundaries independently of model prose."""
     for key in set(before) | set(after):
-        if key not in {"trees", "driver", "active_tree"} and before.get(key) != after.get(key):
+        if key not in {"trees", "driver", "active_tree", "feedback_requests"} and before.get(key) != after.get(key):
             raise ValueError(f"Capture cannot change project metadata or receipts: {key}")
+    # Validate append-only commitments and authenticated outcome reports separately.
+    from . import feedback
+    feedback.core().guard_transition(before, after, authors)
     old, new = index(before), index(after)
     if not old.keys() <= new.keys():
         raise ValueError("Capture must preserve existing IDs; revise or challenge the item.")
@@ -124,7 +128,7 @@ class Service:
             raise ValueError("This guild/channel is not configured for reasoning.")
         if request.user not in self.config.participants:
             raise ValueError("Your Discord ID has not been mapped to a project participant.")
-        if request.mode not in {"ask", "capture", "review", "accept", "tree"}:
+        if request.mode not in {"ask", "capture", "review", "accept", "tree", "feedback"}:
             raise ValueError("Unknown invocation mode.")
         return self.config.participants[request.user]
 
@@ -181,6 +185,10 @@ class Service:
 
     async def _turn(self, request, person, before, before_text):
         after, review, consume = deepcopy(before), None, None
+        if request.mode == "feedback":
+            from .feedback import feedback_turn
+            response, after = feedback_turn(before, request, person)
+            return response, after, None, None
         if request.mode == "accept":
             review = self.store.review(request.text.strip())
             if review["channel"] != str(request.channel) or not review["published"]:
@@ -238,6 +246,20 @@ class Service:
                         raise ValueError("Source author must have a configured identity.")
                     authors.add(author)
                 guard_capture(before, staged, authors)
+                from .feedback import core
+                previous_requests = {core().key(r): r for r in before.get("feedback_requests", [])}
+                for commitment in staged.get("feedback_requests", []):
+                    previous_reports = previous_requests.get(core().key(commitment), {}).get("reports", [])
+                    for report in commitment["reports"][len(previous_reports):]:
+                        report["recorded_at"] = datetime.now(timezone.utc).isoformat()
+                        report["source"] = {"surface": "discord", "invocation_id": request.id,
+                            "invoker_id": request.user, "guild_id": str(request.guild), "channel_id": str(request.channel)}
+                        if request.source and report["by"] == request.source["by"]:
+                            report["text"] = request.source["text"]
+                            report["source"]["source_message"] = request.source["url"]
+                        else:
+                            report["text"] = request.text
+                        core().retain_review_work(staged, commitment, report)
                 old = index(before)
                 for ident, (_, _, item) in index(staged).items():
                     previous = old.get(ident, (None, None, {}))[2].get("contributions", [])
@@ -262,6 +284,13 @@ class Service:
                 text += "\nReasoning: " + ", ".join(reply.reasoning_ids)
             text += "\nState version: " + digest(before_text)[:12]
             response = {"text": text, "attachments": [], "skill_version": reply.skill_version}
+            # A new participant session sees their outstanding feedback first.
+            # Explicit tree, endorsement and feedback operations keep their purpose.
+            if request.mode == "ask":
+                from .feedback import session_prompt
+                prompt = session_prompt(before, person, self.store.history(request.channel))
+                if prompt:
+                    response["text"] = prompt + "\n\n---\n\nRequested answer:\n" + response["text"]
             if request.mode == "review" and reply.review_ids:
                 items = fragment(before, reply.review_ids)
                 token = "review-" + uuid.uuid4().hex[:16]
