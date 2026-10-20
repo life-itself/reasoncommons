@@ -191,14 +191,16 @@ def text_outline(name, tree, standing):
 WIDGET = """<style>
 #rcv{position:relative;height:380px;border:0.5px solid var(--border);border-radius:12px;overflow:hidden;cursor:grab;touch-action:none;background:var(--surface-1)}
 #rcv.drag{cursor:grabbing}
+#rcv.tall{height:720px}
 #rcv svg{width:100%;height:100%;max-width:none!important}
 .rcb{position:absolute;top:8px;right:8px;display:flex;gap:4px}
 .rcb button{width:30px;height:30px;border:0.5px solid var(--border-strong);border-radius:var(--radius);background:var(--surface-2);color:var(--text-primary);cursor:pointer;font-size:16px;line-height:1}
+.rcb #ztall{width:auto;padding:0 8px;font-size:13px}
 </style>
 <h2 class="sr-only">__HEADING__, with pan and zoom</h2>
 <p style="margin:0 0 8px;font-size:13px;color:var(--text-secondary)">__HEADING__ · drag to pan · pinch or ⌘/Ctrl+scroll to zoom</p>
 <div id="rcv"><div id="rc" style="width:100%;height:100%"></div>
-<div class="rcb"><button id="zin" aria-label="Zoom in"><i class="ti ti-plus" aria-hidden="true"></i></button><button id="zout" aria-label="Zoom out"><i class="ti ti-minus" aria-hidden="true"></i></button><button id="zfit" aria-label="Fit to view"><i class="ti ti-arrows-maximize" aria-hidden="true"></i></button></div></div>
+<div class="rcb"><button id="ztall" aria-pressed="false">Taller</button><button id="zin" aria-label="Zoom in"><i class="ti ti-plus" aria-hidden="true"></i></button><button id="zout" aria-label="Zoom out"><i class="ti ti-minus" aria-hidden="true"></i></button><button id="zfit" aria-label="Fit to view"><i class="ti ti-arrows-maximize" aria-hidden="true"></i></button></div></div>
 <p style="margin:8px 0 0;font-size:13px;color:var(--text-secondary)">__NOT_SHOWN__</p>
 <script type="module">
 import mermaid from 'https://esm.sh/mermaid@11/dist/mermaid.esm.min.mjs';
@@ -227,6 +229,8 @@ const box = document.getElementById('rcv');
 document.getElementById('zin').onclick = () => zoom(0.8);
 document.getElementById('zout').onclick = () => zoom(1.25);
 document.getElementById('zfit').onclick = () => { v = {...fit}; set(); };
+const tall = document.getElementById('ztall');
+tall.onclick = () => { const on = box.classList.toggle('tall'); tall.textContent = on ? 'Shorter' : 'Taller'; tall.setAttribute('aria-pressed', on); };
 box.addEventListener('wheel', e => { if (!(e.ctrlKey || e.metaKey)) return; e.preventDefault(); zoom(Math.exp(e.deltaY*0.01), e.clientX, e.clientY); }, {passive:false});
 let last = null;
 box.addEventListener('pointerdown', e => { if (e.target.closest('button')) return; last = [e.clientX,e.clientY]; box.setPointerCapture(e.pointerId); box.classList.add('drag'); });
