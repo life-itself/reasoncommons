@@ -72,6 +72,40 @@ class FeedbackTests(unittest.TestCase):
             {"ref": "gain", "verdict": "not_assessed", "note": "I have not checked."}]))
         self.assertEqual(feedback.queue(state, "alice", NOW)[0]["pending"], ["gain", "isolation"])
 
+    def unclear_gain(self):
+        return feedback.add_report(toy(), "remote-trial", 1, report(outcomes=[
+            {"ref": "gain", "verdict": "unclear", "note": "Only part of the shift record survived."}]))
+
+    def test_unclear_keeps_outcome_open_and_shows_earlier_note(self):
+        state = self.unclear_gain()
+        self.assertEqual(feedback.queue(state, "alice", NOW)[0]["pending"], ["gain", "isolation"])
+        text = feedback.render_request(state, state["feedback_requests"][0], "alice")
+        self.assertIn("Earlier you found gain unclear: Only part of the shift record survived.", text)
+
+    def test_later_assessment_settles_or_reopens_unclear(self):
+        state = feedback.add_report(self.unclear_gain(), "remote-trial", 1, report("report-2", recorded_at="2026-10-21T16:00:00+00:00"))
+        self.assertEqual(feedback.queue(state, "alice", NOW)[0]["pending"], ["isolation"])
+        state = feedback.add_report(state, "remote-trial", 1, report("report-3", recorded_at="2026-10-21T17:00:00+00:00", outcomes=[
+            {"ref": "gain", "verdict": "unclear", "note": "The second record contradicts the first."}]))
+        self.assertEqual(feedback.queue(state, "alice", NOW)[0]["pending"], ["gain", "isolation"])
+
+    def test_report_order_in_file_does_not_override_chronology(self):
+        state = feedback.add_report(toy(), "remote-trial", 1, report("later", recorded_at="2026-10-21T17:00:00+00:00"))
+        state = feedback.add_report(state, "remote-trial", 1, report("earlier", recorded_at="2026-10-21T16:00:00+00:00", outcomes=[
+            {"ref": "gain", "verdict": "unclear", "note": "Not sure yet."}]))
+        self.assertEqual(feedback.queue(state, "alice", NOW)[0]["pending"], ["isolation"])
+
+    def test_unavailable_after_unclear_closes_outcome(self):
+        state = feedback.add_report(self.unclear_gain(), "remote-trial", 1, report("report-2", recorded_at="2026-10-21T16:00:00+00:00", outcomes=[
+            {"ref": "gain", "verdict": "unavailable", "note": "The rest of the record is gone."}]))
+        self.assertEqual(feedback.queue(state, "alice", NOW)[0]["pending"], ["isolation"])
+
+    def test_unclear_outcome_respects_deferral(self):
+        state = feedback.add_report(toy(), "remote-trial", 1, report(defer_until="2026-10-24T12:00:00Z", outcomes=[
+            {"ref": "gain", "verdict": "unclear", "note": "Ask me after the next shift."}]))
+        self.assertEqual(feedback.queue(state, "alice", NOW), [])
+        self.assertEqual(feedback.queue(state, "alice", datetime(2026, 10, 25, tzinfo=timezone.utc))[0]["pending"], ["gain", "isolation"])
+
     def test_lost_evidence_is_explicit_and_does_not_imply_safety(self):
         state = feedback.add_report(toy(), "remote-trial", 1, report(readiness="cannot_assess", outcomes=[
             {"ref": "gain", "verdict": "unavailable", "note": "The shift record was lost."}]))

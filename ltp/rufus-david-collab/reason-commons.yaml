@@ -1452,6 +1452,13 @@ trees:
       status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text, note: 'Observed on 2026-10-20: the introduction printed --branch claude/reason-commons-collab-b055fa.'}
+    - id: r-e-unclear-drops-from-queue
+      kind: observation
+      text: On 2026-10-20 David's unclear ("partly seen") benefit verdict on feedback-sync-pilot removed that outcome from his feedback queue, although the session had told him he could answer properly later.
+      label: An unclear verdict dropped a request from David's queue.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text, note: 'Observed after report david-feedback-sync-first-session-2026-10-20: feedback.outstanding treated every verdict except not_assessed as answered.'}
     - id: r-e-repo-feels-scattered
       kind: observation
       text: David finds the Reason Commons repository increasingly scattered as it contains the public website, skills and prospective Discord-bot work.
@@ -3242,6 +3249,21 @@ trees:
       status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text}
+    - id: f-e-unclear-stays-open
+      kind: injection
+      text: An outcome whose latest assessment by a feedback provider is unclear stays in that provider's queue, showing the earlier unclear note, until a later report gives observed, not observed or unavailable, or the provider defers it.
+      label: Unclear outcomes stay in the feedback queue.
+      status: proposed
+      addresses: [r-e-unclear-drops-from-queue]
+      contributions:
+      - {by: david, attribution: explicit, mode: text, note: 'David asked on 2026-10-20 to do this task here; the assistant drafted the mechanism.'}
+    - id: f-e-unclear-revisited
+      kind: predicted_effect
+      text: Participants are asked again about outcomes they could only partly judge, so inconclusive feedback gets completed when evidence arrives.
+      label: Partly judged outcomes are asked about again.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text}
     - id: f-e-discord-diverts-resources
       kind: undesirable_effect
       text: Operating and extending the bot may consume scarce time and money and delay real-work testing.
@@ -3444,6 +3466,24 @@ trees:
     - id: f-rel-worktree-inherit-unnoticed
       from: [f-e-worktree-inherits-sharing]
       to: f-e-inherited-sharing-unnoticed
+      relation: can_cause
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+    - id: f-rel-unclear-open-revisited
+      from: [f-e-unclear-stays-open]
+      to: f-e-unclear-revisited
+      relation: contributes_to
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+    - id: f-rel-revisited-reviewable
+      from: [f-e-unclear-revisited]
+      to: f-e-outcomes-reviewable
+      relation: contributes_to
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+    - id: f-rel-unclear-open-burden
+      from: [f-e-unclear-stays-open]
+      to: f-e-feedback-burden
       relation: can_cause
       status: proposed
       contributions: [{by: assistant, attribution: assistant, mode: text}]
@@ -4009,6 +4049,10 @@ trees:
       work: verify_feedback_sync
       label: Verify that sharing is on in a fresh session worktree.
       note: After the change merges and the installed skill is updated, start a new session; check that sync reports sharing on through the main checkout's authorisation and that a feedback reply reaches origin/main. Also check whether the session branch's copy of the reasoning file conflicts with the shared feedback when that session's PR merges.
+    - ref: f-rel-unclear-open-revisited
+      work: verify_unclear_resurfaces
+      label: Check an unclear answer comes back with its earlier note.
+      note: At the next real unclear verdict, confirm in a later session that the request reappears showing the earlier unclear note, and leaves the queue after an observed, not observed or unavailable verdict or while deferred.
     - ref: f-e-feedback-sync
       work: review_outcome_feedback
       label: Review recorded outcome feedback against the original reasoning.
@@ -5860,6 +5904,36 @@ feedback_requests:
     surface: conversation
     source_text: accept
     note: Included in displayed proposal change-worktree-sharing-2026-10-20 revision 1, which David accepted. No outcome is inferred.
+- id: unclear-revisit-check
+  revision: 1
+  created_by: david
+  recorded_at: '2026-10-20T15:59:21Z'
+  about:
+    ref: f-e-unclear-stays-open
+    tree: future_reality
+    kind: injection
+    standing: proposed
+    text: An outcome whose latest assessment by a feedback provider is unclear stays in that provider's queue, showing the earlier unclear note, until a later report gives observed, not observed or unavailable, or the provider defers it.
+  feedback_from:
+  - david
+  benefits:
+  - ref: f-e-unclear-revisited
+    tree: future_reality
+    kind: predicted_effect
+    standing: proposed
+    text: Participants are asked again about outcomes they could only partly judge, so inconclusive feedback gets completed when evidence arrives.
+  reservations:
+  - ref: f-e-feedback-burden
+    tree: future_reality
+    kind: undesirable_effect
+    standing: proposed
+    text: Feedback requests that arrive before someone can judge a change or recur too often can increase collaboration burden.
+  ready_when: After this change is merged and the installed skill updated, once David has answered some request with an unclear verdict and it has come back in a later session. Judge whether the repeat question helped complete the feedback, and separately whether it came back too soon or too often.
+  reports: []
+  source:
+    surface: conversation
+    source_text: yes i agree
+    note: Included in displayed proposal change-unclear-stays-open-2026-10-20 revision 1, which David accepted. No outcome is inferred.
 change_acceptances:
 - proposal_ref: change-node-roles-2026-10-14
   by: david
@@ -7714,5 +7788,23 @@ change_acceptances:
   - skills/reason-commons/tests/test_onboarding.py
   - skills/reason-commons/references/feedback-sync.md
   - skills/reason-commons/references/onboarding.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+- proposal_ref: change-unclear-stays-open-2026-10-20
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-20T15:59:21Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: yes i agree
+  scope: 'One PR from a new branch off origin/main. feedback.py keeps an outcome outstanding for a provider while their latest assessing report (chronological, ignoring not_assessed) gives unclear; a later observed, not_observed or unavailable closes it and a later unclear reopens it; deferral is respected as before; the rendered request shows the earlier unclear note. The Discord host inherits this through the shared helper. Tests in test_feedback.py; update references/feedback.md and SKILL.md. Add the displayed observation, injection, predicted effect, three links, one backlog item and feedback commitment unclear-revisit-check revision 1 (David), plus an implementation bead.'
+  node_ids: [r-e-unclear-drops-from-queue, f-e-unclear-stays-open, f-e-unclear-revisited]
+  link_ids: [f-rel-unclear-open-revisited, f-rel-revisited-reviewable, f-rel-unclear-open-burden]
+  approved_paths:
+  - skills/reason-commons/scripts/feedback.py
+  - skills/reason-commons/tests/test_feedback.py
+  - skills/reason-commons/references/feedback.md
+  - skills/reason-commons/SKILL.md
   - ltp/rufus-david-collab/reason-commons.yaml
   - .beads/issues.jsonl
