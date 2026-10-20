@@ -9,7 +9,9 @@
     { "id": "desktop", "width": 1440, "height": 900, "isMobile": false },
     { "id": "phone", "width": 375, "height": 812, "isMobile": true }
   ],
-  "capture": { "settle_ms": 1500, "max_tiles": 48, "overlap_px": 80, "max_text_chars": 120000 },
+  "page_viewport": "desktop",
+  "capture": { "settle_ms": 1500, "max_tiles": 48, "overlap_px": 80, "max_text_chars": 120000,
+    "main_action": { "pattern": "\\b(install|download|get started|try it|skills?)\\b", "install_command": "npx skills add \\S+", "failure_text": "can.?t|cannot|unable|unavailable|not available|isn.?t available|failed|error", "max_candidates": 6, "wait_ms": 2500 } },
   "judge": { "model": null, "max_calls": 10, "max_images_per_candidate": 4, "max_output_tokens": 6000, "timeout_ms": 120000 },
   "baseline_url": "https://reasoncommons.com/",
   "visitor_questions": [

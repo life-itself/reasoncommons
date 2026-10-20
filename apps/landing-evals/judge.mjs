@@ -13,11 +13,49 @@ const evidence = pair => obj({ ...(pair ? { candidate: { type: 'string', enum: [
 export const schemas = {
   individual: obj({ criteria: arr(obj({ id: str, score: { type: ['integer', 'null'], minimum: 0, maximum: 3 }, finding: str, evidence: arr(evidence(false)) })), factual_errors: arr(obj({ claim: str, fact_id: str, explanation: str })), blockers: arr(str), overall: { type: 'string', enum: ['meets', 'needs-work', 'insufficient-evidence'] } }),
   pairwise: obj({ criteria: arr(obj({ id: str, winner: { type: 'string', enum: ['A', 'B', 'tie', 'insufficient-evidence'] }, finding: str, evidence: arr(evidence(true)) })) }),
-  visitors: obj({ answers: arr(obj({ question_id: str, score: { type: ['integer', 'null'], minimum: 0, maximum: 2 }, finding: str, evidence_quote: str, fact_ids: arr(str) })), misconceptions: arr(str) })
+  visitors: obj({ answers: arr(obj({ question_id: str, score: { type: ['integer', 'null'], minimum: 0, maximum: 2 }, finding: str, evidence_quote: str, fact_ids: arr(str) })), misconceptions: arr(str) }),
+  checklist: obj({ criteria: arr(obj({ id: str, finding: str, checks: arr(obj({ id: str, pass: { type: ['boolean', 'null'] }, evidence: arr(evidence(false)) })) })), factual_errors: arr(obj({ claim: str, fact_id: str, explanation: str })), blockers: arr(str), overall: { type: 'string', enum: ['meets', 'needs-work', 'insufficient-evidence'] } }),
+  'first-screen': obj({ answers: arr(obj({ question_id: str, answer: str, score: { type: ['integer', 'null'], minimum: 0, maximum: 2 }, evidence: arr(evidence(false)) })) })
 };
+
+// landing-rubric-2 and later: each criterion is a list of yes/no checks. landing-rubric-1 runs keep their anchored scores.
+export const isChecklist = rubric => rubric.criteria.some(c => Array.isArray(c.checks));
+export const judgeChecks = criterion => criterion.checks.filter(k => k.source !== 'capture');
+export const schemaFor = (kind, rubric) => kind === 'individual' && isChecklist(rubric) ? schemas.checklist : schemas[kind];
 
 function requiredIDs(items, key, expected) {
   if (!Array.isArray(items) || items.length !== expected.length || new Set(items.map(i => i[key])).size !== expected.length || items.some(i => !expected.includes(i[key]))) throw new Error('Judge output must contain each required criterion/question exactly once.');
+}
+
+function checkEvidence(list, kind, captures, selectedImages) {
+  for (const e of list) {
+    const index = kind === 'pairwise' ? ['A', 'B'].indexOf(e.candidate) : 0;
+    if (index < 0 || !captures[index]) throw new Error('Unknown evidence candidate.');
+    if (!['text', 'image'].includes(e.kind) || typeof e.quote !== 'string') throw new Error('Invalid evidence shape.');
+    if (e.kind === 'image') {
+      if (!selectedImages[index].some(i => i.ref === e.ref)) throw new Error('Evidence refers to an image the judge did not see.');
+    } else {
+      const observed = kind === 'first-screen' ? [captures[0].first_screen.text, ...selectedImages[0].map(i => i.viewport_text)].join('\n') : [captures[index].text, ...selectedImages[index].map(i => i.viewport_text)].join('\n');
+      if (e.ref !== 'visible-text' || !e.quote.trim() || !observed.includes(e.quote)) throw new Error('Text evidence must exactly quote supplied visible text.');
+    }
+  }
+}
+
+// Combine judge answers with scripted capture checks. A scripted not-found or unclear result is null, not a failure.
+export function scoreChecklist(run, judgment, capture) {
+  const scripted = { 'next-route-works': { pass: 'pass' === capture.main_action?.status ? true : capture.main_action?.status === 'fail' ? false : null, source: 'capture', detail: capture.main_action?.reason || 'No probe result recorded.' } };
+  return judgment.assessment.criteria.map(answered => {
+    const criterion = run.rubric.criteria.find(c => c.id === answered.id);
+    const checks = criterion.checks.map(k => k.source === 'capture' ? { id: k.id, ...(scripted[k.id] || { pass: null, source: 'capture', detail: 'Unknown scripted check.' }) } : { id: k.id, source: 'judge', ...answered.checks.find(x => x.id === k.id) });
+    const passed = checks.filter(k => k.pass === true).length;
+    return { id: criterion.id, scope: criterion.scope, finding: answered.finding, passed, total: checks.length, pass_at: criterion.pass_at, passes: passed >= criterion.pass_at, checks };
+  });
+}
+
+export function verdict(run, judgment, capture) {
+  const scores = scoreChecklist(run, judgment, capture);
+  const gates = [...judgment.assessment.factual_errors.map(f => `Factual error: ${f.claim}`), ...judgment.assessment.blockers, ...(capture.main_action?.blocking ? [`Scripted main-action failure: ${capture.main_action.reason}`] : [])];
+  return { scores, gates, meets: !gates.length && scores.every(s => s.passes) };
 }
 
 export function validateSchema(value, schema, path = 'result') {
@@ -33,9 +71,39 @@ export function validateSchema(value, schema, path = 'result') {
   if (typeof value === 'number' && ((schema.minimum !== undefined && value < schema.minimum) || (schema.maximum !== undefined && value > schema.maximum))) throw new Error(`Out-of-range value at ${path}.`);
 }
 
-export function validateAssessment(value, kind, run, captures, selectedImages = captures.map(c => c.images)) {
-  validateSchema(value, schemas[kind]);
+export function validateAssessment(value, kind, run, captures, selectedImages = captures.map(c => c.images), criteriaIDs = null) {
+  validateSchema(value, schemaFor(kind, run.rubric));
   if (!value || typeof value !== 'object') throw new Error('Judge output must be an object.');
+  if (kind === 'first-screen') {
+    requiredIDs(value.answers, 'question_id', run.config.visitor_questions.map(q => q.id));
+    for (const item of value.answers) {
+      if (typeof item.answer !== 'string' || !item.answer.trim()) throw new Error('A first-screen answer must say what the screen communicates, or that it is not stated.');
+      if (item.score !== null && !item.evidence.length) throw new Error('A graded first-screen answer needs evidence from the first screen.');
+      checkEvidence(item.evidence, kind, captures, selectedImages);
+    }
+    return value;
+  }
+  if (kind === 'individual' && isChecklist(run.rubric)) {
+    const criteria = run.rubric.criteria.filter(c => !criteriaIDs || criteriaIDs.includes(c.id));
+    requiredIDs(value.criteria, 'id', criteria.map(c => c.id));
+    for (const answered of value.criteria) {
+      const criterion = criteria.find(c => c.id === answered.id);
+      if (!answered.finding.trim()) throw new Error('Each criterion needs a finding.');
+      requiredIDs(answered.checks, 'id', judgeChecks(criterion).map(k => k.id));
+      for (const check of answered.checks) {
+        if (check.pass === true && !check.evidence.length) throw new Error('A check answered yes needs grounded evidence.');
+        if (check.pass === true && criterion.scope === 'viewport' && !check.evidence.some(e => e.kind === 'image')) throw new Error('A presentation check answered yes needs screenshot evidence.');
+        if (check.pass === true && judgeChecks(criterion).find(k => k.id === check.id).false_if === 'factual_errors' && value.factual_errors.length) throw new Error('A check cannot pass while the judge reports a contradicted claim.');
+        checkEvidence(check.evidence, kind, captures, selectedImages);
+      }
+    }
+    for (const f of value.factual_errors) {
+      if (!f.claim || !captures[0].text.includes(f.claim) || !run.facts.facts.some(x => x.id === f.fact_id) || typeof f.explanation !== 'string') throw new Error('A factual-error finding must quote the page and cite a supplied fact.');
+    }
+    if (value.overall === 'meets' && (value.factual_errors.length || value.blockers.length)) throw new Error('A page with a reported blocking gate cannot pass.');
+    if (value.overall === 'meets' && value.criteria.some(a => { const c = criteria.find(x => x.id === a.id); return a.checks.filter(k => k.pass === true).length + c.checks.filter(k => k.source === 'capture').length < c.pass_at; })) throw new Error('Meeting the contract requires each criterion to reach its pass count.');
+    return value;
+  }
   if (kind === 'visitors') {
     requiredIDs(value.answers, 'question_id', run.config.visitor_questions.map(q => q.id));
     for (const item of value.answers) {
@@ -53,17 +121,7 @@ export function validateAssessment(value, kind, run, captures, selectedImages = 
     if (kind === 'individual' && criterion.score !== null && (!Number.isInteger(criterion.score) || criterion.score < 0 || criterion.score > 3)) throw new Error('Invalid rubric score.');
     if (kind === 'pairwise' && !['A', 'B', 'tie', 'insufficient-evidence'].includes(criterion.winner)) throw new Error('Invalid pairwise winner.');
     if (typeof criterion.finding !== 'string' || !criterion.finding.trim() || !Array.isArray(criterion.evidence) || (scored && !criterion.evidence.length)) throw new Error('A judgment needs a finding and grounded evidence.');
-    for (const e of criterion.evidence) {
-      const index = kind === 'pairwise' ? ['A', 'B'].indexOf(e.candidate) : 0;
-      if (index < 0 || !captures[index]) throw new Error('Unknown evidence candidate.');
-      if (!['text', 'image'].includes(e.kind) || typeof e.quote !== 'string') throw new Error('Invalid evidence shape.');
-      if (e.kind === 'image') {
-        if (!selectedImages[index].some(i => i.ref === e.ref)) throw new Error('Evidence refers to an image the judge did not see.');
-      } else {
-        const observed = [captures[index].text, ...selectedImages[index].map(i => i.viewport_text)].join('\n');
-        if (e.ref !== 'visible-text' || !e.quote.trim() || !observed.includes(e.quote)) throw new Error('Text evidence must exactly quote supplied visible text.');
-      }
-    }
+    checkEvidence(criterion.evidence, kind, captures, selectedImages);
     if (kind === 'pairwise' && scored && !['A', 'B'].every(label => criterion.evidence.some(e => e.candidate === label))) throw new Error('Comparative findings must cite both candidates.');
   }
   if (kind === 'individual') {
@@ -85,12 +143,20 @@ export function selectImages(images, max) {
 
 export function planJudgments(run, options = {}) {
   const kind = options.mode || 'individual';
-  if (!['individual', 'pairwise'].includes(kind)) throw new Error('Use individual or pairwise mode; visitor grading uses --visitors.');
+  if (!['individual', 'pairwise', 'first-screen'].includes(kind)) throw new Error('Use individual, pairwise or first-screen mode; visitor grading uses --visitors.');
   const repetitions = Number(options.repeat || 1);
   if (!Number.isInteger(repetitions) || repetitions < 1 || repetitions > 10) throw new Error('Repeat must be an integer from 1 to 10.');
-  const candidates = run.captures.filter(c => c.ready && (options.companions || c.composition !== 'supplied-phone') && (!options.viewport || c.viewport.id === options.viewport) && (!options.variant || options.variant.split(',').includes(c.variant_id)));
+  const candidates = run.captures.filter(c => c.ready && (options.companions || c.composition !== 'supplied-phone') && (options.seeded ? true : c.composition !== 'seeded-defect') && (!options.viewport || c.viewport.id === options.viewport) && (!options.variant || options.variant.split(',').includes(c.variant_id)));
   const tasks = [];
-  if (kind === 'individual') for (let i = 0; i < repetitions; i++) for (const c of candidates) tasks.push({ kind, captures: [c], repetition: i + 1 });
+  if (kind === 'first-screen') for (let i = 0; i < repetitions; i++) for (const c of candidates) tasks.push({ kind, captures: [c], repetition: i + 1 });
+  else if (kind === 'individual' && isChecklist(run.rubric)) {
+    // Page-scope criteria read the same full text at every width, so judge them once, on the page viewport; judge viewport-scope criteria per capture.
+    const pageViewport = run.config.page_viewport || run.config.viewports[0].id;
+    for (let i = 0; i < repetitions; i++) for (const c of candidates) {
+      const criteria_ids = run.rubric.criteria.filter(k => k.scope !== 'page' || c.viewport.id === pageViewport).map(k => k.id);
+      tasks.push({ kind, captures: [c], criteria_ids, repetition: i + 1 });
+    }
+  } else if (kind === 'individual') for (let i = 0; i < repetitions; i++) for (const c of candidates) tasks.push({ kind, captures: [c], repetition: i + 1 });
   else {
     const pair = options.pair?.split(',');
     if (!pair || pair.length !== 2 || pair[0] === pair[1]) throw new Error('Pairwise mode requires --pair first-id,second-id.');
@@ -132,8 +198,19 @@ export async function makeRequest(run, task, runDir) {
   const selected = [];
   if (task.kind === 'visitors') {
     text.push(JSON.stringify({ task: 'Grade these actual visitor answers, without supplying or rewriting answers. Evaluate comprehension against the reference concepts. Equivalent explanations are correct. These are exploratory observations, not representative estimates.', questions: run.config.visitor_questions, anchors: run.rubric.visitor_anchors, facts: run.facts, answers: task.captures[0].answers }));
+  } else if (task.kind === 'first-screen') {
+    const c = task.captures[0], picked = c.images.filter(i => i.ref === c.first_screen.image_ref);
+    selected.push(picked);
+    text.push(JSON.stringify({ task: run.rubric.first_screen.question, audience: run.config.audience, questions: run.config.visitor_questions.map(({ id, prompt, reference }) => ({ id, prompt, reference })), anchors: run.rubric.visitor_anchors, facts: run.facts, note: 'You see only what fits before scrolling. Do not assume anything about the rest of the page. Grade what this screen alone communicates.' }));
+    text.push(JSON.stringify({ candidate: 'A', viewport: c.viewport, first_screen_text: c.first_screen.text, text_scope: 'Only text rendered in the first viewport before scrolling.', images: picked.map(({ ref }) => ({ ref })) }));
+    for (const image of picked) {
+      const bytes = await readFile(join(runDir, image.file));
+      if (sha256(bytes) !== image.sha256) throw new Error(`Evidence image changed: ${image.file}`);
+      images.push({ type: 'input_text', text: `A ${image.ref}` }, { type: 'input_image', image_url: `data:image/png;base64,${bytes.toString('base64')}`, detail: 'high' });
+    }
   } else {
-    text.push(JSON.stringify({ task: task.kind === 'pairwise' ? 'Compare A and B on each criterion. Their order and filenames are arbitrary. Ties and insufficient evidence are allowed.' : 'Assess candidate A on each criterion.', audience: run.config.audience, objective: run.config.objective, primary_action: run.config.primary_action, rubric: run.rubric, facts: run.facts }));
+    const rubric = task.kind === 'individual' && isChecklist(run.rubric) ? { ...run.rubric, criteria: run.rubric.criteria.filter(c => !task.criteria_ids || task.criteria_ids.includes(c.id)).map(c => ({ ...c, checks: judgeChecks(c) })), scripted_note: 'Some checks are answered by a scripted browser probe and are omitted here. Answer only the checks listed.' } : run.rubric;
+    text.push(JSON.stringify({ task: task.kind === 'pairwise' ? 'Compare A and B on each criterion. Their order and filenames are arbitrary. Ties and insufficient evidence are allowed.' : 'Assess candidate A on each criterion.', audience: run.config.audience, objective: run.config.objective, primary_action: run.config.primary_action, rubric, facts: run.facts }));
     for (let i = 0; i < task.captures.length; i++) {
       const c = task.captures[i], label = ['A', 'B'][i];
       const picked = selectImages(c.images, run.config.judge.max_images_per_candidate);
@@ -150,11 +227,11 @@ export async function makeRequest(run, task, runDir) {
   return { prompt, selected, content: [{ type: 'input_text', text: prompt }, ...images] };
 }
 
-async function callModel(model, content, kind, config) {
+async function callModel(model, content, kind, config, schema) {
   const response = await fetch('https://api.openai.com/v1/responses', {
     method: 'POST', signal: AbortSignal.timeout(config.timeout_ms),
     headers: { Authorization: `Bearer ${process.env.OPENAI_API_KEY}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ model, store: false, instructions: SYSTEM, input: [{ role: 'user', content }], text: { format: { type: 'json_schema', name: `landing_${kind}`, strict: true, schema: schemas[kind] } }, max_output_tokens: config.max_output_tokens })
+    body: JSON.stringify({ model, store: false, instructions: SYSTEM, input: [{ role: 'user', content }], text: { format: { type: 'json_schema', name: `landing_${kind.replace('-', '_')}`, strict: true, schema } }, max_output_tokens: config.max_output_tokens })
   });
   if (!response.ok) throw new Error(`OpenAI returned HTTP ${response.status}. No retry was made; inspect account/model access before rerunning.`);
   const raw = await response.json();
@@ -162,6 +239,14 @@ async function callModel(model, content, kind, config) {
   const output = raw.output?.flatMap(x => x.content || []).filter(x => x.type === 'output_text').map(x => x.text).join('');
   if (!output) throw new Error('No structured judgment returned; possible refusal.');
   return { raw, assessment: JSON.parse(output) };
+}
+
+export function fixtureAssessment(run, task) {
+  if (task.kind === 'visitors') return { answers: run.config.visitor_questions.map(q => ({ question_id: q.id, score: null, finding: 'Fixture: no visitor grading performed.', evidence_quote: '', fact_ids: [] })), misconceptions: [] };
+  if (task.kind === 'first-screen') return { answers: run.config.visitor_questions.map(q => ({ question_id: q.id, answer: 'Fixture: no first-screen reading performed.', score: null, evidence: [] })) };
+  if (task.kind === 'pairwise') return { criteria: run.rubric.criteria.map(c => ({ id: c.id, winner: 'insufficient-evidence', finding: 'Fixture: no model comparison performed.', evidence: [] })) };
+  const criteria = run.rubric.criteria.filter(c => !task.criteria_ids || task.criteria_ids.includes(c.id));
+  return { criteria: isChecklist(run.rubric) ? criteria.map(c => ({ id: c.id, finding: 'Fixture: no model evaluation performed.', checks: judgeChecks(c).map(k => ({ id: k.id, pass: null, evidence: [] })) })) : criteria.map(c => ({ id: c.id, score: null, finding: 'Fixture: no model evaluation performed.', evidence: [] })), factual_errors: [], blockers: [], overall: 'insufficient-evidence' };
 }
 
 export async function judgeRun(runDir, options = {}) {
@@ -181,18 +266,17 @@ export async function judgeRun(runDir, options = {}) {
   const batchID = randomUUID(), judgeCodeHash = sha256(await readFile(new URL('./judge.mjs', import.meta.url)));
   for (const task of tasks) {
     const { prompt, content, selected } = await makeRequest(run, task, runDir);
-    const record = { id: randomUUID(), batch_id: batchID, judge_code_sha256: judgeCodeHash, mode: options.fixture ? 'fixture' : 'live', kind: task.kind, at: new Date().toISOString(), requested_model: model, repetition: task.repetition, capture_ids: task.kind === 'visitors' ? [] : task.captures.map(c => c.id), ...(task.kind === 'visitors' ? { participant_id: task.captures[0].participant_id, variant_id: task.captures[0].variant_id, response: task.captures[0] } : {}), prompt, system_prompt: SYSTEM, prompt_sha256: sha256(SYSTEM + prompt), rubric_version: run.rubric.version, image_refs: selected.map(xs => xs.map(({ ref, file, sha256: hash }) => ({ ref, file, sha256: hash }))) };
+    const record = { id: randomUUID(), batch_id: batchID, judge_code_sha256: judgeCodeHash, mode: options.fixture ? 'fixture' : 'live', kind: task.kind, at: new Date().toISOString(), requested_model: model, repetition: task.repetition, capture_ids: task.kind === 'visitors' ? [] : task.captures.map(c => c.id), ...(task.criteria_ids ? { criteria_ids: task.criteria_ids } : {}), ...(task.kind === 'visitors' ? { participant_id: task.captures[0].participant_id, variant_id: task.captures[0].variant_id, response: task.captures[0] } : {}), prompt, system_prompt: SYSTEM, prompt_sha256: sha256(SYSTEM + prompt), rubric_version: run.rubric.version, image_refs: selected.map(xs => xs.map(({ ref, file, sha256: hash }) => ({ ref, file, sha256: hash }))) };
     try {
-      if (options.fixture) {
-        record.assessment = task.kind === 'visitors' ? { answers: run.config.visitor_questions.map(q => ({ question_id: q.id, score: null, finding: 'Fixture: no visitor grading performed.', evidence_quote: '', fact_ids: [] })), misconceptions: [] } : task.kind === 'pairwise' ? { criteria: run.rubric.criteria.map(c => ({ id: c.id, winner: 'insufficient-evidence', finding: 'Fixture: no model comparison performed.', evidence: [] })) } : { criteria: run.rubric.criteria.map(c => ({ id: c.id, score: null, finding: 'Fixture: no model evaluation performed.', evidence: [] })), factual_errors: [], blockers: [], overall: 'insufficient-evidence' };
-      } else {
-        const result = await callModel(model, content, task.kind, run.config.judge);
+      if (options.fixture) record.assessment = fixtureAssessment(run, task);
+      else {
+        const result = await callModel(model, content, task.kind, run.config.judge, schemaFor(task.kind, run.rubric));
         record.assessment = result.assessment;
         record.raw_response = result.raw;
         record.resolved_model = result.raw.model;
         record.usage = result.raw.usage;
       }
-      validateAssessment(record.assessment, task.kind, run, task.captures, selected);
+      validateAssessment(record.assessment, task.kind, run, task.captures, selected, task.criteria_ids);
       record.valid = true;
     } catch (e) { record.valid = false; record.error = e.message; }
     (task.kind === 'visitors' ? run.visitor_judgments : run.judgments).push(record);
@@ -213,10 +297,12 @@ export function calibration(run, labels) {
     if (!l.annotator || typeof l.annotator !== 'string') throw new Error('Each human label needs an annotator identifier.');
     const j = [...run.judgments, ...run.visitor_judgments].find(j => j.id === l.judgment_id);
     if (!j || !j.valid || !['live', 'codex'].includes(j.mode)) throw new Error('Calibration requires a valid live judgment (API or native Codex), not fixture or failed output.');
-    const item = (j.assessment.criteria || j.assessment.answers).find(c => (c.id || c.question_id) === l.criterion_id);
+    // Checklist judgments are labelled per check (true, false or null); other kinds per criterion or question.
+    const item = (j.assessment.criteria || []).flatMap(c => c.checks || []).find(k => k.id === l.criterion_id) || (j.assessment.criteria || j.assessment.answers).find(c => (c.id || c.question_id) === l.criterion_id);
     if (!item) throw new Error('Unknown labelled criterion.');
-    const actual = item.winner ?? item.score;
-    if (j.kind === 'pairwise' ? !['A', 'B', 'tie', 'insufficient-evidence'].includes(l.label) : l.label !== null && (!Number.isInteger(l.label) || l.label < 0 || l.label > (j.kind === 'visitors' ? 2 : 3))) throw new Error('Human label is outside the criterion scale.');
+    const isCheck = Object.hasOwn(item, 'pass');
+    const actual = isCheck ? item.pass : item.winner ?? item.score;
+    if (isCheck ? ![true, false, null].includes(l.label) : j.kind === 'pairwise' ? !['A', 'B', 'tie', 'insufficient-evidence'].includes(l.label) : l.label !== null && (!Number.isInteger(l.label) || l.label < 0 || l.label > (['visitors', 'first-screen'].includes(j.kind) ? 2 : 3))) throw new Error('Human label is outside the criterion scale.');
     return { ...l, model_label: actual, agrees: actual === l.label };
   });
   return { labelled_items: checks.length, agreements: checks.filter(c => c.agrees).length, exact_agreement: checks.length ? checks.filter(c => c.agrees).length / checks.length : null, checks, note: 'Exploratory exact agreement on these labels only. Keep a held-out set and inspect human disagreements; this does not establish population reliability.' };
