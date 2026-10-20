@@ -4,7 +4,7 @@ The journal bridges SQLite and the YAML file: prepare before replacement, then
 complete after views. Recovery recognizes either hash and never blindly replays.
 """
 import asyncio
-from contextlib import asynccontextmanager
+from contextlib import asynccontextmanager, contextmanager
 import fcntl
 import hashlib
 import json
@@ -76,13 +76,21 @@ class Store:
                 CREATE TABLE IF NOT EXISTS context (
                     seq INTEGER PRIMARY KEY AUTOINCREMENT, request_id TEXT UNIQUE NOT NULL,
                     channel TEXT NOT NULL, data TEXT NOT NULL);
+                CREATE TABLE IF NOT EXISTS feedback_deliveries (
+                    id TEXT PRIMARY KEY, state TEXT NOT NULL, payload TEXT NOT NULL,
+                    updated REAL NOT NULL, message_url TEXT);
             """)
 
+    @contextmanager
     def connect(self):
         db = sqlite3.connect(self.db, timeout=30)
         db.row_factory = sqlite3.Row
-        db.execute("PRAGMA synchronous=FULL")
-        return db
+        try:
+            db.execute("PRAGMA synchronous=FULL")
+            with db:
+                yield db
+        finally:
+            db.close()
 
     @asynccontextmanager
     async def lock(self, wait_seconds=120):
@@ -138,6 +146,33 @@ class Store:
             rows = db.execute("SELECT data FROM context WHERE channel=? ORDER BY seq DESC LIMIT 12",
                               (str(channel),)).fetchall()
         return [json.loads(r["data"]) for r in reversed(rows)]
+
+    def reserve_feedback_delivery(self, ident, payload):
+        """Reserve before network I/O; a crash cannot silently cause a resend."""
+        with self.connect() as db:
+            result = db.execute("INSERT OR IGNORE INTO feedback_deliveries VALUES (?,?,?,?,NULL)",
+                                (ident, "uncertain", json.dumps(payload), time.time()))
+            return result.rowcount == 1
+
+    def finish_feedback_delivery(self, ident, state, message_url=None):
+        if state not in {"sent", "failed", "cancelled", "uncertain"}:
+            raise ValueError("Unknown feedback delivery state.")
+        with self.connect() as db:
+            result = db.execute("UPDATE feedback_deliveries SET state=?, updated=?, message_url=? WHERE id=?",
+                                (state, time.time(), message_url, ident))
+            if result.rowcount != 1:
+                raise ValueError("Unknown feedback delivery.")
+
+    def feedback_deliveries(self):
+        with self.connect() as db:
+            return [dict(row) for row in db.execute("SELECT * FROM feedback_deliveries ORDER BY updated")]
+
+    def retry_feedback_delivery(self, ident):
+        """Explicit operator retry only after a known non-delivery, never uncertainty."""
+        with self.connect() as db:
+            result = db.execute("DELETE FROM feedback_deliveries WHERE id=? AND state='failed'", (ident,))
+            if result.rowcount != 1:
+                raise ValueError("Only a reconciled failed delivery can be explicitly retried.")
 
     def review(self, token):
         with self.connect() as db:

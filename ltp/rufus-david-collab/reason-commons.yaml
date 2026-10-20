@@ -1361,6 +1361,16 @@ trees:
         attribution: explicit
         mode: text
         note: David supplied a screenshot of the PR 72 Future Reality diagram and proposed one-sentence labels with full statements kept in the YAML, 2026-10-20.
+    - id: r-e-expanded-diagram-frame-small
+      kind: observation
+      text: In the Claude desktop app on 20 October 2026, a pan-and-zoom diagram opened in the expanded side window stayed at its 380-pixel chat height, leaving most of the window empty and the diagram hard to read.
+      label: "Expanded diagrams kept their small chat frame, leaving the window empty."
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: David supplied a screenshot of an expanded proposal diagram and asked why it did not take up the full space, 2026-10-20.
     - id: r-e-rewind-untracked-saves
       kind: cause
       text: Shell-written working YAML is outside Claude Code's file checkpoints.
@@ -1393,6 +1403,13 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: r-e-feedback-followup-missing
+      kind: undesirable_effect
+      text: The installed skill lacks a structured assignment and follow-up mechanism for feedback on expected benefits and harmful consequences.
+      label: Feedback lacks structured assignment and follow-up.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text, note: Inspected the installed schema and helpers during David's discussion of forgotten outcomes on 2026-10-20.}
     - id: r-e-repo-feels-scattered
       kind: observation
       text: David finds the Reason Commons repository increasingly scattered as it contains the public website, skills and prospective Discord-bot work.
@@ -1961,6 +1978,10 @@ trees:
       note: The repository previously mixed public method pages and working reasoning under ltp/ and published from the project root with exclusions. The approved migration separates those boundaries and repairs affected paths. David’s concern and anticipated technical-debt risk remain proposed; observe whether this improves actual work rather than inferring the benefit from cleaner folders. No repository split or production cutover was performed.
       beads:
       - reasoncommons-ar1
+    - ref: r-e-feedback-followup-missing
+      work: review_feedback_gap
+      label: Review the observed feedback-infrastructure gap.
+      note: Review the inspected gap and its relationship to existing reasoning; implementation does not establish that real feedback is collected.
   conflict:
     nodes:
     - id: c-e-objective
@@ -2729,6 +2750,18 @@ trees:
         attribution: explicit
         mode: text
         note: David asked for one-sentence diagram labels with full statements kept in the YAML, then accepted short-diagram-labels-2026-10-20 revision 1.
+    - id: f-e-taller-diagram-frame
+      kind: injection
+      text: Pan-and-zoom diagrams offer a Taller control that switches the frame between its compact chat height and a tall height that fills most of an expanded window, rather than sizing the frame to the window, which the host does not support.
+      label: "A Taller button lets the diagram frame fill an expanded window."
+      status: proposed
+      addresses:
+      - r-e-expanded-diagram-frame-small
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+        note: Proposed in taller-diagram-frame-2026-10-20 revision 1, which David accepted for implementation.
     - id: f-e-rewind-checkpointed-save
       kind: injection
       text: Save working YAML through the host's tracked file-editing tools when its rewind depends on them.
@@ -2807,6 +2840,35 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: f-e-feedback-cycle
+      kind: injection
+      text: The skill assigns feedback providers and uses shared reasoning files to request, capture and revisit feedback on expected benefits and harmful consequences across sessions and Discord.
+      label: Assign, request and preserve feedback in shared reasoning.
+      status: proposed
+      addresses: [r-e-feedback-followup-missing]
+      contributions:
+      - {by: david, attribution: explicit, mode: text, note: Requested named feedback providers, optional timing and shared-file feedback across sessions and Discord; implementation approval does not endorse this reasoning.}
+    - id: f-e-outcomes-reviewable
+      kind: predicted_effect
+      text: When assigned participants supply feedback, their observations about expected benefits and harms are available beside the original expectations for review.
+      label: Reported outcomes remain beside original expectations.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text}
+    - id: f-e-feedback-burden
+      kind: undesirable_effect
+      text: Feedback requests that arrive before someone can judge a change or recur too often can increase collaboration burden.
+      label: Premature or excessive requests can add burden.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text}
+    - id: f-e-feedback-controls
+      kind: injection
+      text: Feedback requests support explicit deferral and use configured, bounded delivery to limit unnecessary interruptions.
+      label: Allow deferral and bound feedback delivery.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text}
     - id: f-e-discord-diverts-resources
       kind: undesirable_effect
       text: Operating and extending the bot may consume scarce time and money and delay real-work testing.
@@ -2855,6 +2917,36 @@ trees:
         mode: text
         note: The difference David intends the editions to make; untested.
     links:
+    - id: f-rel-feedback-reviewable
+      from: [f-e-feedback-cycle]
+      to: f-e-outcomes-reviewable
+      relation: contributes_to
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+      assumptions:
+      - {text: Assigned participants respond and their reports are preserved accurately., by: assistant}
+    - id: f-rel-feedback-supports-learning
+      from: [f-e-outcomes-reviewable]
+      to: f-e-learn-from-use
+      relation: contributes_to
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+      assumptions:
+      - {text: Observations are reviewed and affect the reasoning where warranted., by: assistant}
+    - id: f-rel-feedback-adds-burden
+      from: [f-e-feedback-cycle]
+      to: f-e-feedback-burden
+      relation: can_cause
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+      assumptions:
+      - {text: Requests are premature or excessive; actual burden remains unobserved., by: assistant}
+    - id: f-rel-feedback-controls-reduce-burden
+      from: [f-e-feedback-controls]
+      to: f-e-feedback-burden
+      relation: reduces_risk_of
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
     - id: f-rel-use-makes-users
       from:
       - f-e-use-while-building
@@ -3071,6 +3163,19 @@ trees:
         mode: text
       assumptions:
       - text: Complete statements with plain standing and kind labels are easier to judge than clipped statements beside identifiers; rendering checks do not establish that people find them easier.
+        by: assistant
+    - id: f-rel-taller-frame-aid-inspection
+      from:
+      - f-e-taller-diagram-frame
+      to: f-e-skill-attention-clear
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+      assumptions:
+      - text: A diagram that fills the expanded window is easier to read than one confined to the chat-height frame; the fixed tall height may still need some scrolling on shorter screens.
         by: assistant
     - id: f-rel-rewind-recovery-coherent
       from:
@@ -3310,6 +3415,23 @@ trees:
       note: David reports that the margin gets ahead of the narrative, particularly while The Wrong Queue introduces station capacities. The local implementation under explainer-margin-pacing-2026-10-20 revision 1 now keeps the cast visible and highlights introduced stations before the explicit skill invitation; messages then follow individual beats with reversible state, concise copy, role-appropriate devices and reduced motion support. Technical verification is recorded on show_skill_use_in_explainers and in the scroll map. Remaining work is David's editorial review of the learning progression and reader feedback; mechanical synchronization does not establish that the sequence teaches effectively. The injection and its predicted reader effect remain proposed.
       beads:
       - reasoncommons-brw
+    - ref: f-rel-feedback-reviewable
+      work: verify_feedback_cycle
+      beads: [reasoncommons-foj]
+      label: Verify shared feedback across sessions and Discord.
+      note: Test participant filtering, optional timing, resumption, independent benefit/harm reports, deferral, version preservation, duplicates and interrupted saves using the toy fixture, then a real participant trial.
+    - ref: f-rel-feedback-supports-learning
+      work: evaluate_real_feedback
+      label: Review actual feedback and its effect on reasoning.
+      note: 'A real participant trial remains pending; code checks do not establish usefulness or that observations change reasoning. Feedback commitment pr-74-feedback-cycle-self-test revision 1 assigns David to assess this PR after using the updated skill on a separate real expectation, returning in a later session with the same actual reasoning file, and having an opportunity to answer its feedback. Compare automatic resurfacing, display of both original outcomes and persistence of his response; record manual prompting or deviations and assess request burden separately. Timing is event-based with no calendar deadline. No outcome report has been recorded.'
+    - ref: f-rel-feedback-adds-burden
+      work: test_negative_branch
+      label: Assess premature requests and reminder burden.
+      note: Obtain feedback from people who experience requests; absence of a report is not evidence of absence of harm.
+    - ref: f-rel-feedback-controls-reduce-burden
+      work: evaluate_feedback_controls
+      label: Check whether deferral and bounded delivery reduce burden.
+      note: Mocked delivery checks verify implementation only; actual interruption burden remains to be assessed.
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
@@ -4898,6 +5020,37 @@ trees:
     - ref: t-e-discord-pilot-evidence
       work: assess_pilot_evidence
       note: Keep local prototype evidence separate from live smoke-test results and usefulness/friction from a real collaboration session.
+feedback_requests:
+- id: pr-74-feedback-cycle-self-test
+  revision: 1
+  created_by: david
+  recorded_at: '2026-10-20T11:51:00Z'
+  about:
+    ref: f-e-feedback-cycle
+    tree: future_reality
+    kind: injection
+    standing: proposed
+    text: The skill assigns feedback providers and uses shared reasoning files to request, capture and revisit feedback on expected benefits and harmful consequences across sessions and Discord.
+  feedback_from:
+  - david
+  benefits:
+  - ref: f-e-outcomes-reviewable
+    tree: future_reality
+    kind: predicted_effect
+    standing: proposed
+    text: When assigned participants supply feedback, their observations about expected benefits and harms are available beside the original expectations for review.
+  reservations:
+  - ref: f-e-feedback-burden
+    tree: future_reality
+    kind: undesirable_effect
+    standing: proposed
+    text: Feedback requests that arrive before someone can judge a change or recur too often can increase collaboration burden.
+  reports: []
+  ready_when: 'After David uses PR #74''s updated skill with a separate real expectation: records it with named feedback providers, leaves the session, and returns in a later session using the updated skill and the same actual reasoning file, with an opportunity to answer that expectation''s feedback. Compare the original expectation with what actually happens: whether outstanding feedback returns without David remembering to ask; whether both the original benefit and reservation are displayed; and whether his response survives a further session. Record any manual prompting, intervention, or deviation from these conditions. Assess separately whether requests are premature, repetitive, or make maintaining the reasoning burdensome. If the experience or evidence is insufficient, record not experienced yet, not assessed, unclear, or unavailable rather than inferring an outcome.'
+  source:
+    surface: conversation
+    source_text: yes this looks good - add it to the PR
+    note: David approved the displayed self-test commitment. No outcome feedback or completed trial is recorded.
 change_acceptances:
 - proposal_ref: change-node-roles-2026-10-14
   by: david
@@ -6590,5 +6743,61 @@ change_acceptances:
   - docs/marketing/explainers/series/05-skill-margin-script.md
   - docs/marketing/explainers/series/06-skill-margin-pacing-critique.md
   - docs/marketing/explainers/series/07-skill-margin-scroll-map.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+- proposal_ref: taller-diagram-frame-2026-10-20
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-20T09:37:43Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept revision 1
+  scope: Pan-and-zoom diagrams get a Taller button beside the zoom buttons that switches the frame between 380px and 720px, the diagram scaling to fill it and the label flipping to Shorter; diagrams in the chat still open at 380px. Add a test for the toggle and its two heights and document it in the diagram reference. Add observation r-e-expanded-diagram-frame-small, injection f-e-taller-diagram-frame addressing it, and link f-rel-taller-frame-aid-inspection to f-e-skill-attention-clear. Deliver as a PR from this branch.
+  node_ids:
+  - r-e-expanded-diagram-frame-small
+  - f-e-taller-diagram-frame
+  - f-e-skill-attention-clear
+  link_ids:
+  - f-rel-taller-frame-aid-inspection
+  approved_paths:
+  - skills/reason-commons/scripts/render_view.py
+  - skills/reason-commons/tests/test_render_view.py
+  - skills/reason-commons/references/diagrams.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+- proposal_ref: expectation-feedback-2026-10-20
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-20T11:19:01Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept revision 1
+  scope: Implement the displayed persistent expectation-feedback cycle with required named feedback providers, optional timing, Feedback request responses, recipient-specific session-entry requests, independent benefit and reservation feedback, attributed version-bound reports in the shared reasoning YAML, Discord inspection/submission and opt-in bounded prompting with existing save/recovery controls. Add the displayed five proposed nodes and four proposed links and their gap-review, verification, real-trial and burden-assessment backlog. Preserve existing reasoning standing, prior acceptance receipts, unrelated work and collaboration priority. Validate with the remote-work toy fixture and existing skill/bot checks, then deliver a feature branch and draft PR. Exclude Discord constraint marking, live operation, sending real messages, deployment and invented participant outcomes. Beads records implementation coordination separately from reasoning.
+  node_ids: [r-e-feedback-followup-missing, f-e-feedback-cycle, f-e-outcomes-reviewable, f-e-feedback-burden, f-e-feedback-controls]
+  link_ids: [f-rel-feedback-reviewable, f-rel-feedback-supports-learning, f-rel-feedback-adds-burden, f-rel-feedback-controls-reduce-burden]
+  approved_paths:
+  - skills/reason-commons/SKILL.md
+  - skills/reason-commons/references/schema.md
+  - skills/reason-commons/references/responses.md
+  - skills/reason-commons/references/feedback.md
+  - skills/reason-commons/scripts/feedback.py
+  - skills/reason-commons/scripts/update_views.py
+  - skills/reason-commons/tests/test_feedback.py
+  - skills/reason-commons/tests/test_update_views.py
+  - apps/discord/reasoncommons_discord/config.py
+  - apps/discord/reasoncommons_discord/__main__.py
+  - apps/discord/reasoncommons_discord/agent.py
+  - apps/discord/reasoncommons_discord/service.py
+  - apps/discord/reasoncommons_discord/bot.py
+  - apps/discord/reasoncommons_discord/store.py
+  - apps/discord/reasoncommons_discord/feedback.py
+  - apps/discord/tests/test_feedback.py
+  - apps/discord/tests/test_service.py
+  - apps/discord/tests/test_bot.py
+  - apps/discord/tests/test_agent.py
+  - apps/discord/tests/test_store.py
+  - apps/discord/README.md
+  - apps/discord/.env.example
   - ltp/rufus-david-collab/reason-commons.yaml
   - .beads/issues.jsonl

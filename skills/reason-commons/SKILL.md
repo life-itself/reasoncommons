@@ -11,6 +11,8 @@ Help people develop their own reasoning, one useful step at a time. Capture cont
 
 Use the user's chosen state file; otherwise use `reason-commons.yaml` in the working directory. Read existing state before continuing. Establish the subject, participants, and driver from context; ask only for missing information needed now. One participant is enough. The driver is the person operating the signed-in session: ask their name if unavailable, and update it when someone takes over.
 
+At session entry, check outstanding feedback for the actual driver before selecting the ordinary reasoning agenda: `python3 <skill-directory>/scripts/feedback.py <state.yaml> --participant <driver>`. Present the first ready **Feedback request**, keeping other requests in the shared file; follow an explicit user direction first and do not block their work. Undated requests are eligible too. When experience is unknown, ask whether the person has experienced the change rather than assuming an outcome. Respect saved deferrals. This checks on session entry; between-session delivery requires an explicitly configured running host such as the Discord dispatcher.
+
 Choose the tree that fits the question, without making users learn the terminology. Start with the information they already have. Create only trees in use; there is no mandatory six-tree sequence. If a prerequisite is missing, help establish it rather than filling it in yourself.
 
 ## Response types and required templates
@@ -21,6 +23,7 @@ Label each substantive response by its purpose. Use the templates and conformanc
 |---|---|
 | **Change proposal** | Lay out a project change, its reasoning and tree updates; wait for recorded typed acceptance before implementation. |
 | **Next step** | Recommend one action or inquiry and explain its basis; the recommendation has not been carried out. |
+| **Feedback request** | Show the original expected benefit and reservation together and ask an assigned participant for their experience. |
 | **Change result** | Report implemented work, its actual tree updates and standing, and validation. |
 | **Answer** | Explain something or answer a question. |
 | **Tree view** | Display the requested reasoning with its standing and scope. |
@@ -135,6 +138,10 @@ Track the work remaining on nodes and links, including untested connections, unr
 These are guides, not numerical WIP limits. Keep capturing new contributions, especially counterexamples, and follow changes in the users' focus. Revisit unresolved earlier questions without requiring a complete preceding tree.
 
 ## Test and accept reasoning
+
+Before trying a change with expected benefits or harmful consequences, read [references/feedback.md](references/feedback.md). Capture a versioned `feedback_requests` commitment in the same working YAML: original statement snapshots, at least one named human who can give relevant feedback, and how they can observe the outcomes. Timing is optional. If no provider is known, preserve the proposed reasoning and clarify that gap before calling the trial ready; do not invent a provider or their agreement. Generic historical predictions need no invented retrospective commitments.
+
+Request benefit and reservation feedback together. Capture the person's actual words and explicit assessments independently, with author and recording time; a report about one outcome does not answer the other. Keep not experienced yet, not assessed, unclear and evidence unavailable distinguishable. Observations are self-reports with sources, not verified causal conclusions or endorsement. Preserve old expectations and reports, use a new request revision when the prediction changes, and revisit the affected reasoning after feedback. Showing a request, completing an action, silence or a delivery receipt never resolves its outcomes. The schema, queue helper, native session and configured Discord host all use the same YAML; no separate substantive feedback ledger.
 
 Record new nodes and links as `proposed`, including participants' assertions. Explicit endorsement in ordinary conversation makes the referenced items `accepted`; record the endorser. Users can accept a clearly identified fragment together, including its nodes and links. The proposal alone, silence, or moving on is not endorsement. Clarify an ambiguous “yes.”
 

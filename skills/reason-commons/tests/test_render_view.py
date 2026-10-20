@@ -154,6 +154,15 @@ class RenderViewTests(unittest.TestCase):
         self.assertIn("HEAD &lt;b&gt;", page)
         self.assertNotIn("__", page)
 
+    def test_frame_offers_a_taller_view_for_expanded_windows(self):
+        # The widget's height follows its content, so an expanded side window only gains height when the frame grows.
+        page = render.frame('flowchart LR\n  a["A"]', "HEAD")
+        self.assertIn("#rcv{position:relative;height:380px;", page)
+        self.assertIn("#rcv.tall{height:720px}", page)
+        self.assertIn('<button id="ztall" aria-pressed="false">Taller</button>', page)
+        self.assertIn("box.classList.toggle('tall')", page)
+        self.assertIn("on ? 'Shorter' : 'Taller'", page)
+
     def test_cli_defaults_to_accepted_and_refuses_empty_standing(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "state.yaml"
