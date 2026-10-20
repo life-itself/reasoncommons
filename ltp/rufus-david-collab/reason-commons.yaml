@@ -343,6 +343,12 @@ trees:
       work: validate_landing_evals_with_visitors
       evaluation_plan: Treat the share of visitors who correctly say what Reason Commons is, and what it would help with, after the initial exposure as the primary comprehension measure. Calibrate the automated first-screen task against those answers before relying on it to rank pages.
       note: Calibrate automated judgments against real visitor comprehension responses and human labels, then observe subsequent use. Evaluation infrastructure alone does not establish adoption. A local visitor study now assigns one page, records an initial exposure, hides it for four answers, restores it for exploration and exports an anonymous response file. The browser fixture verified random assignment, about 20 seconds of exposure, hidden-page questions and a valid download; the marked test response was not retained as visitor evidence. The public hosted flow also passed the 20-second exposure, hidden questions, exploration and copyable JSON export with marked automation answers; no real participant response was retained. Anonymous hosting has no session persistence and records that limitation. Actual recruitment, human labels, validity of the rubric and subsequent use remain untested.
+    - ref: g-e-picturable-product
+      work: show_skill_use_in_explainers
+      label: Show the skill in use beside all three parts of the explainer series.
+      note: Implements proposed injection f-e-explainers-skill-margin as alternative in-practice editions of the trilogy. David's review identified premature messages and weak coordination with the team's learning. Under accepted scope explainer-margin-pacing-2026-10-20 revision 1, the three local editions now show the cast and introduced capacities before an explicit skill invitation, then reveal individual messages at their assigned story beats and restore earlier states on reverse scroll. All 100 beats passed synchronization, message-fit and overflow checks at six desktop/phone/tablet/landscape sizes; 24 settled screenshots were inspected, the Chrome 375px checker reported no overflow, and the 713-link/asset website check passed. Original prose and original editions are preserved. Reduced-motion and script-free fallback branches passed temporary fixture checks; native OS preference toggling was not tested. See docs/marketing/explainers/series/07-skill-margin-scroll-map.md for the evidence and limits. Local files and browser preview only; David's editorial review and test_with_readers remain open, and no reader benefit is established.
+      beads:
+      - reasoncommons-brw
   current_reality:
     nodes:
     - id: r-e-three-months
@@ -2820,6 +2826,34 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: f-e-explainers-skill-margin
+      kind: injection
+      text: The explainers gain alternative editions, published alongside the originals, whose margin shows the people in the story using the reason-commons skill as the story unfolds, with avatars showing who is chatting and the device each would use, such as a manager's desktop or a phone notification that shifts a nurse's focus.
+      label: Alternative explainer editions show the cast using the skill in the margin, on their own devices.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Requested 2026-10-20, including avatars, device by role and notifications that shift focus; David asked for alternative versions published online without replacing the originals.
+      - by: assistant
+        attribution: assistant
+        mode: text
+        note: Assistant proposed piloting on the three-part trilogy because its parts share one clinic and cast.
+      - by: assistant
+        attribution: assistant
+        mode: text
+        note: 'Implemented under explainer-skill-margin-2026-10-20 revision 2 (bead reasoncommons-brw): three in-practice editions at website/explainers/*-in-practice/ generated from the originals with the story text unchanged (checked by text diff), a shared skill-margin.css/js rail and inline-card component, and the margin script with an independent critique and response at docs/marketing/explainers/series/05-skill-margin-script.md. The critique led to human-sent notifications, /reason capture on every saved contribution, dictation instead of voice notes, visible named endorsement, corrected constraint arithmetic and plainer What-changes lines. Checks: check-website.py 713 links/assets with 0 errors; phone-check at 375px with no overflow on all three; headless screenshots at 1440, 900 and 375px with no console errors; reduced-motion and animated states. Published for David as a private claude.ai artifact mirroring website/explainers; not committed, pushed or on the Flowershow preview. Implementation does not endorse this injection or show that readers make the connection.'
+    - id: f-e-readers-picture-skill-use
+      kind: predicted_effect
+      text: Readers connect the method the explainers describe to the reason-commons skill and can picture using it in their own role.
+      label: Readers link the explainers' method to the skill and can picture using it in their own role.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: The difference David intends the editions to make; untested.
     links:
     - id: f-rel-use-makes-users
       from:
@@ -3106,6 +3140,17 @@ trees:
       assumptions:
       - text: This branch requires a control failure or misuse; implemented safeguards have local test evidence, while residual live risk remains unverified.
         by: assistant
+    - id: f-rel-skill-margin-readers-picture
+      from:
+      - f-e-explainers-skill-margin
+      to: f-e-readers-picture-skill-use
+      relation: causes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: David asked on 2026-10-20 for explainer editions that help people make the connection to the skill more explicitly.
     backlog:
     - ref: f-rel-use-makes-users
       work: test_causality
@@ -3253,6 +3298,18 @@ trees:
     - ref: f-e-discord-misrepresents-agreement
       work: test_negative_branch
       note: Exercise identity, endorsement and persistent-state controls live and assess remaining misuse/failure cases.
+    - ref: f-e-readers-picture-skill-use
+      work: test_with_readers
+      label: Check with readers whether the margin makes the skill connection.
+      note: Show the in-practice editions to readers who have not used the skill. Check whether they understand why the team brings it in, what it contributes at each stage, and where they might use it in their own role. Ask whether any margin message disclosed an answer before the story established its basis. Publishing the editions and passing synchronization checks do not establish reader comprehension.
+      beads:
+      - reasoncommons-brw
+    - ref: f-e-explainers-skill-margin
+      work: align_margin_with_learning
+      label: Align each margin message with the team's learning in the story.
+      note: David reports that the margin gets ahead of the narrative, particularly while The Wrong Queue introduces station capacities. The local implementation under explainer-margin-pacing-2026-10-20 revision 1 now keeps the cast visible and highlights introduced stations before the explicit skill invitation; messages then follow individual beats with reversible state, concise copy, role-appropriate devices and reduced motion support. Technical verification is recorded on show_skill_use_in_explainers and in the scroll map. Remaining work is David's editorial review of the learning progression and reader feedback; mechanical synchronization does not establish that the sequence teaches effectively. The injection and its predicted reader effect remain proposed.
+      beads:
+      - reasoncommons-brw
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
@@ -6484,5 +6541,54 @@ change_acceptances:
   - skills/reason-commons/SKILL.md
   - .github/pull_request_template.md
   - AGENTS.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+- proposal_ref: explainer-skill-margin-2026-10-20
+  proposal_revision: 2
+  by: david
+  recorded_at: '2026-10-20T10:17:56Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept changes
+  scope: 'Revision 2 (supersedes revision 1 after David asked for alternative versions published online without replacing the originals). Build alternative in-practice editions of the three trilogy explainers at new URLs website/explainers/01-bottleneck-in-practice/, 02-thinking-made-visible-in-practice/ and 03-five-shapes-in-practice/, leaving the originals untouched and the series index unlinked for now. A shared skill-margin.css/js component shows, in a fixed right margin on wide screens and as inline cards on narrow screens, one consistent cast (practice manager on desktop; Maria at the front desk, triage nurse and pharmacist on phone notifications; Dr Adeyemi by voice note) using the reason-commons skill as each story unfolds, with hand-drawn avatars and skill replies in its real formats; a note marks the people and messages as illustrative and the team-chat surface as a prototype. Write the margin script with an independent critique at docs/marketing/explainers/series/05-skill-margin-script.md. Publish one private claude.ai artifact mirroring website/explainers/ for online viewing; no commit, push or PR unless asked; Flowershow preview left to David. Add proposed injection f-e-explainers-skill-margin, predicted effect f-e-readers-picture-skill-use and link f-rel-skill-margin-readers-picture; backlog show_skill_use_in_explainers on g-e-picturable-product and test_with_readers on f-e-readers-picture-skill-use; separate implementation bead reasoncommons-brw.'
+  node_ids:
+  - f-e-explainers-skill-margin
+  - f-e-readers-picture-skill-use
+  - g-e-picturable-product
+  link_ids:
+  - f-rel-skill-margin-readers-picture
+  approved_paths:
+  - website/explainers/01-bottleneck-in-practice/index.html
+  - website/explainers/02-thinking-made-visible-in-practice/index.html
+  - website/explainers/03-five-shapes-in-practice/index.html
+  - website/explainers/skill-margin.css
+  - website/explainers/skill-margin.js
+  - docs/marketing/explainers/series/05-skill-margin-script.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+- proposal_ref: explainer-margin-pacing-2026-10-20
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-20T12:08:56Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: 'yes'
+  scope: Revise the three alternative in-practice explainer editions and their shared margin component in the existing branch worktree. Keep the cast visible and highlight station capacities as the story introduces them; explicitly introduce Reason Commons after the unmet demand is clear; reveal individual messages with the relevant story beats and restore earlier states on reverse scroll. Revise the trilogy's learning progression, concise message copy, speaker identification, role-appropriate devices, responsive layout and reduced-motion transitions. Review a revised script, editorial critique and scroll map before building; validate YAML, inspect all beats at desktop and phone widths including fast/reverse scroll and resizing, and run website checks. Revise show_skill_use_in_explainers, add align_margin_with_learning, and refine test_with_readers; no node, link or standing changes. Deliver local working files and a browser preview; update existing implementation bead and handoff while preserving unrelated coordination records.
+  node_ids:
+  - g-e-picturable-product
+  - f-e-explainers-skill-margin
+  - f-e-readers-picture-skill-use
+  link_ids: []
+  approved_paths:
+  - website/explainers/01-bottleneck-in-practice/index.html
+  - website/explainers/02-thinking-made-visible-in-practice/index.html
+  - website/explainers/03-five-shapes-in-practice/index.html
+  - website/explainers/skill-margin.css
+  - website/explainers/skill-margin.js
+  - docs/marketing/explainers/series/05-skill-margin-script.md
+  - docs/marketing/explainers/series/06-skill-margin-pacing-critique.md
+  - docs/marketing/explainers/series/07-skill-margin-scroll-map.md
   - ltp/rufus-david-collab/reason-commons.yaml
   - .beads/issues.jsonl
