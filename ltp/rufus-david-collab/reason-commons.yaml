@@ -1459,6 +1459,14 @@ trees:
       status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text, note: 'Observed after report david-feedback-sync-first-session-2026-10-20: feedback.outstanding treated every verdict except not_assessed as answered.'}
+    - id: r-e-beads-export-blocks-pull
+      kind: undesirable_effect
+      text: Activating merged skill changes in David's main checkout needs a manual step first, because Beads auto-export rewrites the tracked .beads/issues.jsonl there whenever any session worktree updates the shared Beads database, which blocks git pull --ff-only. Observed after PR #80 and PR #81 on 2026-10-20.
+      label: Pulling merged skill changes needs a manual Beads discard first.
+      status: proposed
+      contributions:
+      - {by: david, attribution: explicit, mode: text, note: 'David reported discarding an auto-exported beads file before pulling as setup work in report david-feedback-sync-first-session-2026-10-20 and asked to fix it here.'}
+      - {by: assistant, attribution: assistant, mode: text, note: 'Cause traced on 2026-10-20: worktrees use the main checkout database at .beads/embeddeddolt and the committed .beads/config.yaml sets export.auto true.'}
     - id: r-e-repo-feels-scattered
       kind: observation
       text: David finds the Reason Commons repository increasingly scattered as it contains the public website, skills and prospective Discord-bot work.
@@ -3264,6 +3272,28 @@ trees:
       status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text}
+    - id: f-e-beads-no-auto-export
+      kind: injection
+      text: Beads auto-export is turned off in the shared configuration, so session worktrees no longer modify the main checkout's tracked export; each session exports explicitly at its checkpoint and commits that export with its own work.
+      label: Beads auto-export is off; sessions export at checkpoints.
+      status: proposed
+      addresses: [r-e-beads-export-blocks-pull]
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text}
+    - id: f-e-pull-without-discard
+      kind: predicted_effect
+      text: After a merge, David can update his main checkout with git pull --ff-only without first discarding a Beads export.
+      label: The main checkout pulls after a merge without a discard step.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text}
+    - id: f-e-beads-export-stale
+      kind: undesirable_effect
+      text: The committed Beads export can lag behind the database when a session forgets its checkpoint export, so the documented fallback reads older records.
+      label: The committed export can lag if a session forgets to export.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text}
     - id: f-e-discord-diverts-resources
       kind: undesirable_effect
       text: Operating and extending the bot may consume scarce time and money and delay real-work testing.
@@ -3484,6 +3514,18 @@ trees:
     - id: f-rel-unclear-open-burden
       from: [f-e-unclear-stays-open]
       to: f-e-feedback-burden
+      relation: can_cause
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+    - id: f-rel-no-auto-export-clean-pull
+      from: [f-e-beads-no-auto-export]
+      to: f-e-pull-without-discard
+      relation: contributes_to
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+    - id: f-rel-no-auto-export-stale
+      from: [f-e-beads-no-auto-export]
+      to: f-e-beads-export-stale
       relation: can_cause
       status: proposed
       contributions: [{by: assistant, attribution: assistant, mode: text}]
@@ -5934,6 +5976,36 @@ feedback_requests:
     surface: conversation
     source_text: yes i agree
     note: Included in displayed proposal change-unclear-stays-open-2026-10-20 revision 1, which David accepted. No outcome is inferred.
+- id: beads-pull-check
+  revision: 1
+  created_by: david
+  recorded_at: '2026-10-20T16:08:13Z'
+  about:
+    ref: f-e-beads-no-auto-export
+    tree: future_reality
+    kind: injection
+    standing: proposed
+    text: Beads auto-export is turned off in the shared configuration, so session worktrees no longer modify the main checkout's tracked export; each session exports explicitly at its checkpoint and commits that export with its own work.
+  feedback_from:
+  - david
+  benefits:
+  - ref: f-e-pull-without-discard
+    tree: future_reality
+    kind: predicted_effect
+    standing: proposed
+    text: After a merge, David can update his main checkout with git pull --ff-only without first discarding a Beads export.
+  reservations:
+  - ref: f-e-beads-export-stale
+    tree: future_reality
+    kind: undesirable_effect
+    standing: proposed
+    text: The committed Beads export can lag behind the database when a session forgets its checkpoint export, so the documented fallback reads older records.
+  ready_when: After this change is merged and pulled once more, at the first pull following the next merge. Judge whether the pull went through without discarding anything, and separately whether you noticed Beads records missing from the committed export.
+  reports: []
+  source:
+    surface: conversation
+    source_text: yes i agree.
+    note: Included in displayed proposal change-beads-no-auto-export-2026-10-20 revision 1, which David accepted. No outcome is inferred.
 change_acceptances:
 - proposal_ref: change-node-roles-2026-10-14
   by: david
@@ -7806,5 +7878,21 @@ change_acceptances:
   - skills/reason-commons/tests/test_feedback.py
   - skills/reason-commons/references/feedback.md
   - skills/reason-commons/SKILL.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+- proposal_ref: change-beads-no-auto-export-2026-10-20
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-20T16:08:13Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: yes i agree.
+  scope: 'One PR from a new branch off origin/main. Set export.auto to false in .beads/config.yaml so session worktrees, which share the main checkout''s Beads database, no longer rewrite the main checkout''s tracked .beads/issues.jsonl; add a sentence to docs/beads-reasoning.md that auto-export is off for this reason and sessions export explicitly at their checkpoint. Database, Dolt sync and issues unchanged. Add the displayed undesirable effect, injection, predicted effect, undesirable effect, two links and feedback commitment beads-pull-check revision 1 (David), plus an implementation bead.'
+  node_ids: [r-e-beads-export-blocks-pull, f-e-beads-no-auto-export, f-e-pull-without-discard, f-e-beads-export-stale]
+  link_ids: [f-rel-no-auto-export-clean-pull, f-rel-no-auto-export-stale]
+  approved_paths:
+  - .beads/config.yaml
+  - docs/beads-reasoning.md
   - ltp/rufus-david-collab/reason-commons.yaml
   - .beads/issues.jsonl

@@ -45,7 +45,7 @@ For feedback records, the skill's [configured Git sync](../skills/reason-commons
 2. Update the relevant work bead with what was addressed, what remains and the stable YAML IDs. Complete only work actually finished. A completed task does not make a statement true or accepted; an endorsed statement may still need further testing.
 3. Refresh `reasoncommons-a4l` with the working file, current work bead, next question or step, and any blocker. Update `work_tracking.current` if the selection changed. Keep the handoff open for later sessions and avoid duplicate priority lists.
 4. Record friction when encountered. Reuse or create separate beads for implementation work arising from the reasoning; handle those in separate sessions. Keep issues labelled `human` for Rufus to close.
-5. Export a fresh local fallback with `bd --sandbox export -o .beads/issues.jsonl`. Auto-export is throttled, so use this explicit checkpoint after the last update. Exporting records does not push or synchronize the Dolt remote; use the team's normal sync workflow when authorized.
+5. Export a fresh local fallback with `bd --sandbox export -o .beads/issues.jsonl`, in the session's own checkout, and commit it with the session's work. Auto-export is off: session worktrees share the main checkout's Beads database, and auto-export rewrote the main checkout's tracked export, which blocked `git pull --ff-only` there. This explicit checkpoint is now the only export. Exporting records does not push or synchronize the Dolt remote; use the team's normal sync workflow when authorized.
 
 Use `bd --sandbox update <id> --body-file <file>` for multiline descriptions and `--append-notes` for short session outcomes. Preserve unrelated content and fields when updating a handoff.
 
