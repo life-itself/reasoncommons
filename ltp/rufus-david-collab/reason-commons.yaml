@@ -1417,6 +1417,20 @@ trees:
       status: proposed
       contributions:
       - {by: david, attribution: explicit, mode: text, note: 'On 2026-10-20 David said a prediction with expected feedback should be properly recorded in the PR, citing PR 74, whose commitment section was hand-written and stale, and PR 76, which omitted it.'}
+    - id: r-e-sync-left-checkout-behind
+      kind: observation
+      text: After the first feedback sync on 2026-10-20, David's main checkout was one commit behind with a reasoning file identical to the shared commit, and git pull --ff-only refused to fast-forward until the file was manually restored.
+      label: First sync left the checkout unable to pull.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text, note: 'Observed by the assistant after configuring sync for David; shared commit 34fa839. Not a feedback report by the assigned provider of feedback-sync-pilot.'}
+    - id: r-e-sync-reformatted-backlog
+      kind: observation
+      text: The first feedback sync on 2026-10-20 rewrote the formatting of the whole Future Reality backlog block while adding one review item.
+      label: First sync reformatted a whole backlog block.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text, note: 'Observed in shared commit 34fa839: quoting and list style changed with no change of content.'}
     - id: r-e-repo-feels-scattered
       kind: observation
       text: David finds the Reason Commons repository increasingly scattered as it contains the public website, skills and prospective Discord-bot work.
@@ -1430,6 +1444,102 @@ trees:
         attribution: explicit
         mode: text
         note: On 2026-10-16 David said the scattered structure seems likely to contribute to technical debt and supplied a directory layout separating concerns. This records an anticipated risk, not evidence that technical debt has already increased.
+    - id: r-e-david-no-target-user
+      kind: cause
+      text: David has not identified a specific target user whom he knows would appreciate the help Reason Commons gives them.
+      label: "David has no specific target user he knows would value Reason Commons."
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: First of the things David named as missing from a coherent demo, 2026-10-20, in reasoncommons-5lo.
+    - id: r-e-david-presentation-undecided
+      kind: cause
+      text: David does not know how best to present Reason Commons to a target user once one is known, whether by install instructions to try on their own, pre-recorded videos or booked live sessions.
+      label: "David doesn't know how best to present it: self-install, videos or live sessions."
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Second thing David named as missing from a coherent demo, 2026-10-20.
+    - id: r-e-rufus-feedback-hard
+      kind: undesirable_effect
+      text: David finds it difficult to get Rufus's feedback efficiently.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Third thing David named as missing from a coherent demo, 2026-10-20. This is David's experience; Rufus has not yet given his view.
+    - id: r-e-sessions-sporadic
+      kind: cause
+      text: Rufus and David schedule joint sessions sporadically, and when they happen they are long and deep.
+      label: "Rufus and David meet rarely, in long, deep sessions."
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+    - id: r-e-sessions-spent-catching-up
+      kind: undesirable_effect
+      text: Rufus and David spend much of each joint session sifting through irrelevant details, updates and set-up before finding where their joint attention is most valuable.
+      label: "Sessions spend a lot of time on updates and set-up before reaching what matters."
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+    - id: r-e-discord-message-volume
+      kind: cause
+      text: Rufus receives a large volume of Discord messages, at times including many from David, such as landing page designs to review and requests for feedback about first customers.
+      label: "Rufus gets a lot of Discord messages, at times many from David."
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+    - id: r-e-rufus-very-busy
+      kind: cause
+      text: Rufus is very busy.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: David's description of Rufus, 2026-10-20; Rufus has not yet given his view.
+    - id: r-e-discord-points-lost
+      kind: undesirable_effect
+      text: Points David makes to Rufus in Discord seem to get lost.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+    - id: r-e-rufus-blockers-unclear
+      kind: cause
+      text: Amid a large volume of Discord messages, Rufus may not know which ones are current blockers.
+      label: "Rufus may not know which Discord messages are current blockers."
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: David's framing of the problem behind his proposed attention-alert injection, 2026-10-20.
+    - id: r-e-bot-needs-work-for-cold-testers
+      kind: observation
+      text: The Discord bot that Rufus and David recently agreed to start building needs more work before a cold tester could benefit from it.
+      label: "The Discord bot needs more work before a cold tester could benefit from it."
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Fourth point David raised about demo coherence, connected by him to the Rufus-feedback problem, 2026-10-20.
+      assumptions:
+      - text: The bot may or may not be something the first users they want feedback from could use.
+        by: david
     links:
     - id: r-rel-unclear-drives-redesigning
       from:
@@ -1836,12 +1946,110 @@ trees:
       - by: assistant
         attribution: assistant
         mode: text
+    - id: r-rel-no-target-user-undermines-demo
+      from:
+      - r-e-david-no-target-user
+      to: r-e-david-demo-confidence
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+    - id: r-rel-presentation-undecided-undermines-demo
+      from:
+      - r-e-david-presentation-undecided
+      to: r-e-david-demo-confidence
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+      assumptions:
+      - text: David treats how to present as the question that follows once the target user is known.
+        by: david
+    - id: r-rel-feedback-leaves-target-user-open
+      from:
+      - r-e-rufus-feedback-hard
+      to: r-e-david-no-target-user
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+      assumptions:
+      - text: Rufus's experience would be very relevant to choosing a target user.
+        by: david
+    - id: r-rel-feedback-leaves-presentation-open
+      from:
+      - r-e-rufus-feedback-hard
+      to: r-e-david-presentation-undecided
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+      assumptions:
+      - text: Rufus's experience would be very relevant to choosing how to present Reason Commons.
+        by: david
+    - id: r-rel-sporadic-sessions-catch-up
+      from:
+      - r-e-sessions-sporadic
+      to: r-e-sessions-spent-catching-up
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+    - id: r-rel-catch-up-slows-feedback
+      from:
+      - r-e-sessions-spent-catching-up
+      to: r-e-rufus-feedback-hard
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+    - id: r-rel-volume-and-busy-lose-points
+      from:
+      - r-e-discord-message-volume
+      - r-e-rufus-very-busy
+      to: r-e-discord-points-lost
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+      assumptions:
+      - text: David's tentative explanation is that points get lost "perhaps due to volume", which seems too much for a very busy Rufus to address.
+        by: david
+    - id: r-rel-lost-points-slow-feedback
+      from:
+      - r-e-discord-points-lost
+      to: r-e-rufus-feedback-hard
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+    - id: r-rel-volume-hides-blockers
+      from:
+      - r-e-discord-message-volume
+      to: r-e-rufus-blockers-unclear
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
     backlog:
-    - ref: r-e-david-demo-confidence
-      work: clarify_demo_gap
-      note: 'Within reasoncommons-5lo: what is missing from demo coherence for David (a clear person it is for, a real task to walk through, confidence in a useful result, or another gap)?'
-      beads:
-      - reasoncommons-5lo
     - ref: r-rel-no-sales-drive-drives-product-unclear
       work: test_causality
       note: 'Within reasoncommons-5lo, after clarifying the source claim: what market-testing behavior is missing, and would changing it make the product clearer?'
@@ -1989,6 +2197,36 @@ trees:
       work: review_feedback_gap
       label: Review the observed feedback-infrastructure gap.
       note: Review the inspected gap and its relationship to existing reasoning; implementation does not establish that real feedback is collected.
+    - ref: r-e-david-no-target-user
+      work: connect_or_explain
+      label: "Relate this to the candidate communities and Second Renaissance as first user."
+      note: How does this relate to accepted r-e-users-candidates (candidate communities, including Second Renaissance) and to accepted goal g-e-real-users, which names Second Renaissance as first user and testbed? Would a specific Second Renaissance person count?
+      beads:
+      - reasoncommons-5lo
+    - ref: r-rel-volume-and-busy-lose-points
+      work: examine_assumption
+      label: "Too much to address at all, or unclear which messages matter?"
+      note: 'Distinguish two mechanisms David gave: the volume is too much for a busy Rufus to address, or Rufus cannot tell which messages are blockers (r-e-rufus-blockers-unclear). They call for different changes: fewer messages, or a clearer signal.'
+      beads:
+      - reasoncommons-5lo
+    - ref: r-e-rufus-blockers-unclear
+      work: connect_or_explain
+      label: "Does not knowing which messages are blockers explain lost points?"
+      note: David linked this to the volume of messages but not yet to r-e-discord-points-lost or r-e-rufus-feedback-hard.
+    - ref: r-e-discord-points-lost
+      work: check_with_rufus
+      label: "Ask Rufus whether this matches his experience."
+      note: This branch, including r-e-rufus-very-busy and r-e-sessions-spent-catching-up, describes Rufus's side from David's perspective. Rufus has not yet given his view.
+    - ref: r-e-rufus-feedback-hard
+      work: review_connection
+      label: "Does this show that no shared way to act on the goal still exists?"
+      note: Bears on the open reasoncommons-5lo question of whether accepted r-e-no-shared-actioning (who ships what, what is next) remains current now that the collaboration uses the tree and Beads. The relationship is not established.
+      beads:
+      - reasoncommons-5lo
+    - ref: r-e-bot-needs-work-for-cold-testers
+      work: connect_or_explain
+      label: "Connect the bot's readiness to demo coherence and to the feedback problem."
+      note: David raised it under demo coherence and in connection with the Rufus-feedback problem; its links to r-e-david-demo-confidence and to Future Reality f-e-discord-on-demand are not established.
   conflict:
     nodes:
     - id: c-e-objective
@@ -2922,6 +3160,22 @@ trees:
       status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text}
+    - id: f-e-sync-advances-checkout
+      kind: injection
+      text: After verified sharing, sync fast-forwards the checkout's branch when only the reasoning file differs and the file already matches the shared commit; otherwise it reports the exact recovery command.
+      label: Sync fast-forwards the checkout when safe.
+      status: proposed
+      addresses: [r-e-sync-left-checkout-behind]
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text}
+    - id: f-e-sync-minimal-edits
+      kind: injection
+      text: Sync inserts new feedback and review entries without rewriting the formatting of unchanged entries.
+      label: Sync appends entries without reformatting.
+      status: proposed
+      addresses: [r-e-sync-reformatted-backlog]
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text}
     - id: f-e-discord-diverts-resources
       kind: undesirable_effect
       text: Operating and extending the bot may consume scarce time and money and delay real-work testing.
@@ -2969,6 +3223,27 @@ trees:
         attribution: explicit
         mode: text
         note: The difference David intends the editions to make; untested.
+    - id: f-e-rufus-attention-pointer
+      kind: injection
+      text: Rufus is alerted when input is required from him, and something tracks the next item worth his attention, such as a small "constraint" icon showing where he should be looking now.
+      label: "Rufus is alerted when his input is needed and shown the next item worth his attention."
+      status: proposed
+      addresses:
+      - r-e-rufus-blockers-unclear
+      - r-e-discord-points-lost
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed by David as a possible injection while describing what a coherent demo is missing, 2026-10-20.
+    - id: f-e-rufus-knows-where-to-look
+      kind: predicted_effect
+      text: Rufus can see where he should be looking now.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
     links:
     - id: f-rel-feedback-reviewable
       from: [f-e-feedback-cycle]
@@ -3045,6 +3320,20 @@ trees:
       relation: can_cause
       status: proposed
       contributions: [{by: assistant, attribution: assistant, mode: text}]
+    - id: f-rel-sync-advance-reduces-friction
+      from: [f-e-sync-advances-checkout]
+      to: f-e-feedback-sync-friction
+      relation: reduces_risk_of
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+    - id: f-rel-sync-minimal-edits-reduce-friction
+      from: [f-e-sync-minimal-edits]
+      to: f-e-feedback-sync-friction
+      relation: reduces_risk_of
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+      assumptions:
+      - {text: Rewriting whole blocks makes textual conflicts between checkouts and noisy reviews more likely., by: assistant}
     - id: f-rel-use-makes-users
       from:
       - f-e-use-while-building
@@ -3354,6 +3643,16 @@ trees:
         attribution: explicit
         mode: text
         note: David asked on 2026-10-20 for explainer editions that help people make the connection to the skill more explicitly.
+    - id: f-rel-attention-pointer-shows-focus
+      from:
+      - f-e-rufus-attention-pointer
+      to: f-e-rufus-knows-where-to-look
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
     backlog:
     - ref: f-rel-use-makes-users
       work: test_causality
@@ -3546,7 +3845,7 @@ trees:
     - ref: f-rel-sync-friction
       work: evaluate_sync_recovery_burden
       label: Assess delays and recovery work from sync failures.
-      note: Record failed sharing, conflicts and manual intervention separately from benefit; do not infer absence of burden from a successful push.
+      note: Record failed sharing, conflicts and manual intervention separately from benefit; do not infer absence of burden from a successful push. The assistant observed two instances on the first real sync (r-e-sync-left-checkout-behind, r-e-sync-reformatted-backlog); fixes are proposed under sync-fixes-2026-10-20, and David's own assessment remains pending.
     - ref: f-rel-sync-preservation
       work: verify_sync_preservation
       label: Verify unsent observations survive interrupted sharing.
@@ -3566,6 +3865,18 @@ trees:
       feedback_revision: 1
       feedback_report: david-pr74-works-as-expected-2026-10-20
       note: Compare this attributed self-report with the original expectation and the trial conditions; no endorsement or causal conclusion was inferred.
+    - ref: f-e-rufus-attention-pointer
+      work: trace_effects
+      label: "Would knowing where to look get David timely feedback, and what could go wrong?"
+      note: Trace from f-e-rufus-knows-where-to-look to Rufus's feedback on the target user and how to present it (Current Reality r-e-rufus-feedback-hard). Possible negative branches include alerts adding to message volume and a wrong pointer drawing attention away from the real blocker.
+    - ref: f-e-rufus-attention-pointer
+      work: examine_assumption
+      label: "How would the tracker decide which item is the constraint?"
+      note: Recency, message count or graph reach alone do not establish a constraint. Who sets the pointer, and on what evidence?
+    - ref: f-e-rufus-attention-pointer
+      work: connect_or_explain
+      label: "Relate this to the Discord bot and to recommending one next step."
+      note: Possible relationships to f-e-discord-on-demand, f-rel-discord-alignment-supports-next and f-e-skill-recommends-next are not established.
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
@@ -7073,5 +7384,23 @@ change_acceptances:
   - skills/reason-commons/SKILL.md
   - .github/pull_request_template.md
   - AGENTS.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+- proposal_ref: sync-fixes-2026-10-20
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-20T14:27:16Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept sync-fixes-2026-10-20 revision 1
+  scope: 'One PR from main. (1) After verified sharing or refresh, feedback_sync.py fast-forwards the checkout branch with a compare-and-swap ref update only when it is on the configured branch, the commits between HEAD and the shared tip change only the reasoning file, the working file already matches the tip and nothing is staged for it; otherwise it leaves the branch and reports the exact recovery command. It never brings in code or other upstream changes. (2) Sync inserts new feedback, report and review entries without re-dumping unchanged entries, falling back to replacing the smallest list, with the existing semantic round-trip check kept. (3) Land the 12 nodes, 10 links and 9 backlog items captured on 2026-10-20 in worktree claude/reason-commons-collab-e36f0f exactly as captured and proposed, removing the answered clarify_demo_gap backlog item; do not carry over its active_tree change. (4) Update the stale Discord diagram test to the current labels. Add the displayed two observations, two injections, two reduces_risk_of links and addresses references; annotate the evaluate_sync_recovery_burden backlog note. Mark the landed predicted effect with a No feedback commitment reason in the PR.'
+  node_ids: [r-e-sync-left-checkout-behind, r-e-sync-reformatted-backlog, f-e-sync-advances-checkout, f-e-sync-minimal-edits, r-e-david-no-target-user, r-e-david-presentation-undecided, r-e-rufus-feedback-hard, r-e-sessions-sporadic, r-e-sessions-spent-catching-up, r-e-discord-message-volume, r-e-rufus-very-busy, r-e-discord-points-lost, r-e-rufus-blockers-unclear, r-e-bot-needs-work-for-cold-testers, f-e-rufus-attention-pointer, f-e-rufus-knows-where-to-look]
+  link_ids: [f-rel-sync-advance-reduces-friction, f-rel-sync-minimal-edits-reduce-friction, r-rel-no-target-user-undermines-demo, r-rel-presentation-undecided-undermines-demo, r-rel-feedback-leaves-target-user-open, r-rel-feedback-leaves-presentation-open, r-rel-sporadic-sessions-catch-up, r-rel-catch-up-slows-feedback, r-rel-volume-and-busy-lose-points, r-rel-lost-points-slow-feedback, r-rel-volume-hides-blockers, f-rel-attention-pointer-shows-focus]
+  approved_paths:
+  - skills/reason-commons/scripts/feedback_sync.py
+  - skills/reason-commons/tests/test_feedback_sync.py
+  - skills/reason-commons/references/feedback-sync.md
+  - apps/discord/tests/test_diagrams.py
   - ltp/rufus-david-collab/reason-commons.yaml
   - .beads/issues.jsonl

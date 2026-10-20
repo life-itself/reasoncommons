@@ -1,5 +1,6 @@
 """Real Git round trips with fictional feedback, independent checkouts and failures."""
 from copy import deepcopy
+import difflib
 import json
 import os
 from pathlib import Path
@@ -68,8 +69,57 @@ class SyncTests(unittest.TestCase):
         self.assertEqual(sharing.feedback.queue(state, "alice")[0]["pending"], ["isolation"])
         self.assertEqual(len(state["feedback_requests"][0]["reports"]), 1)
         self.assertTrue(any(task.get("feedback_report") == "alice-report" for task in state["trees"]["future_reality"]["backlog"]))
-        self.assertEqual(git(self.a, "rev-parse", "HEAD"), original_head)
         self.assertTrue(all(node["status"] == "proposed" for node in state["trees"]["future_reality"]["nodes"]))
+
+    def test_checkouts_fast_forward_so_pull_keeps_working(self):
+        self.add(self.a)
+        original_head = git(self.a, "rev-parse", "HEAD")
+        result = self.run_sync(self.a)
+        self.assertEqual(result["checkout"], "advanced")
+        tip = git(self.remote, "rev-parse", "main")
+        self.assertNotEqual(tip, original_head)
+        for repo in (self.a, self.b):
+            if repo == self.b:
+                self.assertEqual(self.run_sync(self.b)["checkout"], "advanced")
+            self.assertEqual(git(repo, "rev-parse", "HEAD"), tip)
+            self.assertEqual(git(repo, "status", "--porcelain", "--", "state.yaml"), "")
+            git(repo, "pull", "--ff-only")
+        self.assertEqual(self.run_sync(self.a)["checkout"], "current")
+
+    def test_checkout_on_another_branch_is_left_alone(self):
+        git(self.a, "checkout", "-q", "-b", "experiment")
+        head = git(self.a, "rev-parse", "HEAD")
+        self.add(self.a)
+        result = self.run_sync(self.a)
+        self.assertEqual((result["state"], result["checkout"]), ("shared", "unchanged"))
+        self.assertEqual(git(self.a, "rev-parse", "HEAD"), head)
+
+    def test_upstream_code_changes_are_never_pulled_in_automatically(self):
+        (self.b / "code.txt").write_text("merged elsewhere\n")
+        git(self.b, "commit", "-qam", "Code merged elsewhere")
+        git(self.b, "push", "-q", "origin", "main")
+        head = git(self.a, "rev-parse", "HEAD")
+        self.add(self.a)
+        result = self.run_sync(self.a)
+        self.assertEqual((result["state"], result["checkout"]), ("shared", "behind"))
+        self.assertEqual(git(self.a, "rev-parse", "HEAD"), head)
+        self.assertEqual((self.a / "code.txt").read_text(), "original code\n")
+        command = result["checkout_message"].split("Update with: ")[1]
+        self.assertIn("checkout -- state.yaml", command)
+        subprocess.run(command, shell=True, check=True, capture_output=True)
+        self.assertEqual(git(self.a, "rev-parse", "HEAD"), git(self.remote, "rev-parse", "main"))
+        self.assertEqual(len(self.load(self.a)["feedback_requests"][0]["reports"]), 1)
+
+    def test_staged_reasoning_file_is_left_staged(self):
+        self.add(self.a)
+        git(self.a, "add", "state.yaml")
+        staged = git(self.a, "diff", "--cached")
+        head = git(self.a, "rev-parse", "HEAD")
+        result = self.run_sync(self.a)
+        self.assertEqual((result["state"], result["checkout"]), ("shared", "behind"))
+        self.assertEqual(git(self.a, "rev-parse", "HEAD"), head)
+        self.assertNotEqual(git(self.a, "diff", "--cached"), "")
+        self.assertIsNotNone(staged)
 
     def test_independent_checkouts_merge_reports_and_retry_without_duplicates(self):
         self.add(self.a)
@@ -151,6 +201,7 @@ class SyncTests(unittest.TestCase):
         self.add(self.a)
         self.assertEqual(self.run_sync(self.a)["state"], "shared")
         self.assertEqual(git(self.a, "diff", "--cached"), index_before)
+        self.assertEqual(self.run_sync(self.a)["checkout"], "behind")
         self.assertEqual(git(self.remote, "show", "main:code.txt"), "original code")
         self.assertNotIn("label", self.shared()["trees"]["future_reality"]["nodes"][0])
         self.assertIn("label", self.load(self.a)["trees"]["future_reality"]["nodes"][0])
@@ -243,6 +294,28 @@ class SyncTests(unittest.TestCase):
         rendered = sharing.render(text, state)
         self.assertTrue(rendered.startswith("# Preserve this project comment\n"))
         self.assertEqual(sharing.load_text(rendered), state)
+
+    def test_render_adds_entries_without_rewriting_existing_formatting(self):
+        flow = "    - {ref: gain, work: check_record, note: 'A hand-written, quoted note', beads: [fixture-1]}\n"
+        text = (self.a / "state.yaml").read_text().replace("    backlog: []\n", "    backlog:\n" + flow)
+        before = sharing.load_text(text)
+        state = sharing.feedback.add_report(before, "remote-trial", 1, report())
+        rendered = sharing.render(text, state)
+        self.assertEqual(sharing.load_text(rendered), state)
+        self.assertIn(flow, rendered)
+        removed = [line for line in difflib.ndiff(text.splitlines(), rendered.splitlines()) if line.startswith("- ")]
+        # Only the empty flow list of reports is rewritten; every other existing line survives.
+        self.assertEqual([line[2:].strip() for line in removed], ["reports: []"])
+
+    def test_reordered_reports_rewrite_only_their_own_list(self):
+        later = report("later", recorded_at="2026-10-22T12:00:00Z")
+        text = sharing.render((self.a / "state.yaml").read_text(), sharing.feedback.add_report(self.load(self.a), "remote-trial", 1, later))
+        target = sharing.load_text(text)
+        target["feedback_requests"][0]["reports"].insert(0, report("earlier", recorded_at="2026-10-21T12:00:00Z"))
+        rendered = sharing.render(text, target)
+        self.assertEqual(sharing.load_text(rendered), target)
+        kept = [line for line in text.splitlines() if "reports" not in line and not line.startswith("  - ") and not line.startswith("    ")]
+        self.assertTrue(all(line in rendered.splitlines() for line in kept))
 
 
 if __name__ == "__main__":
