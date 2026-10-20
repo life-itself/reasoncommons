@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Arrows Nobody Checks · in practice</title>
+<meta name="description" content="The Arrows Nobody Checks, with the clinic’s people using the reason-commons skill in the margin as the story unfolds.">
+<link rel="stylesheet" href="../scroller.css">
+<link rel="stylesheet" href="../skill-margin.css">
+</head>
+<body>
+<noscript>
+<style>
+.scroll-item{padding:2rem 1.25rem}.sticky-item{position:static;height:auto;margin:0;overflow:visible}.stage{display:none}.steps{position:static;max-width:37rem;margin:auto}.step,.step.mid,.step.lead,.step.tl,.step.tr,.step.bl,.step.br{position:static;opacity:1;transform:none;max-width:none;font-size:1.15rem;text-align:left;margin:0 0 1rem}.step p{background:none;padding:0}.trigger,.scrollcue{display:none}
+</style>
+<p style="padding:1rem;max-width:37rem;margin:auto">The illustrated skill conversation needs JavaScript. The complete story remains readable below.</p>
+</noscript>
+
+<nav class="topnav">
+  <span class="crumb"><a href="/">Reason Commons</a><span class="up"> · <a href="../index.md">Explainers</a></span></span>
+  <span class="here">The Arrows Nobody Checks<span class="part"> · Part two · in practice</span></span>
+</nav>
+<div class="progress"></div>
+<div class="scrollcue" aria-hidden="true">
+  <svg width="14" height="26" viewBox="0 0 14 26"><path d="M7 1 L7 21 M1 15 L7 22 L13 15" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+  <span>Scroll</span>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="rough" x="-8%" y="-8%" width="116%" height="116%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="11" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <filter id="rough2" x="-8%" y="-8%" width="116%" height="116%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="3" seed="31" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0 0 L10 5 L0 10 z" fill="var(--ink-soft)"/>
+  </marker>
+</defs></svg>
+
+<!-- ================= HERO ================= -->
+<section class="hero" data-sm-beat="hero" id="sm-hero">
+  <div class="wrap">
+    <p class="kicker">Part two of three · Thinking in Systems · in practice</p>
+    <h1 class="title">The Arrows Nobody Checks</h1>
+    <p class="dek">Why reasoning has to come out of your head before anyone — including you — can tell whether it's any good.</p>
+    <p class="note">A scrolling piece: the drawings build as you read. It picks up in the clinic from <a href="../01-bottleneck-in-practice/index.html">The Wrong Queue</a>, where sixty people are waiting and everybody knows where the problem is.</p>
+    <p class="note">This edition adds a margin: the clinic’s people using the reason-commons skill at each point in the story. <a href="../02-thinking-made-visible/index.html">Read it without the margin</a>.</p>
+  </div>
+</section>
+
+<!-- ============ COLD OPEN: ONE CHAIN ============ -->
+<section class="scroll-item">
+  <div class="sticky-item"><div class="stage">
+    <svg viewBox="60 60 900 520" role="img" aria-label="Dr Adeyemi's chain of reasoning, drawn as linked statements, then four other people's chains arriving elsewhere.">
+      <g id="chain"></g>
+      <g id="others"></g>
+    </svg>
+  </div>
+  <div class="steps">
+    <div class="step tr" data-step="k1"><p>Dr Adeyemi can tell you exactly what is wrong with the clinic, and she can show her working.</p></div>
+    <div class="step tr" data-step="k2"><p>Every prescription needs her countersignature. So the pharmacist interrupts her eleven times a morning. So consultations overrun.</p></div>
+    <div class="step tr" data-step="k3"><p>So she writes her notes after seven — so the next patient's notes aren't ready, so that history gets taken twice, so that consultation overruns too.</p></div>
+    <div class="step tr" data-step="k4"><p>That is not an opinion. It is a chain. It has parts, and each part could be wrong somewhere specific.</p></div>
+    <div class="step tr" data-step="k5"><p>Four other people are carrying chains just as detailed, and they arrive somewhere else entirely.</p></div>
+  </div></div>
+  <div class="trigger" data-t="k1" id="sm-k1"></div><div class="trigger" data-t="k2" id="sm-k2"></div>
+  <div class="trigger" data-t="k3" id="sm-k3"></div><div class="trigger" data-t="k4" id="sm-k4"></div>
+  <div class="trigger" data-t="k5" id="sm-k5"></div>
+</section>
+
+<section class="flow"><div class="wrap">
+  <p data-sm-beat="theories" id="sm-theories">The practice manager's ends at funding. A nurse's ends at the ten-minute appointment rule. Maria's ends at the referral backlog.</p>
+  <p>All of them are intelligent. All of them have been there years. All of them are certain.</p>
+</div></section>
+
+<section class="statement"><p data-sm-beat="private" id="sm-private">And not one of those chains has ever been outside the head that made it.</p></section>
+
+<section class="flow"><div class="wrap">
+  <p>This is the thing standing between the clinic and its constraint. Not that nobody knows — five people have a theory. It's that there is no way to choose between them.</p>
+  <p>You can't do it by arguing, because you have been in that meeting. The winner is whoever is most senior, most confident, or least tired at four o'clock.</p>
+</div></section>
+
+<!-- ============ THE EXPERIMENT ============ -->
+<section class="flow"><div class="wrap">
+  <p>Try it yourself, on something small.</p>
+  <p>Take something you believe about why something in your life isn't working. Why the team misses deadlines. Why the meetings are useless. Why you never get to the gym.</p>
+  <p>Write it down as a sentence: <em>X causes Y.</em></p>
+  <p>Two things tend to happen. The belief that felt crisp in your head goes vague the moment it has to survive on paper. And once it's written, it starts sprouting doubts you'd never consciously entertained while it lived comfortably inside your skull.</p>
+</div></section>
+
+<section class="statement"><p data-sm-beat="outside" id="sm-outside">Nothing has changed except that it is now outside you, where it can be looked at.</p></section>
+<section class="flow"><div class="wrap">
+  <p data-sm-beat="intuition" id="sm-intuition">Most of our thinking about complicated situations happens invisibly, in intuition. Intuition is fast, rich, and often right. It is also unexaminable.</p>
+  <p data-sm-beat="feeling" id="sm-feeling">When your instinct says <em>the real problem here is funding</em>, there is no chain of inference to inspect, because there is no chain. There is a feeling with a conclusion attached.</p>
+  <p data-sm-beat="rank" id="sm-rank">So disagreements between intuitions can't be settled by evidence. Only by rank, charisma, or exhaustion.</p>
+</div></section>
+
+<!-- ============ DIAGRAMS AREN'T ENOUGH ============ -->
+<section class="scroll-item">
+  <div class="sticky-item"><div class="stage">
+    <svg viewBox="100 70 850 420" role="img" aria-label="A mind map whose arrows are contested but cannot be checked, because no rule says what makes an arrow right.">
+      <g id="mind"></g>
+      <g class="layer" data-layer="w2 w3" id="objections"></g>
+    </svg>
+  </div>
+  <div class="steps">
+    <div class="step tr" data-step="w1"><p>Now — plenty of people already draw diagrams. Flowcharts. Mind maps. Boxes on a whiteboard with arrows between them.</p></div>
+    <div class="step tr" data-step="w2"><p>And people do argue with them. <em>That shouldn't come before this. That box is wrong.</em></p></div>
+    <div class="step tr" data-step="w3"><p>But watch what happens next. Nothing says what would make an arrow correct — so the objection is one more opinion, resolved the same way everything else in the room is.</p></div>
+  </div></div>
+  <div class="trigger" data-t="w1" id="sm-w1"></div><div class="trigger" data-t="w2" id="sm-w2"></div><div class="trigger" data-t="w3" id="sm-w3"></div>
+</section>
+
+<section class="flow"><div class="wrap">
+  <p>The arrows are contestable. They are not <em>checkable</em>. There is no standard a challenge has to meet, and therefore none it can win by.</p>
+</div></section>
+
+<section class="statement"><p>An arrow is only worth drawing if it can be shown to be wrong. And that requires rules.</p></section>
+
+<section class="flow"><div class="wrap">
+  <p>So here are the rules. They are less a technique than a set of questions you are allowed to ask about any claim anybody makes.</p>
+</div></section>
+
+<!-- ============ THE QUESTIONS ============ -->
+<section class="scroll-item">
+  <div class="sticky-item"><div class="stage">
+    <svg viewBox="120 80 760 400" role="img" aria-label="Each test drawn: a claim that isn't a claim, fire missing its oxygen, a fever with two causes, anglers on a riverbank, appendicitis predicting a fever, and a circular argument.">
+      <!-- q1 understanding -->
+      <g class="layer" data-layer="q1" filter="url(#rough)">
+        <circle cx="380" cy="270" r="58" fill="none" stroke="var(--ink)" stroke-width="2.6"/>
+        <circle cx="620" cy="270" r="58" fill="none" stroke="var(--ink)" stroke-width="2.6"/>
+        <text x="380" y="276" text-anchor="middle" font-family="var(--sans)" font-size="15" fill="var(--ink-soft)">you</text>
+        <text x="620" y="276" text-anchor="middle" font-family="var(--sans)" font-size="15" fill="var(--ink-soft)">me</text>
+        <text x="500" y="180" text-anchor="middle" font-family="var(--sans)" font-size="17" fill="var(--mark)">"funding"</text>
+        <path d="M470 195 L410 225" stroke="var(--ink-soft)" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+        <path d="M530 195 L590 225" stroke="var(--ink-soft)" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+      </g>
+      <!-- q2 is it a claim -->
+      <g class="layer" data-layer="q2" filter="url(#rough)">
+        <rect x="230" y="230" width="200" height="80" fill="none" stroke="var(--ink-faint)" stroke-width="2.4" stroke-dasharray="6 5"/>
+        <text x="330" y="277" text-anchor="middle" font-family="var(--sans)" font-size="18" fill="var(--ink-faint)">Funding</text>
+        <text x="330" y="345" text-anchor="middle" font-family="var(--sans)" font-size="11" fill="var(--ink-faint)" letter-spacing="1.2">NOT A CLAIM</text>
+        <rect x="560" y="230" width="230" height="80" fill="none" stroke="var(--ink)" stroke-width="2.6"/>
+        <text x="675" y="265" text-anchor="middle" font-family="var(--sans)" font-size="14">Our budget fell 12%</text>
+        <text x="675" y="288" text-anchor="middle" font-family="var(--sans)" font-size="14">in real terms since 2019</text>
+        <text x="675" y="345" text-anchor="middle" font-family="var(--sans)" font-size="11" fill="var(--ink-soft)" letter-spacing="1.2">CHECKABLE</text>
+      </g>
+      <!-- q3 oxygen -->
+      <g class="layer" data-layer="q3" filter="url(#rough)">
+        <rect x="220" y="150" width="150" height="66" fill="none" stroke="var(--ink)" stroke-width="2.4"/>
+        <text x="295" y="190" text-anchor="middle" font-family="var(--sans)" font-size="15">fuel</text>
+        <rect x="220" y="250" width="150" height="66" fill="none" stroke="var(--ink)" stroke-width="2.4"/>
+        <text x="295" y="290" text-anchor="middle" font-family="var(--sans)" font-size="15">heat</text>
+        <rect x="220" y="350" width="150" height="66" fill="none" stroke="var(--mark)" stroke-width="3" stroke-dasharray="7 5"/>
+        <text x="295" y="390" text-anchor="middle" font-family="var(--sans)" font-size="15" fill="var(--mark)">oxygen?</text>
+        <ellipse cx="470" cy="283" rx="34" ry="80" fill="none" stroke="var(--ink-soft)" stroke-width="2"/>
+        <path d="M370 183 L440 250" stroke="var(--ink-soft)" stroke-width="2" fill="none"/>
+        <path d="M370 283 L436 283" stroke="var(--ink-soft)" stroke-width="2" fill="none"/>
+        <path d="M370 383 L440 316" stroke="var(--mark)" stroke-width="2" fill="none" stroke-dasharray="5 4"/>
+        <rect x="580" y="250" width="150" height="66" fill="none" stroke="var(--ink)" stroke-width="2.4"/>
+        <text x="655" y="290" text-anchor="middle" font-family="var(--sans)" font-size="15">fire</text>
+        <path d="M504 283 L570 283" stroke="var(--ink-soft)" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+      </g>
+      <!-- q4 additional cause -->
+      <g class="layer" data-layer="q4" filter="url(#rough)">
+        <rect x="200" y="170" width="200" height="70" fill="none" stroke="var(--ink)" stroke-width="2.4"/>
+        <text x="300" y="212" text-anchor="middle" font-family="var(--sans)" font-size="14">an infection</text>
+        <rect x="200" y="330" width="200" height="70" fill="none" stroke="var(--ink)" stroke-width="2.4"/>
+        <text x="300" y="372" text-anchor="middle" font-family="var(--sans)" font-size="14">an afternoon in the sun</text>
+        <rect x="590" y="250" width="180" height="70" fill="none" stroke="var(--mark)" stroke-width="3"/>
+        <text x="680" y="292" text-anchor="middle" font-family="var(--sans)" font-size="15" fill="var(--mark)">a fever</text>
+        <path d="M400 205 L580 268" stroke="var(--ink-soft)" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+        <path d="M400 365 L580 302" stroke="var(--ink-soft)" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+      </g>
+      <!-- q5 fishing -->
+      <g class="layer" data-layer="q5" filter="url(#rough)">
+        <rect x="180" y="160" width="210" height="70" fill="none" stroke="var(--ink-faint)" stroke-width="2.2" stroke-dasharray="6 5"/>
+        <text x="285" y="202" text-anchor="middle" font-family="var(--sans)" font-size="14" fill="var(--ink-faint)">anglers on the bank</text>
+        <rect x="180" y="340" width="210" height="70" fill="none" stroke="var(--mark)" stroke-width="3"/>
+        <text x="285" y="382" text-anchor="middle" font-family="var(--sans)" font-size="14" fill="var(--mark)">the river was stocked</text>
+        <rect x="600" y="250" width="180" height="70" fill="none" stroke="var(--ink)" stroke-width="2.6"/>
+        <text x="690" y="292" text-anchor="middle" font-family="var(--sans)" font-size="15">fishing is good</text>
+        <path d="M600 275 L400 205" stroke="var(--ink-faint)" stroke-width="2" fill="none" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+        <text x="500" y="228" text-anchor="middle" font-family="var(--sans)" font-size="11" fill="var(--ink-faint)" letter-spacing="1">HOW YOU KNOW</text>
+        <path d="M390 372 L590 305" stroke="var(--mark)" stroke-width="2.4" fill="none" marker-end="url(#ar)"/>
+        <text x="500" y="360" text-anchor="middle" font-family="var(--sans)" font-size="11" fill="var(--mark)" letter-spacing="1">WHY IT IS SO</text>
+      </g>
+      <!-- q6 predicted effect -->
+      <g class="layer" data-layer="q6" filter="url(#rough)">
+        <rect x="200" y="250" width="190" height="70" fill="none" stroke="var(--ink)" stroke-width="2.6"/>
+        <text x="295" y="292" text-anchor="middle" font-family="var(--sans)" font-size="15">appendicitis</text>
+        <rect x="600" y="150" width="200" height="62" fill="none" stroke="var(--ink)" stroke-width="2.4"/>
+        <text x="700" y="187" text-anchor="middle" font-family="var(--sans)" font-size="14">abdominal pain</text>
+        <rect x="600" y="255" width="200" height="62" fill="none" stroke="var(--mark)" stroke-width="2.6" stroke-dasharray="7 5"/>
+        <text x="700" y="292" text-anchor="middle" font-family="var(--sans)" font-size="14" fill="var(--mark)">a fever</text>
+        <rect x="600" y="360" width="200" height="62" fill="none" stroke="var(--mark)" stroke-width="2.6" stroke-dasharray="7 5"/>
+        <text x="700" y="397" text-anchor="middle" font-family="var(--sans)" font-size="14" fill="var(--mark)">raised white cells</text>
+        <path d="M390 275 L590 190" stroke="var(--ink-soft)" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+        <path d="M390 288 L590 285" stroke="var(--mark)" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+        <path d="M390 300 L590 385" stroke="var(--mark)" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+      </g>
+      <!-- q7 circle -->
+      <g class="layer" data-layer="q7" filter="url(#rough)">
+        <rect x="290" y="180" width="180" height="70" fill="none" stroke="var(--ink)" stroke-width="2.4"/>
+        <text x="380" y="222" text-anchor="middle" font-family="var(--sans)" font-size="15">we're behind</text>
+        <rect x="530" y="330" width="180" height="70" fill="none" stroke="var(--ink)" stroke-width="2.4"/>
+        <text x="620" y="372" text-anchor="middle" font-family="var(--sans)" font-size="15">we're slow</text>
+        <path d="M470 225 Q560 240 570 325" stroke="var(--mark)" stroke-width="2.4" fill="none" marker-end="url(#ar)"/>
+        <path d="M530 372 Q400 380 380 258" stroke="var(--mark)" stroke-width="2.4" fill="none" marker-end="url(#ar)"/>
+      </g>
+    </svg>
+  </div>
+  <div class="steps">
+    <div class="step bl" data-step="q1"><p><strong>Do I understand you?</strong> Not do I agree — do I know what you mean. A great many arguments that look like disagreement are two people using one word differently and getting steadily angrier about it.</p></div>
+    <div class="step bl" data-step="q2"><p><strong>Is that a claim at all?</strong> A complete thought, one idea, that could be true or false. "Funding" is not a claim.</p></div>
+    <div class="step tr" data-step="q3"><p><strong>Is that cause enough on its own?</strong> <em>If we have fuel and a heat source, then we have fire.</em> True? No. You forgot oxygen — because it is always there.</p></div>
+    <div class="step tr" data-step="q4"><p><strong>Could something else have done it?</strong> Remove your stated cause. Would the effect have happened anyway? If so, you haven't explained anything yet.</p></div>
+    <div class="step tr" data-step="q5"><p><strong>Have you got it backwards?</strong> Anglers on the bank did not <em>cause</em> good fishing. They are how you know it. The cause is that the river was stocked on Tuesday.</p></div>
+    <div class="step bl" data-step="q6"><p><strong>If you're right, what else would be true?</strong> If it's appendicitis, expect a fever and a raised white cell count. If they aren't there, it isn't — however confident you were.</p></div>
+    <div class="step bl" data-step="q7"><p><strong>And are you going in a circle?</strong></p></div>
+  </div></div>
+  <div class="trigger" data-t="q1" id="sm-q1"></div><div class="trigger" data-t="q2" id="sm-q2"></div>
+  <div class="trigger" data-t="q3" id="sm-q3"></div><div class="trigger" data-t="q4" id="sm-q4"></div>
+  <div class="trigger" data-t="q5" id="sm-q5"></div><div class="trigger" data-t="q6" id="sm-q6"></div>
+  <div class="trigger" data-t="q7" id="sm-q7"></div>
+</section>
+
+<section class="flow"><div class="wrap">
+  <p>Every argument has an oxygen: the condition so ordinary that nobody names it, right up until the day it isn't there.</p>
+  <p>Confusing the sign for the cause is how organisations end up managing their indicators instead of their problems. It is how you end up hiring a receptionist because the queue is at the desk.</p>
+</div></section>
+
+<section class="flow"><div class="wrap">
+  <p>Seven questions. Notice what almost none of them are about.</p>
+  <p>They are not about clinics. You do not need to know anything about running one to ask <em>is that cause enough on its own?</em> — and that is what makes the challenge survivable. You aren't disputing someone's fifteen years of experience, which you don't have. You are asking about the shape of an argument, which is on the page in front of both of you.</p>
+  <p>Answering is a different matter. Knowing that fire needs oxygen, or what else raises a white cell count, often takes exactly the expertise you lack. But the question can come from anyone, and a question nobody can dismiss is a great deal more than most meetings have.</p>
+</div></section>
+
+<!-- ============ THE SOCIAL PART ============ -->
+<section class="flow"><div class="wrap">
+  <p>And here something changes that has nothing to do with logic.</p>
+  <p>When reasoning is invisible, criticising someone's conclusion means criticising them — their judgement, their competence, their years. So they defend, and you push, and the meeting generates heat instead of light.</p>
+</div></section>
+
+<section class="statement"><p data-sm-beat="criticism" id="sm-criticism">When the reasoning is out on the page, the page takes the criticism.</p></section>
+
+<section class="flow"><div class="wrap">
+  <p>Two people can stand side by side, looking at the same diagram, hunting for the flaw together. Dettmer's phrase for it: not you against me, but you and I against the problem.</p>
+  <p data-sm-beat="legal" id="sm-legal"><em>I don't see how this cause is sufficient — what am I missing?</em> is not an insult. It's a legal move.</p>
+  <p data-sm-beat="holds" id="sm-holds">It doesn't always work. Some people won't update however cleanly their chain breaks, and a diagram can be gamed as easily as a meeting can. But when a group has genuinely tried to break a piece of reasoning and failed, they tend to believe it — not because they were told, but because they attacked it and it held.</p>
+</div></section>
+<!-- ============ BACK TO THE CLINIC ============ -->
+<section class="flow"><div class="wrap">
+  <p data-sm-beat="back" id="sm-back">Back to the clinic, and the five certain people.</p>
+  <p data-sm-beat="wall" id="sm-wall">Nobody has to decide who is right. Each of them puts their chain on the wall, and then everybody gets the questions.</p>
+<p data-sm-beat="survive" id="sm-survive">Some chains won't survive contact. Two will turn out to be describing the same cause from different ends. Dr Adeyemi's countersignature and Maria's referral backlog may well be the same animal seen from opposite sides of the building.</p>
+</div></section>
+
+<section class="statement"><p data-sm-beat="left" id="sm-left">What's left is not five opinions.</p></section>
+
+<section class="statement sm"><p data-sm-beat="map" id="sm-map">It is one map that five people built and none of them could break — which is a different kind of object entirely.</p></section>
+<section class="flow"><div class="wrap">
+  <p data-sm-beat="next-question" id="sm-next-question">Though it does raise the question of what, exactly, you should be mapping. <em>Why are we stuck</em> turns out not to be the first question. It isn't even the most important one.</p>
+</div></section>
+
+<section class="sources" data-sm-beat="sources" id="sm-sources"><div class="wrap">
+  <h2>Notes on sources</h2>
+  <p>The eight rules are the Categories of Legitimate Reservation, set out in H. William Dettmer, <em>The Logical Thinking Process</em> (ASQ Quality Press, 2007), chapter 2: clarity, entity existence, causality existence, cause insufficiency, additional cause, cause-effect reversal, predicted effect existence and tautology. Seven are used here; two are merged, and the names are dropped in favour of the questions they ask.</p>
+  <p>The worked examples are Dettmer's own: fuel and heat without oxygen; a fever from either infection or exertion; the anglers whose full nets are the indication rather than the cause of good fishing (an example he credits to Charles M. Johnson); and appendicitis predicting a fever and a raised white cell count. So is the observation that a diagram without rules for validating its connections is "somebody's perception of the relationship" rather than a logic tool, and the framing of scrutiny as "not you against me, but you and I against the system."</p>
+  <p>The Ashfield clinic is a composite, continued from part one.</p>
+  <p>The margin is an illustration, like the clinic: its people, times and messages are invented to show what the reason-commons skill does at each point in the story. The desktop is an AI assistant with the skill installed; the skill runs today in Claude Code, Codex and other agents that support skills. The phones show a team chat where the skill answers when someone invokes it, as Reason Commons’ prototype Discord bot does. It does not message anyone on its own: a notification is the chat telling someone about a reply in their channel. The skill records what each person says as proposed, marks reasoning accepted only when a named person accepts it, and keeps objections on the item they dispute.</p>
+</div></section>
+
+<section class="seriesnav"><div class="wrap">
+  <a href="../03-five-shapes-in-practice/index.html"><span class="n">Next · part three, in practice</span><span class="t">Five Shapes →</span></a>
+  <a href="../01-bottleneck-in-practice/index.html"><span class="n">Previous · part one, in practice</span><span class="t">← The Wrong Queue</span></a>
+  <a href="../02-thinking-made-visible/index.html"><span class="n">This part without the margin</span><span class="t">The original edition</span></a>
+  <a href="../index.md"><span class="n">Series</span><span class="t">All three parts</span></a>
+</div></section>
+
+<script src="../scroller.js"></script>
+<script>
+(window.rebuildExplainerArtwork = function(){
+  /* Retain the initial drawing template so crossing the phone breakpoint
+     can rebuild its geometry without reloading the story or its companion. */
+  document.querySelectorAll('.stage > svg').forEach(function(svg){
+    if(!svg._marginTemplate){
+      svg._marginTemplate={html:svg.innerHTML,viewBox:svg.getAttribute('viewBox')};
+    } else {
+      svg.innerHTML=svg._marginTemplate.html;
+      svg.setAttribute('viewBox',svg._marginTemplate.viewBox);
+    }
+  });
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  function node(g,x,y,w,h,txt,size){
+    var box=el('rect',{x:x,y:y,width:w,height:h,fill:'none',stroke:'var(--ink)',
+      'stroke-width':2.4,filter:'url(#rough2)'});
+    g.appendChild(box);
+    var t=el('text',{x:x+w/2,y:y+h/2+5,'text-anchor':'middle','font-family':'var(--sans)',
+      'font-size':P?Math.max(size||13,14):size||13});
+    t.textContent=txt; g.appendChild(t);
+    return {box:box,text:t};
+  }
+
+  /* The chain runs down the page either way, but the four other people's
+     conclusions are a row across the foot, which on a phone squeezes the whole
+     drawing to a third of its legible size. In portrait they go two-by-two. */
+  var P = window.matchMedia('(max-width: 640px)').matches;
+
+  /* Dr Adeyemi's chain */
+  var chain=document.getElementById('chain');
+  var LINKS=['countersignature required','pharmacist interrupts, 11× a morning',
+             'consultations overrun','notes written after seven',
+             'next patient’s notes not ready','history taken twice'];
+  /* The chain sits in the left two-thirds of the frame so the caption in the
+     right gutter has somewhere to land that isn't on top of it. */
+  var chainNodes=[];
+  LINKS.forEach(function(txt,i){
+    var g=el('g',{'data-link':i,opacity:0});
+    if(P){
+      node(g,20,20+i*50,350,38,txt,14);
+      if(i>0) g.appendChild(el('path',{d:'M195 '+(8+i*50)+' L195 '+(20+i*50),
+        stroke:'var(--ink-soft)','stroke-width':2,'marker-end':'url(#ar)'}));
+    } else {
+      node(g,100,90+i*66,420,56,txt);
+      if(i>0) g.appendChild(el('path',{d:'M310 '+(84+i*66)+' L310 '+(90+i*66),
+        stroke:'var(--ink-soft)','stroke-width':2,'marker-end':'url(#ar)'}));
+    }
+    chain.appendChild(g); chainNodes.push(g);
+  });
+
+  /* four other chains, arriving elsewhere. They sit below the chain rather
+     than across it — at y 420 they landed directly on top of its last link. */
+  var others=document.getElementById('others');
+  var OTHER=[{x:140,t:'funding'},{x:310,t:'the ten-minute rule'},
+             {x:480,t:'referral backlog'},{x:650,t:'nobody asks us'}];
+  var otherNodes=[];
+  OTHER.forEach(function(o,i){
+    var g=el('g',{opacity:0});
+    var bx = P ? 20+(i%2)*180 : o.x-75, by = P ? 335+Math.floor(i/2)*58 : 500,
+        bw = P ? 170 : 150, bh = P ? 50 : 52;
+    g.appendChild(el('rect',{x:bx,y:by,width:bw,height:bh,fill:'none',
+      stroke:'var(--ink-faint)','stroke-width':2.2,filter:'url(#rough2)'}));
+    var t=el('text',{x:bx+bw/2,y:by+bh/2+4,'text-anchor':'middle','font-family':'var(--sans)',
+      'font-size':P?14:11.5,fill:'var(--ink-soft)'});
+    t.textContent=o.t; g.appendChild(t);
+    others.appendChild(g); otherNodes.push(g);
+  });
+
+  /* the mind map */
+  var mind=document.getElementById('mind');
+  var MP = P
+    ? [[195,40,'the clinic',80,26],[100,145,'staffing',72,24],[290,145,'demand',72,24],
+       [50,255,'rotas',44,22],[140,255,'training',44,22],
+       [250,255,'referrals',44,22],[340,255,'funding',44,22]]
+    : [[500,120,'the clinic',78,34],[250,240,'staffing',78,34],[750,240,'demand',78,34],
+       [200,400,'rotas',78,34],[400,400,'training',78,34],
+       [650,400,'referrals',78,34],[850,400,'funding',78,34]];
+  MP.forEach(function(m){
+    var g=el('g',{filter:'url(#rough2)'});
+    g.appendChild(el('ellipse',{cx:m[0],cy:m[1],rx:m[3],ry:m[4],fill:'none',
+      stroke:'var(--ink)','stroke-width':2.2}));
+    var t=el('text',{x:m[0],y:m[1]+5,'text-anchor':'middle','font-family':'var(--sans)',
+      'font-size':P?11:13});
+    t.textContent=m[2]; g.appendChild(t);
+    mind.appendChild(g);
+  });
+  (P ? [[195,66,110,119],[195,66,280,119],[100,169,55,233],[100,169,135,233],
+        [290,169,255,233],[290,169,335,233]]
+     : [[500,154,250,206],[500,154,750,206],[250,274,200,366],[250,274,400,366],
+        [750,274,650,366],[750,274,850,366]]).forEach(function(l){
+    mind.appendChild(el('path',{d:'M'+l[0]+' '+l[1]+' L'+l[2]+' '+l[3],
+      stroke:'var(--ink-soft)','stroke-width':2,fill:'none','marker-end':'url(#ar)'}));
+  });
+
+  /* the objections that go nowhere */
+  /* Set just off each arrow's midpoint — at 196 the right-hand one sat on top
+     of its own arrowhead. */
+  var obj=document.getElementById('objections');
+  (P ? [[128,104,'?'],[262,104,'?'],[122,208,'?']]
+     : [[375,170,'?'],[625,170,'?'],[298,322,'?']]).forEach(function(o){
+    var t=el('text',{x:o[0],y:o[1],'text-anchor':'middle','font-family':'var(--sans)',
+      'font-size':P?22:30,'font-weight':700,fill:'var(--mark)'});
+    t.textContent=o[2]; obj.appendChild(t);
+  });
+
+  /* ---- the seven tests, in portrait ----
+     Each of these is drawn in the markup as two columns with the causal
+     arrows running left to right. That is 500–600 units across, which on a
+     phone lands at nine-pixel type. The landscape drawings stay exactly as
+     they are; in portrait each layer is emptied and drawn again vertically. */
+  if(P){
+    var MARK='var(--mark)', INK='var(--ink)', SOFT='var(--ink-soft)', FAINT='var(--ink-faint)';
+    function qr(g,x,y,w,h,stroke,dash){
+      g.appendChild(el('rect',{x:x,y:y,width:w,height:h,fill:'none',stroke:stroke,
+        'stroke-width':dash?2.2:2.4,'stroke-dasharray':dash||'none'}));
+    }
+    function qt(g,x,y,txt,size,fill,ls){
+      var t=el('text',{x:x,y:y,'text-anchor':'middle','font-family':'var(--sans)',
+        'font-size':size,fill:fill||INK});
+      if(ls) t.setAttribute('letter-spacing',ls);
+      t.textContent=txt; g.appendChild(t);
+    }
+    function qp(g,d,stroke,dash){
+      g.appendChild(el('path',{d:d,fill:'none',stroke:stroke,'stroke-width':2,
+        'stroke-dasharray':dash||'none','marker-end':'url(#ar)'}));
+    }
+    var Q={
+      /* do I understand you — one word, two different meanings */
+      q1:function(g){
+        qt(g,190,40,'"funding"',16,MARK);
+        [[105,'you'],[275,'me']].forEach(function(c){
+          g.appendChild(el('circle',{cx:c[0],cy:150,r:52,fill:'none',stroke:INK,'stroke-width':2.6}));
+          qt(g,c[0],156,c[1],14,SOFT);
+        });
+        qp(g,'M168 55 L120 92',SOFT); qp(g,'M212 55 L260 92',SOFT);
+      },
+      /* is that a claim at all */
+      q2:function(g){
+        qr(g,20,20,340,66,FAINT,'6 5');
+        qt(g,190,60,'Funding',17,FAINT);
+        qt(g,190,106,'NOT A CLAIM',10,FAINT,1.2);
+        qr(g,20,140,340,72,INK);
+        qt(g,190,170,'Our budget fell 12%',13);
+        qt(g,190,192,'in real terms since 2019',13);
+        qt(g,190,232,'CHECKABLE',10,SOFT,1.2);
+      },
+      /* is that cause enough on its own — the oxygen nobody names */
+      q3:function(g){
+        [[20,'fuel',INK,null],[86,'heat',INK,null],[152,'oxygen?',MARK,'7 5']].forEach(function(r){
+          qr(g,30,r[0],150,52,r[2],r[3]);
+          qt(g,105,r[0]+32,r[1],14,r[2]===MARK?MARK:INK);
+        });
+        g.appendChild(el('ellipse',{cx:255,cy:112,rx:30,ry:78,fill:'none',stroke:SOFT,'stroke-width':2}));
+        qp(g,'M180 46 L226 90',SOFT); qp(g,'M180 112 L221 112',SOFT);
+        qp(g,'M180 178 L226 148',MARK,'5 4');
+        qr(g,180,290,150,52,INK); qt(g,255,322,'fire',14);
+        qp(g,'M255 192 L255 284',SOFT);
+      },
+      /* could something else have done it */
+      q4:function(g){
+        qr(g,20,20,200,52,INK); qt(g,120,52,'an infection',13);
+        qr(g,20,108,200,62,INK);
+        qt(g,120,134,'an afternoon',13); qt(g,120,156,'in the sun',13);
+        qr(g,100,250,200,56,MARK); qt(g,200,284,'a fever',14,MARK);
+        qp(g,'M220 46 L245 46 L245 244',SOFT);
+        qp(g,'M220 139 L245 139 L245 244',SOFT);
+      },
+      /* have you got it backwards — the sign is not the cause */
+      q5:function(g){
+        qr(g,95,20,200,56,INK); qt(g,195,54,'fishing is good',14);
+        qr(g,20,160,170,52,FAINT,'6 5'); qt(g,105,192,'anglers on the bank',11.5,FAINT);
+        qt(g,105,236,'HOW YOU KNOW',9.5,FAINT,1);
+        qr(g,205,160,170,52,MARK); qt(g,290,192,'the river was stocked',11.5,MARK);
+        qt(g,290,236,'WHY IT IS SO',9.5,MARK,1);
+        qp(g,'M160 78 L118 154',FAINT,'5 4');
+        qp(g,'M282 156 L232 80',MARK);
+      },
+      /* if you're right, what else would be true */
+      q6:function(g){
+        qr(g,110,20,170,56,INK); qt(g,195,54,'appendicitis',14);
+        [[150,'abdominal pain',INK,null],[208,'a fever',MARK,'7 5'],
+         [266,'raised white cells',MARK,'7 5']].forEach(function(r){
+          qr(g,20,r[0],320,46,r[2],r[3]);
+          qt(g,180,r[0]+29,r[1],13,r[2]===MARK?MARK:INK);
+        });
+        [173,231,289].forEach(function(y){
+          qp(g,'M280 48 L370 48 L370 '+y+' L344 '+y,SOFT);
+        });
+      },
+      /* and are you going in a circle */
+      q7:function(g){
+        qr(g,20,20,190,56,INK); qt(g,115,54,'we’re behind',14);
+        qr(g,170,170,190,56,INK); qt(g,265,204,'we’re slow',14);
+        qp(g,'M210 48 Q285 56 292 164',MARK);
+        qp(g,'M170 198 Q45 206 50 82',MARK);
+      }
+    };
+    Object.keys(Q).forEach(function(k){
+      var g=document.querySelector('[data-layer="'+k+'"]');
+      if(!g) return;
+      while(g.firstChild) g.removeChild(g.firstChild);
+      Q[k](g);
+    });
+  }
+
+  window.onStep=function(id){
+    var reveal={k1:1,k2:3,k3:6,k4:6,k5:6}[id];
+    if(reveal!==undefined){
+      chainNodes.forEach(function(g,i){ g.setAttribute('opacity', i<reveal?1:0); });
+      otherNodes.forEach(function(g){ g.setAttribute('opacity', id==='k5'?1:0); });
+    }
+  };
+})();
+</script>
+<script>window.SKILL_MARGIN={
+ "original": "../02-thinking-made-visible/index.html",
+ "channel": "#ashfield-flow",
+ "devices": {
+  "sam": "Desktop, in the back office",
+  "maria": "Phone, on the front desk",
+  "adeyemi": "Phone, dictating between patients",
+  "tomasz": "Phone, moving between rooms",
+  "leila": "Phone, at the dispensary bench",
+  "skill": "In the assistant and the team chat"
+ },
+ "cover": {
+  "title": "In the margin: five explanations, written down",
+  "text": "The same clinic, the same five people. In this part the five use the reason-commons skill to get each explanation out of its author’s head, and to ask the story’s questions of each other’s reasoning, not of each other."
+ },
+ "scenes": [
+  {
+   "id": "write",
+   "who": "adeyemi",
+   "device": "phone",
+   "msgs": [
+    {
+     "from": "sam",
+     "text": "Let’s write the explanations down before choosing between them."
+    },
+    {
+     "from": "adeyemi",
+     "text": "Countersignatures interrupt consultations. Consultations overrun, so I write the notes late.",
+     "cmd": "capture",
+     "dictated": true
+    },
+    {
+     "from": "skill",
+     "text": "Saved as proposed, in Dr Adeyemi’s name. Recording the chain does not establish that its arrows hold.",
+     "type": "Capture result"
+    }
+   ],
+   "time": "Thursday",
+   "place": "Consulting room",
+   "notify": true,
+   "clock": "13:30"
+  },
+  {
+   "id": "questions",
+   "who": "sam",
+   "device": "desktop",
+   "msgs": [
+    {
+     "from": "skill",
+     "text": "Sam, what do you mean by “funding”?",
+     "type": "Next step"
+    },
+    {
+     "from": "sam",
+     "text": "Our budget fell twelve percent in real terms since 2019. I think that makes the waits longer."
+    },
+    {
+     "from": "skill",
+     "text": "What else must hold for that fall to cause the wait? Is money what the doctor’s room is short of?",
+     "type": "Next step"
+    },
+    {
+     "from": "sam",
+     "text": "We would need to check that. A smaller budget might not be the whole explanation."
+    },
+    {
+     "from": "skill",
+     "text": "Long waits show that something is wrong. They do not, by themselves, show what caused it.",
+     "type": "Answer"
+    },
+    {
+     "from": "skill",
+     "text": "If the budget change causes longer waits, what change would you expect in the waiting records?",
+     "type": "Next step"
+    },
+    {
+     "from": "sam",
+     "text": "Put that comparison on the backlog. We have not settled the cause by restating the problem."
+    }
+   ],
+   "time": "Checking the explanation",
+   "place": "Back office",
+   "notify": false,
+   "clock": "08:30"
+  },
+  {
+   "id": "challenge",
+   "who": "maria",
+   "device": "phone",
+   "msgs": [
+    {
+     "from": "sam",
+     "text": "Pick one arrow in Dr Adeyemi’s explanation. Ask what would make it wrong."
+    },
+    {
+     "from": "maria",
+     "text": "Do pharmacy interruptions always make consultations overrun? What am I missing?",
+     "cmd": "capture"
+    },
+    {
+     "from": "skill",
+     "text": "Maria’s challenge is saved on this link.",
+     "type": "Capture result",
+     "nodes": [
+      {
+       "s": "Disputed",
+       "k": "Link · causes",
+       "t": "Pharmacy interruptions → consultations overrun."
+      }
+     ]
+    },
+    {
+     "from": "adeyemi",
+     "text": "On days without pharmacy interruptions, my notes are finished by six.",
+     "cmd": "capture",
+     "dictated": true
+    },
+    {
+     "from": "skill",
+     "text": "Saved as a proposed observation from Dr Adeyemi. Check those days against the records; this alone does not settle every link.",
+     "type": "Capture result"
+    },
+    {
+     "from": "tomasz",
+     "text": "Waits were just as long in 2018, before the budget fell.",
+     "cmd": "capture"
+    },
+    {
+     "from": "skill",
+     "text": "Saved Tomasz’s observation and objection to the funding link. Sam, do the older waiting figures match your records?",
+     "type": "Capture result"
+    }
+   ],
+   "time": "The team examines the map",
+   "place": "Front desk",
+   "notify": true,
+   "clock": "09:40"
+  },
+  {
+   "id": "record",
+   "who": "sam",
+   "device": "desktop",
+   "msgs": [
+    {
+     "from": "sam",
+     "text": "Show what is checked and what is still open."
+    },
+    {
+     "from": "skill",
+     "text": "Earlier waiting figures still need checking.",
+     "type": "Tree view",
+     "nodes": [
+      {
+       "s": "Disputed",
+       "k": "Link · causes",
+       "t": "The budget fell → patients wait longer."
+      }
+     ]
+    }
+   ],
+   "time": "Reviewing together",
+   "place": "Staff room",
+   "notify": false,
+   "clock": "08:30"
+  }
+ ],
+ "close": {
+  "title": "That was the reason-commons skill",
+  "text": "The skill keeps what people say, who agrees, what is disputed and what is worth checking next. Use it in an AI assistant that supports skills.",
+  "install": "npx skills add life-itself/reasoncommons -s reason-commons",
+  "links": [
+   {
+    "href": "../../skills/README.md",
+    "text": "How to install and start the skill →"
+   },
+   {
+    "href": "../03-five-shapes-in-practice/index.html",
+    "text": "Part three, in practice: Five Shapes →"
+   },
+   {
+    "href": "../02-thinking-made-visible/index.html",
+    "text": "Read this part without the margin"
+   }
+  ],
+  "fine": "The people and messages are illustrative, like the clinic. The team chat on the phones is a prototype: the skill answers there only when someone invokes it with /reason. In a meeting, the person at the keyboard can record who accepts what."
+ },
+ "beats": [
+  {
+   "mode": "cast",
+   "chapter": "1 · Hear each explanation",
+   "title": "Five people, five perspectives",
+   "focus": [],
+   "text": "The same clinic. First hear what each person thinks; an explanation is not yet a shared record.",
+   "at": "hero"
+  },
+  {
+   "mode": "cast",
+   "chapter": "1 · Hear each explanation",
+   "title": "Dr Adeyemi’s explanation",
+   "focus": [
+    "adeyemi"
+   ],
+   "text": "This is still a chain in Dr Adeyemi’s head. The other people have explanations of their own.",
+   "step": "k1"
+  },
+  {
+   "mode": "cast",
+   "chapter": "1 · Hear each explanation",
+   "title": "Dr Adeyemi’s explanation",
+   "focus": [
+    "adeyemi"
+   ],
+   "text": "This is still a chain in Dr Adeyemi’s head. The other people have explanations of their own.",
+   "step": "k2"
+  },
+  {
+   "mode": "cast",
+   "chapter": "1 · Hear each explanation",
+   "title": "Dr Adeyemi’s explanation",
+   "focus": [
+    "adeyemi"
+   ],
+   "text": "This is still a chain in Dr Adeyemi’s head. The other people have explanations of their own.",
+   "step": "k3"
+  },
+  {
+   "mode": "cast",
+   "chapter": "1 · Hear each explanation",
+   "title": "Dr Adeyemi’s explanation",
+   "focus": [
+    "adeyemi"
+   ],
+   "text": "This is still a chain in Dr Adeyemi’s head. The other people have explanations of their own.",
+   "step": "k4"
+  },
+  {
+   "mode": "cast",
+   "chapter": "1 · Hear each explanation",
+   "title": "Dr Adeyemi’s explanation",
+   "focus": [],
+   "text": "This is still a chain in Dr Adeyemi’s head. The other people have explanations of their own.",
+   "step": "k5"
+  },
+  {
+   "mode": "cast",
+   "chapter": "1 · Hear each explanation",
+   "title": "Different explanations",
+   "focus": [
+    "sam",
+    "tomasz",
+    "maria"
+   ],
+   "text": "Sam points to funding. Tomasz points to the appointment rule. Maria points to the referral backlog.",
+   "at": "theories"
+  },
+  {
+   "mode": "cast",
+   "chapter": "1 · Hear each explanation",
+   "title": "Still inside separate heads",
+   "focus": [],
+   "text": "None of these explanations has been written down together. There is no shared claim to inspect yet.",
+   "at": "private"
+  },
+  {
+   "mode": "intro",
+   "chapter": "2 · Make it inspectable",
+   "title": "Bring the explanations together",
+   "focus": [
+    "skill"
+   ],
+   "text": "Sam brings in Reason Commons to keep each explanation attributed and available for the team to examine.",
+   "at": "outside"
+  },
+  {
+   "mode": "chat",
+   "chapter": "2 · Make it inspectable",
+   "title": "Ask the team to contribute",
+   "scene": "write",
+   "count": 1,
+   "at": "intuition"
+  },
+  {
+   "mode": "chat",
+   "chapter": "2 · Make it inspectable",
+   "title": "One person states a chain",
+   "scene": "write",
+   "count": 2,
+   "at": "feeling"
+  },
+  {
+   "mode": "chat",
+   "chapter": "2 · Make it inspectable",
+   "title": "Recorded, still proposed",
+   "scene": "write",
+   "count": 3,
+   "at": "rank"
+  },
+  {
+   "mode": "cast",
+   "chapter": "3 · Learn how to check",
+   "title": "Drawn is not yet checked",
+   "focus": [
+    "skill"
+   ],
+   "text": "The explanation is outside its author’s head. Now the team needs a standard for testing the arrows.",
+   "step": "w1"
+  },
+  {
+   "mode": "cast",
+   "chapter": "3 · Learn how to check",
+   "title": "Drawn is not yet checked",
+   "focus": [
+    "skill"
+   ],
+   "text": "The explanation is outside its author’s head. Now the team needs a standard for testing the arrows.",
+   "step": "w2"
+  },
+  {
+   "mode": "cast",
+   "chapter": "3 · Learn how to check",
+   "title": "Drawn is not yet checked",
+   "focus": [
+    "skill"
+   ],
+   "text": "The explanation is outside its author’s head. Now the team needs a standard for testing the arrows.",
+   "step": "w3"
+  },
+  {
+   "mode": "chat",
+   "chapter": "3 · Learn how to check",
+   "title": "Clarify the words",
+   "scene": "questions",
+   "count": 1,
+   "step": "q1"
+  },
+  {
+   "mode": "chat",
+   "chapter": "3 · Learn how to check",
+   "title": "Make a complete claim",
+   "scene": "questions",
+   "count": 2,
+   "step": "q2"
+  },
+  {
+   "mode": "chat",
+   "chapter": "3 · Learn how to check",
+   "title": "Look for a missing condition",
+   "scene": "questions",
+   "count": 3,
+   "step": "q3"
+  },
+  {
+   "mode": "chat",
+   "chapter": "3 · Learn how to check",
+   "title": "Leave room for other causes",
+   "scene": "questions",
+   "count": 4,
+   "step": "q4"
+  },
+  {
+   "mode": "chat",
+   "chapter": "3 · Learn how to check",
+   "title": "Separate sign from cause",
+   "scene": "questions",
+   "count": 5,
+   "step": "q5"
+  },
+  {
+   "mode": "chat",
+   "chapter": "3 · Learn how to check",
+   "title": "Ask what else would be true",
+   "scene": "questions",
+   "count": 6,
+   "step": "q6"
+  },
+  {
+   "mode": "chat",
+   "chapter": "3 · Learn how to check",
+   "title": "Keep a checkable question",
+   "scene": "questions",
+   "count": 7,
+   "step": "q7"
+  },
+  {
+   "mode": "chat",
+   "chapter": "4 · Examine it together",
+   "title": "An invitation to question",
+   "scene": "challenge",
+   "count": 1,
+   "at": "criticism"
+  },
+  {
+   "mode": "chat",
+   "chapter": "4 · Examine it together",
+   "title": "Challenge one arrow",
+   "scene": "challenge",
+   "count": 2,
+   "at": "legal"
+  },
+  {
+   "mode": "chat",
+   "chapter": "4 · Examine it together",
+   "title": "Keep the objection attached",
+   "scene": "challenge",
+   "count": 3,
+   "at": "holds"
+  },
+  {
+   "mode": "chat",
+   "chapter": "4 · Examine it together",
+   "title": "Offer an observation",
+   "scene": "challenge",
+   "count": 4,
+   "at": "back"
+  },
+  {
+   "mode": "chat",
+   "chapter": "4 · Examine it together",
+   "title": "Evidence stays provisional",
+   "scene": "challenge",
+   "count": 5,
+   "at": "wall"
+  },
+  {
+   "mode": "chat",
+   "chapter": "4 · Examine it together",
+   "title": "Another person can test it",
+   "scene": "challenge",
+   "count": 6,
+   "at": "survive"
+  },
+  {
+   "mode": "chat",
+   "chapter": "4 · Examine it together",
+   "title": "An open question has a home",
+   "scene": "challenge",
+   "count": 7,
+   "at": "left"
+  },
+  {
+   "mode": "chat",
+   "chapter": "4 · Examine it together",
+   "title": "Review the shared record",
+   "scene": "record",
+   "count": 1,
+   "at": "map"
+  },
+  {
+   "mode": "chat",
+   "chapter": "4 · Examine it together",
+   "title": "Open questions stay visible",
+   "scene": "record",
+   "count": 2,
+   "at": "next-question"
+  },
+  {
+   "mode": "close",
+   "chapter": "Try it on your work",
+   "title": "Give one claim an address",
+   "at": "sources"
+  }
+ ],
+ "opening": {
+  "mode": "cast",
+  "chapter": "Meet the clinic",
+  "title": "The people behind the story",
+  "focus": [],
+  "text": "Follow the people first. The team will bring in Reason Commons when it has a question to investigate."
+ }
+};</script>
+<script src="../skill-margin.js"></script>
+</body>
+</html>
