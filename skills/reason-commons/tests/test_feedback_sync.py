@@ -234,6 +234,68 @@ class SyncTests(unittest.TestCase):
         self.assertEqual(self.run_sync(self.b)["state"], "shared")
         self.assertEqual(len(self.load(self.b)["feedback_requests"][0]["reports"]), 1)
 
+    def worktree(self):
+        tree = Path(self.temporary.name) / "session"
+        git(self.a, "worktree", "add", "-q", "-b", "session", str(tree))
+        return tree
+
+    def test_linked_worktree_shares_through_the_main_checkouts_authorisation(self):
+        tree = self.worktree()
+        self.add(tree)
+        result = self.run_sync(tree)
+        self.assertEqual(result["state"], "shared")
+        self.assertEqual(result["inherited_from"], str(self.a.resolve()))
+        self.assertEqual(len(self.shared()["feedback_requests"][0]["reports"]), 1)
+        policy = json.loads((sharing.local_dir(tree / "state.yaml") / "feedback-sync.json").read_text())
+        self.assertEqual((policy["by"], policy["branch"], policy["repo"]), ("alice", "main", str(tree.resolve())))
+        self.assertEqual(git(tree, "rev-parse", "--abbrev-ref", "HEAD"), "session")
+
+    def test_worktree_without_a_main_authorisation_stays_local(self):
+        (sharing.local_dir(self.a / "state.yaml") / "feedback-sync.json").unlink()
+        tree = self.worktree()
+        self.add(tree)
+        self.assertEqual(self.run_sync(tree)["state"], "local")
+        self.assertEqual(self.shared(), toy())
+
+    def test_worktree_refuses_an_authorisation_for_another_remote_url(self):
+        granted = sharing.local_dir(self.a / "state.yaml") / "feedback-sync.json"
+        granted.write_text(json.dumps({**json.loads(granted.read_text()), "url": str(self.remote) + ".other"}))
+        tree = self.worktree()
+        self.add(tree)
+        self.assertEqual(self.run_sync(tree)["state"], "local")
+        self.assertEqual(self.shared(), toy())
+
+    def test_worktree_with_unshared_expectation_says_why_it_waits(self):
+        tree = self.worktree()
+        current = self.load(tree)
+        current["trees"]["future_reality"]["nodes"].append({"id": "new-action", "kind": "injection", "text": "Another local action.", "status": "proposed", "contributions": [{"by": "alice", "attribution": "explicit", "mode": "text"}]})
+        current["feedback_requests"].append(sharing.feedback.new_request(current, "new-action-feedback", "new-action", ["gain"], [], ["alice"], "alice"))
+        self.save(tree, current)
+        result = self.run_sync(tree)
+        self.assertEqual(result["state"], "local")
+        self.assertIn("cannot be shared yet: Unknown prediction statement: new-action", result["message"])
+        self.assertEqual(self.shared(), toy())
+
+    def test_worktree_stops_when_the_main_checkout_withdraws(self):
+        tree = self.worktree()
+        self.assertEqual(self.run_sync(tree)["state"], "shared")
+        subprocess.run([sys.executable, str(Path(sharing.__file__)), str(self.a / "state.yaml"), "disable"], check=True, capture_output=True)
+        self.add(tree)
+        result = self.run_sync(tree)
+        self.assertEqual(result["state"], "local")
+        self.assertIn("no longer authorises", result["message"])
+        self.assertEqual(self.shared(), toy())
+
+    def test_disabling_in_a_worktree_is_not_undone_by_inheritance(self):
+        tree = self.worktree()
+        self.assertEqual(self.run_sync(tree)["state"], "shared")
+        subprocess.run([sys.executable, str(Path(sharing.__file__)), str(tree / "state.yaml"), "disable"], check=True, capture_output=True)
+        self.add(tree)
+        self.assertEqual(self.run_sync(tree)["state"], "local")
+        self.assertEqual(self.shared(), toy())
+        sharing.configure(tree / "state.yaml", "origin", "main", "alice", "Share this worktree's feedback with origin/main.")
+        self.assertEqual(self.run_sync(tree)["state"], "shared")
+
     def test_cli_recovers_configuration_and_reports_delivery_state(self):
         self.add(self.a)
         result = subprocess.run([sys.executable, str(Path(sharing.__file__)), str(self.a / "state.yaml"), "sync"], text=True, capture_output=True, check=True)

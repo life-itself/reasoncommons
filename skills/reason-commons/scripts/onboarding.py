@@ -33,14 +33,19 @@ def git(state, *args):
 
 def sharing(state, person):
     policy = feedback_sync.local_dir(state) / "feedback-sync.json"
-    if policy.exists():
-        configured = json.loads(policy.read_text())
-        return f"on. Your answers reach the other participants automatically through `{configured['remote']}/{configured['branch']}`."
+    off = (feedback_sync.local_dir(state) / "feedback-sync-off.json").exists()
+    configured = json.loads(policy.read_text()) if policy.exists() else None if off else feedback_sync.main_grant(state)
+    if configured:
+        shared = f"on. Your answers reach the other participants automatically through `{configured['remote']}/{configured['branch']}`"
+        inherited = configured.get("inherited_from") or (None if policy.exists() else configured["repo"])
+        return shared + (f", using the authorisation you gave in your main checkout, `{inherited}`." if inherited else ".")
     if git(state, "rev-parse", "--show-toplevel") is None:
         return "not available, because this reasoning file is not in a Git checkout. Your answers stay on this computer."
     remotes = (git(state, "remote") or "").split()
     remote = "origin" if "origin" in remotes else (remotes[0] if remotes else "origin")
-    branch = git(state, "symbolic-ref", "--short", "HEAD") or "main"
+    # The branch other participants read, not this checkout's own (often a session branch).
+    default = git(state, "symbolic-ref", "--short", f"refs/remotes/{remote}/HEAD")
+    branch = default.split("/", 1)[1] if default and "/" in default else "main"
     script = Path(__file__).resolve().with_name("feedback_sync.py")
     return ("off in this checkout, so your answers stay on this computer. To share them with the other participants, "
             "run this once, replacing the quoted words with your own authorisation:\n\n```bash\n"
