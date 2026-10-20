@@ -39,6 +39,8 @@ The standard views helper validates reasoning and ignores these coordination fie
 
 ## Finish or hand off
 
+For feedback records, the skill's [configured Git sync](../skills/reason-commons/references/feedback-sync.md) runs on entry and after capture. It publishes feedback and derived reasoning-review work only; Beads exports, approval receipts, implementation changes and other reasoning work retain their existing delivery workflow. A verified feedback push does not mean the Beads handoff or code checkout is shared. Preserve immediate local feedback and report incomplete sharing explicitly.
+
 1. Save the reasoning YAML atomically and run `python3 skills/reason-commons/scripts/update_views.py ltp/rufus-david-collab/reason-commons.yaml` as the skill requires. Keep generated `.reason-commons/` history and diagrams local.
 2. Update the relevant work bead with what was addressed, what remains and the stable YAML IDs. Complete only work actually finished. A completed task does not make a statement true or accepted; an endorsed statement may still need further testing.
 3. Refresh `reasoncommons-a4l` with the working file, current work bead, next question or step, and any blocker. Update `work_tracking.current` if the selection changed. Keep the handoff open for later sessions and avoid duplicate priority lists.

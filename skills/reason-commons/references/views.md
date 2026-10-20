@@ -1,5 +1,7 @@
 # Accepted snapshots and diagrams
 
+After a feedback save and this validation, run configured [feedback synchronisation](feedback-sync.md). Native edits still use file-editing tools; the deterministic sync helper is the explicit exception that may reconcile validated records into the working YAML. It refreshes views after incoming changes. Generated history and diagrams remain local.
+
 After saving all state changes from a conversational turn, run:
 
 ```bash

@@ -4,6 +4,8 @@ from dataclasses import replace
 import json
 from pathlib import Path
 import tempfile
+import threading
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
@@ -112,6 +114,38 @@ class ServiceTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(node["contributions"][0]["discord_reference"]["invoker_id"], "200")
         self.assertEqual(state["driver"], "bob")
         self.assertFalse(list((self.config.runtime / "jobs").iterdir()))
+
+    async def test_cancelled_sync_finishes_before_releasing_state_lock(self):
+        entered, release = threading.Event(), threading.Event()
+        policy = self.state.parent / ("." + self.state.stem) / "feedback-sync.json"
+        policy.write_text("{}")
+
+        def slow_sync(*args, **kwargs):
+            entered.set()
+            release.wait(5)
+            return {"state": "local", "message": "Fixture sync finished."}
+
+        async def locked_sync():
+            async with self.service.store.lock():
+                await self.service.sync_feedback()
+
+        with patch("reasoncommons_discord.service.sync_helper", return_value=SimpleNamespace(sync=slow_sync)):
+            pending = asyncio.create_task(locked_sync())
+            try:
+                self.assertTrue(await asyncio.to_thread(entered.wait, 2))
+                pending.cancel()
+                await asyncio.sleep(0)
+                self.assertFalse(pending.done())
+            finally:
+                release.set()
+            with self.assertRaises(asyncio.CancelledError):
+                await pending
+
+    async def test_capture_reports_local_delivery_when_sharing_is_not_configured(self):
+        self.agent.action = add_capture
+        response = await self.service.handle(self.request(mode="capture", user="200"))
+        self.assertIn("Saved locally", response["text"])
+        self.assertNotIn("Shared successfully", response["text"])
 
     async def test_question_cannot_write(self):
         original = self.state.read_bytes()

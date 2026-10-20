@@ -6,6 +6,12 @@ This is a locally verified prototype. No live Discord connection, funded model i
 
 ## Commands
 
+### Optional feedback sharing
+
+The native skill and Discord host use the same [feedback sync helper](../../skills/reason-commons/references/feedback-sync.md). After standing authorisation, configure the actual state file once per checkout with `feedback_sync.py <state.yaml> configure --remote origin --branch main --by <participant-id> --source-text '<actual standing authorisation>'`. The service then refreshes before selecting feedback and shares after the local save journal completes. Responses distinguish saved locally from verified sharing; proactive prompts wait when configured shared state cannot be refreshed. Independent reports merge without endorsing claims, rewriting original predictions, staging code or resetting the user's index. Expectations referring to unshared reasoning remain local until those definitions are shared through their authorised workflow. No configuration means local capture as before.
+
+The code checkout must contain this helper and these host hooks. Merging a PR on GitHub does not update a local installed checkout: fast-forward it through the normal update process, verify the helper exists, then configure the destination. Native editing remains a single-writer operation; capture through the active Discord writer or pause it before native edits.
+
 | Invocation | Behavior |
 | --- | --- |
 | `/reason question:… mode:ask` | Answer using the configured reasoning and supplied task snapshot; YAML remains byte-for-byte unchanged. This is the default mode. |

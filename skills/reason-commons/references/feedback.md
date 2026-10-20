@@ -1,5 +1,7 @@
 # Expected outcomes and feedback
 
+For sharing between checkouts, follow [feedback-sync.md](feedback-sync.md). Refresh authorised shared records before deriving the queue, and sync after saving reports. Preserve immediate local capture when sharing fails; state whether sharing was verified. Routine sync does not endorse reasoning or authorise code changes.
+
 Use this when preparing a change trial, resuming a participant's session or recording their feedback. The shared reasoning YAML owns expectations and reports. Delivery journals may cache transport state but never determine whether a predicted outcome happened.
 
 ## Capture before the trial
@@ -50,6 +52,8 @@ reports:
 This answers only the benefit for Alice. Other providers and the reservation remain pending. Never infer an outcome from nonresponse, a sent notification, action completion or elapsed time. After a report, compare original prediction, exposure/execution, evidence, observation opportunity and outcome; propose only warranted reasoning changes. Feedback submission is neither endorsement nor an automatic causal verdict.
 
 ## Preservation and follow-up
+
+When reconciling independent checkouts, preserve request versions and report contents by ID. Chronological ordering of immutable reports may change without rewriting an observation; the latest recorded report determines deferral. Use `feedback.add_report` or its equivalent review-backlog update even for native file capture, so observations remain work to interpret rather than merely stored responses.
 
 Use native file tools to save a session's changes, then run `update_views.py` as usual. Before replacing existing feedback records, compare before/after using `feedback.guard_transition`; request versions are immutable except for appended reports, and existing reports cannot be rewritten or removed. The Discord host enforces this before committing its staged save. The read-only queue always derives unresolved outcomes per provider from YAML; restart, changed focus and a delivered prompt do not discard them. If evidence is lost, explicitly record `unavailable` with an explanation instead of claiming success or absence of harm. A separate reasoning backlog can retain the consequences of an inconclusive or harmful result even after its feedback has been recorded.
 

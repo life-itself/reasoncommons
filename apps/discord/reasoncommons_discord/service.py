@@ -27,6 +27,12 @@ def helpers(config):
     return helper_modules(str(config.scripts))[0]
 
 
+@lru_cache
+def sync_helper(scripts):
+    sys.path.insert(0, scripts)
+    return importlib.import_module("feedback_sync")
+
+
 @dataclass(frozen=True)
 class Invocation:
     id: str
@@ -135,6 +141,30 @@ class Service:
     def _views(self):
         self.helper.update(self.config.state)
 
+    async def sync_feedback(self):
+        """Called under the state lock, after prepared saves are recovered."""
+        policy = self.config.state.parent / ("." + self.config.state.stem) / "feedback-sync.json"
+        if not policy.exists():
+            return None
+        module = sync_helper(str(self.config.scripts))
+        worker = asyncio.create_task(asyncio.to_thread(module.sync, self.config.state, locked=True))
+        try:
+            return await asyncio.shield(worker)
+        except asyncio.CancelledError:
+            # Keep the caller's state lock until the Git worker actually finishes.
+            # Cancelling to_thread alone would release it while writes continue.
+            await asyncio.shield(worker)
+            raise
+
+    def delivery_response(self, response, delivery, changed=False):
+        result = deepcopy(response)
+        if delivery:
+            label = "Shared successfully" if delivery["state"] == "shared" else ("Saved locally; sharing incomplete" if changed else "Shared feedback may be stale")
+            result["text"] += "\n\n" + label + ": " + delivery["message"]
+        elif changed:
+            result["text"] += "\n\nSaved locally; automatic feedback sharing is not configured."
+        return result
+
     def _finish(self, row):
         current = self.config.state.read_bytes()
         if digest(current) == row["before_hash"]:
@@ -160,9 +190,11 @@ class Service:
             # Finish prior interrupted saves before any later turn. No model rerun.
             for row in self.store.prepared():
                 self._finish(row)
+            delivery = await self.sync_feedback()
             previous = self.store.request(request.id, fingerprint)
             if previous:
-                return json.loads(previous["payload"])["response"]
+                return self.delivery_response(json.loads(previous["payload"])["response"], delivery,
+                                              previous["before_hash"] != previous["after_hash"])
             before_text = self.config.state.read_bytes().decode("utf-8")
             before = self.helper.load(self.config.state)
             self.helper.validate(before)
@@ -179,9 +211,15 @@ class Service:
                        "review": review, "consume": consume}
             self.store.prepare(request.id, fingerprint, before_text, after_text, payload)
             try:
-                return self._finish(self.store.request(request.id))
+                result = self._finish(self.store.request(request.id))
             except Exception as exc:
                 raise ValueError("The turn is journaled but not fully finalized. No model rerun is needed; the next invocation will attempt recovery. " + str(exc)) from exc
+            # The capture journal is complete before remote reconciliation. A push
+            # failure cannot make the submitted observation appear unsaved.
+            changed = before_text != after_text
+            if changed:
+                delivery = await self.sync_feedback()
+            return self.delivery_response(result, delivery, changed)
 
     async def _turn(self, request, person, before, before_text):
         after, review, consume = deepcopy(before), None, None
@@ -249,8 +287,8 @@ class Service:
                 from .feedback import core
                 previous_requests = {core().key(r): r for r in before.get("feedback_requests", [])}
                 for commitment in staged.get("feedback_requests", []):
-                    previous_reports = previous_requests.get(core().key(commitment), {}).get("reports", [])
-                    for report in commitment["reports"][len(previous_reports):]:
+                    previous_reports = {report["id"] for report in previous_requests.get(core().key(commitment), {}).get("reports", [])}
+                    for report in (report for report in commitment["reports"] if report["id"] not in previous_reports):
                         report["recorded_at"] = datetime.now(timezone.utc).isoformat()
                         report["source"] = {"surface": "discord", "invocation_id": request.id,
                             "invoker_id": request.user, "guild_id": str(request.guild), "channel_id": str(request.channel)}

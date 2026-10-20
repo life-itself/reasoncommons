@@ -20,6 +20,8 @@ In diagrams, name each tree once, in the heading or one group per tree, and insi
 
 ## Feedback request
 
+Refresh configured shared feedback before choosing the request. When refresh fails, identify the local basis and possibly stale shared state. After a report, distinguish **Saved locally** from **Shared successfully** using the sync result; never infer sharing from a local edit or commit alone. See [feedback-sync.md](feedback-sync.md).
+
 Read [feedback.md](feedback.md). Use `scripts/feedback.py` to derive the recipient's requests from the current shared reasoning. Show the exact captured prediction version, including full expected-benefit and reservation statements and their tree, kind and standing at capture. State when no benefit or reservation was recorded; do not create one to fill the template. Keep both sides visible even if only one still awaits feedback. Ask a single open invitation covering readiness and experience; allow partial feedback, unexpected outcomes, explicit uncertainty, unavailable evidence and deferral. A requested judgment may be qualitative. Respect optional dates and do not manufacture deadlines.
 
 ```markdown

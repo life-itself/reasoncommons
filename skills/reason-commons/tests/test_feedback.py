@@ -131,6 +131,16 @@ class FeedbackTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "impersonate"):
             feedback.guard_transition(state, altered, {"alice"})
 
+    def test_reconciliation_can_reorder_existing_reports_but_not_impersonate(self):
+        state = feedback.add_report(toy(), "remote-trial", 1, report("alice-1"))
+        state = feedback.add_report(state, "remote-trial", 1, report("bob-1", by="bob"))
+        reordered = deepcopy(state)
+        reordered["feedback_requests"][0]["reports"].reverse()
+        feedback.guard_transition(state, reordered, {"alice"})
+        reordered["feedback_requests"][0]["reports"][0]["text"] = "Rewritten history"
+        with self.assertRaises(ValueError):
+            feedback.guard_transition(state, reordered, {"alice"})
+
     def test_new_snapshots_must_match_reasoning(self):
         state = toy()
         before = deepcopy(state)

@@ -4,6 +4,7 @@ from dataclasses import replace
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 import tempfile
+import subprocess
 import unittest
 from unittest.mock import AsyncMock, patch
 
@@ -231,6 +232,74 @@ class FeedbackServiceTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(report["text"], actual)
         self.assertEqual(report["source"]["invocation_id"], "natural-capture")
         self.assertEqual(core().queue(self.read(), "bob")[0]["pending"], ["risk"])
+
+    def git(self, repo, *args):
+        return subprocess.check_output(["git", "-C", str(repo), *args], text=True, stderr=subprocess.DEVNULL).strip()
+
+    def sharing_setup(self):
+        from reasoncommons_discord.service import sync_helper
+        remote = self.root / "shared.git"
+        self.git(self.root, "init", "--bare", "--initial-branch=main", str(remote))
+        self.git(self.root, "init", "--initial-branch=main")
+        self.git(self.root, "config", "user.name", "Fixture participant")
+        self.git(self.root, "config", "user.email", "fixture@example.invalid")
+        self.git(self.root, "add", "state.yaml")
+        self.git(self.root, "commit", "-m", "Shared fictional expectation")
+        self.git(self.root, "remote", "add", "origin", str(remote))
+        self.git(self.root, "push", "origin", "main")
+        module = sync_helper(str(self.config.scripts))
+        module.configure(self.state, "origin", "main", "alice", "Share feedback automatically to this origin/main.")
+        return remote, module
+
+    async def test_feedback_is_journaled_then_shared_without_model_or_duplicate(self):
+        remote, module = self.sharing_setup()
+        request = self.request(submit=True, benefit="observed")
+        response = await self.service.handle(request)
+        self.assertIn("Shared successfully", response["text"])
+        shared = yaml.safe_load(self.git(remote, "show", "main:state.yaml"))
+        self.assertEqual(len(shared["feedback_requests"][0]["reports"]), 1)
+        restarted = Service(self.config, self.agent, None)
+        await restarted.handle(request)
+        self.assertEqual(self.git(remote, "rev-list", "--count", "main"), "2")
+        self.assertEqual(self.agent.calls, [])
+        self.assertEqual(core().queue(shared, "bob")[0]["pending"], ["risk"])
+
+    async def test_offline_sharing_keeps_capture_complete_and_defers_proactive_prompt(self):
+        remote, module = self.sharing_setup()
+        offline = self.root / "offline.git"
+        remote.rename(offline)
+        response = await self.service.handle(self.request(submit=True, benefit="observed"))
+        self.assertIn("Saved locally; sharing incomplete", response["text"])
+        self.assertEqual(len(self.read()["feedback_requests"][0]["reports"]), 1)
+        self.assertEqual(self.service.store.prepared(), [])
+        send = AsyncMock()
+        self.assertEqual(await dispatch_once(self.service, send), 0)
+        send.assert_not_called()
+        offline.rename(remote)
+        await self.service.handle(self.request(submit=True, benefit="observed"))
+        shared = yaml.safe_load(self.git(remote, "show", "main:state.yaml"))
+        self.assertEqual(len(shared["feedback_requests"][0]["reports"]), 1)
+
+    async def test_reordered_reports_do_not_rewrite_existing_host_provenance(self):
+        state = self.read()
+        state["feedback_requests"][0]["feedback_from"].append("alice")
+        previous = {"id": "bob-original", "by": "bob", "recorded_at": "2026-10-20T10:00:00Z",
+                    "readiness": "not_yet", "text": "I have not tried it.", "evidence_type": "self_report", "outcomes": [],
+                    "source": {"surface": "original-session"}}
+        state = core().add_report(state, "trial-feedback", 1, previous)
+        self.state.write_text(yaml.safe_dump(state))
+
+        def capture(staged):
+            staged = core().add_report(staged, "trial-feedback", 1, {"id": "alice-new", "by": "alice", "recorded_at": datetime.now(timezone.utc).isoformat(),
+                "readiness": "not_yet", "text": "Pending", "evidence_type": "self_report", "outcomes": []})
+            staged["feedback_requests"][0]["reports"].reverse()
+            return staged
+
+        self.agent.action = capture
+        await self.service.handle(Invocation("reordered", 10, 20, "100", "I also have not tried it.", "capture"))
+        records = {r["id"]: r for r in self.read()["feedback_requests"][0]["reports"]}
+        self.assertEqual(records["bob-original"], previous)
+        self.assertEqual(records["alice-new"]["text"], "I also have not tried it.")
 
     def test_feedback_channel_must_be_allowed_and_interval_bounded(self):
         with self.assertRaisesRegex(ValueError, "configured reasoning channel"):

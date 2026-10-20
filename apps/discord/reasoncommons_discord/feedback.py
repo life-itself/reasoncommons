@@ -96,6 +96,13 @@ async def dispatch_once(service, send):
     identities = {}
     for user, person in sorted(service.config.participants.items()):
         identities.setdefault(person, user)
+    async with service.store.lock():
+        for row in service.store.prepared():
+            service._finish(row)
+        delivery = await service.sync_feedback()
+        if delivery and delivery["state"] != "shared":
+            LOG.warning("Shared feedback could not be refreshed; proactive prompts are deferred.")
+            return 0
     for person, user in identities.items():
         async with service.store.lock():
             for row in service.store.prepared():
@@ -113,7 +120,8 @@ async def dispatch_once(service, send):
                     continue
                 request = helper.find(current, row["id"], row["revision"])
                 own_reports = [r for r in request["reports"] if r["by"] == person]
-                opportunity = own_reports[-1]["id"] if own_reports and own_reports[-1].get("defer_until") else "initial"
+                latest = max(own_reports, key=lambda report: (helper.timestamp(report["recorded_at"]), report["id"])) if own_reports else None
+                opportunity = latest["id"] if latest and latest.get("defer_until") else "initial"
                 recent = [delivery["updated"] for delivery in service.store.feedback_deliveries()
                           if json.loads(delivery["payload"])["participant"] == person
                           and delivery["state"] in {"sent", "uncertain"}]
