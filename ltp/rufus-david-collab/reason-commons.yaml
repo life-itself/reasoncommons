@@ -3415,12 +3415,12 @@ trees:
       note: Review the desktop-output observation, proposed correction and connection to f-e-skill-attention-clear together; implementing the correction does not accept this reasoning.
     - ref: f-e-skill-host-aware-diagrams
       work: test_claude_desktop_rendering
-      label: "Check a fresh Claude session renders proposals as diagrams."
+      label: Check a fresh Claude session renders proposals as diagrams.
       note: In a fresh Claude desktop Code-tab session, check that the first change proposal renders as a readable diagram without the user asking, following the AGENTS.md line added by pr-backlog-diagrams-2026-10-20.
     - ref: f-e-readable-diagram-labels
       work: label_remaining_statements
-      label: "Label the remaining long statements."
-      note: "Write one-sentence labels for the remaining statements longer than about 90 characters, keeping the qualifiers their accuracy depends on; until then diagrams show their full text."
+      label: Label the remaining long statements.
+      note: Write one-sentence labels for the remaining statements longer than about 90 characters, keeping the qualifiers their accuracy depends on; until then diagrams show their full text.
     - ref: f-rel-native-diagrams-aid-inspection
       work: test_rendering_and_inspection
       note: In fresh Codex and Claude desktop sessions, show the remote-work gold fixture and inspect its labels and connections; also check a plain-text fallback. Offline helper checks pass; these do not establish real-user usability.
@@ -3464,12 +3464,14 @@ trees:
       direct_push_test: On 2026-10-18 David accepted test-main-push-2026-10-18 revision 1 after the unintended main ruleset was disabled. This test starts from current origin/main in an isolated checkout and changes only a .gitignore comment plus this minimal approval and test record. Pre-push validation confirms identical ignore patterns, valid YAML, unchanged reasoning and a two-file scoped diff; the website check reports 535 links/assets and zero errors. The presence of this commit on remote main supplies evidence of delivery by an ordinary direct push without a PR; the local session record retains the verification result. No node, link or standing changes.
       feedback: GitHub reported main as unprotected with no required checks or active rules, despite the Tree check workflow introduced by PRs 58 and 59.
       note: Applied .github/branch-protection.json and read back main as protected, with required_status_checks.strict true, required tree-check from GitHub Actions app 15368 and enforce_admins.enabled true. PR 61 was BLOCKED while its required check was pending, then CLEAN after the check passed. Existing nodes, links, standings, receipts and collaboration priority match main after merged PR 59. Continue observing real-use merge behavior and retain the existing reasoning review work and proposed standing.
-      beads: [reasoncommons-ilh]
+      beads:
+      - reasoncommons-ilh
     - ref: f-e-pr-diagrams-show-changes
       work: test_pr_diagram_configuration
       feedback: Run 38586022836 rejected PR 59 because added Mermaid display configuration differed from the generated source, although all eight graph bodies matched. The later merged PR corrected its generated configuration.
       note: All 74 helper tests passed on main after PR 59, and PR 61 passed the required GitHub Actions Tree check. Supported wrapping widths, key order, equivalent YAML formatting and omitted optional width pass; changed statements, standings, relations and endpoints still fail. Invalid or unsupported configuration has a specific error. Grouped diagrams, htmlLabels false, unresolved-connection notes, collapsed lists, receipts and coverage checks remain intact. Actual GitHub inspection confirmed the rendered no-node/link-change declaration, served reasoning, closed complete-checklist disclosure, backlog and acceptance reference. Real-use readability review remains open.
-      beads: [reasoncommons-ilh]
+      beads:
+      - reasoncommons-ilh
     - ref: f-rel-rewind-recovery-coherent
       work: review_fragment
       note: Review the two existing rewind interventions and their shared outcome; implementation approval does not endorse the prediction.
@@ -3515,13 +3517,14 @@ trees:
       - reasoncommons-brw
     - ref: f-rel-feedback-reviewable
       work: verify_feedback_cycle
-      beads: [reasoncommons-foj]
+      beads:
+      - reasoncommons-foj
       label: Verify shared feedback across sessions and Discord.
       note: Test participant filtering, optional timing, resumption, independent benefit/harm reports, deferral, version preservation, duplicates and interrupted saves using the toy fixture, then a real participant trial.
     - ref: f-rel-feedback-supports-learning
       work: evaluate_real_feedback
       label: Review actual feedback and its effect on reasoning.
-      note: 'David supplied report david-pr74-works-as-expected-2026-10-20 after the request resurfaced with both original outcomes; this separate session read the saved report. The report is positive self-report, with the separate real-expectation trial still unverified and burden unassessed. Review the observations against pr-74-feedback-cycle-self-test revision 1, including the earlier manual activation and any deviations. Implementation checks and sharing receipts do not establish usefulness, absence of harm or endorsement.'
+      note: David supplied report david-pr74-works-as-expected-2026-10-20 after the request resurfaced with both original outcomes; this separate session read the saved report. The report is positive self-report, with the separate real-expectation trial still unverified and burden unassessed. Review the observations against pr-74-feedback-cycle-self-test revision 1, including the earlier manual activation and any deviations. Implementation checks and sharing receipts do not establish usefulness, absence of harm or endorsement.
     - ref: f-rel-feedback-adds-burden
       work: test_negative_branch
       label: Assess premature requests and reminder burden.
@@ -3532,7 +3535,8 @@ trees:
       note: Mocked delivery checks verify implementation only; actual interruption burden remains to be assessed.
     - ref: f-rel-sync-shares-feedback
       work: verify_feedback_sync
-      beads: [reasoncommons-g32]
+      beads:
+      - reasoncommons-g32
       label: Verify current feedback across two checkouts.
       note: Test sharing, independent concurrent reports, preserved predictions, deferrals, offline operation, retries without duplication and exclusion of unrelated files with the remote-work fixture and temporary Git remotes.
     - ref: f-rel-shared-feedback-reviewable
@@ -3555,6 +3559,13 @@ trees:
       work: test_negative_branch
       label: Assess the overhead of explaining unassigned predictions.
       note: Ask David whether writing No feedback commitment reasons felt useful or like busywork; no report is not evidence of no overhead.
+    - ref: f-e-feedback-cycle
+      work: review_outcome_feedback
+      label: Review recorded outcome feedback against the original reasoning.
+      feedback_request: pr-74-feedback-cycle-self-test
+      feedback_revision: 1
+      feedback_report: david-pr74-works-as-expected-2026-10-20
+      note: Compare this attributed self-report with the original expectation and the trial conditions; no endorsement or causal conclusion was inferred.
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
