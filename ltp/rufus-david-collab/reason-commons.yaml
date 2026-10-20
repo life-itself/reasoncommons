@@ -4109,6 +4109,13 @@ trees:
       feedback_revision: 1
       feedback_report: david-feedback-sync-second-checkout-2026-10-20
       note: Compare this attributed self-report with the original expectation and the trial conditions; no endorsement or causal conclusion was inferred.
+    - ref: f-e-pr-expected-outcomes
+      work: review_outcome_feedback
+      label: Review recorded outcome feedback against the original reasoning.
+      feedback_request: pr-expected-outcomes-check
+      feedback_revision: 1
+      feedback_report: david-pr-expected-outcomes-2026-10-20
+      note: Compare this attributed self-report with the original expectation and the trial conditions; no endorsement or causal conclusion was inferred.
   prerequisite:
     nodes:
     - id: p-e-obj-resourced
@@ -5855,7 +5862,23 @@ feedback_requests:
     kind: undesirable_effect
     standing: proposed
     text: Requiring an explanation for predictions without a feedback commitment can add PR-writing overhead.
-  reports: []
+  reports:
+  - id: david-pr-expected-outcomes-2026-10-20
+    by: david
+    recorded_at: '2026-10-20T16:11:41Z'
+    readiness: experienced
+    text: yes i've done both and it works
+    evidence_type: self_report
+    outcomes:
+    - ref: f-e-pr-expectations-visible
+      verdict: observed
+      note: David reports he has both reviewed and written a PR with the generated Expected outcomes section and that it works. He did not name the PR.
+    - ref: f-e-pr-outcomes-overhead
+      verdict: not_assessed
+      note: '"It works" does not say whether writing a No feedback commitment reason felt useful or like busywork; this was asked separately.'
+    source:
+      surface: conversation
+      note: Answered in the Claude desktop session resuming the collaboration in worktree rufus-david-reason-commons-262cf1.
   ready_when: After the next PR that carries a prediction uses the generated Expected outcomes section, judge whether a reviewer can see from the description what the change is expected to achieve, what could go wrong and who will judge it. Separately, judge whether writing a No feedback commitment reason felt useful or like busywork. Regenerating the PR 74 and PR 76 descriptions is part of this change, not the trial.
   source:
     surface: conversation
