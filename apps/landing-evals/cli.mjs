@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { APP, LAB, RUNS, ROOT, safeID, captureRun, verifiedRegistry } from './capture.mjs';
 import { exportCodexPacket, importCodexJudgments } from './codex-judge.mjs';
 import { importPages } from './import.mjs';
+import { parseDefects } from './perturb.mjs';
 import { judgeRun } from './judge.mjs';
 import { makeReport, makePublicReport } from './report.mjs';
 
@@ -59,7 +60,11 @@ async function main() {
   } else if (command === 'verify') {
     const { registry } = await verifiedRegistry();
     console.log(`Source, entry and companion hashes verified for ${registry.variants.length} candidates.`);
-  } else if (command === 'capture') {
+  } else if (command === 'capture' || command === 'perturb') {
+    if (command === 'perturb') {
+      if (!options.variant || options.variant === true) throw new Error('Use --variant ID[,ID]; seeded defects apply to named candidates beside an unmodified control capture.');
+      options.seeded = parseDefects(options.defects);
+    }
     let server;
     try {
       if (!options.base) {
@@ -73,7 +78,7 @@ async function main() {
     if (!options.run || !options.packet && command !== 'publish-results') throw new Error('Use --run ID and --packet NAME.');
     const runDir = join(RUNS, safeID(options.run));
     const packetDir = options.packet && join(runDir, safeID(options.packet));
-    if (command === 'codex-export') console.log(await exportCodexPacket(runDir, packetDir, {pair:options.pair?.split(','), reverse:!!options.reverse, batch:options.batch}));
+    if (command === 'codex-export') console.log(await exportCodexPacket(runDir, packetDir, {pair:options.pair?.split(','), reverse:!!options.reverse, batch:options.batch, mode:options.mode, seeded:!!options.seeded}));
     else if (command === 'codex-import') console.log(`${(await importCodexJudgments(runDir, packetDir, resolve(options.output), options.agent)).length} validated native judgments imported.`);
     else console.log((await makePublicReport(runDir, JSON.parse(await readFile(resolve(options.decision), 'utf8')))).output);
   } else if (['judge', 'report'].includes(command)) {
@@ -83,7 +88,7 @@ async function main() {
     const report = await makeReport(runDir, options);
     console.log(report.path);
   } else {
-    console.log(`Landing evaluation lab\n\n  npm start\n  node cli.mjs import --from /path/to/downloads\n  node cli.mjs verify\n  node cli.mjs capture --id first-pass [--baseline] [--companions]\n  node cli.mjs judge --run first-pass                 # plans calls; no API use\n  node cli.mjs judge --run first-pass --fixture       # plumbing check; no scores\n  node cli.mjs judge --run first-pass --live --model MODEL\n  node cli.mjs judge --run first-pass --mode pairwise --pair ID,ID --live --model MODEL\n  node cli.mjs judge --run first-pass --visitors /path/to/response-files --live --model MODEL\n  node cli.mjs report --run first-pass [--labels /path/to/human-labels.json]\n\nNative Codex: codex-export --run ID --packet NAME [--pair ID,ID --reverse --batch GROUP]\n  codex-import --run ID --packet NAME --output FILE --agent AGENT\n  publish-results --run ID --decision FILE\n\nOptions: --variant ID[,ID] --viewport desktop|phone --repeat N --max-calls N\nCapture: --base URL --channel chrome|chromium. Evidence lives in .runs/ and is not published.`);
+    console.log(`Landing evaluation lab\n\n  npm start\n  node cli.mjs import --from /path/to/downloads\n  node cli.mjs verify\n  node cli.mjs capture --id first-pass [--baseline] [--companions]\n  node cli.mjs perturb --id seeded-pass --variant ID [--defects remove-install,false-claim,bury-headline]\n  node cli.mjs judge --run first-pass                 # plans calls; no API use\n  node cli.mjs judge --run first-pass --fixture       # plumbing check; no scores\n  node cli.mjs judge --run first-pass --live --model MODEL\n  node cli.mjs judge --run first-pass --mode pairwise --pair ID,ID --live --model MODEL\n  node cli.mjs judge --run first-pass --mode first-screen --live --model MODEL\n  node cli.mjs judge --run first-pass --visitors /path/to/response-files --live --model MODEL\n  node cli.mjs report --run first-pass [--labels /path/to/human-labels.json]\n\nNative Codex: codex-export --run ID --packet NAME [--mode first-screen] [--pair ID,ID --reverse --batch GROUP]\n  codex-import --run ID --packet NAME --output FILE --agent AGENT\n  publish-results --run ID --decision FILE\n\nOptions: --variant ID[,ID] --viewport desktop|phone --repeat N --max-calls N --seeded (include seeded-defect captures)\nCapture: --base URL --channel chrome|chromium. Evidence lives in .runs/ and is not published.`);
   }
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main().catch(e => { console.error(e.message); process.exitCode = 1; });

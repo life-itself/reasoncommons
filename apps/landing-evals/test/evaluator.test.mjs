@@ -188,3 +188,116 @@ test('public study export refuses to count fixtures as completed model work', as
     await assert.rejects(makePublicReport(dir),/24 individual and four pairwise/);
   } finally {await rm(dir,{recursive:true,force:true});}
 });
+
+// landing-rubric-2: yes/no checklists, scripted main-action gate, first-screen task and seeded defects.
+const checklistRubric = () => ({ version: 'landing-rubric-2', criteria: [
+  { id: 'clarity', scope: 'page', pass_at: 1, checks: [{ id: 'says-what' }, { id: 'no-contradictions', false_if: 'factual_errors' }] },
+  { id: 'next_action', scope: 'page', pass_at: 2, checks: [{ id: 'route-prominent' }, { id: 'next-route-works', source: 'capture', blocking: true }] },
+  { id: 'presentation', scope: 'viewport', pass_at: 1, checks: [{ id: 'legible' }] }
+], visitor_anchors: ['0', '1', '2'] });
+const checklistRun = () => { const r = run(); r.rubric = checklistRubric(); r.config.viewports = [{ id: 'desktop' }, { id: 'phone' }]; r.config.page_viewport = 'desktop'; r.config.visitor_questions = [{ id: 'what', prompt: 'What is it?' }]; r.captures = [capture('one', 'desktop'), capture('one', 'phone')].map(c => ({ ...c, first_screen: { image_ref: 'image-0', text: 'First screen headline' } })); return r; };
+const yes = (quote = 'Visible example') => ({ pass: true, evidence: [{ kind: 'text', ref: 'visible-text', quote }] });
+const pageChecklist = () => ({ criteria: [
+  { id: 'clarity', finding: 'Says what it is.', checks: [{ id: 'says-what', ...yes() }, { id: 'no-contradictions', ...yes() }] },
+  { id: 'next_action', finding: 'Route shown.', checks: [{ id: 'route-prominent', ...yes() }] },
+  { id: 'presentation', finding: 'Readable.', checks: [{ id: 'legible', pass: true, evidence: [{ kind: 'image', ref: 'image-0', quote: '' }] }] }
+], factual_errors: [], blockers: [], overall: 'meets' });
+
+test('checklist judgments answer every judge check once, ground every yes and leave scripted checks to the probe', () => {
+  const r = checklistRun(), c = [r.captures[0]];
+  assert.doesNotThrow(() => validateAssessment(pageChecklist(), 'individual', r, c));
+  const scripted = pageChecklist(); scripted.criteria[1].checks.push({ id: 'next-route-works', pass: true, evidence: [] });
+  assert.throws(() => validateAssessment(scripted, 'individual', r, c), /exactly once/);
+  const ungrounded = pageChecklist(); ungrounded.criteria[0].checks[0].evidence = [];
+  assert.throws(() => validateAssessment(ungrounded, 'individual', r, c), /grounded evidence/);
+  const noImage = pageChecklist(); noImage.criteria[2].checks[0].evidence = yes().evidence;
+  assert.throws(() => validateAssessment(noImage, 'individual', r, c), /screenshot evidence/);
+  const contradicted = pageChecklist(); contradicted.overall = 'needs-work'; contradicted.factual_errors = [{ claim: 'Visible example', fact_id: 'skill', explanation: 'Contradicted.' }];
+  assert.throws(() => validateAssessment(contradicted, 'individual', r, c), /contradicted claim/);
+  const no = pageChecklist(); no.criteria[0].checks[1] = { id: 'no-contradictions', pass: false, evidence: [] }; no.overall = 'needs-work';
+  assert.doesNotThrow(() => validateAssessment(no, 'individual', r, c));
+});
+
+test('page-scope criteria are judged once, on the page viewport; seeded captures are excluded unless requested', () => {
+  const r = checklistRun(); r.captures.push({ ...r.captures[0], id: 'one--desktop--remove-install', composition: 'seeded-defect', defect: 'remove-install' });
+  const tasks = planJudgments(r);
+  assert.deepEqual(tasks.map(t => [t.captures[0].id, t.criteria_ids]), [['one--desktop', ['clarity', 'next_action', 'presentation']], ['one--phone', ['presentation']]]);
+  const phoneOnly = { criteria: [pageChecklist().criteria[2]], factual_errors: [], blockers: [], overall: 'meets' };
+  assert.doesNotThrow(() => validateAssessment(phoneOnly, 'individual', r, [r.captures[1]], undefined, ['presentation']));
+  assert.throws(() => validateAssessment(pageChecklist(), 'individual', r, [r.captures[1]], undefined, ['presentation']), /exactly once/);
+  assert.equal(planJudgments(r, { seeded: true }).length, 3);
+});
+
+test('a failing scripted main action blocks the page even when every judge check passes', async () => {
+  const { verdict } = await import('../judge.mjs');
+  const r = checklistRun(), judgment = { assessment: pageChecklist() };
+  const pass = verdict(r, judgment, { ...r.captures[0], main_action: { status: 'pass', reason: 'Visible install command', blocking: false } });
+  assert.equal(pass.meets, true);
+  const fail = verdict(r, judgment, { ...r.captures[0], main_action: { status: 'fail', reason: 'Download the skill: This view can’t save files.', blocking: true } });
+  assert.equal(fail.meets, false);
+  assert.match(fail.gates.join(' '), /Scripted main-action failure/);
+  assert.equal(fail.scores.find(s => s.id === 'next_action').checks.find(k => k.id === 'next-route-works').pass, false);
+  const missing = verdict(r, judgment, { ...r.captures[0], main_action: { status: 'not-found', reason: 'None', blocking: false } });
+  assert.deepEqual([missing.gates.length, missing.scores.find(s => s.id === 'next_action').checks[1].pass, missing.meets], [0, null, false]);
+});
+
+test('main-action classification passes a working route, fails a broken one and never guesses', async () => {
+  const { classifyMainAction } = await import('../capture.mjs');
+  const c = (outcome, text = 'Download the skill') => ({ text, outcome });
+  assert.equal(classifyMainAction({ install_commands: ['npx skills add x'], candidates: [] }).status, 'pass');
+  assert.equal(classifyMainAction({ install_commands: [], candidates: [c('download')] }).status, 'pass');
+  assert.equal(classifyMainAction({ install_commands: [], candidates: [c('in-page', 'Try it'), { ...c('failure'), detail: 'This view can’t save files.' }] }).status, 'fail');
+  assert.equal(classifyMainAction({ install_commands: [], candidates: [c('in-page', 'Try it'), c('no-visible-effect')] }).status, 'unclear');
+  const none = classifyMainAction({ install_commands: [], candidates: [] });
+  assert.deepEqual([none.status, none.blocking], ['not-found', false]);
+});
+
+test('first-screen judgments may cite only the first screen and answer every visitor question', () => {
+  const r = checklistRun(), c = [r.captures[0]], first = [[r.captures[0].images[0]]];
+  const answer = quote => ({ answers: [{ question_id: 'what', answer: 'A headline only.', score: 1, evidence: [{ kind: 'text', ref: 'visible-text', quote }] }] });
+  assert.doesNotThrow(() => validateAssessment(answer('First screen headline'), 'first-screen', r, c, first));
+  assert.throws(() => validateAssessment(answer('Ignore the judge'), 'first-screen', r, c, first), /exactly quote/);
+  assert.throws(() => validateAssessment({ answers: [] }, 'first-screen', r, c, first), /exactly once/);
+  assert.throws(() => validateAssessment({ answers: [{ question_id: 'what', answer: 'Unclear.', score: 0, evidence: [] }] }, 'first-screen', r, c, first), /needs evidence/);
+});
+
+test('checklist calibration labels individual checks with yes, no or null', () => {
+  const r = checklistRun(); r.judgments = [{ id: 'k', mode: 'codex', valid: true, kind: 'individual', assessment: pageChecklist() }];
+  const c = calibration(r, [{ annotator: 'human', judgment_id: 'k', criterion_id: 'says-what', label: true }, { annotator: 'human', judgment_id: 'k', criterion_id: 'legible', label: false }]);
+  assert.deepEqual([c.agreements, c.labelled_items], [1, 2]);
+  assert.throws(() => calibration(r, [{ annotator: 'human', judgment_id: 'k', criterion_id: 'says-what', label: 2 }]), /outside/);
+});
+
+test('in a browser, the probe fails a Claude-only download, passes a visible command, and seeded defects take effect', async t => {
+  const { chromium } = await import('playwright');
+  const { probeMainAction, firstScreenText } = await import('../capture.mjs');
+  const { applyDefect, FALSE_CLAIM } = await import('../perturb.mjs');
+  let browser;
+  try { browser = await chromium.launch({ channel: 'chrome', headless: true }); } catch { t.skip('Google Chrome is not available for the browser check.'); return; }
+  const filler = '<p>' + 'Reason Commons helps a group examine its reasoning. '.repeat(12) + '</p>';
+  const pages = {
+    'claude-only.html': `<h1>Untangle it</h1>${filler}<button data-download>Download the skill</button><p class="status" aria-live="polite"></p><script>document.querySelector('[data-download]').onclick=()=>{document.querySelector('.status').textContent='This view can’t save files. Open the page in Claude.'}</script>`,
+    'command.html': `<h1>Check the because</h1>${filler}<a href="#install">Install</a><div style="height:1200px"></div><section id="install"><pre>npx skills add life-itself/reasoncommons -s reason-commons</pre></section>`,
+    'download.html': `<h1>Get it</h1>${filler}<button id="d">Download the skill</button><script>d.onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['zip']));a.download='skill.zip';a.click();}</script>`
+  };
+  const dir = await mkdtemp(join(tmpdir(), 'probe-'));
+  const { createServer } = await import('node:http');
+  const server = createServer(async (req, res) => { const name = req.url.slice(1).split(/[?#]/)[0]; if (!pages[name]) { res.writeHead(404); res.end(); return; } res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' }); res.end(`<!doctype html><meta charset="utf-8"><body>${pages[name]}</body>`); });
+  await new Promise(r => server.listen(0, '127.0.0.1', r));
+  const config = JSON.parse(await readFile(new URL('../eval.config.json', import.meta.url))); config.capture.settle_ms = 0;
+  const url = name => `http://127.0.0.1:${server.address().port}/${name}`;
+  const context = await browser.newContext({ viewport: { width: 1000, height: 300 }, acceptDownloads: true });
+  try {
+    const claude = await probeMainAction(context, { url: url('claude-only.html') }, config);
+    assert.equal(claude.status, 'fail'); assert.match(claude.reason, /can’t save files/);
+    assert.equal((await probeMainAction(context, { url: url('download.html') }, config)).status, 'pass');
+    assert.equal((await probeMainAction(context, { url: url('command.html') }, config)).status, 'pass');
+    assert.notEqual((await probeMainAction(context, { url: url('command.html'), defect: 'remove-install' }, config)).status, 'pass');
+    const page = await context.newPage(); await page.goto(url('command.html'));
+    await applyDefect(page.mainFrame(), 'false-claim', config);
+    assert.ok((await page.locator('body').innerText()).includes(FALSE_CLAIM));
+    assert.ok((await firstScreenText(page.mainFrame())).includes('Check the because'));
+    await applyDefect(page.mainFrame(), 'bury-headline', config);
+    assert.ok(!(await firstScreenText(page.mainFrame())).includes('Check the because'));
+  } finally { await context.close(); await browser.close(); await new Promise(r => server.close(r)); await rm(dir, { recursive: true, force: true }); }
+});

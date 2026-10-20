@@ -2,6 +2,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { resolve, join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { sha256 } from './import.mjs';
+import { applyDefect } from './perturb.mjs';
 
 export const APP = dirname(fileURLToPath(import.meta.url));
 export const ROOT = resolve(APP, '../..');
@@ -30,7 +31,7 @@ export async function contracts() {
     source_hashes[fact.source] = sha256(bytes);
   }
   const hashes = Object.fromEntries(await Promise.all(files.map(async n => [n, sha256(await readFile(join(APP, n)))])));
-  const runner_hashes = Object.fromEntries(await Promise.all(['cli.mjs', 'import.mjs', 'capture.mjs', 'judge.mjs', 'report.mjs', 'package-lock.json'].map(async n => [n, sha256(await readFile(join(APP, n)))])));
+  const runner_hashes = Object.fromEntries(await Promise.all(['cli.mjs', 'import.mjs', 'capture.mjs', 'perturb.mjs', 'judge.mjs', 'codex-judge.mjs', 'report.mjs', 'package-lock.json'].map(async n => [n, sha256(await readFile(join(APP, n)))])));
   return { config: values[0], rubric: values[1], facts: values[2], source_hashes, hashes, runner_hashes };
 }
 
@@ -62,14 +63,112 @@ async function contentFrame(page) {
   return best;
 }
 
+async function readyContent(page, config) {
+  let best;
+  for (let i = 0; i < 60; i++) {
+    best = await contentFrame(page);
+    if (best?.length > 300 && !await best.frame.evaluate(() => /^.*This page requires JavaScript to display\. Loading/s.test(document.body.innerText))) break;
+    await page.waitForTimeout(250);
+  }
+  if (!best || best.length < 300) throw new Error('Landing content did not become ready; do not grade the loading shell.');
+  await page.waitForTimeout(config.capture.settle_ms);
+  best = await contentFrame(page);
+  try { await Promise.race([best.frame.evaluate(() => document.fonts.ready.then(() => true)), new Promise(r => setTimeout(r, 5000))]); } catch {}
+  return best;
+}
+
+// Text a visitor can see before scrolling: every rendered text fragment intersecting the initial viewport.
+export const firstScreenText = frame => frame.evaluate(() => {
+  const parts = [], walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  while (walker.nextNode()) {
+    const node = walker.currentNode, text = node.nodeValue.replace(/\s+/g, ' ').trim();
+    const parent = node.parentElement;
+    if (!text || !parent || ['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEMPLATE'].includes(parent.tagName)) continue;
+    const style = getComputedStyle(parent);
+    if (style.visibility === 'hidden' || style.display === 'none' || Number(style.opacity) === 0) continue;
+    const range = document.createRange(); range.selectNodeContents(node);
+    if ([...range.getClientRects()].some(r => r.width > 0 && r.height > 0 && r.bottom > 0 && r.top < innerHeight && r.right > 0 && r.left < innerWidth)) parts.push(text);
+  }
+  return parts.join('\n');
+});
+
+// Classify what the probe observed. Pure, so the gate rule is testable without a browser.
+export function classifyMainAction(observed) {
+  const working = observed.candidates.filter(c => ['download', 'link-ok'].includes(c.outcome));
+  const broken = observed.candidates.filter(c => ['failure', 'link-broken'].includes(c.outcome));
+  const status = observed.install_commands.length || working.length ? 'pass' : broken.length ? 'fail' : observed.candidates.length ? 'unclear' : 'not-found';
+  const reason = status === 'pass' ? (observed.install_commands.length ? `Visible install command: ${observed.install_commands[0]}` : `${working[0].outcome}: ${working[0].text}`)
+    : status === 'fail' ? `${broken[0].text}: ${broken[0].detail || broken[0].outcome}`
+    : status === 'unclear' ? 'Candidate actions only moved within the page or had no visible effect.' : 'No try/install control or install command was found.';
+  return { status, reason, blocking: status === 'fail', install_commands: observed.install_commands, candidates: observed.candidates, problems: broken.map(c => `${c.text}: ${c.detail || c.outcome}`) };
+}
+
+const findCandidates = (frame, mainAction) => frame.evaluate(({ pattern }) => {
+  const re = new RegExp(pattern, 'i');
+  return [...document.querySelectorAll('a, button, [role=button]')].map((el, index) => ({ el, index })).filter(({ el }) => {
+    const r = el.getBoundingClientRect(), s = getComputedStyle(el);
+    return r.width > 0 && r.height > 0 && s.visibility !== 'hidden' && re.test((el.innerText || el.getAttribute('aria-label') || '').trim());
+  }).map(({ el, index }) => ({ index, tag: el.tagName.toLowerCase(), text: (el.innerText || el.getAttribute('aria-label') || '').replace(/\s+/g, ' ').trim().slice(0, 120), href: el.getAttribute('href'), resolved: el.href || null, in_page: !!(el.hash && el.origin === location.origin && el.pathname === location.pathname), submits: !!el.form && el.type === 'submit' }));
+}, mainAction);
+
+// Exercise the main try/install action on the serving host. Links are requested, not followed; buttons are clicked in a fresh load; forms are never submitted.
+export async function probeMainAction(context, target, config) {
+  const ma = config.capture.main_action;
+  const open = async () => {
+    const page = await context.newPage();
+    await page.goto(target.url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    const best = await readyContent(page, config);
+    if (target.defect) await applyDefect(best.frame, target.defect, config);
+    return { page, frame: best.frame };
+  };
+  const first = await open();
+  const visible = await first.frame.locator('body').innerText();
+  const install_commands = [...new Set(visible.match(new RegExp(ma.install_command, 'g')) || [])];
+  const found = (await findCandidates(first.frame, ma)).slice(0, ma.max_candidates);
+  await first.page.close();
+  const candidates = [];
+  for (const c of found) {
+    const item = { text: c.text, tag: c.tag, href: c.href };
+    if (c.in_page) item.outcome = 'in-page';
+    else if (c.submits) item.outcome = 'form-skipped';
+    else if (c.resolved && /^https?:/.test(c.resolved)) {
+      try { const r = await context.request.get(c.resolved, { maxRedirects: 5, timeout: 15000 }); item.status = r.status(); item.outcome = r.status() < 400 ? 'link-ok' : 'link-broken'; }
+      catch (e) { item.outcome = 'link-broken'; item.detail = e.message.split('\n')[0].slice(0, 200); }
+    } else if (c.resolved) item.outcome = 'other-link';
+    else {
+      const { page, frame } = await open();
+      try {
+        const before = await frame.locator('body').innerText();
+        const startURL = frame.url();
+        const download = page.waitForEvent('download', { timeout: ma.wait_ms }).catch(() => null);
+        await frame.evaluate(index => document.querySelectorAll('a, button, [role=button]')[index]?.click(), c.index);
+        const file = await download;
+        if (file) { item.outcome = 'download'; item.detail = file.suggestedFilename(); await file.delete().catch(() => {}); }
+        else if (frame.url() !== startURL) item.outcome = 'navigated';
+        else {
+          const after = await frame.locator('body').innerText();
+          const added = after.split('\n').filter(line => line.trim() && !before.includes(line));
+          const failure = added.find(line => new RegExp(ma.failure_text, 'i').test(line));
+          item.outcome = failure ? 'failure' : 'no-visible-effect';
+          if (failure) item.detail = failure.trim().slice(0, 300);
+        }
+      } catch (e) { item.outcome = 'failure'; item.detail = e.message.split('\n')[0].slice(0, 200); }
+      finally { await page.close(); }
+    }
+    candidates.push(item);
+  }
+  return { checked_at: new Date().toISOString(), served_from: new URL(target.url).origin, ...classifyMainAction({ install_commands, candidates }) };
+}
+
 export async function captureOne(browser, target, viewport, runDir, config) {
-  const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, isMobile: viewport.isMobile, deviceScaleFactor: 1, reducedMotion: 'reduce', locale: 'en-GB', timezoneId: 'Europe/Berlin' });
+  const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, isMobile: viewport.isMobile, deviceScaleFactor: 1, reducedMotion: 'reduce', locale: 'en-GB', timezoneId: 'Europe/Berlin', acceptDownloads: true });
   const page = await context.newPage();
   const errors = [], failures = [];
   page.on('pageerror', e => errors.push(e.message.slice(0, 1000)));
   page.on('requestfailed', r => failures.push({ url: r.url().replace(/\?.*$/, ''), reason: r.failure()?.errorText }));
   const started = Date.now();
-  const id = safeID(`${target.id}--${viewport.id}${target.composition ? '--companion' : ''}`);
+  const suffix = target.composition === 'supplied-phone' ? '--companion' : target.defect ? `--${target.defect}` : '';
+  const id = safeID(`${target.id}--${viewport.id}${suffix}`);
   const capture = { id, variant_id: target.id, name: target.name, viewport, composition: target.composition || 'primary', url: target.url, entry_sha256: target.entry_sha256 || null, source_sha256: target.source_sha256 || null, captured_at: new Date().toISOString(), images: [], errors, request_failures: failures };
   try {
     const response = await page.goto(target.url, { waitUntil: 'domcontentloaded', timeout: 30000 });
@@ -78,17 +177,10 @@ export async function captureOne(browser, target, viewport, runDir, config) {
       capture.served_body_sha256 = sha256(await response.body());
       capture.served_body_matches_entry = target.entry_sha256 ? capture.served_body_sha256 === target.entry_sha256 : null;
     }
-    let best;
-    for (let i = 0; i < 60; i++) {
-      best = await contentFrame(page);
-      if (best?.length > 300 && !await best.frame.evaluate(() => /^.*This page requires JavaScript to display\. Loading/s.test(document.body.innerText))) break;
-      await page.waitForTimeout(250);
-    }
-    if (!best || best.length < 300) throw new Error('Landing content did not become ready; do not grade the loading shell.');
-    await page.waitForTimeout(config.capture.settle_ms);
-    best = await contentFrame(page);
-    try { await Promise.race([best.frame.evaluate(() => document.fonts.ready.then(() => true)), new Promise(r => setTimeout(r, 5000))]); } catch {}
+    const best = await readyContent(page, config);
+    if (target.defect) capture.seeded_defect = await applyDefect(best.frame, target.defect, config);
     capture.content_frame = best.frame === page.mainFrame() ? 'main' : 'embedded';
+    capture.first_screen = { image_ref: 'image-0', text: await firstScreenText(best.frame) };
     const measure = () => best.frame.evaluate(() => {
       const vw = document.documentElement.clientWidth;
       const overflowing = [...document.body.querySelectorAll('*')].filter(e => {
@@ -123,7 +215,8 @@ export async function captureOne(browser, target, viewport, runDir, config) {
       capture.images.push({ ref: `image-${i}`, file, sha256: sha256(bytes), y: selected[i], elapsed_ms: Date.now() - started, viewport_text: viewportText });
     }
     capture.layout_after_scroll = await measure();
-    capture.dynamic_state_note = 'Reduced motion and disabled CSS screenshot animations; JavaScript interactions remain live. Per-tile text, timing and image hashes record the observed state. No form was submitted and no live account preview was invoked.';
+    capture.dynamic_state_note = 'Reduced motion and disabled CSS screenshot animations; JavaScript interactions remain live. Per-tile text, timing and image hashes record the observed state. No form was submitted and no live account preview was invoked. The main-action probe runs in separate page loads after the screenshots.';
+    capture.main_action = await probeMainAction(context, target, config);
     capture.ready = true;
   } catch (e) { capture.ready = false; capture.error = e.message; }
   finally { await context.close(); }
@@ -144,15 +237,16 @@ export async function captureRun(options) {
   if (!targets.length) throw new Error('No matching candidates.');
   if (options.baseline) targets.push({ id: 'current-homepage', name: 'Current Homepage', url: options.baseline === true ? contract.config.baseline_url : options.baseline });
   if (options.companions) for (const v of registry.variants.filter(v => v.phone_path)) targets.push({ ...v, composition: 'supplied-phone', url: new URL(v.phone_path, base).href, entry_sha256: v.phone_sha256 });
+  if (options.seeded) for (const v of targets.filter(t => !t.composition && t.id !== 'current-homepage')) for (const defect of options.seeded) targets.push({ ...v, composition: 'seeded-defect', defect });
   const browser = await chromium.launch({ channel: options.channel || 'chrome', headless: true });
   const run = { schema_version: 1, id: runID, captured_at: new Date().toISOString(), registry_sha256, registry, ...contract, browser: browser.version(), captures: [], judgments: [], visitor_judgments: [] };
   try {
     for (const target of targets) {
       for (const vp of contract.config.viewports.filter(v => !options.viewport || v.id === options.viewport)) {
-        if (target.composition && vp.id !== 'phone') continue;
+        if (target.composition === 'supplied-phone' && vp.id !== 'phone') continue;
         const c = await captureOne(browser, target, vp, runDir, contract.config);
         run.captures.push(c);
-        console.log(`${c.id}: ${c.ready ? `${c.images.length} tiles, ${c.text.length} text characters` : c.error}`);
+        console.log(`${c.id}: ${c.ready ? `${c.images.length} tiles, ${c.text.length} text characters, main action ${c.main_action.status}` : c.error}`);
         await writeJSON(join(runDir, 'run.json'), run);
       }
     }
