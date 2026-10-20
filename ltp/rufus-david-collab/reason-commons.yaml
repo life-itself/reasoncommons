@@ -1438,6 +1438,13 @@ trees:
       status: proposed
       contributions:
       - {by: david, attribution: explicit, mode: text, note: 'On 2026-10-20 David proposed basic onboarding so that Rufus has enough context to review a feedback request when he first opens a session.'}
+    - id: r-e-intro-repeated-in-worktrees
+      kind: observation
+      text: On 2026-10-20 David was shown the first-session introduction twice within eight minutes, in two Claude desktop worktree sessions, because who had seen it was recorded per worktree.
+      label: David saw the intro twice in eight minutes.
+      status: proposed
+      contributions:
+      - {by: assistant, attribution: assistant, mode: text, note: 'From the onboarding records in worktrees reason-commons-collab-b055fa (15:35:13Z) and rufus-david-reason-commons-262cf1 (15:43:17Z). David has not reported on the experience himself.'}
     - id: r-e-worktree-sharing-off
       kind: observation
       text: Feedback sharing that David authorised in his main checkout on 2026-10-20 was off in a Claude Code session worktree of the same repository, because the authorisation is stored per checkout and each session gets a fresh worktree.
@@ -3234,6 +3241,14 @@ trees:
       status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text}
+    - id: f-e-intro-once-per-person
+      kind: injection
+      text: The skill records who has seen the introduction in the repository's main checkout and counts a showing in any of its worktrees, so each participant sees it once per repository rather than once per worktree.
+      label: Intro shows once per person per repository.
+      status: proposed
+      addresses: [r-e-intro-repeated-in-worktrees]
+      contributions:
+      - {by: david, attribution: explicit, mode: text, note: David asked for the introduction to show once per person across worktrees before messaging Rufus.}
     - id: f-e-worktree-inherits-sharing
       kind: injection
       text: A linked worktree whose main checkout holds a standing feedback-sharing authorisation for the same reasoning file, remote URL and branch uses that authorisation, records that it was inherited, and reports this in the sync result and the introduction.
@@ -3470,6 +3485,12 @@ trees:
       from: [f-e-first-session-onboarding]
       to: f-e-onboarding-delays-start
       relation: can_cause
+      status: proposed
+      contributions: [{by: assistant, attribution: assistant, mode: text}]
+    - id: f-rel-intro-once-reduces-delay
+      from: [f-e-intro-once-per-person]
+      to: f-e-onboarding-delays-start
+      relation: reduces_risk_of
       status: proposed
       contributions: [{by: assistant, attribution: assistant, mode: text}]
     - id: f-rel-worktree-inherit-current
@@ -4057,6 +4078,10 @@ trees:
       work: test_lasting_effect
       label: Ask whether the introduction keeps helping later.
       note: The first-session commitments test only a first reading. After a later session, ask whether the introduction still helps with change proposals and next steps, as a separate observation.
+    - ref: f-rel-intro-once-reduces-delay
+      work: verify_once_per_person
+      label: Confirm the intro doesn't reappear in a new session.
+      note: In David's next new desktop worktree session, check that the introduction is not shown again. No feedback commitment, to avoid adding to David's queue.
     - ref: f-e-first-session-onboarding
       work: connect_or_explain
       label: Would the same introduction serve a first demo user?
@@ -7917,5 +7942,23 @@ change_acceptances:
   approved_paths:
   - .beads/config.yaml
   - docs/beads-reasoning.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl
+- proposal_ref: intro-once-per-person-2026-10-20
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-20T16:18:20Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept intro-once-per-person-2026-10-20 revision 1
+  scope: 'Show the introduction once per person per repository: a showing recorded in the main checkout or any of its worktrees counts, new showings are recorded in the main checkout''s gitignored local folder, existing per-worktree records still count, and a reasoning file absent from the main checkout falls back to its own folder without creating anything there. In a linked worktree, the printed sharing command targets the main checkout''s copy of the file. Factor the main-checkout lookup in feedback_sync.py into one helper used by sharing and onboarding. Add the displayed observation, injection, reduces_risk_of link, addresses reference and verify_once_per_person backlog item; no new feedback commitment and no new revision of onboarding-first-session-rufus.'
+  node_ids: [r-e-intro-repeated-in-worktrees, f-e-intro-once-per-person]
+  link_ids: [f-rel-intro-once-reduces-delay]
+  approved_paths:
+  - skills/reason-commons/scripts/feedback_sync.py
+  - skills/reason-commons/scripts/onboarding.py
+  - skills/reason-commons/tests/test_onboarding.py
+  - skills/reason-commons/references/onboarding.md
   - ltp/rufus-david-collab/reason-commons.yaml
   - .beads/issues.jsonl

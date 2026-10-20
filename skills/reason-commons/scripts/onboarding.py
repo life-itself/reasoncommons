@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Print the first-session introduction for a participant, once per checkout.
+"""Print the first-session introduction for a participant, once per repository.
 
     onboarding.py reason-commons.yaml --participant rufus
     onboarding.py reason-commons.yaml --participant rufus --again
 
-Prints nothing for someone who has already seen it here. Who has seen it is kept in
-the state file's local folder; the shared reasoning file is only read.
+Prints nothing for someone who has already seen it in this repository's main checkout
+or any of its worktrees. Who has seen it is kept in the main checkout's local folder;
+the shared reasoning file is only read.
 """
 import argparse
 from datetime import datetime, timezone
@@ -47,9 +48,12 @@ def sharing(state, person):
     default = git(state, "symbolic-ref", "--short", f"refs/remotes/{remote}/HEAD")
     branch = default.split("/", 1)[1] if default and "/" in default else "main"
     script = Path(__file__).resolve().with_name("feedback_sync.py")
+    # Configure the main checkout's copy: every worktree inherits it, while a worktree's own setting vanishes with it.
+    target = main_copy(state) or state
+    later = " It sets up your main checkout, so sessions in other worktrees share too." if target != state else ""
     return ("off in this checkout, so your answers stay on this computer. To share them with the other participants, "
-            "run this once, replacing the quoted words with your own authorisation:\n\n```bash\n"
-            f"python3 {script} {state} configure --remote {remote} --branch {branch} --by {person} "
+            "run this once, replacing the quoted words with your own authorisation." + later + "\n\n```bash\n"
+            f"python3 {script} {target} configure --remote {remote} --branch {branch} --by {person} "
             "--source-text 'I authorise automatic feedback commits and pushes'\n```")
 
 
@@ -71,20 +75,43 @@ def introduction(path, person):
                              sharing=sharing(path, person), waiting=waiting(state, person))
 
 
+def main_copy(path):
+    """The same reasoning file in the main checkout, when path is in a linked worktree and it exists there."""
+    found = feedback_sync.checkouts(path)
+    if not found:
+        return None
+    repo, (main, *_) = found
+    copy = main / path.relative_to(repo)
+    return copy if main != repo and copy.exists() else None
+
+
+def seen_files(path):
+    """Every record of who has seen the introduction for this file; new showings go in the first."""
+    own = feedback_sync.local_dir(path) / "onboarding.json"
+    found = feedback_sync.checkouts(path)
+    if not found:
+        return [own]
+    repo, roots = found
+    relative = path.relative_to(repo)
+    # A file absent from the main checkout keeps its record beside it, creating nothing there.
+    first = feedback_sync.local_dir(main_copy(path) or path) / "onboarding.json"
+    return list(dict.fromkeys([first, own] + [feedback_sync.local_dir(root / relative) / "onboarding.json" for root in roots]))
+
+
 def seen_file(path):
-    return feedback_sync.local_dir(path) / "onboarding.json"
+    return seen_files(path)[0]
 
 
 def show(path, person, again=False):
-    """The introduction text, or None when this participant has already seen it here."""
+    """The introduction text, or None when this participant has already seen it in this repository."""
     path = Path(path).expanduser().resolve()
-    record = seen_file(path)
-    seen = json.loads(record.read_text()) if record.exists() else {}
-    if person in seen and not again:
+    records = seen_files(path)
+    if not again and any(person in json.loads(record.read_text()) for record in records if record.exists()):
         return None
     text = introduction(path, person)
+    seen = json.loads(records[0].read_text()) if records[0].exists() else {}
     seen[person] = datetime.now(timezone.utc).isoformat()
-    feedback_sync.atomic(record, json.dumps(seen, indent=2) + "\n")
+    feedback_sync.atomic(records[0], json.dumps(seen, indent=2) + "\n")
     return text
 
 
