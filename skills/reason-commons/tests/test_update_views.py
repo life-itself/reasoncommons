@@ -34,6 +34,12 @@ def receipt():
 
 
 class ChangeAcceptanceTests(unittest.TestCase):
+    def test_feedback_validation_is_part_of_standard_validation(self):
+        state = toy()
+        state["feedback_requests"] = [{"id": "broken"}]
+        with self.assertRaises(ValueError):
+            views.validate(state)
+
     def setUp(self):
         self.state = toy()
         self.state["change_acceptances"] = [receipt()]

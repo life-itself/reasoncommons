@@ -62,7 +62,7 @@ class BotTests(unittest.IsolatedAsyncioTestCase):
         self.assertFalse(client.intents.message_content)
         self.assertFalse(hasattr(client, "on_message"))
         commands = client.tree.get_commands(guild=SimpleNamespace(id=10))
-        self.assertEqual({c.name for c in commands}, {"reason", "reason-accept", "reason-tree", "Reason about message"})
+        self.assertEqual({c.name for c in commands}, {"reason", "reason-accept", "reason-tree", "reason-feedback", "Reason about message"})
         await client.close()
 
     def test_bot_identity_is_rejected(self):
@@ -70,3 +70,18 @@ class BotTests(unittest.IsolatedAsyncioTestCase):
         current.user.bot = True
         with self.assertRaisesRegex(ValueError, "Bots"):
             invocation(current, "accept", "accept")
+
+    async def test_feedback_command_passes_separate_assessments_and_actual_words(self):
+        service = SimpleNamespace(config=SimpleNamespace(guild_id=10), authorize=Mock(),
+                                  handle=AsyncMock(return_value={"text": "Type: Capture result", "attachments": []}))
+        client = make_client(service)
+        command = next(c for c in client.tree.get_commands(guild=SimpleNamespace(id=10)) if c.name == "reason-feedback")
+        await command.callback(interaction(), request_id="trial", revision=2, feedback="Useful, concern not assessed.",
+                               benefit="observed", reservation="not_assessed")
+        request = service.handle.call_args.args[0]
+        self.assertEqual(request.mode, "feedback")
+        self.assertEqual(request.text, "Useful, concern not assessed.")
+        self.assertEqual(request.feedback["revision"], 2)
+        self.assertEqual(request.feedback["benefit"], "observed")
+        self.assertEqual(request.feedback["reservation"], "not_assessed")
+        await client.close()

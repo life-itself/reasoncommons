@@ -95,6 +95,10 @@ Nodes may optionally contain lists of node IDs from any tree:
 
 Use only existing IDs and meaningful traces supported by the discussion. These fields express intended relationships, not proof that a solution works or that a causal claim has been accepted. Test substantive reasoning through proposed links, assumptions, and challenges. No cross-tree link is required merely to fill out the model.
 
+## Feedback commitments and outcome reports
+
+The optional top-level `feedback_requests` list is defined in [feedback.md](feedback.md) and validated by `scripts/feedback.py` through the standard validator. Older files remain valid without it. Each immutable request version captures the original intervention and expected outcome statements, required named `feedback_from` participants, optional observation timing and append-only attributed reports. It is independent of reasoning acceptance and project-change approval. A queue is derived from these records, not stored as a second source of truth. Feedback-only changes remain working state and do not create an accepted-reasoning snapshot.
+
 ## Project-change acceptance receipts
 
 Use the optional top-level `change_acceptances` list for typed user approval of a displayed Change proposal. It is separate from node/link `status` and `accepted_by`: approving implementation does not endorse the reasoning or verify a prediction. Older working files without receipts remain valid. Follow [responses.md](responses.md) to obtain acceptance from the actual human after the proposal is shown; a validator can check the record's structure, not authenticate its origin or judge consent.

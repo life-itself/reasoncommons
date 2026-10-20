@@ -1,4 +1,6 @@
 """Only explicit application commands and a selected-message action."""
+import asyncio
+from contextlib import suppress
 import logging
 
 import discord
@@ -10,12 +12,12 @@ from .store import atomic_write, digest
 LOG = logging.getLogger(__name__)
 
 
-def invocation(interaction, text, mode="ask", source=None, standing=None):
+def invocation(interaction, text, mode="ask", source=None, standing=None, feedback=None):
     if interaction.user.bot:
         raise ValueError("Bots cannot contribute or endorse reasoning.")
     return Invocation(str(interaction.id), interaction.guild_id or 0,
                       interaction.channel_id or 0, str(interaction.user.id),
-                      text, mode, source, standing)
+                      text, mode, source, standing, feedback)
 
 
 async def deliver(interaction, service, request):
@@ -56,17 +58,30 @@ async def deliver(interaction, service, request):
             allowed_mentions=discord.AllowedMentions.none())
 
 
-def make_client(service, *, sync_commands=False):
+def make_client(service, *, sync_commands=False, feedback_reminders=False):
+    if feedback_reminders and not service.config.feedback_channel:
+        raise ValueError("Configure a feedback channel before enabling prompts.")
     class Client(discord.Client):
         def __init__(self):
             intents = discord.Intents.none()
             intents.guilds = True
             super().__init__(intents=intents, allowed_mentions=discord.AllowedMentions.none())
             self.tree = app_commands.CommandTree(self)
+            self.feedback_task = None
 
         async def setup_hook(self):
             if sync_commands:
                 await self.tree.sync(guild=discord.Object(id=service.config.guild_id))
+            if feedback_reminders:
+                from .feedback import run_dispatcher
+                self.feedback_task = asyncio.create_task(run_dispatcher(service, self))
+
+        async def close(self):
+            if self.feedback_task:
+                self.feedback_task.cancel()
+                with suppress(asyncio.CancelledError):
+                    await self.feedback_task
+            await super().close()
 
     client = Client()
     guild = discord.Object(id=service.config.guild_id)
@@ -92,6 +107,27 @@ def make_client(service, *, sync_commands=False):
     ])
     async def tree(interaction: discord.Interaction, tree: str, standing: str | None = None):
         await deliver(interaction, service, invocation(interaction, tree, "tree", standing=standing))
+
+    verdicts = [app_commands.Choice(name=name, value=value) for name, value in (
+        ("Observed", "observed"), ("Not observed in my experience", "not_observed"),
+        ("Unclear", "unclear"), ("Not assessed yet", "not_assessed"),
+        ("Evidence unavailable", "unavailable"))]
+
+    @client.tree.command(name="reason-feedback", description="Inspect an assigned expectation, give feedback, or defer", guild=guild)
+    @app_commands.choices(
+        readiness=[app_commands.Choice(name="Experienced the change", value="experienced"),
+                   app_commands.Choice(name="Not experienced yet", value="not_yet"),
+                   app_commands.Choice(name="Cannot assess", value="cannot_assess")],
+        benefit=verdicts, reservation=verdicts, verdict=verdicts)
+    async def feedback(interaction: discord.Interaction, request_id: str, revision: int = 1,
+                       feedback: str | None = None, readiness: str = "experienced",
+                       benefit: str | None = None, reservation: str | None = None,
+                       outcome: str | None = None, verdict: str | None = None,
+                       defer_until: str | None = None):
+        data = {"request_id": request_id, "revision": revision, "submit": feedback is not None,
+                "readiness": readiness, "benefit": benefit, "reservation": reservation,
+                "outcome": outcome, "verdict": verdict, "defer_until": defer_until}
+        await deliver(interaction, service, invocation(interaction, feedback if feedback is not None else request_id, "feedback", feedback=data))
 
     @app_commands.context_menu(name="Reason about message")
     async def selected_message(interaction: discord.Interaction, message: discord.Message):
