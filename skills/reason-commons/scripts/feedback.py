@@ -160,14 +160,22 @@ def guard_transition(before, after, authors=None):
             require(all(r["by"] in authors for r in added), "Feedback cannot impersonate another participant.")
 
 
+def latest_assessments(request, person):
+    """Each outcome's most recent assessment by this provider, in chronological order."""
+    latest = {}
+    own = [r for r in request["reports"] if r["by"] == person]
+    for report in sorted(own, key=lambda r: (timestamp(r["recorded_at"]), r["id"])):
+        for answer in report["outcomes"]:
+            if answer["verdict"] != "not_assessed":
+                latest[answer["ref"]] = answer
+    return latest
+
+
 def outstanding(request, person):
-    answered = {}
-    for report in request["reports"]:
-        if report["by"] == person:
-            for answer in report["outcomes"]:
-                if answer["verdict"] != "not_assessed":
-                    answered[answer["ref"]] = answer["verdict"]
-    return [o["ref"] for o in outcomes(request) if o["ref"] not in answered]
+    # An unclear assessment is inconclusive, so the outcome stays open until a later
+    # report settles it as observed, not observed or unavailable.
+    latest = latest_assessments(request, person)
+    return [o["ref"] for o in outcomes(request) if o["ref"] not in latest or latest[o["ref"]]["verdict"] == "unclear"]
 
 
 def queue(state, person, now=None, *, include_waiting=False):
@@ -216,6 +224,10 @@ def render_request(state, request, person):
         lines.append("Observation opportunity: " + request["ready_when"])
     pending = outstanding(request, person)
     lines.append("Still awaiting your assessment: " + (", ".join(pending) if pending else "none; further observations can still be recorded."))
+    latest = latest_assessments(request, person)
+    for ref in pending:
+        if ref in latest:
+            lines.append(f"Earlier you found {ref} unclear: {latest[ref]['note']}")
     lines += ["Have you experienced this change sufficiently to comment? What happened regarding the expected benefit and possible harm, including anything unexpected?",
               "You can report not experienced yet, unclear, not assessed, or evidence unavailable, and defer. No answer is inferred from silence; feedback does not endorse the reasoning."]
     return "\n\n".join(lines)
