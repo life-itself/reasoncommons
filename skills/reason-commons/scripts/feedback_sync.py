@@ -2,7 +2,8 @@
 """Share feedback through an explicitly authorised Git destination.
 
 Only feedback commitments, reports and their derived review work are published.
-The normal checkout, index and unrelated reasoning changes are left alone.
+Unrelated reasoning changes and staged work stay local. After verified sharing, the
+checkout's branch is fast-forwarded only when that changes nothing but the reasoning file.
 """
 from contextlib import contextmanager
 from copy import deepcopy
@@ -200,43 +201,79 @@ def reconcile(base, local, remote):
     return publication, working
 
 
+def dump(value, indent):
+    dumped = yaml.safe_dump(value, sort_keys=False, allow_unicode=True, width=100000)
+    return "".join(" " * indent + line if line.strip() else line for line in dumped.splitlines(keepends=True))
+
+
 def render(template, target):
-    """Replace only feedback, derived backlog and local focus blocks in YAML."""
+    """Edit only feedback, derived backlog and local focus in YAML, keeping unchanged entries' text."""
     original = load_text(template)
     if original == target:
         return template
+    # Whole-block replacement remains the fallback when an entry-level edit cannot be verified.
+    for minimal in (True, False):
+        result = _render(template, original, target, minimal)
+        try:
+            if load_text(result) == target:
+                return result
+        except (ValueError, KeyError, TypeError, yaml.YAMLError):
+            continue
+    raise SyncError("Sync would change unrelated YAML content; no file was replaced.")
+
+
+def _render(template, original, target, minimal):
     root = yaml.compose(template)
     edits = []
 
-    def replace(mapping, key, value):
-        pairs = {k.value: (i, k, v) for i, (k, v) in enumerate(mapping.value)}
-        if key in pairs:
-            i, mark, _ = pairs[key]
-            end = mapping.value[i + 1][0].start_mark if i + 1 < len(mapping.value) else mapping.end_mark
-            start_index = mark.start_mark.index - mark.start_mark.column
-            end_index = end.index - end.column
-            indent = mark.start_mark.column
-        else:
-            end = mapping.end_mark
-            start_index = end_index = end.index - end.column
-            indent = mapping.start_mark.column
-        dumped = yaml.safe_dump({key: value}, sort_keys=False, allow_unicode=True, width=100000)
-        replacement = "".join(" " * indent + line if line.strip() else line for line in dumped.splitlines(keepends=True))
-        edits.append((start_index, end_index, replacement))
+    def line_start(mark):
+        return mark.index - mark.column
 
+    def value_end(mapping, i):
+        return line_start(mapping.value[i + 1][0].start_mark if i + 1 < len(mapping.value) else mapping.end_mark)
+
+    def replace(mapping, key, value):
+        pairs = {k.value: (i, k) for i, (k, _) in enumerate(mapping.value)}
+        if key in pairs:
+            i, mark = pairs[key]
+            edits.append((line_start(mark.start_mark), value_end(mapping, i), dump({key: value}, mark.start_mark.column)))
+        else:
+            end = line_start(mapping.end_mark)
+            edits.append((end, end, dump({key: value}, mapping.start_mark.column)))
+
+    def patch(mapping, key, before, after):
+        """Append new list entries, or recurse into changed ones; otherwise replace the narrowest value."""
+        pairs = {k.value: (i, v) for i, (k, v) in enumerate(mapping.value)}
+        node = pairs.get(key, (None, None))[1]
+        if (not minimal or not isinstance(node, yaml.SequenceNode) or node.flow_style or not node.value
+                or not isinstance(before, list) or not isinstance(after, list)):
+            return replace(mapping, key, after)
+        if after[:len(before)] == before:
+            # The sequence's start mark is its first dash, so new entries line up with it.
+            end = value_end(mapping, pairs[key][0])
+            return edits.append((end, end, dump(after[len(before):], node.start_mark.column)))
+        changed = [(item, old, new) for item, old, new in zip(node.value, before, after) if old != new]
+        # A sequence entry's first key shares a line with its dash, so only later keys are edited in place.
+        if len(before) == len(after) and all(isinstance(item, yaml.MappingNode) and list(old) == list(new)
+                                              and old[next(iter(old))] == new[next(iter(new))] for item, old, new in changed):
+            for item, old, new in changed:
+                for name in new:
+                    if old[name] != new[name]:
+                        patch(item, name, old[name], new[name])
+            return
+        replace(mapping, key, after)
+
+    root_pairs = {k.value: v for k, v in root.value}
     for key in ("feedback_requests", "driver", "active_tree"):
         if original.get(key) != target.get(key):
-            replace(root, key, target[key])
-    root_pairs = {k.value: v for k, v in root.value}
+            patch(root, key, original.get(key), target[key])
     trees = {k.value: v for k, v in root_pairs["trees"].value}
     for name, tree in target["trees"].items():
         if original["trees"][name]["backlog"] != tree["backlog"]:
-            replace(trees[name], "backlog", tree["backlog"])
+            patch(trees[name], "backlog", original["trees"][name]["backlog"], tree["backlog"])
     result = template
     for start, end, text in sorted(edits, reverse=True):
         result = result[:start] + text + result[end:]
-    if load_text(result) != target:
-        raise SyncError("Sync would change unrelated YAML content; no file was replaced.")
     return result
 
 
@@ -251,6 +288,53 @@ def commit(repo, policy, tip, mode, text):
         ident = git(repo, "commit-tree", tree, "-p", tip, data="Record shared Reason Commons feedback\n")
         git(repo, "update-ref", "refs/reason-commons/pending-feedback/" + ident, ident)
         return ident
+
+
+def advance(repo, policy, tip):
+    """Fast-forward the checkout's branch to a verified shared commit when that is lossless.
+
+    Only when the checkout is on the shared branch, the commits it lacks change nothing
+    but the reasoning file, that file already matches the shared commit and nothing is
+    staged for it. Code and other upstream changes are left for the user's own pull.
+    """
+    path = policy["path"]
+    try:
+        branch = git(repo, "symbolic-ref", "-q", "HEAD")
+    except SyncError:
+        branch = None
+    if branch != "refs/heads/" + policy["branch"]:
+        return {"checkout": "unchanged", "checkout_message": "The checkout is not on " + policy["branch"] + "; it was left as it is."}
+    head = git(repo, "rev-parse", "HEAD")
+    if head == tip:
+        return {"checkout": "current"}
+    try:
+        git(repo, "merge-base", "--is-ancestor", head, tip)
+    except SyncError:
+        return {"checkout": "unchanged", "checkout_message": "The checkout has commits the shared branch lacks; reconcile them with git pull."}
+    blob = git(repo, "rev-parse", tip + ":" + path)
+    matches = git(repo, "hash-object", "--", path) == blob
+    if git(repo, "diff", "--name-only", "--no-renames", head, tip).splitlines() != [path]:
+        command = ("git -C " + str(repo) + " checkout -- " + path + " && " if matches else "") + "git -C " + str(repo) + " pull --ff-only"
+        return {"checkout": "behind", "checkout_message": "The shared branch also has other changes, so the checkout was left behind it. Update with: " + command}
+    if not matches or git(repo, "diff", "--cached", "--name-only", "--", path):
+        return {"checkout": "behind", "checkout_message": "The reasoning file has local edits, so the checkout was left behind the shared branch; git pull after saving them."}
+    mode = git(repo, "ls-tree", tip, "--", path).split()[0]
+    # Compare-and-swap: refuses if anything else moved the branch meanwhile.
+    git(repo, "update-ref", "-m", "reason-commons: fast-forward to shared feedback", branch, tip, head)
+    try:
+        git(repo, "update-index", "--cacheinfo", mode + "," + blob + "," + path)
+    except SyncError:
+        git(repo, "update-ref", branch, head, tip)
+        raise
+    return {"checkout": "advanced", "checkout_message": "The checkout's " + policy["branch"] + " now matches the shared commit."}
+
+
+def checkout_state(repo, policy, tip):
+    """A checkout problem never changes the delivery result."""
+    try:
+        return advance(repo, policy, tip)
+    except (SyncError, OSError, IndexError) as exc:
+        return {"checkout": "unchanged", "checkout_message": "The checkout was not updated: " + str(exc)}
 
 
 def _sync(state):
@@ -282,7 +366,7 @@ def _sync(state):
         checkpoint = {"commit": tip, "text": remote_text}
         atomic(directory / "feedback-sync-base.json", json.dumps(checkpoint) + "\n")
         if publication == load_text(remote_text):
-            return {"state": "shared", "commit": tip, "message": "Feedback verified in shared Git state."}
+            return {"state": "shared", "commit": tip, "message": "Feedback verified in shared Git state.", **checkout_state(repo, policy, tip)}
         ident = commit(repo, policy, tip, mode, publication_text)
         try:
             git(repo, "push", policy["remote"], ident + ":refs/heads/" + policy["branch"])
@@ -305,7 +389,7 @@ def _sync(state):
             atomic(state, refreshed_text)
             update_views.update(state)
         atomic(directory / "feedback-sync-base.json", json.dumps({"commit": verified, "text": verified_text}) + "\n")
-        return {"state": "shared", "commit": verified, "message": "Feedback committed, pushed and verified in shared Git state."}
+        return {"state": "shared", "commit": verified, "message": "Feedback committed, pushed and verified in shared Git state.", **checkout_state(repo, policy, verified)}
     raise SyncError("Sharing could not be verified after two attempts; feedback remains saved locally. Retry sync later.")
 
 
