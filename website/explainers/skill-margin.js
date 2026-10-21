@@ -3,8 +3,8 @@
 (function () {
   'use strict';
 
-  var D = window.SKILL_MARGIN;
-  if (!D || !D.scenes) return;
+  var D = {};
+  if (!document.querySelector('.practice-scene')) return;
 
   var NS = 'http://www.w3.org/2000/svg';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -99,138 +99,65 @@
       '<use href="#sm-av-' + id + '"/></svg>';
   }
 
-  /* Scroll is the editorial clock. A beat is the complete state of the
-     companion, not the start of a timed transcript. Future messages are
-     never mounted, and reverse scrolling reconstructs the earlier state. */
-  function esc(s) {
-    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-  }
-  function fmt(s) {
-    return esc(s).replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\*([^*]+)\*/g, '<em>$1</em>');
-  }
-  function nodes(list) {
-    return '<div class="sm-nodes">' + list.map(function (n) {
-      return (n.via ? '<span class="sm-via">↓ ' + esc(n.via) + '</span>' : '') +
-        '<div class="sm-node s-' + n.s.toLowerCase() + (n.mark ? ' mark' : '') + '">' +
-        '<span class="sm-k">[' + esc(n.s) + '] · ' + esc(n.k) + '</span>' + fmt(n.t) + '</div>';
-    }).join('') + '</div>';
-  }
-  function message(m, previous) {
-    var p = CAST[m.from];
-    return '<div class="sm-msg' + (m.from === 'skill' ? ' skill' : '') + (previous ? ' previous' : ' latest') + '" data-from="' + esc(m.from) + '">' +
-      avatar(m.from) + '<div class="sm-bub"><span class="sm-name">' + esc(p.short) + '</span>' +
-      (m.type ? '<span class="sm-type">' + esc(m.type) + '</span>' : '') +
-      (m.dictated ? '<span class="sm-dict">' + MIC + 'Dictated</span>' : '') +
-      (m.cmd ? '<code class="sm-cmd">' + esc(CMD[m.cmd] || m.cmd) + '</code> ' : '') +
-      fmt(m.text) + (m.nodes ? nodes(m.nodes) : '') + '</div></div>';
-  }
-  function castStrip(focus) {
-    return '<div class="sm-roster" aria-label="The people in this example">' +
-      ['sam', 'maria', 'tomasz', 'adeyemi', 'leila', 'skill'].map(function (id) {
-        return '<span class="sm-person' + (focus.indexOf(id) !== -1 ? ' active' : '') + '" title="' + esc(CAST[id].name + ' · ' + CAST[id].role) + '">' + avatar(id) + '<span>' + esc(id === 'skill' ? 'Skill' : CAST[id].short) + '</span></span>';
-      }).join('') + '</div>';
-  }
-  function capacityBoard(n, focus) {
-    var stations = [['Check-in', 60, 'maria'], ['Triage', 45, 'tomasz'], ['Doctor', 20, 'adeyemi'], ['Pharmacy', 50, 'leila'], ['Follow-up', 40, 'maria']];
-    return '<div class="sm-capacities" aria-label="Daily capacities introduced so far">' + stations.map(function (s, i) {
-      return '<div class="' + (i < n ? 'known' : 'unknown') + (focus.indexOf(s[2]) !== -1 && i < n ? ' active' : '') + '"><span>' + s[0] + '</span><b>' + (i < n ? s[1] : '—') + '</b></div>';
-    }).join('') + '</div><p class="sm-unit">People per day · as introduced in the story</p>';
-  }
-  function castView(b) {
-    var focus = b.focus || [];
-    return '<div class="sm-cast-view"><p class="sm-context">' + fmt(b.text || D.cover.text) + '</p>' +
-      '<p class="sm-focusline">' + focus.filter(function (k) { return k !== 'skill'; }).map(function (k) { return esc(CAST[k].name + ' · ' + CAST[k].role); }).join('<br>') + '</p>' +
-      '<ul class="sm-cast">' + ['sam', 'maria', 'tomasz', 'adeyemi', 'leila', 'skill'].map(function (id) {
-        return '<li class="' + (focus.indexOf(id) !== -1 ? 'active' : '') + '">' + avatar(id) + '<div><b>' + esc(CAST[id].name) + '</b><span>' + esc(CAST[id].role) + (id === 'skill' ? ' · invited later' : '') + '</span></div></li>';
-      }).join('') + '</ul>' + (b.capacities != null ? capacityBoard(b.capacities, focus) : '') + '</div>';
-  }
-  function introView(b) {
-    return '<div class="sm-intro">' + avatar('skill') + '<p class="sm-invite">Reason Commons joins<br>the conversation</p><p class="sm-context">' + fmt(b.text) + '</p><p class="sm-intro-note">The people bring the questions.<br>The skill helps keep the reasoning.</p></div>';
-  }
-  function conversation(b) {
-    var s = D.scenes.filter(function (x) { return x.id === b.scene; })[0];
-    var visible = s.msgs.slice(Math.max(0, b.count - 2), b.count);
-    var newest = s.msgs[b.count - 1];
-    var notification = s.notify && b.count === 1;
-    var who = CAST[s.who];
-    var thread = '<div class="sm-thread">' + visible.map(function (m, i) { return message(m, i < visible.length - 1); }).join('') + '</div>';
-    var device;
-    if (s.device === 'phone') {
-      var body = notification
-        ? '<div class="sm-lock"><span class="sm-clock">' + esc(s.clock || '08:30') + '</span><div class="sm-note"><span class="sm-note-app">' + avatar(newest.from) + 'Team chat · now</span><b>' + esc(CAST[newest.from].short) + '</b><p>' + fmt(newest.text) + '</p></div><span class="sm-lock-hint">A colleague asks for ' + esc(who.short) + '’s input</span></div>'
-        : '<div class="sm-apphead">' + esc(D.channel || '#ashfield-flow') + ' <span>Chat prototype</span></div>' + thread;
-      device = '<div class="sm-phone' + (notification ? ' notified' : '') + '"><div class="sm-notch"></div><div class="sm-screen">' + body + '</div></div>';
-    } else {
-      device = '<div class="sm-monitor"><div class="sm-win"><div class="sm-bar"><i></i><i></i><i></i><span>AI assistant · skill installed</span></div>' + thread + '</div><div class="sm-neck"></div><div class="sm-foot"></div></div>';
-    }
-    return '<div class="sm-conversation"><div class="sm-who">' + avatar(s.who) + '<div><b>' + esc(who.name) + '</b><span>' + esc(who.role + ' · ' + s.place) + '</span></div><span class="sm-surface">' + (s.device === 'phone' ? 'Phone' : 'Desktop') + '</span></div>' +
-      '<div class="sm-device" data-device="' + s.device + '">' + device + '</div>' +
-      '<p class="sm-receipt">' + (notification ? 'Notification · scroll to follow the reply' : 'Message ' + b.count + ' of ' + s.msgs.length + ' · ' + esc(s.time)) + '</p>' +
-      (b.note ? '<p class="sm-diff">' + fmt(b.note) + '</p>' : '') + '</div>';
-  }
-  function closeView() {
-    return '<div class="sm-close"><p class="sm-context">' + fmt(D.close.text) + '</p><p class="sm-prompt"><span>Try one real question</span>“Here is what keeps happening.<br>Help me check my explanation.”</p><code class="sm-install">' + esc(D.close.install) + '</code><div class="sm-links">' + D.close.links.map(function (l) { return '<a href="' + esc(l.href) + '">' + esc(l.text) + '</a>'; }).join('') + '</div><p class="sm-fine">Illustrated example. The people and messages are invented. Phone chat is a prototype; install the skill in your AI assistant.</p></div>';
-  }
-
-  var beats = D.beats.map(function (b) {
-    b.el = b.step ? document.querySelector('.trigger[data-t="' + b.step + '"]') : document.querySelector('[data-sm-beat="' + b.at + '"]');
-    if (!b.el) throw new Error('Missing margin beat: ' + (b.step || b.at));
-    return b;
+  /* Source HTML is the complete, accessible transcript. The device is an
+     optional visual mirror, never the only place a contribution exists. */
+  var scenes = [].slice.call(document.querySelectorAll('.practice-scene'));
+  document.body.insertAdjacentHTML('afterbegin', SPRITE);
+  [].forEach.call(document.querySelectorAll('.scene-message'), function (m) {
+    m.querySelector('.scene-avatar').innerHTML = avatar(m.dataset.who);
   });
   var rail = document.createElement('aside');
   rail.className = 'sm-rail';
-  rail.setAttribute('aria-label', 'The clinic team, alongside the story');
-  rail.innerHTML = '<div class="sm-head"><span>Alongside the story</span><span class="sm-tools"><a href="' + esc(D.original) + '">Original</a><button class="sm-hide" type="button" aria-label="Hide the skill margin">Hide</button></span></div><div class="sm-roster-slot"></div><div class="sm-stage"></div><p class="sm-follow">Illustrated example · scroll to follow the team</p>';
-  document.body.insertAdjacentHTML('afterbegin', SPRITE);
+  rail.setAttribute('aria-label', 'Illustrated conversation companion');
+  rail.innerHTML = '<div class="sm-tools"><span>Alongside the story</span><button type="button">Hide companion</button></div><div class="sm-visual" aria-hidden="true" inert></div>';
   document.body.appendChild(rail);
-  document.body.classList.add('sm-on');
-  var stage = rail.querySelector('.sm-stage');
-  var roster = rail.querySelector('.sm-roster-slot');
-  var tab = document.createElement('button');
-  tab.type = 'button'; tab.className = 'sm-tab'; tab.textContent = 'Show the team';
-  document.body.appendChild(tab);
+  var visual = rail.querySelector('.sm-visual');
+  var show = document.createElement('button');
+  show.type = 'button'; show.className = 'sm-show'; show.textContent = 'Show companion';
+  document.body.appendChild(show);
+  var media = window.matchMedia('(min-width:1200px) and (min-height:760px)');
+  var hide = rail.querySelector('button');
   function collapse(on) {
+    var anchor=readingAnchor;
+    var before=anchor?anchor.getBoundingClientRect().top:null;
     document.body.classList.toggle('sm-collapsed', on);
-    rail.inert = on;
+    if(anchor&&before!==null) window.scrollBy({top:anchor.getBoundingClientRect().top-before,behavior:'auto'});
     try { localStorage.setItem('sm-collapsed', on ? '1' : '0'); } catch (e) {}
-    if (typeof window.fitPortrait === 'function') window.fitPortrait();
-    update();
+    schedule();
   }
-  rail.querySelector('.sm-hide').addEventListener('click', function () { collapse(true); tab.focus(); });
-  tab.addEventListener('click', function () { collapse(false); rail.querySelector('.sm-hide').focus(); });
-  try {
-    if (localStorage.getItem('sm-collapsed') === '1') {
-      document.body.classList.add('sm-collapsed');
-      rail.inert = true;
-    }
-  } catch (e) {}
-
+  hide.addEventListener('click', function () { collapse(true); show.focus(); });
+  show.addEventListener('click', function () { collapse(false); hide.focus(); });
+  try { if (localStorage.getItem('sm-collapsed') === '1') document.body.classList.add('sm-collapsed'); } catch (e) {}
+  document.body.classList.add('sm-ready');
+  function roster(who) {
+    return '<div class="sm-roster">' + ['sam','maria','tomasz','adeyemi','leila','skill'].map(function (id) {
+      return '<span class="sm-person' + (id === who || id === 'skill' ? ' active' : '') + '">' + avatar(id) + CAST[id].short + '</span>';
+    }).join('') + '</div>';
+  }
   var current = -2;
   function render(index) {
     if (index === current) return;
-    var forward = index > current;
     current = index;
-    var b = index >= 0 ? beats[index] : D.opening;
-    var s = b.scene ? D.scenes.filter(function (x) { return x.id === b.scene; })[0] : null;
-    var focus = b.focus || (s ? [s.msgs[b.count - 1].from] : []);
-    roster.innerHTML = castStrip(focus);
-    rail.dataset.mode = b.mode;
-    rail.dataset.beat = b.step || b.at || 'opening';
-    stage.innerHTML = '<div class="sm-scene' + (forward && !reduce ? ' sm-arrive' : '') + '"><p class="sm-chapter">' + esc(b.chapter || '') + '</p><h2>' + esc(b.title || '') + '</h2>' +
-      (b.mode === 'cast' ? castView(b) : b.mode === 'intro' ? introView(b) : b.mode === 'close' ? closeView() : conversation(b)) + '</div>';
-    rail.dataset.message = b.count || '0';
+    rail.dataset.scene = index < 0 ? 'introduction' : scenes[index].id;
+    if (index < 0) {
+      visual.innerHTML = roster('skill') + '<div class="sm-cover"><p class="scene-kicker">Illustrated story · actual record linked below</p><h2>The people bring a question.<br>The skill keeps the reasoning.</h2><p>Reason Commons is an installed package for an AI assistant. It keeps claims, authors, objections and the next check in a working file.</p><p>The clinic and these conversations are invented. Follow the story first; each complete exchange appears after its premises.</p><p class="sm-footnote">Sam manages · Maria handles reception · Tomasz triages · Dr Adeyemi consults · Leila dispenses.</p></div>';
+    } else {
+      var s = scenes[index];
+      visual.innerHTML = roster(s.dataset.who) + '<p class="scene-kicker">' + s.querySelector('.scene-kicker').textContent + '</p><h2>' + s.querySelector('h2').textContent + '</h2><div class="sm-device" data-device="' + s.dataset.device + '"><p class="sm-surface">' + (s.dataset.device === 'phone' ? 'Team-chat prototype · explicit /reason capture' : 'AI assistant · reason-commons skill installed') + '</p><div class="scene-dialogue">' + s.querySelector('.scene-dialogue').innerHTML + '</div></div><p class="scene-consequence">' + s.querySelector('.scene-consequence').textContent + '</p><p class="sm-footnote">Latest exchange · the saved reasoning is in the story.</p>';
+    }
+    /* Larger fonts or unusual heights fall back to the complete inline source. */
+    if (media.matches && rail.offsetHeight && rail.scrollHeight > rail.clientHeight + 2) document.body.classList.add('sm-inline');
   }
 
-  /* Reconcile the main drawing from its own trigger geometry too. This
-     prevents IntersectionObserver delivery order leaving an old caption
-     behind after a large jump or a reversal. Shared scroller.js is intact. */
+  /* Reconcile drawings from scroll geometry, preserving the existing art
+     hooks while avoiding out-of-order observer callbacks on large jumps. */
   var steps = [].slice.call(document.querySelectorAll('.step'));
   var layers = [].slice.call(document.querySelectorAll('.layer'));
   var triggers = [].slice.call(document.querySelectorAll('.trigger'));
-  var storyId = '';
   var originalStep = window.onStep;
+  var storyId = '';
   function syncStory(id) {
-    if (!id || storyId === id) return;
+    if (!id || id === storyId) return;
     storyId = id;
     steps.forEach(function (e) { e.classList.toggle('on', e.dataset.step === id); });
     layers.forEach(function (e) { e.classList.toggle('on', e.dataset.layer.split(/\s+/).indexOf(id) !== -1); });
@@ -246,51 +173,46 @@
     if (typeof window.fitPortrait === 'function') window.fitPortrait();
   }
   var ticking = false;
+  var readingAnchor = null;
+  var lastWidth = innerWidth;
+  var markers = [].slice.call(document.querySelectorAll('.trigger,[data-sm-beat],.practice-scene,.practice-intro,.practice-next'));
   function update() {
     ticking = false;
-    var line = innerHeight * 0.55;
-    var picked = -1;
-    for (var i = 0; i < beats.length; i++) {
-      if (beats[i].el.getBoundingClientRect().top <= line) picked = i;
-    }
-    var activeTrigger = null;
+    var line = innerHeight * .52;
+    var active = null;
     triggers.forEach(function (t) {
-      var section = t.closest('.scroll-item').getBoundingClientRect();
-      if (section.top <= line && section.bottom > line && t.getBoundingClientRect().top <= line) activeTrigger = t;
+      var r = t.closest('.scroll-item').getBoundingClientRect();
+      if (r.top <= line && r.bottom > line && t.getBoundingClientRect().top <= line) active = t;
     });
-    if (activeTrigger) syncStory(activeTrigger.dataset.t);
+    if (active) syncStory(active.dataset.t);
+    var picked = -1;
+    scenes.forEach(function (s,i) { if (s.getBoundingClientRect().top <= line) picked = i; });
     render(picked);
+    markers.forEach(function (m) { if(m.getBoundingClientRect().top <= line) readingAnchor=m; });
   }
   function schedule() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
-  function observedStep() {
-    /* The shared observer may fire after the scroll frame. Reconcile from
-       geometry rather than accepting a stale entry from a skipped trigger. */
-    storyId = ''; schedule();
-  }
+  function observedStep() { storyId = ''; schedule(); }
   window.onStep = observedStep;
-  window.addEventListener('scroll', schedule, { passive: true });
-  var portrait = window.matchMedia('(max-width: 640px)').matches;
-  var lastWidth = innerWidth;
+  var portrait = window.matchMedia('(max-width:640px)').matches;
+  window.addEventListener('scroll', schedule, {passive:true});
   window.addEventListener('resize', function () {
-    var nextPortrait = window.matchMedia('(max-width: 640px)').matches;
-    if (portrait !== nextPortrait && typeof window.rebuildExplainerArtwork === 'function') {
+    var next = window.matchMedia('(max-width:640px)').matches;
+    if (next !== portrait && typeof window.rebuildExplainerArtwork === 'function') {
       window.rebuildExplainerArtwork();
       layers = [].slice.call(document.querySelectorAll('.layer'));
       originalStep = window.onStep;
       window.onStep = observedStep;
-      portrait = nextPortrait;
+      portrait = next;
     }
-    /* Keep the reading beat when a window changes width. Height-only changes
-       (including a phone's browser toolbar) leave ordinary scrolling alone. */
-    if (lastWidth !== innerWidth && current >= 0) {
-      var top = beats[current].el.getBoundingClientRect().top + scrollY - innerHeight * 0.5;
-      window.scrollTo({ top: Math.max(0, top), behavior: 'auto' });
+    document.body.classList.remove('sm-inline');
+    if(lastWidth !== innerWidth && readingAnchor){
+      var top=readingAnchor.getBoundingClientRect().top+scrollY-innerHeight*.52;
+      window.scrollTo({top:Math.max(0,top),behavior:'auto'});
     }
-    lastWidth = innerWidth;
-    storyId = '';
-    schedule();
+    lastWidth=innerWidth;
+    current = -2; storyId = ''; schedule();
   });
   window.addEventListener('load', schedule);
-  if (document.fonts) document.fonts.ready.then(function () { storyId = ''; schedule(); });
+  if (document.fonts) document.fonts.ready.then(function () {current=-2;storyId='';schedule();});
   update();
 })();

@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Wrong Queue · in practice</title>
-<meta name="description" content="The Wrong Queue, with the clinic’s people using the reason-commons skill in the margin as the story unfolds.">
+<meta name="description" content="An illustrated clinic story: check the real bottleneck, inspect the reasoning and see how Reason Commons keeps the next question available.">
 <link rel="stylesheet" href="../scroller.css">
 <link rel="stylesheet" href="../skill-margin.css">
 </head>
-<body>
+<body class="in-practice"><a class="skip-story" href="#main-story">Skip to story</a>
 <noscript>
 <style>
-.scroll-item{padding:2rem 1.25rem}.sticky-item{position:static;height:auto;margin:0;overflow:visible}.stage{display:none}.steps{position:static;max-width:37rem;margin:auto}.step,.step.mid,.step.lead,.step.tl,.step.tr,.step.bl,.step.br{position:static;opacity:1;transform:none;max-width:none;font-size:1.15rem;text-align:left;margin:0 0 1rem}.step p{background:none;padding:0}.trigger,.scrollcue{display:none}
+.scroll-item{padding:2rem 1.25rem}.sticky-item{position:static;height:auto;margin:0;overflow:visible}.stage{display:none}.steps{position:static;max-width:37rem;margin:auto}.step,.step.mid,.step.lead,.step.tl,.step.tr,.step.bl,.step.br{position:static;opacity:1;transform:none;max-width:none;font-size:1.15rem;text-align:left;margin:0 0 1rem}.step p{background:none;padding:0}.trigger,.scrollcue{display:none}.in-practice .step:not(.on){visibility:visible}.in-practice .statement,.in-practice .hero{min-height:0;padding:2rem 1.25rem}.in-practice .flow{padding:2rem 1.25rem}
 </style>
-<p style="padding:1rem;max-width:37rem;margin:auto">The illustrated skill conversation needs JavaScript. The complete story remains readable below.</p>
+<p style="padding:1rem;max-width:37rem;margin:auto">Animations are off. The complete story, conversations and saved reasoning remain readable below.</p>
 </noscript>
 
 <nav class="topnav">
@@ -37,9 +37,11 @@
   </filter>
 </defs></svg>
 
+<main id="main-story">
 <!-- ================= COLD OPEN ================= -->
 <section class="scroll-item">
-  <div class="sticky-item"><div class="stage">
+  <noscript><figure class="static-diagram"><figcaption>The fictional clinic</figcaption><ol class="static-chain"><li>Sixty attempts per typical working day</li><li>Twenty completed consultations</li><li>Forty attempts without a consultation</li></ol></figure></noscript>
+<div class="sticky-item"><div class="stage">
     <svg viewBox="60 70 880 430" role="img" aria-label="A clinic with a queue trailing from the door; everyone points at the front desk, but the constraint is the doctor's room.">
       <g class="layer on" data-layer="c1 c2 c3 c4" filter="url(#rough)">
         <rect x="300" y="180" width="400" height="250" fill="none" stroke="var(--ink)" stroke-width="3"/>
@@ -62,7 +64,7 @@
     </svg>
   </div>
   <div class="steps">
-    <div class="step lead" data-step="c1"><p>A clinic opens at eight. By noon, sixty people are waiting.</p></div>
+    <div class="step lead" data-step="c1"><p>A clinic opens at eight. By noon, the queue is outside.</p></div>
     <div class="step lead" data-step="c2"><p>Everyone who works there can tell you exactly where the problem is.</p></div>
     <div class="step lead" data-step="c3"><p>They are all pointing at the same desk.</p></div>
     <div class="step mid plain big" data-step="c4"><p><strong>They are all wrong.</strong></p></div>
@@ -75,18 +77,21 @@
 <section class="flow"><div class="wrap">
   <p class="kicker">Part one of three · Thinking in Systems · in practice</p>
   <h1 class="title">The Wrong Queue</h1>
-  <p class="dek">Why the thing you can see is almost never the thing that's stuck.</p>
+  <p class="dek">Why the busiest place may not be the place that limits the whole clinic.</p>
 </div></section>
+
+<section class="practice-intro"><div class="wrap"><p class="intro-label">The method, with the skill in use</p><p><strong>Reason Commons helps an AI assistant keep a reasoning map:</strong> claims, authors, objections and the next check. A “skill” is an installed package of instructions and tools for the assistant.</p><p class="intro-disclosure">Ashfield and these conversations are invented. <a href="../skill-session/index.html">Inspect a real execution record from this revision</a>, including its saved state and limits.</p><p class="intro-disclosure">Sam manages; Maria runs reception and follow-up; Tomasz triages; Dr Adeyemi consults; Leila runs the pharmacy. This fictional team discusses operational flow.</p></div></section>
 
 <section class="flow"><div class="wrap">
   <p data-sm-beat="maria" id="sm-maria">Maria runs the front desk. She works through lunch most days. The phone starts before the lights are on and there is a queue at her window from opening until close. When patients write in to complain, and they do, they complain about her desk.</p>
   <p>She is, visibly and unarguably, the hardest-working person in the building.</p>
-  <p>She is also irrelevant to how many people this clinic helps.</p>
-  <p>It treats twenty patients a day. It has treated twenty patients a day for four years.</p>
+  <p>Her effort matters. But faster check-in alone will not let the doctor see another patient.</p>
+  <p>Sixty people try to visit on a typical working day. The clinic completes twenty consultations. That output has barely changed in four years.</p>
 </div></section>
 <!-- ================= FIVE STATIONS ================= -->
 <section class="scroll-item">
-  <div class="sticky-item"><div class="stage">
+  <noscript><figure class="static-diagram"><figcaption>Initial daily capacities · a simplified serial model</figcaption><ol class="static-chain"><li>Check-in · 60</li><li>Triage · 45</li><li>Doctor · 20 · current limit</li><li>Pharmacy · 50</li><li>Follow-up · 40</li></ol></figure></noscript>
+<div class="sticky-item"><div class="stage">
     <svg viewBox="55 115 910 340" role="img" aria-label="Five stations with daily capacities; work backs up in front of the doctor and output stops at twenty.">
       <g filter="url(#rough)"><g id="boxes" stroke="var(--ink)" stroke-width="2.6" fill="none"></g></g>
       <g id="caps" font-family="var(--sans)" font-size="30" font-weight="700" text-anchor="middle" fill="var(--ink)"></g>
@@ -103,7 +108,7 @@
     </svg>
   </div>
   <div class="steps">
-    <div class="step tl" data-step="s1"><p>Everyone who comes through passes five stations, in order, and every one has a limit.</p></div>
+    <div class="step tl" data-step="s1"><p>In this simplified model, every visit passes five stations in order. Each has a daily limit.</p></div>
     <div class="step tl" data-step="s2"><p>Check-in can process sixty people a day.</p></div>
     <div class="step tl" data-step="s3"><p>Triage, forty-five.</p></div>
     <div class="step tl" data-step="s4"><p>The doctor, twenty.</p></div>
@@ -118,7 +123,7 @@
   <div class="trigger" data-t="s7" id="sm-s7"></div><div class="trigger" data-t="s8" id="sm-s8"></div>
 </section>
 
-<section class="statement"><p data-sm-beat="shortfall" id="sm-shortfall">The other forty go home.</p></section>
+<section class="statement"><p data-sm-beat="shortfall" id="sm-shortfall">Forty visit attempts end without a consultation.</p></section>
 
 <section class="flow"><div class="wrap">
   <p data-sm-beat="patient" id="sm-patient">One of them is a man in his sixties who has now come twice about a cough he has had since March. He waited three hours on Tuesday and left at four to collect his grandson. He will try again next week.</p>
@@ -127,13 +132,14 @@
 <section class="statement">
   <div>
     <div class="figure-num" data-sm-beat="annual" id="sm-annual">10,000</div>
-    <p class="figure-cap" style="max-width:26ch;margin:1.2em auto 0">people a year who came to a clinic where everybody was working flat out, and did not get seen</p>
+    <p class="figure-cap" style="max-width:26ch;margin:1.2em auto 0">unsuccessful visit attempts a year, if this day repeats across 250 working days. Some people try more than once.</p>
   </div>
 </section>
 
 <!-- ================= THE ONE HIRE ================= -->
 <section class="scroll-item">
-  <div class="sticky-item"><div class="stage">
+  <noscript><figure class="static-diagram"><figcaption>Compare the capacity a hire would change</figcaption><ol class="static-chain"><li>Faster check-in alone → doctor still sees 20</li><li>More useful clinical capacity → output may rise</li></ol></figure></noscript>
+<div class="sticky-item"><div class="stage">
     <svg viewBox="55 115 910 300" role="img" aria-label="Placing one new hire at each station in turn; output stays at twenty until the doctor.">
       <g filter="url(#rough)"><g id="hboxes" stroke="var(--ink)" stroke-width="2.6" fill="none"></g></g>
       <g id="hnames" font-family="var(--sans)" font-size="11.5" text-anchor="middle" fill="var(--ink-soft)" letter-spacing="1.2"></g>
@@ -148,15 +154,17 @@
   </div>
   <div class="steps">
     <div class="step tl" data-step="h1"><p>The clinic has just been given enough money to hire one more person.</p></div>
-    <div class="step tl" data-step="h2"><p>Put them on the front desk, where the queue is: still twenty.</p></div>
+    <div class="step tl" data-step="h2"><p>Use the hire only to speed check-in: still twenty.</p></div>
     <div class="step tl" data-step="h3"><p>Triage: still twenty. Pharmacy: twenty. Follow-up: twenty.</p></div>
-    <div class="step tl" data-step="h4"><p>There is exactly one place that changes the number, and it is not where the queue is.</p></div>
-    <div class="step tl" data-step="h5"><p>Hire at the front desk and check-in gets faster, so patients reach the waiting room sooner. You will have spent the entire budget to make people frustrated sitting down instead of standing up.</p></div>
+    <div class="step tl" data-step="h4"><p>Add useful clinical capacity and the number can change. That is the capacity this model is short of.</p></div>
+    <div class="step tl" data-step="h5"><p>If the hire only speeds check-in, patients reach the waiting room sooner. The budget has moved the wait indoors.</p></div>
   </div></div>
   <div class="trigger" data-t="h1" id="sm-h1"></div><div class="trigger" data-t="h2" id="sm-h2"></div>
   <div class="trigger" data-t="h3" id="sm-h3"></div><div class="trigger" data-t="h4" id="sm-h4"></div>
   <div class="trigger" data-t="h5" id="sm-h5"></div>
 </section>
+
+<section class="practice-scene" id="check-the-hire" data-who="sam" data-device="desktop"><div class="wrap"><p class="scene-kicker">Illustrated conversation · AI assistant with the skill</p><h2>Check the decision before spending</h2><div class="scene-dialogue"><div class="scene-message " data-who="sam"><span class="scene-avatar" aria-hidden="true"></span><div><b>Sam</b><p>The queue is at Maria’s desk. Should the one hire go there?</p></div></div><div class="scene-message is-skill" data-who="skill"><span class="scene-avatar" aria-hidden="true"></span><div><b>Reason Commons</b><p>Check-in already handles sixty. The doctor handles twenty. Faster check-in cannot raise completed visits in this model.</p></div></div><div class="scene-message " data-who="sam"><span class="scene-avatar" aria-hidden="true"></span><div><b>Sam</b><p>I accept the doctor’s room as the current limit. Let’s investigate the lost time before choosing the hire.</p></div></div></div><div class="scene-record"><p class="record-heading">What stays in the working record</p><ul class="record-items"><li><span class="record-status">Accepted for now · Sam</span><span>The doctor’s room limits this modeled flow to twenty visits/day.</span></li><li><span class="record-status">Open check</span><span>What would recover useful doctor time, at what cost?</span></li></ul></div><p class="scene-consequence">The hiring question now concerns clinical capacity. Sam’s working acceptance stays with the claim.</p></div></section>
 
 <section class="flow"><div class="wrap">
   <p data-sm-beat="blame" id="sm-blame">Maria was never the problem. She was busy absorbing the anger that something else was generating.</p>
@@ -165,18 +173,18 @@
 <section class="statement"><p>Busy is not the same as stuck.</p></section>
 
 <section class="flow"><div class="wrap">
-  <p data-sm-beat="constraint" id="sm-constraint">The station that sets the number — the one every other station is waiting on, whether it knows it or not — has a name. It is the <strong>constraint</strong>. Every system has one. Almost no system knows where its own is.</p>
+  <p data-sm-beat="constraint" id="sm-constraint">The station that sets the number — the one every other station is waiting on, whether it knows it or not — has a name. It is the <strong>constraint</strong>. In this serial model, it is the station with the smallest capacity. In messier work, finding the limiting condition takes investigation.</p>
 </div></section>
 
 <!-- ================= THE BUSY TRAP ================= -->
-<section class="statement"><p>Every single person in an organisation is working flat out, all day. Is that organisation running at its best?</p></section>
+<section class="statement"><p>When everyone is working flat out, is the organisation working at its best?</p></section>
 
 <section class="flow"><div class="wrap">
-  <p>Almost everyone says yes.</p>
+  <p>It can look that way.</p>
   <p>But look at what full effort at the front desk actually produces. Sixty people checked in, against twenty the doctor can see. The other forty do not vanish. They sit in the waiting room — and a waiting room is not output. It is forty afternoons, spent.</p>
   <p>A station that isn't the constraint, running at maximum, manufactures work the constraint cannot absorb. In a factory that work is inventory, stacked and going stale. Here it is people.</p>
   <p>So a well-run system needs most of its parts to have slack — deliberately running below their maximum — so the one part that governs everything can run flat out.</p>
-  <p>When everybody is at full stretch, the honest reading is not that the place is well run. It is that nobody has found the constraint, so everyone is compensating for it at once.</p>
+  <p>Full stretch does not tell us whether the clinic is working well. We need to know what the effort produces, and where more effort would change that.</p>
 </div></section>
 
 <!-- ================= DON'T SPEND YET ================= -->
@@ -187,8 +195,9 @@
 </div></section>
 
 <section class="scroll-item">
-  <div class="sticky-item"><div class="stage">
-    <svg viewBox="80 150 840 260" role="img" aria-label="Dr Adeyemi's eight-hour day: six hours with patients, two lost to admin; recovering the two hours raises output from twenty to twenty-six.">
+  <noscript><figure class="static-diagram"><figcaption>Conditional capacity projection</figcaption><ol class="static-chain"><li>Six clinical hours / 20 visits = 18 minutes</li><li>If all two preparation hours become clinical</li><li>480 / 18 = 26.67 → 26 complete visits</li></ol></figure></noscript>
+<div class="sticky-item"><div class="stage">
+    <svg viewBox="80 150 840 260" role="img" aria-label="A conditional projection: six clinical hours and two preparation hours; if all preparation time becomes clinical, twenty-six complete visits could fit.">
       <g id="dayrow"></g>
       <text id="dcount" x="500" y="360" text-anchor="middle" font-family="var(--sans)" font-size="58" font-weight="700" fill="var(--mark)">20</text>
       <text x="500" y="388" text-anchor="middle" font-family="var(--sans)" font-size="11" fill="var(--ink-soft)" letter-spacing="1.4">PATIENTS PER DAY</text>
@@ -196,68 +205,67 @@
   </div>
   <div class="steps">
     <div class="step tl" data-step="d1"><p>Of her eight-hour day, she sees patients for about six.</p></div>
-    <div class="step tl" data-step="d2"><p>The other two go on things that do not need a medical degree — re-taking a history the triage nurse already took, hunting for notes, printing forms.</p></div>
-    <div class="step tl" data-step="d3"><p>Six hours, twenty patients: a shade under eighteen minutes each.</p></div>
-    <div class="step tl" data-step="d4"><p>Give her back the two hours and the same eighteen minutes gets you twenty-six.</p></div>
+    <div class="step tl" data-step="d2"><p>The other two go on finding records, printing forms and preparing information. Some of this work could be done elsewhere.</p></div>
+    <div class="step tl" data-step="d3"><p>Six clinical hours, twenty consultations: eighteen minutes each on average, including the history and assessment.</p></div>
+    <div class="step tl" data-step="d4"><p>If all two hours became clinical time, the same average rate would allow twenty-six complete consultations. That is a projection.</p></div>
   </div></div>
   <div class="trigger" data-t="d1" id="sm-d1"></div><div class="trigger" data-t="d2" id="sm-d2"></div>
   <div class="trigger" data-t="d3" id="sm-d3"></div><div class="trigger" data-t="d4" id="sm-d4"></div>
 </section>
 
 <section class="flow"><div class="wrap">
-  <p>Six more people a day. Around fifteen hundred a year. The man with the cough is one of them. The cost of this is nothing.</p>
-  <p>That is the step almost everyone skips — and it is the same move as the hiring decision, made smaller. You are not adding capacity to the system. You are moving capacity <em>toward the constraint</em>. It just happens that the cheapest place to find some was already inside it.</p>
-<p data-sm-beat="reception" id="sm-reception">The next step is harder, because it looks like failure. Everyone else now runs at whatever pace keeps Dr Adeyemi working. Reception deliberately slows down. Every local number you have will show those people getting worse while the clinic gets better. If you cannot tolerate that on a dashboard, none of this is available to you.</p>
-<p data-sm-beat="spend" id="sm-spend">Only then do you spend money — and you spend it on the doctor, not on the loudest queue.</p>
+  <p>Six more completed visits a day could mean fifteen hundred a year, across 250 working days. A patient like the man with the cough could be seen sooner. But the work must be eliminated or someone must do it.</p>
+  <p>Before choosing the hire, find out how much time can actually be recovered, what preparation would cost, and whose work it would displace. A small reassignment may help. Recovering all two hours is not yet a result.</p>
+<p data-sm-beat="reception" id="sm-reception">Then coordinate the other stations around the doctor. Reception should keep consultations supplied without building an avoidable indoor queue. That can make check-in look slower even while the whole clinic works better. Maria will need a way to explain the wait.</p>
+<p data-sm-beat="spend" id="sm-spend">Spend the hiring budget after that check: on whatever demonstrably increases useful clinical capacity, which may be preparation support rather than another doctor.</p>
 </div></section>
+
+<section class="practice-scene" id="count-the-transfer" data-who="maria" data-device="phone"><div class="wrap"><p class="scene-kicker">Illustrated conversation · team-chat prototype</p><h2>Count the work that moves</h2><div class="scene-dialogue"><div class="scene-message " data-who="adeyemi"><span class="scene-avatar" aria-hidden="true"></span><div><b>Dr Adeyemi</b><p>About two hours go on records, forms and preparation.</p></div></div><div class="scene-message is-skill" data-who="skill"><span class="scene-avatar" aria-hidden="true"></span><div><b>Reason Commons</b><p>Twenty-six is possible only if that time becomes clinical time. Who would do the preparation, and what would they stop doing?</p></div></div><div class="scene-message " data-who="maria"><span class="scene-avatar" aria-hidden="true"></span><div><b>Maria</b><p>If it comes to reception, something else has to give.</p></div></div></div><div class="scene-record"><p class="record-heading">What stays in the working record</p><ul class="record-items"><li><span class="record-status">Prediction · proposed</span><span>Returning all two hours could allow twenty-six complete visits/day.</span></li><li><span class="record-status">Reservation · Maria</span><span>Preparation may overload reception; capacity has not been recovered yet.</span></li></ul></div><p class="scene-consequence">A projected gain and its possible cost stay together. The team still has to investigate both.</p></div></section>
 
 <!-- ================= THE LEAP, NAMED ================= -->
 <section class="flow"><div class="wrap">
   <p data-sm-beat="tidy" id="sm-tidy">Now, a clinic is a tidy example: five stations, one line, one direction. Almost no real work looks like that. There are loops and parallel paths and jobs that come back half-finished, and you cannot draw most organisations as a row of boxes.</p>
-  <p>The messiness changes the arithmetic. It does not change the property underneath it. In anything where the parts depend on each other, a very small number of places govern what the whole thing produces — and they are almost never where the noise is.</p>
+  <p>Loops and variable demand change the arithmetic. The useful question survives: which condition is currently limiting the result we care about? A visible queue is a clue, not an answer.</p>
 </div></section>
 
-<section class="flow"><div class="wrap">
-  <p>A parent getting older. There are a dozen things to worry about — the stairs, the medication, the driving, whether the money lasts — and you are working on all of them, badly, in the evenings, and getting nowhere. It feels like there is simply too much.</p>
-  <p>There isn't. There is one thing. The assessment that unlocks the funding that pays for the help, and it needs a referral nobody has requested, and until that happens every other thing you do gets undone by Wednesday.</p>
-  <p>It is not the biggest problem on the list. It is the stuck one. You can work extremely hard on a system for years without ever once touching the thing that governs it.</p>
-</div></section>
+
 
 <!-- ================= IT MOVES ================= -->
 <section class="scroll-item">
-  <div class="sticky-item"><div class="stage">
-    <svg viewBox="55 115 910 300" role="img" aria-label="As each station is improved, the constraint moves along the line and eventually outside the clinic.">
+  <noscript><figure class="static-diagram"><figcaption>Separate thought experiment · doctor capacity 50</figcaption><ol class="static-chain"><li>Follow-up 40 limits first</li><li>Raise follow-up above 45 → triage 45 limits next</li><li>Raise triage and follow-up above 50 → doctor and pharmacy share the 50 limit</li></ol></figure></noscript>
+<div class="sticky-item"><div class="stage">
+    <svg viewBox="55 115 910 300" role="img" aria-label="Hypothetical capacities: follow-up limits at forty, then triage at forty-five, then doctor and pharmacy jointly limit at fifty.">
       <g filter="url(#rough)"><g id="mboxes" stroke="var(--ink)" stroke-width="2.6" fill="none"></g></g>
       <g id="mnames" font-family="var(--sans)" font-size="11.5" text-anchor="middle" fill="var(--ink-soft)" letter-spacing="1.2"></g>
-      <g class="layer" data-layer="m4" id="hospital" filter="url(#rough)">
-        <rect x="820" y="180" width="130" height="110" fill="none" stroke="var(--mark)" stroke-width="3.5" stroke-dasharray="7 5"/>
-        <text x="885" y="310" text-anchor="middle" font-family="var(--sans)" font-size="11" fill="var(--mark)" letter-spacing="1.2">THE HOSPITAL</text>
-      </g>
+
     </svg>
   </div>
   <div class="steps">
     <div class="step tl" data-step="m1"><p>Fix the doctor and the clinic does not become fixed.</p></div>
-    <div class="step tl" data-step="m2"><p>Get her to fifty a day and follow-up booking, at forty, becomes the constraint.</p></div>
-    <div class="step tl" data-step="m3"><p>Fix that and it moves to pharmacy.</p></div>
-    <div class="step tl" data-step="m4"><p>Push far enough and the constraint has moved outside the walls, to the hospital that won't take referrals any faster.</p></div>
+    <div class="step tl" data-step="m2"><p>In a separate thought experiment, raise the doctor to fifty visits a day. Follow-up booking, at forty, limits output first.</p></div>
+    <div class="step tl" data-step="m3"><p>Raise follow-up above forty-five: triage, at forty-five, becomes the limit.</p></div>
+    <div class="step tl" data-step="m4"><p>Raise triage and follow-up above fifty too: the doctor and pharmacy now share the fifty-a-day limit.</p></div>
   </div></div>
   <div class="trigger" data-t="m1" id="sm-m1"></div><div class="trigger" data-t="m2" id="sm-m2"></div>
   <div class="trigger" data-t="m3" id="sm-m3"></div><div class="trigger" data-t="m4" id="sm-m4"></div>
 </section>
 
+<section class="practice-scene" id="check-the-next-limit" data-who="sam" data-device="desktop"><div class="wrap"><p class="scene-kicker">Illustrated conversation · AI assistant with the skill</p><h2>Catch the skipped station</h2><div class="scene-dialogue"><div class="scene-message " data-who="sam"><span class="scene-avatar" aria-hidden="true"></span><div><b>Sam</b><p>After follow-up, pharmacy becomes the next limit?</p></div></div><div class="scene-message is-skill" data-who="skill"><span class="scene-avatar" aria-hidden="true"></span><div><b>Reason Commons</b><p>Triage comes first: forty-five is below fifty. After triage and follow-up exceed fifty, the doctor and pharmacy share the limit.</p></div></div><div class="scene-message " data-who="sam"><span class="scene-avatar" aria-hidden="true"></span><div><b>Sam</b><p>Keep those capacities beside the conclusion so we can check it again.</p></div></div></div><div class="scene-record"><p class="record-heading">What stays in the working record</p><ul class="record-items"><li><span class="record-status">Correction · proposed</span><span>Follow-up 40 → triage 45 → shared doctor/pharmacy 50, as the other capacities are raised.</span></li></ul></div><p class="scene-consequence">The correction changes the next intervention. The separate execution record shows this published arithmetic error being checked for real.</p></div></section>
+
 <section class="flow"><div class="wrap">
-  <p>It is still a constraint. It just now needs an entirely different set of skills to attack.</p>
-  <p>Which is why this work never finishes, and why the most expensive sentence anyone in that clinic can say is <em>we solved that one</em>.</p>
+  <p>There can be a shared limit. Improve the clinic further and an external referral service might become limiting too; that would require new evidence.</p>
+  <p>After each improvement, check again. Yesterday’s constraint may no longer determine what helps today.</p>
 </div></section>
 
 <!-- ================= INVISIBLE RULES ================= -->
 <section class="flow"><div class="wrap">
   <p>All of this was easy. Five boxes, five numbers, find the smallest.</p>
-  <p>Real organisations do not hand you the numbers. And the constraint is usually not a person or a machine at all. It is a rule.</p>
+  <p>Real organisations do not hand you all the numbers. And a limiting condition may be a rule rather than a person or machine.</p>
 </div></section>
 
 <section class="scroll-item">
-  <div class="sticky-item"><div class="stage">
+  <noscript><figure class="static-diagram"><figcaption>Procedures accumulate like coral</figcaption><ol class="static-chain"><li>A rule may protect an important need</li><li>Its purpose and cost require investigation</li><li>Changing it may transfer work or remove a protection</li></ol></figure></noscript>
+<div class="sticky-item"><div class="stage">
     <svg viewBox="140 100 730 390" role="img" aria-label="Rules pinned to a noticeboard, layering into sediment and then into a coral reef.">
       <g class="layer on" data-layer="r1 r2 r3" id="notes"></g>
       <g class="layer" data-layer="r3" filter="url(#rough2)" id="reef" stroke="var(--ink-soft)" stroke-width="2" fill="none" opacity=".85"></g>
@@ -265,20 +273,22 @@
   </div>
   <div class="steps">
     <div class="step tr" data-step="r1"><p><em>Every prescription needs the doctor's countersignature. No appointment longer than ten minutes. Referrals are reviewed on Thursdays.</em></p></div>
-    <div class="step tr" data-step="r2"><p>Every one was introduced for a good reason, usually to solve a problem nobody now remembers.</p></div>
+    <div class="step tr" data-step="r2"><p>Each may protect something important. The team needs to understand that purpose before changing it.</p></div>
     <div class="step tr" data-step="r3"><p>Organisations accumulate procedures the way a reef accumulates coral — laid down in layers, each for a purpose, long after the purpose has gone.</p></div>
   </div></div>
   <div class="trigger" data-t="r1" id="sm-r1"></div><div class="trigger" data-t="r2" id="sm-r2"></div><div class="trigger" data-t="r3" id="sm-r3"></div>
 </section>
 
 <section class="flow"><div class="wrap">
-  <p>Breaking one is nearly free. A rule costs nothing to change, next to hiring a doctor. And it usually improves things more than any purchase would.</p>
-  <p>But you will not find it, because everybody experiences it as normal. A bottleneck machine announces itself: there is a pile of work in front of it. A bottleneck rule has no pile. It hides inside <em>that's just how it's done</em>, and it is defended, sincerely, by good people whose own numbers depend on it.</p>
+  <p>Changing a rule may cost less than adding staff. It can also transfer work, remove a protection or create another queue. Check those consequences before treating the change as a saving.</p>
+  <p>A rule can hide inside <em>that's just how it's done</em>, defended sincerely by people whose own work depends on it. The coral is easier to see than the reason each layer was laid down.</p>
 </div></section>
+
+<section class="practice-scene" id="protect-the-purpose" data-who="leila" data-device="phone"><div class="wrap"><p class="scene-kicker">Illustrated conversation · team-chat prototype</p><h2>Ask what the rule protects</h2><div class="scene-dialogue"><div class="scene-message " data-who="leila"><span class="scene-avatar" aria-hidden="true"></span><div><b>Leila</b><p>Every prescription needs the doctor’s countersignature.</p></div></div><div class="scene-message is-skill" data-who="skill"><span class="scene-avatar" aria-hidden="true"></span><div><b>Reason Commons</b><p>What is that rule meant to protect? A replacement has to preserve that need, as well as reduce interruptions.</p></div></div></div><div class="scene-record"><p class="record-heading">What stays in the working record</p><ul class="record-items"><li><span class="record-status">Open inquiry · Leila</span><span>Understand the countersignature rule’s purpose and cost before proposing a change.</span></li></ul></div><p class="scene-consequence">A rule becomes a question to investigate, rather than permission to discard a protection.</p></div></section>
 <!-- ================= THE GUESS ================= -->
 <section class="flow"><div class="wrap">
-  <p>So: find the constraint. Put nearly everything into it. Ignore, for now, almost everything else.</p>
-  <p>But the constraint is usually a rule. Rules are invisible. They look normal. They are defended in good faith by people who are not wrong to defend them.</p>
+  <p>The hiring decision is now more precise: test how to free useful doctor time before spending the one budget.</p>
+  <p>The team still has competing explanations for the lost time. The countersignature policy? Missing records? The appointment schedule?</p>
   <p>And they connect to the symptoms you can actually see through long chains of cause and effect that cross every boundary on the org chart.</p>
 </div></section>
 
@@ -287,23 +297,25 @@
 <section class="flow"><div class="wrap">
   <p>Ask five colleagues what the most limiting thing about your organisation is. You will get five confident, different answers.</p>
   <p>On what basis do you decide who is right? Seniority? Confidence? Volume?</p>
-  <p>Most organisations settle it with some blend of authority, anecdote and whoever tells the best story — which is to say they don't settle it.</p>
+  <p>A meeting can drift toward authority, anecdote or the most persuasive story. The clinic needs a better way to examine its alternatives.</p>
 </div></section>
 
-<section class="statement"><p>They guess.</p></section>
+<section class="statement"><p>They need to check the explanation.</p></section>
 
 <section class="flow"><div class="wrap">
   <p>Then they spend a year, a budget and a great deal of everyone's goodwill finding out whether the guess was right.</p>
-  <p>That is not a management problem. It is a thinking problem — which is a more hopeful thing to be, because thinking problems have techniques. This one has had a technique for forty years. Hardly anybody is taught it.</p>
+  <p>Goldratt’s Theory of Constraints and Dettmer’s Logical Thinking Process offer techniques for that examination. Reason Commons helps keep the claims, challenges and next checks available as people work through them.</p>
   <p>And so, somewhere in that building, someone is working through lunch on something that was never going to matter.</p>
 </div></section>
+
+<section class="practice-next"><div class="wrap"><p class="intro-label">Try one question of your own</p><h2>Keep the explanation, and the next check.</h2><p>Install the skill, open a working folder and start with one ordinary question.</p><p class="starter-prompt">Use the reason-commons skill to help me check why [this keeps happening]. My name is [name]. Keep the working state in reason-commons.yaml.</p><p>To resume, open the same folder and ask the skill to continue from reason-commons.yaml. Sharing between people needs an agreed setup.</p><div class="next-actions"><a href="../../skills/README.md">Install and start the skill →</a><a href="../skill-session/index.html">Inspect the actual execution record →</a></div><code class="install-line">npx skills add life-itself/reasoncommons -s reason-commons</code></div></section>
 
 <section class="sources" data-sm-beat="sources" id="sm-sources"><div class="wrap">
   <h2>Notes on sources</h2>
   <p>The argument comes from H. William Dettmer, <em>The Logical Thinking Process: A Systems Approach to Complex Problem Solving</em> (ASQ Quality Press, 2007), chapter 1, and behind it Eliyahu Goldratt's Theory of Constraints, set out in <em>The Goal</em> (1984). The chain-and-weakest-link argument, the claim that a system performing at its best cannot have all its parts performing at theirs, the five focusing steps (identify, exploit, subordinate, elevate, repeat), and the observation that most constraints are policies rather than physical things are all Dettmer's, from that chapter.</p>
-  <p>The Ashfield clinic is a composite and its numbers are illustrative, chosen so the arithmetic can be checked: five stations at 60, 45, 20, 50 and 40 patients a day; output is set by the smallest, and the next-tightest is 40. Dr Adeyemi's day is eight hours, six of them clinical, twenty patients — a shade under eighteen minutes each; returning the two administrative hours at the same rate gives twenty-six.</p>
+  <p>Ashfield is fictional. Its five serial capacities are 60, 45, 20, 50 and 40 visits/day, with illustrative demand of 60 attempts/day and 250 working days/year. Forty unsuccessful attempts × 250 gives 10,000 attempts, not unique people. Six clinical hours / twenty visits = eighteen minutes per visit; 480 / 18 = 26.67, or twenty-six complete visits if all two preparation hours can be recovered without another loss. Neither that recovery nor a fifty-visit doctor is an observed result. At hypothetical doctor capacity 50, follow-up 40 limits first, then triage 45; after both exceed 50, doctor and pharmacy jointly limit at 50. The simple model assumes the stated task capacities can be achieved together under the rota, and omits branching routes and variability.</p>
   <p>Dettmer's own worked example of a non-profit system is, as it happens, a hospital: people in, healthier people out. The coral-reef image is adapted from John Gardner, quoted in the same chapter.</p>
-  <p>The margin is an illustration, like the clinic: its people, times and messages are invented to show what the reason-commons skill does at each point in the story. The desktop is an AI assistant with the skill installed; the skill runs today in Claude Code, Codex and other agents that support skills. The phones show a team chat where the skill answers when someone invokes it, as Reason Commons’ prototype Discord bot does. It does not message anyone on its own: a notification is the chat telling someone about a reply in their channel. The skill records what each person says as proposed, marks reasoning accepted only when a named person accepts it, and keeps objections on the item they dispute.</p>
+  <p>The conversations are invented; no patient information is used. Desktop scenes illustrate the installed skill; phone scenes illustrate an explicitly invoked team-chat prototype. Proposed means not endorsed. Accepted for now names a person willing to work from the claim; it is neither proof nor group consensus. Reopening the same actual file preserves continuity; independent copies are not automatically shared.</p>
 </div></section>
 
 <section class="seriesnav"><div class="wrap">
@@ -311,10 +323,11 @@
     <span class="n">Next · part two, in practice</span>
     <span class="t">The Arrows Nobody Checks →</span>
   </a>
-  <a href="../01-bottleneck/index.html"><span class="n">This part without the margin</span><span class="t">The original edition</span></a>
+  <a href="../01-bottleneck/index.html"><span class="n">Original essay-only edition</span><span class="t">The original edition</span></a>
   <a href="../index.md"><span class="n">Series</span><span class="t">All three parts</span></a>
 </div></section>
 
+</main>
 <script src="../scroller.js"></script>
 <script>
 (window.rebuildExplainerArtwork = function(){
@@ -450,16 +463,6 @@
   var reefEls=[].slice.call(reef.children);
 
   if(PORTRAIT){
-    /* the hospital goes at the foot of the stack, not off to its right,
-       where it was dragging the whole drawing down to a third of its size */
-    var hosp=document.getElementById('hospital');
-    var hr=hosp.querySelector('rect'), hl=hosp.querySelector('text');
-    hr.setAttribute('x',40); hr.setAttribute('y',400);
-    hr.setAttribute('width',145); hr.setAttribute('height',48);
-    hl.setAttribute('x',215); hl.setAttribute('y',430);
-    hl.setAttribute('font-size',15);
-    hl.setAttribute('text-anchor','start');
-
     var dc=document.getElementById('dcount');
     dc.setAttribute('x',405); dc.setAttribute('y',430); dc.setAttribute('font-size',48);
     var dsub=dc.nextElementSibling;
@@ -471,6 +474,12 @@
   var out=document.getElementById('out');
   var hire=document.getElementById('hire');
   var mBoxEls=mboxes.querySelectorAll('[data-box]');
+  var mCapEls=[].map.call(mBoxEls,function(b){
+    var t=el('text',{x:Number(b.getAttribute('x'))+Number(b.getAttribute('width'))/2,
+      y:Number(b.getAttribute('y'))+Number(b.getAttribute('height'))/2+10,
+      'text-anchor':'middle','font-family':'var(--sans)','font-size':PORTRAIT?28:30,fill:'var(--ink)'});
+    t.textContent='—'; mboxes.appendChild(t); return t;
+  });
   var dcount=document.getElementById('dcount');
 
   window.onStep=function(id){
@@ -512,10 +521,12 @@
       dcount.setAttribute('fill', (id==='d4') ? 'var(--mark)' : 'var(--ink)');
     }
     /* the constraint migrating */
-    var mpos={m1:2,m2:4,m3:3,m4:-1};
+    var mpos={m1:[2],m2:[4],m3:[1],m4:[2,3]};
+    var mcaps={m1:[60,45,20,50,40],m2:[60,45,50,50,40],m3:[60,45,50,50,60],m4:[60,60,50,50,60]};
     if(id in mpos){
       for(var b2=0;b2<mBoxEls.length;b2++){
-        var on = (b2===mpos[id]);
+        var on = (mpos[id].indexOf(b2)!==-1);
+        mCapEls[b2].textContent=mcaps[id][b2];
         mBoxEls[b2].setAttribute('stroke', on?'var(--mark)':'var(--ink)');
         mBoxEls[b2].setAttribute('stroke-width', on?'4':'2.6');
       }
@@ -529,543 +540,7 @@
   };
 })();
 </script>
-<script>window.SKILL_MARGIN={
- "original": "../01-bottleneck/index.html",
- "channel": "#ashfield-flow",
- "devices": {
-  "sam": "Desktop, in the back office",
-  "maria": "Phone, on the front desk",
-  "adeyemi": "Phone, dictating between patients",
-  "tomasz": "Phone, moving between rooms",
-  "leila": "Phone, at the dispensary bench",
-  "skill": "In the assistant and the team chat"
- },
- "cover": {
-  "title": "In the margin: the same clinic, using the skill",
-  "text": "As you read, the people of the Ashfield clinic use the reason-commons skill at the point in the story where it makes a difference. Each scene plays when you reach it, on the device that person would actually use."
- },
- "scenes": [
-  {
-   "id": "investigate",
-   "who": "sam",
-   "device": "desktop",
-   "msgs": [
-    {
-     "from": "sam",
-     "text": "Everyone is busy, but forty people leave unseen. Help us work out what to change."
-    },
-    {
-     "from": "skill",
-     "text": "Separate what you observe from what you suspect. The shortfall is visible; “the front desk is the problem” is a claim to check.",
-     "type": "Next step"
-    },
-    {
-     "from": "sam",
-     "text": "We can hire one person. What if we put them on check-in?"
-    },
-    {
-     "from": "skill",
-     "text": "Check-in gets faster. The doctor can still see only twenty people a day.",
-     "type": "Answer"
-    },
-    {
-     "from": "sam",
-     "text": "And if we add someone at triage, pharmacy or follow-up?"
-    },
-    {
-     "from": "skill",
-     "text": "Those stations already have spare capacity. Of these five, the doctor’s room sets the clinic’s output.",
-     "type": "Answer"
-    },
-    {
-     "from": "skill",
-     "text": "Suggested by the skill, saved as proposed: hiring at check-in moves the wait indoors; it does not increase completed consultations.",
-     "type": "Capture result"
-    },
-    {
-     "from": "sam",
-     "text": "I accept for now that the doctor’s room limits how many people we see."
-    },
-    {
-     "from": "skill",
-     "text": "Accepted for now by Sam. That records Sam’s working position, not agreement from the whole team.",
-     "type": "Capture result"
-    }
-   ],
-   "time": "Monday afternoon",
-   "place": "Back office",
-   "notify": false,
-   "clock": "08:30"
-  },
-  {
-   "id": "doctor-day",
-   "who": "adeyemi",
-   "device": "phone",
-   "msgs": [
-    {
-     "from": "adeyemi",
-     "text": "Of eight hours, about six go on patients.",
-     "cmd": "capture",
-     "dictated": true
-    },
-    {
-     "from": "adeyemi",
-     "text": "The other two go on histories already taken, missing notes and printing forms.",
-     "cmd": "capture",
-     "dictated": true
-    },
-    {
-     "from": "skill",
-     "text": "Saved from Dr Adeyemi, as proposed.",
-     "type": "Capture result",
-     "nodes": [
-      {
-       "s": "Proposed",
-       "k": "Cause",
-       "t": "About two hours of the doctor’s day go on work that does not need a doctor."
-      }
-     ]
-    },
-    {
-     "from": "skill",
-     "text": "Try returning that time first. At the same rate, eight clinical hours would allow about twenty-six consultations.",
-     "type": "Next step"
-    }
-   ],
-   "time": "Tuesday",
-   "place": "Consulting room",
-   "notify": false,
-   "clock": "08:30"
-  },
-  {
-   "id": "reception",
-   "who": "maria",
-   "device": "phone",
-   "msgs": [
-    {
-     "from": "sam",
-     "text": "The aim is to keep the doctor supplied with patients, rather than clear check-in as fast as possible."
-    },
-    {
-     "from": "maria",
-     "text": "Patients will think we are slower. The complaints will still come to the desk.",
-     "cmd": "capture"
-    },
-    {
-     "from": "skill",
-     "text": "Saved Maria’s concern as a proposed side effect. Who will explain the wait to patients?",
-     "type": "Capture result"
-    }
-   ],
-   "time": "Wednesday morning",
-   "place": "Front desk",
-   "notify": true,
-   "clock": "08:02"
-  },
-  {
-   "id": "moves",
-   "who": "sam",
-   "device": "desktop",
-   "msgs": [
-    {
-     "from": "sam",
-     "text": "If we improve the doctor’s capacity, are we finished?"
-    },
-    {
-     "from": "skill",
-     "text": "No. Past forty a day, follow-up booking would set the number. The constraint would have moved.",
-     "type": "Answer"
-    },
-    {
-     "from": "sam",
-     "text": "Then pharmacy, and eventually the hospital?"
-    },
-    {
-     "from": "skill",
-     "text": "Added a review question to the backlog: re-check the limiting station after each improvement.",
-     "type": "Capture result"
-    }
-   ],
-   "time": "Reviewing the model",
-   "place": "Back office",
-   "notify": false,
-   "clock": "08:30"
-  },
-  {
-   "id": "rules",
-   "who": "leila",
-   "device": "phone",
-   "msgs": [
-    {
-     "from": "leila",
-     "text": "Every prescription needs the doctor’s countersignature.",
-     "cmd": "capture"
-    },
-    {
-     "from": "skill",
-     "text": "Saved from Leila as proposed. Before replacing the rule, find out what it was meant to protect.",
-     "type": "Capture result"
-    }
-   ],
-   "time": "The next question",
-   "place": "Dispensary",
-   "notify": false,
-   "clock": "08:30"
-  }
- ],
- "close": {
-  "title": "That was the reason-commons skill",
-  "text": "The skill keeps what people say, who agrees, what is disputed and what is worth checking next. Use it in an AI assistant that supports skills.",
-  "install": "npx skills add life-itself/reasoncommons -s reason-commons",
-  "links": [
-   {
-    "href": "../../skills/README.md",
-    "text": "How to install and start the skill →"
-   },
-   {
-    "href": "../02-thinking-made-visible-in-practice/index.html",
-    "text": "Part two, in practice: The Arrows Nobody Checks →"
-   },
-   {
-    "href": "../01-bottleneck/index.html",
-    "text": "Read this part without the margin"
-   }
-  ],
-  "fine": "The people and messages are illustrative, like the clinic. The team chat on the phones is a prototype: the skill answers there only when someone invokes it with /reason."
- },
- "beats": [
-  {
-   "mode": "cast",
-   "chapter": "1 · Meet the clinic",
-   "title": "The people behind the queue",
-   "focus": [],
-   "text": "Five people work here. First, follow what each station can do. The team will bring in Reason Commons when it has a question to investigate.",
-   "step": "c1"
-  },
-  {
-   "mode": "cast",
-   "chapter": "1 · Meet the clinic",
-   "title": "The people behind the queue",
-   "focus": [],
-   "text": "Five people work here. First, follow what each station can do. The team will bring in Reason Commons when it has a question to investigate.",
-   "step": "c2"
-  },
-  {
-   "mode": "cast",
-   "chapter": "1 · Meet the clinic",
-   "title": "The people behind the queue",
-   "focus": [
-    "maria"
-   ],
-   "text": "Five people work here. First, follow what each station can do. The team will bring in Reason Commons when it has a question to investigate.",
-   "step": "c3"
-  },
-  {
-   "mode": "cast",
-   "chapter": "1 · Meet the clinic",
-   "title": "The people behind the queue",
-   "focus": [],
-   "text": "Five people work here. First, follow what each station can do. The team will bring in Reason Commons when it has a question to investigate.",
-   "step": "c4"
-  },
-  {
-   "mode": "cast",
-   "chapter": "1 · Meet the clinic",
-   "title": "Maria at the front desk",
-   "focus": [
-    "maria"
-   ],
-   "text": "Maria handles check-in and follow-up booking. Patients see the queue at Maria’s window.",
-   "at": "maria"
-  },
-  {
-   "mode": "cast",
-   "chapter": "1 · Meet the clinic",
-   "title": "The five stations",
-   "focus": [],
-   "capacities": 0,
-   "text": "Five stations, in order. Each has a limit.",
-   "step": "s1"
-  },
-  {
-   "mode": "cast",
-   "chapter": "1 · Meet the clinic",
-   "title": "The five stations",
-   "focus": [
-    "maria"
-   ],
-   "capacities": 1,
-   "text": "Maria’s check-in station can handle sixty people a day.",
-   "step": "s2"
-  },
-  {
-   "mode": "cast",
-   "chapter": "1 · Meet the clinic",
-   "title": "The five stations",
-   "focus": [
-    "tomasz"
-   ],
-   "capacities": 2,
-   "text": "Tomasz’s triage station can handle forty-five.",
-   "step": "s3"
-  },
-  {
-   "mode": "cast",
-   "chapter": "1 · Meet the clinic",
-   "title": "The five stations",
-   "focus": [
-    "adeyemi"
-   ],
-   "capacities": 3,
-   "text": "Dr Adeyemi’s room can see twenty.",
-   "step": "s4"
-  },
-  {
-   "mode": "cast",
-   "chapter": "1 · Meet the clinic",
-   "title": "The five stations",
-   "focus": [
-    "leila",
-    "maria"
-   ],
-   "capacities": 5,
-   "text": "Leila’s pharmacy can handle fifty. Maria’s follow-up booking can handle forty.",
-   "step": "s5"
-  },
-  {
-   "mode": "cast",
-   "chapter": "1 · Meet the clinic",
-   "title": "The five stations",
-   "focus": [
-    "adeyemi"
-   ],
-   "capacities": 5,
-   "text": "Every other station has at least twice the doctor’s capacity.",
-   "step": "s6"
-  },
-  {
-   "mode": "cast",
-   "chapter": "1 · Meet the clinic",
-   "title": "The five stations",
-   "focus": [
-    "adeyemi"
-   ],
-   "capacities": 5,
-   "text": "The clinic sees twenty people a day.",
-   "step": "s7"
-  },
-  {
-   "mode": "cast",
-   "chapter": "1 · Meet the clinic",
-   "title": "The five stations",
-   "focus": [
-    "adeyemi"
-   ],
-   "capacities": 5,
-   "text": "The comparison is now visible. The team has not yet chosen a change.",
-   "step": "s8"
-  },
-  {
-   "mode": "intro",
-   "chapter": "2 · Ask for help",
-   "title": "Why bring in the skill?",
-   "focus": [
-    "skill"
-   ],
-   "text": "Forty people leave unseen. Sam brings in Reason Commons to help the team examine its explanation before choosing what to change.",
-   "at": "shortfall"
-  },
-  {
-   "mode": "chat",
-   "chapter": "2 · Ask for help",
-   "title": "Start with the problem",
-   "scene": "investigate",
-   "count": 1,
-   "at": "patient"
-  },
-  {
-   "mode": "chat",
-   "chapter": "2 · Ask for help",
-   "title": "Observation or explanation?",
-   "scene": "investigate",
-   "count": 2,
-   "at": "annual"
-  },
-  {
-   "mode": "chat",
-   "chapter": "3 · Compare a change",
-   "title": "Try the hire on paper",
-   "scene": "investigate",
-   "count": 3,
-   "step": "h1"
-  },
-  {
-   "mode": "chat",
-   "chapter": "3 · Compare a change",
-   "title": "Try the hire on paper",
-   "scene": "investigate",
-   "count": 4,
-   "step": "h2"
-  },
-  {
-   "mode": "chat",
-   "chapter": "3 · Compare a change",
-   "title": "Try the hire on paper",
-   "scene": "investigate",
-   "count": 5,
-   "step": "h3"
-  },
-  {
-   "mode": "chat",
-   "chapter": "3 · Compare a change",
-   "title": "Try the hire on paper",
-   "scene": "investigate",
-   "count": 6,
-   "step": "h4"
-  },
-  {
-   "mode": "chat",
-   "chapter": "3 · Compare a change",
-   "title": "Try the hire on paper",
-   "scene": "investigate",
-   "count": 7,
-   "step": "h5"
-  },
-  {
-   "mode": "chat",
-   "chapter": "3 · Compare a change",
-   "title": "A working answer",
-   "scene": "investigate",
-   "count": 8,
-   "at": "blame"
-  },
-  {
-   "mode": "chat",
-   "chapter": "3 · Compare a change",
-   "title": "Who has agreed?",
-   "scene": "investigate",
-   "count": 9,
-   "at": "constraint"
-  },
-  {
-   "mode": "chat",
-   "chapter": "4 · Protect the constraint",
-   "title": "Look at the doctor’s day",
-   "scene": "doctor-day",
-   "count": 1,
-   "step": "d1"
-  },
-  {
-   "mode": "chat",
-   "chapter": "4 · Protect the constraint",
-   "title": "Look at the doctor’s day",
-   "scene": "doctor-day",
-   "count": 2,
-   "step": "d2"
-  },
-  {
-   "mode": "chat",
-   "chapter": "4 · Protect the constraint",
-   "title": "Look at the doctor’s day",
-   "scene": "doctor-day",
-   "count": 3,
-   "step": "d3"
-  },
-  {
-   "mode": "chat",
-   "chapter": "4 · Protect the constraint",
-   "title": "Look at the doctor’s day",
-   "scene": "doctor-day",
-   "count": 4,
-   "step": "d4"
-  },
-  {
-   "mode": "chat",
-   "chapter": "4 · Protect the constraint",
-   "title": "A change reaches the desk",
-   "scene": "reception",
-   "count": 1,
-   "at": "reception"
-  },
-  {
-   "mode": "chat",
-   "chapter": "4 · Protect the constraint",
-   "title": "Hear the affected person",
-   "scene": "reception",
-   "count": 2,
-   "at": "spend"
-  },
-  {
-   "mode": "chat",
-   "chapter": "4 · Protect the constraint",
-   "title": "Keep the concern on record",
-   "scene": "reception",
-   "count": 3,
-   "at": "tidy"
-  },
-  {
-   "mode": "chat",
-   "chapter": "5 · Keep checking",
-   "title": "The constraint can move",
-   "scene": "moves",
-   "count": 1,
-   "step": "m1"
-  },
-  {
-   "mode": "chat",
-   "chapter": "5 · Keep checking",
-   "title": "The constraint can move",
-   "scene": "moves",
-   "count": 2,
-   "step": "m2"
-  },
-  {
-   "mode": "chat",
-   "chapter": "5 · Keep checking",
-   "title": "The constraint can move",
-   "scene": "moves",
-   "count": 3,
-   "step": "m3"
-  },
-  {
-   "mode": "chat",
-   "chapter": "5 · Keep checking",
-   "title": "The constraint can move",
-   "scene": "moves",
-   "count": 4,
-   "step": "m4"
-  },
-  {
-   "mode": "chat",
-   "chapter": "6 · Question the rules",
-   "title": "A rule becomes visible",
-   "scene": "rules",
-   "count": 1,
-   "step": "r1"
-  },
-  {
-   "mode": "chat",
-   "chapter": "6 · Question the rules",
-   "title": "What was it protecting?",
-   "scene": "rules",
-   "count": 2,
-   "step": "r2"
-  },
-  {
-   "mode": "close",
-   "chapter": "Try it on your work",
-   "title": "That was Reason Commons",
-   "at": "sources"
-  }
- ],
- "opening": {
-  "mode": "cast",
-  "chapter": "Meet the clinic",
-  "title": "The people behind the story",
-  "focus": [],
-  "text": "Follow the people first. The team will bring in Reason Commons when it has a question to investigate."
- }
-};</script>
+
 <script src="../skill-margin.js"></script>
 </body>
 </html>

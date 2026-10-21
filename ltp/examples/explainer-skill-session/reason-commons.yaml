@@ -1,0 +1,59 @@
+schema_version: 1
+project: Checking the published moving-constraint illustration
+driver: david
+participants:
+  david: David Joseph
+active_tree: current_reality
+trees:
+  current_reality:
+    nodes:
+    - id: r-model-capacities
+      kind: observation
+      text: In the separate thought experiment, check-in is 60, triage 45, doctor 50, pharmacy 50 and improved follow-up 60 visits per day; these capacities are assumed achievable together.
+      label: The hypothetical capacities after follow-up improves are 60, 45, 50, 50 and 60.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+        note: Public fictional model; follow-up is set to 60 to make the thought experiment explicit. These are not clinic measurements.
+    - id: r-next-limit
+      kind: cause
+      text: With these hypothetical capacities, triage is the next limiting station at 45 visits per day. Pharmacy and the doctor each have capacity 50.
+      label: In this hypothetical model, triage limits output next at 45 visits per day.
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+        note: Captured the assertion in the published illustration for examination; not an endorsement.
+      - by: assistant
+        attribution: assistant
+        mode: text
+        note: 'Revised the same stable item after checking every capacity. Original wording: After follow-up is improved, pharmacy is the next limiting station. The original wording and all stages are retained in session.json.'
+    links:
+    - id: r-model-supports-next
+      from:
+      - r-model-capacities
+      to: r-next-limit
+      relation: supports
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
+        note: The source implies this inference from its model. It has not been checked.
+      - by: assistant
+        attribution: assistant
+        mode: text
+        note: The link now points to the revised conclusion. The retained challenge describes the original pharmacy assertion, resolved by this arithmetic check. Neither endpoint nor link has human endorsement.
+      challenges:
+      - by: assistant
+        text: Triage capacity 45 is below pharmacy capacity 50. The source skips triage when it names the next limiting station.
+    backlog:
+    - ref: r-next-limit
+      work: human_review
+      label: Review the corrected hypothetical inference; no human has endorsed it.
+    - ref: r-model-capacities
+      work: recheck_after_next_improvement
+      label: Recheck capacities after another improvement; shared limits may emerge.

@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Five Shapes · in practice</title>
-<meta name="description" content="Five Shapes, with the clinic’s people using the reason-commons skill in the margin as the story unfolds.">
+<meta name="description" content="Five questions turn a clinic hypothesis into a bounded test, with its workload, mixed result and unfinished reasoning still visible.">
 <link rel="stylesheet" href="../scroller.css">
 <link rel="stylesheet" href="../skill-margin.css">
 </head>
-<body>
+<body class="in-practice"><a class="skip-story" href="#main-story">Skip to story</a>
 <noscript>
 <style>
-.scroll-item{padding:2rem 1.25rem}.sticky-item{position:static;height:auto;margin:0;overflow:visible}.stage{display:none}.steps{position:static;max-width:37rem;margin:auto}.step,.step.mid,.step.lead,.step.tl,.step.tr,.step.bl,.step.br{position:static;opacity:1;transform:none;max-width:none;font-size:1.15rem;text-align:left;margin:0 0 1rem}.step p{background:none;padding:0}.trigger,.scrollcue{display:none}
+.scroll-item{padding:2rem 1.25rem}.sticky-item{position:static;height:auto;margin:0;overflow:visible}.stage{display:none}.steps{position:static;max-width:37rem;margin:auto}.step,.step.mid,.step.lead,.step.tl,.step.tr,.step.bl,.step.br{position:static;opacity:1;transform:none;max-width:none;font-size:1.15rem;text-align:left;margin:0 0 1rem}.step p{background:none;padding:0}.trigger,.scrollcue{display:none}.in-practice .step:not(.on){visibility:visible}.in-practice .statement,.in-practice .hero{min-height:0;padding:2rem 1.25rem}.in-practice .flow{padding:2rem 1.25rem}
 </style>
-<p style="padding:1rem;max-width:37rem;margin:auto">The illustrated skill conversation needs JavaScript. The complete story remains readable below.</p>
+<p style="padding:1rem;max-width:37rem;margin:auto">Animations are off. The complete story, conversations and saved reasoning remain readable below.</p>
 </noscript>
 
 <nav class="topnav">
@@ -43,6 +43,7 @@
   </marker>
 </defs></svg>
 
+<main id="main-story">
 <!-- ================= HERO ================= -->
 <section class="hero" data-sm-beat="hero" id="sm-hero">
   <div class="wrap">
@@ -50,19 +51,22 @@
     <h1 class="title">Five Shapes</h1>
     <p class="dek">Five questions any real change has to answer — and why they need differently shaped answers.</p>
     <p class="note">A scrolling piece: the drawings build as you read. It finishes the clinic begun in <a href="../01-bottleneck-in-practice/index.html">The Wrong Queue</a> and <a href="../02-thinking-made-visible-in-practice/index.html">The Arrows Nobody Checks</a>, which is where the map it starts from comes from.</p>
-    <p class="note">This edition adds a margin: the clinic’s people using the reason-commons skill at each point in the story. <a href="../03-five-shapes/index.html">Read it without the margin</a>.</p>
+    <p class="note">Illustrated skill conversations accompany the story. <a href="../03-five-shapes/index.html">Original essay-only edition</a>.</p>
   </div>
 </section>
 
+<section class="practice-intro"><div class="wrap"><p class="intro-label">The method, with the skill in use</p><p><strong>Reason Commons helps an AI assistant keep a reasoning map:</strong> claims, authors, objections and the next check. A “skill” is an installed package of instructions and tools for the assistant.</p><p class="intro-disclosure">Ashfield and these conversations are invented. <a href="../skill-session/index.html">Inspect a real execution record from this revision</a>, including its saved state and limits.</p><p class="intro-disclosure">Sam manages; Maria runs reception and follow-up; Tomasz triages; Dr Adeyemi consults; Leila runs the pharmacy. This fictional team discusses operational flow.</p></div></section>
+
 <section class="flow"><div class="wrap">
-  <p>The clinic now has something it didn't have: a map of why it is stuck, that five people built and none of them could break.</p>
-  <p>It says the ten-minute appointment rule is doing most of the damage. Ten minutes was introduced to see more people. It means histories get re-taken, notes go unwritten, and a third of patients return with the same complaint — consuming the very appointments the rule was created to protect.</p>
+  <p>The clinic has a shared map with one revised claim and several live explanations. The later budget cut did not create the earlier queue. Its present effect remains open.</p>
+  <p>The team has found overruns on days without pharmacy interruptions, and searching when records are missing. Ten minutes is the booked slot; eighteen is the observed average consultation. Preparation might explain part of that gap. They will test it before changing the schedule or committing the hiring budget.</p>
   <p data-sm-beat="now" id="sm-now">Good. Now what?</p>
   <p>Because <em>why are we stuck</em> is only one of the questions you need answered, and it isn't even the first one.</p>
 </div></section>
 <!-- ============ 1 · THE GOAL ============ -->
 <section class="scroll-item">
-  <div class="sticky-item"><div class="stage">
+  <noscript><figure class="static-diagram"><figcaption>Working goal · accepted for now by Sam</figcaption><ol class="static-chain"><li>Access to good care, fewer avoidable repeat visits</li><li>Necessary conditions: access, good consultations, sustainable workload</li></ol></figure></noscript>
+<div class="sticky-item"><div class="stage">
     <svg viewBox="120 80 760 400" role="img" aria-label="A goal at the top of a hierarchy, resting on the few conditions that are non-negotiable for reaching it.">
       <g class="layer" data-layer="g2 g3" id="goaltree"></g>
       <g class="layer" data-layer="g3" id="goalclash"></g>
@@ -70,11 +74,13 @@
   </div>
   <div class="steps">
     <div class="step tl" data-step="g1"><p><strong>What should be happening?</strong> Not what's wrong. What does success actually look like — and what has to be true for it to be possible at all?</p></div>
-    <div class="step tl" data-step="g2"><p>Pushed hard, the clinic wrote: <em>every person in this catchment who needs to be seen is seen, and does not need to come back for the same thing.</em></p></div>
-    <div class="step tl" data-step="g3"><p>Read it again. It rules out seeing more people faster if they return. It says the ten-minute rule is not a policy but a <em>bet</em> — and one the clinic had never checked.</p></div>
+    <div class="step tl" data-step="g2"><p>Tomasz proposes: <em>people who need care can get it, with good consultations and fewer avoidable repeat visits.</em></p></div>
+    <div class="step tl" data-step="g3"><p>Counting appointments alone will not tell them whether they succeeded. They must also check quality, avoidable repeat work and the burden on staff.</p></div>
   </div></div>
   <div class="trigger" data-t="g1" id="sm-g1"></div><div class="trigger" data-t="g2" id="sm-g2"></div><div class="trigger" data-t="g3" id="sm-g3"></div>
 </section>
+
+<section class="practice-scene" id="judge-the-goal" data-who="sam" data-device="desktop"><div class="wrap"><p class="scene-kicker">Illustrated conversation · AI assistant with the skill</p><h2>Use the goal to judge the change</h2><div class="scene-dialogue"><div class="scene-message " data-who="sam"><span class="scene-avatar" aria-hidden="true"></span><div><b>Sam</b><p>Can we judge this by the number of completed appointments?</p></div></div><div class="scene-message is-skill" data-who="skill"><span class="scene-avatar" aria-hidden="true"></span><div><b>Reason Commons</b><p>That could miss avoidable returns or displaced work. What outcome would you accept for the clinic?</p></div></div><div class="scene-message " data-who="tomasz"><span class="scene-avatar" aria-hidden="true"></span><div><b>Tomasz</b><p>People who need care can get it, with good consultations and fewer avoidable repeat visits.</p></div></div><div class="scene-message " data-who="sam"><span class="scene-avatar" aria-hidden="true"></span><div><b>Sam</b><p>I accept that as our working goal for this trial.</p></div></div></div><div class="scene-record"><p class="record-heading">What stays in the working record</p><ul class="record-items"><li><span class="record-status">Accepted for now · Sam</span><span>People who need care can get it, with good consultations and fewer avoidable repeat visits.</span></li><li><span class="record-status">Still to check</span><span>Quality, staff burden and necessary follow-up are not captured by the appointment count alone.</span></li></ul></div><p class="scene-consequence">The skill selects a goal question because the team needs a criterion for judging changes.</p></div></section>
 
 <section class="flow"><div class="wrap">
   <p data-sm-beat="sentence" id="sm-sentence">Until that sentence exists, "the problem" is whatever irritates whoever is talking. Everyone measures the place against a private, unstated idea of what it should be, and then argues about the gap.</p>
@@ -84,35 +90,37 @@
 
 <!-- ============ 2 · WHY NOT ============ -->
 <section class="scroll-item">
-  <div class="sticky-item"><div class="stage">
-    <svg viewBox="120 70 760 420" role="img" aria-label="Four symptoms converging backwards onto two root causes.">
+  <noscript><figure class="static-diagram"><figcaption>Candidate causes · unresolved</figcaption><ol class="static-chain"><li>Missing preparation may contribute to waits, exhaustion and avoidable repeat work</li><li>Hospital capacity may limit referrals; that is a separate open question</li></ol></figure></noscript>
+<div class="sticky-item"><div class="stage">
+    <svg viewBox="120 70 760 420" role="img" aria-label="Candidate causes may contribute to several symptoms; dashed arrows are hypotheses, and hospital capacity remains a separate open question.">
       <g id="ude"></g>
       <g class="layer" data-layer="u2 u3" id="udearrows"></g>
       <g class="layer" data-layer="u3" id="roots"></g>
     </svg>
   </div>
   <div class="steps">
-    <div class="step br" data-step="u1"><p><strong>Why isn't it happening?</strong> Waits too long. Staff exhausted. Same patients returning. Referrals late.</p></div>
+    <div class="step br" data-step="u1"><p><strong>Why isn't it happening?</strong> Waits too long. Staff exhausted. Avoidable repeat work. Referrals late.</p></div>
     <div class="step br" data-step="u2"><p>The instinct is to fix these one by one, and that instinct is the trap.</p></div>
-    <div class="step br" data-step="u3"><p>They aren't four problems. They are four fingerprints — and if you treat the fingerprints you will be back here in a year with the same four.</p></div>
+    <div class="step br" data-step="u3"><p>They may share causes. Or some may need different changes. The map makes those possibilities explicit instead of assuming one answer.</p></div>
   </div></div>
   <div class="trigger" data-t="u1" id="sm-u1"></div><div class="trigger" data-t="u2" id="sm-u2"></div><div class="trigger" data-t="u3" id="sm-u3"></div>
 </section>
 
 <section class="flow"><div class="wrap">
-  <p>So you work backwards instead. What would have to be true for waits to be this long? And for <em>that</em>? Keep going, and the symptoms start converging on a much smaller number of causes — often one or two, sitting somewhere nobody was looking.</p>
-  <p>If a dozen complaints trace back to two causes, then most of what is wrong is fixable with two changes rather than a dozen. The tangle was never as big as it looked.</p>
+  <p>Work backwards from each symptom: what could produce it, and what would support that connection? Look for shared causes while keeping alternatives available.</p>
+  <p>Here the missing-record explanation could account for some overruns and duplicate work. The hospital referral queue may have a different cause. Neither connection becomes true merely because it fits on the map.</p>
 </div></section>
 
 <!-- ============ 3 · THE CONFLICT ============ -->
 <section class="flow"><div class="wrap">
   <p><strong>So why hasn't somebody already fixed it?</strong></p>
-  <p>The ten-minute rule has been unpopular for years. Everyone can see the damage. Nobody has changed it. When a problem is well known, obviously harmful and <em>still there</em>, that is information. Something is holding it in place.</p>
+  <p>The ten-minute schedule protects the number of available appointments. Dr Adeyemi wants time for good consultations. Changing it could help one aim while harming another.</p>
   <p>Usually a conflict. Not a personality clash — a structural one, where the thing hurting you is protecting something else you also need.</p>
 </div></section>
 
 <section class="scroll-item">
-  <div class="sticky-item"><div class="stage">
+  <noscript><figure class="static-diagram"><figcaption>A conflict with two legitimate needs</figcaption><ol class="static-chain"><li>Access to care ← shorter scheduled slots</li><li>Good consultations ← longer slots</li><li>Question the assumption: can preparation preserve both needs?</li></ol></figure></noscript>
+<div class="sticky-item"><div class="stage">
     <svg viewBox="60 90 880 340" role="img" aria-label="A conflict diagram: one objective, two real requirements, two opposed actions, and the assumption holding them apart.">
       <g id="cloud"></g>
       <g class="layer" data-layer="v3 v4" id="assume"></g>
@@ -120,32 +128,35 @@
     </svg>
   </div>
   <div class="steps">
-    <div class="step bl" data-step="v1"><p>The clinic needs to see enough people to serve its catchment. It also needs each consultation to be good enough that people don't come back.</p></div>
-    <div class="step bl" data-step="v2"><p>Ten-minute slots serve the first. Longer slots serve the second. Both requirements are real. Both actions are reasonable. They point in opposite directions, and so nothing moves.</p></div>
+    <div class="step bl" data-step="v1"><p>The clinic needs access to care and consultations that hold up. Necessary follow-up remains part of good care.</p></div>
+    <div class="step bl" data-step="v2"><p>Sam favors keeping short slots for access. Dr Adeyemi favors longer slots for quality. Both needs deserve to survive the discussion.</p></div>
     <div class="step bl" data-step="v3"><p>You do not pick a side. You ask what would have to be true for these two to be genuinely opposed — and you write those assumptions down.</p></div>
-    <div class="step bl" data-step="v4"><p><em>Consultation length is the only lever on quality.</em> Is that true? Or does a consultation overrun because the history was taken twice and the notes weren't there?</p></div>
+    <div class="step bl" data-step="v4"><p>Must better consultations always mean longer slots? Preparing existing information might remove avoidable searching and duplicate history-taking. It will not remove the examination or the doctor’s clinical notes.</p></div>
   </div></div>
   <div class="trigger" data-t="v1" id="sm-v1"></div><div class="trigger" data-t="v2" id="sm-v2"></div>
   <div class="trigger" data-t="v3" id="sm-v3"></div><div class="trigger" data-t="v4" id="sm-v4"></div>
 </section>
 
-<section class="statement sm"><p data-sm-beat="cloud" id="sm-cloud">Break one assumption and the conflict doesn't get resolved. It stops existing.</p></section>
+<section class="statement sm"><p data-sm-beat="cloud" id="sm-cloud">Challenge the assumption, and another option may become possible.</p></section>
+
+<section class="practice-scene" id="open-another-option" data-who="adeyemi" data-device="phone"><div class="wrap"><p class="scene-kicker">Illustrated conversation · team-chat prototype</p><h2>Keep both needs in the picture</h2><div class="scene-dialogue"><div class="scene-message " data-who="adeyemi"><span class="scene-avatar" aria-hidden="true"></span><div><b>Dr Adeyemi</b><p>Longer appointments might protect quality, but reduce access.</p></div></div><div class="scene-message is-skill" data-who="skill"><span class="scene-avatar" aria-hidden="true"></span><div><b>Reason Commons</b><p>Which assumption makes the two needs oppose each other? Could preparation remove wasted time without shortening the clinical work?</p></div></div><div class="scene-message " data-who="adeyemi"><span class="scene-avatar" aria-hidden="true"></span><div><b>Dr Adeyemi</b><p>It might. We should test that before assuming every consultation can fit ten minutes.</p></div></div></div><div class="scene-record"><p class="record-heading">What stays in the working record</p><ul class="record-items"><li><span class="record-status">Assumption challenged</span><span>More scheduled minutes are the only way to improve consultations.</span></li><li><span class="record-status">Alternative · proposed</span><span>Prepare existing information; preserve clinical judgment and test the consequences.</span></li></ul></div><p class="scene-consequence">The challenged assumption stays beside the alternative the team will test.</p></div></section>
 <section class="flow"><div class="wrap">
-  <p>Which is why Goldratt called this one an evaporating cloud.</p>
+  <p>Goldratt called this way of examining a conflict an evaporating cloud. Finding an alternative is a start; the team must still test whether it meets both needs.</p>
 </div></section>
 
 <!-- ============ 4 · WILL IT WORK ============ -->
 <section class="scroll-item">
-  <div class="sticky-item"><div class="stage">
-    <svg viewBox="120 90 760 380" role="img" aria-label="The proposed fix walked forwards step by step, and the side effect it produces.">
+  <noscript><figure class="static-diagram"><figcaption>Predictions to test</figcaption><ol class="static-chain"><li>Existing information ready before clinic</li><li>Less avoidable searching may be needed</li><li>Some overruns may reduce</li><li>More time for new clinical notes may be available</li><li>Cost: preparation and reception cover</li></ol></figure></noscript>
+<div class="sticky-item"><div class="stage">
+    <svg viewBox="120 90 760 380" role="img" aria-label="Conditional prediction: prepared information may reduce searching and some overruns, with preparation work and its cost retained.">
       <g id="frt"></g>
       <g class="layer" data-layer="f4" id="side"></g>
     </svg>
   </div>
   <div class="steps">
-    <div class="step br" data-step="f1"><p><strong>Will it actually work?</strong> You have an idea: fix the notes, leave the ten minutes alone.</p></div>
-    <div class="step br" data-step="f2"><p>If the notes are ready, the history isn't re-taken. If the history isn't re-taken, the consultation fits.</p></div>
-    <div class="step br" data-step="f3"><p>If it fits, Dr Adeyemi isn't writing up at seven — so tomorrow's notes are ready too. The thing compounds.</p></div>
+    <div class="step br" data-step="f1"><p><strong>Will it actually work?</strong> Try preparing existing records before clinic, while leaving the schedule unchanged for a bounded trial.</p></div>
+    <div class="step br" data-step="f2"><p>Ready information could reduce searching and avoidable repetition. That might reduce some overruns; it does not guarantee a ten-minute consultation.</p></div>
+    <div class="step br" data-step="f3"><p>Less overrun might leave more time for the doctor’s new clinical notes. Each arrow is a prediction, with other causes still possible.</p></div>
     <div class="step br" data-step="f4"><p>Then the question people skip because they don't want the answer: <strong>what else does it do?</strong></p></div>
   </div></div>
   <div class="trigger" data-t="f1" id="sm-f1"></div><div class="trigger" data-t="f2" id="sm-f2"></div>
@@ -153,10 +164,12 @@
 </section>
 
 <section class="flow"><div class="wrap">
-  <p data-sm-beat="forty" id="sm-forty">Ready notes mean someone has to prepare them. That is forty minutes of somebody's morning, and the obvious somebody is Maria, who has no forty minutes.</p>
-<p data-sm-beat="find" id="sm-find">Find that now, while it is hypothetical and costs nothing, rather than in March when it quietly kills the whole thing.</p>
-  <p>Quite a lot of good ideas die right here instead, on paper, for free.</p>
+  <p data-sm-beat="forty" id="sm-forty">Maria estimates forty minutes each morning to locate and prepare the existing records. She cannot absorb that on top of reception. The trial needs covered time, and someone must count its cost.</p>
+<p data-sm-beat="find" id="sm-find">Finding the cost before committing the hire lets them change the plan while it is still small.</p>
+  <p>A better plan preserves the useful prediction without quietly transferring the problem to Maria.</p>
 </div></section>
+
+<section class="practice-scene" id="plan-the-check" data-who="maria" data-device="phone"><div class="wrap"><p class="scene-kicker">Illustrated conversation · team-chat prototype</p><h2>Write the test before its result</h2><div class="scene-dialogue"><div class="scene-message " data-who="maria"><span class="scene-avatar" aria-hidden="true"></span><div><b>Maria</b><p>I estimate forty preparation minutes. Reception cannot lose that time without cover.</p></div></div><div class="scene-message is-skill" data-who="skill"><span class="scene-avatar" aria-hidden="true"></span><div><b>Reason Commons</b><p>Name the cover and compare records-ready time, overruns and displaced work. What would make you stop?</p></div></div><div class="scene-message " data-who="sam"><span class="scene-avatar" aria-hidden="true"></span><div><b>Sam</b><p>I’ll cover reception. We stop if access or workload gets worse. We review after two weeks; no hire is committed.</p></div></div></div><div class="scene-record"><p class="record-heading">What stays in the working record</p><ul class="record-items"><li><span class="record-status">Prediction · proposed</span><span>Earlier information may reduce avoidable searching and repetition.</span></li><li><span class="record-status">Bounded check</span><span>Compare with the previous equal-length period; note demand and staffing differences.</span></li><li><span class="record-status">Owners and cost</span><span>Sam covers reception; Maria logs preparation and displaced work. Stop if access or workload worsens.</span></li></ul></div><p class="scene-consequence">Expected benefit, possible harm and responsibility are inspectable before the outcome is known.</p></div></section>
 
 <!-- ============ 5 · MONDAY ============ -->
 <section class="flow"><div class="wrap">
@@ -166,74 +179,76 @@
 </div></section>
 
 <section class="scroll-item">
-  <div class="sticky-item"><div class="stage">
+  <noscript><figure class="static-diagram"><figcaption>Order the prerequisites</figcaption><ol class="static-chain"><li>Tomasz and Dr Adeyemi draft the standard</li><li>Sam names reception cover and its cost</li><li>Maria tries the bounded preparation process</li><li>Review before committing the hire</li></ol></figure></noscript>
+<div class="sticky-item"><div class="stage">
     <svg viewBox="120 80 760 400" role="img" aria-label="Three obstacles, each with the thing that would have to exist to get past it, in forced order.">
       <g id="prt"></g>
     </svg>
   </div>
   <div class="steps">
-    <div class="step bl" data-step="p1"><p>The real obstacle isn't technical. The summarising has to happen before eight.</p></div>
+    <div class="step bl" data-step="p1"><p>The preparation must be ready before eight; it needs a clear standard.</p></div>
     <div class="step bl" data-step="p2"><p>The person who could do it is already the busiest in the building.</p></div>
-    <div class="step bl" data-step="p3"><p>And the clinic has just been told there is money for one hire.</p></div>
-    <div class="step bl" data-step="p4"><p>So this change is not "improve the notes." It is: <em>hire the person, and put them on notes rather than on the front desk where every instinct says they belong.</em></p></div>
+    <div class="step bl" data-step="p3"><p>There is still money for one hire. The team has not committed it.</p></div>
+    <div class="step bl" data-step="p4"><p>First cover a small reassignment for a two-week trial. If the benefit justifies the cost, the hire could provide preparation support.</p></div>
   </div></div>
   <div class="trigger" data-t="p1" id="sm-p1"></div><div class="trigger" data-t="p2" id="sm-p2"></div>
   <div class="trigger" data-t="p3" id="sm-p3"></div><div class="trigger" data-t="p4" id="sm-p4"></div>
 </section>
 
 <section class="flow"><div class="wrap">
-  <p data-sm-beat="order" id="sm-order">Against each obstacle, the thing that would have to exist to get past it. Then the order — which is forced, because you cannot train someone on a summarising standard that hasn't been written yet.</p>
+  <p data-sm-beat="order" id="sm-order">Tomasz and Dr Adeyemi draft the preparation standard by Friday. Sam arranges the forty-minute reception cover and logs the management work it displaces. Then Maria can try it. The order matters: the standard and cover must exist before the trial starts.</p>
 </div></section>
 
 <!-- ============ THE FIVE ============ -->
 <section class="flow"><div class="wrap">
   <p data-sm-beat="five" id="sm-five">Five questions, and each needs a differently shaped answer: a hierarchy for the goal, a web of cause and effect for the diagnosis, a small diagram of opposing needs for the conflict, the same causal logic run forwards for the test, and a chain of obstacles for the plan.</p>
   <p>Together they are called the Logical Thinking Process. Goldratt built them; Dettmer spent decades teaching and refining them.</p>
-  <p>That is the method. It has a reputation for being forbidding. It is five questions asked in order, with the arrows checked.</p>
+  <p>The questions are easy to state. Checking their answers takes records, time and judgment. The skill helps the team retain and organize that work.</p>
 </div></section>
-
-<!-- ============ THE SIXTH ============ -->
-<section class="flow"><div class="wrap">
-  <p>There used to be a sixth.</p>
-  <p>Not the plan-of-obstacles above — that one survives. The sixth was a further tool below it: a step-by-step script for each individual action, the rationale for every move spelled out.</p>
-  <p>In the 2007 edition Dettmer largely removed it, writing that over ten years of teaching he had found it the least valuable of the tools for nearly all practitioners. He replaced it with ordinary project management and a chapter on the human side of change.</p>
-</div></section>
-
-<section class="statement sm"><p>The man spent his career on this method and took a tool out of his own kit.</p></section>
 
 <!-- ============ THE POINT ============ -->
 <section class="flow"><div class="wrap">
-  <p>One last thing, and it is the thing that actually matters.</p>
+
   <p>The diagrams are not the product. Nobody needs more diagrams.</p>
-  <p>What they do is move reasoning out of a private head and onto a table, where it can be read, disagreed with in a specific place, and repaired. And because it is an object rather than an afternoon, it is still there in March — when someone new asks why appointments are ten minutes, and instead of relitigating it from the beginning, four people point at the same node and say: <em>because of that, and here's what we checked.</em></p>
+  <p>The useful record includes the claim, its author, the objection, what was checked and the question still open. Later, someone can reopen that same working file and ask why the plan changed. The answer should not depend on everyone remembering the meeting.</p>
 </div></section>
 
-<section class="statement sm"><p>That is the whole promise. Not better diagrams. Claims with addresses — so a disagreement can be found, and settled, and stay settled.</p></section>
+<section class="statement sm"><p>Claims with addresses — so a disagreement can be found, examined and revisited when the evidence changes.</p></section>
 
 <!-- ============ MARIA ============ -->
 <section class="flow"><div class="wrap">
-  <p>Which is roughly what happens next at Ashfield.</p>
-  <p data-sm-beat="maria" id="sm-maria">It is Maria who spots it. She has been saying for two years that the referral backlog is the problem, and looking at the map she realises her backlog and Dr Adeyemi's countersignature are the same jam seen from two ends of the corridor — and that if the notes were ready by eight, neither would exist.</p>
-  <p data-sm-beat="wrong" id="sm-wrong">The practice manager thinks she's wrong.</p>
+  <p>Two weeks later, in this fictional follow-up, the team reviews what happened.</p>
+  <p data-sm-beat="maria" id="sm-maria">They compare equal-length periods using the same preparation and waiting measures, checking the rota and demand for obvious differences. Records are ready earlier and staff report less duplicate history-taking. Some consultations still overrun. The hospital referral wait has not visibly changed.</p>
+  <p data-sm-beat="wrong" id="sm-wrong">The small, nonrandom comparison cannot isolate the cause or justify a permanent hire yet. It does answer one practical question: preparation can be covered without asking Maria to do two jobs at once. The cost stays beside the reported benefit.</p>
 </div></section>
 
-<section class="statement"><p data-sm-beat="findout" id="sm-findout">For the first time, they can find out.</p></section>
+<section class="practice-scene" id="read-the-trial" data-who="sam" data-device="desktop"><div class="wrap"><p class="scene-kicker">Illustrated conversation · AI assistant with the skill</p><h2>Keep the mixed result</h2><div class="scene-dialogue"><div class="scene-message " data-who="maria"><span class="scene-avatar" aria-hidden="true"></span><div><b>Maria</b><p>Preparation was covered and records arrived earlier. The hospital referrals are still waiting.</p></div></div><div class="scene-message is-skill" data-who="skill"><span class="scene-avatar" aria-hidden="true"></span><div><b>Reason Commons</b><p>Record both. This supports a feasible preparation process; the small comparison does not isolate its effect on consultations or justify the hire.</p></div></div><div class="scene-message " data-who="sam"><span class="scene-avatar" aria-hidden="true"></span><div><b>Sam</b><p>Keep testing before committing the budget.</p></div></div></div><div class="scene-record"><p class="record-heading">What stays in the working record</p><ul class="record-items"><li><span class="record-status">Illustrative report</span><span>Earlier records and less reported duplicate history-taking; some overruns remain.</span></li><li><span class="record-status">Cost retained</span><span>Forty preparation minutes plus the reception cover and work displaced.</span></li><li><span class="record-status">Still open</span><span>Clinical benefit, causal effect and hospital-side waits.</span></li></ul></div><p class="scene-consequence">The team can reuse the preparation process and see which questions still need evidence.</p></div></section>
+
+<section class="flow"><div class="wrap">
+<p>A month later Maria reopens the same working record. “Why didn’t we use the hire?” The goal, the trial report and Sam’s decision are still beside the original prediction.</p>
+<p>Nobody has to reconstruct the meeting. They can start with the question the trial left open.</p>
+</div></section>
+
+<section class="statement"><p data-sm-beat="findout" id="sm-findout">They keep the improvement — and the question it did not answer.</p></section>
+
+<section class="practice-next"><div class="wrap"><p class="intro-label">Try one question of your own</p><h2>Keep the explanation, and the next check.</h2><p>Install the skill, open a working folder and start with one ordinary question.</p><p class="starter-prompt">Use the reason-commons skill to help me check why [this keeps happening]. My name is [name]. Keep the working state in reason-commons.yaml.</p><p>To resume, open the same folder and ask the skill to continue from reason-commons.yaml. Sharing between people needs an agreed setup.</p><div class="next-actions"><a href="../../skills/README.md">Install and start the skill →</a><a href="../skill-session/index.html">Inspect the actual execution record →</a></div><code class="install-line">npx skills add life-itself/reasoncommons -s reason-commons</code></div></section>
 
 <section class="sources" data-sm-beat="sources" id="sm-sources"><div class="wrap">
   <h2>Notes on sources</h2>
   <p>The five tools are H. William Dettmer's, in <em>The Logical Thinking Process: A Systems Approach to Complex Problem Solving</em> (ASQ Quality Press, 2007): the Intermediate Objectives Map (chapter 3), the Current Reality Tree (chapter 4), the Evaporating Cloud (chapter 5), the Future Reality Tree (chapter 6) and the Prerequisite Tree (chapter 7). Their names are omitted here in favour of the questions they answer; anyone going on to use the method will meet the terms soon enough.</p>
   <p>The retired sixth tool is the Transition Tree. Dettmer writes in chapter 7 that over ten years of teaching he found it "the least valuable of the Thinking Process tools for nearly all practitioners," and replaces it with a more detailed Prerequisite Tree, critical-chain project management, and a chapter on the human element in change. The observation that an unstated goal reduces the question of what to change to "a matter of opinion and speculation" is from chapter 3; that conflict is "generally rooted in the hidden, underlying assumptions operating on each side" is from chapter 5; "ideas are not solutions" is from chapter 1.</p>
-  <p>The Ashfield clinic is a composite, continued from parts one and two. Its goal statement, obstacles and the notes fix are illustrative — chosen to be the kind of thing these tools actually produce, not drawn from a real clinic.</p>
-  <p>The margin is an illustration, like the clinic: its people, times and messages are invented to show what the reason-commons skill does at each point in the story. The desktop is an AI assistant with the skill installed; the skill runs today in Claude Code, Codex and other agents that support skills. The phones show a team chat where the skill answers when someone invokes it, as Reason Commons’ prototype Discord bot does. It does not message anyone on its own: a notification is the chat telling someone about a reply in their channel. The skill records what each person says as proposed, marks reasoning accepted only when a named person accepts it, and keeps objections on the item they dispute.</p>
+  <p>The entire Ashfield case is fictional, including its observations, two-week trial, mixed follow-up and conversations. It illustrates how to record a prediction and review a limited comparison, not evidence of clinical improvement or a recommended appointment policy. Prepared existing information is distinct from new clinical documentation; necessary repeat visits remain part of care. No clinical outcome or permanent-hire decision is established. The separate execution record documents actual software/helper behavior during this revision.</p>
+  <p>The conversations are invented; no patient information is used. Desktop scenes illustrate the installed skill; phone scenes illustrate an explicitly invoked team-chat prototype. Proposed means not endorsed. Accepted for now names a person willing to work from the claim; it is neither proof nor group consensus. Reopening the same actual file preserves continuity; independent copies are not automatically shared.</p>
 </div></section>
 
 <section class="seriesnav"><div class="wrap">
   <a href="../01-bottleneck-in-practice/index.html"><span class="n">Start again · part one, in practice</span><span class="t">The Wrong Queue</span></a>
   <a href="../02-thinking-made-visible-in-practice/index.html"><span class="n">Previous · part two, in practice</span><span class="t">← The Arrows Nobody Checks</span></a>
-  <a href="../03-five-shapes/index.html"><span class="n">This part without the margin</span><span class="t">The original edition</span></a>
-  <a href="../../claim-tree-annotation-demo/index.html"><span class="n">See it working</span><span class="t">The claim-tree annotation demo →</span></a>
+  <a href="../03-five-shapes/index.html"><span class="n">Original essay-only edition</span><span class="t">The original edition</span></a>
+  <a href="../../claim-tree-annotation-demo/index.html"><span class="n">Related illustration · separate from this skill</span><span class="t">The claim-tree annotation demo →</span></a>
 </div></section>
 
+</main>
 <script src="../scroller.js"></script>
 <script>
 (window.rebuildExplainerArtwork = function(){
@@ -284,25 +299,25 @@
   var gt=document.getElementById('goaltree');
   var gc=document.getElementById('goalclash');
   if(P){
-    box(gt,20,20,340,64,'everyone who needs to be seen|is seen, and does not come back','var(--mark)',11.5);
-    ['enough appointments','consultations good|enough to not repeat','staff who stay']
+    box(gt,20,20,340,64,'access to good care|fewer avoidable repeat visits','var(--mark)',11.5);
+    ['enough appointments','good consultations|fewer avoidable repeats','staff who stay']
       .forEach(function(t,i){
         var y=140+i*84;
         box(gt,86,y,274,58,t,'var(--ink)',11.5);
         link(gt,'M86 '+(y+29)+' L52 '+(y+29)+' L52 92');
       });
-    ['the ten-minute rule serves one of these','and damages another'].forEach(function(t,i){
+    ['one measure cannot judge all of these','check access, quality and workload'].forEach(function(t,i){
       gc.appendChild(el('text',{x:190,y:420+i*20,'text-anchor':'middle',
         'font-family':'var(--sans)','font-size':11.5,fill:'var(--mark)'})).textContent=t;
     });
   } else {
-    box(gt,390,110,340,66,'everyone who needs to be seen|is seen, and does not come back','var(--mark)');
+    box(gt,390,110,340,66,'access to good care|fewer avoidable repeat visits','var(--mark)');
     box(gt,250,280,180,60,'enough appointments');
-    box(gt,470,280,180,60,'consultations good|enough to not repeat');
+    box(gt,470,280,180,60,'good consultations|fewer avoidable repeats');
     box(gt,690,280,180,60,'staff who stay');
     arrow(gt,340,280,480,180); arrow(gt,560,280,560,180); arrow(gt,780,280,640,180);
     gc.appendChild(el('text',{x:560,y:400,'text-anchor':'middle','font-family':'var(--sans)',
-      'font-size':13,fill:'var(--mark)'})).textContent='the ten-minute rule serves one of these and damages another';
+      'font-size':13,fill:'var(--mark)'})).textContent='check access, quality and workload together';
   }
 
   /* 2 · symptoms converging.
@@ -313,27 +328,22 @@
   var ude=document.getElementById('ude');
   var ua=document.getElementById('udearrows');
   var rt=document.getElementById('roots');
-  var SYMPTOMS=['waits too long','staff exhausted','same patients return','referrals late'];
+  var SYMPTOMS=['waits too long','staff exhausted','avoidable repeat work','referrals late'];
   if(P){
-    SYMPTOMS.forEach(function(t,i){
-      box(ude,80,20+Math.floor(i/2)*250+(i%2)*52,280,44,t,'var(--ink)',11.5);
-    });
-    [['the ten-minute rule',132],['notes written after clinic',382]].forEach(function(r,i){
-      box(rt,80,r[1],280,48,r[0],'var(--mark)',11.5);
-      [0,1].forEach(function(k){
-        var y=42+i*250+k*52;
-        link(ua,'M80 '+y+' L50 '+y+' L50 '+(r[1]+24)+' L76 '+(r[1]+24));
-      });
-    });
-  } else {
-    SYMPTOMS.forEach(function(t,i){ box(ude,150+i*185,100,165,58,t); });
-    box(rt,250,290,220,62,'the ten-minute rule','var(--mark)');
-    box(rt,560,290,220,62,'notes written after clinic','var(--mark)');
-    [232,417,602,787].forEach(function(x,i){
-      ua.appendChild(el('path',{d:'M'+x+' 158 L'+(i<2?360:670)+' 288',fill:'none',
-        stroke:'var(--ink-soft)','stroke-width':1.8,'marker-end':'url(#ar)'}));
-    });
+    SYMPTOMS.forEach(function(t,i){box(ude,80,20+i*64,280,44,t,'var(--ink)',12);});
+    box(rt,80,310,280,58,'missing preparation?|candidate cause','var(--mark)',12);
+    box(rt,80,410,280,58,'hospital capacity?|separate open question','var(--mark)',12);
+    [42,106,170].forEach(function(y){link(ua,'M80 339 L44 339 L44 '+y+' L76 '+y);});
+    link(ua,'M80 439 L28 439 L28 234 L76 234');
+  }else{
+    SYMPTOMS.forEach(function(t,i){box(ude,150+i*185,100,165,58,t);});
+    box(rt,250,290,220,62,'missing preparation?|candidate cause','var(--mark)');
+    box(rt,560,290,220,62,'hospital capacity?|open question','var(--mark)');
+    [232,417,602].forEach(function(x){link(ua,'M360 288 L'+x+' 160');});
+    link(ua,'M670 288 L787 160');
   }
+  ua.querySelectorAll('path').forEach(function(p){p.setAttribute('stroke-dasharray','5 4');});
+  rt.querySelectorAll('rect').forEach(function(r){r.setAttribute('stroke-dasharray','6 5');});
 
   /* 3 · the cloud */
   var cl=document.getElementById('cloud');
@@ -389,8 +399,7 @@
      Keeping the chain high leaves the foot of the frame free for the
      side effect and for the caption that announces it. */
   var frt=document.getElementById('frt');
-  var STEPS=['notes ready|by eight','history not|re-taken','consultation|fits',
-             'no writing up|at seven','tomorrow’s|notes ready'];
+  var STEPS=['information ready|before clinic','less searching|may be needed','some overruns|may reduce','more time for|new clinical notes'];
   var frtNodes=[];
   STEPS.forEach(function(t,i){
     var g=el('g',{opacity:0,'data-f':i});
@@ -401,6 +410,8 @@
       box(g,122+i*154,150,138,90,t, i===0?'var(--mark)':'var(--ink)',11.5);
       if(i>0) arrow(g,106+i*154,195,120+i*154,195);
     }
+    g.querySelectorAll('path').forEach(function(p){p.setAttribute('stroke-dasharray','5 4');});
+    g.querySelectorAll('rect').forEach(function(r){r.setAttribute('stroke-dasharray','6 5');});
     frt.appendChild(g); frtNodes.push(g);
   });
   var side=document.getElementById('side');
@@ -408,19 +419,19 @@
     side.appendChild(el('path',{d:'M60 47 L32 47 L32 412 L58 412',fill:'none',
       stroke:'var(--mark)','stroke-width':2,'stroke-dasharray':'6 5',
       'marker-end':'url(#arm)'}));
-    box(side,62,382,300,60,'…but someone must prepare them|40 minutes of Maria’s morning','var(--mark)',11.5);
+    box(side,62,382,300,60,'preparation estimate: 40 minutes|requires covered reception time','var(--mark)',11.5);
   } else {
     side.appendChild(el('path',{d:'M191 240 Q191 280 285 296',fill:'none',
       stroke:'var(--mark)','stroke-width':2,'stroke-dasharray':'6 5',
       'marker-end':'url(#arm)'}));
-    box(side,290,300,300,72,'…but someone must prepare them|40 minutes of Maria’s morning','var(--mark)');
+    box(side,290,300,300,72,'preparation estimate: 40 minutes|requires covered reception time','var(--mark)');
   }
 
   /* 5 · obstacles */
   var prt=document.getElementById('prt');
-  var OBS=[['summarising must happen before eight','write a summarising standard'],
-           ['the only person who could is the busiest','free that time, or find another'],
-           ['there is money for exactly one hire','spend it on notes, not the desk']];
+  var OBS=[['preparation must be ready before eight','write a preparation standard'],
+           ['reception cannot absorb more work','name cover and record its cost'],
+           ['the hiring budget is uncommitted','review a bounded trial first']];
   var obsNodes=[];
   /* Rows tightened from a 116 pitch to 100 so the conclusion below them lands
      inside the viewBox, and the conclusion narrowed so the bottom-right
@@ -440,533 +451,19 @@
     prt.appendChild(g); obsNodes.push(g);
   });
   var final=el('g',{opacity:0});
-  if(P) box(final,50,430,280,56,'hire onto notes,|not the front desk','var(--mark)',11.5);
-  else  box(final,400,400,220,60,'hire onto notes,|not the front desk','var(--mark)');
+  if(P) box(final,50,430,280,56,'review the trial before|committing the hire','var(--mark)',11.5);
+  else  box(final,400,400,220,60,'review the trial before|committing the hire','var(--mark)');
   prt.appendChild(final); obsNodes.push(final);
 
   window.onStep=function(id){
-    var f={f1:1,f2:3,f3:5,f4:5}[id];
+    var f={f1:1,f2:3,f3:4,f4:4}[id];
     if(f!==undefined) frtNodes.forEach(function(g,i){ g.setAttribute('opacity', i<f?1:0); });
     var p={p1:1,p2:2,p3:3,p4:4}[id];
     if(p!==undefined) obsNodes.forEach(function(g,i){ g.setAttribute('opacity', i<p?1:0); });
   };
 })();
 </script>
-<script>window.SKILL_MARGIN={
- "original": "../03-five-shapes/index.html",
- "channel": "#ashfield-flow",
- "devices": {
-  "sam": "Desktop, in the back office",
-  "maria": "Phone, on the front desk",
-  "adeyemi": "Phone, dictating between patients",
-  "tomasz": "Phone, moving between rooms",
-  "leila": "Phone, at the dispensary bench",
-  "skill": "In the assistant and the team chat"
- },
- "cover": {
-  "title": "In the margin: five questions, five shapes",
-  "text": "The clinic has its map. In this part the skill picks the right kind of tree for each question without anyone needing its name, and the people who would carry the change find its costs while they are still on paper."
- },
- "scenes": [
-  {
-   "id": "goal",
-   "who": "sam",
-   "device": "desktop",
-   "msgs": [
-    {
-     "from": "skill",
-     "text": "First, what should success look like for the clinic?",
-     "type": "Next step"
-    },
-    {
-     "from": "tomasz",
-     "text": "Everyone in the catchment who needs to be seen is seen, and does not need to come back for the same thing."
-    },
-    {
-     "from": "skill",
-     "text": "Saved from Tomasz as a proposed goal. Faster appointments alone would not establish that goal.",
-     "type": "Capture result"
-    },
-    {
-     "from": "sam",
-     "text": "I accept that goal for now."
-    },
-    {
-     "from": "skill",
-     "text": "Accepted for now by Sam. Proposed changes can now be checked against an explicit goal.",
-     "type": "Capture result"
-    }
-   ],
-   "time": "Planning together",
-   "place": "Staff room",
-   "notify": false,
-   "clock": "08:30"
-  },
-  {
-   "id": "causes",
-   "who": "sam",
-   "device": "desktop",
-   "msgs": [
-    {
-     "from": "sam",
-     "text": "Long waits, exhausted staff, repeat visits and late referrals. Are we treating four separate problems?"
-    },
-    {
-     "from": "skill",
-     "text": "Work backwards from those effects. Look for causes that could account for more than one.",
-     "type": "Next step"
-    },
-    {
-     "from": "skill",
-     "text": "The existing map is a hypothesis about shared causes. Four symptoms do not automatically require four fixes.",
-     "type": "Answer"
-    }
-   ],
-   "time": "Working from the goal",
-   "place": "Staff room",
-   "notify": false,
-   "clock": "08:30"
-  },
-  {
-   "id": "conflict",
-   "who": "adeyemi",
-   "device": "phone",
-   "msgs": [
-    {
-     "from": "sam",
-     "text": "We need enough appointments to serve the catchment. Would longer slots mean fewer people get seen?"
-    },
-    {
-     "from": "adeyemi",
-     "text": "And we need consultations that hold up. That is why I ask for longer slots.",
-     "cmd": "capture",
-     "dictated": true
-    },
-    {
-     "from": "skill",
-     "text": "Both needs matter. What assumption makes longer slots seem necessary for a good consultation?",
-     "type": "Next step"
-    },
-    {
-     "from": "adeyemi",
-     "text": "Some of the overrun is taking the history twice. More minutes are not the only possible lever.",
-     "cmd": "capture",
-     "dictated": true
-    },
-    {
-     "from": "skill",
-     "text": "Saved Dr Adeyemi’s challenge.",
-     "type": "Capture result",
-     "nodes": [
-      {
-       "s": "Disputed",
-       "k": "Assumption",
-       "t": "Consultation length is the only lever on quality."
-      }
-     ]
-    }
-   ],
-   "time": "Wednesday",
-   "place": "Consulting room",
-   "notify": true,
-   "clock": "14:00"
-  },
-  {
-   "id": "effects",
-   "who": "sam",
-   "device": "desktop",
-   "msgs": [
-    {
-     "from": "sam",
-     "text": "Try this on paper: notes ready before the consultation. What would follow?"
-    },
-    {
-     "from": "skill",
-     "text": "Suggested by the skill, as a prediction: ready notes mean fewer repeated histories, which could help consultations fit.",
-     "type": "Capture result"
-    },
-    {
-     "from": "skill",
-     "text": "Finishing notes on time could also help the following day. That remains a prediction to test.",
-     "type": "Answer"
-    }
-   ],
-   "time": "Testing the idea",
-   "place": "Back office",
-   "notify": false,
-   "clock": "08:30"
-  },
-  {
-   "id": "cost",
-   "who": "maria",
-   "device": "phone",
-   "msgs": [
-    {
-     "from": "sam",
-     "text": "Who would prepare those notes, and what work would they have to give up?"
-    },
-    {
-     "from": "maria",
-     "text": "It would be me. That is forty minutes before eight that I do not have.",
-     "cmd": "capture"
-    },
-    {
-     "from": "skill",
-     "text": "Saved Maria’s proposed side effect on the plan: preparing notes would overload the front desk.",
-     "type": "Capture result"
-    }
-   ],
-   "time": "Wednesday",
-   "place": "Front desk",
-   "notify": true,
-   "clock": "16:40"
-  },
-  {
-   "id": "obstacles",
-   "who": "sam",
-   "device": "desktop",
-   "msgs": [
-    {
-     "from": "sam",
-     "text": "The notes must be ready before eight."
-    },
-    {
-     "from": "sam",
-     "text": "The person who could prepare them is already the busiest."
-    },
-    {
-     "from": "sam",
-     "text": "And there is money for one hire."
-    },
-    {
-     "from": "skill",
-     "text": "Suggested objective, still proposed: notes are prepared before eight without overloading reception. Use the hire where it addresses that obstacle.",
-     "type": "Capture result"
-    },
-    {
-     "from": "skill",
-     "text": "Write the summarising standard before training the hire. Who will draft it?",
-     "type": "Next step"
-    },
-    {
-     "from": "sam",
-     "text": "Tomasz and Dr Adeyemi, by Friday."
-    }
-   ],
-   "time": "Thursday",
-   "place": "Back office",
-   "notify": false,
-   "clock": "08:30"
-  },
-  {
-   "id": "test",
-   "who": "maria",
-   "device": "phone",
-   "msgs": [
-    {
-     "from": "maria",
-     "text": "Notes ready by eight would fix my referral backlog too.",
-     "cmd": "capture"
-    },
-    {
-     "from": "sam",
-     "text": "I disagree. The hospital holds that backlog, not us.",
-     "cmd": "capture"
-    },
-    {
-     "from": "skill",
-     "text": "Saved the disputed link. If Maria is right, the backlog should shrink on days notes are ready by eight. Compare those days for two weeks?",
-     "type": "Capture result"
-    }
-   ],
-   "time": "The next shared question",
-   "place": "Front desk",
-   "notify": false,
-   "clock": "08:30"
-  }
- ],
- "close": {
-  "title": "That was the reason-commons skill",
-  "text": "The skill keeps what people say, who agrees, what is disputed and what is worth checking next. Use it in an AI assistant that supports skills.",
-  "install": "npx skills add life-itself/reasoncommons -s reason-commons",
-  "links": [
-   {
-    "href": "../../skills/README.md",
-    "text": "How to install and start the skill →"
-   },
-   {
-    "href": "../01-bottleneck-in-practice/index.html",
-    "text": "Start again, in practice: The Wrong Queue"
-   },
-   {
-    "href": "../03-five-shapes/index.html",
-    "text": "Read this part without the margin"
-   },
-   {
-    "href": "../../claim-tree-annotation-demo/index.html",
-    "text": "See it working: the claim-tree annotation demo →"
-   }
-  ],
-  "fine": "The people and messages are illustrative, like the clinic. The team chat on the phones is a prototype: the skill answers there only when someone invokes it with /reason."
- },
- "beats": [
-  {
-   "mode": "cast",
-   "chapter": "1 · Plan a change",
-   "title": "The same team, a new question",
-   "focus": [],
-   "text": "The clinic has a map of why it is stuck. Now the people need to decide what to change and how to test it.",
-   "at": "hero"
-  },
-  {
-   "mode": "intro",
-   "chapter": "1 · Plan a change",
-   "title": "Use the skill for the next task",
-   "focus": [
-    "skill"
-   ],
-   "text": "Sam brings Reason Commons back to help the team test a change against an explicit goal, before deciding how to put it into practice.",
-   "at": "now"
-  },
-  {
-   "mode": "chat",
-   "chapter": "2 · State the goal",
-   "title": "What should be happening?",
-   "scene": "goal",
-   "count": 1,
-   "step": "g1"
-  },
-  {
-   "mode": "chat",
-   "chapter": "2 · State the goal",
-   "title": "What should be happening?",
-   "scene": "goal",
-   "count": 2,
-   "step": "g2"
-  },
-  {
-   "mode": "chat",
-   "chapter": "2 · State the goal",
-   "title": "What should be happening?",
-   "scene": "goal",
-   "count": 3,
-   "step": "g3"
-  },
-  {
-   "mode": "chat",
-   "chapter": "2 · State the goal",
-   "title": "A person accepts the goal",
-   "scene": "goal",
-   "count": 4,
-   "at": "sentence"
-  },
-  {
-   "mode": "chat",
-   "chapter": "2 · State the goal",
-   "title": "An explicit reference point",
-   "scene": "goal",
-   "count": 5,
-   "at": "gap"
-  },
-  {
-   "mode": "chat",
-   "chapter": "3 · Trace the causes",
-   "title": "Why isn’t it happening?",
-   "scene": "causes",
-   "count": 1,
-   "step": "u1"
-  },
-  {
-   "mode": "chat",
-   "chapter": "3 · Trace the causes",
-   "title": "Why isn’t it happening?",
-   "scene": "causes",
-   "count": 2,
-   "step": "u2"
-  },
-  {
-   "mode": "chat",
-   "chapter": "3 · Trace the causes",
-   "title": "Why isn’t it happening?",
-   "scene": "causes",
-   "count": 3,
-   "step": "u3"
-  },
-  {
-   "mode": "chat",
-   "chapter": "4 · Examine the conflict",
-   "title": "What holds it in place?",
-   "scene": "conflict",
-   "count": 1,
-   "step": "v1"
-  },
-  {
-   "mode": "chat",
-   "chapter": "4 · Examine the conflict",
-   "title": "What holds it in place?",
-   "scene": "conflict",
-   "count": 2,
-   "step": "v2"
-  },
-  {
-   "mode": "chat",
-   "chapter": "4 · Examine the conflict",
-   "title": "What holds it in place?",
-   "scene": "conflict",
-   "count": 3,
-   "step": "v3"
-  },
-  {
-   "mode": "chat",
-   "chapter": "4 · Examine the conflict",
-   "title": "What holds it in place?",
-   "scene": "conflict",
-   "count": 4,
-   "step": "v4"
-  },
-  {
-   "mode": "chat",
-   "chapter": "4 · Examine the conflict",
-   "title": "An assumption can be challenged",
-   "scene": "conflict",
-   "count": 5,
-   "at": "cloud"
-  },
-  {
-   "mode": "chat",
-   "chapter": "5 · Explore the consequences",
-   "title": "Will the idea work?",
-   "scene": "effects",
-   "count": 1,
-   "step": "f1"
-  },
-  {
-   "mode": "chat",
-   "chapter": "5 · Explore the consequences",
-   "title": "Will the idea work?",
-   "scene": "effects",
-   "count": 2,
-   "step": "f2"
-  },
-  {
-   "mode": "chat",
-   "chapter": "5 · Explore the consequences",
-   "title": "Will the idea work?",
-   "scene": "effects",
-   "count": 3,
-   "step": "f3"
-  },
-  {
-   "mode": "chat",
-   "chapter": "5 · Explore the consequences",
-   "title": "Ask who carries the cost",
-   "scene": "cost",
-   "count": 1,
-   "step": "f4"
-  },
-  {
-   "mode": "chat",
-   "chapter": "5 · Explore the consequences",
-   "title": "Listen to Maria",
-   "scene": "cost",
-   "count": 2,
-   "at": "forty"
-  },
-  {
-   "mode": "chat",
-   "chapter": "5 · Explore the consequences",
-   "title": "A side effect on the plan",
-   "scene": "cost",
-   "count": 3,
-   "at": "find"
-  },
-  {
-   "mode": "chat",
-   "chapter": "6 · Make a workable plan",
-   "title": "What stands in the way?",
-   "scene": "obstacles",
-   "count": 1,
-   "step": "p1"
-  },
-  {
-   "mode": "chat",
-   "chapter": "6 · Make a workable plan",
-   "title": "What stands in the way?",
-   "scene": "obstacles",
-   "count": 2,
-   "step": "p2"
-  },
-  {
-   "mode": "chat",
-   "chapter": "6 · Make a workable plan",
-   "title": "What stands in the way?",
-   "scene": "obstacles",
-   "count": 3,
-   "step": "p3"
-  },
-  {
-   "mode": "chat",
-   "chapter": "6 · Make a workable plan",
-   "title": "What stands in the way?",
-   "scene": "obstacles",
-   "count": 4,
-   "step": "p4"
-  },
-  {
-   "mode": "chat",
-   "chapter": "6 · Make a workable plan",
-   "title": "Dependencies set the order",
-   "scene": "obstacles",
-   "count": 5,
-   "at": "order"
-  },
-  {
-   "mode": "chat",
-   "chapter": "6 · Make a workable plan",
-   "title": "Name the next contribution",
-   "scene": "obstacles",
-   "count": 6,
-   "at": "five"
-  },
-  {
-   "mode": "chat",
-   "chapter": "7 · Keep a disagreement useful",
-   "title": "Maria proposes a connection",
-   "scene": "test",
-   "count": 1,
-   "at": "maria"
-  },
-  {
-   "mode": "chat",
-   "chapter": "7 · Keep a disagreement useful",
-   "title": "Sam objects",
-   "scene": "test",
-   "count": 2,
-   "at": "wrong"
-  },
-  {
-   "mode": "chat",
-   "chapter": "7 · Keep a disagreement useful",
-   "title": "A test they can actually run",
-   "scene": "test",
-   "count": 3,
-   "at": "findout"
-  },
-  {
-   "mode": "close",
-   "chapter": "Try it on your work",
-   "title": "Start with your own question",
-   "at": "sources"
-  }
- ],
- "opening": {
-  "mode": "cast",
-  "chapter": "Meet the clinic",
-  "title": "The people behind the story",
-  "focus": [],
-  "text": "Follow the people first. The team will bring in Reason Commons when it has a question to investigate."
- }
-};</script>
+
 <script src="../skill-margin.js"></script>
 </body>
 </html>
