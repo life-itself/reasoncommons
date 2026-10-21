@@ -1,6 +1,6 @@
 # Landing-page evaluation contract and experiments
 
-The [landing evaluation lab](../../apps/landing-evals/README.md) makes five supplied Reason Commons designs browsable and provides repeatable browser evidence, a configurable LLM judge, grounded reports, and visitor comprehension responses. Six supplied files include one byte-identical duplicate. The current homepage is a configurable baseline, not the reference answer.
+The [landing evaluation lab](../../apps/landing-evals/README.md) makes six supplied Reason Commons designs browsable and provides repeatable browser evidence, a configurable LLM judge, grounded reports, and visitor comprehension responses. Seven supplied files include one byte-identical duplicate. The sixth design, Find a Way Forward, was added on 21 October 2026, after the evaluation runs recorded below, and has not been judged. The current homepage is a configurable baseline, not the reference answer.
 
 ## Candidate names and hypotheses
 
@@ -11,6 +11,7 @@ The [landing evaluation lab](../../apps/landing-evals/README.md) makes five supp
 | Untangle the Problem | `untangle-the-problem` | Familiar recurring problems and a facilitated session make the offer easy to picture. |
 | A Renaissance of Common Sense | `common-sense-renaissance` | A movement narrative and bottleneck exercise motivate interest in the approach. |
 | Check the Because | `check-the-because` | A small worked example makes claims, competing explanations and an informative test understandable. |
+| Find a Way Forward | `find-a-way-forward` | An invitation to bring a recurring problem, with an illustrated understand–try–return session, makes the offer easy to picture and try. |
 
 These are hypotheses about communication, not established benefits or a ranking. Candidate purposes differ; a result is meaningful only against the stated audience and objective. The public names describe the pages, while the model sees neutral candidate labels. Source file names, hashes, duplicate provenance and wrapper normalization are recorded in the public registry.
 

@@ -23,7 +23,7 @@
     ]
   },
   "imported_at": "2026-10-19T07:35:22.554Z",
-  "supplied_file_count": 6,
+  "supplied_file_count": 7,
   "variants": [
     {
       "id": "test-the-assumption",
@@ -102,6 +102,21 @@
       "entry_path": "check-the-because/index.html",
       "entry_sha256": "7a7e7eec97dbbadbaaba963a13942bba68163d90755519242da4e72774ff2455",
       "envelope_normalization": "Added viewport metadata to the outer download wrapper. Page copy, styling, scripts and embedded resources are unchanged."
+    },
+    {
+      "id": "find-a-way-forward",
+      "name": "Find a Way Forward",
+      "framing": "Bring a recurring problem; an illustrated session shows understanding, trying and returning.",
+      "notes": "Supplied on 21 October 2026 as reason-commons-landing-page.zip, after the 19 October evaluation; not yet captured or judged. Its sign-up form has no destination and says so; the skill links are its try route. The designer handoff is kept in docs/marketing/landing-pages/find-a-way-forward/.",
+      "original_files": [
+        "reason-commons-landing-page/index.html"
+      ],
+      "source_path": "sources/find-a-way-forward.html",
+      "source_sha256": "8f2940ffb0f76db6ae512351c5bd58a7b95b1ed7921fabcb642f5436aa903c5f",
+      "source_bytes": 78356,
+      "entry_path": "find-a-way-forward/index.html",
+      "entry_sha256": "8f2940ffb0f76db6ae512351c5bd58a7b95b1ed7921fabcb642f5436aa903c5f",
+      "envelope_normalization": "None"
     }
   ]
 }

@@ -24,6 +24,10 @@ These seven mockups explore different visual paradigms for working with shared r
 <a class="mockup-card" href="/demos/Reason%20Commons%20%E2%80%94%20Wireframes%20v2%20(TOC-native)%20(1).html"><div class="mockup-preview wire"><div class="mockup-window"><div class="mockup-rail"></div><div class="mockup-canvas"><div class="mockup-bar"></div><div class="mockup-row accent"></div><div class="mockup-row"></div><div class="mockup-row short"></div></div></div></div><div class="mockup-card-body"><h3>TOC-native Wireframes</h3><span class="mockup-file">Reason Commons — Wireframes v2 (TOC-native)</span><p>A structure-first wireframe grounded in the Logical Thinking Process and its connected trees.</p><span class="mockup-open">Open full page →</span></div></a>
 </div>
 
+## Landing page candidates
+
+[Six candidate landing pages](/landing-lab/index.html) for Reason Commons, side by side, each introducing the project in a different way, with [evaluation results](/landing-lab/results/index.html) for the first five and a short visitor study. The newest, [Find a Way Forward](/landing-lab/find-a-way-forward/index.html), invites you to bring a problem that keeps coming back and follows an illustrated session from understanding it to trying something and returning with what happened.
+
 ## Claim-tree annotation demo
 
 [The four-step vision, animated](/claim-tree-annotation-demo/index.html) — take a claim, decompose it into a tree, bring in source documents, and map evidence onto the nodes. A scripted walk-through of what the tooling is aiming at.

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="560" viewBox="0 0 640 560" role="img" aria-labelledby="art-title art-desc">
+        <title id="art-title">People around a shared working table</title>
+        <desc id="art-desc">Four people gather at one table. Each brings a piece of paper: one is being placed, two are linked to a central card marked with a looping arrow, the problem that keeps coming back. A dashed line leads from it to an empty space on the table, and a chair stands empty, left open for another contribution.</desc>
+        <defs>
+          <filter id="art-grain" x="0" y="0" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="4" result="noise"/>
+            <feColorMatrix in="noise" type="matrix" values="0 0 0 0 .09  0 0 0 0 .24  0 0 0 0 .2  0 0 0 .14 0" result="tint"/>
+            <feComposite in="tint" in2="SourceGraphic" operator="in" result="grain"/>
+            <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="grain"/></feMerge>
+          </filter>
+          <marker id="art-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M1 1 L9 5 L1 9" fill="none" stroke="#173E35" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </marker>
+        </defs>
+
+        <!-- people behind the table -->
+        <g>
+          <path d="M115 272 C115 230 134 206 165 206 C196 206 215 230 215 272 Z" fill="#526B89"/>
+          <circle cx="165" cy="140" r="12" fill="#3E5470"/>
+          <circle cx="165" cy="170" r="27" fill="#7C91AB"/>
+          <path d="M138 166 A27 27 0 0 1 192 166 C182 156 150 154 138 166 Z" fill="#3E5470"/>
+        </g>
+        <g>
+          <path d="M266 272 C266 222 289 190 321 190 C353 190 376 222 376 272 Z" fill="#2E5A4D"/>
+          <circle cx="321" cy="152" r="28" fill="#5E8476"/>
+          <path d="M293 150 A28 28 0 0 1 349 150 C340 136 302 134 293 150 Z" fill="#173E35"/>
+        </g>
+        <g>
+          <path d="M430 272 C430 232 449 208 478 208 C507 208 526 232 526 272 Z" fill="#6C7E64"/>
+          <circle cx="478" cy="172" r="25" fill="#9DAD95"/>
+          <path d="M453 170 A25 25 0 0 1 503 168 C496 158 470 154 453 170 Z" fill="#4E5F48"/>
+        </g>
+
+        <!-- the shared table -->
+        <rect x="36" y="282" width="568" height="170" rx="28" fill="#CDBF9F"/>
+        <rect x="36" y="262" width="568" height="170" rx="28" fill="#E6DCC4" stroke="#C6B794" stroke-width="1.5" filter="url(#art-grain)"/>
+
+
+        <!-- a possible explanation, dashed -->
+        <rect x="95" y="296" width="114" height="56" rx="3" fill="#B8A98A"/>
+        <rect x="92" y="292" width="114" height="56" rx="3" fill="#E3E8EE" stroke="#526B89" stroke-width="2" stroke-dasharray="6 4"/>
+        <path d="M104 309 H190 M104 321 H178 M104 333 H160" stroke="#526B89" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+        <path d="M134 230 C128 254 128 280 136 302" fill="none" stroke="#526B89" stroke-width="14" stroke-linecap="round"/>
+        <circle cx="137" cy="306" r="9" fill="#7C91AB"/>
+
+        <!-- the problem that keeps coming back: a bounded card -->
+        <rect x="266" y="300" width="148" height="76" rx="3" fill="#B8A98A"/>
+        <rect x="262" y="296" width="148" height="76" rx="3" fill="#FBF9F3" stroke="#173E35" stroke-width="2.25"/>
+        <path d="M358 334 A22 14 0 1 1 344 321" fill="none" stroke="#A84F39" stroke-width="3" stroke-linecap="round"/>
+        <path d="M337 315 L345 321 L337 328" fill="none" stroke="#A84F39" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M376 318 H398 M376 330 H394 M376 342 H398" stroke="#173E35" stroke-width="2.5" stroke-linecap="round" opacity=".35"/>
+
+        <!-- links between pieces -->
+        <path d="M208 320 C228 320 238 334 258 336" fill="none" stroke="#173E35" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#art-arrow)"/>
+
+        <!-- a piece being placed by the person on the right -->
+        <g transform="rotate(-5 492 318)">
+          <rect x="444" y="294" width="100" height="52" rx="3" fill="#B8A98A"/>
+          <rect x="440" y="290" width="100" height="52" rx="3" fill="#E5E9DF" stroke="#56684F" stroke-width="2"/>
+          <path d="M452 306 H526 M452 318 H516 M452 330 H500" stroke="#56684F" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+        </g>
+        <path d="M440 324 C428 328 420 334 414 336" fill="none" stroke="#173E35" stroke-width="2"/>
+        <path d="M452 236 C446 262 452 296 468 318" fill="none" stroke="#6C7E64" stroke-width="15" stroke-linecap="round"/>
+        <circle cx="470" cy="322" r="9.5" fill="#9DAD95"/>
+
+        <!-- the open place: a dashed path to an empty space -->
+        <path d="M410 354 C432 358 432 392 450 394" fill="none" stroke="#A84F39" stroke-width="2.25" stroke-dasharray="6 5" stroke-linecap="round"/>
+        <rect x="454" y="372" width="112" height="48" rx="4" fill="#EEE6D2" stroke="#A84F39" stroke-width="2.25" stroke-dasharray="7 5"/>
+
+        <!-- a note brought by the person in front -->
+        <g transform="rotate(4 230 402)">
+          <rect x="191" y="383" width="86" height="44" rx="3" fill="#B8A98A"/>
+          <rect x="188" y="380" width="86" height="44" rx="3" fill="#FBF9F3" stroke="#173E35" stroke-width="2"/>
+          <path d="M199 394 H260 M199 405 H248" stroke="#173E35" stroke-width="2.5" stroke-linecap="round" opacity=".35"/>
+        </g>
+
+        <!-- person in front, seen from behind -->
+        <path d="M54 560 C54 520 94 504 150 504 C206 504 246 520 246 560 Z" fill="#173E35"/>
+        <path d="M214 520 C228 486 236 452 240 422" fill="none" stroke="#173E35" stroke-width="16" stroke-linecap="round"/>
+        <circle cx="241" cy="418" r="10" fill="#2E5A4D"/>
+        <circle cx="150" cy="482" r="36" fill="#0F2C25"/>
+
+        <!-- an empty chair, left open -->
+        <rect x="468" y="470" width="96" height="62" rx="14" fill="none" stroke="#A84F39" stroke-width="2.5" stroke-dasharray="8 6"/>
+        <path d="M482 532 V560 M550 532 V560" stroke="#A84F39" stroke-width="2.5" stroke-dasharray="8 6" stroke-linecap="round"/>
+      </svg>

@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reason Commons | Find a way forward, together</title>
+<meta name="description" content="Bring a recurring problem to Reason Commons, an open-source AI skill for shared reasoning, useful next moves and learning from real-world experience.">
+<meta name="theme-color" content="#F5F1E6">
+<link rel="canonical" href="https://reasoncommons.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reason Commons">
+<meta property="og:url" content="https://reasoncommons.com/">
+<meta property="og:title" content="Reason Commons | Find a way forward, together">
+<meta property="og:description" content="Bring a recurring problem to Reason Commons, an open-source AI skill for shared reasoning, useful next moves and learning from real-world experience.">
+<meta property="og:image" content="https://reasoncommons.com/assets/reason-commons-social.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bring the problem that keeps coming back. Find a way forward, together. An illustration of people around a shared table, with one place left open.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reason Commons | Find a way forward, together">
+<meta name="twitter:description" content="Bring a recurring problem to Reason Commons, an open-source AI skill for shared reasoning, useful next moves and learning from real-world experience.">
+<meta name="twitter:image" content="https://reasoncommons.com/assets/reason-commons-social.png">
+<meta name="twitter:image:alt" content="Bring the problem that keeps coming back. Find a way forward, together. An illustration of people around a shared table, with one place left open.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..800;1,400..800&amp;family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap">
+<style>
+/* Layout: the shared working table. One warm paper ground and an editorial column; the reasoning example sits on a table surface; the movement section turns the page over to ink. */
+:root {
+  /* Colour: paper and ink lead; moss, clay and blue are marks, not fills. */
+  --paper: #F5F1E6;
+  --sheet: #FBF9F3;
+  --table: #EAE3D1;
+  --table-edge: #D8CEB4;
+  --ink: #173E35;
+  --ink-deep: #0C2620;
+  --ink-soft: #3D5A50;
+  --rule: #D3CCB8;
+  --rule-strong: #A9A58F;
+  --moss: #6C7E64;
+  --moss-text: #56684F;
+  --clay: #A84F39;
+  --clay-text: #93422F;
+  --clay-hover: #8E412E;
+  --clay-deep: #6E3122;
+  --blue: #526B89;
+  --blue-text: #455D7A;
+  --on-accent: #FFFFFF;
+  --on-ink: #F5F1E6;
+  --on-ink-soft: #D9CFB6;
+  --clay-on-ink: #EBB19D;
+  --tape-moss: #CDD5C2;
+  --tape-clay: #EACABD;
+  --tape-blue: #C9D3DF;
+  --tape-ink: #C3CEC7;
+  --tint-blue: #E3E8EE;
+  --tint-clay: #F4E3DB;
+  --tint-moss: #E5E9DF;
+  --ruled: #C3CFDB;
+  --ok-bg: #E5E9DF;
+  --err-bg: #F4E3DB;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .09 0 0 0 0 .24 0 0 0 0 .2 0 0 0 .08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  /* Type: Alegreya for voice, Alegreya Sans for reading and controls. */
+  --serif: "Alegreya", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: "Alegreya Sans", "Gill Sans", "Seravek", "Segoe UI", "Trebuchet MS", sans-serif;
+  --h1: clamp(2.6rem, 1.3rem + 4.6vw, 4.6rem);
+  --h2: clamp(2rem, 1.25rem + 3vw, 3.25rem);
+  --h3: 1.45rem;
+  --lede: clamp(1.15rem, 1rem + .5vw, 1.35rem);
+  --small: .9375rem;
+  --label: .8125rem;
+  --section: clamp(4rem, 2.5rem + 6vw, 7.5rem);
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+@media (min-width: 720px) { body { font-size: 1.1875rem; } }
+svg { max-width: 100%; }
+p { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; line-height: 1.08; margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+a { color: inherit; text-decoration-thickness: .07em; text-underline-offset: .2em; }
+a:hover { text-decoration-thickness: .13em; }
+:focus-visible { outline: 3px solid var(--blue-text); outline-offset: 3px; border-radius: 2px; }
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.skip { position: absolute; left: 1rem; top: -4rem; z-index: 20; background: var(--ink); color: var(--on-ink); padding: .6rem 1rem; border-radius: 4px; text-decoration: none; font-weight: 700; }
+.skip:focus { top: calc(env(safe-area-inset-top, 0px) + .75rem); }
+
+.band { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 1200px; margin-inline: auto; padding-inline: clamp(0px, 2.5vw, 32px); }
+.section { padding-block: var(--section); }
+.h2 { font-size: var(--h2); }
+
+/* Buttons and links */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+  min-height: 48px; padding: .7rem 1.35rem;
+  border: 2px solid var(--clay); border-radius: 4px;
+  background: var(--clay); color: var(--on-accent);
+  font-family: var(--sans); font-size: 1.0625rem; font-weight: 700; line-height: 1.2; letter-spacing: .01em;
+  text-decoration: none; cursor: pointer;
+  box-shadow: 0 3px 0 var(--clay-deep);
+  transition: background-color .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+.btn:hover { background: var(--clay-hover); border-color: var(--clay-hover); }
+.btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--clay-deep); }
+.btn[disabled] { opacity: .7; cursor: progress; }
+.btn--small { min-height: 44px; padding: .45rem .85rem; font-size: .95rem; box-shadow: 0 2px 0 var(--clay-deep); }
+.btn--ink { background: var(--ink); border-color: var(--ink); color: var(--on-ink); box-shadow: 0 3px 0 var(--ink-deep); }
+.btn--ink:hover { background: var(--ink-deep); border-color: var(--ink-deep); }
+.btn--ink:active { box-shadow: 0 1px 0 var(--ink-deep); }
+.text-link {
+  display: inline-flex; align-items: center; gap: .45rem; min-height: 48px;
+  font-weight: 700; color: var(--ink);
+  text-decoration: underline; text-decoration-color: var(--clay); text-decoration-thickness: 2px; text-underline-offset: .32em;
+}
+.text-link:hover { text-decoration-thickness: 3px; }
+.text-link svg, .btn svg { width: 1.05em; height: 1.05em; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Header */
+.site-header { border-bottom: 1px solid var(--rule); padding-block: .85rem; }
+.header-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "brand cta" "nav nav"; gap: .4rem 1rem; align-items: center; }
+.brand { grid-area: brand; display: flex; flex-direction: column; text-decoration: none; line-height: 1.15; min-width: 0; }
+.brand-name { font-family: var(--serif); font-weight: 800; font-size: 1.3rem; letter-spacing: -.01em; white-space: nowrap; }
+@media (max-width: 479px) { .brand-name { font-size: 1.15rem; } .brand-tag { font-size: .85rem; } .header-cta { padding-inline: .7rem; font-size: .9rem; } }
+.brand-tag { font-family: var(--serif); font-style: italic; font-size: .95rem; color: var(--ink-soft); }
+.site-nav { grid-area: nav; }
+.site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0 1.35rem; }
+.site-nav a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 500; font-size: 1.02rem; text-decoration: none; }
+.site-nav a:hover { text-decoration: underline; text-decoration-color: var(--clay); }
+.header-cta { grid-area: cta; }
+@media (min-width: 900px) {
+  .header-inner { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "brand nav cta"; gap: 1rem 2.5rem; }
+  .site-nav ul { justify-content: flex-end; gap: 0 2rem; }
+}
+
+/* Hero */
+.hero { padding-block: clamp(2.25rem, 1rem + 5vw, 5.5rem) clamp(3rem, 1.5rem + 6vw, 6rem); }
+.hero-grid { display: grid; gap: clamp(2rem, 5vw, 3.5rem); align-items: center; }
+.hero-copy { display: flex; flex-direction: column; gap: 1.4rem; min-width: 0; }
+.hero hgroup { display: flex; flex-direction: column; gap: .9rem; margin: 0; }
+.hero h1 { font-size: var(--h1); font-weight: 800; line-height: .98; letter-spacing: -.022em; max-width: 16ch; }
+.hero-sub { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: clamp(1.55rem, 1.1rem + 1.7vw, 2.3rem); line-height: 1.15; color: var(--clay-text); }
+.hero-lede { font-size: var(--lede); line-height: 1.55; max-width: 38ch; }
+.hero-lede2 { font-size: 1.1rem; color: var(--ink-soft); max-width: 40ch; }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; margin-top: .25rem; }
+.hero-status { display: flex; gap: .7rem; align-items: baseline; font-size: var(--small); color: var(--ink-soft); max-width: 46ch; padding-top: 1rem; border-top: 1px solid var(--rule); }
+.hero-status .stamp { flex: none; font-size: var(--label); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--moss-text); border: 1.5px solid var(--moss-text); border-radius: 3px; padding: .05rem .4rem; }
+.hero-art { margin: 0; min-width: 0; }
+.hero-art svg { display: block; width: 100%; height: auto; max-width: 600px; margin-inline: auto; }
+@media (min-width: 960px) {
+  .hero-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); }
+}
+
+/* Recognition */
+.recognition { padding-top: clamp(1rem, 3vw, 2rem); }
+.recog-grid { display: grid; gap: 2rem 4rem; }
+.recog-close { font-size: var(--lede); line-height: 1.5; max-width: 40ch; }
+.slips { list-style: none; margin: 0; padding: .75rem 0 0; display: grid; gap: 1.6rem 1.25rem; }
+.slip {
+  position: relative; background: var(--sheet); border: 1px solid var(--rule);
+  padding: 1.5rem 1.3rem 1.2rem; font-family: var(--serif); font-size: 1.32rem; line-height: 1.3;
+  box-shadow: 3px 4px 0 var(--table); transform: rotate(var(--r, 0deg));
+}
+.slip::before { content: ""; position: absolute; top: -11px; left: 50%; width: 68px; height: 22px; margin-left: -34px; background: var(--tape, var(--tape-ink)); transform: rotate(-3deg); opacity: .9; }
+.slip:nth-child(1) { --r: -1.2deg; --tape: var(--tape-moss); }
+.slip:nth-child(2) { --r: .9deg; --tape: var(--tape-clay); }
+.slip:nth-child(3) { --r: .5deg; --tape: var(--tape-blue); }
+.slip:nth-child(4) { --r: -.8deg; --tape: var(--tape-ink); }
+@media (min-width: 640px) { .slips { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 960px) {
+  .recog-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-areas: "title slips" "close slips"; align-items: start; }
+  .recog-grid h2 { grid-area: title; }
+  .slips { grid-area: slips; }
+  .recog-close { grid-area: close; }
+}
+
+/* How it works */
+.how-head { max-width: 30ch; }
+.how-head span { display: block; color: var(--ink-soft); font-style: italic; font-weight: 500; }
+.steps { list-style: none; margin: clamp(2rem, 4vw, 3.25rem) 0 0; padding: 0; display: grid; gap: 2rem; }
+.step { display: flex; flex-direction: column; gap: .55rem; padding-top: 1.1rem; border-top: 2px solid var(--ink); min-width: 0; }
+.step-n { font-family: var(--serif); font-style: italic; font-weight: 700; font-size: 2.6rem; line-height: 1; color: var(--clay-text); }
+.step h3 { font-size: var(--h3); }
+.step p { color: var(--ink-soft); }
+.steps-return { display: none; }
+@media (min-width: 640px) and (max-width: 979px) { .steps { grid-template-columns: 1fr 1fr; column-gap: 2rem; } }
+@media (min-width: 980px) {
+  .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; }
+  .steps-return {
+    display: block; position: relative; grid-column: 1 / -1; height: 34px; margin-top: -.5rem;
+    margin-inline: calc((100% - 6rem) / 8);
+    border: 2px dashed var(--moss-text); border-top: 0; border-radius: 0 0 28px 28px;
+  }
+  .steps-return::before { content: ""; position: absolute; left: -9px; top: -12px; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 12px solid var(--moss-text); }
+}
+
+/* Illustrative session */
+.session { border-top: 1px solid var(--rule); }
+.session-head { display: grid; gap: 1rem; max-width: 46rem; }
+.tabs { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: clamp(1.75rem, 4vw, 2.5rem); padding-left: .75rem; position: relative; z-index: 2; }
+.tab {
+  appearance: none; display: inline-flex; align-items: baseline; gap: .45rem;
+  min-height: 48px; padding: .7rem 1.05rem .6rem; margin-bottom: -2px;
+  border: 2px solid var(--ink); border-bottom: 0; border-radius: 8px 8px 0 0;
+  background: var(--paper); color: var(--ink);
+  font-family: var(--sans); font-size: 1.05rem; font-weight: 700; line-height: 1.2; cursor: pointer;
+}
+.tab-n { font-family: var(--serif); font-style: italic; color: var(--clay-text); font-size: 1.1rem; }
+.tab[aria-selected="true"] { background-color: var(--table); background-image: var(--grain); padding-bottom: .75rem; }
+.tab[aria-selected="false"] { color: var(--ink-soft); }
+.tab[aria-selected="false"]:hover { background: var(--sheet); }
+.tab:focus-visible { outline-offset: -5px; }
+@media (max-width: 479px) { .tabs { flex-wrap: nowrap; gap: .25rem; padding-left: .4rem; } .tab { padding-inline: .75rem; font-size: 1rem; } }
+.board {
+  position: relative; z-index: 1;
+  background-color: var(--table); background-image: var(--grain);
+  border: 2px solid var(--ink); border-radius: 4px 12px 12px 12px;
+  padding: clamp(1rem, .5rem + 2.5vw, 2.25rem);
+}
+.session:not(.is-tabbed) .board { margin-top: clamp(1.75rem, 4vw, 2.5rem); border-radius: 12px; }
+.fiction {
+  position: sticky; top: calc(env(safe-area-inset-top, 0px) + .5rem); z-index: 3;
+  width: fit-content; max-width: 100%;
+  display: flex; align-items: center; gap: .55rem;
+  margin: 0 0 1.25rem; padding: .4rem .8rem;
+  background: var(--sheet); color: var(--clay-text);
+  border: 1.5px solid var(--clay-text); border-radius: 3px;
+  font-size: var(--small); font-weight: 500; line-height: 1.35;
+  box-shadow: 0 2px 0 var(--table-edge);
+}
+.fiction svg { width: 1.1rem; height: 1.1rem; flex: none; fill: none; stroke: currentColor; stroke-width: 2; }
+.panel { display: grid; gap: 1.25rem; }
+.panel + .panel { margin-top: 2.5rem; padding-top: 2rem; border-top: 2px dashed var(--rule-strong); }
+.session.is-tabbed .panel + .panel { margin-top: 0; padding-top: 0; border-top: 0; }
+.panel:focus-visible { outline-offset: 6px; }
+.panel-title { font-size: 1.5rem; display: flex; gap: .5rem; align-items: baseline; }
+.panel-title .tab-n { font-size: 1.5rem; }
+.session.is-tabbed .panel-title { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.panel-caption { color: var(--ink-soft); max-width: 60ch; font-size: 1.05rem; }
+.panel-next { display: flex; justify-content: flex-end; }
+.next-btn {
+  appearance: none; display: inline-flex; align-items: center; gap: .5rem; min-height: 48px; padding: .6rem 1.1rem;
+  background: var(--sheet); color: var(--ink); border: 2px solid var(--ink); border-radius: 4px;
+  font-family: var(--sans); font-size: 1rem; font-weight: 700; cursor: pointer;
+}
+.next-btn:hover { background: var(--paper); }
+.next-btn svg { width: 1.05em; height: 1.05em; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Pieces of reasoning */
+.piece {
+  position: relative; min-width: 0;
+  display: flex; flex-direction: column; gap: .45rem;
+  background: var(--sheet); border: 2px solid var(--ink); border-radius: 3px;
+  padding: .95rem 1.1rem .8rem;
+  box-shadow: 3px 4px 0 var(--table-edge);
+}
+.piece__kind { display: flex; align-items: center; gap: .5rem; font-size: var(--label); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); line-height: 1.3; }
+.mark { flex: none; width: 1.5rem; height: .85rem; border: 2px solid var(--ink); border-radius: 2px; background: var(--sheet); }
+.piece__title { font-family: var(--serif); font-size: 1.2rem; font-weight: 700; line-height: 1.2; }
+.piece__text { font-family: var(--serif); font-size: 1.22rem; line-height: 1.35; }
+.piece__text--quote { font-style: italic; }
+.piece__foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .25rem .75rem; margin-top: .3rem; padding-top: .5rem; border-top: 1px solid var(--rule); font-size: var(--small); color: var(--ink-soft); }
+.who { display: inline-flex; align-items: center; gap: .45rem; font-weight: 700; color: var(--ink); }
+.who-dot { width: 1.65rem; height: 1.65rem; border-radius: 50%; display: inline-grid; place-items: center; background: var(--ink); color: var(--on-accent); font-size: .8rem; font-weight: 700; line-height: 1; }
+.who--maya .who-dot { background: var(--blue); }
+.who--rowan .who-dot { background: var(--clay); }
+.who--group .who-dot { background: var(--moss-text); }
+.illus { font-style: italic; font-size: .875rem; }
+.attach { display: flex; align-items: flex-start; gap: .5rem; font-size: var(--small); color: var(--ink); line-height: 1.4; }
+.attach svg { flex: none; width: 1.6rem; height: 1rem; margin-top: .2rem; fill: none; stroke: var(--clay-text); stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 1 5; }
+
+.piece--obs { border-style: solid; }
+.piece--hyp { border-style: dashed; border-color: var(--blue-text); }
+.piece--hyp .mark { border-style: dashed; border-color: var(--blue-text); }
+.piece--concern { border: 3px dotted var(--clay-text); }
+.piece--concern .mark { border: 3px dotted var(--clay-text); }
+.piece--proposal { border: 6px double var(--ink); }
+.piece--proposal .mark { border: 4px double var(--ink); }
+.piece--report { border-color: var(--moss-text); }
+.piece--report .piece__text { line-height: 1.85rem; background-image: repeating-linear-gradient(to bottom, transparent 0, transparent calc(1.85rem - 2px), var(--ruled) calc(1.85rem - 2px), var(--ruled) calc(1.85rem - 1px), transparent calc(1.85rem - 1px), transparent 1.85rem); }
+.piece--report .mark { border-color: var(--moss-text); background-image: linear-gradient(var(--moss-text), var(--moss-text)); background-size: 100% 2px; background-position: 0 50%; background-repeat: no-repeat; }
+.piece--question { border: 2px dashed var(--clay-text); }
+.piece--question .mark { border: 2px dashed var(--clay-text); border-right-color: transparent; }
+.piece--compact { padding: .75rem .95rem .65rem; box-shadow: 2px 3px 0 var(--table-edge); }
+.piece--compact .piece__text { font-size: 1.1rem; }
+.piece--unknown { border-style: dashed; }
+
+/* Relations between pieces */
+.rel { display: flex; align-items: center; justify-content: center; gap: .55rem; min-width: 0; font-size: var(--small); font-style: italic; color: var(--ink-soft); }
+.rel svg { flex: none; width: 16px; height: 44px; overflow: visible; fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.rel--hyp svg .line { stroke-dasharray: 5 5; stroke: var(--blue-text); }
+.rel--hyp svg .head { stroke: var(--blue-text); }
+.rel--report svg .line { stroke: var(--moss-text); }
+.rel--unknown svg .line { stroke-dasharray: 3 6; stroke: var(--moss-text); }
+
+/* View 1: Understand */
+.u-grid { display: grid; gap: .6rem; }
+.u-grid .p-rowan { margin-top: 1.25rem; }
+@media (min-width: 820px) {
+  .u-grid { grid-template-columns: minmax(0, 1fr) 112px minmax(0, 1fr); grid-template-areas: "prob rel maya" "prob . rowan"; gap: 1.5rem .25rem; align-items: start; }
+  .u-grid .p-problem { grid-area: prob; }
+  .u-grid .rel { grid-area: rel; flex-direction: column; align-self: center; text-align: center; }
+  .u-grid .rel svg { transform: rotate(-90deg); margin-block: -14px; }
+  .u-grid .p-maya { grid-area: maya; }
+  .u-grid .p-rowan { grid-area: rowan; margin-top: 0; }
+}
+
+/* View 2: Try */
+.t-trial { max-width: 40rem; }
+.standing { list-style: none; margin: .35rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem 0; align-items: center; font-size: var(--small); font-weight: 700; }
+.standing li { display: inline-flex; align-items: center; gap: .4rem; color: var(--ink-soft); }
+.standing li + li::before { content: ""; width: 1.5rem; height: 0; border-top: 2px dotted var(--rule-strong); margin-inline: .35rem; }
+.standing .dot { width: .95rem; height: .95rem; border-radius: 50%; border: 2px solid var(--ink-soft); background: transparent; }
+.standing .is-done { color: var(--ink); }
+.standing .is-done .dot { background: var(--ink); border-color: var(--ink); }
+.standing .is-now { color: var(--ink); }
+.standing .is-now .dot { background: var(--sheet); border-color: var(--ink); box-shadow: inset 0 0 0 2px var(--sheet), inset 0 0 0 5px var(--ink); }
+.standing-note { font-size: var(--small); color: var(--ink-soft); font-style: italic; }
+.t-slots { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.1rem; }
+.slot { display: flex; flex-direction: column; gap: .5rem; min-width: 0; }
+.slot__label { display: flex; align-items: center; gap: .55rem; font-weight: 700; font-size: 1rem; }
+.slot__label::before { content: ""; width: 1.4rem; height: 0; border-top: 2px solid var(--ink); }
+.plain-note { background: var(--sheet); border: 2px solid var(--rule-strong); border-radius: 3px; padding: .75rem .95rem; font-family: var(--serif); font-size: 1.1rem; line-height: 1.35; box-shadow: 2px 3px 0 var(--table-edge); }
+@media (min-width: 880px) {
+  .t-slots { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; position: relative; padding-top: 1.4rem; }
+  .t-slots { padding-top: 1.6rem; }
+  .t-slots::before { content: ""; position: absolute; top: 0; left: calc((100% - 2.5rem) / 6); right: calc((100% - 2.5rem) / 6); height: 0; border-top: 2px solid var(--ink); }
+  .t-slots::after { content: ""; position: absolute; top: -1.25rem; left: 50%; width: 0; height: 1.25rem; border-left: 2px solid var(--ink); }
+  .slot { position: relative; }
+  .slot::before { content: ""; position: absolute; top: -1.6rem; left: 50%; height: 1.6rem; border-left: 2px solid var(--ink); }
+  .slot__label { justify-content: center; text-align: center; }
+  .slot__label::before { display: none; }
+  .t-trial { margin-inline: auto; }
+}
+
+/* View 3: Return */
+.r-trial { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem; padding: .7rem .95rem; background: var(--sheet); border: 4px double var(--ink); border-radius: 3px; }
+.r-trial strong { font-family: var(--serif); font-size: 1.15rem; }
+.r-title { font-size: 1.35rem; display: flex; align-items: center; gap: .6rem; }
+.r-heads { display: none; }
+.r-rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.4rem; }
+.r-row { display: grid; gap: .35rem; }
+.r-row .rel { justify-content: flex-start; padding-left: 1.25rem; }
+@media (min-width: 880px) {
+  .r-heads, .r-row { grid-template-columns: minmax(0, 1fr) 132px minmax(0, 1fr); column-gap: .25rem; align-items: center; }
+  .r-heads { display: grid; font-size: var(--label); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+  .r-heads span:last-child { grid-column: 3; }
+  .r-rows { gap: 1rem; }
+  .r-row .rel { flex-direction: column; justify-content: center; padding-left: 0; text-align: center; }
+  .r-row .rel svg { transform: rotate(90deg); margin-block: -14px; }
+}
+.next-q { display: grid; gap: .75rem; margin-top: .75rem; align-items: center; }
+.open-path { display: flex; justify-content: flex-start; padding-left: 1.5rem; }
+.open-path svg { width: 40px; height: 48px; fill: none; stroke: var(--clay-text); stroke-width: 2.25; stroke-dasharray: 6 6; stroke-linecap: round; }
+.open-slot { border: 2px dashed var(--clay-text); border-radius: 12px; padding: 1rem 1.15rem; display: flex; gap: .75rem; align-items: flex-start; font-family: var(--serif); font-style: italic; font-size: 1.15rem; line-height: 1.4; background: transparent; }
+.open-slot svg { flex: none; width: 1.6rem; height: 1.6rem; fill: none; stroke: var(--clay-text); stroke-width: 2; stroke-linecap: round; margin-top: .1rem; }
+@media (min-width: 880px) {
+  .next-q { grid-template-columns: minmax(0, 1.25fr) 88px minmax(0, 1fr); gap: 0; }
+  .open-path { justify-content: center; padding-left: 0; }
+  .open-path svg { width: 88px; height: 40px; }
+  .open-path .v { display: none; }
+}
+@media (max-width: 879px) { .open-path .h { display: none; } }
+
+.session-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 1.25rem 2rem; margin-top: 1.5rem; }
+.legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; font-size: var(--small); color: var(--ink-soft); max-width: 46rem; }
+.legend li { display: inline-flex; align-items: center; gap: .45rem; }
+.legend .piece--obs, .legend .piece--hyp, .legend .piece--concern, .legend .piece--proposal, .legend .piece--report, .legend .piece--question { all: unset; display: inline-flex; align-items: center; gap: .45rem; }
+
+/* Motion: gentle assembly when a view opens */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+  .panel.is-entering .anim { animation: settle .5s cubic-bezier(.2, .7, .2, 1) both; animation-delay: calc(var(--i, 0) * 110ms); }
+  @keyframes settle { from { opacity: 0; transform: translateY(10px) rotate(-.6deg); } to { opacity: 1; transform: none; } }
+}
+
+/* Human agency */
+.agency { border-top: 1px solid var(--rule); }
+.principles { list-style: none; margin: clamp(2rem, 4vw, 3rem) 0 0; padding: 0; display: grid; gap: 2rem; }
+.principle { display: grid; gap: .75rem; align-content: start; padding-top: 1.1rem; border-top: 2px solid var(--ink); }
+.principle svg { width: 64px; height: 44px; fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.principle p { color: var(--ink-soft); }
+.principle strong { display: block; font-family: var(--serif); font-size: 1.4rem; line-height: 1.2; color: var(--ink); margin-bottom: .4rem; }
+@media (min-width: 820px) { .principles { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.25rem; } }
+
+/* The larger idea */
+.idea { background-color: var(--ink); background-image: var(--grain); color: var(--on-ink); }
+.idea :focus-visible { outline-color: var(--on-ink); }
+.idea-grid { display: grid; gap: clamp(2rem, 4vw, 3.5rem); }
+.idea h2 { font-size: clamp(3rem, 1rem + 8vw, 8.25rem); line-height: .92; font-weight: 800; letter-spacing: -.028em; max-width: 11ch; }
+.idea h2 em { font-weight: 600; color: var(--clay-on-ink); }
+.idea-statement { font-family: var(--serif); font-size: clamp(1.55rem, 1.1rem + 1.7vw, 2.45rem); line-height: 1.2; max-width: 22ch; }
+.idea-body { display: grid; gap: 1.1rem; color: var(--on-ink-soft); max-width: 58ch; }
+.idea-body p:last-child { color: var(--on-ink); padding-top: 1.1rem; border-top: 1px solid var(--moss); font-weight: 500; }
+.catalog {
+  position: relative; align-self: start; max-width: 32rem;
+  background-color: var(--sheet); color: var(--ink);
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 2.05rem, var(--ruled) 2.05rem, var(--ruled) calc(2.05rem + 1px));
+  background-position: 0 3.3rem;
+  border-radius: 5px; padding: 1.2rem 1.4rem 3rem 2.4rem;
+  transform: rotate(-1.2deg);
+  box-shadow: 6px 8px 0 var(--ink-deep);
+}
+.catalog::before { content: ""; position: absolute; top: 0; bottom: 0; left: 1.3rem; width: 2px; background: var(--clay); }
+.catalog::after { content: ""; position: absolute; bottom: .9rem; left: 50%; width: 20px; height: 20px; margin-left: -10px; border-radius: 50%; background: var(--ink); }
+.catalog-head { display: flex; justify-content: space-between; gap: 1rem; font-size: var(--label); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); padding-bottom: .55rem; margin-bottom: .55rem; border-bottom: 2px solid var(--clay); }
+.catalog-text { font-family: var(--serif); font-size: clamp(1.25rem, 1.05rem + .7vw, 1.5rem); line-height: 2.05rem; }
+.catalog .term { font-weight: 700; font-variant: small-caps; letter-spacing: .02em; font-size: 1.15em; }
+.catalog .practice { text-decoration: underline; text-decoration-color: var(--moss); text-decoration-thickness: 2px; text-underline-offset: .22em; }
+@media (min-width: 960px) {
+  .idea-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "title title" "statement card" "body card"; column-gap: 5rem; }
+  .idea h2 { grid-area: title; }
+  .idea-statement { grid-area: statement; }
+  .catalog { grid-area: card; justify-self: end; margin-top: .5rem; }
+  .idea-body { grid-area: body; }
+}
+
+/* Beta invitation */
+.ticket { display: grid; max-width: 64rem; margin-inline: auto; background: var(--sheet); border: 2px solid var(--ink); border-radius: 6px; box-shadow: 5px 6px 0 var(--table-edge); }
+.ticket-main { display: grid; gap: 1.1rem; padding: clamp(1.4rem, 1rem + 2.5vw, 3rem); min-width: 0; }
+.ticket-main p { max-width: 58ch; }
+.ticket-main p:first-of-type { font-size: var(--lede); line-height: 1.5; }
+.ticket-main p:last-of-type { color: var(--ink-soft); }
+.ticket-stub { position: relative; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: .75rem; padding: 1.75rem clamp(1.4rem, 1rem + 2.5vw, 3rem); border-top: 2px dashed var(--rule-strong); }
+.ticket-stub::before, .ticket-stub::after { content: ""; position: absolute; top: -13px; width: 24px; height: 24px; border-radius: 50%; background: var(--paper); border: 2px solid var(--ink); }
+.ticket-stub::before { left: -13px; clip-path: inset(0 0 0 50%); }
+.ticket-stub::after { right: -13px; clip-path: inset(0 50% 0 0); }
+@media (min-width: 880px) {
+  .ticket { grid-template-columns: minmax(0, 1fr) 17rem; }
+  .ticket-stub { border-top: 0; border-left: 2px dashed var(--rule-strong); padding: 2rem 1.75rem; }
+  .ticket-stub::before { top: -13px; left: -13px; clip-path: inset(50% 0 0 0); }
+  .ticket-stub::after { top: auto; bottom: -13px; right: auto; left: -13px; clip-path: inset(0 0 50% 0); }
+}
+
+/* Support and research */
+.support { background-color: var(--table); background-image: var(--grain); border-top: 1px solid var(--table-edge); border-bottom: 1px solid var(--table-edge); }
+.support-grid { display: grid; gap: 2.5rem 4.5rem; }
+.support-intro { display: grid; gap: 1.25rem; align-content: start; }
+.support-intro p { font-size: var(--lede); line-height: 1.5; max-width: 36ch; }
+.ledger { margin: 0; }
+.ledger-row { display: grid; gap: .55rem; padding-block: 1.4rem; border-top: 1px solid var(--rule-strong); }
+.ledger-row:last-child { border-bottom: 1px solid var(--rule-strong); }
+.ledger dt { font-size: var(--label); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--moss-text); padding-top: .25rem; }
+.ledger dd { margin: 0; display: grid; gap: .9rem; min-width: 0; }
+.support-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .8rem; }
+.support-list li { position: relative; padding-left: 1.35rem; }
+.support-list li::before { content: ""; position: absolute; left: 0; top: .62em; width: .55rem; height: .55rem; border: 2px solid var(--moss-text); }
+.question { font-family: var(--serif); font-size: clamp(1.35rem, 1.1rem + 1vw, 1.75rem); line-height: 1.3; font-weight: 500; }
+.proof { display: flex; flex-wrap: wrap; gap: 0 1.5rem; }
+@media (min-width: 720px) { .ledger-row { grid-template-columns: 11rem minmax(0, 1fr); column-gap: 1.5rem; } }
+@media (min-width: 1000px) {
+  .support-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .support-intro { position: sticky; top: 2rem; align-self: start; }
+}
+
+/* Questions */
+.faq { margin: clamp(2rem, 4vw, 3rem) 0 0; }
+.faq-row { display: grid; gap: .4rem; padding-block: 1.3rem; border-top: 1px solid var(--rule-strong); }
+.faq-row:last-child { border-bottom: 1px solid var(--rule-strong); }
+.faq dt { font-family: var(--serif); font-size: 1.32rem; font-weight: 700; line-height: 1.25; }
+.faq dd { margin: 0; color: var(--ink-soft); max-width: 62ch; }
+@media (min-width: 880px) { .faq-row { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); column-gap: 3rem; } }
+
+/* Contact form */
+.join { background-color: var(--table); background-image: var(--grain); border-top: 1px solid var(--table-edge); }
+.join-grid { display: grid; gap: 2rem 4.5rem; }
+.join-intro { display: grid; gap: 1rem; align-content: start; }
+.join-intro p { font-size: var(--lede); line-height: 1.5; max-width: 34ch; }
+.join-form { display: grid; gap: 1.5rem; min-width: 0; background: var(--sheet); border: 2px solid var(--ink); border-radius: 6px; padding: clamp(1.15rem, .8rem + 2vw, 2.25rem); box-shadow: 5px 6px 0 var(--table-edge); }
+.field { display: grid; gap: .4rem; min-width: 0; margin: 0; padding: 0; border: 0; }
+.field label, .field legend { font-weight: 700; font-size: 1.05rem; line-height: 1.3; }
+.field legend { padding: 0; margin-bottom: .55rem; }
+.optional { font-weight: 400; color: var(--ink-soft); }
+.hint { font-size: var(--small); color: var(--ink-soft); margin-top: -.1rem; }
+.input {
+  width: 100%; min-height: 48px; padding: .65rem .8rem;
+  font: inherit; color: var(--ink); background: var(--paper);
+  border: 2px solid var(--ink-soft); border-radius: 4px;
+}
+textarea.input { min-height: 8.5rem; resize: vertical; line-height: 1.5; }
+.input:focus-visible { outline: 3px solid var(--blue-text); outline-offset: 2px; border-color: var(--ink); }
+.choices { display: grid; gap: .5rem; }
+.choice { display: flex; align-items: center; gap: .75rem; min-height: 48px; padding: .55rem .85rem; background: var(--paper); border: 1.5px solid var(--rule-strong); border-radius: 4px; cursor: pointer; font-weight: 500; line-height: 1.3; }
+.choice:hover { border-color: var(--ink-soft); }
+.choice:has(input:checked) { border: 2px solid var(--ink); background: var(--sheet); }
+.choice:has(input:focus-visible) { outline: 3px solid var(--blue-text); outline-offset: 2px; }
+.choice input { flex: none; width: 1.25rem; height: 1.25rem; margin: 0; accent-color: var(--clay); }
+.choice input:focus-visible { outline: none; }
+@media (min-width: 560px) { .choices--two { grid-template-columns: 1fr 1fr; } }
+.trap { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+.form-msg { display: flex; gap: .65rem; align-items: flex-start; padding: .8rem 1rem; border-radius: 4px; font-weight: 700; }
+.form-msg svg { flex: none; width: 1.3rem; height: 1.3rem; margin-top: .1rem; fill: none; stroke: currentColor; stroke-width: 2.25; stroke-linecap: round; stroke-linejoin: round; }
+.form-msg--ok { background: var(--ok-bg); border: 2px solid var(--moss-text); color: var(--ink); }
+.form-msg--err { background: var(--err-bg); border: 2px solid var(--clay-text); color: var(--ink); }
+.preview-note { font-size: var(--small); color: var(--ink-soft); background: var(--paper); border: 1.5px dashed var(--ink-soft); border-radius: 4px; padding: .7rem .9rem; }
+@media (min-width: 1000px) { .join-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; } }
+
+/* Footer */
+.site-footer { border-top: 2px solid var(--ink); padding-block: clamp(2.5rem, 5vw, 3.5rem); }
+.footer-grid { display: grid; gap: 1.25rem 3rem; }
+.footer-brand { display: grid; gap: .2rem; }
+.footer-brand .brand-name { font-size: 1.5rem; }
+.footer-credit { color: var(--ink-soft); }
+.footer-links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0 1.5rem; }
+.footer-links a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; }
+@media (min-width: 880px) { .footer-grid { grid-template-columns: auto minmax(0, 1fr) auto; align-items: end; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+<div class="page" lang="en-GB">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header band">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-name">Reason Commons</span>
+      <span class="brand-tag">A renaissance of common sense</span>
+    </a>
+    <nav class="site-nav" aria-label="On this page">
+      <ul>
+        <li><a href="#session">See it work</a></li>
+        <li><a href="#idea">The idea</a></li>
+        <li><a href="#support">Support the work</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--small header-cta" href="#join" data-join="beta">Become a beta tester</a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero band" id="top" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <hgroup>
+        <h1 id="hero-title">Bring the problem that keeps coming back.</h1>
+        <p class="hero-sub">Find a way forward, together.</p>
+      </hgroup>
+      <p class="hero-lede">Reason Commons is an open-source AI skill for working through what matters to you: understanding what is getting in the way, choosing a useful next move, and learning from what happens.</p>
+      <p class="hero-lede2">Bring your experience. Invite another perspective. Keep the reasoning in view as you decide what to try.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#join" data-join="beta">Become a beta tester</a>
+        <a class="text-link" href="#session">See a session unfold <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+      </div>
+      <p class="hero-status"><span class="stamp">Early</span><span>Available now as an early skill for Claude Code, Codex and compatible AI agents. Start on your own or with a small group.</span></p>
+    </div>
+
+    <figure class="hero-art">
+      <svg viewBox="0 0 640 560" role="img" aria-labelledby="art-title art-desc">
+        <title id="art-title">People around a shared working table</title>
+        <desc id="art-desc">Four people gather at one table. Each brings a piece of paper: one is being placed, two are linked to a central card marked with a looping arrow, the problem that keeps coming back. A dashed line leads from it to an empty space on the table, and a chair stands empty, left open for another contribution.</desc>
+        <defs>
+          <filter id="art-grain" x="0" y="0" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="4" result="noise"/>
+            <feColorMatrix in="noise" type="matrix" values="0 0 0 0 .09  0 0 0 0 .24  0 0 0 0 .2  0 0 0 .14 0" result="tint"/>
+            <feComposite in="tint" in2="SourceGraphic" operator="in" result="grain"/>
+            <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="grain"/></feMerge>
+          </filter>
+          <marker id="art-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M1 1 L9 5 L1 9" fill="none" stroke="#173E35" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </marker>
+        </defs>
+
+        <!-- people behind the table -->
+        <g>
+          <path d="M115 272 C115 230 134 206 165 206 C196 206 215 230 215 272 Z" fill="#526B89"/>
+          <circle cx="165" cy="140" r="12" fill="#3E5470"/>
+          <circle cx="165" cy="170" r="27" fill="#7C91AB"/>
+          <path d="M138 166 A27 27 0 0 1 192 166 C182 156 150 154 138 166 Z" fill="#3E5470"/>
+        </g>
+        <g>
+          <path d="M266 272 C266 222 289 190 321 190 C353 190 376 222 376 272 Z" fill="#2E5A4D"/>
+          <circle cx="321" cy="152" r="28" fill="#5E8476"/>
+          <path d="M293 150 A28 28 0 0 1 349 150 C340 136 302 134 293 150 Z" fill="#173E35"/>
+        </g>
+        <g>
+          <path d="M430 272 C430 232 449 208 478 208 C507 208 526 232 526 272 Z" fill="#6C7E64"/>
+          <circle cx="478" cy="172" r="25" fill="#9DAD95"/>
+          <path d="M453 170 A25 25 0 0 1 503 168 C496 158 470 154 453 170 Z" fill="#4E5F48"/>
+        </g>
+
+        <!-- the shared table -->
+        <rect x="36" y="282" width="568" height="170" rx="28" fill="#CDBF9F"/>
+        <rect x="36" y="262" width="568" height="170" rx="28" fill="#E6DCC4" stroke="#C6B794" stroke-width="1.5" filter="url(#art-grain)"/>
+
+
+        <!-- a possible explanation, dashed -->
+        <rect x="95" y="296" width="114" height="56" rx="3" fill="#B8A98A"/>
+        <rect x="92" y="292" width="114" height="56" rx="3" fill="#E3E8EE" stroke="#526B89" stroke-width="2" stroke-dasharray="6 4"/>
+        <path d="M104 309 H190 M104 321 H178 M104 333 H160" stroke="#526B89" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+        <path d="M134 230 C128 254 128 280 136 302" fill="none" stroke="#526B89" stroke-width="14" stroke-linecap="round"/>
+        <circle cx="137" cy="306" r="9" fill="#7C91AB"/>
+
+        <!-- the problem that keeps coming back: a bounded card -->
+        <rect x="266" y="300" width="148" height="76" rx="3" fill="#B8A98A"/>
+        <rect x="262" y="296" width="148" height="76" rx="3" fill="#FBF9F3" stroke="#173E35" stroke-width="2.25"/>
+        <path d="M358 334 A22 14 0 1 1 344 321" fill="none" stroke="#A84F39" stroke-width="3" stroke-linecap="round"/>
+        <path d="M337 315 L345 321 L337 328" fill="none" stroke="#A84F39" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M376 318 H398 M376 330 H394 M376 342 H398" stroke="#173E35" stroke-width="2.5" stroke-linecap="round" opacity=".35"/>
+
+        <!-- links between pieces -->
+        <path d="M208 320 C228 320 238 334 258 336" fill="none" stroke="#173E35" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#art-arrow)"/>
+
+        <!-- a piece being placed by the person on the right -->
+        <g transform="rotate(-5 492 318)">
+          <rect x="444" y="294" width="100" height="52" rx="3" fill="#B8A98A"/>
+          <rect x="440" y="290" width="100" height="52" rx="3" fill="#E5E9DF" stroke="#56684F" stroke-width="2"/>
+          <path d="M452 306 H526 M452 318 H516 M452 330 H500" stroke="#56684F" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+        </g>
+        <path d="M440 324 C428 328 420 334 414 336" fill="none" stroke="#173E35" stroke-width="2"/>
+        <path d="M452 236 C446 262 452 296 468 318" fill="none" stroke="#6C7E64" stroke-width="15" stroke-linecap="round"/>
+        <circle cx="470" cy="322" r="9.5" fill="#9DAD95"/>
+
+        <!-- the open place: a dashed path to an empty space -->
+        <path d="M410 354 C432 358 432 392 450 394" fill="none" stroke="#A84F39" stroke-width="2.25" stroke-dasharray="6 5" stroke-linecap="round"/>
+        <rect x="454" y="372" width="112" height="48" rx="4" fill="#EEE6D2" stroke="#A84F39" stroke-width="2.25" stroke-dasharray="7 5"/>
+
+        <!-- a note brought by the person in front -->
+        <g transform="rotate(4 230 402)">
+          <rect x="191" y="383" width="86" height="44" rx="3" fill="#B8A98A"/>
+          <rect x="188" y="380" width="86" height="44" rx="3" fill="#FBF9F3" stroke="#173E35" stroke-width="2"/>
+          <path d="M199 394 H260 M199 405 H248" stroke="#173E35" stroke-width="2.5" stroke-linecap="round" opacity=".35"/>
+        </g>
+
+        <!-- person in front, seen from behind -->
+        <path d="M54 560 C54 520 94 504 150 504 C206 504 246 520 246 560 Z" fill="#173E35"/>
+        <path d="M214 520 C228 486 236 452 240 422" fill="none" stroke="#173E35" stroke-width="16" stroke-linecap="round"/>
+        <circle cx="241" cy="418" r="10" fill="#2E5A4D"/>
+        <circle cx="150" cy="482" r="36" fill="#0F2C25"/>
+
+        <!-- an empty chair, left open -->
+        <rect x="468" y="470" width="96" height="62" rx="14" fill="none" stroke="#A84F39" stroke-width="2.5" stroke-dasharray="8 6"/>
+        <path d="M482 532 V560 M550 532 V560" stroke="#A84F39" stroke-width="2.5" stroke-dasharray="8 6" stroke-linecap="round"/>
+      </svg>
+    </figure>
+  </div>
+</section>
+
+<section class="recognition band section" aria-labelledby="recog-title">
+  <div class="wrap recog-grid">
+    <h2 class="h2" id="recog-title">You probably already have pieces of the answer.</h2>
+    <ul class="slips">
+      <li class="slip">Someone has noticed a pattern.</li>
+      <li class="slip">Someone else has a concern.</li>
+      <li class="slip">You share a goal, but keep circling the same disagreement.</li>
+      <li class="slip">Or you have tried a change and are still unsure what helped.</li>
+    </ul>
+    <p class="recog-close">Reason Commons gives those pieces a shared place to work: a picture of what you are trying to achieve, what might be holding it back, and what deserves attention next.</p>
+  </div>
+</section>
+
+<section class="how band section" aria-labelledby="how-title" style="padding-top: 0">
+  <div class="wrap">
+    <h2 class="h2 how-head" id="how-title">A conversation you can act on. <span>A record you can return to.</span></h2>
+    <ol class="steps">
+      <li class="step">
+        <span class="step-n" aria-hidden="true">1</span>
+        <h3>Bring something real.</h3>
+        <p>A recurring frustration. A decision that has stalled. A conflict. Something you want to make possible. Begin with what you know.</p>
+      </li>
+      <li class="step">
+        <span class="step-n" aria-hidden="true">2</span>
+        <h3>Make the reasoning visible.</h3>
+        <p>The AI helps connect observations, possible explanations and proposed changes. Contributions keep their names. Assumptions and objections remain available to examine. Nothing counts as agreed until people explicitly accept it.</p>
+      </li>
+      <li class="step">
+        <span class="step-n" aria-hidden="true">3</span>
+        <h3>Choose a next move.</h3>
+        <p>Work towards a useful question or a change worth trying. Before a trial, record what you hope it will improve, what concerns you, and who could report on the experience.</p>
+      </li>
+      <li class="step">
+        <span class="step-n" aria-hidden="true">4</span>
+        <h3>Return with what happened.</h3>
+        <p>Compare that experience with the original expectations. Keep what remains uncertain visible. Use it to work out where to go next.</p>
+      </li>
+      <li class="steps-return" aria-hidden="true"></li>
+    </ol>
+  </div>
+</section>
+
+<section class="session band section" id="session" aria-labelledby="session-title" data-session>
+  <div class="wrap">
+    <div class="session-head">
+      <h2 class="h2" id="session-title">What might that look like?</h2>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Stages of the illustrative session" hidden>
+      <button class="tab" type="button" role="tab" id="tab-understand" aria-controls="view-understand" aria-selected="true"><span class="tab-n" aria-hidden="true">1</span>Understand</button>
+      <button class="tab" type="button" role="tab" id="tab-try" aria-controls="view-try" aria-selected="false" tabindex="-1"><span class="tab-n" aria-hidden="true">2</span>Try</button>
+      <button class="tab" type="button" role="tab" id="tab-return" aria-controls="view-return" aria-selected="false" tabindex="-1"><span class="tab-n" aria-hidden="true">3</span>Return</button>
+    </div>
+
+    <div class="board">
+      <p class="fiction"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5" stroke-linecap="round"/></svg><em>Illustrative session. These people and events are fictional.</em></p>
+
+      <!-- 1 · Understand -->
+      <div class="panel" id="view-understand" role="region" aria-labelledby="h-understand">
+        <h3 class="panel-title" id="h-understand"><span class="tab-n" aria-hidden="true">1</span>Understand</h3>
+        <p class="panel-caption">Contributions keep their names. Assumptions and objections remain available to examine.</p>
+        <div class="u-grid">
+          <article class="piece piece--obs p-problem anim" style="--i:0" aria-labelledby="pt-problem">
+            <p class="piece__kind"><span class="mark" aria-hidden="true"></span>Observation</p>
+            <h4 class="piece__title" id="pt-problem">The problem</h4>
+            <p class="piece__text">People sign up for our community sessions. Few come back.</p>
+            <p class="piece__foot"><span class="who who--group"><span class="who-dot" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 12a8 8 0 1 0 2.3-5.6M4 4v4h4"/></svg></span>Brought by the group</span><span class="illus">Illustrative</span></p>
+          </article>
+          <p class="rel rel--hyp anim" style="--i:1"><svg viewBox="0 0 16 44" aria-hidden="true"><path class="line" d="M8 42 V5"/><path class="head" d="M2 11 L8 3 L14 11"/></svg><span>might explain<span class="sr-only">: Maya's possible explanation, which follows, might explain the problem</span></span></p>
+          <article class="piece piece--hyp p-maya anim" style="--i:2" aria-labelledby="pt-maya">
+            <p class="piece__kind"><span class="mark" aria-hidden="true"></span>Possible explanation</p>
+            <h4 class="piece__title" id="pt-maya">A possible explanation</h4>
+            <p class="piece__text piece__text--quote">“Maybe people leave without knowing how to get involved.”</p>
+            <p class="piece__foot"><span class="who who--maya"><span class="who-dot" aria-hidden="true">M</span>Maya</span><span class="illus">Illustrative</span></p>
+          </article>
+          <article class="piece piece--concern p-rowan anim" style="--i:3" aria-labelledby="pt-rowan">
+            <p class="piece__kind"><span class="mark" aria-hidden="true"></span>Concern</p>
+            <h4 class="piece__title" id="pt-rowan">A concern worth keeping</h4>
+            <p class="piece__text piece__text--quote">“A more explicit invitation might feel pressuring.”</p>
+            <p class="attach"><svg viewBox="0 0 26 16" aria-hidden="true"><path d="M2 8 H24"/></svg><span>Attached to: a more explicit invitation, not yet proposed</span></p>
+            <p class="piece__foot"><span class="who who--rowan"><span class="who-dot" aria-hidden="true">R</span>Rowan</span><span class="illus">Illustrative</span></p>
+          </article>
+        </div>
+        <div class="panel-next"><button class="next-btn" type="button" data-goto="1" hidden>Next: Try <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+      </div>
+
+      <!-- 2 · Try -->
+      <div class="panel" id="view-try" role="region" aria-labelledby="h-try">
+        <h3 class="panel-title" id="h-try"><span class="tab-n" aria-hidden="true">2</span>Try</h3>
+        <p class="panel-caption">Before a trial, record what you hope it will improve, what concerns you, and who could report on the experience.</p>
+        <article class="piece piece--proposal t-trial anim" style="--i:0" aria-labelledby="pt-trial">
+          <p class="piece__kind"><span class="mark" aria-hidden="true"></span>Proposal</p>
+          <h4 class="piece__title" id="pt-trial">A small trial</h4>
+          <p class="piece__text">End one session with a clear, optional next step. Ask newcomers how the invitation felt and whether they took it up.</p>
+          <ol class="standing" aria-label="Standing of this trial">
+            <li class="is-now" aria-current="step"><span class="dot" aria-hidden="true"></span>Proposed<span class="sr-only"> (current)</span></li>
+            <li><span class="dot" aria-hidden="true"></span>Chosen<span class="sr-only"> (not yet)</span></li>
+            <li><span class="dot" aria-hidden="true"></span>Tried<span class="sr-only"> (not yet)</span></li>
+          </ol>
+          <p class="standing-note">Nothing counts as agreed until people explicitly accept it.</p>
+          <p class="piece__foot"><span>Not yet chosen</span><span class="illus">Illustrative</span></p>
+        </article>
+        <ul class="t-slots">
+          <li class="slot anim" style="--i:1">
+            <p class="slot__label">What we hope it will improve</p>
+            <div class="piece piece--hyp piece--compact">
+              <p class="piece__kind"><span class="mark" aria-hidden="true"></span>Possible explanation</p>
+              <p class="piece__text piece__text--quote">“Maybe people leave without knowing how to get involved.”</p>
+              <p class="piece__foot"><span class="who who--maya"><span class="who-dot" aria-hidden="true">M</span>Maya</span><span class="illus">Illustrative</span></p>
+            </div>
+          </li>
+          <li class="slot anim" style="--i:2">
+            <p class="slot__label">What concerns us</p>
+            <div class="piece piece--concern piece--compact">
+              <p class="piece__kind"><span class="mark" aria-hidden="true"></span>Concern</p>
+              <p class="piece__text piece__text--quote">“A more explicit invitation might feel pressuring.”</p>
+              <p class="attach"><svg viewBox="0 0 26 16" aria-hidden="true"><path d="M2 8 H24"/></svg><span>Attached to: this trial</span></p>
+              <p class="piece__foot"><span class="who who--rowan"><span class="who-dot" aria-hidden="true">R</span>Rowan</span><span class="illus">Illustrative</span></p>
+            </div>
+          </li>
+          <li class="slot anim" style="--i:3">
+            <p class="slot__label">Who could report</p>
+            <p class="plain-note">Newcomers: how the invitation felt, and whether they took it up.</p>
+          </li>
+        </ul>
+        <div class="panel-next"><button class="next-btn" type="button" data-goto="2" hidden>Next: Return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+      </div>
+
+      <!-- 3 · Return -->
+      <div class="panel" id="view-return" role="region" aria-labelledby="h-return">
+        <h3 class="panel-title" id="h-return"><span class="tab-n" aria-hidden="true">3</span>Return</h3>
+        <p class="panel-caption">Compare that experience with the original expectations. Keep what remains uncertain visible.</p>
+        <div class="r-trial anim" style="--i:0">
+          <strong>A small trial</strong>
+          <ol class="standing" aria-label="Standing of this trial">
+            <li class="is-done"><span class="dot" aria-hidden="true"></span>Proposed</li>
+            <li class="is-done"><span class="dot" aria-hidden="true"></span>Chosen</li>
+            <li class="is-done" aria-current="step"><span class="dot" aria-hidden="true"></span>Tried once<span class="sr-only"> (current)</span></li>
+          </ol>
+        </div>
+        <h4 class="r-title anim" style="--i:1">An experience to return with</h4>
+        <p class="r-heads" aria-hidden="true"><span>Recorded before the trial</span><span>Reported after</span></p>
+        <ul class="r-rows">
+          <li class="r-row anim" style="--i:2">
+            <div class="piece piece--hyp piece--compact">
+              <p class="piece__kind"><span class="mark" aria-hidden="true"></span>Recorded before · hope</p>
+              <p class="piece__text piece__text--quote">“Maybe people leave without knowing how to get involved.”</p>
+              <p class="piece__foot"><span class="who who--maya"><span class="who-dot" aria-hidden="true">M</span>Maya</span><span class="illus">Illustrative</span></p>
+            </div>
+            <p class="rel rel--report"><svg viewBox="0 0 16 44" aria-hidden="true"><path class="line" d="M8 2 V42"/></svg><span>reported</span></p>
+            <div class="piece piece--report piece--compact">
+              <p class="piece__kind"><span class="mark" aria-hidden="true"></span>Report</p>
+              <p class="piece__text">One newcomer found the next step helpful.</p>
+              <p class="piece__foot"><span>From a newcomer</span><span class="illus">Illustrative</span></p>
+            </div>
+          </li>
+          <li class="r-row anim" style="--i:3">
+            <div class="piece piece--concern piece--compact">
+              <p class="piece__kind"><span class="mark" aria-hidden="true"></span>Recorded before · concern</p>
+              <p class="piece__text piece__text--quote">“A more explicit invitation might feel pressuring.”</p>
+              <p class="piece__foot"><span class="who who--rowan"><span class="who-dot" aria-hidden="true">R</span>Rowan</span><span class="illus">Illustrative</span></p>
+            </div>
+            <p class="rel rel--report"><svg viewBox="0 0 16 44" aria-hidden="true"><path class="line" d="M8 2 V42"/></svg><span>reported</span></p>
+            <div class="piece piece--report piece--compact">
+              <p class="piece__kind"><span class="mark" aria-hidden="true"></span>Report</p>
+              <p class="piece__text">Another felt put on the spot.</p>
+              <p class="piece__foot"><span>From a newcomer</span><span class="illus">Illustrative</span></p>
+            </div>
+          </li>
+          <li class="r-row anim" style="--i:4">
+            <div class="piece piece--obs piece--compact">
+              <p class="piece__kind"><span class="mark" aria-hidden="true"></span>Recorded before · the problem</p>
+              <p class="piece__text">People sign up for our community sessions. Few come back.</p>
+              <p class="piece__foot"><span>Brought by the group</span><span class="illus">Illustrative</span></p>
+            </div>
+            <p class="rel rel--unknown"><svg viewBox="0 0 16 44" aria-hidden="true"><path class="line" d="M8 2 V42"/></svg><span>not yet known</span></p>
+            <div class="piece piece--report piece--unknown piece--compact">
+              <p class="piece__kind"><span class="mark" aria-hidden="true"></span>Report · still uncertain</p>
+              <p class="piece__text">We do not yet know whether either will return.</p>
+              <p class="piece__foot"><span>Kept visible</span><span class="illus">Illustrative</span></p>
+            </div>
+          </li>
+        </ul>
+        <div class="next-q">
+          <article class="piece piece--question anim" style="--i:5" aria-labelledby="pt-question">
+            <p class="piece__kind"><span class="mark" aria-hidden="true"></span>Open question</p>
+            <h4 class="piece__title" id="pt-question">The next question</h4>
+            <p class="piece__text">What would make the invitation useful while leaving people comfortable to decline?</p>
+            <p class="piece__foot"><span>Unresolved</span><span class="illus">Illustrative</span></p>
+          </article>
+          <div class="open-path anim" style="--i:6" aria-hidden="true">
+            <svg class="h" viewBox="0 0 88 40"><path d="M2 20 C30 20 50 20 86 20"/></svg>
+            <svg class="v" viewBox="0 0 40 48"><path d="M8 2 C8 20 8 30 8 46"/></svg>
+          </div>
+          <p class="open-slot anim" style="--i:7"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>An unfinished question can be a place for someone else's experience to help.</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="session-foot">
+      <ul class="legend" aria-label="How to read the example">
+        <li class="piece--obs"><span class="mark" aria-hidden="true"></span>Observation: solid</li>
+        <li class="piece--hyp"><span class="mark" aria-hidden="true"></span>Possible explanation: dashed</li>
+        <li class="piece--concern"><span class="mark" aria-hidden="true"></span>Concern: dotted</li>
+        <li class="piece--proposal"><span class="mark" aria-hidden="true"></span>Proposal: double</li>
+        <li class="piece--report"><span class="mark" aria-hidden="true"></span>Report: ruled</li>
+        <li class="piece--question"><span class="mark" aria-hidden="true"></span>Open question: open dashed</li>
+      </ul>
+      <a class="text-link" href="https://github.com/life-itself/reasoncommons/tree/main/skills/reason-commons">Explore the skill and its documentation <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="agency band section" aria-labelledby="agency-title">
+  <div class="wrap">
+    <h2 class="h2" id="agency-title">Your judgement has a place here.</h2>
+    <ul class="principles">
+      <li class="principle">
+        <svg viewBox="0 0 64 44" aria-hidden="true"><rect x="3" y="10" width="34" height="26" rx="2"/><path d="M10 19h20M10 27h14"/><path d="M37 23 C46 23 48 12 56 12"/><circle cx="57" cy="12" r="4.5"/></svg>
+        <p><strong>Keep your contribution attached.</strong> Ideas, observations and challenges retain their contributors, so people can clarify, develop and build on them.</p>
+      </li>
+      <li class="principle">
+        <svg viewBox="0 0 64 44" aria-hidden="true"><circle cx="8" cy="12" r="5"/><circle cx="56" cy="12" r="5"/><path d="M13 12 H51"/><path d="M32 38 V18" stroke-dasharray="1 5"/><path d="M27 21 L32 14 L37 21"/><circle cx="32" cy="39" r="3.5"/></svg>
+        <p><strong>Keep room for disagreement.</strong> A concern can stay connected to the particular assumption or proposed change it challenges.</p>
+      </li>
+      <li class="principle">
+        <svg viewBox="0 0 64 44" aria-hidden="true"><rect x="4" y="4" width="32" height="26" rx="2" stroke-dasharray="4 4"/><rect x="22" y="14" width="36" height="26" rx="2" fill="#FBF9F3"/><path d="M29 23h22M29 31h14"/></svg>
+        <p><strong>Keep expectations honest.</strong> Original predictions remain on record when experience comes back. Agreement is a working position; it does not establish truth.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="idea band section" id="idea" aria-labelledby="idea-title">
+  <div class="wrap idea-grid">
+    <h2 id="idea-title">A renaissance of <em>common sense.</em></h2>
+    <p class="idea-statement">The ability to think clearly together should be part of everyday life.</p>
+    <div class="catalog">
+      <p class="catalog-head" aria-hidden="true"><span>Common sense</span><span>a practice</span></p>
+      <p class="catalog-text">By <span class="term">common sense</span>, we mean a practice that keeps getting better: <span class="practice">making assumptions visible</span>, <span class="practice">examining cause and effect</span>, and <span class="practice">letting experience change our minds</span>.</p>
+    </div>
+    <div class="idea-body">
+      <p>Reason Commons draws on the Logical Thinking Process within the Theory of Constraints. You can begin in ordinary language, with something you care about.</p>
+      <p>Our ambition is a Reason Commons: people cultivating the capacity to reason together, contributing what they know, questioning what is missing, and helping one another make progress.</p>
+      <p>This skill is the first working tool for that ambition. The wider commons is something we want to build with others.</p>
+    </div>
+  </div>
+</section>
+
+<section class="beta band section" aria-labelledby="beta-title">
+  <div class="wrap">
+    <div class="ticket">
+      <div class="ticket-main">
+        <h2 class="h2" id="beta-title">Help shape it by using it for something that matters.</h2>
+        <p>We are inviting facilitators, community organisers and small-team leads to try the beta with one real problem, decision or aspiration.</p>
+        <p>Use it to develop a shared picture and a clearer next step. Then tell us what helped, what got in the way, and what happened when you tried something.</p>
+        <p>Your experience can shape what we build next. No background in the Theory of Constraints is needed. Today's beta is easiest if you or someone in your group already uses Claude Code, Codex or a compatible agent.</p>
+      </div>
+      <div class="ticket-stub">
+        <a class="btn" href="#join" data-join="beta">Become a beta tester</a>
+        <a class="text-link" href="https://reasoncommons.com/skills">Try the skill now <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="support band section" id="support" aria-labelledby="support-title">
+  <div class="wrap support-grid">
+    <div class="support-intro">
+      <h2 class="h2" id="support-title">Help make good reasoning a public good.</h2>
+      <p>As AI becomes part of how people think and act, we want tools that strengthen people's ability to examine a claim, challenge a recommendation and decide together.</p>
+    </div>
+    <dl class="ledger">
+      <div class="ledger-row">
+        <dt>Today</dt>
+        <dd>
+          <p>We have an early working skill. Now we want to make it easier to use and establish where it helps in practice.</p>
+          <p class="proof"><a class="text-link" href="https://github.com/life-itself/reasoncommons/tree/main/skills/reason-commons">Read the source</a><a class="text-link" href="https://reasoncommons.com/skills">Try the skill</a></p>
+        </dd>
+      </div>
+      <div class="ledger-row">
+        <dt>What support could enable</dt>
+        <dd>
+          <p>We welcome conversations with public-interest funders, AI researchers and organisations willing to host pilots. Support could help us:</p>
+          <ul class="support-list">
+            <li><strong>Make access easier:</strong> reduce setup and facilitation burdens, improve accessibility, and test the experience with more kinds of groups.</li>
+            <li><strong>Build evidence:</strong> compare use with groups' usual ways of working, examine decisions and follow-through, and document friction and failure as well as useful outcomes.</li>
+            <li><strong>Develop shared foundations:</strong> improve open tools and documentation that others can inspect, adapt and extend.</li>
+          </ul>
+        </dd>
+      </div>
+      <div class="ledger-row">
+        <dt>The question</dt>
+        <dd>
+          <p class="question">The question we want to investigate is practical: does keeping reasoning, decisions and real-world experience connected help people make more useful next moves, at a reasonable cost in effort?</p>
+          <p><a class="btn btn--ink" href="#join" data-join="support">Discuss research or support</a></p>
+        </dd>
+      </div>
+      <div class="ledger-row">
+        <dt>What would count as evidence</dt>
+        <dd>
+          <p>Evidence of progress, for us, would include justified next steps, appropriate changes actually attempted, experience brought back into subsequent decisions, and people choosing to return. Those are questions for evaluation, rather than results we are claiming today.</p>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<section class="questions band section" aria-labelledby="faq-title">
+  <div class="wrap">
+    <h2 class="h2" id="faq-title">A few things you might want to know.</h2>
+    <dl class="faq">
+      <div class="faq-row">
+        <dt>What is an AI skill?</dt>
+        <dd>A set of instructions and supporting tools that gives a compatible AI agent a particular way of working. Reason Commons is currently installed into an agent such as Claude Code or Codex.</dd>
+      </div>
+      <div class="faq-row">
+        <dt>Can I use it on my own?</dt>
+        <dd>Yes. One person is enough to begin. A group can also work with one person operating the skill and naming contributions as people make them.</dd>
+      </div>
+      <div class="faq-row">
+        <dt>Will the AI decide what is true?</dt>
+        <dd>People examine and endorse the reasoning. The AI can misunderstand or propose a mistaken connection. Claims remain open to challenge; a convincing diagram is not proof.</dd>
+      </div>
+      <div class="faq-row">
+        <dt>Does “commons” mean publishing my problem?</dt>
+        <dd>“Commons” describes the ambition for the tools and shared practice. Your session's storage and sharing depend on your AI environment and the destinations you configure. The open-source tools and the reasoning you contribute are separate things.</dd>
+      </div>
+      <div class="faq-row">
+        <dt>What does it cost?</dt>
+        <dd>The skill's source is available under the MIT licence. Your AI provider's normal access or usage charges may still apply.</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<section class="join band section" id="join" aria-labelledby="join-title">
+  <div class="wrap join-grid">
+    <div class="join-intro">
+      <h2 class="h2" id="join-title">Bring what you are working on.</h2>
+      <p>Tell us a little about yourself and what you would like to explore.</p>
+    </div>
+
+    <!-- FORM INTEGRATION POINT: set data-endpoint to the project's form endpoint (and action, for submission without JavaScript). The page reports success only when that endpoint answers with a 2xx status. -->
+    <form class="join-form" id="join-form" method="post" data-endpoint="" aria-labelledby="join-title">
+      <p class="preview-note" id="preview-note" hidden>Preview: this form is not yet connected to a destination, so messages cannot be sent from this page.</p>
+
+      <div class="field">
+        <label for="f-name">Your name</label>
+        <input class="input" id="f-name" name="name" type="text" autocomplete="name" required>
+      </div>
+
+      <div class="field">
+        <label for="f-email">Email</label>
+        <input class="input" id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+      </div>
+
+      <fieldset class="field" id="f-interest">
+        <legend>I am interested in</legend>
+        <div class="choices">
+          <label class="choice" for="i-beta"><input type="radio" id="i-beta" name="interest" value="beta" checked required> Trying the beta</label>
+          <label class="choice" for="i-pilot"><input type="radio" id="i-pilot" name="interest" value="pilot-or-research"> Hosting a pilot or research partnership</label>
+          <label class="choice" for="i-fund"><input type="radio" id="i-fund" name="interest" value="funding-or-support"> Funding or supporting the work</label>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="f-bring">What would you bring?</label>
+        <p class="hint" id="f-bring-hint">A problem, a decision, a community, or a question you would like to work on.</p>
+        <textarea class="input" id="f-bring" name="bring" rows="5" aria-describedby="f-bring-hint"></textarea>
+      </div>
+
+      <fieldset class="field" id="f-agent">
+        <legend>Which AI agent do you currently use? <span class="optional">(optional)</span></legend>
+        <div class="choices choices--two">
+          <label class="choice" for="a-claude"><input type="radio" id="a-claude" name="agent" value="claude-code"> Claude Code</label>
+          <label class="choice" for="a-codex"><input type="radio" id="a-codex" name="agent" value="codex"> Codex</label>
+          <label class="choice" for="a-other"><input type="radio" id="a-other" name="agent" value="another-compatible-agent"> Another compatible agent</label>
+          <label class="choice" for="a-none"><input type="radio" id="a-none" name="agent" value="none-yet"> I do not use one yet</label>
+        </div>
+      </fieldset>
+
+      <div class="trap" aria-hidden="true">
+        <label for="f-website">Leave this field empty</label>
+        <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="form-actions">
+        <button class="btn" type="submit" id="f-submit">I would like to try it</button>
+      </div>
+
+      <p class="form-msg form-msg--ok" id="form-ok" role="status" tabindex="-1" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Thank you. Your message has been sent.</span></p>
+      <p class="form-msg form-msg--err" id="form-err" role="alert" tabindex="-1" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.5"/></svg><span>Your message was not sent. Please try again.</span></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer band">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <p class="brand-name">Reason Commons</p>
+      <p class="brand-tag">A renaissance of common sense.</p>
+    </div>
+    <p class="footer-credit">A collaboration between Rufus Pollock and David Joseph.</p>
+    <ul class="footer-links">
+      <li><a href="https://reasoncommons.com/skills">Try the skill</a></li>
+      <li><a href="https://github.com/life-itself/reasoncommons/tree/main/skills/reason-commons">Read the source</a></li>
+      <li><a href="https://reasoncommons.com/about">About the project</a></li>
+    </ul>
+  </div>
+</footer>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  function reduced() { return !!(mq && mq.matches); }
+
+  /* Illustrative session: three views as accessible tabs. Without JavaScript, all three read in sequence. */
+  var session = document.querySelector('[data-session]');
+  if (session) {
+    var tablist = session.querySelector('[role="tablist"]');
+    var tabs = Array.prototype.slice.call(session.querySelectorAll('[role="tab"]'));
+    var panels = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+    var select = function (i, opts) {
+      opts = opts || {};
+      tabs.forEach(function (t, j) {
+        var on = j === i;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        panels[j].hidden = !on;
+      });
+      var p = panels[i];
+      if (opts.animate && !reduced()) {
+        p.classList.remove('is-entering');
+        void p.offsetWidth;
+        p.classList.add('is-entering');
+      }
+      if (opts.focusTab) tabs[i].focus();
+    };
+    panels.forEach(function (p, j) {
+      p.setAttribute('role', 'tabpanel');
+      p.setAttribute('aria-labelledby', tabs[j].id);
+      p.tabIndex = 0;
+    });
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(i, { animate: true }); });
+      t.addEventListener('keydown', function (e) {
+        var n = tabs.length, j = null;
+        if (e.key === 'ArrowRight') j = (i + 1) % n;
+        else if (e.key === 'ArrowLeft') j = (i - 1 + n) % n;
+        else if (e.key === 'Home') j = 0;
+        else if (e.key === 'End') j = n - 1;
+        if (j !== null) { e.preventDefault(); select(j, { animate: true, focusTab: true }); }
+      });
+    });
+    Array.prototype.forEach.call(session.querySelectorAll('[data-goto]'), function (b) {
+      b.hidden = false;
+      b.addEventListener('click', function () {
+        var i = Number(b.getAttribute('data-goto'));
+        select(i, { animate: true, focusTab: true });
+      });
+    });
+    tablist.hidden = false;
+    session.classList.add('is-tabbed');
+    select(0);
+  }
+
+  /* Contact form */
+  var form = document.getElementById('join-form');
+  if (!form) return;
+  var joinSection = document.getElementById('join');
+  var submit = document.getElementById('f-submit');
+  var agent = document.getElementById('f-agent');
+  var ok = document.getElementById('form-ok');
+  var err = document.getElementById('form-err');
+  var note = document.getElementById('preview-note');
+  var endpoint = (form.getAttribute('data-endpoint') || '').trim();
+  if (!endpoint) note.hidden = false;
+
+  function interest() {
+    var c = form.querySelector('input[name="interest"]:checked');
+    return c ? c.value : '';
+  }
+  function update() {
+    var beta = interest() === 'beta';
+    agent.hidden = !beta;
+    submit.textContent = beta ? 'I would like to try it' : 'Start a conversation';
+  }
+  Array.prototype.forEach.call(form.querySelectorAll('input[name="interest"]'), function (r) {
+    r.addEventListener('change', update);
+  });
+  update();
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-join]'), function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      var kind = a.getAttribute('data-join');
+      var target;
+      if (kind === 'beta') {
+        document.getElementById('i-beta').checked = true;
+        target = document.getElementById('f-name');
+      } else {
+        Array.prototype.forEach.call(form.querySelectorAll('input[name="interest"]'), function (r) { r.checked = false; });
+        target = document.getElementById('i-pilot');
+      }
+      update();
+      joinSection.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'start' });
+      try { target.focus({ preventScroll: true }); } catch (x) { target.focus(); }
+    });
+  });
+
+  function show(el) { ok.hidden = true; err.hidden = true; if (el) { el.hidden = false; el.focus(); } }
+  function failed() { show(err); }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    show(null);
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    var data = new FormData(form);
+    if (data.get('website')) return;
+    data.delete('website');
+    if (data.get('interest') !== 'beta') data.delete('agent');
+    if (!endpoint) { failed(); return; }
+    submit.disabled = true;
+    form.setAttribute('aria-busy', 'true');
+    fetch(endpoint, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+      .then(function (res) {
+        if (!res.ok) throw new Error('Status ' + res.status);
+        form.reset();
+        update();
+        show(ok);
+      })
+      .catch(failed)
+      .then(function () {
+        submit.disabled = false;
+        form.removeAttribute('aria-busy');
+      });
+  });
+})();
+</script>
+</body>
+</html>
