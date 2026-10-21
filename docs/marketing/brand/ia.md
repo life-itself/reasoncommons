@@ -6,8 +6,8 @@ Derived from `docs/marketing/brand/brand-narrative.md` (six ideas, idea map, "wh
 
 - The published site is only `website/`: the Flowershow publish root, with its own `website/config.json` and `website/custom.css`. Public URL paths are unchanged; `/website` is a root selection, not a URL prefix.
 - The homepage source is `website/README.md`; the root `README.md` is now the project map. **The README/index split this draft recommended is done.**
-- Working material is outside the root: `docs/marketing/` (brand, plans, talk, explainer process), `docs/product/`, `docs/theory/`, `docs/ltp_trees/` and others. None of `/docs/*`, `/NEXT`, `/ltp/rufus-david-collab` or skill internals is published.
-- Four canonical files are exported into `website/` by `python3 scripts/export-website.py` (manifest `scripts/website-content.json`): `motivation.md`, `claim-tree-annotation.md`, `skills/README.md`, `ltp/ltp-model.yaml`. Never edit the generated copies; edit the source and re-run the exporter.
+- Working material is outside the root: `docs/marketing/` (brand, plans, talk, explainer process), `docs/product/`, `docs/ltp_trees/` and others. None of `/docs/*`, `/NEXT`, `/ltp/rufus-david-collab` or skill internals is published.
+- Three canonical files are exported into `website/` by `python3 scripts/export-website.py` (manifest `scripts/website-content.json`): `motivation.md`, `skills/README.md`, `ltp/ltp-model.yaml`. The `claim-tree-annotation.md` export was dropped on 2026-10-21. Never edit the generated copies; edit the source and re-run the exporter.
 - `python3 scripts/check-website.py` checks the boundary (no `docs/`, `scripts/`, `_process`, dot-folders or symlinks under `website/`; nothing but `README.md` under `website/skills/`), export drift, local links, the required routes and every nav `href`, and that retired working routes stay unpublished. **It replaces most of the `contentExclude` advice in the earlier draft**: `website/config.json` now has `"contentExclude": []`, because working files are simply not in the root.
 - Every site-config change in this document targets `website/config.json`. Any nav item added there becomes a route the checker requires, so `/guides`, `/vision` and the Use it page must exist before the nav changes.
 
@@ -40,11 +40,8 @@ Source paths are under `website/` unless stated.
 │   ├── /explainers                 level one: the short illustrated introduction (explainers v2 chapters; URL kept)
 │   ├── /ltp  + /ltp/00…09          level two: the method and the worked Second Renaissance analysis
 │   ├── /glossary                   level two: every term, anchored
-│   ├── /library                    level two: reading list
-│   └── working papers              level two: link to docs/theory/ on GitHub (no longer published)
+│   └── /library                    level two: reading list
 ├── /vision                         Vision (new website/vision.md) — idea map 2×2 with status words; trees → AI; the loop; prototyped; communities (#communities); what's next; the ask; built so far
-│   ├── /dashboard/index.html       the real Second Renaissance tree, clickable (gets the #14 intro)
-│   ├── /claim-tree-annotation-demo/index.html   the four-step animation (fix #4)
 │   ├── /talk/2r-research-group     talk landing (required route) → slides.html, demo-c/index.html
 │   └── /demos                      sketches: two mockups, Goal Aligner
 ├── /blog  + 3 posts  (authors resolve to /people/*)
@@ -77,8 +74,8 @@ Verdicts: **keep** (URL and role unchanged, copy may change), **move** (content 
 | `/blog` + 3 posts | `website/blog/` | Blog | **Keep**; in nav | Add dates and authors to the index lines. *Making work add up* (2026-10-13) is the worked example linked from Use it and Vision. |
 | `/demos` | `website/demos/index.md` | "Demos & experiments": 7 mockups, Goal Aligner, the talk | **Keep page, out of nav, reframe as "Sketches"** | Reached only from `/vision`. Keep *Pencil & Ink* and *TOC-native Wireframes*; take the other five mockups out of `website/demos/` (or `contentHide` them). The dead `/talk/index.html` link is already gone. |
 | `/demos/goal-aligner/` + `/alignment/index.html` stub | `website/demos/goal-aligner/`, `website/alignment/index.html` | Experiment + redirect stub | **Keep** | Labelled sketch. The stub is the site's redirect pattern; `/alignment/index.html` is a required route. |
-| `/claim-tree-annotation-demo/index.html` | `website/claim-tree-annotation-demo/` | Four-step animation | **Keep**; linked from Vision | Label "animated sketch of the vision"; fix #4. Not on Home's main path. |
-| `/dashboard/index.html` (+ `/dashboard/projects` hidden) | `website/dashboard/` | Read-only viewer, Second Renaissance analysis | **Keep**; linked from Vision and `/ltp` | Reframe as "the real tree you can click", deep link `#/second-renaissance/goal-tree`, add the #14 intro. Drop "Reason Commons space" wording. `contentHide` still lists `/dashboard/assets`, which no longer exists in the tree; remove it. |
+| `/claim-tree-annotation-demo/index.html` | `website/claim-tree-annotation-demo/` | Four-step animation | **Retire** (proposed by David 2026-10-21, awaiting Rufus) | A retired notice stays at the URL so old links land somewhere. It presented Reason Commons as decomposing a claim, which sells the mechanism rather than what it changes. Was: keep, linked from Vision. |
+| `/dashboard/index.html` (+ `/dashboard/projects` hidden) | `website/dashboard/` | Read-only viewer, Second Renaissance analysis | **Retire** (proposed by David 2026-10-21, awaiting Rufus) | A retired notice stays at the URL. It was a compiled artifact of the retired app with no source in this repository. The Second Renaissance analysis is still shown in `/ltp` and the walkthrough explainer. Was: keep, linked from Vision and `/ltp`. |
 | `/talk/2r-research-group` | `website/talk/2r-research-group/README.md` | Talk landing (still the drafting brief, `status: drafting`) | **Keep**, rewrite | A required route, so it cannot simply be hidden. Rewrite as a short public page (what the talk is, links to deck and Demo C); it currently refers to `notes.md`, which moved to `docs/marketing/talk/2r-research-group/`. |
 | `/talk/2r-research-group/slides.html`, `demo-c/index.html` | `website/talk/2r-research-group/` | The deck; the contributions review page | **Keep**; linked from Vision | "The talk" and "a room's contributions, read against the tree — prototype". |
 | `/talk/2r-research-group/demo-c/proposals.yaml` | same | Demo C data | **Hide** | Add to `contentHide`; the page loads it. |
@@ -90,9 +87,9 @@ Verdicts: **keep** (URL and role unchanged, copy may change), **move** (content 
 
 | Former path | Now at | Earlier verdict |
 |---|---|---|
-| `/docs/theory/*` | `docs/theory/` (11 essays) | Keep → now linked on GitHub from Guides level two |
-| `/docs/ltp_trees/*` | `docs/ltp_trees/` | Keep → source for `/ltp` and the dashboard, GitHub only |
-| `/docs/dashboard`, `/docs/demo-c`, `/docs/beads-reasoning`, `/docs/naming-the-tree`, `/docs/brand-and-domain-naming` | `docs/product/dashboard.md`, `docs/product/demo-c.md`, `docs/beads-reasoning.md`, `docs/marketing/naming-the-tree.md`, `docs/marketing/brand-and-domain-naming.md` | Keep out of nav → link to GitHub from About "contribute" |
+| `/docs/theory/*` | removed 2026-10-21 | Not part of Reason Commons; moved to David's own repository |
+| `/docs/ltp_trees/*` | `docs/ltp_trees/` | Keep → source for `/ltp`, GitHub only |
+| `/docs/demo-c`, `/docs/beads-reasoning`, `/docs/naming-the-tree`, `/docs/brand-and-domain-naming` | `docs/product/demo-c.md`, `docs/beads-reasoning.md`, `docs/marketing/naming-the-tree.md`, `docs/marketing/brand-and-domain-naming.md` | Keep out of nav → link to GitHub from About "contribute" |
 | `/docs/notes/*` | **no longer exists** in the repo | — |
 | `/docs/testing-reason-commons-scannability` | `docs/product/testing-reason-commons-scannability.md` | Hide → done |
 | `/docs/plans`, `/docs/brand`, `/docs/superpowers` | `docs/marketing/plans/`, `docs/product/plans/`, `docs/marketing/brand/`; `docs/superpowers` **no longer exists** | Keep excluded → done |
@@ -101,7 +98,7 @@ Verdicts: **keep** (URL and role unchanged, copy may change), **move** (content 
 | `/talk/2r_participant_contributions_test.docx` | `docs/product/demo-c/2r_participant_contributions_test.docx` | 91c.2 → off the site; still in the public Git repo |
 | `/talk/2r-research-group/notes`, `/script`, `/slides-brief` | `docs/marketing/talk/2r-research-group/` | Hide → done |
 | `/ltp/reason-commons`, `/ltp/rufus-david-collab` | `ltp/rufus-david-collab/` | Keep excluded → done |
-| `/NEXT` | root `NEXT.md` (in `retired_working_routes`) | Hide → done |
+| `/NEXT` | root `NEXT.md`, removed 2026-10-21 (in `retired_working_routes`) | Hide → done |
 | `/skills/project-ltp/` | **no longer exists** in the repo | Hide → done |
 | `.beads`, `.github`, `/scripts`, `/drafts`, `AGENTS.md`, `CLAUDE.md` | outside `website/` (`drafts/` **no longer exists**) | Hide → done; sidebar leakage is solved by the boundary, not by `contentExclude` |
 
@@ -122,7 +119,7 @@ No server redirects. The existing pattern is a meta-refresh `index.html` stub (`
 
 | | Who | Path | Success |
 |---|---|---|---|
-| J1 | Forum member who heard the talk | `/` → sees the line and a real session → "Where this is going" → `/vision#communities` → the real tree in `/dashboard` → `/use` or updates signup | Can say what the vision is, has seen the real tree, knows the skill exists and that forum reading is "prototyped", not shipped. |
+| J1 | Forum member who heard the talk | `/` → sees the line and a real session → "Where this is going" → `/vision#communities` → the real tree in the walkthrough (`/explainers/second-renaissance-plain/`) → `/use` or updates signup | Can say what the vision is, has seen the real tree, knows the skill exists and that forum reading is "prototyped", not shipped. |
 | J2 | Facilitator or steward who wants to try it | `/use` (direct or from Home's primary button) → install line → first prompt → "What you are looking at" → runs it → `/glossary#current-reality-tree` when a term appears | A saved `reason-commons.yaml` from a real conversation within fifteen minutes. |
 | J3 | LTP or TOC practitioner, via search | Google "current reality tree example" → `/glossary#…` → `/ltp` six-trees table and the worked analysis → "the skill picks the tree and holds all six" → `/use` | Installs it on a tree they already keep; tells us where it is wrong. |
 | J4 | Funder, partner or AI-crowd reader | `/vision` (from an email or a post) → idea map with status words → trees → AI and the memory problem → `/blog/making-work-add-up` and `/changelog` as proof → `/about#contact` | Can state the thesis, the status and the ask without a call; sees the work shipping. |

@@ -1836,10 +1836,6 @@
       "git_blob": "073c10ea5c266e258e55c921c13fce68fb92209e"
     },
     {
-      "path": "website/dashboard/index.html",
-      "git_blob": "bf865e45fa0b2f3805ef43cf9bfe7b4a25540f14"
-    },
-    {
       "path": "website/demos/goal-aligner/.thumbnail",
       "git_blob": "f0c8063ac5fe0ef05dc3976bfe49e7308bd48d72"
     },

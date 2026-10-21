@@ -24,7 +24,7 @@ There is a forty-year-old way of thinking that works — laying out a goal, what
 
 ### The six ideas in short
 
-1. **Trees of thought exist, and they work.** Trees of change and trees of action, with LTP as the most rigorous form. Most people have never met them.
+1. **Trees of thought exist, and they work.** Connected trees of what a group is trying to achieve and what it will do about it, with LTP as the most rigorous form. Most people have never met them.
 2. **They never spread, because of a loop:** hard to hold in your head and costly to buy → nobody used them → nobody knew about them → they never became common practice.
 3. **AI breaks the loop.** It drafts the trees, holds them, and keeps them updated.
 4. **Trees can grow from discourse.** Ordinary conversation gets annotated onto the tree, so discussion accumulates instead of evaporating.
@@ -47,7 +47,7 @@ For groups that share a goal and keep losing what they work out — communities,
 | Audience | Promise | Proof today | One action |
 |---|---|---|---|
 | People who'd run it (facilitators, stewards, AI-native builders) | Run a group's thinking through conversation; leave with an attributed, accepted tree and a diagram of what changed. | The skill as shipped; our own public working file; our PRs must cite the reasoning they serve. | Install the skill and try one prompt. Needs Claude Code or Codex. |
-| Mission-aligned newcomers | Stop having the same argument twice. | A real before/after: messy material next to the tree made from it, each claim linked to its source. Second Renaissance tree of change. | Look at a real tree — no install. |
+| Mission-aligned newcomers | Stop having the same argument twice. | A real before/after: messy material next to the tree made from it, each claim linked to its source. The Second Renaissance tree. | Look at a real tree — no install. |
 | Funders and partners | A cheap, open route to structured collective reasoning for groups that could never afford it, built in the open. | Repo, changelog, self-use. No outside-group outcome yet. | Fund a first pilot with a named community and an outcome measure. |
 | LTP / TOC practitioners | A way to keep a client's trees alive between your sessions, and to get the method into communities. | The skill's tree types and challenge handling; the guide and glossary. | Run it on a tree you already keep; tell us where it's wrong. |
 | AI crowd, funders (Trees → AI) | Tree-thinking is the missing structure for humans and AI thinking and planning together. AI proposes, people accept, and the work lives in one structure — not in sprawling chat threads and dozens of markdown files that become a morass as a project grows. | The skill, and our own collaboration file. | See [the idea map](#appendix-a--the-fuller-ideas). |
@@ -71,11 +71,11 @@ Plain, not clever. Concrete before visionary — a real tree before any sentence
 
 The spine is ideas 2 → 3: a loop, and AI breaking it. Idea 4 is the leap that makes this more than "cheaper consulting". Idea 6 is the proof.
 
-1. **Trees of thought exist, and they work.** A tree of change says what we are trying to achieve, what has to be true for it and what is in the way; a tree of action says what we do about it, in what order. Every claim has an address, and the links between claims are claims too, so you can point at one and improve it. The most thorough version comes from Goldratt's Theory of Constraints — developed from the 1970s, published in *The Goal* (1984), with the Thinking Processes growing out of it and codified by Dettmer as the Logical Thinking Process; issue trees and Minto's pyramid are cousins. Most people have never met any of them.
+1. **Trees of thought exist, and they work.** One kind of tree says what we are trying to achieve, what has to be true for it and what is in the way; another says what we do about it, in what order. Every claim has an address, and the links between claims are claims too, so you can point at one and improve it. The most thorough version comes from Goldratt's Theory of Constraints — developed from the 1970s, published in *The Goal* (1984), with the Thinking Processes growing out of it and codified by Dettmer as the Logical Thinking Process. Most people have never met any of them.
 2. **They never spread, because of a loop.** Two barriers kept them inside a few large companies. *Cost*: it took an expert at around $2k a day, so it was used where a $10M factory justified the bill. *Cognitive load*: the method asks you to hold half a dozen linked trees and diagrams, test every cause-and-effect link, and keep them all consistent as things change — a grasp very few people can sustain. So the tools were hard to use → so no one used them → so no one knew about them → so they never became common practice in communities, movements or public discourse, the places that need them most.
 3. **AI breaks the loop.** It drafts the trees from what a group already has, holds them consistent and does the updating. People still decide what is accepted. Cost and cognitive load both collapse, so the method can go where it never could.
 4. **Trees can grow out of discourse.** The deeper leap. Until now structure had to be added by a person at the moment of contributing — which is why groups faced a dilemma: keep it human, or make it add up. AI removes that assumption. People talk normally, on a forum or in a chat; afterwards the conversation is read against the tree and proposed as annotations — supports this, challenges that — and people decide what merges. Pull requests for discourse. The conversation enriches the tree and the tree gives the conversation somewhere to land.
-5. **Two payoffs.** Clearer collective thinking (what is true, what we disagree about, what is missing) and aligned collaboration (what we do, who owns it, why). The tree of change serves the first, the tree of action the second; one follows from the other.
+5. **Two payoffs.** Clearer collective thinking (what is true, what we disagree about, what is missing) and aligned collaboration (what we do, who owns it, why). The tree of what we are trying to achieve serves the first, the tree of what we will do the second; one follows from the other.
 6. **It's real.** There is no app; there is a skill. `reason-commons` runs in Claude Code, Codex and similar agents today: it builds and challenges trees in conversation, keeps who said what, records only what people explicitly accept and draws the result. We use it on our own work. Tools around it (visualisation) exist, and we have prototyped annotating discourse live; Discord integration is next. The earlier Reason Commons app is retired: what we offer is skills and integrations.
 
 ```mermaid
@@ -117,7 +117,7 @@ Stage 4 makes the final page choices; this sets the default.
 
 - **Today:** the skills — install, start a conversation, get a tree with attribution and acceptance. Plus guides to the method and an introduction to trees for newcomers.
 - **Being built:** tools around the skill (visualisation), and reading discourse (Discord, forums) back into the tree.
-- **The aim:** a commons — shared, addressable trees of change and action that a community, organisation or public debate builds on over years, with AI doing the filing and people doing the deciding.
+- **The aim:** a commons — shared, addressable trees of what a group is trying to achieve and what it will do, that a community, organisation or public debate builds on over years, with AI doing the filing and people doing the deciding.
 
 ## Appendix B — how we got here
 
@@ -146,8 +146,19 @@ Source material: four red-team critiques in [redteam/](redteam/): [excitement](r
 
 The Reason Commons app (`Promise-Foundation/reason-commons`) is deprecated. What the site offers is skills and integrations (Discord next). Retire references to app "spaces" from public copy in stage 4.
 
+### Corrections proposed by David (2026-10-21, awaiting Rufus)
+
+Recorded in the collaboration YAML as proposed reasoning (`g-e-language-follows-use`, `r-e-retired-framing-shown`, `f-e-present-benefit-first`), with the review tracked in bead `reasoncommons-ffm.2`.
+
+1. **Words are learned from use.** Settling on "tree of change / tree of action" puts the cart before the horse. Front-facing vocabulary should reflect what proves useful, and that is learned by using the tool. Until then, describe plainly rather than fixing names; the naming memo's decision is reopened.
+2. **Lead with what it changes.** Issue trees are deprecated. The Logical Thinking Process is part of what makes Reason Commons work underneath, but it is how the sausage is made, not the sausage. Present the transformation and expected benefit, such as turning goals into aligned action, not the mechanism of decomposing a claim.
+3. **Abductio and Promise Protocol are not part of Reason Commons.** They have next to nothing to do with it and should not be presented as its lineage.
+
+The calls above are dated records and keep their wording; where they name a tree of change or tree of action, read the correction alongside them.
+
 ## Appendix C — still open
 
 - Whether the six-idea structure survives contact with the page (stage 4).
+- Front-facing vocabulary, to be learned from use rather than fixed in advance (David, 2026-10-21).
 - Sourcing for the cost figure (~$2k/day) before it appears on the site.
 - The core is not yet distilled, and a classic brand narrative (audience, vision, mission, proposition) is still to come.

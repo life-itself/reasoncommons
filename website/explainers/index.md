@@ -46,4 +46,4 @@ The same subject taken further, for a reader who already knows what the trees ar
 
 ---
 
-Then: [see it working — the claim-tree annotation demo →](../claim-tree-annotation-demo/index.html)
+Then: [try it — the reason-commons skill →](/skills)

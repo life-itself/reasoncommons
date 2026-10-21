@@ -23,7 +23,6 @@ Reason Commons helps people and groups work out what they are trying to achieve 
 | Planning — streams, next actions | [GitHub issues](https://github.com/life-itself/reasoncommons/issues) |
 | Resume the Rufus–David collaboration | Bead `reasoncommons-a4l` (START HERE), then [the Beads/reasoning workflow](docs/beads-reasoning.md) and `ltp/rufus-david-collab/reason-commons.yaml` |
 | Internal **gold-standard toy fixture** for testing skills (tree, doc, annotations) | `claim-tree-annotation.md` |
-| Static animated demo of the 4-step vision | `website/claim-tree-annotation-demo/` |
 | AI skills (reason-commons, scrollable-explainer) — install + copy-paste prompts | `skills/` (see `skills/README.md`) |
 | **Writing a scrolling visual explainer** — principles, patterns, worked teardown | `skills/scrollable-explainer/SKILL.md` — **read before drafting scrolling explainers** |
 | The explainer series itself | `website/explainers/`; process material in `docs/marketing/explainers/` |
