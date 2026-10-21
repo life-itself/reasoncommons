@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>One claim, checked and reopened · Reason Commons</title><meta name="description" content="An actual assistant-led execution record from the explainer revision: a published arithmetic claim, its objection, corrected saved state and a fresh-process persistence check."><link rel="stylesheet" href="../scroller.css"><link rel="stylesheet" href="../skill-margin.css"></head>
+<body class="execution-page"><a class="skip-story" href="#record">Skip to record</a><nav class="topnav on"><span class="crumb"><a href="/">Reason Commons</a> · <a href="../index.md">Explainers</a></span><span class="here">Actual execution record</span></nav>
+<main id="record"><p class="evidence-label">Recorded 21 October 2026 · assistant-led check</p><h1>One claim, checked<br>and reopened.</h1>
+<p>The clinic conversations are invented. This page records actual file operations and tool output from their revision: Codex captured a published claim, attached an objection, corrected the same item and read it back from disk.</p>
+<p><strong>The input was selected, and all reasoning here was authored by the assistant.</strong> It is a check of the current skill’s working-state format and validator, not a transcript of a human team using the product. The arithmetic error was already identified in feedback.</p>
+<h2>The claim that needed checking</h2><p>The earlier first part said: <q>Fix that and it moves to pharmacy.</q> But its next available capacity was triage at forty-five, below pharmacy at fifty.</p>
+<p>To make the thought experiment explicit, set doctor capacity to fifty and improved follow-up to sixty:</p>
+<table><caption>Hypothetical daily capacities, assumed achievable together</caption><thead><tr><th>Station</th><th>Visits/day</th></tr></thead><tbody><tr><td>Check-in</td><td>60</td></tr><tr><td>Triage</td><td><strong>45</strong></td></tr><tr><td>Doctor</td><td>50</td></tr><tr><td>Pharmacy</td><td>50</td></tr><tr><td>Follow-up, improved</td><td>60</td></tr></tbody></table>
+<p>The assistant’s minimum-capacity calculation returns triage, forty-five. The validator does not make this calculation or decide that a causal explanation is true.</p>
+<h2>What actually ran</h2><table><thead><tr><th>Step</th><th>Operation</th><th>Claim standing</th><th>Saved-state fingerprint</th></tr></thead><tbody><tr><td>1</td><td>Capture the published assertion as proposed reasoning</td><td>proposed</td><td><code>4a28d1663e7eb836…</code></td></tr><tr><td>2</td><td>Attach the arithmetic objection to the specific inference</td><td>disputed</td><td><code>942afe36aa9ceea7…</code></td></tr><tr><td>3</td><td>Revise the same claim while retaining its provenance and challenge</td><td>proposed</td><td><code>e67c988a855273c5…</code></td></tr></tbody></table>
+<p>Each save was followed by the actual <code>update_views.py</code> helper. All three calls returned exit code zero. Nothing was human-endorsed, so no accepted-history revision was created.</p>
+<pre>python3 skills/reason-commons/scripts/update_views.py
+  ltp/examples/explainer-skill-session/reason-commons.yaml
+  --output-dir /tmp/explainer-public-example-views</pre>
+<h2>The record that remains</h2><p>The same stable claim now has a corrected statement. Its contribution records the old wording, and the inference retains the original arithmetic challenge. A human review and the next capacity check remain open.</p>
+<div class="record-link"><div><span class="record-status">Current Reality · Observation · Proposed</span>Hypothetical capacities: 60, 45, 50, 50, 60.</div><span class="record-relation">supports · Proposed inference</span><div><span class="record-status">Current Reality · Cause · Proposed</span>Triage limits this modeled flow next at forty-five.</div></div>
+<p>“Proposed” remains visible because no human endorsed this reasoning. Implementation approval from David was recorded separately.</p>
+<details><summary>Inspect the actual saved fragment, including its provenance</summary><pre>claim:
+  id: r-next-limit
+  kind: cause
+  text: With these hypothetical capacities, triage is the next limiting station at 45 visits
+    per day. Pharmacy and the doctor each have capacity 50.
+  label: In this hypothetical model, triage limits output next at 45 visits per day.
+  status: proposed
+  contributions:
+  - by: assistant
+    attribution: assistant
+    mode: text
+    note: Captured the assertion in the published illustration for examination; not an endorsement.
+  - by: assistant
+    attribution: assistant
+    mode: text
+    note: &#x27;Revised the same stable item after checking every capacity. Original wording: After
+      follow-up is improved, pharmacy is the next limiting station. The original wording and
+      all stages are retained in session.json.&#x27;
+inference:
+  id: r-model-supports-next
+  from:
+  - r-model-capacities
+  to: r-next-limit
+  relation: supports
+  status: proposed
+  contributions:
+  - by: assistant
+    attribution: assistant
+    mode: text
+    note: The source implies this inference from its model. It has not been checked.
+  - by: assistant
+    attribution: assistant
+    mode: text
+    note: The link now points to the revised conclusion. The retained challenge describes the
+      original pharmacy assertion, resolved by this arithmetic check. Neither endpoint nor link
+      has human endorsement.
+  challenges:
+  - by: assistant
+    text: Triage capacity 45 is below pharmacy capacity 50. The source skips triage when it
+      names the next limiting station.
+backlog:
+- ref: r-next-limit
+  work: human_review
+  label: Review the corrected hypothetical inference; no human has endorsed it.
+- ref: r-model-capacities
+  work: recheck_after_next_improvement
+  label: Recheck capacities after another improvement; shared limits may emerge.
+</pre></details>
+<h2>What the resumption check established</h2><p>A fresh Python process, started outside the working folder, read the same actual YAML file. It recovered the stable claim, its proposed standing, the original challenge and both backlog items. Its SHA-256 matched the final saved state.</p><pre>{
+  &quot;sha256&quot;: &quot;e67c988a855273c540114dbba5b374f24f2a85de03fc4d7f2546ac433e8d85e9&quot;,
+  &quot;reopened_id&quot;: &quot;r-next-limit&quot;,
+  &quot;reopened_statement&quot;: &quot;With these hypothetical capacities, triage is the next limiting station at 45 visits per day. Pharmacy and the doctor each have capacity 50.&quot;,
+  &quot;standing&quot;: &quot;proposed&quot;,
+  &quot;challenge_retained&quot;: &quot;Triage capacity 45 is below pharmacy capacity 50. The source skips triage when it names the next limiting station.&quot;,
+  &quot;backlog&quot;: [
+    &quot;human_review&quot;,
+    &quot;recheck_after_next_improvement&quot;
+  ]
+}</pre>
+<p>This checks file persistence. It does not test a fresh model session’s unprompted recall, automatic sharing between independent copies, or the skill’s reliability with a real group. The JSON record retains the three intermediate states explicitly; the helper does not automatically create accepted snapshots for proposals.</p>
+<h2>Inspect the underlying evidence</h2><p><a href="session.json">Open the complete execution JSON →</a>. It includes the source quotation, instruction/helper fingerprints, exact validation outputs, all three states and the fresh-process result.</p><p>Only this public-safe example is included. The working collaboration file is not published here.</p>
+<p><a href="../../skills/README.md">Install and start the skill →</a></p><p>Begin with your own question, then return to the same working file:</p><pre>Use the reason-commons skill to help me check why [this keeps happening].
+My name is [name]. Keep the working state in reason-commons.yaml.</pre>
+<div class="next-actions"><a href="../01-bottleneck-in-practice/index.html">The Wrong Queue</a><a href="../02-thinking-made-visible-in-practice/index.html">The Arrows Nobody Checks</a><a href="../03-five-shapes-in-practice/index.html">Five Shapes</a></div>
+</main></body></html>

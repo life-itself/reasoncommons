@@ -370,7 +370,7 @@ trees:
     - ref: g-e-picturable-product
       work: show_skill_use_in_explainers
       label: Show the skill in use beside all three parts of the explainer series.
-      note: Implements proposed injection f-e-explainers-skill-margin as alternative in-practice editions of the trilogy. David's review identified premature messages and weak coordination with the team's learning. Under accepted scope explainer-margin-pacing-2026-10-20 revision 1, the three local editions now show the cast and introduced capacities before an explicit skill invitation, then reveal individual messages at their assigned story beats and restore earlier states on reverse scroll. All 100 beats passed synchronization, message-fit and overflow checks at six desktop/phone/tablet/landscape sizes; 24 settled screenshots were inspected, the Chrome 375px checker reported no overflow, and the 713-link/asset website check passed. Original prose and original editions are preserved. Reduced-motion and script-free fallback branches passed temporary fixture checks; native OS preference toggling was not tested. See docs/marketing/explainers/series/07-skill-margin-scroll-map.md for the evidence and limits. Local files and browser preview only; David's editorial review and test_with_readers remain open, and no reader benefit is established.
+      note: 'Implements proposed injection f-e-explainers-skill-margin as alternative in-practice editions of the trilogy. David''s review identified premature messages and weak coordination with the team''s learning. Under accepted scope explainer-margin-pacing-2026-10-20 revision 1, the three local editions now show the cast and introduced capacities before an explicit skill invitation, then reveal individual messages at their assigned story beats and restore earlier states on reverse scroll. All 100 beats passed synchronization, message-fit and overflow checks at six desktop/phone/tablet/landscape sizes; 24 settled screenshots were inspected, the Chrome 375px checker reported no overflow, and the 713-link/asset website check passed. Original prose and original editions are preserved. Reduced-motion and script-free fallback branches passed temporary fixture checks; native OS preference toggling was not tested. See docs/marketing/explainers/series/07-skill-margin-scroll-map.md for the evidence and limits. Local files and browser preview only; David''s editorial review and test_with_readers remain open, and no reader benefit is established. Accepted implementation scope explainer-clarity-2026-10-21 revision 1, David, exact reply accept. Planned: reconcile clinic quantities and causal continuity, make meaningful skill interventions and saved reasoning visible, preserve narrative strengths, and supply honest execution evidence. Implementation and validation results will be appended; no reader benefit is inferred. Implementation completed locally on 2026-10-21 under explainer-clarity-2026-10-21 revision 1: three revised editions, consequential exchanges and saved fragments, coherent clinic quantities, twelve semantic conversations, inline narrow-screen layout, ordinary start links and a public-safe assistant-led execution audit. Scripts, critique, visual map and validation are in docs/marketing/explainers/series/08 through 13. Website checks pass for 732 links/assets; 271 browser states checked across seven sizes; actual Chrome 375px, script-disabled and reduced-motion checks pass. Reader comprehension and narrative preservation with newcomers remain untested; production publication is outside this delivery.'
       beads:
       - reasoncommons-brw
   current_reality:
@@ -4087,13 +4087,13 @@ trees:
     - ref: f-e-readers-picture-skill-use
       work: test_with_readers
       label: Check with readers whether the margin makes the skill connection.
-      note: Show the in-practice editions to readers who have not used the skill. Check whether they understand why the team brings it in, what it contributes at each stage, and where they might use it in their own role. Ask whether any margin message disclosed an answer before the story established its basis. Publishing the editions and passing synchronization checks do not establish reader comprehension.
+      note: Show the in-practice editions to readers who have not used the skill. Check whether they understand why the team brings it in, what it contributes at each stage, and where they might use it in their own role. Ask whether any margin message disclosed an answer before the story established its basis. Publishing the editions and passing synchronization checks do not establish reader comprehension. Under explainer-clarity-2026-10-21 revision 1, prepare newcomer questions testing unaided understanding of the assistant contribution, the saved artifact, uncertainty, illustration versus authentic execution, resumption and the practical next step. Include direct entry to parts two/three and phone readers; check that narrative engagement and memorable insights survive. Actual reader recruitment and results remain pending; automated verification is not reader evidence. The newcomer protocol is prepared in docs/marketing/explainers/series/12-in-practice-validation.md, covering unprompted understanding of the assistant contribution, saved record, uncertainty, evidence type and next action, plus remembered strengths, direct-entry pages and phones. No actual newcomers were recruited and no responses, comprehension improvement, adoption or clinical outcomes are claimed. Keep this entry open.
       beads:
       - reasoncommons-brw
     - ref: f-e-explainers-skill-margin
       work: align_margin_with_learning
       label: Align each margin message with the team's learning in the story.
-      note: David reports that the margin gets ahead of the narrative, particularly while The Wrong Queue introduces station capacities. The local implementation under explainer-margin-pacing-2026-10-20 revision 1 now keeps the cast visible and highlights introduced stations before the explicit skill invitation; messages then follow individual beats with reversible state, concise copy, role-appropriate devices and reduced motion support. Technical verification is recorded on show_skill_use_in_explainers and in the scroll map. Remaining work is David's editorial review of the learning progression and reader feedback; mechanical synchronization does not establish that the sequence teaches effectively. The injection and its predicted reader effect remain proposed.
+      note: David reports that the margin gets ahead of the narrative, particularly while The Wrong Queue introduces station capacities. The local implementation under explainer-margin-pacing-2026-10-20 revision 1 now keeps the cast visible and highlights introduced stations before the explicit skill invitation; messages then follow individual beats with reversible state, concise copy, role-appropriate devices and reduced motion support. Technical verification is recorded on show_skill_use_in_explainers and in the scroll map. Remaining work is David's editorial review of the learning progression and reader feedback; mechanical synchronization does not establish that the sequence teaches effectively. The injection and its predicted reader effect remain proposed. Revision 1 of explainer-clarity-2026-10-21 expands this work to reconcile story, diagram and conversation evidence, show a consequential investigation and bounded fictional follow-up, use complete inline exchanges on narrow screens, and keep essential transcripts and diagrams readable without JavaScript. Preserve pacing and named attribution. Implementation evidence and editorial review remain to be recorded. The revision is implemented and technically checked. Each complete exchange follows its premises; reverse navigation reconstructs the earlier companion selection. Revised numeric/conditional labels agree across prose, diagrams and conversations. The removed hospital portrait reference and no-script caption visibility were corrected after browser inspection. Original essay editions and shared scroller files remain unchanged. Editorial/reader outcomes remain open; technical synchronization is not comprehension evidence.
       beads:
       - reasoncommons-brw
     - ref: f-rel-feedback-reviewable
@@ -8227,3 +8227,34 @@ change_acceptances:
   - scripts/website-content.json
   - scripts/check-website.py
   - ltp/rufus-david-collab/reason-commons.yaml
+- proposal_ref: explainer-clarity-2026-10-21
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-21T08:53:29Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept
+  scope: 'Implement revision 1 of the explainer improvement plan across the three in-practice editions: reconcile arithmetic and causal continuity; revise the narratives around consequential skill interventions and visible saved reasoning; add a public-safe authentic execution record with saved state and resumption and honest automated-input attribution; use complete inline exchanges on narrow screens and semantic static content without JavaScript; preserve the clinic, strong prose, visual identity and sourcing. Write the review ledger, scripts, adversarial critique, visual mapping, validation and newcomer-testing protocol. Deliver local working files and a browser preview. Update the existing show_skill_use_in_explainers, align_margin_with_learning and test_with_readers backlog entries, existing implementation bead and handoff; preserve all collaboration nodes, links, standings and earlier receipts. The separate public example records only actual contributions/outcomes. Production publication and outside-reader recruitment or messaging are separate actions; actual reader evidence remains pending.'
+  node_ids:
+  - g-e-picturable-product
+  - f-e-explainers-skill-margin
+  - f-e-readers-picture-skill-use
+  link_ids: []
+  approved_paths:
+  - website/explainers/01-bottleneck-in-practice/index.html
+  - website/explainers/02-thinking-made-visible-in-practice/index.html
+  - website/explainers/03-five-shapes-in-practice/index.html
+  - website/explainers/skill-margin.css
+  - website/explainers/skill-margin.js
+  - website/explainers/skill-session/index.html
+  - website/explainers/skill-session/session.json
+  - ltp/examples/explainer-skill-session/reason-commons.yaml
+  - docs/marketing/explainers/series/08-review-ledger.md
+  - docs/marketing/explainers/series/09-in-practice-script-v2.md
+  - docs/marketing/explainers/series/10-in-practice-critique-v2.md
+  - docs/marketing/explainers/series/11-in-practice-visual-script-v2.md
+  - docs/marketing/explainers/series/12-in-practice-validation.md
+  - docs/marketing/explainers/series/13-skill-session-record.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - .beads/issues.jsonl

@@ -1,0 +1,331 @@
+{
+  "record_type": "assistant-led execution audit",
+  "recorded_at": "2026-10-21T09:17:31.136256Z",
+  "agent": "Codex, current editing session",
+  "setting": "Public-safe check of the published clinic model during the explainer revision",
+  "selection": "The arithmetic defect was already identified in supplied feedback. This is a selected check, not a blind discovery test or a human clinic session.",
+  "instruction_sha256": "3598abeab960685f94ece98b05782311ce9dc86de3fc79bc9c91b94233bd2cbc",
+  "helper_sha256": "cdb750305741fc9ca7360bc0c56957046f34903adf50bd753fc6a9d15c0265e8",
+  "source": {
+    "url": "https://reasoncommons.com/explainers/01-bottleneck-in-practice/index.html",
+    "quote": "Fix that and it moves to pharmacy.",
+    "previous_source_sha256": "bcdffb01fb488233c907e0d9131b0544e4f3b33fe6f339d1f7dc125b640b02c0"
+  },
+  "authorship": "All reasoning and example operations are authored by the assistant. David approved the implementation scope, not the example reasoning. No human endorsement is recorded.",
+  "events": [
+    {
+      "at": "2026-10-21T09:17:31.287472Z",
+      "action": "Capture the published assertion as proposed reasoning",
+      "state_sha256": "4a28d1663e7eb836a05e963741cfe4ec75fe16c6c28468d3e8eb84f44c491059",
+      "state": {
+        "schema_version": 1,
+        "project": "Checking the published moving-constraint illustration",
+        "driver": "david",
+        "participants": {
+          "david": "David Joseph"
+        },
+        "active_tree": "current_reality",
+        "trees": {
+          "current_reality": {
+            "nodes": [
+              {
+                "id": "r-model-capacities",
+                "kind": "observation",
+                "text": "In the separate thought experiment, check-in is 60, triage 45, doctor 50, pharmacy 50 and improved follow-up 60 visits per day; these capacities are assumed achievable together.",
+                "label": "The hypothetical capacities after follow-up improves are 60, 45, 50, 50 and 60.",
+                "status": "proposed",
+                "contributions": [
+                  {
+                    "by": "assistant",
+                    "attribution": "assistant",
+                    "mode": "text",
+                    "note": "Public fictional model; follow-up is set to 60 to make the thought experiment explicit. These are not clinic measurements."
+                  }
+                ]
+              },
+              {
+                "id": "r-next-limit",
+                "kind": "cause",
+                "text": "After follow-up is improved, pharmacy is the next limiting station.",
+                "label": "The source claims pharmacy is next after follow-up improves.",
+                "status": "proposed",
+                "contributions": [
+                  {
+                    "by": "assistant",
+                    "attribution": "assistant",
+                    "mode": "text",
+                    "note": "Captured the assertion in the published illustration for examination; not an endorsement."
+                  }
+                ]
+              }
+            ],
+            "links": [
+              {
+                "id": "r-model-supports-next",
+                "from": [
+                  "r-model-capacities"
+                ],
+                "to": "r-next-limit",
+                "relation": "supports",
+                "status": "proposed",
+                "contributions": [
+                  {
+                    "by": "assistant",
+                    "attribution": "assistant",
+                    "mode": "text",
+                    "note": "The source implies this inference from its model. It has not been checked."
+                  }
+                ]
+              }
+            ],
+            "backlog": [
+              {
+                "ref": "r-model-supports-next",
+                "work": "check_capacity_inference",
+                "label": "Check the next limiting station against every remaining capacity."
+              }
+            ]
+          }
+        }
+      },
+      "validation": {
+        "command": "python3 skills/reason-commons/scripts/update_views.py ltp/examples/explainer-skill-session/reason-commons.yaml --output-dir /tmp/explainer-public-example-views",
+        "exit_code": 0,
+        "stdout": "{\n  \"revision\": 0,\n  \"changed_trees\": [],\n  \"rendered_trees\": [],\n  \"output\": \"/private/tmp/explainer-public-example-views\"\n}\n",
+        "stderr": ""
+      }
+    },
+    {
+      "at": "2026-10-21T09:17:31.349921Z",
+      "action": "Attach the arithmetic objection to the specific inference",
+      "state_sha256": "942afe36aa9ceea7fb6eefbbaeb25e5c38e38311d915e953678b23bb462ff9df",
+      "state": {
+        "schema_version": 1,
+        "project": "Checking the published moving-constraint illustration",
+        "driver": "david",
+        "participants": {
+          "david": "David Joseph"
+        },
+        "active_tree": "current_reality",
+        "trees": {
+          "current_reality": {
+            "nodes": [
+              {
+                "id": "r-model-capacities",
+                "kind": "observation",
+                "text": "In the separate thought experiment, check-in is 60, triage 45, doctor 50, pharmacy 50 and improved follow-up 60 visits per day; these capacities are assumed achievable together.",
+                "label": "The hypothetical capacities after follow-up improves are 60, 45, 50, 50 and 60.",
+                "status": "proposed",
+                "contributions": [
+                  {
+                    "by": "assistant",
+                    "attribution": "assistant",
+                    "mode": "text",
+                    "note": "Public fictional model; follow-up is set to 60 to make the thought experiment explicit. These are not clinic measurements."
+                  }
+                ]
+              },
+              {
+                "id": "r-next-limit",
+                "kind": "cause",
+                "text": "After follow-up is improved, pharmacy is the next limiting station.",
+                "label": "The source claims pharmacy is next after follow-up improves.",
+                "status": "disputed",
+                "contributions": [
+                  {
+                    "by": "assistant",
+                    "attribution": "assistant",
+                    "mode": "text",
+                    "note": "Captured the assertion in the published illustration for examination; not an endorsement."
+                  }
+                ]
+              }
+            ],
+            "links": [
+              {
+                "id": "r-model-supports-next",
+                "from": [
+                  "r-model-capacities"
+                ],
+                "to": "r-next-limit",
+                "relation": "supports",
+                "status": "disputed",
+                "contributions": [
+                  {
+                    "by": "assistant",
+                    "attribution": "assistant",
+                    "mode": "text",
+                    "note": "The source implies this inference from its model. It has not been checked."
+                  }
+                ],
+                "challenges": [
+                  {
+                    "by": "assistant",
+                    "text": "Triage capacity 45 is below pharmacy capacity 50. The source skips triage when it names the next limiting station."
+                  }
+                ]
+              }
+            ],
+            "backlog": [
+              {
+                "ref": "r-model-supports-next",
+                "work": "resolve_capacity_challenge",
+                "label": "Resolve the skipped triage capacity in the source inference."
+              }
+            ]
+          }
+        }
+      },
+      "validation": {
+        "command": "python3 skills/reason-commons/scripts/update_views.py ltp/examples/explainer-skill-session/reason-commons.yaml --output-dir /tmp/explainer-public-example-views",
+        "exit_code": 0,
+        "stdout": "{\n  \"revision\": 0,\n  \"changed_trees\": [],\n  \"rendered_trees\": [],\n  \"output\": \"/private/tmp/explainer-public-example-views\"\n}\n",
+        "stderr": ""
+      }
+    },
+    {
+      "at": "2026-10-21T09:17:31.398902Z",
+      "action": "Revise the same claim while retaining its provenance and challenge",
+      "state_sha256": "e67c988a855273c540114dbba5b374f24f2a85de03fc4d7f2546ac433e8d85e9",
+      "state": {
+        "schema_version": 1,
+        "project": "Checking the published moving-constraint illustration",
+        "driver": "david",
+        "participants": {
+          "david": "David Joseph"
+        },
+        "active_tree": "current_reality",
+        "trees": {
+          "current_reality": {
+            "nodes": [
+              {
+                "id": "r-model-capacities",
+                "kind": "observation",
+                "text": "In the separate thought experiment, check-in is 60, triage 45, doctor 50, pharmacy 50 and improved follow-up 60 visits per day; these capacities are assumed achievable together.",
+                "label": "The hypothetical capacities after follow-up improves are 60, 45, 50, 50 and 60.",
+                "status": "proposed",
+                "contributions": [
+                  {
+                    "by": "assistant",
+                    "attribution": "assistant",
+                    "mode": "text",
+                    "note": "Public fictional model; follow-up is set to 60 to make the thought experiment explicit. These are not clinic measurements."
+                  }
+                ]
+              },
+              {
+                "id": "r-next-limit",
+                "kind": "cause",
+                "text": "With these hypothetical capacities, triage is the next limiting station at 45 visits per day. Pharmacy and the doctor each have capacity 50.",
+                "label": "In this hypothetical model, triage limits output next at 45 visits per day.",
+                "status": "proposed",
+                "contributions": [
+                  {
+                    "by": "assistant",
+                    "attribution": "assistant",
+                    "mode": "text",
+                    "note": "Captured the assertion in the published illustration for examination; not an endorsement."
+                  },
+                  {
+                    "by": "assistant",
+                    "attribution": "assistant",
+                    "mode": "text",
+                    "note": "Revised the same stable item after checking every capacity. Original wording: After follow-up is improved, pharmacy is the next limiting station. The original wording and all stages are retained in session.json."
+                  }
+                ]
+              }
+            ],
+            "links": [
+              {
+                "id": "r-model-supports-next",
+                "from": [
+                  "r-model-capacities"
+                ],
+                "to": "r-next-limit",
+                "relation": "supports",
+                "status": "proposed",
+                "contributions": [
+                  {
+                    "by": "assistant",
+                    "attribution": "assistant",
+                    "mode": "text",
+                    "note": "The source implies this inference from its model. It has not been checked."
+                  },
+                  {
+                    "by": "assistant",
+                    "attribution": "assistant",
+                    "mode": "text",
+                    "note": "The link now points to the revised conclusion. The retained challenge describes the original pharmacy assertion, resolved by this arithmetic check. Neither endpoint nor link has human endorsement."
+                  }
+                ],
+                "challenges": [
+                  {
+                    "by": "assistant",
+                    "text": "Triage capacity 45 is below pharmacy capacity 50. The source skips triage when it names the next limiting station."
+                  }
+                ]
+              }
+            ],
+            "backlog": [
+              {
+                "ref": "r-next-limit",
+                "work": "human_review",
+                "label": "Review the corrected hypothetical inference; no human has endorsed it."
+              },
+              {
+                "ref": "r-model-capacities",
+                "work": "recheck_after_next_improvement",
+                "label": "Recheck capacities after another improvement; shared limits may emerge."
+              }
+            ]
+          }
+        }
+      },
+      "validation": {
+        "command": "python3 skills/reason-commons/scripts/update_views.py ltp/examples/explainer-skill-session/reason-commons.yaml --output-dir /tmp/explainer-public-example-views",
+        "exit_code": 0,
+        "stdout": "{\n  \"revision\": 0,\n  \"changed_trees\": [],\n  \"rendered_trees\": [],\n  \"output\": \"/private/tmp/explainer-public-example-views\"\n}\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "calculation": {
+    "capacities": {
+      "check-in": 60,
+      "triage": 45,
+      "doctor": 50,
+      "pharmacy": 50,
+      "follow-up": 60
+    },
+    "minimum": 45,
+    "limiting_stations": [
+      "triage"
+    ],
+    "method": "Assistant-authored minimum-capacity calculation in a simplified serial model; the schema helper does not perform causal or arithmetic verification."
+  },
+  "resumption": {
+    "at": "2026-10-21T09:17:31.434262Z",
+    "type": "fresh Python process reading the same actual file",
+    "exit_code": 0,
+    "stdout": "{\"sha256\": \"e67c988a855273c540114dbba5b374f24f2a85de03fc4d7f2546ac433e8d85e9\", \"reopened_id\": \"r-next-limit\", \"reopened_statement\": \"With these hypothetical capacities, triage is the next limiting station at 45 visits per day. Pharmacy and the doctor each have capacity 50.\", \"standing\": \"proposed\", \"challenge_retained\": \"Triage capacity 45 is below pharmacy capacity 50. The source skips triage when it names the next limiting station.\", \"backlog\": [\"human_review\", \"recheck_after_next_improvement\"]}\n",
+    "result": {
+      "sha256": "e67c988a855273c540114dbba5b374f24f2a85de03fc4d7f2546ac433e8d85e9",
+      "reopened_id": "r-next-limit",
+      "reopened_statement": "With these hypothetical capacities, triage is the next limiting station at 45 visits per day. Pharmacy and the doctor each have capacity 50.",
+      "standing": "proposed",
+      "challenge_retained": "Triage capacity 45 is below pharmacy capacity 50. The source skips triage when it names the next limiting station.",
+      "backlog": [
+        "human_review",
+        "recheck_after_next_improvement"
+      ]
+    },
+    "limit": "A fresh-process persistence check, not a fresh model session or evidence of unprompted conversational recall."
+  },
+  "limits": [
+    "Inputs were selected and authored by the implementing assistant.",
+    "No human clinic conversation, clinical outcome, human endorsement or independent model evaluation occurred.",
+    "The skill helper validates state structure and references, not the truth of a claim.",
+    "The execution record manually retains proposed/disputed snapshots; the helper accepted-history mechanism was not triggered because nothing was human-endorsed.",
+    "Independent copies of the file are not automatically synchronized."
+  ]
+}
