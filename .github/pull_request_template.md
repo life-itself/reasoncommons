@@ -2,35 +2,12 @@
 
 <!-- One or two sentences. -->
 
-## Expected outcomes
+## Accepted change proposal
 
-<!-- Generated with the Reasoning changes section below. For each feedback commitment this PR adds or revises: the change being evaluated, its expected benefit and possible harmful consequence, who gives feedback and how they can observe it. Feedback reports added to an existing commitment are listed with their verdicts. If the PR adds Future Reality predicted or undesirable effects with no commitment, replace the placeholder in "No feedback commitment: <reason>". Otherwise write None. -->
-
-## Reasoning changes
-
-<!-- One rendered Mermaid diagram per affected tree in the actual YAML diff, with tree, kind, standing and change labels. Generate this section and the collapsed list with:
-python3 skills/reason-commons/scripts/check_pr_trees.py ltp/rufus-david-collab/reason-commons.yaml --base origin/main --suggest --format markdown
-Keep the generated diagrams and unresolved-connection notes visible here. Backlog-only changes still get a generated diagram. With no node, link or backlog changes, state that and describe the scope. -->
-
-## Reasoning this serves
-
-<!-- Existing node or link IDs from ltp/rufus-david-collab/reason-commons.yaml that this change puts into practice or supports, one per line, e.g. "- `f-e-run-collab-through-tree` — Rufus and David run their collaboration through the tree". Leave empty only if Tree updates lists new reasoning. -->
-
-## Tree updates
-
-<details>
-<summary>Complete checked change list</summary>
-
-<!-- Every added, changed or removed node/link, or None. Keep this list collapsed; the visible diagrams above carry the reasoning. --suggest --format markdown generates both sections. -->
-
-</details>
-
-## Accepted change proposals
-
-<!-- Cite the recorded typed acceptance of each proposal version this PR implements, one per line:
+<!-- Cite the recorded typed acceptance this PR implements, one per line:
 - `proposal-id` revision 1 by `participant-id`
-The matching change_acceptances receipt in the YAML must contain approved_paths and cover this PR's changed files and node/link IDs. Include the receipt with the implementation. Approval to implement, PR review and reasoning endorsement are separate decisions; creating or merging this PR does not accept proposed claims. -->
+Receipts are recorded in change_acceptances in the private reasoncommons/product repo (collab/reason-commons.yaml). Cite the ID only; never copy private reasoning or funding detail into a public PR. Approval to implement, PR review and reasoning endorsement are separate decisions. -->
 
 ## Validation
 
-<!-- Checks completed and remaining uncertainty. Review whether the implementation fulfills the recorded scope; automated coverage checks do not establish this or authenticate consent. -->
+<!-- Checks completed and remaining uncertainty. -->
