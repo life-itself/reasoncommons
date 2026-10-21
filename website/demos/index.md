@@ -1,6 +1,6 @@
 ---
 title: Demos & experiments
-description: Rough, unfinished, and illustrative pieces — the vision demo, prototypes, and a talk.
+description: Rough, unfinished, and illustrative pieces — interface sketches, an experiment, and a talk.
 ---
 
 # Demos & experiments
@@ -23,14 +23,6 @@ These seven mockups explore different visual paradigms for working with shared r
 <a class="mockup-card" href="/demos/Reason%20Commons%20v2%20(1).html"><div class="mockup-preview"><div class="mockup-window"><div class="mockup-rail"></div><div class="mockup-canvas"><div class="mockup-bar"></div><div class="mockup-row"></div><div class="mockup-row accent"></div><div class="mockup-row short"></div></div></div></div><div class="mockup-card-body"><h3>Refined interface sketch</h3><span class="mockup-file">Reason Commons v2 (1)</span><p>A second-generation interface sketch exploring a more polished way to work with shared reasoning.</p><span class="mockup-open">Open full page →</span></div></a>
 <a class="mockup-card" href="/demos/Reason%20Commons%20%E2%80%94%20Wireframes%20v2%20(TOC-native)%20(1).html"><div class="mockup-preview wire"><div class="mockup-window"><div class="mockup-rail"></div><div class="mockup-canvas"><div class="mockup-bar"></div><div class="mockup-row accent"></div><div class="mockup-row"></div><div class="mockup-row short"></div></div></div></div><div class="mockup-card-body"><h3>TOC-native Wireframes</h3><span class="mockup-file">Reason Commons — Wireframes v2 (TOC-native)</span><p>A structure-first wireframe grounded in the Logical Thinking Process and its connected trees.</p><span class="mockup-open">Open full page →</span></div></a>
 </div>
-
-## Claim-tree annotation demo
-
-[The four-step vision, animated](/claim-tree-annotation-demo/index.html) — take a claim, decompose it into a tree, bring in source documents, and map evidence onto the nodes. A scripted walk-through of what the tooling is aiming at.
-
-## Constraints dashboard
-
-[A read-only viewer](/dashboard/index.html) over a full Logical Thinking Process analysis of one organisation's goals and constraints — goal tree, current reality, conflicts, future reality, prerequisites. Several analyses sit behind a project picker. Prototype quality; the data model is real, the interface is minimal.
 
 ## Goal Aligner
 

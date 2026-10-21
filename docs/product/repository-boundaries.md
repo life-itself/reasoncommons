@@ -13,7 +13,7 @@ The repository has one shared reasoning model and distinct homes for project wor
 | Public-safe business/funding/partnership work | `docs/business/` | Deliberately selected public output only |
 | Skill packages, helpers, fixtures and tests | `skills/<skill>/` | Install from the repository; public guide exported to `/skills` |
 | Application code, configuration, tests and operating instructions | `apps/<app>/` | Publish built output deliberately if needed |
-| Current static dashboard and browser demos | `website/dashboard/`, `website/demos/` | Same public URLs as before |
+| Browser demos (the dashboard became a retired notice on 2026-10-21) | `website/demos/`, `website/dashboard/index.html` | Same public URLs as before |
 | Library conversion helpers and their baseline | `docs/references/logical-thinking-process-dettmer/scripts/` | Converted chapters, source PDF and images under `website/library/` |
 
 The main Reason Commons app has a [separate repository](https://github.com/Promise-Foundation/reason-commons). `apps/discord/` establishes ownership for prospective bot work; it contains no bot implementation. This repository has no dashboard source build system to move into `apps/`. The compiled bundle embeds its sample data; see [dashboard notes](dashboard.md).

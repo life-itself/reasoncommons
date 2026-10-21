@@ -2,6 +2,8 @@
 
 *Working memo — 1 September 2026. Companion to [`brand-and-domain-naming.md`](./brand-and-domain-naming.md). Scope: what we call the core object and its uses in everyday communication — not the site name (settled: "Reason Commons") and not the internal LTP tree names (Goal Tree, Current Reality Tree, etc.), which stay as jargon we don't put in front of people.*
 
+> **Decision reopened (2026-10-21, David, awaiting Rufus).** Settling on "tree of change / tree of action" put the cart before the horse: front-facing words should come from what proves useful in use. Until then, copy describes plainly rather than fixing names. Issue trees are deprecated, not heritage to cite. The memo below is kept as the record of the 1 September reasoning. See `docs/product/plans/2026-10-21-retire-outdated-framing.md`.
+
 ## The object
 
 One structure keeps recurring: a top-level claim — a goal, a thesis, or a question — recursively decomposed into the sub-claims it depends on, where the links between claims are themselves claims ("this one is necessary for that one"). We keep reaching for a name for it and using a different one each time. This settles on a small set.

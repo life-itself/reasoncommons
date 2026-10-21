@@ -38,10 +38,7 @@
     ]
   },
   "contentExclude": [],
-  "contentHide": [
-    "/dashboard/assets",
-    "/dashboard/projects"
-  ],
+  "contentHide": [],
   "social": [
     {
       "label": "github",
