@@ -156,6 +156,11 @@ a.btn-secondary:hover {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+/* A card that takes a whole row, so an odd card out reads as deliberate. */
+.rc-card.rc-card-wide {
+  grid-column: 1 / -1;
+}
+
 @media (max-width: 44rem) {
   .rc-cards,
   .rc-cards.rc-cards-2 {

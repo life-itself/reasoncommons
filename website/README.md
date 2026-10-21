@@ -14,10 +14,10 @@ status: in-progress
 
 On the questions that matter most, we generate plenty of heat and not much light. There is real discussion — on the forum, in long documents, in calls — but it repeats, it scatters, and it doesn't build; you can't point at a 200,000-word strategy and improve one sentence of it. We never build the cathedral, we just make a bigger mess. Trees are a way out: break a goal into the parts it actually rests on, so the whole and the parts stay connected and you can see how a single step — or a single objection — bears on what you're trying to do. Then the hard part, getting freeform discussion connected back to the tree without anyone doing tedious filing. It has to be close to effortless or it won't happen, and AI is what makes that possible now.
 
-<div class="rc-cards">
+<div class="rc-cards rc-cards-2">
 <a class="rc-card" href="/explainers"><span class="rc-card-title">The idea</span><p>Lay out what a goal rests on, what stands in its way and what to do about it, with the whole and the parts kept connected.</p></a>
 <a class="rc-card" href="/about"><span class="rc-card-title">The AI tooling we're building</span><p>AI drafts the trees from what you already have, and folds ongoing discussion back in — so it enriches the conversation and improves the tree at the same time.</p></a>
-<a class="rc-card" href="/skills"><span class="rc-card-title">Try it</span><p>Install the reason-commons skill in Claude Code or Codex and talk a real problem through, alone or with your group.</p></a>
+<a class="rc-card rc-card-wide" href="/skills"><span class="rc-card-title">Try it</span><p>Install the reason-commons skill in Claude Code or Codex and talk a real problem through, alone or with your group.</p></a>
 </div>
 
 ## Start here — the three-part series

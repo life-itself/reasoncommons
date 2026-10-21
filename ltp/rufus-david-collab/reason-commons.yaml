@@ -8111,3 +8111,18 @@ change_acceptances:
   - website/explainers/03-five-shapes/index.html
   - website/explainers/03-five-shapes-in-practice/index.html
   - apps/README.md
+- proposal_ref: change-homepage-card-wrap-2026-10-21
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-21T09:01:12Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept
+  scope: 'Fix the 2+1 wrap of the homepage''s first card grid on the live site, whose content column is 656px wide: make the grid two columns (rc-cards rc-cards-2) and stretch the Try it card across both columns with a new rc-card-wide class in website/custom.css (grid-column: 1 / -1), staying one column on phones. Deliver as its own PR off main and merge only when David says. No node, link or backlog changes; serves f-e-present-benefit-first and r-e-no-user-picture.'
+  node_ids: []
+  link_ids: []
+  approved_paths:
+  - website/README.md
+  - website/custom.css
+  - ltp/rufus-david-collab/reason-commons.yaml
