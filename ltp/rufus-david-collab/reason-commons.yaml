@@ -223,6 +223,16 @@ trees:
           entity_id: g-e-form-follows-use
           role: necessary_condition
           parent_designation_id: g-d-real-users
+    - id: g-e-language-follows-use
+      kind: necessary_condition
+      text: The words used to present Reason Commons are chosen by what proves useful in using it, not settled ahead of that use.
+      label: Our words for it are chosen by what proves useful in use.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: 'David, 2026-10-21: settling on "tree of change / tree of action" puts the cart before the horse; the domain language should reflect what is useful to us, learned through using the tool.'
     links:
     - id: g-rel-resourced-for-goal
       from:
@@ -317,7 +327,21 @@ trees:
         attribution: driver_default
         mode: unknown
         note: Imported material has no identified originator. Driver fallback is bookkeeping, not evidence that David originated it.
+    - id: g-rel-language-for-product
+      from:
+      - g-e-language-follows-use
+      to: g-e-picturable-product
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
+        mode: text
     backlog:
+    - ref: g-e-form-follows-use
+      work: decide_tool_relationship
+      label: Decide how this skill relates to the reason-commons-tui plugin.
+      note: 'This repository''s reason-commons skill overlaps the reason-commons-contribute plugin from life-itself/reason-commons-tui, which keeps goals in ~/ReasonCommons folders rather than a working YAML; nothing in this repository mentions the plugin. David, 2026-10-21: treat it as a separate experiment for now and keep it out of the outdated-framing cleanup.'
     - ref: g-rel-resourced-for-goal
       work: test_necessity
     - ref: g-rel-users-for-goal
@@ -1583,6 +1607,20 @@ trees:
       assumptions:
       - text: The bot may or may not be something the first users they want feedback from could use.
         by: david
+    - id: r-e-retired-framing-shown
+      kind: cause
+      text: 'Reason Commons''s public pages, agent instructions and redesign source documents still present it through framing the project no longer uses: issue trees, the deprecated app, a tool for decomposing a top-level claim, and David''s earlier Abductio and Promise Protocol work.'
+      label: Pages and agent docs still present it through retired framing.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: 'David, 2026-10-21: issue trees are deprecated; "a tool to decompose a top-level claim" sells the mechanism rather than the transformation; presenting Promise Protocol and Abductio so prominently is a mistake because they have next to nothing to do with Reason Commons.'
+      - by: assistant
+        attribution: assistant
+        mode: text
+        note: The 2026-10-21 repository audit found this framing in AGENTS.md, the site title, homepage, About and people pages, glossary, motivation.md, skills/README.md and the redesign's brand, page and naming documents.
     links:
     - id: r-rel-unclear-drives-redesigning
       from:
@@ -2091,6 +2129,16 @@ trees:
       contributions:
       - by: david
         attribution: explicit
+        mode: text
+    - id: r-rel-retired-framing-blurs-picture
+      from:
+      - r-e-retired-framing-shown
+      to: r-e-no-user-picture
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: assistant
+        attribution: assistant
         mode: text
     backlog:
     - ref: r-rel-no-sales-drive-drives-product-unclear
@@ -3377,6 +3425,18 @@ trees:
       - by: david
         attribution: explicit
         mode: text
+    - id: f-e-present-benefit-first
+      kind: injection
+      text: Reason Commons is presented by what it changes for the people who use it; the Logical Thinking Process is described as how it works underneath, not as the point; and the retired framing is removed from current pages, agent instructions and the redesign's source documents, while dated records keep their wording.
+      label: Lead with what it changes; LTP is how it works underneath.
+      status: proposed
+      addresses:
+      - r-e-retired-framing-shown
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: 'David, 2026-10-21: the Logical Thinking Process is part of what makes Reason Commons work under the hood, but it is how the sausage is made, not the sausage; present the transformation and expected benefit, not the mechanism.'
     links:
     - id: f-rel-feedback-reviewable
       from: [f-e-feedback-cycle]
@@ -3870,6 +3930,12 @@ trees:
         attribution: explicit
         mode: text
     backlog:
+    - ref: f-e-present-benefit-first
+      work: review_with_rufus
+      label: Rufus to review David's corrections and the redesign edits.
+      note: 'Rufus reviews David''s 2026-10-21 corrections (front-facing words are learned from use; the Logical Thinking Process is how it works underneath, not the point; issue trees, the deprecated app, Abductio and Promise Protocol are retired) and the brand, page, naming and IA edits that apply them, including retiring the dashboard and claim-tree demo that his IA plan keeps.'
+      beads:
+      - reasoncommons-ffm.2
     - ref: f-rel-use-makes-users
       work: test_causality
     - ref: f-rel-use-teaches
@@ -7962,3 +8028,86 @@ change_acceptances:
   - skills/reason-commons/references/onboarding.md
   - ltp/rufus-david-collab/reason-commons.yaml
   - .beads/issues.jsonl
+- proposal_ref: change-retire-outdated-framing-2026-10-21
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-21T08:43:34Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept these changes
+  scope: 'Retire outdated framing in three steps. Record: this receipt, the proposed tree updates and two backlog items, a plan document and a Beads epic with one child per PR (the PR B child labelled human). PR A (David merges): rewrite AGENTS.md''s description to lead with the benefit with no tagline and add a ''How we present Reason Commons'' convention (lead with what it changes; LTP is how it works underneath; front-facing words learned from use; issue trees, the app, Abductio and Promise Protocol retired; dated records keep their wording); rewrite the README intro and cut motivation.md to a current why-this-matters; retire ltp-project, ltp-visualize and their .agents links, NEXT.md and the ltp/reason-commons app-format model, and update skills/README.md, the reason-commons skill description, docs maps, check-website skill and NEXT rules and .gitignore; delete docs/theory after David copies it; close beads vc0, db0 and 1ch; site title ''Reason Commons''; small homepage, About, people-page and glossary fixes removing fixed tree-of-change vocabulary, the LTP card, the demo and dashboard cards, the founders'' threads and Related links, while the demo and dashboard stay published; stop exporting the claim-tree-annotation fixture; add a retired-terms check (issue tree(s), Abductio, Promise Protocol, dated folders allowed) and a changelog entry. PR B (merges only on Rufus''s approval): reopen the naming memo''s decision; edit brand.md, pages.md and ia.md and add a decision-log entry; replace the dashboard and claim-tree demo with retired notices at their old URLs; remove their links from /demos and the explainers; close bead 9zv. The accepted top goal g-e-ltp-used-in-world is unchanged. Approving implementation does not endorse the reasoning.'
+  node_ids: [g-e-language-follows-use, r-e-retired-framing-shown, f-e-present-benefit-first]
+  link_ids: [g-rel-language-for-product, r-rel-retired-framing-blurs-picture]
+  approved_paths:
+  - ltp/rufus-david-collab/reason-commons.yaml
+  - docs/product/plans/2026-10-21-retire-outdated-framing.md
+  - .beads/issues.jsonl
+  - AGENTS.md
+  - README.md
+  - motivation.md
+  - website/motivation.md
+  - skills/README.md
+  - website/skills/README.md
+  - skills/reason-commons/SKILL.md
+  - docs/README.md
+  - docs/product/dashboard.md
+  - docs/product/repository-boundaries.md
+  - .gitignore
+  - scripts/check-website.py
+  - scripts/website-content.json
+  - website/config.json
+  - website/README.md
+  - website/about.md
+  - website/people/david-joseph.md
+  - website/people/rufus-pollock.md
+  - website/glossary.md
+  - website/changelog/2026-10-21-plainer-front-page-and-retired-skills.md
+  - skills/ltp-project/SKILL.md
+  - skills/ltp-project/agents/openai.yaml
+  - skills/ltp-project/references/example-project.ltp.yaml
+  - skills/ltp-project/references/extraction.md
+  - skills/ltp-project/references/preview.md
+  - skills/ltp-project/references/report.md
+  - skills/ltp-project/references/validation.md
+  - skills/ltp-project/references/vocabulary.md
+  - skills/ltp-project/scripts/preview_dashboard.py
+  - skills/ltp-visualize/SKILL.md
+  - skills/ltp-visualize/agents/openai.yaml
+  - .agents/skills/ltp-project
+  - .agents/skills/ltp-visualize
+  - NEXT.md
+  - ltp/reason-commons/reason-commons.ltp.yaml
+  - ltp/reason-commons/reason-commons.report.md
+  - website/claim-tree-annotation.md
+  - docs/theory/collective_thinking_processes.md
+  - docs/theory/collective_thinking_processes_pub_sub.md
+  - docs/theory/collective_thinking_processes_pub_sub.md~
+  - docs/theory/critique.md
+  - docs/theory/evidence_objection.md
+  - docs/theory/evidence_objection.md~
+  - docs/theory/information_architecture.md
+  - docs/theory/losability.md
+  - docs/theory/losability_with_agentic_ai.md
+  - docs/theory/losability_with_software_testing.md
+  - docs/theory/objections_and_refutations.md
+  - docs/theory/stress_test.md
+  - docs/theory/trust_protocol.md
+  - docs/marketing/naming-the-tree.md
+  - docs/marketing/brand/brand.md
+  - docs/marketing/brand/pages.md
+  - docs/marketing/brand/ia.md
+  - docs/marketing/plans/2026-10-14-brand-and-site-redesign.md
+  - website/dashboard/index.html
+  - website/dashboard/projects/manifest.json
+  - website/dashboard/projects/alignments/individual-swe-example__second-renaissance.yaml
+  - website/dashboard/projects/individual-swe-example/model.yaml
+  - website/dashboard/projects/second-renaissance/model.yaml
+  - website/claim-tree-annotation-demo/index.html
+  - website/claim-tree-annotation-demo/support.js
+  - website/claim-tree-annotation-demo/verify.mjs
+  - website/demos/index.md
+  - website/explainers/index.md
+  - website/explainers/03-five-shapes/index.html
+  - website/explainers/03-five-shapes-in-practice/index.html
+  - apps/README.md

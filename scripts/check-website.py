@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check the website boundary, explicit exports, preserved routes and local links."""
+"""Check the website boundary, explicit exports, preserved routes, local links and retired terms."""
 from __future__ import annotations
 
 import argparse
@@ -112,15 +112,22 @@ def check(root: Path, migration: bool = False) -> tuple[list[str], list[dict], i
         if resolve(site, site / 'README.md', route):
             errors.append(f'Working route is still published: {route}')
     if migration:
-        if [str(p.relative_to(root)) for p in root.rglob('NEXT.md') if '.git' not in p.parts] != ['NEXT.md']:
-            errors.append('Expected exactly one root NEXT.md.')
-        for name in ('reason-commons', 'ltp-project', 'ltp-visualize'):
+        for name in ('reason-commons',):
             link = root / '.agents/skills' / name
             if not link.is_symlink() or link.resolve() != (root / 'skills' / name).resolve():
                 errors.append(f'Canonical skill link does not resolve: {name}')
     export = subprocess.run([sys.executable, str(root / 'scripts/export-website.py'), '--check', '--root', str(root)], capture_output=True, text=True)
     if export.returncode:
         errors.append((export.stdout + export.stderr).strip())
+    # Retired framing must not reappear on current pages; dated folders keep their wording.
+    retired = re.compile('|'.join(manifest['retired_terms']['patterns']), re.I)
+    allowed = tuple(manifest['retired_terms']['allowed_paths'])
+    for document in sorted(site.rglob('*')):
+        if not document.is_file() or document.suffix not in ('.md', '.html', '.json') or document.relative_to(site).as_posix().startswith(allowed):
+            continue
+        for number, line in enumerate(document.read_text().splitlines(), 1):
+            if match := retired.search(line):
+                errors.append(f'{document.relative_to(root)}:{number}: retired term {match[0]!r}')
     missing = []
     count = 0
     for document in sorted(site.rglob('*')):

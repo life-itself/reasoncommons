@@ -1,8 +1,8 @@
 # Reason Commons
 
-Reason Commons develops ways to use the Logical Thinking Process with AI so that people can think and act better together. It is a collaboration between Rufus Pollock and David Joseph.
+Reason Commons helps people and groups work out what they are trying to achieve and what to do about it, with AI doing the structuring and the bookkeeping, so their thinking builds up instead of getting lost. It is a collaboration between Rufus Pollock and David Joseph.
 
-Read the public introduction at [reasoncommons.com](https://reasoncommons.com). This repository holds the shared reasoning, project work, installable skills and website; the [Reason Commons application](https://github.com/Promise-Foundation/reason-commons) has its own repository.
+Read the public introduction at [reasoncommons.com](https://reasoncommons.com). This repository holds the shared reasoning, project work, installable skills and website. The earlier Reason Commons app (`Promise-Foundation/reason-commons`) is retired; what we offer is skills and integrations.
 
 ## Project map
 
@@ -15,7 +15,7 @@ Read the public introduction at [reasoncommons.com](https://reasoncommons.com). 
 | Public website | Deliberately published pages, static demos and assets | [Public homepage](website/README.md), [publishing and cutover](docs/product/repository-boundaries.md) |
 | Shared utilities | Tools crossing area boundaries | [Website exports](scripts/export-website.py), [website checks](scripts/check-website.py), [phone checks](scripts/phone-check.mjs) |
 
-[Motivation](motivation.md) explains the project's purpose and framing. [AGENTS.md](AGENTS.md) defines the contribution rules. [NEXT.md](NEXT.md) remains the single generated work view; its model/source declaration is independent of the conversational collaboration model. GitHub issues hold project-level planning and Beads holds agent-executable work, ownership and handoffs.
+[Motivation](motivation.md) explains why the project matters. [AGENTS.md](AGENTS.md) defines the contribution rules and how we present the project. GitHub issues hold project-level planning and Beads holds agent-executable work, ownership and handoffs.
 
 ## Working here
 

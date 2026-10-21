@@ -3,4 +3,4 @@ title: David Joseph
 avatar: https://avatars.githubusercontent.com/u/5429446?v=4
 ---
 
-David Joseph co-develops Reason Commons and the Logical Thinking Process issue trees on this site. GitHub: [@dvdgdn](https://github.com/dvdgdn).
+David Joseph co-develops Reason Commons. GitHub: [@dvdgdn](https://github.com/dvdgdn).

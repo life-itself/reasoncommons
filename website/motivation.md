@@ -4,28 +4,10 @@
 
 ## Why this matters
 
-Public argument is badly structured. Claims are vague, debate doesn't accumulate, evidence doesn't map cleanly to the specific sub-point it bears on. Discussion scatters across forum posts and never compounds into shared understanding.
+Groups that share a goal keep losing what they work out. Discussion happens on forums, in long documents and in calls, but it repeats, it scatters and it doesn't build: the same argument comes round again, agreements are forgotten, and nobody can point at one part of a plan and improve it. The work then drifts away from the goal it was meant to serve.
 
-**The vision:** take a top-level claim, recursively decompose it into sub-claims, and build a directed graph (DAG) of claims + evidence. Documents come and go, but the **claim tree is a stable scaffold** that discourse accumulates against — "cathedral building" instead of scattered noise.
+Reason Commons is meant to change that. People talk a goal, a problem or a plan through, alone or together, and come away with a shared picture of what they are trying to achieve, what stands in the way and what they will do about it. Every contribution keeps its author's name, and nothing counts as agreed until people accept it. AI does the drafting, the filing and the keeping current, which is the work that used to make this too costly to sustain. The structure underneath comes from the Logical Thinking Process, but the point is the result: a group whose thinking builds up, and whose actions line up with what it is trying to achieve.
 
-Rufus's thread: issue trees / SCQH / Minto pyramids — wanted this tool for 10+ years. David's thread: the "Abductio" proposition-decomposition process inside his Promise Protocol.
+## Where the work is
 
-## Problem framing (SCQH per active stream)
-
-We use **SCQH** — Situation, Complication, Question, Hypothesis — to sharpen each stream into a crisp problem statement. Planning (streams, next actions) now happens in [GitHub issues](https://github.com/life-itself/reasoncommons/issues).
-
-### Stream 1 — Product / prototype
-- **S** — Static demo makes the vision resonate; the process is well specified.
-- **C** — Demo is scripted; AI does none of the work, so nothing is proven about feasibility or output quality.
-- **Q** — Can AI reliably (a) generate a useful claim tree from input, and (b) map document fragments to the right nodes — well enough to convince us — on the toy example?
-- **H** — Build two thin AI skills against the gold toy case; if output quality is good, wrap a minimal interactive UI. Toy first, real applications later.
-
-### Stream 2 — Narrative / comms
-- **S** — David + Rufus share the vision; collaboration channel + repo exist.
-- **C** — The "why this matters / why now / why us" isn't written down; David has only fragments. The four-step process has no clean shareable diagram.
-- **Q** — What's the crisp shared story (background + four-step process) that aligns David and attracts collaborators?
-- **H** — Draft a background post (Rufus's 10-yr thread: SCQH / Minto / issue trees + personal story) and a clean Mermaid four-step diagram.
-
-## Deferred / dropped
-- **Stream 3 — Second Renaissance LTP** — deferred; it's an application, too complex until a toy example works end-to-end.
-- **Stream 4 — Discord bot wiring** — dropped this round.
+Project planning lives in [GitHub issues](https://github.com/life-itself/reasoncommons/issues), and the code, skills and website are developed in the open on [GitHub](https://github.com/life-itself/reasoncommons).

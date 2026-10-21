@@ -1,6 +1,6 @@
 ---
 name: reason-commons
-description: Help individuals or groups build and challenge Logical Thinking Process trees through interactive conversation, with contributor attribution, a working backlog, and persistent YAML state. Use when users want to think through goals, problems, conflicts, proposed changes, obstacles, or actions together. Not for batch document extraction or Reason Commons app import files.
+description: Help individuals or groups build and challenge Logical Thinking Process trees through interactive conversation, with contributor attribution, a working backlog, and persistent YAML state. Use when users want to think through goals, problems, conflicts, proposed changes, obstacles, or actions together. Not for batch document extraction.
 ---
 
 # Reason Commons

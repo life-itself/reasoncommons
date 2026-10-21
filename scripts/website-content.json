@@ -10,11 +10,6 @@
       "format": "markdown"
     },
     {
-      "source": "claim-tree-annotation.md",
-      "destination": "website/claim-tree-annotation.md",
-      "format": "markdown"
-    },
-    {
       "source": "skills/README.md",
       "destination": "website/skills/README.md",
       "format": "markdown"
@@ -2967,6 +2962,21 @@
     "/skills/reason-commons/",
     "/skills/ltp-project/",
     "/skills/ltp-visualize/",
-    "/skills/scrollable-explainer/"
-  ]
+    "/skills/scrollable-explainer/",
+    "/claim-tree-annotation"
+  ],
+  "retired_terms": {
+    "patterns": [
+      "\\bissue[ -]trees?\\b",
+      "\\babductio\\b",
+      "\\bpromise protocol\\b"
+    ],
+    "allowed_paths": [
+      "blog/",
+      "changelog/",
+      "landing-lab/",
+      "library/",
+      "talk/"
+    ]
+  }
 }
