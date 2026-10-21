@@ -6,21 +6,9 @@ title: Dashboard artifact and local previews
 
 The read-only dashboard is a compiled standalone artifact at [`website/dashboard/index.html`](../../website/dashboard/index.html), with sample models and a manifest under `website/dashboard/projects/`. Its source build system is not present in this repository; older `skills/project-ltp/dashboard/` build/serve commands refer to retired files and are not a supported rebuild path.
 
-## Preview an interchange file
+## Retirement
 
-From the repository root, run:
-
-```sh
-python3 skills/ltp-project/scripts/preview_dashboard.py path/to/project.ltp.yaml
-```
-
-The helper serves a temporary converted model on `127.0.0.1:8765`, opens a browser and leaves the source YAML unchanged. Use `--no-open` for a printed URL or `--port 9000` for a different port. To export a standalone HTML preview:
-
-```sh
-python3 skills/ltp-project/scripts/preview_dashboard.py path/to/project.ltp.yaml --export-html
-```
-
-See [preview limitations](../../skills/ltp-project/references/preview.md). This is an inspection surface, not an import validator or an editor.
+The `ltp-project` preview helper that rendered interchange files through this dashboard was retired on 2026-10-21, together with the Reason Commons app whose format it served. Retiring the dashboard itself is proposed in bead `reasoncommons-ffm.2` and awaits Rufus's review; until then it stays published as a static artifact.
 
 ## Published routes and model ownership
 

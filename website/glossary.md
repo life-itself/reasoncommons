@@ -276,7 +276,7 @@ One step of a [Transition Tree](#transition-tree): the **existing reality**, the
 
 ### Claim tree
 
-Also **issue tree**. A top-level claim or question broken down into sub-claims, which are broken down in turn. It is a stable scaffold: documents come and go, but the tree stays, and evidence accumulates against it. See [claim tree annotation](/claim-tree-annotation).
+A top-level claim or question broken down into sub-claims, which are broken down in turn. It is a stable scaffold: documents come and go, but the tree stays, and evidence accumulates against it.
 
 ```text
  Does remote work raise productivity?
@@ -309,7 +309,7 @@ What a Reason Commons project file calls each of the six trees. A project holds 
 
 ### Role
 
-What a statement is doing in a given view — a [goal](#goal), an [undesirable effect](#undesirable-effect), an [injection](#injection), and so on. The full list the project file accepts is in the [ltp-project skill's vocabulary](https://github.com/life-itself/reasoncommons/blob/main/skills/ltp-project/references/vocabulary.md).
+What a statement is doing in a given view — a [goal](#goal), an [undesirable effect](#undesirable-effect), an [injection](#injection), and so on. The full list the reason-commons skill uses is in [its schema](https://github.com/life-itself/reasoncommons/blob/main/skills/reason-commons/references/schema.md).
 
 ## Read more
 

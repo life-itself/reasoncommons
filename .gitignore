@@ -4,18 +4,11 @@
 .claude/
 .worktrees/
 
-# Local dashboard build tooling (the compiled dashboard under dist/ is tracked).
+# Local build tooling.
 node_modules/
 *.tsbuildinfo
 __pycache__/
 *.py[cod]
-skills/project-ltp/dashboard/vite.config.js
-skills/project-ltp/dashboard/vite.config.d.ts
-
-# Test builds of the contribution-proposals review page. `--test` writes here so
-# a half-read batch can be looked at without touching the live route or the
-# repo's history. See skills/contribution-proposals/SKILL.md.
-website/talk/2r-research-group/demo-c-test/
 
 # macOS filesystem metadata.
 .DS_Store
