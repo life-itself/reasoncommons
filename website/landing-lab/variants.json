@@ -23,7 +23,7 @@
     ]
   },
   "imported_at": "2026-10-19T07:35:22.554Z",
-  "supplied_file_count": 7,
+  "supplied_file_count": 8,
   "variants": [
     {
       "id": "test-the-assumption",
@@ -116,6 +116,21 @@
       "source_bytes": 78356,
       "entry_path": "find-a-way-forward/index.html",
       "entry_sha256": "8f2940ffb0f76db6ae512351c5bd58a7b95b1ed7921fabcb642f5436aa903c5f",
+      "envelope_normalization": "None"
+    },
+    {
+      "id": "disagree-and-get-somewhere",
+      "name": "Disagree and Get Somewhere",
+      "framing": "A disagreement between two colleagues becomes a question both sides can investigate.",
+      "notes": "Supplied on 21 October 2026, after the 19 October evaluation; not yet captured for judging or judged. Its only install route, Download the skill, links to downloads/reason-commons.zip, which is not beside the page, so on an ordinary host it returns not found; inside Claude it saves a copy of the skill embedded in the page and dated 16 October 2026. It revises Reason Commons (6).html, which differs only in how the example attributes its quotes and is not included.",
+      "original_files": [
+        "Reason Commons (7).html"
+      ],
+      "source_path": "sources/disagree-and-get-somewhere.html",
+      "source_sha256": "726696331de788e6a98086e05c4ea99218a131965fa6d43d63afc415894d1efb",
+      "source_bytes": 501252,
+      "entry_path": "disagree-and-get-somewhere/index.html",
+      "entry_sha256": "726696331de788e6a98086e05c4ea99218a131965fa6d43d63afc415894d1efb",
       "envelope_normalization": "None"
     }
   ]

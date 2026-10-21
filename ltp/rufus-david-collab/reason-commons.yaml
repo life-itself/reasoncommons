@@ -362,11 +362,11 @@ trees:
     - ref: g-e-picturable-product
       work: evaluate_landing_page_comprehension
       evaluation_plan: Next run uses landing-rubric-2, in which each criterion is a short list of yes/no checks needing a quote or screenshot and scores count passed checks; text criteria are judged once per page and presentation once per viewport. A scripted capture check clicks the main action on the serving host and blocks a page whose install route fails, which the judge cannot override. A first-screen task gives the judge only the first viewport and asks the four visitor questions against the reference concepts. Seeded-defect copies (install route removed, contradicted claim added, headline buried) check that the evaluator detects known failures. Running new judges needs a separate accepted proposal. The completed landing-rubric-1 plan used two fresh anonymous Codex scoring contexts and two reversed-order pairwise contexts.
-      note: Five named designs and the current live-homepage baseline evaluated under frozen product-trial contract landing-rubric-1. Four fresh Codex contexts produced 24 individual assessments and four opposite-order pairwise assessments from twelve primary desktop/375px captures. Each scorer inspected 48 selected PNGs; each comparer inspected sixteen. All structured results passed input/case/image hash, exact quotation, evidence-reference, criterion and gate checks. Both scorers marked only Untangle the Problem as meeting all criteria at both widths; Check the Because cleared five dimensions but lacked a usable skill-trial route. Exploratory shortlist used dimensions reaching anchor 2 from both judges at both widths. Individual scores agree on 70/72 items; pairwise outcomes agree on 12/12 mapped comparisons. Separate contexts share model biases; order and session vary together. No human calibration, visitor comprehension or conversion is established. The reference brief is not an exhaustive capability inventory and its factual flags require review. Public results and selected evidence are in website/landing-lab/results; native adapter and reproducible capture/import/report workflow in apps/landing-evals. Eighteen evaluator tests and 685 website links/assets pass. Local desktop/375px score filters, evidence anchors and full-resolution viewer pass with no JavaScript errors or document overflow; normal main-to-Flowershow publication is the delivery path. Keep this backlog open pending human calibration and real visitor evidence. Implementation reasoncommons-x59; no nodes, links or standings changed. Correction 2026-10-20. The landing-rubric-1 recommendation to start human testing with Untangle the Problem is withdrawn. Its only install route is a Download the skill button that calls the Claude artifact runtime; on the public preview it reports that the view cannot save files, yet both judges scored next action 3/3 because judges read text and did not exercise links or buttons. Individual and comparison agreement measured repeatability within one model family, five of six criteria repeated identically across viewports because both received the same full text, and scores saturated at the top anchor. No replacement page is chosen until a landing-rubric-2 run. Addition 2026-10-21. A sixth candidate, Find a Way Forward (website/landing-lab/find-a-way-forward), was added to the gallery under landing-lab-find-a-way-forward-2026-10-21 revision 1, byte-for-byte as supplied by its designer. It postdates the landing-rubric-1 run, has not been captured for judging or judged, and should be included in the next landing-rubric-2 run; running judges still needs its own accepted proposal.
+      note: Five named designs and the current live-homepage baseline evaluated under frozen product-trial contract landing-rubric-1. Four fresh Codex contexts produced 24 individual assessments and four opposite-order pairwise assessments from twelve primary desktop/375px captures. Each scorer inspected 48 selected PNGs; each comparer inspected sixteen. All structured results passed input/case/image hash, exact quotation, evidence-reference, criterion and gate checks. Both scorers marked only Untangle the Problem as meeting all criteria at both widths; Check the Because cleared five dimensions but lacked a usable skill-trial route. Exploratory shortlist used dimensions reaching anchor 2 from both judges at both widths. Individual scores agree on 70/72 items; pairwise outcomes agree on 12/12 mapped comparisons. Separate contexts share model biases; order and session vary together. No human calibration, visitor comprehension or conversion is established. The reference brief is not an exhaustive capability inventory and its factual flags require review. Public results and selected evidence are in website/landing-lab/results; native adapter and reproducible capture/import/report workflow in apps/landing-evals. Eighteen evaluator tests and 685 website links/assets pass. Local desktop/375px score filters, evidence anchors and full-resolution viewer pass with no JavaScript errors or document overflow; normal main-to-Flowershow publication is the delivery path. Keep this backlog open pending human calibration and real visitor evidence. Implementation reasoncommons-x59; no nodes, links or standings changed. Correction 2026-10-20. The landing-rubric-1 recommendation to start human testing with Untangle the Problem is withdrawn. Its only install route is a Download the skill button that calls the Claude artifact runtime; on the public preview it reports that the view cannot save files, yet both judges scored next action 3/3 because judges read text and did not exercise links or buttons. Individual and comparison agreement measured repeatability within one model family, five of six criteria repeated identically across viewports because both received the same full text, and scores saturated at the top anchor. No replacement page is chosen until a landing-rubric-2 run. Addition 2026-10-21. A sixth candidate, Find a Way Forward (website/landing-lab/find-a-way-forward), was added to the gallery under landing-lab-find-a-way-forward-2026-10-21 revision 1, byte-for-byte as supplied by its designer. It postdates the landing-rubric-1 run, has not been captured for judging or judged, and should be included in the next landing-rubric-2 run; running judges still needs its own accepted proposal. Addition 2026-10-21. A seventh candidate, Disagree and Get Somewhere (website/landing-lab/disagree-and-get-somewhere), was added under landing-lab-disagree-and-get-somewhere-2026-10-21 revision 3, byte-for-byte as supplied, and has not been judged; the website checker lists its two missing download links as known exceptions. Its only install route, a Download the skill button, links to a zip that is not beside the page, so on an ordinary host it returns not found; inside Claude it saves a copy of the skill embedded in the page and dated 16 October 2026. Expect the scripted main-action probe to report fail.
     - ref: g-e-real-users
       work: validate_landing_evals_with_visitors
       evaluation_plan: Treat the share of visitors who correctly say what Reason Commons is, and what it would help with, after the initial exposure as the primary comprehension measure. Calibrate the automated first-screen task against those answers before relying on it to rank pages.
-      note: Calibrate automated judgments against real visitor comprehension responses and human labels, then observe subsequent use. Evaluation infrastructure alone does not establish adoption. A local visitor study now assigns one page, records an initial exposure, hides it for four answers, restores it for exploration and exports an anonymous response file. The browser fixture verified random assignment, about 20 seconds of exposure, hidden-page questions and a valid download; the marked test response was not retained as visitor evidence. The public hosted flow also passed the 20-second exposure, hidden questions, exploration and copyable JSON export with marked automation answers; no real participant response was retained. Anonymous hosting has no session persistence and records that limitation. Actual recruitment, human labels, validity of the rubric and subsequent use remain untested. From 2026-10-21 the study randomly assigns one of six pages, including Find a Way Forward (landing-lab-find-a-way-forward-2026-10-21 revision 1); no real visitor responses exist yet.
+      note: Calibrate automated judgments against real visitor comprehension responses and human labels, then observe subsequent use. Evaluation infrastructure alone does not establish adoption. A local visitor study now assigns one page, records an initial exposure, hides it for four answers, restores it for exploration and exports an anonymous response file. The browser fixture verified random assignment, about 20 seconds of exposure, hidden-page questions and a valid download; the marked test response was not retained as visitor evidence. The public hosted flow also passed the 20-second exposure, hidden questions, exploration and copyable JSON export with marked automation answers; no real participant response was retained. Anonymous hosting has no session persistence and records that limitation. Actual recruitment, human labels, validity of the rubric and subsequent use remain untested. From 2026-10-21 the study randomly assigns one of seven pages, including Find a Way Forward (landing-lab-find-a-way-forward-2026-10-21 revision 1) and Disagree and Get Somewhere (landing-lab-disagree-and-get-somewhere-2026-10-21 revision 3), whose download button returns not found on the open web; no real visitor responses exist yet.
     - ref: g-e-picturable-product
       work: show_skill_use_in_explainers
       label: Show the skill in use beside all three parts of the explainer series.
@@ -8151,4 +8151,79 @@ change_acceptances:
   - docs/marketing/landing-pages/find-a-way-forward/HANDOFF.md
   - docs/marketing/landing-pages/find-a-way-forward/hero-illustration.svg
   - docs/marketing/landing-pages/find-a-way-forward/reason-commons-social.png
+  - ltp/rufus-david-collab/reason-commons.yaml
+- proposal_ref: landing-lab-disagree-and-get-somewhere-2026-10-21
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-21T10:05:17Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept
+  scope: Add the supplied Reason Commons (7).html as the seventh landing-lab candidate, Disagree and Get Somewhere, byte-for-byte as supplied (original under sources/, entry at disagree-and-get-somewhere/index.html), noting that its Download the skill button links to a zip not beside the page and so returns not found on the open web, and that it revises Reason Commons (6), which is not added. Add it to variants.json and the importer definitions, refresh the registry embedded in the gallery and study, add a captured desktop first-screen preview, update gallery counts to seven designs from eight files, update /demos to seven candidates naming both new pages, rename the unmerged changelog entry to cover both pages, and update the lab README count and the landing-evaluation candidate table. Deliver as a second commit in PR 87, retitled to cover both pages, citing both receipts; do not merge. Revise open Goal backlog evaluate_landing_page_comprehension on g-e-picturable-product and validate_landing_evals_with_visitors on g-e-real-users; add no nodes or links and change no standings. Fixing its download route is out of scope.
+  node_ids: []
+  link_ids: []
+  approved_paths:
+  - website/landing-lab/disagree-and-get-somewhere/index.html
+  - website/landing-lab/sources/disagree-and-get-somewhere.html
+  - website/landing-lab/variants.json
+  - website/landing-lab/index.html
+  - website/landing-lab/study.html
+  - website/demos/index.md
+  - website/changelog/2026-10-21-a-sixth-landing-page-candidate.md
+  - website/changelog/2026-10-21-two-more-landing-page-candidates.md
+  - apps/landing-evals/import.mjs
+  - apps/landing-evals/README.md
+  - docs/marketing/landing-evaluation.md
+  - ltp/rufus-david-collab/reason-commons.yaml
+- proposal_ref: landing-lab-disagree-and-get-somewhere-2026-10-21
+  proposal_revision: 2
+  by: david
+  recorded_at: '2026-10-21T10:09:16Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept
+  scope: Revision 1 scope unchanged, plus a known_missing_links list in scripts/website-content.json naming exactly the two missing download links of Disagree and Get Somewhere (its served entry and its preserved source, each linking downloads/reason-commons.zip) with the reason that the candidate is kept as supplied and its download route is evidence, and a change to scripts/check-website.py that skips only listed document and target pairs and reports an error when a listed link resolves or is no longer present. Every other missing link still fails. Deliver in PR 87 as a second commit, retitled to cover both pages, citing both receipts; do not merge. Revise open Goal backlog evaluate_landing_page_comprehension on g-e-picturable-product and validate_landing_evals_with_visitors on g-e-real-users; add no nodes or links and change no standings.
+  node_ids: []
+  link_ids: []
+  approved_paths:
+  - website/landing-lab/disagree-and-get-somewhere/index.html
+  - website/landing-lab/sources/disagree-and-get-somewhere.html
+  - website/landing-lab/variants.json
+  - website/landing-lab/index.html
+  - website/landing-lab/study.html
+  - website/demos/index.md
+  - website/changelog/2026-10-21-a-sixth-landing-page-candidate.md
+  - website/changelog/2026-10-21-two-more-landing-page-candidates.md
+  - apps/landing-evals/import.mjs
+  - apps/landing-evals/README.md
+  - docs/marketing/landing-evaluation.md
+  - scripts/website-content.json
+  - scripts/check-website.py
+  - ltp/rufus-david-collab/reason-commons.yaml
+- proposal_ref: landing-lab-disagree-and-get-somewhere-2026-10-21
+  proposal_revision: 3
+  by: david
+  recorded_at: '2026-10-21T10:12:10Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept
+  scope: Revision 2 scope with two changes after PR 87 was merged. Deliver as a new PR from a fresh branch claude/landing-lab-disagree-and-get-somewhere rebased onto current main, not merged, with Auto-fix on. Leave the published changelog entry 2026-10-21-a-sixth-landing-page-candidate.md unchanged and add 2026-10-21-a-seventh-landing-page-candidate.md describing Disagree and Get Somewhere, noting its download button does not work outside Claude yet. Everything else unchanged from revision 2, including the byte-for-byte page, registry and importer entries, gallery preview and counts, study registry, /demos, docs, backlog notes and the website checker's known_missing_links exception for exactly its two links. Revise open Goal backlog evaluate_landing_page_comprehension on g-e-picturable-product and validate_landing_evals_with_visitors on g-e-real-users; add no nodes or links and change no standings.
+  node_ids: []
+  link_ids: []
+  approved_paths:
+  - website/landing-lab/disagree-and-get-somewhere/index.html
+  - website/landing-lab/sources/disagree-and-get-somewhere.html
+  - website/landing-lab/variants.json
+  - website/landing-lab/index.html
+  - website/landing-lab/study.html
+  - website/demos/index.md
+  - website/changelog/2026-10-21-a-seventh-landing-page-candidate.md
+  - apps/landing-evals/import.mjs
+  - apps/landing-evals/README.md
+  - docs/marketing/landing-evaluation.md
+  - scripts/website-content.json
+  - scripts/check-website.py
   - ltp/rufus-david-collab/reason-commons.yaml

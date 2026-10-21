@@ -143,6 +143,11 @@ def check(root: Path, migration: bool = False) -> tuple[list[str], list[dict], i
         for target in sorted(targets):
             if not resolve(site, document, target):
                 missing.append({'document':str(document.relative_to(root)), 'target':target})
+    # Candidate pages are kept as supplied, so a link their designer left broken stays as evidence; a listed link that resolves or disappears is stale.
+    known = {(item['document'], item['target']) for item in manifest['known_missing_links']}
+    for document, target in sorted(known - {(item['document'], item['target']) for item in missing}):
+        errors.append(f'{document}: known missing link {target} now resolves or is gone; remove it from known_missing_links')
+    missing = [item for item in missing if (item['document'], item['target']) not in known]
     for item in missing:
         errors.append(f'{item["document"]}: missing local target {item["target"]}')
     return errors, missing, count

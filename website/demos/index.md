@@ -26,7 +26,7 @@ These seven mockups explore different visual paradigms for working with shared r
 
 ## Landing page candidates
 
-[Six candidate landing pages](/landing-lab/index.html) for Reason Commons, side by side, each introducing the project in a different way, with [evaluation results](/landing-lab/results/index.html) for the first five and a short visitor study. The newest, [Find a Way Forward](/landing-lab/find-a-way-forward/index.html), invites you to bring a problem that keeps coming back and follows an illustrated session from understanding it to trying something and returning with what happened.
+[Seven candidate landing pages](/landing-lab/index.html) for Reason Commons, side by side, each introducing the project in a different way, with [evaluation results](/landing-lab/results/index.html) for the first five and a short visitor study. The two newest are [Find a Way Forward](/landing-lab/find-a-way-forward/index.html), which invites you to bring a problem that keeps coming back and follows an illustrated session from understanding it to trying something and returning with what happened, and [Disagree and Get Somewhere](/landing-lab/disagree-and-get-somewhere/index.html), which turns a disagreement between two colleagues into a question both sides can investigate.
 
 ## Claim-tree annotation demo
 
