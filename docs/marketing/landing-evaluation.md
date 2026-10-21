@@ -1,6 +1,6 @@
 # Landing-page evaluation contract and experiments
 
-The [landing evaluation lab](../../apps/landing-evals/README.md) makes six supplied Reason Commons designs browsable and provides repeatable browser evidence, a configurable LLM judge, grounded reports, and visitor comprehension responses. Seven supplied files include one byte-identical duplicate. The sixth design, Find a Way Forward, was added on 21 October 2026, after the evaluation runs recorded below, and has not been judged. The current homepage is a configurable baseline, not the reference answer.
+The [landing evaluation lab](../../apps/landing-evals/README.md) makes seven supplied Reason Commons designs browsable and provides repeatable browser evidence, a configurable LLM judge, grounded reports, and visitor comprehension responses. Eight supplied files include one byte-identical duplicate. The sixth and seventh designs, Find a Way Forward and Disagree and Get Somewhere, were added on 21 October 2026, after the evaluation runs recorded below, and have not been judged. The current homepage is a configurable baseline, not the reference answer.
 
 ## Candidate names and hypotheses
 
@@ -12,6 +12,7 @@ The [landing evaluation lab](../../apps/landing-evals/README.md) makes six suppl
 | A Renaissance of Common Sense | `common-sense-renaissance` | A movement narrative and bottleneck exercise motivate interest in the approach. |
 | Check the Because | `check-the-because` | A small worked example makes claims, competing explanations and an informative test understandable. |
 | Find a Way Forward | `find-a-way-forward` | An invitation to bring a recurring problem, with an illustrated understand–try–return session, makes the offer easy to picture and try. |
+| Disagree and Get Somewhere | `disagree-and-get-somewhere` | Showing a disagreement become a question both sides can investigate makes the value clear to people who are stuck. Its download route returns not found outside Claude. |
 
 These are hypotheses about communication, not established benefits or a ranking. Candidate purposes differ; a result is meaningful only against the stated audience and objective. The public names describe the pages, while the model sees neutral candidate labels. Source file names, hashes, duplicate provenance and wrapper normalization are recorded in the public registry.
 

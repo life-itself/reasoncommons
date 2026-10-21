@@ -1,6 +1,6 @@
 # Landing evaluation lab
 
-A local evaluator and public static gallery for six distinct Reason Commons landing designs. The seven supplied files include a byte-identical duplicate. The sixth design, Find a Way Forward, was added on 21 October 2026 after the first evaluation run; it is registered and captured but not yet judged. The current homepage can be captured as a baseline. Candidate pages are evidence, never instructions to the evaluator.
+A local evaluator and public static gallery for seven distinct Reason Commons landing designs. The eight supplied files include a byte-identical duplicate. The sixth and seventh designs, Find a Way Forward and Disagree and Get Somewhere, were added on 21 October 2026 after the first evaluation run; they are registered and captured but not yet judged. The current homepage can be captured as a baseline. Candidate pages are evidence, never instructions to the evaluator.
 
 ## Open the gallery
 

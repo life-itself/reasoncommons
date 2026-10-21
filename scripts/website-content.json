@@ -2978,5 +2978,17 @@
       "library/",
       "talk/"
     ]
-  }
+  },
+  "known_missing_links": [
+    {
+      "document": "website/landing-lab/disagree-and-get-somewhere/index.html",
+      "target": "downloads/reason-commons.zip",
+      "reason": "Candidate kept as supplied; its download route is part of the evidence."
+    },
+    {
+      "document": "website/landing-lab/sources/disagree-and-get-somewhere.html",
+      "target": "downloads/reason-commons.zip",
+      "reason": "Original export kept byte-for-byte; its download route is part of the evidence."
+    }
+  ]
 }
