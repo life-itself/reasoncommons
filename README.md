@@ -8,7 +8,7 @@ Read the public introduction at [reasoncommons.com](https://reasoncommons.com). 
 
 | Area | Purpose | Start here |
 | --- | --- | --- |
-| Shared reasoning | Goals, claims, proposed changes, acceptance and reasoning backlog across the project | [Collaboration model](ltp/rufus-david-collab/reason-commons.yaml), Bead `reasoncommons-a4l`, [workflow](docs/beads-reasoning.md) |
+| Shared reasoning | Goals, claims, proposed changes, acceptance and reasoning backlog across the project | Collaboration model in the private [reasoncommons/product](https://github.com/reasoncommons/product) repo (`collab/reason-commons.yaml`, bead `rcp-a4l`), [workflow](docs/beads-reasoning.md) |
 | Project working material | Research, experiments, positioning, plans and references | [Docs map](docs/README.md) |
 | Installable skills | Skills with their own helpers, fixtures and tests | [Installation and usage](skills/README.md) |
 | Runnable applications | Application code, configuration, tests and operating instructions | [Applications](apps/README.md) |

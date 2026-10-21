@@ -59,7 +59,7 @@ For the real repository, inspect main's protection and active rules before apply
 After the toy check, open another fresh session from the same checkout and paste:
 
 ```text
-/reason-commons Use the updated skill in this checkout at skills/reason-commons/SKILL.md. Resume the collaboration from ltp/rufus-david-collab/reason-commons.yaml and its existing Beads handoff. Recommend one useful next step, say what it rests on, and leave me free to redirect.
+/reason-commons Use the updated skill in this checkout at skills/reason-commons/SKILL.md. Resume the collaboration from collab/reason-commons.yaml in the private reasoncommons/product checkout and its Beads handoff there. Recommend one useful next step, say what it rests on, and leave me free to redirect.
 ```
 
 This second prompt uses the actual branch's collaboration state. It can save new contributions and review decisions, so treat it as a real reasoning session. A recommendation derived only from the handoff should say so; it must not be presented as an established system constraint. Newly captured claims remain proposed unless you explicitly endorse the identified reasoning.

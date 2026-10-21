@@ -7,9 +7,9 @@ The Rufus–David collaboration resumes from **`reasoncommons-a4l` — START HER
 | State | Owner |
 | --- | --- |
 | Where to resume, work priority, ownership, task status and implementation dependencies | Beads |
-| Claims, links, contributions, explicit endorsement, challenges and unfinished reasoning | [Conversational YAML](../ltp/rufus-david-collab/reason-commons.yaml) |
-| Original app interchange model and conversion evidence | [Original model](../ltp/rufus-david-collab/rufus-david-collab.ltp.yaml), [SCQH](../ltp/rufus-david-collab/scqh.md) and [report](../ltp/rufus-david-collab/rufus-david-collab.report.md) |
-| Friction encountered during use | [Friction log](../ltp/rufus-david-collab/friction-log.md), with build work tracked in separate beads |
+| Claims, links, contributions, explicit endorsement, challenges and unfinished reasoning | Conversational YAML: `collab/reason-commons.yaml` in the private [reasoncommons/product](https://github.com/reasoncommons/product) repo |
+| Original app interchange model and conversion evidence | Original model, SCQH and report under `collab/` in the same private repo |
+| Friction encountered during use | Friction log (`collab/friction-log.md`, private repo), with build work tracked in separate beads |
 
 The conversational YAML is the working reasoning state for these sessions. The original `.ltp.yaml` remains the conversion baseline; the two formats are not automatically synchronized. Read older documents as context, not as instructions to overwrite newer conversational state. A requested app export is a separate conversion step using `ltp-project`. Funder assessments and application drafts retain their existing private locations.
 
@@ -39,11 +39,11 @@ The standard views helper validates reasoning and ignores these coordination fie
 
 ## Finish or hand off
 
-For feedback records, the skill's [configured Git sync](../skills/reason-commons/references/feedback-sync.md) runs on entry and after capture. It publishes feedback and derived reasoning-review work only; Beads exports, approval receipts, implementation changes and other reasoning work retain their existing delivery workflow. A verified feedback push does not mean the Beads handoff or code checkout is shared. Preserve immediate local feedback and report incomplete sharing explicitly.
+Feedback sync is paused since the YAML moved to the private repo on 2026-10-21; do not configure it against this repo. When re-enabled, for feedback records, the skill's [configured Git sync](../skills/reason-commons/references/feedback-sync.md) runs on entry and after capture. It publishes feedback and derived reasoning-review work only; Beads exports, approval receipts, implementation changes and other reasoning work retain their existing delivery workflow. A verified feedback push does not mean the Beads handoff or code checkout is shared. Preserve immediate local feedback and report incomplete sharing explicitly.
 
-1. Save the reasoning YAML atomically and run `python3 skills/reason-commons/scripts/update_views.py ltp/rufus-david-collab/reason-commons.yaml` as the skill requires. Keep generated `.reason-commons/` history and diagrams local.
+1. Save the reasoning YAML atomically and run `python3 skills/reason-commons/scripts/update_views.py collab/reason-commons.yaml` (from the private repo) as the skill requires. Keep generated `.reason-commons/` history and diagrams local.
 2. Update the relevant work bead with what was addressed, what remains and the stable YAML IDs. Complete only work actually finished. A completed task does not make a statement true or accepted; an endorsed statement may still need further testing.
-3. Refresh `reasoncommons-a4l` with the working file, current work bead, next question or step, and any blocker. Update `work_tracking.current` if the selection changed. Keep the handoff open for later sessions and avoid duplicate priority lists.
+3. Refresh `rcp-a4l` with the working file, current work bead, next question or step, and any blocker. Update `work_tracking.current` if the selection changed. Keep the handoff open for later sessions and avoid duplicate priority lists.
 4. Record friction when encountered. Reuse or create separate beads for implementation work arising from the reasoning; handle those in separate sessions. Keep issues labelled `human` for Rufus to close.
 5. Export a fresh local fallback with `bd --sandbox export -o .beads/issues.jsonl`, in the session's own checkout, and commit it with the session's work. Auto-export is off: session worktrees share the main checkout's Beads database, and auto-export rewrote the main checkout's tracked export, which blocked `git pull --ff-only` there. This explicit checkpoint is now the only export. Exporting records does not push or synchronize the Dolt remote; use the team's normal sync workflow when authorized.
 
@@ -59,4 +59,4 @@ The integration session on 2026-09-28 restored the configured remote and recover
 
 ## Repository boundaries
 
-The shared working YAML and its original conversion evidence stay under `ltp/rufus-david-collab/`. They are outside the `website/` publishing root. Product work is under `docs/product/`, marketing/editorial work under `docs/marketing/`, and public-safe business work under `docs/business/`; app and skill operating instructions stay with their owner. Follow [the publishing cutover](product/repository-boundaries.md) for the migration to `website/`.
+The shared working YAML, its original conversion evidence and funding material moved to `collab/` and `funding/` in the private [reasoncommons/product](https://github.com/reasoncommons/product) repo on 2026-10-21. Product work is under `docs/product/`, marketing/editorial work under `docs/marketing/`, and business and funding work in the private repo; app and skill operating instructions stay with their owner. Follow [the publishing cutover](product/repository-boundaries.md) for the migration to `website/`.

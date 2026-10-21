@@ -10,4 +10,4 @@ Use these documents to develop the project. Publication is an explicit step into
 | `ltp_trees/`, `prompts/`, `references/` | Existing method references, source analyses, prompts and content-specific conversion helpers |
 | [Beads and reasoning](beads-reasoning.md) | Collaboration handoff and coordination workflow |
 
-Claims, endorsements and unfinished reasoning belong in the [shared collaboration model](../ltp/rufus-david-collab/reason-commons.yaml). Beads owns task status and ownership; GitHub issues own project-level planning. Keep application and skill operating instructions with the application or skill rather than duplicating them here.
+Claims, endorsements and unfinished reasoning belong in the shared collaboration model, kept in the private [reasoncommons/product](https://github.com/reasoncommons/product) repo at `collab/reason-commons.yaml`. Beads owns task status and ownership; GitHub issues own project-level planning. Keep application and skill operating instructions with the application or skill rather than duplicating them here.
