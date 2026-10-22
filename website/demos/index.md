@@ -7,6 +7,10 @@ description: Rough, unfinished, and illustrative pieces — the vision demo, pro
 
 Unpolished by design. These are here to show the idea in motion and to try things out, not as finished product. For the finished, readable work, see [the series](/explainers).
 
+## Reason Commons working on itself
+
+[See the real reasoning](/demos/reason-commons-in-use/index.html): an overview, six perspectives, and inspectable statement and connection details drawn from Rufus and David's collaboration. This selected snapshot contains 50 accepted statements and 14 accepted connections, with original wording, named endorsers and recorded context. It is a read-only demonstration; the existing homepage stays in place while we explore this direction.
+
 ## Possible ways into Reason Commons
 
 These seven mockups explore different visual paradigms for working with shared reasoning. Each tile gives a quick visual cue; open one to explore the interactive mockup as a full page.
