@@ -1,0 +1,1248 @@
+{
+  "registry_version": 1,
+  "release": {
+    "release_id": "2026-10-22.1",
+    "snapshot_date": "2026-10-22",
+    "title": "Reason Commons: Rufus and David’s collaboration"
+  },
+  "people": {
+    "david": "David Joseph",
+    "rufus": "Rufus Pollock"
+  },
+  "selection": {
+    "goal": {
+      "nodes": [
+        "g-e-ltp-used-in-world",
+        "g-e-resourced",
+        "g-e-real-users",
+        "g-e-picturable-product",
+        "g-e-clear-agreement"
+      ],
+      "links": [
+        "g-rel-resourced-for-goal",
+        "g-rel-users-for-goal",
+        "g-rel-product-for-goal",
+        "g-rel-agreement-for-goal"
+      ]
+    },
+    "current_reality": {
+      "nodes": [
+        "r-e-only-own-time",
+        "r-e-no-funding-applied",
+        "r-e-no-customers",
+        "r-e-product-unclear",
+        "r-e-no-user-picture",
+        "r-e-no-pmf",
+        "r-e-unclear-path",
+        "r-e-no-shared-actioning",
+        "r-e-want-both-routes",
+        "r-e-company-sale-hard",
+        "r-e-repo-mit",
+        "r-e-goal-agreed",
+        "r-e-no-outside-users",
+        "r-e-users-candidates",
+        "r-e-david-low-market-interest",
+        "r-e-david-demo-confidence",
+        "r-e-david-user-testing-held-back",
+        "r-e-david-willing-test-coherent-demo"
+      ],
+      "links": [
+        "r-rel-company-sale-drives-no-customers",
+        "r-rel-outside-users-drives-no-pmf",
+        "r-rel-product-unclear-drives-no-picture",
+        "r-rel-no-picture-drives-no-outside-users",
+        "r-rel-no-pmf-drives-no-customers",
+        "r-rel-no-customers-drives-own-time",
+        "r-rel-no-funding-drives-own-time",
+        "r-rel-unclear-drives-no-actioning",
+        "r-rel-david-low-interest-holds-back-testing",
+        "r-rel-david-demo-confidence-holds-back-testing"
+      ]
+    },
+    "conflict": {
+      "nodes": [
+        "c-e-objective",
+        "c-e-req-learn-by-using",
+        "c-e-pre-use-now",
+        "c-e-req-good-enough",
+        "c-e-pre-build-first"
+      ],
+      "links": []
+    },
+    "future_reality": {
+      "nodes": [
+        "f-e-use-while-building"
+      ],
+      "links": []
+    },
+    "prerequisite": {
+      "nodes": [
+        "p-e-obj-resourced",
+        "p-e-only-own-time",
+        "p-e-no-funding-applied",
+        "p-e-no-customers",
+        "p-e-obj-real-users",
+        "p-e-no-pmf",
+        "p-e-obj-picturable-product",
+        "p-e-product-unclear",
+        "p-e-no-user-picture",
+        "p-e-obj-clear-agreement",
+        "p-e-ownership-undiscussed",
+        "p-e-io-startup-wanted",
+        "p-e-io-mit",
+        "p-e-no-outside-users",
+        "p-e-users-candidates"
+      ],
+      "links": []
+    },
+    "transition": {
+      "nodes": [
+        "t-e-act-funding-decision",
+        "t-e-act-agreement",
+        "t-e-act-friction-log",
+        "t-e-act-own-question",
+        "t-e-act-shortlist",
+        "t-e-act-apply"
+      ],
+      "links": []
+    }
+  },
+  "snapshot": {
+    "projection_version": 1,
+    "release_id": "2026-10-22.1",
+    "snapshot_date": "2026-10-22",
+    "title": "Reason Commons: Rufus and David’s collaboration",
+    "trees": {
+      "goal": {
+        "nodes": [
+          {
+            "id": "g-e-ltp-used-in-world",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "goal",
+            "text": "The Logical Thinking Process, made accessible through AI, is used in the world to help people think and act better together."
+          },
+          {
+            "id": "g-e-resourced",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "critical_success_factor",
+            "text": "The work is resourced beyond Rufus and David's spare time."
+          },
+          {
+            "id": "g-e-real-users",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "critical_success_factor",
+            "text": "Real people use the tool, with Second Renaissance as the first user and testbed."
+          },
+          {
+            "id": "g-e-picturable-product",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "critical_success_factor",
+            "text": "The product is something people can picture themselves using."
+          },
+          {
+            "id": "g-e-clear-agreement",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "critical_success_factor",
+            "text": "Rufus and David have a clear agreement on ownership, licensing and commitment."
+          }
+        ],
+        "links": [
+          {
+            "id": "g-rel-resourced-for-goal",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: agreed goal and critical success factors, 2026-09-25.",
+            "from": [
+              "g-e-resourced"
+            ],
+            "to": "g-e-ltp-used-in-world",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g-rel-users-for-goal",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: agreed goal and critical success factors, 2026-09-25.",
+            "from": [
+              "g-e-real-users"
+            ],
+            "to": "g-e-ltp-used-in-world",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g-rel-product-for-goal",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: agreed goal and critical success factors, 2026-09-25.",
+            "from": [
+              "g-e-picturable-product"
+            ],
+            "to": "g-e-ltp-used-in-world",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g-rel-agreement-for-goal",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: agreed goal and critical success factors, 2026-09-25.",
+            "from": [
+              "g-e-clear-agreement"
+            ],
+            "to": "g-e-ltp-used-in-world",
+            "relation": "necessary_for"
+          }
+        ]
+      },
+      "current_reality": {
+        "nodes": [
+          {
+            "id": "r-e-only-own-time",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.",
+            "kind": "undesirable_effect",
+            "text": "Rufus and David have no resources for the work other than their own time."
+          },
+          {
+            "id": "r-e-no-funding-applied",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.",
+            "kind": "undesirable_effect",
+            "text": "Rufus and David have not applied for funding."
+          },
+          {
+            "id": "r-e-no-customers",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.",
+            "kind": "undesirable_effect",
+            "text": "Rufus and David have no customers."
+          },
+          {
+            "id": "r-e-product-unclear",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.",
+            "kind": "undesirable_effect",
+            "text": "Rufus and David are not clear what the product should look like."
+          },
+          {
+            "id": "r-e-no-user-picture",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.",
+            "kind": "undesirable_effect",
+            "text": "Rufus and David cannot yet show an average user a clear picture of how they would use the product."
+          },
+          {
+            "id": "r-e-no-pmf",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.",
+            "kind": "undesirable_effect",
+            "text": "Rufus and David have seen no sign of product-market fit."
+          },
+          {
+            "id": "r-e-unclear-path",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "cause",
+            "text": "Rufus and David have not been clear on their goal, how they move towards it, or what is next."
+          },
+          {
+            "id": "r-e-no-shared-actioning",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "undesirable_effect",
+            "text": "Rufus and David have no shared, structured way of turning the goal into action, covering who ships what, what counts as progress and what is next."
+          },
+          {
+            "id": "r-e-want-both-routes",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "observation",
+            "text": "Rufus and David both want the work to become a startup as well as seek philanthropic funding, and do not want it to depend on philanthropic funding in the long term; David is, if anything, keener on the startup."
+          },
+          {
+            "id": "r-e-company-sale-hard",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.",
+            "kind": "observation",
+            "text": "Rufus judges that selling the tool to companies is hard, because it needs teams to work, has to be sold at a senior level and is not a small subscription an individual buys."
+          },
+          {
+            "id": "r-e-repo-mit",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "observation",
+            "text": "The Reason Commons repository is released under the MIT licence from 2026-09-26, and Rufus and David are happy for all the software, the app included, to be MIT-licensed."
+          },
+          {
+            "id": "r-e-goal-agreed",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "observation",
+            "text": "Rufus and David agreed the goal of their collaboration on 2026-09-25."
+          },
+          {
+            "id": "r-e-no-outside-users",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "undesirable_effect",
+            "text": "No one other than Rufus and David uses any app they have built."
+          },
+          {
+            "id": "r-e-users-candidates",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "undesirable_effect",
+            "text": "Rufus and David do not know who their users are in general, though for the nonprofit-oriented version they have candidate communities in the AI-risk debate, effective altruism and Second Renaissance."
+          },
+          {
+            "id": "r-e-david-low-market-interest",
+            "status": "accepted",
+            "accepted_by": [
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "Conversation 2026-10-12: David accepted the restored 2026-09-29 fragment for now.",
+            "kind": "cause",
+            "text": "David has limited interest in market testing and selling."
+          },
+          {
+            "id": "r-e-david-demo-confidence",
+            "status": "accepted",
+            "accepted_by": [
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "Conversation 2026-10-12: David accepted the restored 2026-09-29 fragment for now.",
+            "kind": "cause",
+            "text": "David lacks confidence that there is a coherent product to demo."
+          },
+          {
+            "id": "r-e-david-user-testing-held-back",
+            "status": "accepted",
+            "accepted_by": [
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "Conversation 2026-10-12: David accepted the restored 2026-09-29 fragment for now.",
+            "kind": "undesirable_effect",
+            "text": "David is held back from testing with potential users."
+          },
+          {
+            "id": "r-e-david-willing-test-coherent-demo",
+            "status": "accepted",
+            "accepted_by": [
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "Conversation 2026-10-12: David accepted the restored 2026-09-29 fragment for now.",
+            "kind": "observation",
+            "text": "David would want to test with a potential user if he had a demo he felt was coherent."
+          }
+        ],
+        "links": [
+          {
+            "id": "r-rel-company-sale-drives-no-customers",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.",
+            "from": [
+              "r-e-company-sale-hard"
+            ],
+            "to": "r-e-no-customers",
+            "relation": "contributes_to"
+          },
+          {
+            "id": "r-rel-outside-users-drives-no-pmf",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.",
+            "from": [
+              "r-e-no-outside-users"
+            ],
+            "to": "r-e-no-pmf",
+            "relation": "contributes_to"
+          },
+          {
+            "id": "r-rel-product-unclear-drives-no-picture",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.",
+            "from": [
+              "r-e-product-unclear"
+            ],
+            "to": "r-e-no-user-picture",
+            "relation": "contributes_to"
+          },
+          {
+            "id": "r-rel-no-picture-drives-no-outside-users",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.",
+            "from": [
+              "r-e-no-user-picture"
+            ],
+            "to": "r-e-no-outside-users",
+            "relation": "contributes_to"
+          },
+          {
+            "id": "r-rel-no-pmf-drives-no-customers",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.",
+            "from": [
+              "r-e-no-pmf"
+            ],
+            "to": "r-e-no-customers",
+            "relation": "contributes_to"
+          },
+          {
+            "id": "r-rel-no-customers-drives-own-time",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.",
+            "from": [
+              "r-e-no-customers"
+            ],
+            "to": "r-e-only-own-time",
+            "relation": "contributes_to"
+          },
+          {
+            "id": "r-rel-no-funding-drives-own-time",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.",
+            "from": [
+              "r-e-no-funding-applied"
+            ],
+            "to": "r-e-only-own-time",
+            "relation": "contributes_to"
+          },
+          {
+            "id": "r-rel-unclear-drives-no-actioning",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.",
+            "from": [
+              "r-e-unclear-path"
+            ],
+            "to": "r-e-no-shared-actioning",
+            "relation": "contributes_to"
+          },
+          {
+            "id": "r-rel-david-low-interest-holds-back-testing",
+            "status": "accepted",
+            "accepted_by": [
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "Conversation 2026-10-12: David accepted the restored 2026-09-29 fragment for now.",
+            "from": [
+              "r-e-david-low-market-interest"
+            ],
+            "to": "r-e-david-user-testing-held-back",
+            "relation": "contributes_to"
+          },
+          {
+            "id": "r-rel-david-demo-confidence-holds-back-testing",
+            "status": "accepted",
+            "accepted_by": [
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "Conversation 2026-10-12: David accepted the restored 2026-09-29 fragment for now.",
+            "from": [
+              "r-e-david-demo-confidence"
+            ],
+            "to": "r-e-david-user-testing-held-back",
+            "relation": "contributes_to"
+          }
+        ]
+      },
+      "conflict": {
+        "nodes": [
+          {
+            "id": "c-e-objective",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "scqh.md: first conflict confirmed by Rufus, 2026-09-25; positions describe the historical cloud.",
+            "kind": "objective",
+            "text": "Real people use the tool, with Rufus and David as the first users."
+          },
+          {
+            "id": "c-e-req-learn-by-using",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "scqh.md: first conflict confirmed by Rufus, 2026-09-25; positions describe the historical cloud.",
+            "kind": "need",
+            "text": "Rufus and David learn what the tool must do by using it on their own real work."
+          },
+          {
+            "id": "c-e-pre-use-now",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "scqh.md: first conflict confirmed by Rufus, 2026-09-25; positions describe the historical cloud.",
+            "kind": "prerequisite",
+            "text": "Rufus and David use the current app on their real work now, rough as it is."
+          },
+          {
+            "id": "c-e-req-good-enough",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "scqh.md: first conflict confirmed by Rufus, 2026-09-25; positions describe the historical cloud.",
+            "kind": "need",
+            "text": "The tool Rufus and David put in front of people is good enough to be worth using."
+          },
+          {
+            "id": "c-e-pre-build-first",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "scqh.md: first conflict confirmed by Rufus, 2026-09-25; positions describe the historical cloud.",
+            "kind": "prerequisite",
+            "text": "Rufus and David keep building and redesigning the tool before relying on it."
+          }
+        ],
+        "links": []
+      },
+      "future_reality": {
+        "nodes": [
+          {
+            "id": "f-e-use-while-building",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "scqh.md: first conflict resolution; report third pass identifies this as Rufus’s own resolution.",
+            "kind": "injection",
+            "text": "Rufus and David use the tool on their real work now while they keep building and redesigning it."
+          }
+        ],
+        "links": []
+      },
+      "prerequisite": {
+        "nodes": [
+          {
+            "id": "p-e-obj-resourced",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "objective",
+            "text": "The work is resourced beyond Rufus and David's spare time."
+          },
+          {
+            "id": "p-e-only-own-time",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "obstacle",
+            "text": "Rufus and David have no resources for the work other than their own time."
+          },
+          {
+            "id": "p-e-no-funding-applied",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "obstacle",
+            "text": "Rufus and David have not applied for funding."
+          },
+          {
+            "id": "p-e-no-customers",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "obstacle",
+            "text": "Rufus and David have no customers."
+          },
+          {
+            "id": "p-e-obj-real-users",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "objective",
+            "text": "Real people use the tool, with Second Renaissance as the first user and testbed."
+          },
+          {
+            "id": "p-e-no-pmf",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "obstacle",
+            "text": "Rufus and David have seen no sign of product-market fit."
+          },
+          {
+            "id": "p-e-obj-picturable-product",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "objective",
+            "text": "The product is something people can picture themselves using."
+          },
+          {
+            "id": "p-e-product-unclear",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "obstacle",
+            "text": "Rufus and David are not clear what the product should look like."
+          },
+          {
+            "id": "p-e-no-user-picture",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "obstacle",
+            "text": "Rufus and David cannot yet show an average user a clear picture of how they would use the product."
+          },
+          {
+            "id": "p-e-obj-clear-agreement",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "objective",
+            "text": "Rufus and David have a clear agreement on ownership, licensing and commitment."
+          },
+          {
+            "id": "p-e-ownership-undiscussed",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "kind": "obstacle",
+            "text": "Rufus and David have never discussed ownership or profit share."
+          },
+          {
+            "id": "p-e-io-startup-wanted",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Tree cleanup (2026-09-26).",
+            "kind": "intermediate_objective",
+            "text": "Rufus and David both want to turn the work into a startup."
+          },
+          {
+            "id": "p-e-io-mit",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Tree cleanup (2026-09-26).",
+            "kind": "intermediate_objective",
+            "text": "The Reason Commons software is released under the MIT licence."
+          },
+          {
+            "id": "p-e-no-outside-users",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Tree cleanup (2026-09-26).",
+            "kind": "obstacle",
+            "text": "No one other than Rufus and David uses any app they have built."
+          },
+          {
+            "id": "p-e-users-candidates",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock",
+              "David Joseph"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "scqh.md: Tree cleanup (2026-09-26).",
+            "kind": "obstacle",
+            "text": "Rufus and David do not know who their users are in general, though for the nonprofit-oriented version they have candidate communities in the AI-risk debate, effective altruism and Second Renaissance."
+          }
+        ],
+        "links": []
+      },
+      "transition": {
+        "nodes": [
+          {
+            "id": "t-e-act-funding-decision",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "scqh.md: Next actions, decided/assigned by Rufus 2026-09-26. Acceptance of a plan does not mean completion.",
+            "kind": "action",
+            "text": "Rufus and David together run the choice of near-term focus, grant applications or the product and customers, through the tool, from notes to a tree to a decision."
+          },
+          {
+            "id": "t-e-act-agreement",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "scqh.md: Next actions, decided/assigned by Rufus 2026-09-26. Acceptance of a plan does not mean completion.",
+            "kind": "action",
+            "text": "Rufus and David together run their agreement on ownership, licensing and commitment through the tool."
+          },
+          {
+            "id": "t-e-act-friction-log",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "scqh.md: Next actions, decided/assigned by Rufus 2026-09-26. Acceptance of a plan does not mean completion.",
+            "kind": "action",
+            "text": "Rufus starts a friction log, and Rufus and David record in it each place the tool falls short while they use it."
+          },
+          {
+            "id": "t-e-act-own-question",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "scqh.md: Next actions, decided/assigned by Rufus 2026-09-26. Acceptance of a plan does not mean completion.",
+            "kind": "action",
+            "text": "David uses the tool on a real question of his own outside this collaboration, and Rufus may do the same."
+          },
+          {
+            "id": "t-e-act-shortlist",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "scqh.md: Next actions, decided/assigned by Rufus 2026-09-26. Acceptance of a plan does not mean completion.",
+            "kind": "action",
+            "text": "Rufus and David shortlist funders, starting with Coefficient Giving and the Survival and Flourishing Fund and adding others found by research or by asking around."
+          },
+          {
+            "id": "t-e-act-apply",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "scqh.md: Next actions, decided/assigned by Rufus 2026-09-26. Acceptance of a plan does not mean completion.",
+            "kind": "action",
+            "text": "Rufus and David apply to the shortlisted funders through Life Itself, using the one-page pitch."
+          }
+        ],
+        "links": []
+      }
+    }
+  },
+  "snapshot_sha256": "994c61a3deda57223fb20a363897d00c999bdf3244294d2601ee1fe100c39cfd"
+}
