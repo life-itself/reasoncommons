@@ -1,0 +1,1212 @@
+{
+  "registry_version": 1,
+  "publication_kind": "source_reconstruction",
+  "release": {
+    "release_id": "2026-10-22.1",
+    "snapshot_date": "2026-10-22",
+    "title": "Gandhi 2.0"
+  },
+  "people": {
+    "david": "David Joseph"
+  },
+  "roles": {
+    "david": "Requested this reconstruction; has not endorsed its reasoning"
+  },
+  "selection": {
+    "goal": {
+      "nodes": [
+        "g2-g-goal",
+        "g2-g-capability",
+        "g2-g-control",
+        "g2-g-future"
+      ],
+      "links": [
+        "g2-g-rel-capability",
+        "g2-g-rel-control",
+        "g2-g-rel-future"
+      ]
+    },
+    "current_reality": {
+      "nodes": [
+        "g2-r-load",
+        "g2-r-coordination",
+        "g2-r-centralisation"
+      ],
+      "links": [
+        "g2-r-rel-centralisation"
+      ]
+    },
+    "conflict": {
+      "nodes": [
+        "g2-c-objective",
+        "g2-c-capability",
+        "g2-c-continuity",
+        "g2-c-depend",
+        "g2-c-optional"
+      ],
+      "links": [
+        "g2-c-rel-capability",
+        "g2-c-rel-continuity",
+        "g2-c-rel-depend",
+        "g2-c-rel-optional",
+        "g2-c-rel-conflict"
+      ]
+    },
+    "future_reality": {
+      "nodes": [
+        "g2-f-guidance",
+        "g2-f-protections",
+        "g2-f-benefit",
+        "g2-f-harm"
+      ],
+      "links": [
+        "g2-f-rel-benefit",
+        "g2-f-rel-harm"
+      ]
+    },
+    "prerequisite": {
+      "nodes": [
+        "g2-p-trial",
+        "g2-p-case",
+        "g2-p-protocol",
+        "g2-p-gap"
+      ],
+      "links": [
+        "g2-p-rel-case",
+        "g2-p-rel-trial",
+        "g2-p-rel-gap"
+      ]
+    },
+    "transition": {
+      "nodes": [
+        "g2-t-select",
+        "g2-t-case"
+      ],
+      "links": [
+        "g2-t-rel-case"
+      ]
+    }
+  },
+  "feedback": [],
+  "sources": [
+    {
+      "id": "analysis-v2",
+      "title": "Second Renaissance Causal and Prerequisite Trees · version 2 · 22 October 2026",
+      "description": "Supplied 48-page analysis. Page numbers and identifiers on each item refer to this document. It reconstructs an expanded forum discussion (posts 1–36) and five documents attributed to Leif Eriksson: Bindings and the Captive Mind; The Last Shall Be First; The Countercurrent’s Paradox of Success; Where Is the Deepest Leverage Point; and The Carbon Pulse. These primary sources were not supplied separately or independently checked here. A locator is an audit trail into the supplied analysis, not verification of the original claim or the participants’ agreement."
+    },
+    {
+      "id": "analysis-v1",
+      "title": "Second Renaissance thread: thinking-process trees · supplied text · 22 October 2026",
+      "description": "Supplied earlier analysis and presentation notes, based on a reported 32-post forum thread. Its throughput and governance-capacity proposals are hypotheses for a bounded case. The later PDF broadens the programme and distinguishes local improvements from a durable change in institutional selection. The draft introductory forum post was not sent. No original forum URL or manuscript excerpt is published as if independently verified."
+    }
+  ],
+  "history": [
+    {
+      "release_id": "2026-10-22.1",
+      "date": "2026-10-22",
+      "title": "First source reconstruction",
+      "summary": "A compact map prepared from two supplied analyses. Every statement and connection is proposed; no participant endorsement, assigned trial owner or observed outcome is recorded.",
+      "changes": [
+        {
+          "type": "added",
+          "refs": [
+            "g2-g-goal",
+            "g2-g-capability",
+            "g2-g-control",
+            "g2-g-future",
+            "g2-g-rel-capability",
+            "g2-g-rel-control",
+            "g2-g-rel-future",
+            "g2-r-load",
+            "g2-r-coordination",
+            "g2-r-centralisation",
+            "g2-r-rel-centralisation",
+            "g2-c-objective",
+            "g2-c-capability",
+            "g2-c-continuity",
+            "g2-c-depend",
+            "g2-c-optional",
+            "g2-c-rel-capability",
+            "g2-c-rel-continuity",
+            "g2-c-rel-depend",
+            "g2-c-rel-optional",
+            "g2-c-rel-conflict",
+            "g2-f-guidance",
+            "g2-f-protections",
+            "g2-f-benefit",
+            "g2-f-harm",
+            "g2-f-rel-benefit",
+            "g2-f-rel-harm",
+            "g2-p-trial",
+            "g2-p-case",
+            "g2-p-protocol",
+            "g2-p-gap",
+            "g2-p-rel-case",
+            "g2-p-rel-trial",
+            "g2-p-rel-gap",
+            "g2-t-select",
+            "g2-t-case",
+            "g2-t-rel-case"
+          ],
+          "note": "Selected and paraphrased by the AI from the supplied analyses. Review the sources and assumptions before relying on the map."
+        }
+      ]
+    }
+  ],
+  "snapshot": {
+    "projection_version": 3,
+    "release_id": "2026-10-22.1",
+    "snapshot_date": "2026-10-22",
+    "title": "Gandhi 2.0",
+    "people": [
+      {
+        "name": "David Joseph",
+        "role": "Requested this reconstruction; has not endorsed its reasoning"
+      }
+    ],
+    "trees": {
+      "goal": {
+        "nodes": [
+          {
+            "id": "g2-g-goal",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "goal",
+            "text": "Humane institutions can survive and spread while retaining autonomy and care, within ecological limits and without catastrophic destruction.",
+            "label": "Humane institutions survive and spread while retaining autonomy and care within liveable limits.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 2, G0",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-g-capability",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "necessary_condition",
+            "text": "Communities can maintain useful material and organisational capabilities at viable cost.",
+            "label": "Communities maintain useful capabilities at viable cost.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 2, G3",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-g-control",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "necessary_condition",
+            "text": "Members retain substantive control, justified trust and meaningful freedom to disagree or leave.",
+            "label": "Members retain control, justified trust and freedom to disagree or leave.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 2, G2, G4 and G5",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-g-future",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "necessary_condition",
+            "text": "Ecological and catastrophic risks remain compatible with continued human life and collective agency.",
+            "label": "Ecological and catastrophic risks remain compatible with continued human agency.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 2, G1; pp. 42–43, T6 and T8",
+                "basis": "reconstruction"
+              }
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": "g2-g-rel-capability",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-g-capability"
+            ],
+            "to": "g2-g-goal",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 2, goal and necessary conditions",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-g-rel-control",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-g-control"
+            ],
+            "to": "g2-g-goal",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 2, goal and necessary conditions",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-g-rel-future",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-g-future"
+            ],
+            "to": "g2-g-goal",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 2, goal and necessary conditions",
+                "basis": "reconstruction"
+              }
+            ]
+          }
+        ],
+        "backlog": [
+          {
+            "ref": "g2-g-goal",
+            "work": "connect_or_explain",
+            "label": "Check this proposed common ground with the people in the discussion.",
+            "note": "The supplied analyses report apparent agreements. None is recorded here as accepted; compare the original posts before inviting participants to review the wording."
+          },
+          {
+            "ref": "g2-g-goal",
+            "work": "connect_or_explain",
+            "label": "Define realised progress, including survival and retention of the mission.",
+            "note": "The first analysis proposes adoption retained in practice, with viability and faithfulness measured separately. Agree a bounded system, period and observable outcome rather than equating publications, satisfaction or market growth with success."
+          },
+          {
+            "ref": "g2-g-goal",
+            "work": "connect_or_explain",
+            "label": "Review the wider programme before choosing further branches.",
+            "note": "The second analysis also covers reflective development, the Laboratory, Forge/model adaptation, Vocal Presence, federation, material and energy services, and enforceable security. Its spiritual root is a philosophical hypothesis. This compact map does not establish a single global constraint or make the pilot the whole programme."
+          }
+        ]
+      },
+      "current_reality": {
+        "nodes": [
+          {
+            "id": "g2-r-load",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "cause",
+            "text": "As a group grows, damaging disagreements can exceed members’ current conflict-handling capacity.",
+            "label": "Damaging disagreements can exceed a growing group's current conflict-handling capacity.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 10, R18, C18 and C15",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-r-coordination",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "cause",
+            "text": "The group needs workable coordination to remain viable.",
+            "label": "The group needs workable coordination to remain viable.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "pp. 9–10, C15 and R18; p. 14, K1",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-r-centralisation",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "undesirable_effect",
+            "text": "When members cannot resolve damaging disagreements, central intervention may become the practical response.",
+            "label": "Unresolved damaging disagreements may make central intervention the practical response.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 10, R18 and C16",
+                "basis": "reconstruction"
+              }
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": "g2-r-rel-centralisation",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-r-load",
+              "g2-r-coordination"
+            ],
+            "to": "g2-r-centralisation",
+            "relation": "contributes_to",
+            "assumptions": [
+              {
+                "text": "Conflict-handling capacity is insufficient for the selected function, and effective member-controlled alternatives are not already available.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 10, R18",
+                "basis": "reconstruction"
+              }
+            ]
+          }
+        ],
+        "backlog": [
+          {
+            "ref": "g2-r-rel-centralisation",
+            "work": "test_causality",
+            "label": "Test whether conflict capacity limits this particular group's next achievement.",
+            "note": "Compare developmental capacity, coordination design, resources and external pressures. A reported historical mechanism is not a measured constraint at a selected host."
+          }
+        ]
+      },
+      "conflict": {
+        "nodes": [
+          {
+            "id": "g2-c-objective",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "objective",
+            "text": "Keep a community capable, independent and resilient.",
+            "label": "Keep a community capable, independent and resilient.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-capability",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "Avoid being outperformed or subordinated by actors using advanced AI.",
+            "label": "Avoid being outperformed or subordinated by actors using advanced AI.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-continuity",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "Continue essential functions under provider, energy or AI failure.",
+            "label": "Continue essential functions under provider, energy or AI failure.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-depend",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "Make the selected essential function depend on AI.",
+            "label": "Make the selected essential function depend on AI.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-optional",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "Keep that same essential function operable without AI.",
+            "label": "Keep that same essential function operable without AI.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6",
+                "basis": "reconstruction"
+              }
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": "g2-c-rel-capability",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-capability"
+            ],
+            "to": "g2-c-objective",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-rel-continuity",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-continuity"
+            ],
+            "to": "g2-c-objective",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-rel-depend",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-depend"
+            ],
+            "to": "g2-c-capability",
+            "relation": "necessary_for",
+            "assumptions": [
+              {
+                "text": "AI provides a decisive advantage for this function, and a non-AI or optional-AI arrangement cannot meet the requirement.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-rel-optional",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-optional"
+            ],
+            "to": "g2-c-continuity",
+            "relation": "necessary_for",
+            "assumptions": [
+              {
+                "text": "AI access cannot be made sufficiently dependable, locally controlled and replaceable for the selected essential function.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-rel-conflict",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-depend"
+            ],
+            "to": "g2-c-optional",
+            "relation": "conflicts_with",
+            "assumptions": [
+              {
+                "text": "No tested fallback, bounded role or diversified architecture can reconcile these requirements for the same function at the same time.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6",
+                "basis": "reconstruction"
+              }
+            ]
+          }
+        ],
+        "backlog": [
+          {
+            "ref": "g2-c-rel-depend",
+            "work": "examine_assumption",
+            "label": "Does this function actually require AI to remain viable?",
+            "note": "Retain non-AI and optional-AI comparators. The stronger claim is reported in the analyses, not attributed here as a verified commitment by Leif or Robert."
+          },
+          {
+            "ref": "g2-c-rel-conflict",
+            "work": "examine_assumption",
+            "label": "Test an exit and a fallback before treating AI dependence as unavoidable."
+          }
+        ]
+      },
+      "future_reality": {
+        "nodes": [
+          {
+            "id": "g2-f-guidance",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "injection",
+            "text": "Test member-controlled AI conflict guidance with voluntary use, human support, a workable exit and competence checked without AI.",
+            "label": "Test voluntary, member-controlled AI conflict guidance with an exit and independent competence.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "pp. 18–19, I02 and I03; p. 42, T2 and T3",
+                "basis": "reconstruction"
+              },
+              {
+                "source_id": "analysis-v1",
+                "locator": "Injections I1–I3 and negative branches 4–5",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-f-protections",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "injection",
+            "text": "Members establish confidentiality, fair grievance handling and independent comparison before live use.",
+            "label": "Members establish confidentiality, fair grievance handling and independent comparison.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "pp. 35–36, P03, P04 and P08; p. 42, T2",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-f-benefit",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "predicted_effect",
+            "text": "Destructive conflict costs and unnecessary hierarchical intervention fall while fair treatment, independent competence and member influence are retained.",
+            "label": "Conflict costs and needless hierarchy fall while fair treatment, competence and influence remain.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 42, T2 prediction",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-f-harm",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "undesirable_effect",
+            "text": "Conflict guidance may suppress justified grievances even when satisfaction improves.",
+            "label": "Conflict guidance may suppress justified grievances even when satisfaction improves.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 42, T2 defeating results and protected conditions",
+                "basis": "reconstruction"
+              },
+              {
+                "source_id": "analysis-v1",
+                "locator": "Negative branch 4, Domesticated conflict",
+                "basis": "reconstruction"
+              }
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": "g2-f-rel-benefit",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-f-guidance",
+              "g2-f-protections"
+            ],
+            "to": "g2-f-benefit",
+            "relation": "contributes_to",
+            "assumptions": [
+              {
+                "text": "The guidance fits the selected workflow, protections operate in practice, and observed gains exceed those from attention or ordinary human facilitation alone.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 42, T2; combined trial design is an AI reconstruction",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "g2-f-rel-harm",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-f-guidance"
+            ],
+            "to": "g2-f-harm",
+            "relation": "contributes_to",
+            "assumptions": [
+              {
+                "text": "The risk arises where guidance privileges agreement or management expectations over substantive fairness; it is not an inevitable effect of guidance.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 42, T2; risk route reconstructed from the cautions",
+                "basis": "inference"
+              }
+            ]
+          }
+        ],
+        "backlog": [
+          {
+            "ref": "g2-f-guidance",
+            "work": "test_causality",
+            "label": "Compare AI guidance with optional-AI and human approaches.",
+            "note": "Check useful output, total cost, energy, member control, fallback and competence without the tool. Participants have not committed to running this comparison."
+          },
+          {
+            "ref": "g2-f-rel-benefit",
+            "work": "test_causality",
+            "label": "Decide in advance what evidence would change the hypothesis.",
+            "note": "Lower satisfaction scores or fewer complaints alone do not establish benefit. The first analysis asks whether small democratic groups gain more than hierarchies; the second distinguishes local improvements from the still-unclosed institutional-selection claim F17. One successful pilot cannot establish the larger claim."
+          },
+          {
+            "ref": "g2-f-rel-harm",
+            "work": "examine_assumption",
+            "label": "Assess suppressed grievances separately from satisfaction.",
+            "note": "Retain independent human support and a way to report costs, unfairness, dependency and increased concentration of authority."
+          }
+        ]
+      },
+      "prerequisite": {
+        "nodes": [
+          {
+            "id": "g2-p-trial",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "objective",
+            "text": "A bounded comparative trial produces reviewable observations of benefits, harms, costs and decision rights.",
+            "label": "A bounded comparative trial produces reviewable observations of benefits, harms and control.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "pp. 35–36, P03–P09; p. 42, T2",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-p-case",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "intermediate_objective",
+            "text": "A willing host and one function are selected, with the actual workflow and resource requirements documented.",
+            "label": "Select a willing host and one function, with actual workflow and resource needs documented.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 35, P01–P02; p. 45, A1–A2",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-p-protocol",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "intermediate_objective",
+            "text": "Affected people authorise a trial specification covering comparisons, measures, protections, responsibilities, resources and fallback.",
+            "label": "Affected people authorise a comparative trial with measures, protections, resources and fallback.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "pp. 35–36, P03–P08; p. 45, A3–A4",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-p-gap",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "obstacle",
+            "text": "The supplied record does not establish a confirmed operational case and authorised trial specification.",
+            "label": "The supplied record does not establish a confirmed case and authorised trial specification.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 35, P01; p. 48, acceptance, baseline and next achievement",
+                "basis": "reconstruction"
+              }
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": "g2-p-rel-case",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-p-case"
+            ],
+            "to": "g2-p-protocol",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 35, P01 precedes P02–P05",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-p-rel-trial",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-p-protocol"
+            ],
+            "to": "g2-p-trial",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 36, P08; p. 45, A3–A5",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-p-rel-gap",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-p-protocol"
+            ],
+            "to": "g2-p-gap",
+            "relation": "overcomes",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "pp. 35–36, shared foundations, compact reconstruction",
+                "basis": "inference"
+              }
+            ]
+          }
+        ],
+        "backlog": [
+          {
+            "ref": "g2-p-gap",
+            "work": "connect_or_explain",
+            "label": "Verify the actual host's obstacles rather than assuming missing details are missing capacity.",
+            "note": "The PDF distinguishes documented gaps, source-defined risks, reconstructed requirements and conditions to check locally (D/S/R/X). This statement concerns evidence in the supplied record, not proof that no willing host or resources exist."
+          },
+          {
+            "ref": "g2-p-protocol",
+            "work": "connect_or_explain",
+            "label": "Agree measures, responsibilities, resources and a person who can assess the outcomes.",
+            "note": "No owner, budget, baseline, target, date or feedback commitment is assigned here. A trial is not ready until the affected people confirm these conditions. Future benefit and harm feedback should preserve both original expectations."
+          }
+        ]
+      },
+      "transition": {
+        "nodes": [
+          {
+            "id": "g2-t-select",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "action",
+            "text": "Select one willing host and one function, and confirm what is already operating.",
+            "label": "Select one willing host and one function, and confirm what is already operating.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 45, A1",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-t-case",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "The bounded case and its factual starting conditions are documented.",
+            "label": "The bounded case and its factual starting conditions are documented.",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 45, A1–A2",
+                "basis": "reconstruction"
+              }
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": "g2-t-rel-case",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-t-select"
+            ],
+            "to": "g2-t-case",
+            "relation": "produces",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 45, A1–A2",
+                "basis": "reconstruction"
+              }
+            ]
+          }
+        ],
+        "backlog": [
+          {
+            "ref": "g2-t-select",
+            "work": "connect_or_explain",
+            "label": "Ask who wants to take responsibility for selecting the first case.",
+            "note": "This is a proposed action, not an invitation already sent or a commitment by Leif, Robert or any cooperative."
+          }
+        ]
+      }
+    },
+    "feedback": [],
+    "history": [
+      {
+        "release_id": "2026-10-22.1",
+        "date": "2026-10-22",
+        "title": "First source reconstruction",
+        "summary": "A compact map prepared from two supplied analyses. Every statement and connection is proposed; no participant endorsement, assigned trial owner or observed outcome is recorded.",
+        "changes": [
+          {
+            "type": "added",
+            "refs": [
+              "g2-g-goal",
+              "g2-g-capability",
+              "g2-g-control",
+              "g2-g-future",
+              "g2-g-rel-capability",
+              "g2-g-rel-control",
+              "g2-g-rel-future",
+              "g2-r-load",
+              "g2-r-coordination",
+              "g2-r-centralisation",
+              "g2-r-rel-centralisation",
+              "g2-c-objective",
+              "g2-c-capability",
+              "g2-c-continuity",
+              "g2-c-depend",
+              "g2-c-optional",
+              "g2-c-rel-capability",
+              "g2-c-rel-continuity",
+              "g2-c-rel-depend",
+              "g2-c-rel-optional",
+              "g2-c-rel-conflict",
+              "g2-f-guidance",
+              "g2-f-protections",
+              "g2-f-benefit",
+              "g2-f-harm",
+              "g2-f-rel-benefit",
+              "g2-f-rel-harm",
+              "g2-p-trial",
+              "g2-p-case",
+              "g2-p-protocol",
+              "g2-p-gap",
+              "g2-p-rel-case",
+              "g2-p-rel-trial",
+              "g2-p-rel-gap",
+              "g2-t-select",
+              "g2-t-case",
+              "g2-t-rel-case"
+            ],
+            "note": "Selected and paraphrased by the AI from the supplied analyses. Review the sources and assumptions before relying on the map."
+          }
+        ]
+      }
+    ],
+    "publication_kind": "source_reconstruction",
+    "sources": [
+      {
+        "id": "analysis-v2",
+        "title": "Second Renaissance Causal and Prerequisite Trees · version 2 · 22 October 2026",
+        "description": "Supplied 48-page analysis. Page numbers and identifiers on each item refer to this document. It reconstructs an expanded forum discussion (posts 1–36) and five documents attributed to Leif Eriksson: Bindings and the Captive Mind; The Last Shall Be First; The Countercurrent’s Paradox of Success; Where Is the Deepest Leverage Point; and The Carbon Pulse. These primary sources were not supplied separately or independently checked here. A locator is an audit trail into the supplied analysis, not verification of the original claim or the participants’ agreement."
+      },
+      {
+        "id": "analysis-v1",
+        "title": "Second Renaissance thread: thinking-process trees · supplied text · 22 October 2026",
+        "description": "Supplied earlier analysis and presentation notes, based on a reported 32-post forum thread. Its throughput and governance-capacity proposals are hypotheses for a bounded case. The later PDF broadens the programme and distinguishes local improvements from a durable change in institutional selection. The draft introductory forum post was not sent. No original forum URL or manuscript excerpt is published as if independently verified."
+      }
+    ]
+  },
+  "snapshot_sha256": "ed1daba85fa915e270eaa452fb572de42dea16d64c1b6c3b15ed30fa32789762"
+}

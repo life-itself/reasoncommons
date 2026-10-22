@@ -56,6 +56,15 @@ button,input{font:inherit;color:inherit}
 .example-banner .wrap{padding-top:9px;padding-bottom:9px}
 .example-banner a{color:var(--blue);font-weight:700;text-decoration:none;margin-left:6px;white-space:nowrap}
 .example-banner a:hover{text-decoration:underline}
+.reconstruction-banner{background:var(--paper);border-bottom:1px dashed var(--ink);font-size:15px}
+.reconstruction-banner .wrap{padding-top:10px;padding-bottom:10px}
+.reconstruction-banner a{font-weight:700}
+.tag-reconstruction{border:1px dashed currentColor;background:transparent}
+.is-reconstruction .views,.is-reconstruction .view,.is-reconstruction .dg-set,.is-reconstruction .dg{min-width:0}
+@media(max-width:640px){
+  .is-reconstruction .tabs{flex-wrap:wrap;gap:0 18px;margin-right:0;padding-right:0;overflow:visible;-webkit-mask-image:none;mask-image:none}
+  .is-reconstruction .views:not([data-show]) .view-diagram{display:none}
+}
 .site-foot{border-top:1px solid var(--line);margin-top:88px;padding:36px 0 44px;color:var(--muted);font-size:15px}
 .site-foot .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:20px 40px}
 .site-foot p{margin-top:8px}
@@ -125,7 +134,7 @@ a.card:hover{color:inherit;border-color:var(--green-line);border-left-color:var(
 .band-head{max-width:760px;margin-bottom:26px}
 .band-head h2{font-size:36px;margin-bottom:10px}
 .band-head p{color:var(--ink-2)}
-.cc-grid{display:grid;grid-template-columns:1.12fr 1.12fr .82fr;gap:20px;align-items:stretch}
+.cc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:stretch}
 .cc{display:flex;flex-direction:column;gap:16px;background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--green);border-radius:var(--r-lg);padding:22px 22px 24px;min-width:0}
 .cc-example{border-top-color:var(--blue);background-image:linear-gradient(var(--surface),var(--surface)),repeating-linear-gradient(-45deg,transparent 0 8px,rgba(58,81,134,.05) 8px 16px)}
 .cc-yours{border:1px dashed var(--line-2);border-top:5px dashed var(--line-2);background:transparent}

@@ -1,0 +1,29 @@
+# Gandhi 2.0: sources and review
+
+Implemented under `gandhi-2-0-2026-10-22` revision 1, accepted by David Joseph with the exact typed reply `accept`. The acceptance receipt is retained in the private product repository. Approval to create this demonstration does not endorse any reasoning. Implementation bead: `reasoncommons-4v4`.
+
+## Reading boundary
+
+The commons is a compact proposed AI reconstruction from two user-supplied analyses, not a transcript or participant-authored record. It contains exactly the approved 22 proposed statements and 15 proposed connections across six trees. Every statement and connection has a locator into a supplied analysis; inferred relationships are labelled. The original forum posts, five underlying documents and historical claims were not independently verified. The suggested introductory forum post in the supplied text was not sent.
+
+The supplied PDF is *Second Renaissance Causal and Prerequisite Trees*, version 2, 22 October 2026, 48 pages. Its SHA-256 is `0f9e845ba9eca0c3b903e92084d9633f756c216696c38458f6e1f9bd0de3a0df`. The other input is the earlier supplied text *Second Renaissance thread: thinking-process trees*, dated 22 October 2026, with presentation notes. The sources' described inputs differ: the earlier analysis reports 32 forum posts, while the PDF reports 36. Locators preserve that distinction. Neither input file nor the manuscript is republished.
+
+The public working file is [the Gandhi 2.0 YAML](../../ltp/gandhi-2-0/reason-commons.yaml). Its public registry is [the explicit publication selection](../../apps/reasoning-demo/commons/gandhi-2-0/publication.json). Source descriptions are part of the reviewed public projection. Source links in item views lead to those descriptions, with page, section and proposition references; they do not pretend to be verified direct links to unavailable primary passages.
+
+## What the first view says
+
+The overview opens with proposed common ground, then the capability/autonomy conflict, a possible conflict-guidance comparison, benefit and harm together, and one unassigned first action. It retains the wider programme as source notes and review backlog: reflective development, the Laboratory, Forge/model adaptation, Vocal Presence, federation, material services and security. Conflict guidance is one entry point. No measured global constraint is claimed, and the spiritual-root account remains a philosophical hypothesis.
+
+The initial hypotheses do not establish that AI is essential, that a local gain changes institutional selection, or that satisfaction proves just treatment. Open work includes optional-AI and human comparisons, competence without the tool, suppressed grievances, the relative gain for small democratic groups, and defining progress through viable practices retained without mission drift. No host, owner, budget, baseline, numerical target, trial date, feedback commitment or observed outcome is assigned. Local obstacles must be checked rather than inferred from missing document details.
+
+## Publication checks
+
+Projection 3 is restricted to explicitly labelled, proposed AI reconstruction, with source locators and no endorsers, feedback commitments, outcome reports or invented endorsement history. It reuses structural qualification checks without relaxing projection 1's accepted-only private-source boundary or projection 2's fictional-example restriction. The reviewed snapshots of both existing commons retain their original fingerprints. Their generated pages are unchanged; the shared directory, guide and stylesheet gain the new record and label.
+
+All 46 publication, meaning, topology and layout tests pass. They include missing or invented source locators, false human attribution and endorsement, fabricated feedback, unselected-field canaries, source-markup escaping, exact working-file projection, AND joins, arrow completeness, box overlap, text fit, preservation of conflict meaning in the phone outline and a script-free release-data view. All 49 generated files pass the drift check. The final website check passed 2,326 links/assets with no errors or missing links; declared website exports are current.
+
+Chrome checks passed 33 states: all twelve new HTML pages and the directory at 1,440px and 375px, direct item inspection at both widths, and five script-free phone views. No page errors or document overflow remained. The repository's actual 375px DevTools phone checker also reports no overflow on the overview. Wide diagrams are contained, phone views start with an outline, and reconstruction tabs wrap. Desktop and phone overview, conflict, source-index and item-detail screenshots were inspected locally. Real participant review, independent primary-source verification and newcomer comprehension remain open.
+
+## Delivery
+
+The new record is built at `/demos/reason-commons-in-use/gandhi-2-0/index.html`. The separate [temporary preview](https://g9q7zxkn-anon.flowershow.me/demos/reason-commons-in-use/gandhi-2-0/index.html) was published on 22 October and expires around 29 October unless claimed. Chrome confirmed the hosted desktop and 375px rendering, the corrected conflict wording and the exact stylesheet bytes. The preview contains only the public demo and navigation stubs; the saved preview target and production configuration are unchanged. Its claim token stays outside the repository. Flowershow serves HTML with `Content-Security-Policy: sandbox allow-scripts allow-popups`, which blocks downloads; the source page therefore offers the complete public release as readable, copyable JSON without requiring JavaScript. The generated JSON file is also retained in the repository. Production publication is not part of this implementation.
