@@ -1,6 +1,21 @@
-# Reason Commons in use
+# Reason Commons in use: a site of commons
 
-A read-only demonstration of Reason Commons through the collaboration's own reasoning, at [`/demos/reason-commons-in-use/index.html`](../../website/demos/reason-commons-in-use/index.html). It consolidates the supplied dashboard and six map perspectives into an overview, inspectable reading/diagram views and an account of the public record. The homepage and demos page link to it; adopting it as the homepage remains a separate decision.
+A static, read-only site at [`/demos/reason-commons-in-use/index.html`](../../website/demos/reason-commons-in-use/index.html) showing what a platform of commons could look like. A commons is a goal and the reasoning a group builds around it with the Reason Commons skill. The site lists two: ours, built from the accepted reasoning in Rufus and David's collaboration, and a clearly labelled fictional example, Willow Lane Primary, which shows everything a published commons can hold. Nothing on the site edits a commons; contributions start from a copyable brief taken to the reader's own AI.
+
+## Pages
+
+| Page | What it answers |
+| --- | --- |
+| `index.html` | What is a commons, and which ones can I read? |
+| `how-it-works.html` | How is a commons built, what are the six questions, and what do the standings mean? This is the one page that names the Logical Thinking Process. |
+| `<commons>/index.html` | The overview: the goal, what stands in the way, the conflict and the change chosen, actions, and who contributed and accepted. |
+| `<commons>/map.html` | The six questions, each drawn small in its real shape. |
+| `<commons>/goal.html`, `in-the-way.html`, `conflict.html`, `change.html`, `prerequisites.html`, `actions.html` | One question each: a diagram read in that tree's direction, an outline view, and the statements no connection reaches yet. |
+| `<commons>/items.html` | Every statement and connection. `items.html#<id>` shows one item on its own (CSS `:target`), with a diagram of its neighbours, its contributors and endorsers, assumptions, challenges, open work, history and a brief for the skill. |
+| `<commons>/questions.html`, `learning.html` | Open questions, and expected-versus-reported outcomes. Generated only when the commons publishes them, which today means only the example. |
+| `<commons>/changes.html`, `about.html` | Releases with earlier wording kept, and what the record is and isn't. |
+
+Diagrams are static SVG laid out at build time in `diagrams.py`: layered for the trees, the classic five-box arrangement for a conflict, and role groups for statements without connections. Every arrow comes from a published link; a link with several sources meets at one "and" junction before its single arrow. Text is wrapped with measured Alegreya Sans advance widths, so it cannot overflow its box. The font files are the unchanged Latin subsets from the reference pages, under the SIL Open Font License (`fonts/OFL.txt`).
 
 ## Build and check
 
@@ -16,44 +31,36 @@ python3 scripts/check-website.py
 python3 -m http.server 8878 --bind 127.0.0.1 --directory website
 ```
 
-Open `http://127.0.0.1:8878/demos/reason-commons-in-use/index.html`. The simple server renders the standalone demonstration; it does not render the site's Markdown pages as Flowershow does. The generated HTML includes the complete reading record and an escaped, non-executable public JSON payload. It needs no external fonts, libraries, runtime AI, fetch requests, account or browser storage. With JavaScript off, every selected statement and connection is readable and item fragments still resolve. Browser enhancement adds the view switches, filtering, native modal details, stable query routes and copyable skill briefs. Clipboard failure leaves a manually copyable brief.
+Open `http://127.0.0.1:8878/demos/reason-commons-in-use/index.html`. Every page is complete without JavaScript; `app.js` adds the diagram/outline switch, statement search, path highlighting and clipboard copying, and redirects the earlier `?view=…&tree=…&item=…` links to the new pages. `--check` compares all 36 generated files and fails on unexpected files in the published folder. With PyYAML installed it also re-projects the example from its working file and fails if the pinned snapshot has drifted.
 
-## Source and publication boundary
+## Two commons, two publication boundaries
 
-The authoritative collaboration record is in the private product repository, following the 2026-10-21 source move. It is never copied into this repository. `publication.json` contains a deliberate allowlist of 50 statement IDs and 14 connection IDs, approved display names, release metadata and the reviewed public projection. The user accepted publishing this selected content under `accepted-reasoning-demo-2026-10-22` revision 1. Routine builds and public CI use that reviewed projection, so they do not need access to the private source.
-
-For an authorized refresh, provide the current working YAML explicitly:
+**Ours.** The authoritative collaboration record is in the private product repository and is never copied here. `publication.json` holds the reviewed allowlist of 50 statement IDs and 14 connection IDs, approved display names and the pinned accepted-only projection (projection version 1), unchanged from `accepted-reasoning-demo-2026-10-22` revision 1; the redesign was accepted as `commons-site-redesign-2026-10-22` revision 1. Routine builds and CI use the pinned projection, so they need no private access. For an authorized refresh:
 
 ```sh
 python3 apps/reasoning-demo/build.py --refresh /absolute/path/to/authorized/reason-commons.yaml
 ```
 
-The refresh validates the working state with the existing Reason Commons validator, then exports only selected fields from explicitly selected accepted items. Every selected connection must retain all of its source statements and its target in the same tree; all must be accepted. A missing item, downgraded standing, unselected contributor/endorser, unsupported version or incomplete connection fails the refresh before output files are written. New accepted source items stay excluded until the allowlist is deliberately reviewed. Assumptions, challenges and backlog notes have no separate endorsement standing, so none is included in this first projection. Approval receipts, source paths, free-text contribution notes, feedback records and transport metadata are excluded too.
+The refresh validates the working state with the skill's validator, then exports only the selected fields of the selected items, all of which must still be accepted. Proposed and disputed reasoning, assumptions, challenges, backlog, outcome reports, receipts, paths and notes stay private. Publishing any of them needs its own selection approval.
 
-The projection retains full wording, node kind, relationship semantics, human endorsers, carefully mapped contribution attribution and the original acceptance context. Imported driver fallback means original authorship is unknown; it does not credit the driver as the author. Source status is kept separate from publication. Accepted reasoning is a working position, and the September/October statements are explicitly dated context, not a freshly verified report of the project's condition. Actions have no completion badges. There are no fictional metrics, outcome reports or public-history versions.
+**The fictional example.** `examples/willow-lane/reason-commons.yaml` is an invented working file in the skill's conversational format, checked by the skill's own validator, with feedback snapshots that match its statements exactly. `examples/willow-lane/publication.json` selects its items and adds display names, roles and an authored release history. Its projection (version 2) keeps standings, prior endorsement of disputed items, assumptions, challenges, open work, cross-tree traces and reports, and is accepted by the build only when `is_example` is true. Every example page carries a "Fictional example" banner, its URL and data say `example-`, and its briefs say there is no shared record behind it. To change it, edit the working file and run:
 
-`snapshot_sha256` detects accidental changes to the pinned public payload. It is an integrity check, not a signature or evidence of human review. Builds validate the field allowlist and exact selected IDs independently. Review the whole diff and actual private-source comparison when refreshing. Do not infer that a successful build checked live source freshness: only an explicit refresh does that.
+```sh
+python3 apps/reasoning-demo/build.py --refresh-example
+```
 
-## Routes and graph meaning
+## Meaning the site preserves
 
-Routes use the real static `index.html`, so direct links work without host rewrites:
-
-- `?view=overview#overview`
-- `?view=reasoning&tree=goal&mode=diagram#reasoning`
-- `?view=reasoning&tree=current_reality&q=coherent#reasoning`
-- `?view=reasoning&tree=goal&item=g-e-picturable-product#item-g-e-picturable-product`
-- `?view=record#record`
-
-All six perspectives expose only their selected accepted items. Four have no accepted connections; they show independent statements and explain the gap. Diagrams derive actual topology and explicitly join multiple source conditions at an AND junction. Disconnected statements stay separate. The layout does not infer a constraint, sequence, causal bridge or evidence rating. Diagrams have an independent scroll area and an equivalent reading view. Search preserves an entire connected component as context, highlights matching statements in reading mode, and uses the same selection in both modes. Graph order preserves source order within layout layers.
-
-Copying a contribution brief prepares context for a later authorized skill conversation. It grants no shared-edit access and submits nothing. The brief includes the public release, exact item text and endorsers, and asks the skill to establish identity and check the current authorized record first. An outsider can retain a draft. There is no advertised automatic delivery channel.
+- Standing is spelled out and shown by border style as well as colour: accepted for now (solid), proposed (dashed), disputed (dotted). Earlier acceptance of a disputed item is shown as history, never as current acceptance.
+- Contribution and acceptance are separate. AI-originated ideas are attributed to the AI; imported statements with no known author say so.
+- Trees without accepted connections show statements grouped by role with no arrows. No constraint, root cause, sequence or evidence rating is inferred from layout.
+- Outcome verdicts keep their meaning: observed, not observed, unclear, not assessed and awaiting a report stay distinct, and no trial is called a success.
+- The example's people, places and reports are invented. Nothing in it is evidence about a real project.
 
 ## Release and rollback
 
-Publish only `website/`. Run the build, drift, boundary and behavior checks, then use the existing separate Flowershow preview target when authenticated. Do not change production settings to test this page. A Git review/merge delivers the whole public projection and generated views together. Keep the release identifier stable for a rebuild without content changes. A later public content change needs a new identifier and renewed selection review; the current app does not claim to provide a historical release browser.
-
-Rollback is a reviewed revert of the demo change on the publishing branch, removing the main-site entry links and its public files together. No private state or approval receipt should be reverted merely to roll back website delivery. If selected content needs withdrawal, remove it from the manifest, snapshot, generated HTML/JSON and search/graph output, publish the sanitized release and request host cache invalidation; do not promise that third-party copies can be recalled. The pilot only publishes the explicitly approved selected material.
+Publish only `website/`. Run the build, tests, drift and website checks, then use the existing separate Flowershow preview target when authenticated; do not change production settings to test this page. Rollback is a reviewed revert of the demo change on the publishing branch. If selected content of ours needs withdrawal, remove it from the allowlist and snapshot, rebuild, publish and request host cache invalidation; third-party copies cannot be recalled.
 
 ## Review evidence
 
-See [the review record](../../docs/product/reasoning-demo-review.md) for what was actually checked and the outstanding limits. Implementation bead: `reasoncommons-2uv`. The acceptance receipt and Goal backlog `demonstrate_accepted_reasoning` live in the private collaboration YAML. No reasoning nodes, links or standings changed. Human comprehension, coherence for a newcomer and willingness to test remain open questions.
+See [the review record](../../docs/product/reasoning-demo-review.md) for what was checked and what remains open. Human comprehension, coherence for a newcomer and willingness to test are still untested.

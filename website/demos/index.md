@@ -7,9 +7,9 @@ description: Rough, unfinished, and illustrative pieces — the vision demo, pro
 
 Unpolished by design. These are here to show the idea in motion and to try things out, not as finished product. For the finished, readable work, see [the series](/explainers).
 
-## Reason Commons working on itself
+## Commons you can read
 
-[See the real reasoning](/demos/reason-commons-in-use/index.html): an overview, six perspectives, and inspectable statement and connection details drawn from Rufus and David's collaboration. This selected snapshot contains 50 accepted statements and 14 accepted connections, with original wording, named endorsers and recorded context. It is a read-only demonstration; the existing homepage stays in place while we explore this direction.
+[A read-only site of commons](/demos/reason-commons-in-use/index.html), each a goal and the reasoning a group has built around it with the skill. Ours holds the 50 accepted statements and 14 accepted connections selected from Rufus and David's collaboration, with original wording, named endorsers and recorded context. Beside it, a clearly labelled fictional example, Willow Lane Primary, shows what else a commons can hold: proposed and disputed reasoning, assumptions, open questions, reports from a trial and a history of releases. Each commons has an overview, a page for each of its six questions, a view of every statement and connection, and a record of changes. The existing homepage stays in place while we explore this direction.
 
 ## Possible ways into Reason Commons
 
