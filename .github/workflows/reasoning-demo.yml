@@ -16,9 +16,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Test publication boundaries and reasoning semantics
+      - name: Install the YAML reader the skill validator needs for the fictional example
+        run: python3 -m pip install pyyaml
+      - name: Test publication boundaries, diagram topology and site meaning
         run: python3 -m unittest discover -s apps/reasoning-demo -p 'test_*.py'
-      - name: Check generated public snapshot and page
+      - name: Check pinned snapshots, the example's working file and the generated site
         run: python3 apps/reasoning-demo/build.py --check
       - name: Check browser script syntax
         run: node --check apps/reasoning-demo/app.js

@@ -12,7 +12,7 @@ status: in-progress
 <p class="rc-note">There's no app to sign up for: it runs as a skill in Claude Code, Codex and similar agents.</p>
 </div>
 
-[See Reason Commons working on itself](/demos/reason-commons-in-use/index.html): explore our real goal, the conditions it depends on, and the accepted reasoning behind the work. This demonstration brings the overview and six perspectives together in one place, with each statement and connection open to inspection.
+[Read a commons](/demos/reason-commons-in-use/index.html): a shared goal and the reasoning built around it, laid out so anyone can follow it. Ours, the accepted reasoning behind Reason Commons itself, sits beside a clearly labelled fictional example that shows everything a commons can hold, from disagreements to what happened when a change was tried.
 
 On the questions that matter most, we generate plenty of heat and not much light. There is real discussion — on the forum, in long documents, in calls — but it repeats, it scatters, and it doesn't build; you can't point at a 200,000-word strategy and improve one sentence of it. We never build the cathedral, we just make a bigger mess. Trees are a way out: break a goal into the parts it actually rests on, so the whole and the parts stay connected and you can see how a single step — or a single objection — bears on what you're trying to do. Then the hard part, getting freeform discussion connected back to the tree without anyone doing tedious filing. It has to be close to effortless or it won't happen, and AI is what makes that possible now.
 

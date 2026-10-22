@@ -1,0 +1,1924 @@
+{
+  "projection_version": 2,
+  "is_example": true,
+  "release_id": "2026-10-14.1",
+  "snapshot_date": "2026-10-14",
+  "title": "A safer walk to Willow Lane Primary",
+  "people": [
+    {
+      "name": "Amara",
+      "role": "Parent and PTA volunteer"
+    },
+    {
+      "name": "Grace",
+      "role": "Head teacher"
+    },
+    {
+      "name": "Tomasz",
+      "role": "Runs the bakery on Willow Lane"
+    },
+    {
+      "name": "Dev",
+      "role": "Highways officer at the council"
+    },
+    {
+      "name": "Ruth",
+      "role": "Lives on Mill Lane"
+    }
+  ],
+  "trees": {
+    "goal": {
+      "nodes": [
+        {
+          "id": "wl-g-goal",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace",
+            "Tomasz",
+            "Dev",
+            "Ruth"
+          ],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "kind": "goal",
+          "text": "Every child at Willow Lane Primary can walk, scoot or cycle to school safely."
+        },
+        {
+          "id": "wl-g-calm-gate",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace",
+            "Tomasz",
+            "Dev",
+            "Ruth"
+          ],
+          "contributors": [
+            {
+              "name": "Grace",
+              "role": "human"
+            }
+          ],
+          "kind": "critical_success_factor",
+          "text": "Traffic outside the school gate is slow and light at drop-off and pick-up."
+        },
+        {
+          "id": "wl-g-safe-routes",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace",
+            "Ruth"
+          ],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "kind": "critical_success_factor",
+          "text": "The routes children use feel safe enough that parents let them walk."
+        },
+        {
+          "id": "wl-g-far-families",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace",
+            "Dev"
+          ],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "critical_success_factor",
+          "text": "Families who live too far to walk can still finish the journey on foot."
+        },
+        {
+          "id": "wl-g-shops",
+          "status": "accepted",
+          "accepted_by": [
+            "Tomasz",
+            "Amara",
+            "Grace"
+          ],
+          "contributors": [
+            {
+              "name": "Tomasz",
+              "role": "human"
+            }
+          ],
+          "kind": "critical_success_factor",
+          "text": "The shops on Willow Lane keep the customers they rely on."
+        },
+        {
+          "id": "wl-g-crossing",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "Ruth",
+              "role": "human"
+            }
+          ],
+          "kind": "necessary_condition",
+          "text": "Children can cross Mill Road with help from a crossing patrol at both school times.",
+          "label": "Children can cross Mill Road with a crossing patrol at both school times."
+        }
+      ],
+      "links": [
+        {
+          "id": "wl-g-rel-gate",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace",
+            "Tomasz",
+            "Dev",
+            "Ruth"
+          ],
+          "contributors": [
+            {
+              "name": "Grace",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-g-calm-gate"
+          ],
+          "to": "wl-g-goal",
+          "relation": "necessary_for"
+        },
+        {
+          "id": "wl-g-rel-routes",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace",
+            "Ruth"
+          ],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-g-safe-routes"
+          ],
+          "to": "wl-g-goal",
+          "relation": "necessary_for"
+        },
+        {
+          "id": "wl-g-rel-far",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace",
+            "Dev"
+          ],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "wl-g-far-families"
+          ],
+          "to": "wl-g-goal",
+          "relation": "necessary_for"
+        },
+        {
+          "id": "wl-g-rel-shops",
+          "status": "accepted",
+          "accepted_by": [
+            "Tomasz",
+            "Amara",
+            "Grace"
+          ],
+          "contributors": [
+            {
+              "name": "Tomasz",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-g-shops"
+          ],
+          "to": "wl-g-goal",
+          "relation": "necessary_for"
+        },
+        {
+          "id": "wl-g-rel-crossing",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "Ruth",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-g-crossing"
+          ],
+          "to": "wl-g-safe-routes",
+          "relation": "necessary_for"
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "wl-g-far-families",
+          "work": "connect_or_explain",
+          "label": "Agree with families how far is too far to walk.",
+          "note": "Grace suggests half a mile. Families on the estate beyond the ring road live about a mile and a half away."
+        }
+      ]
+    },
+    "current_reality": {
+      "nodes": [
+        {
+          "id": "wl-r-queue",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace",
+            "Dev",
+            "Tomasz"
+          ],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "kind": "undesirable_effect",
+          "text": "Cars queue and double-park outside the school gate between 8:30 and 8:50.",
+          "label": "Cars queue and double-park outside the gate at drop-off."
+        },
+        {
+          "id": "wl-r-hidden",
+          "status": "accepted",
+          "accepted_by": [
+            "Grace",
+            "Amara",
+            "Ruth"
+          ],
+          "contributors": [
+            {
+              "name": "Grace",
+              "role": "human"
+            }
+          ],
+          "kind": "undesirable_effect",
+          "text": "Children step out between parked cars where drivers cannot see them."
+        },
+        {
+          "id": "wl-r-fewer-walk",
+          "status": "accepted",
+          "accepted_by": [
+            "Grace",
+            "Amara"
+          ],
+          "contributors": [
+            {
+              "name": "Grace",
+              "role": "human"
+            }
+          ],
+          "kind": "undesirable_effect",
+          "text": "Fewer children walk to school than five years ago, according to the school's travel survey.",
+          "label": "Fewer children walk to school than five years ago."
+        },
+        {
+          "id": "wl-r-bakery-jams",
+          "status": "accepted",
+          "accepted_by": [
+            "Tomasz"
+          ],
+          "contributors": [
+            {
+              "name": "Tomasz",
+              "role": "human"
+            }
+          ],
+          "kind": "undesirable_effect",
+          "text": "Morning customers give up on Tomasz's bakery when the street is jammed."
+        },
+        {
+          "id": "wl-r-on-the-way",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace",
+            "Dev"
+          ],
+          "contributors": [
+            {
+              "name": "Dev",
+              "role": "human"
+            }
+          ],
+          "kind": "cause",
+          "text": "Many parents drop their children off by car on the way to work."
+        },
+        {
+          "id": "wl-r-nowhere-to-stop",
+          "status": "accepted",
+          "accepted_by": [
+            "Dev",
+            "Amara",
+            "Tomasz"
+          ],
+          "contributors": [
+            {
+              "name": "Dev",
+              "role": "human"
+            }
+          ],
+          "kind": "cause",
+          "text": "There is nowhere near the gate for drivers to stop briefly."
+        },
+        {
+          "id": "wl-r-feels-unsafe",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Ruth",
+            "Grace"
+          ],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "kind": "cause",
+          "text": "Parents feel the walk is unsafe, so more of them drive."
+        },
+        {
+          "id": "wl-r-through-traffic",
+          "status": "disputed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "Tomasz",
+              "role": "human"
+            }
+          ],
+          "kind": "cause",
+          "text": "Most cars on Willow Lane at 8:30 are driving through to the industrial estate, not dropping children off.",
+          "label": "Most cars at 8:30 are driving through, not dropping children off.",
+          "challenges": [
+            {
+              "text": "The council's June count found that two in three cars stopping near the gate at 8:30 were dropping children off.",
+              "by": "Dev"
+            }
+          ]
+        },
+        {
+          "id": "wl-r-narrow-pavement",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "Ruth",
+              "role": "human"
+            }
+          ],
+          "kind": "cause",
+          "text": "The pavement outside the bakery is too narrow for two buggies to pass."
+        }
+      ],
+      "links": [
+        {
+          "id": "wl-r-rel-queue",
+          "status": "accepted",
+          "accepted_by": [
+            "Dev",
+            "Amara"
+          ],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "wl-r-on-the-way",
+            "wl-r-nowhere-to-stop"
+          ],
+          "to": "wl-r-queue",
+          "relation": "contributes_to",
+          "assumptions": [
+            {
+              "text": "Most of these drivers would stop somewhere else if there were somewhere to stop.",
+              "by": "Dev"
+            }
+          ]
+        },
+        {
+          "id": "wl-r-rel-hidden",
+          "status": "accepted",
+          "accepted_by": [
+            "Grace",
+            "Amara"
+          ],
+          "contributors": [
+            {
+              "name": "Grace",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-r-queue"
+          ],
+          "to": "wl-r-hidden",
+          "relation": "contributes_to"
+        },
+        {
+          "id": "wl-r-rel-bakery",
+          "status": "accepted",
+          "accepted_by": [
+            "Tomasz",
+            "Amara"
+          ],
+          "contributors": [
+            {
+              "name": "Tomasz",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-r-queue"
+          ],
+          "to": "wl-r-bakery-jams",
+          "relation": "contributes_to"
+        },
+        {
+          "id": "wl-r-rel-unsafe",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Ruth"
+          ],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-r-hidden"
+          ],
+          "to": "wl-r-feels-unsafe",
+          "relation": "contributes_to"
+        },
+        {
+          "id": "wl-r-rel-fewer",
+          "status": "accepted",
+          "accepted_by": [
+            "Grace",
+            "Amara"
+          ],
+          "contributors": [
+            {
+              "name": "Grace",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-r-feels-unsafe"
+          ],
+          "to": "wl-r-fewer-walk",
+          "relation": "contributes_to",
+          "assumptions": [
+            {
+              "text": "The travel survey reflects how families really travel, not only the families who answered it.",
+              "by": "Grace"
+            }
+          ]
+        },
+        {
+          "id": "wl-r-rel-through",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "Tomasz",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-r-through-traffic"
+          ],
+          "to": "wl-r-queue",
+          "relation": "contributes_to"
+        },
+        {
+          "id": "wl-r-rel-pavement",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "Ruth",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-r-narrow-pavement"
+          ],
+          "to": "wl-r-feels-unsafe",
+          "relation": "contributes_to"
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "wl-r-through-traffic",
+          "work": "resolve_challenge",
+          "label": "Repeat the traffic count to settle how many cars are passing through.",
+          "note": "Tomasz and Dev disagree. Dev's June count found two in three cars stopping near the gate were drop-offs."
+        },
+        {
+          "ref": "wl-r-feels-unsafe",
+          "work": "connect_or_explain",
+          "label": "Check whether more driving makes the walk feel even less safe."
+        }
+      ]
+    },
+    "conflict": {
+      "nodes": [
+        {
+          "id": "wl-c-objective",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace",
+            "Tomasz",
+            "Dev",
+            "Ruth"
+          ],
+          "contributors": [
+            {
+              "name": "Grace",
+              "role": "human"
+            }
+          ],
+          "kind": "objective",
+          "text": "Willow Lane works for the children walking to school and for the shops."
+        },
+        {
+          "id": "wl-c-need-safe",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace",
+            "Ruth",
+            "Tomasz"
+          ],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "kind": "need",
+          "text": "Children are safe at the gate at drop-off and pick-up."
+        },
+        {
+          "id": "wl-c-close",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace"
+          ],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "kind": "prerequisite",
+          "text": "Close Willow Lane to cars at school times."
+        },
+        {
+          "id": "wl-c-need-trade",
+          "status": "accepted",
+          "accepted_by": [
+            "Tomasz",
+            "Amara",
+            "Grace"
+          ],
+          "contributors": [
+            {
+              "name": "Tomasz",
+              "role": "human"
+            }
+          ],
+          "kind": "need",
+          "text": "The bakery and the other shops keep their morning trade."
+        },
+        {
+          "id": "wl-c-keep-open",
+          "status": "accepted",
+          "accepted_by": [
+            "Tomasz"
+          ],
+          "contributors": [
+            {
+              "name": "Tomasz",
+              "role": "human"
+            }
+          ],
+          "kind": "prerequisite",
+          "text": "Keep Willow Lane open to cars all day."
+        }
+      ],
+      "links": [
+        {
+          "id": "wl-c-rel-safe",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace",
+            "Tomasz"
+          ],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "wl-c-need-safe"
+          ],
+          "to": "wl-c-objective",
+          "relation": "necessary_for"
+        },
+        {
+          "id": "wl-c-rel-trade",
+          "status": "accepted",
+          "accepted_by": [
+            "Tomasz",
+            "Amara",
+            "Grace"
+          ],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "wl-c-need-trade"
+          ],
+          "to": "wl-c-objective",
+          "relation": "necessary_for"
+        },
+        {
+          "id": "wl-c-rel-close",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace"
+          ],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-c-close"
+          ],
+          "to": "wl-c-need-safe",
+          "relation": "necessary_for",
+          "assumptions": [
+            {
+              "text": "Nothing short of closing the street will stop drivers stopping at the gate.",
+              "by": "Amara"
+            }
+          ]
+        },
+        {
+          "id": "wl-c-rel-open",
+          "status": "disputed",
+          "accepted_by": [
+            "Tomasz"
+          ],
+          "contributors": [
+            {
+              "name": "Tomasz",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-c-keep-open"
+          ],
+          "to": "wl-c-need-trade",
+          "relation": "necessary_for",
+          "assumptions": [
+            {
+              "text": "Most of the bakery's morning customers arrive by car.",
+              "by": "Tomasz"
+            }
+          ],
+          "challenges": [
+            {
+              "text": "I stood outside the bakery for a week before the summer holidays. Most customers before nine came on foot or by bike.",
+              "by": "Amara"
+            }
+          ]
+        },
+        {
+          "id": "wl-c-rel-clash",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Tomasz",
+            "Grace"
+          ],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "wl-c-close"
+          ],
+          "to": "wl-c-keep-open",
+          "relation": "conflicts_with",
+          "assumptions": [
+            {
+              "text": "A closure has to cover the whole street, for everyone, for as long as it applies.",
+              "by": "AI assistant"
+            }
+          ]
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "wl-c-rel-open",
+          "work": "examine_assumption",
+          "label": "Count how the bakery's customers arrive before nine.",
+          "note": "Tomasz assumes most come by car. Amara's week outside the shop suggests most walk."
+        }
+      ]
+    },
+    "future_reality": {
+      "nodes": [
+        {
+          "id": "wl-f-closure",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace",
+            "Dev",
+            "Tomasz",
+            "Ruth"
+          ],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            },
+            {
+              "name": "Tomasz",
+              "role": "human"
+            }
+          ],
+          "kind": "injection",
+          "text": "Willow Lane closes to through traffic from 8:20 to 9:00 and from 2:50 to 3:30 on school days, with deliveries, residents and blue badge holders exempt.",
+          "label": "Willow Lane closes to through traffic at school times, with deliveries exempt.",
+          "addresses": [
+            "wl-r-queue",
+            "wl-r-hidden"
+          ],
+          "derived_from": [
+            "wl-c-close",
+            "wl-c-keep-open"
+          ]
+        },
+        {
+          "id": "wl-f-park-stride",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace",
+            "Dev"
+          ],
+          "contributors": [
+            {
+              "name": "Dev",
+              "role": "human"
+            }
+          ],
+          "kind": "injection",
+          "text": "Families who drive can park at the leisure centre and walk the last five minutes.",
+          "addresses": [
+            "wl-r-nowhere-to-stop"
+          ]
+        },
+        {
+          "id": "wl-f-hatch",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "Tomasz",
+              "role": "human"
+            }
+          ],
+          "kind": "injection",
+          "text": "Tomasz opens a walk-up hatch selling coffee to parents on foot.",
+          "addresses": [
+            "wl-r-bakery-jams"
+          ]
+        },
+        {
+          "id": "wl-f-fewer-cars",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace",
+            "Dev"
+          ],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "kind": "predicted_effect",
+          "text": "Far fewer cars stop outside the gate at school times."
+        },
+        {
+          "id": "wl-f-mill-lane",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "Ruth",
+              "role": "human"
+            }
+          ],
+          "kind": "undesirable_effect",
+          "text": "Some traffic moves onto Mill Lane while Willow Lane is closed."
+        },
+        {
+          "id": "wl-f-foot-trade",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "Tomasz",
+              "role": "human"
+            }
+          ],
+          "kind": "predicted_effect",
+          "text": "Parents on foot stop at the bakery on their way home."
+        },
+        {
+          "id": "wl-f-clear-view",
+          "status": "accepted",
+          "accepted_by": [
+            "Grace",
+            "Amara"
+          ],
+          "contributors": [
+            {
+              "name": "Grace",
+              "role": "human"
+            }
+          ],
+          "kind": "predicted_effect",
+          "text": "Children cross where drivers can see them."
+        },
+        {
+          "id": "wl-f-trade-kept",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "Tomasz",
+              "role": "human"
+            }
+          ],
+          "kind": "desirable_effect",
+          "text": "The bakery keeps its morning trade."
+        },
+        {
+          "id": "wl-f-more-walk",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace",
+            "Dev",
+            "Ruth"
+          ],
+          "contributors": [
+            {
+              "name": "Grace",
+              "role": "human"
+            }
+          ],
+          "kind": "desirable_effect",
+          "text": "More children walk, scoot or cycle to school."
+        }
+      ],
+      "links": [
+        {
+          "id": "wl-f-rel-fewer",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace",
+            "Dev"
+          ],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "wl-f-closure",
+            "wl-f-park-stride"
+          ],
+          "to": "wl-f-fewer-cars",
+          "relation": "contributes_to",
+          "assumptions": [
+            {
+              "text": "Parents who drive will use the leisure centre rather than stop on nearby streets.",
+              "by": "Dev"
+            }
+          ]
+        },
+        {
+          "id": "wl-f-rel-mill",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "Ruth",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-f-closure"
+          ],
+          "to": "wl-f-mill-lane",
+          "relation": "contributes_to"
+        },
+        {
+          "id": "wl-f-rel-trade",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "Tomasz",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-f-closure",
+            "wl-f-hatch"
+          ],
+          "to": "wl-f-foot-trade",
+          "relation": "contributes_to"
+        },
+        {
+          "id": "wl-f-rel-view",
+          "status": "accepted",
+          "accepted_by": [
+            "Grace",
+            "Amara"
+          ],
+          "contributors": [
+            {
+              "name": "Grace",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-f-fewer-cars"
+          ],
+          "to": "wl-f-clear-view",
+          "relation": "contributes_to"
+        },
+        {
+          "id": "wl-f-rel-kept",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "Tomasz",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-f-foot-trade"
+          ],
+          "to": "wl-f-trade-kept",
+          "relation": "contributes_to"
+        },
+        {
+          "id": "wl-f-rel-walk",
+          "status": "accepted",
+          "accepted_by": [
+            "Grace",
+            "Amara",
+            "Ruth"
+          ],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-f-clear-view"
+          ],
+          "to": "wl-f-more-walk",
+          "relation": "contributes_to",
+          "assumptions": [
+            {
+              "text": "Parents decide mainly on how safe the gate feels, more than on distance or weather.",
+              "by": "Grace"
+            }
+          ]
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "wl-f-mill-lane",
+          "work": "review_feedback",
+          "label": "Decide whether Mill Lane needs a 20 mph limit during the trial.",
+          "note": "Ruth reported queues at the Mill Lane junction in the first week of the trial."
+        },
+        {
+          "ref": "wl-f-hatch",
+          "work": "test_causality",
+          "label": "Try the hatch for a month and see who stops."
+        }
+      ]
+    },
+    "prerequisite": {
+      "nodes": [
+        {
+          "id": "wl-p-objective",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace",
+            "Dev"
+          ],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "kind": "objective",
+          "text": "Willow Lane closes at school times from the first day of the autumn term.",
+          "implements": [
+            "wl-f-closure"
+          ]
+        },
+        {
+          "id": "wl-p-io-order",
+          "status": "accepted",
+          "accepted_by": [
+            "Dev",
+            "Amara"
+          ],
+          "contributors": [
+            {
+              "name": "Dev",
+              "role": "human"
+            }
+          ],
+          "kind": "intermediate_objective",
+          "text": "An experimental traffic order allows a six-month trial."
+        },
+        {
+          "id": "wl-p-io-rota",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace"
+          ],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "kind": "intermediate_objective",
+          "text": "A rota of trained volunteer marshals covers every school day."
+        },
+        {
+          "id": "wl-p-io-permits",
+          "status": "accepted",
+          "accepted_by": [
+            "Dev",
+            "Ruth"
+          ],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "intermediate_objective",
+          "text": "Residents have permits and know how the exemption works."
+        },
+        {
+          "id": "wl-p-io-spaces",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "kind": "intermediate_objective",
+          "text": "The leisure centre sets aside forty morning spaces for parents."
+        },
+        {
+          "id": "wl-p-obs-order",
+          "status": "accepted",
+          "accepted_by": [
+            "Dev",
+            "Amara"
+          ],
+          "contributors": [
+            {
+              "name": "Dev",
+              "role": "human"
+            }
+          ],
+          "kind": "obstacle",
+          "text": "The street cannot close without a council traffic order."
+        },
+        {
+          "id": "wl-p-obs-barriers",
+          "status": "accepted",
+          "accepted_by": [
+            "Grace",
+            "Amara"
+          ],
+          "contributors": [
+            {
+              "name": "Grace",
+              "role": "human"
+            }
+          ],
+          "kind": "obstacle",
+          "text": "Someone has to put the barriers out and take them in twice a day."
+        },
+        {
+          "id": "wl-p-obs-residents",
+          "status": "accepted",
+          "accepted_by": [
+            "Dev",
+            "Ruth"
+          ],
+          "contributors": [
+            {
+              "name": "Dev",
+              "role": "human"
+            }
+          ],
+          "kind": "obstacle",
+          "text": "People who live on Willow Lane worry they will be shut in at school times."
+        },
+        {
+          "id": "wl-p-obs-parking",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "kind": "obstacle",
+          "text": "The leisure centre has not agreed to let parents park in the mornings."
+        }
+      ],
+      "links": [
+        {
+          "id": "wl-p-rel-order",
+          "status": "accepted",
+          "accepted_by": [
+            "Dev",
+            "Amara"
+          ],
+          "contributors": [
+            {
+              "name": "Dev",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-p-io-order"
+          ],
+          "to": "wl-p-objective",
+          "relation": "necessary_for"
+        },
+        {
+          "id": "wl-p-rel-rota",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace"
+          ],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-p-io-rota"
+          ],
+          "to": "wl-p-objective",
+          "relation": "necessary_for"
+        },
+        {
+          "id": "wl-p-rel-permits",
+          "status": "accepted",
+          "accepted_by": [
+            "Dev",
+            "Ruth"
+          ],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "wl-p-io-permits"
+          ],
+          "to": "wl-p-objective",
+          "relation": "necessary_for"
+        },
+        {
+          "id": "wl-p-rel-spaces",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-p-io-spaces"
+          ],
+          "to": "wl-p-objective",
+          "relation": "necessary_for"
+        },
+        {
+          "id": "wl-p-rel-over-order",
+          "status": "accepted",
+          "accepted_by": [
+            "Dev",
+            "Amara"
+          ],
+          "contributors": [
+            {
+              "name": "Dev",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-p-io-order"
+          ],
+          "to": "wl-p-obs-order",
+          "relation": "overcomes"
+        },
+        {
+          "id": "wl-p-rel-over-barriers",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace"
+          ],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-p-io-rota"
+          ],
+          "to": "wl-p-obs-barriers",
+          "relation": "overcomes"
+        },
+        {
+          "id": "wl-p-rel-over-residents",
+          "status": "accepted",
+          "accepted_by": [
+            "Dev",
+            "Ruth"
+          ],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "wl-p-io-permits"
+          ],
+          "to": "wl-p-obs-residents",
+          "relation": "overcomes"
+        },
+        {
+          "id": "wl-p-rel-over-parking",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-p-io-spaces"
+          ],
+          "to": "wl-p-obs-parking",
+          "relation": "overcomes"
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "wl-p-io-spaces",
+          "work": "connect_or_explain",
+          "label": "No one has asked the leisure centre yet."
+        }
+      ]
+    },
+    "transition": {
+      "nodes": [
+        {
+          "id": "wl-t-draft-order",
+          "status": "accepted",
+          "accepted_by": [
+            "Dev"
+          ],
+          "contributors": [
+            {
+              "name": "Dev",
+              "role": "human"
+            }
+          ],
+          "kind": "action",
+          "text": "Dev drafts the experimental traffic order, with permits for residents, and opens the consultation.",
+          "implements": [
+            "wl-p-io-order",
+            "wl-p-io-permits"
+          ]
+        },
+        {
+          "id": "wl-t-letter",
+          "status": "accepted",
+          "accepted_by": [
+            "Grace"
+          ],
+          "contributors": [
+            {
+              "name": "Grace",
+              "role": "human"
+            }
+          ],
+          "kind": "action",
+          "text": "Grace writes to every family explaining the closure and the park-and-stride spot."
+        },
+        {
+          "id": "wl-t-recruit",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara"
+          ],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "kind": "action",
+          "text": "Amara recruits marshals at the PTA meeting and sets up the rota.",
+          "implements": [
+            "wl-p-io-rota"
+          ]
+        },
+        {
+          "id": "wl-t-count",
+          "status": "accepted",
+          "accepted_by": [
+            "Dev",
+            "Ruth"
+          ],
+          "contributors": [
+            {
+              "name": "Ruth",
+              "role": "human"
+            }
+          ],
+          "kind": "action",
+          "text": "Dev counts traffic on Mill Lane for a week before the trial and a week into it."
+        },
+        {
+          "id": "wl-t-ee-order",
+          "status": "accepted",
+          "accepted_by": [
+            "Dev"
+          ],
+          "contributors": [
+            {
+              "name": "Dev",
+              "role": "human"
+            }
+          ],
+          "kind": "expected_effect",
+          "text": "The traffic order and residents' permits are in place before the first day."
+        },
+        {
+          "id": "wl-t-ee-families",
+          "status": "accepted",
+          "accepted_by": [
+            "Grace"
+          ],
+          "contributors": [
+            {
+              "name": "Grace",
+              "role": "human"
+            }
+          ],
+          "kind": "expected_effect",
+          "text": "Every family knows how the closure works before it starts."
+        },
+        {
+          "id": "wl-t-ee-rota",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace"
+          ],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "kind": "expected_effect",
+          "text": "Two trained marshals are on duty every school day."
+        },
+        {
+          "id": "wl-t-ee-mill",
+          "status": "accepted",
+          "accepted_by": [
+            "Ruth",
+            "Dev"
+          ],
+          "contributors": [
+            {
+              "name": "Ruth",
+              "role": "human"
+            }
+          ],
+          "kind": "expected_effect",
+          "text": "We can see whether traffic moved onto Mill Lane."
+        }
+      ],
+      "links": [
+        {
+          "id": "wl-t-rel-order",
+          "status": "accepted",
+          "accepted_by": [
+            "Dev"
+          ],
+          "contributors": [
+            {
+              "name": "Dev",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-t-draft-order"
+          ],
+          "to": "wl-t-ee-order",
+          "relation": "produces"
+        },
+        {
+          "id": "wl-t-rel-letter",
+          "status": "accepted",
+          "accepted_by": [
+            "Grace"
+          ],
+          "contributors": [
+            {
+              "name": "Grace",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-t-letter"
+          ],
+          "to": "wl-t-ee-families",
+          "relation": "produces"
+        },
+        {
+          "id": "wl-t-rel-rota",
+          "status": "accepted",
+          "accepted_by": [
+            "Amara",
+            "Grace"
+          ],
+          "contributors": [
+            {
+              "name": "Amara",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-t-recruit"
+          ],
+          "to": "wl-t-ee-rota",
+          "relation": "produces"
+        },
+        {
+          "id": "wl-t-rel-count",
+          "status": "accepted",
+          "accepted_by": [
+            "Ruth",
+            "Dev"
+          ],
+          "contributors": [
+            {
+              "name": "Ruth",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-t-count"
+          ],
+          "to": "wl-t-ee-mill",
+          "relation": "produces"
+        },
+        {
+          "id": "wl-t-rel-then",
+          "status": "accepted",
+          "accepted_by": [
+            "Dev",
+            "Grace"
+          ],
+          "contributors": [
+            {
+              "name": "Grace",
+              "role": "human"
+            }
+          ],
+          "from": [
+            "wl-t-draft-order"
+          ],
+          "to": "wl-t-letter",
+          "relation": "precedes"
+        }
+      ],
+      "backlog": []
+    }
+  },
+  "feedback": [
+    {
+      "id": "wl-school-street-trial",
+      "revision": 1,
+      "recorded_at": "2026-09-01T17:30:00Z",
+      "about": {
+        "ref": "wl-f-closure",
+        "tree": "future_reality",
+        "kind": "injection",
+        "standing": "accepted",
+        "text": "Willow Lane closes to through traffic from 8:20 to 9:00 and from 2:50 to 3:30 on school days, with deliveries, residents and blue badge holders exempt."
+      },
+      "benefits": [
+        {
+          "ref": "wl-f-fewer-cars",
+          "tree": "future_reality",
+          "kind": "predicted_effect",
+          "standing": "accepted",
+          "text": "Far fewer cars stop outside the gate at school times."
+        },
+        {
+          "ref": "wl-f-more-walk",
+          "tree": "future_reality",
+          "kind": "desirable_effect",
+          "standing": "accepted",
+          "text": "More children walk, scoot or cycle to school."
+        }
+      ],
+      "reservations": [
+        {
+          "ref": "wl-f-mill-lane",
+          "tree": "future_reality",
+          "kind": "undesirable_effect",
+          "standing": "proposed",
+          "text": "Some traffic moves onto Mill Lane while Willow Lane is closed."
+        }
+      ],
+      "created_by": "Amara",
+      "feedback_from": [
+        "Grace",
+        "Ruth",
+        "Tomasz",
+        "Amara"
+      ],
+      "ready_when": "After the first weeks of the trial, which starts on 7 September.",
+      "reports": [
+        {
+          "id": "wl-report-grace-1",
+          "by": "Grace",
+          "recorded_at": "2026-09-25T15:40:00Z",
+          "readiness": "experienced",
+          "text": "The gate has been calm for three weeks. Our morning count of cars stopping outside fell from about forty to six. More children are arriving on scooters, but it has been dry and warm, so I can't say yet whether that will last.",
+          "evidence_type": "self_report",
+          "outcomes": [
+            {
+              "ref": "wl-f-fewer-cars",
+              "verdict": "observed",
+              "note": "Our gate count fell from about forty cars to six by the third week."
+            },
+            {
+              "ref": "wl-f-more-walk",
+              "verdict": "unclear",
+              "note": "The hands-up survey shows a rise, but the weather has been unusually good."
+            },
+            {
+              "ref": "wl-f-mill-lane",
+              "verdict": "not_assessed",
+              "note": "I haven't been on Mill Lane at drop-off."
+            }
+          ]
+        },
+        {
+          "id": "wl-report-ruth-1",
+          "by": "Ruth",
+          "recorded_at": "2026-10-02T08:55:00Z",
+          "readiness": "experienced",
+          "text": "In the first week there was a queue at the Mill Lane junction most mornings. It has eased since, but a few drivers still cut through fast at about twenty past eight.",
+          "evidence_type": "self_report",
+          "outcomes": [
+            {
+              "ref": "wl-f-mill-lane",
+              "verdict": "observed",
+              "note": "Queues at the junction most mornings in the first week, fewer since, and some fast cut-throughs."
+            },
+            {
+              "ref": "wl-f-fewer-cars",
+              "verdict": "not_assessed",
+              "note": "I don't go past the gate in the mornings."
+            }
+          ]
+        },
+        {
+          "id": "wl-report-tomasz-1",
+          "by": "Tomasz",
+          "recorded_at": "2026-10-06T10:15:00Z",
+          "readiness": "experienced",
+          "text": "The street outside is clear at drop-off, and mornings are busier on foot than I expected. Deliveries were awkward on the first day, until the marshals knew my van.",
+          "evidence_type": "self_report",
+          "outcomes": [
+            {
+              "ref": "wl-f-fewer-cars",
+              "verdict": "observed",
+              "note": "The street outside the bakery is clear at drop-off."
+            },
+            {
+              "ref": "wl-f-more-walk",
+              "verdict": "not_assessed",
+              "note": "I can't tell who is walking to school and who is passing."
+            },
+            {
+              "ref": "wl-f-mill-lane",
+              "verdict": "not_observed",
+              "note": "I come in along Mill Lane at six and it is quiet then, but that is before the school run."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "history": [
+    {
+      "release_id": "2026-06-12.1",
+      "date": "2026-06-12",
+      "title": "First publication",
+      "summary": "The goal, three conditions it depends on, and what happens at the school gate in the mornings.",
+      "changes": [
+        {
+          "type": "added",
+          "refs": [
+            "wl-g-goal",
+            "wl-g-calm-gate",
+            "wl-g-safe-routes",
+            "wl-g-far-families",
+            "wl-g-rel-gate",
+            "wl-g-rel-routes",
+            "wl-g-rel-far"
+          ],
+          "note": "The goal and three conditions for it."
+        },
+        {
+          "type": "added",
+          "refs": [
+            "wl-r-queue",
+            "wl-r-hidden",
+            "wl-r-fewer-walk",
+            "wl-r-on-the-way",
+            "wl-r-nowhere-to-stop",
+            "wl-r-feels-unsafe",
+            "wl-r-rel-queue",
+            "wl-r-rel-hidden",
+            "wl-r-rel-unsafe",
+            "wl-r-rel-fewer"
+          ],
+          "note": "What happens at the gate, and why."
+        }
+      ]
+    },
+    {
+      "release_id": "2026-07-08.1",
+      "date": "2026-07-08",
+      "title": "Tomasz joins, and a conflict",
+      "summary": "Tomasz, who runs the bakery, joined. The shops became one of the goal's conditions, and closing the street was set against keeping it open.",
+      "changes": [
+        {
+          "type": "added",
+          "refs": [
+            "wl-g-shops",
+            "wl-g-rel-shops"
+          ],
+          "note": "Tomasz added the shops to what the goal depends on."
+        },
+        {
+          "type": "added",
+          "refs": [
+            "wl-r-bakery-jams",
+            "wl-r-rel-bakery",
+            "wl-r-through-traffic",
+            "wl-r-rel-through"
+          ],
+          "note": "What the jam does to the bakery, and Tomasz's view that most cars are passing through."
+        },
+        {
+          "type": "disputed",
+          "refs": [
+            "wl-r-through-traffic"
+          ],
+          "note": "Dev challenged it with the council's June traffic count."
+        },
+        {
+          "type": "added",
+          "refs": [
+            "wl-c-objective",
+            "wl-c-need-safe",
+            "wl-c-close",
+            "wl-c-need-trade",
+            "wl-c-keep-open",
+            "wl-c-rel-safe",
+            "wl-c-rel-trade",
+            "wl-c-rel-close",
+            "wl-c-rel-open",
+            "wl-c-rel-clash"
+          ],
+          "note": "Closing Willow Lane at school times, set against keeping it open."
+        },
+        {
+          "type": "added",
+          "refs": [
+            "wl-f-closure"
+          ],
+          "note": "Proposed as a straight closure at school times."
+        }
+      ]
+    },
+    {
+      "release_id": "2026-10-14.1",
+      "date": "2026-10-14",
+      "title": "The trial, and first reports",
+      "summary": "A timed closure was agreed and tried from 7 September. Grace, Ruth and Tomasz have reported what they saw.",
+      "changes": [
+        {
+          "type": "revised",
+          "refs": [
+            "wl-f-closure"
+          ],
+          "before": "Close Willow Lane to cars at school times.",
+          "note": "Narrowed to set times, with deliveries, residents and blue badge holders exempt. With that change, everyone accepted it."
+        },
+        {
+          "type": "added",
+          "refs": [
+            "wl-f-park-stride",
+            "wl-f-fewer-cars",
+            "wl-f-clear-view",
+            "wl-f-more-walk",
+            "wl-f-rel-fewer",
+            "wl-f-rel-view",
+            "wl-f-rel-walk"
+          ],
+          "note": "What the closure, with somewhere else to park, should lead to."
+        },
+        {
+          "type": "added",
+          "refs": [
+            "wl-f-mill-lane",
+            "wl-f-rel-mill"
+          ],
+          "note": "Ruth's concern that traffic moves onto Mill Lane."
+        },
+        {
+          "type": "added",
+          "refs": [
+            "wl-p-objective",
+            "wl-p-io-order",
+            "wl-p-io-rota",
+            "wl-p-io-permits",
+            "wl-p-io-spaces",
+            "wl-p-obs-order",
+            "wl-p-obs-barriers",
+            "wl-p-obs-residents",
+            "wl-p-obs-parking",
+            "wl-p-rel-order",
+            "wl-p-rel-rota",
+            "wl-p-rel-permits",
+            "wl-p-rel-spaces",
+            "wl-p-rel-over-order",
+            "wl-p-rel-over-barriers",
+            "wl-p-rel-over-residents",
+            "wl-p-rel-over-parking",
+            "wl-t-draft-order",
+            "wl-t-letter",
+            "wl-t-recruit",
+            "wl-t-count",
+            "wl-t-ee-order",
+            "wl-t-ee-families",
+            "wl-t-ee-rota",
+            "wl-t-ee-mill",
+            "wl-t-rel-order",
+            "wl-t-rel-letter",
+            "wl-t-rel-rota",
+            "wl-t-rel-count",
+            "wl-t-rel-then"
+          ],
+          "note": "What has to happen first, and who does it."
+        },
+        {
+          "type": "added",
+          "refs": [
+            "wl-f-hatch",
+            "wl-f-foot-trade",
+            "wl-f-trade-kept",
+            "wl-f-rel-trade",
+            "wl-f-rel-kept",
+            "wl-r-narrow-pavement",
+            "wl-r-rel-pavement",
+            "wl-g-crossing",
+            "wl-g-rel-crossing"
+          ],
+          "note": "New proposals from Tomasz and Ruth, not yet accepted."
+        },
+        {
+          "type": "disputed",
+          "refs": [
+            "wl-c-rel-open"
+          ],
+          "note": "Amara challenged the assumption that most morning customers arrive by car."
+        },
+        {
+          "type": "report",
+          "refs": [
+            "wl-report-grace-1",
+            "wl-report-ruth-1",
+            "wl-report-tomasz-1"
+          ],
+          "note": "First reports from the trial."
+        }
+      ]
+    }
+  ]
+}
