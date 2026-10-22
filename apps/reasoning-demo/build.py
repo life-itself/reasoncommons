@@ -41,7 +41,7 @@ LINK_FIELDS_V2 = LINK_FIELDS | {"assumptions", "challenges"}
 STANDINGS = {"proposed", "accepted", "disputed"}
 VERDICTS = {"observed", "not_observed", "unclear", "not_assessed", "unavailable"}
 READINESS = {"experienced", "not_yet", "cannot_assess"}
-CHANGE_TYPES = {"added", "revised", "disputed", "accepted", "removed", "report"}
+CHANGE_TYPES = {"added", "revised", "disputed", "accepted", "removed", "report", "credited"}
 UNKNOWN = {"name": "Original contributor not identified", "role": "unknown"}
 ASSISTANT = {"name": "AI assistant", "role": "assistant"}
 
@@ -287,7 +287,16 @@ def validate_v2(data, registry):
     require(data["history"] and data["history"][-1]["release_id"] == data["release_id"], "The latest history entry must be this release")
 
 
-# ---------------------------------------------------------------- projection 3: an unendorsed source reconstruction
+# ---------------------------------------------------------------- projection 4: an unendorsed, credited source reconstruction
+
+# A forum credit names a post and its actual author; a document credit cites a section the analysis points to;
+# the analysis itself reconstructs or infers. Each kind of source admits only its own bases.
+REF_BASES = {"forum": {"paraphrase", "related"}, "document": {"cited"}, "analysis": {"reconstruction", "inference"}}
+
+
+def source_kind(source):
+    return "forum" if "posts" in source else "document" if "author" in source else "analysis"
+
 
 def project_reconstruction(state, registry):
     """Reuse qualification checks without opening either existing publication boundary."""
@@ -295,39 +304,96 @@ def project_reconstruction(state, registry):
     example_registry = {**registry, "is_example": True}
     result = project_v2(state, example_registry)
     result.pop("is_example")
-    result.update(projection_version=3, publication_kind="source_reconstruction", sources=deepcopy(registry["sources"]))
+    result.update(projection_version=4, publication_kind="source_reconstruction", authors=deepcopy(registry["authors"]),
+                  sources=deepcopy(registry["sources"]), views=deepcopy(registry.get("views", {})))
     for name, tree in result["trees"].items():
+        source = state["trees"][name]
         for key in ("nodes", "links"):
-            indexed = {item["id"]: item for item in state["trees"][name][key]}
+            indexed = {item["id"]: item for item in source[key]}
             for item in tree[key]:
                 item["source_refs"] = deepcopy(indexed[item["id"]].get("source_refs", []))
+        chosen = {i["id"] for i in tree["nodes"] + tree["links"]}
+        for public, task in zip(tree["backlog"], [t for t in source.get("backlog", []) if t["ref"] in chosen]):
+            if task.get("source_refs"):
+                public["source_refs"] = deepcopy(task["source_refs"])
     validate_reconstruction(result, registry)
     return result
 
 
+def validate_source_refs(refs, sources, ident):
+    require(isinstance(refs, list) and refs, f"Missing source locator: {ident}")
+    for ref in refs:
+        source = sources.get(ref.get("source_id")) if isinstance(ref, dict) else None
+        require(source is not None, f"Invalid source locator: {ident}")
+        kind = source_kind(source)
+        if kind == "forum":
+            require(set(ref) == {"source_id", "post", "author", "basis"} and type(ref["post"]) is int and str(ref["post"]) in source["posts"], f"Invalid source locator: {ident}")
+            require(ref["author"] == source["posts"][str(ref["post"])]["author"], f"Credit names someone other than the author of post {ref['post']}: {ident}")
+        else:
+            require(set(ref) == {"source_id", "locator", "basis"} and isinstance(ref["locator"], str) and ref["locator"].strip(), f"Invalid source locator: {ident}")
+        require(ref["basis"] in REF_BASES[kind], f"Invalid source locator: {ident}")
+
+
+def validate_views(data):
+    for name, views in data["views"].items():
+        require(name in data["trees"] and isinstance(views, list) and views, f"Views for an unpublished tree: {name}")
+        tree = data["trees"][name]
+        node_ids, covered, seen = {n["id"] for n in tree["nodes"]}, set(), set()
+        for view in views:
+            require(isinstance(view, dict) and set(view) == {"id", "title", "summary", "nodes"} and re.fullmatch(r"[a-z0-9-]+", view["id"]) and view["id"] not in seen, f"Invalid view in {name}")
+            require(all(isinstance(view[k], str) and view[k].strip() for k in ("title", "summary")), f"Invalid view in {name}")
+            members = set(view["nodes"])
+            require(view["nodes"] and len(members) == len(view["nodes"]) and members <= node_ids, f"View {view['id']} names unpublished statements")
+            for link in tree["links"]:  # Joint conditions and paired positions are never split across views.
+                if link["to"] in members or (link["relation"] in diagrams.LATERAL and members & set(link["from"])):
+                    require(set(link["from"] + [link["to"]]) <= members, f"View {view['id']} splits the connection {link['id']}")
+            seen.add(view["id"])
+            covered |= members
+        require(covered == node_ids, f"Every statement in {name} must appear in a view")
+
+
 def validate_reconstruction(data, registry):
-    require(data.get("projection_version") == 3 and data.get("publication_kind") == registry.get("publication_kind") == "source_reconstruction", "Unsupported reconstruction publication")
-    require(set(data) == {"projection_version", "publication_kind", "release_id", "snapshot_date", "title", "people", "trees", "feedback", "history", "sources"}, "Unexpected reconstruction field")
+    require(data.get("projection_version") == 4 and data.get("publication_kind") == registry.get("publication_kind") == "source_reconstruction", "Unsupported reconstruction publication")
+    require(set(data) == {"projection_version", "publication_kind", "release_id", "snapshot_date", "title", "people", "authors", "trees", "feedback", "history", "sources", "views"}, "Unexpected reconstruction field")
+    authors = data["authors"]
+    require(authors == registry["authors"] and isinstance(authors, dict) and authors, "Unreviewed reconstruction authors")
+    for key, person in authors.items():
+        require(re.fullmatch(r"[a-z0-9-]+", key) and isinstance(person, dict) and set(person) == {"name", "role"} and all(isinstance(v, str) and v.strip() for v in person.values()), "Invalid source author")
     require(data["sources"] == registry["sources"] and data["sources"], "Unreviewed reconstruction sources")
-    source_ids = set()
+    sources = {}
     for source in data["sources"]:
-        require(set(source) == {"id", "title", "description"} and all(isinstance(v, str) and v.strip() for v in source.values()), "Invalid source description")
-        require(re.fullmatch(r"[a-z0-9-]+", source["id"]) and source["id"] not in source_ids, "Invalid/duplicate source ID")
-        source_ids.add(source["id"])
+        kind = source_kind(source)
+        extra = {"url", "posts"} if kind == "forum" else {"author", "shared_in_post"} if kind == "document" else set()
+        require(set(source) == {"id", "title", "description"} | extra and all(isinstance(source[k], str) and source[k].strip() for k in ("id", "title", "description")), "Invalid source description")
+        require(re.fullmatch(r"[a-z0-9-]+", source["id"]) and source["id"] not in sources, "Invalid/duplicate source ID")
+        if kind == "forum":
+            require(isinstance(source["url"], str) and source["url"].startswith("https://") and isinstance(source["posts"], dict) and source["posts"], "Invalid forum source")
+            for number, post in source["posts"].items():
+                require(number.isdigit() and isinstance(post, dict) and set(post) == {"author", "date"} and post["author"] in authors and re.fullmatch(r"\d{4}-\d{2}-\d{2}", post["date"]), "Invalid forum post")
+        sources[source["id"]] = source
+    forums = [s for s in sources.values() if source_kind(s) == "forum"]
+    require(len(forums) <= 1, "A reconstruction cites one forum thread")
+    for source in sources.values():
+        if source_kind(source) == "document":
+            shared = str(source["shared_in_post"]) if type(source["shared_in_post"]) is int else None
+            require(source["author"] in authors and forums and shared in forums[0]["posts"] and forums[0]["posts"][shared]["author"] == source["author"],
+                    f"A document must be shared in a post by its author: {source['id']}")
+    require(data["views"] == registry.get("views", {}) and isinstance(data["views"], dict), "Unreviewed views")
+    validate_views(data)
     require(not data["feedback"] and not registry["feedback"], "A reconstruction cannot invent feedback commitments or reports")
     qualified = deepcopy(data)
-    qualified.pop("publication_kind")
-    qualified.pop("sources")
+    for field in ("publication_kind", "authors", "sources", "views"):
+        qualified.pop(field)
     qualified.update(projection_version=2, is_example=True)
     for tree in qualified["trees"].values():
         for item in tree["nodes"] + tree["links"]:
             require(item.get("status") == "proposed" and not item.get("accepted_by"), "A reconstruction must remain proposed without endorsers")
             require(item.get("contributors") == [ASSISTANT], "A reconstruction cannot imply direct participant authorship")
-            refs = item.pop("source_refs", [])
-            require(isinstance(refs, list) and refs, f"Missing source locator: {item['id']}")
-            for ref in refs:
-                require(set(ref) == {"source_id", "locator", "basis"} and ref["source_id"] in source_ids and isinstance(ref["locator"], str) and ref["locator"].strip() and ref["basis"] in {"reconstruction", "inference"}, f"Invalid source locator: {item['id']}")
-    require(all(change["type"] == "added" for release in data["history"] for change in release["changes"]), "Reconstruction history cannot invent prior endorsement or results")
+            validate_source_refs(item.pop("source_refs", []), sources, item["id"])
+        for task in tree["backlog"]:
+            if "source_refs" in task:
+                validate_source_refs(task.pop("source_refs"), sources, f"open work on {task.get('ref')}")
+    require(all(change["type"] in {"added", "credited"} for release in data["history"] for change in release["changes"]), "Reconstruction history cannot invent prior endorsement or results")
     validate_v2(qualified, {**registry, "is_example": True})
 
 
@@ -342,8 +408,8 @@ def load_site():
         if data.get("projection_version") == 1:
             require(entry["kind"] == "real", "Our accepted-only projection is the real commons")
             validate_projection(data, registry)
-        elif data.get("projection_version") == 3:
-            require(entry["kind"] == "reconstruction", "Only a labelled reconstruction uses projection 3")
+        elif data.get("projection_version") == 4:
+            require(entry["kind"] == "reconstruction", "Only a labelled reconstruction uses projection 4")
             validate_reconstruction(data, registry)
         else:
             require(entry["kind"] == "example", "Only the labelled example uses projection 2")
@@ -372,7 +438,8 @@ def normalize(item):
         feedback = []
     else:
         people, history, feedback = data["people"], data["history"], data["feedback"]
-    return {**entry, "is_example": entry["kind"] == "example", "is_reconstruction": entry["kind"] == "reconstruction", "sources": data.get("sources", []), "release_id": data["release_id"], "date": data["snapshot_date"],
+    return {**entry, "is_example": entry["kind"] == "example", "is_reconstruction": entry["kind"] == "reconstruction", "sources": data.get("sources", []),
+            "authors": data.get("authors", {}), "views": data.get("views", {}), "release_id": data["release_id"], "date": data["snapshot_date"],
             "title": data["title"], "people": people, "trees": trees, "feedback": feedback, "history": history,
             "json": json.dumps(data, ensure_ascii=False, indent=2) + "\n"}
 

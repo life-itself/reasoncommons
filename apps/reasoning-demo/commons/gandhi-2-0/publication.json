@@ -2,7 +2,7 @@
   "registry_version": 1,
   "publication_kind": "source_reconstruction",
   "release": {
-    "release_id": "2026-10-22.1",
+    "release_id": "2026-10-22.2",
     "snapshot_date": "2026-10-22",
     "title": "Gandhi 2.0"
   },
@@ -11,6 +11,24 @@
   },
   "roles": {
     "david": "Requested this reconstruction; has not endorsed its reasoning"
+  },
+  "authors": {
+    "leif": {
+      "name": "Leif Eriksson",
+      "role": "Opened the thread and shared the five essays it discusses"
+    },
+    "robert": {
+      "name": "Robert Bunge",
+      "role": "Took part in the thread"
+    },
+    "justin": {
+      "name": "Justin",
+      "role": "Took part in the thread"
+    },
+    "rufus": {
+      "name": "Rufus Pollock",
+      "role": "Took part in the thread"
+    }
   },
   "selection": {
     "goal": {
@@ -38,18 +56,58 @@
     },
     "conflict": {
       "nodes": [
+        "g2-c-k1-objective",
+        "g2-c-k1-viability",
+        "g2-c-k1-control",
+        "g2-c-k1-concentrate",
+        "g2-c-k1-distribute",
         "g2-c-objective",
         "g2-c-capability",
         "g2-c-continuity",
         "g2-c-depend",
-        "g2-c-optional"
+        "g2-c-optional",
+        "g2-c-k3-objective",
+        "g2-c-k3-deterrence",
+        "g2-c-k3-deescalation",
+        "g2-c-k3-expand",
+        "g2-c-k3-restrain",
+        "g2-c-k4-objective",
+        "g2-c-k4-provision",
+        "g2-c-k4-limits",
+        "g2-c-k4-throughput",
+        "g2-c-k4-constrain",
+        "g2-c-k5-objective",
+        "g2-c-k5-continuity",
+        "g2-c-k5-care",
+        "g2-c-k5-engineer",
+        "g2-c-k5-free"
       ],
       "links": [
+        "g2-c-k1-rel-viability",
+        "g2-c-k1-rel-control",
+        "g2-c-k1-rel-concentrate",
+        "g2-c-k1-rel-distribute",
+        "g2-c-k1-rel-conflict",
         "g2-c-rel-capability",
         "g2-c-rel-continuity",
         "g2-c-rel-depend",
         "g2-c-rel-optional",
-        "g2-c-rel-conflict"
+        "g2-c-rel-conflict",
+        "g2-c-k3-rel-deterrence",
+        "g2-c-k3-rel-deescalation",
+        "g2-c-k3-rel-expand",
+        "g2-c-k3-rel-restrain",
+        "g2-c-k3-rel-conflict",
+        "g2-c-k4-rel-provision",
+        "g2-c-k4-rel-limits",
+        "g2-c-k4-rel-throughput",
+        "g2-c-k4-rel-constrain",
+        "g2-c-k4-rel-conflict",
+        "g2-c-k5-rel-continuity",
+        "g2-c-k5-rel-care",
+        "g2-c-k5-rel-engineer",
+        "g2-c-k5-rel-free",
+        "g2-c-k5-rel-conflict"
       ]
     },
     "future_reality": {
@@ -87,17 +145,268 @@
       ]
     }
   },
+  "views": {
+    "conflict": [
+      {
+        "id": "k1",
+        "title": "Institutional strength and democratic integrity",
+        "summary": "A cooperative needs enough capacity to survive, but concentrating authority to get it erodes the member control that made it worth building.",
+        "nodes": [
+          "g2-c-k1-objective",
+          "g2-c-k1-viability",
+          "g2-c-k1-control",
+          "g2-c-k1-concentrate",
+          "g2-c-k1-distribute"
+        ]
+      },
+      {
+        "id": "k2",
+        "title": "AI capability and resilient autonomy",
+        "summary": "A community may need AI to keep up with rivals who use it, yet its essential functions must keep working when AI, power or a provider fails.",
+        "nodes": [
+          "g2-c-objective",
+          "g2-c-capability",
+          "g2-c-continuity",
+          "g2-c-depend",
+          "g2-c-optional"
+        ]
+      },
+      {
+        "id": "k3",
+        "title": "Unilateral protection and common security",
+        "summary": "Deterrence seems to demand more of a contested capability, while shared survival demands reciprocal limits on that same capability.",
+        "nodes": [
+          "g2-c-k3-objective",
+          "g2-c-k3-deterrence",
+          "g2-c-k3-deescalation",
+          "g2-c-k3-expand",
+          "g2-c-k3-restrain"
+        ]
+      },
+      {
+        "id": "k4",
+        "title": "Present provision and ecological viability",
+        "summary": "Essential services seem to depend on growing material throughput, while ecological limits require constraining it.",
+        "nodes": [
+          "g2-c-k4-objective",
+          "g2-c-k4-provision",
+          "g2-c-k4-limits",
+          "g2-c-k4-throughput",
+          "g2-c-k4-constrain"
+        ]
+      },
+      {
+        "id": "k5",
+        "title": "Controlled engagement and trustworthy relationships",
+        "summary": "A service needs funding to last, but engineering people’s attachment to secure it undermines the free choice that trust depends on.",
+        "nodes": [
+          "g2-c-k5-objective",
+          "g2-c-k5-continuity",
+          "g2-c-k5-care",
+          "g2-c-k5-engineer",
+          "g2-c-k5-free"
+        ]
+      }
+    ]
+  },
   "feedback": [],
   "sources": [
     {
+      "id": "forum",
+      "title": "What Would Make a Second Renaissance Possible? · Second Renaissance Forum · posts 1–36, 16–22 October 2026",
+      "description": "The public forum thread this map draws on, opened by Leif Eriksson. Its 36 posts were checked against the public topic on 22 October 2026, and each credit links to the post it names. The paraphrases are the AI’s; a credit says where an idea comes from, not that its author agrees with the wording, and none of the people credited has reviewed it.",
+      "url": "https://forum.secondrenaissance.net/t/what-would-make-a-second-renaissance-possible/909",
+      "posts": {
+        "1": {
+          "author": "leif",
+          "date": "2026-10-16"
+        },
+        "2": {
+          "author": "robert",
+          "date": "2026-10-16"
+        },
+        "3": {
+          "author": "leif",
+          "date": "2026-10-16"
+        },
+        "4": {
+          "author": "leif",
+          "date": "2026-10-16"
+        },
+        "5": {
+          "author": "robert",
+          "date": "2026-10-16"
+        },
+        "6": {
+          "author": "robert",
+          "date": "2026-10-17"
+        },
+        "7": {
+          "author": "leif",
+          "date": "2026-10-17"
+        },
+        "8": {
+          "author": "robert",
+          "date": "2026-10-17"
+        },
+        "9": {
+          "author": "robert",
+          "date": "2026-10-17"
+        },
+        "10": {
+          "author": "rufus",
+          "date": "2026-10-17"
+        },
+        "11": {
+          "author": "leif",
+          "date": "2026-10-17"
+        },
+        "12": {
+          "author": "robert",
+          "date": "2026-10-17"
+        },
+        "13": {
+          "author": "leif",
+          "date": "2026-10-18"
+        },
+        "14": {
+          "author": "robert",
+          "date": "2026-10-18"
+        },
+        "15": {
+          "author": "leif",
+          "date": "2026-10-18"
+        },
+        "16": {
+          "author": "robert",
+          "date": "2026-10-18"
+        },
+        "17": {
+          "author": "leif",
+          "date": "2026-10-19"
+        },
+        "18": {
+          "author": "robert",
+          "date": "2026-10-19"
+        },
+        "19": {
+          "author": "robert",
+          "date": "2026-10-19"
+        },
+        "20": {
+          "author": "leif",
+          "date": "2026-10-20"
+        },
+        "21": {
+          "author": "robert",
+          "date": "2026-10-20"
+        },
+        "22": {
+          "author": "robert",
+          "date": "2026-10-20"
+        },
+        "23": {
+          "author": "leif",
+          "date": "2026-10-20"
+        },
+        "24": {
+          "author": "robert",
+          "date": "2026-10-21"
+        },
+        "25": {
+          "author": "robert",
+          "date": "2026-10-21"
+        },
+        "26": {
+          "author": "leif",
+          "date": "2026-10-21"
+        },
+        "27": {
+          "author": "robert",
+          "date": "2026-10-21"
+        },
+        "28": {
+          "author": "robert",
+          "date": "2026-10-21"
+        },
+        "29": {
+          "author": "leif",
+          "date": "2026-10-21"
+        },
+        "30": {
+          "author": "robert",
+          "date": "2026-10-21"
+        },
+        "31": {
+          "author": "justin",
+          "date": "2026-10-21"
+        },
+        "32": {
+          "author": "leif",
+          "date": "2026-10-21"
+        },
+        "33": {
+          "author": "leif",
+          "date": "2026-10-22"
+        },
+        "34": {
+          "author": "robert",
+          "date": "2026-10-22"
+        },
+        "35": {
+          "author": "robert",
+          "date": "2026-10-22"
+        },
+        "36": {
+          "author": "leif",
+          "date": "2026-10-22"
+        }
+      }
+    },
+    {
+      "id": "bindings",
+      "title": "Bindings and the Captive Mind: From the Hand Axe to the Awakening of AI · manuscript draft",
+      "description": "Leif Eriksson’s book manuscript, shared as a draft in the thread. It was not read here: credits to it rest on the chapter and section references in the supplied analysis.",
+      "author": "leif",
+      "shared_in_post": 11
+    },
+    {
+      "id": "last-first",
+      "title": "The Last Shall Be First? Artificial Intelligence, the Selection of Trustworthy Institutions, and the Possibility of a New Civilizational Path · essay",
+      "description": "An essay by Leif Eriksson, shared in the thread. It was not read here: credits to it rest on the section references in the supplied analysis.",
+      "author": "leif",
+      "shared_in_post": 13
+    },
+    {
+      "id": "paradox",
+      "title": "The Countercurrent’s Paradox of Success · essay",
+      "description": "An essay by Leif Eriksson comparing Swedish, Finnish and British consumer cooperatives, shared in the thread. It was not read here: credits to it rest on the section references in the supplied analysis.",
+      "author": "leif",
+      "shared_in_post": 29
+    },
+    {
+      "id": "leverage",
+      "title": "Where Is the Deepest Leverage Point? · essay",
+      "description": "An essay by Leif Eriksson, shared in the thread. It was not read here: credits to it rest on the section references in the supplied analysis.",
+      "author": "leif",
+      "shared_in_post": 33
+    },
+    {
+      "id": "carbon-pulse",
+      "title": "The Carbon Pulse · essay",
+      "description": "An essay by Leif Eriksson, shared in the thread. It was not read here: credits to it rest on the topics the supplied analysis cites.",
+      "author": "leif",
+      "shared_in_post": 33
+    },
+    {
       "id": "analysis-v2",
       "title": "Second Renaissance Causal and Prerequisite Trees · version 2 · 22 October 2026",
-      "description": "Supplied 48-page analysis. Page numbers and identifiers on each item refer to this document. It reconstructs an expanded forum discussion (posts 1–36) and five documents attributed to Leif Eriksson: Bindings and the Captive Mind; The Last Shall Be First; The Countercurrent’s Paradox of Success; Where Is the Deepest Leverage Point; and The Carbon Pulse. These primary sources were not supplied separately or independently checked here. A locator is an audit trail into the supplied analysis, not verification of the original claim or the participants’ agreement."
+      "description": "Supplied 48-page analysis of the thread and the five essays. Page numbers and identifiers on each item refer to this document. Its reconstructions and inferences are labelled as such; it does not establish the participants’ agreement or verify the essays’ historical claims."
     },
     {
       "id": "analysis-v1",
       "title": "Second Renaissance thread: thinking-process trees · supplied text · 22 October 2026",
-      "description": "Supplied earlier analysis and presentation notes, based on a reported 32-post forum thread. Its throughput and governance-capacity proposals are hypotheses for a bounded case. The later PDF broadens the programme and distinguishes local improvements from a durable change in institutional selection. The draft introductory forum post was not sent. No original forum URL or manuscript excerpt is published as if independently verified."
+      "description": "Supplied earlier analysis and presentation notes, based on a reported 32-post version of the thread. Its throughput and governance-capacity proposals are hypotheses for a bounded case. The later analysis broadens the programme and distinguishes local improvements from a durable change in institutional selection. The draft introductory forum post it contains was not sent."
     }
   ],
   "history": [
@@ -151,11 +460,108 @@
           "note": "Selected and paraphrased by the AI from the supplied analyses. Review the sources and assumptions before relying on the map."
         }
       ]
+    },
+    {
+      "release_id": "2026-10-22.2",
+      "date": "2026-10-22",
+      "title": "Credits and all five conflicts",
+      "summary": "Every statement and connection now credits the forum posts or essays it draws on, linked to each post, and four more conflicts from the analysis join the first. Everything remains proposed; none of the people credited has reviewed the wording.",
+      "changes": [
+        {
+          "type": "added",
+          "refs": [
+            "g2-c-k1-objective",
+            "g2-c-k1-viability",
+            "g2-c-k1-control",
+            "g2-c-k1-concentrate",
+            "g2-c-k1-distribute",
+            "g2-c-k3-objective",
+            "g2-c-k3-deterrence",
+            "g2-c-k3-deescalation",
+            "g2-c-k3-expand",
+            "g2-c-k3-restrain",
+            "g2-c-k4-objective",
+            "g2-c-k4-provision",
+            "g2-c-k4-limits",
+            "g2-c-k4-throughput",
+            "g2-c-k4-constrain",
+            "g2-c-k5-objective",
+            "g2-c-k5-continuity",
+            "g2-c-k5-care",
+            "g2-c-k5-engineer",
+            "g2-c-k5-free",
+            "g2-c-k1-rel-viability",
+            "g2-c-k1-rel-control",
+            "g2-c-k1-rel-concentrate",
+            "g2-c-k1-rel-distribute",
+            "g2-c-k1-rel-conflict",
+            "g2-c-k3-rel-deterrence",
+            "g2-c-k3-rel-deescalation",
+            "g2-c-k3-rel-expand",
+            "g2-c-k3-rel-restrain",
+            "g2-c-k3-rel-conflict",
+            "g2-c-k4-rel-provision",
+            "g2-c-k4-rel-limits",
+            "g2-c-k4-rel-throughput",
+            "g2-c-k4-rel-constrain",
+            "g2-c-k4-rel-conflict",
+            "g2-c-k5-rel-continuity",
+            "g2-c-k5-rel-care",
+            "g2-c-k5-rel-engineer",
+            "g2-c-k5-rel-free",
+            "g2-c-k5-rel-conflict"
+          ],
+          "note": "Four conflicts from the analysis, with its assumptions to test."
+        },
+        {
+          "type": "credited",
+          "refs": [
+            "g2-g-goal",
+            "g2-g-capability",
+            "g2-g-control",
+            "g2-g-future",
+            "g2-g-rel-capability",
+            "g2-g-rel-control",
+            "g2-g-rel-future",
+            "g2-r-load",
+            "g2-r-coordination",
+            "g2-r-centralisation",
+            "g2-r-rel-centralisation",
+            "g2-c-objective",
+            "g2-c-capability",
+            "g2-c-continuity",
+            "g2-c-depend",
+            "g2-c-optional",
+            "g2-c-rel-capability",
+            "g2-c-rel-continuity",
+            "g2-c-rel-depend",
+            "g2-c-rel-optional",
+            "g2-c-rel-conflict",
+            "g2-f-guidance",
+            "g2-f-protections",
+            "g2-f-benefit",
+            "g2-f-harm",
+            "g2-f-rel-benefit",
+            "g2-f-rel-harm",
+            "g2-p-trial",
+            "g2-p-case",
+            "g2-p-protocol",
+            "g2-p-gap",
+            "g2-p-rel-case",
+            "g2-p-rel-trial",
+            "g2-p-rel-gap",
+            "g2-t-select",
+            "g2-t-case",
+            "g2-t-rel-case"
+          ],
+          "note": "Credited to the forum posts and essays it draws on."
+        }
+      ]
     }
   ],
   "snapshot": {
-    "projection_version": 3,
-    "release_id": "2026-10-22.1",
+    "projection_version": 4,
+    "release_id": "2026-10-22.2",
     "snapshot_date": "2026-10-22",
     "title": "Gandhi 2.0",
     "people": [
@@ -182,6 +588,30 @@
             "label": "Humane institutions survive and spread while retaining autonomy and care within liveable limits.",
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 26,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 20,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 9,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 27,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
                 "source_id": "analysis-v2",
                 "locator": "p. 2, G0",
                 "basis": "reconstruction"
@@ -202,6 +632,34 @@
             "text": "Communities can maintain useful material and organisational capabilities at viable cost.",
             "label": "Communities maintain useful capabilities at viable cost.",
             "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 26,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 32,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 9,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "section 7",
+                "basis": "cited"
+              },
+              {
+                "source_id": "carbon-pulse",
+                "locator": "useful energy services",
+                "basis": "cited"
+              },
               {
                 "source_id": "analysis-v2",
                 "locator": "p. 2, G3",
@@ -224,6 +682,40 @@
             "label": "Members retain control, justified trust and freedom to disagree or leave.",
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 20,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 19,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 28,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "last-first",
+                "locator": "sections 3–4",
+                "basis": "cited"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "sections 8–9",
+                "basis": "cited"
+              },
+              {
                 "source_id": "analysis-v2",
                 "locator": "p. 2, G2, G4 and G5",
                 "basis": "reconstruction"
@@ -244,6 +736,29 @@
             "text": "Ecological and catastrophic risks remain compatible with continued human life and collective agency.",
             "label": "Ecological and catastrophic risks remain compatible with continued human agency.",
             "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 26,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 27,
+                "author": "robert",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 21,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "carbon-pulse",
+                "locator": "ecological limits",
+                "basis": "cited"
+              },
               {
                 "source_id": "analysis-v2",
                 "locator": "p. 2, G1; pp. 42–43, T6 and T8",
@@ -270,6 +785,12 @@
             "relation": "necessary_for",
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 26,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
                 "source_id": "analysis-v2",
                 "locator": "p. 2, goal and necessary conditions",
                 "basis": "reconstruction"
@@ -293,6 +814,18 @@
             "relation": "necessary_for",
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 36,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
                 "source_id": "analysis-v2",
                 "locator": "p. 2, goal and necessary conditions",
                 "basis": "reconstruction"
@@ -315,6 +848,12 @@
             "to": "g2-g-goal",
             "relation": "necessary_for",
             "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 26,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
               {
                 "source_id": "analysis-v2",
                 "locator": "p. 2, goal and necessary conditions",
@@ -361,6 +900,17 @@
             "label": "Damaging disagreements can exceed a growing group's current conflict-handling capacity.",
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "sections 8–9",
+                "basis": "cited"
+              },
+              {
                 "source_id": "analysis-v2",
                 "locator": "p. 10, R18, C18 and C15",
                 "basis": "reconstruction"
@@ -382,6 +932,23 @@
             "label": "The group needs workable coordination to remain viable.",
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 30,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "sections 2–6",
+                "basis": "cited"
+              },
+              {
                 "source_id": "analysis-v2",
                 "locator": "pp. 9–10, C15 and R18; p. 14, K1",
                 "basis": "reconstruction"
@@ -402,6 +969,17 @@
             "text": "When members cannot resolve damaging disagreements, central intervention may become the practical response.",
             "label": "Unresolved damaging disagreements may make central intervention the practical response.",
             "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "section 9",
+                "basis": "cited"
+              },
               {
                 "source_id": "analysis-v2",
                 "locator": "p. 10, R18 and C16",
@@ -435,6 +1013,17 @@
             ],
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "section 9",
+                "basis": "cited"
+              },
+              {
                 "source_id": "analysis-v2",
                 "locator": "p. 10, R18",
                 "basis": "reconstruction"
@@ -454,6 +1043,180 @@
       "conflict": {
         "nodes": [
           {
+            "id": "g2-c-k1-objective",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "objective",
+            "text": "Sustain an effective emancipatory institution.",
+            "label": "Sustain an effective emancipatory institution.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 36,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "sections 1–9",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 14, K1",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k1-viability",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "Acquire enough coordination, expertise and resources to remain viable.",
+            "label": "Acquire enough coordination, expertise and resources to remain viable.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 30,
+                "author": "robert",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "sections 2–6",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 14, K1",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k1-control",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "Preserve substantive member control and the institution’s emancipatory purpose.",
+            "label": "Preserve substantive member control and the institution’s emancipatory purpose.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "sections 1–6",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 14, K1",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k1-concentrate",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "Concentrate decision authority to obtain the required effectiveness.",
+            "label": "Concentrate decision authority to obtain the required effectiveness.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 32,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 30,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 14, K1",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k1-distribute",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "Keep that same authority distributed among members.",
+            "label": "Keep that same authority distributed among members.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 28,
+                "author": "robert",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 14, K1",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
             "id": "g2-c-objective",
             "status": "proposed",
             "accepted_by": [],
@@ -468,8 +1231,20 @@
             "label": "Keep a community capable, independent and resilient.",
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 33,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 28,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
                 "source_id": "analysis-v2",
-                "locator": "p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6",
+                "locator": "p. 15, K2",
                 "basis": "reconstruction"
               }
             ]
@@ -489,8 +1264,20 @@
             "label": "Avoid being outperformed or subordinated by actors using advanced AI.",
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 20,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 33,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
                 "source_id": "analysis-v2",
-                "locator": "p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6",
+                "locator": "p. 15, K2",
                 "basis": "reconstruction"
               }
             ]
@@ -510,8 +1297,25 @@
             "label": "Continue essential functions under provider, energy or AI failure.",
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 30,
+                "author": "robert",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 34,
+                "author": "robert",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "carbon-pulse",
+                "locator": "energy services and scarcity",
+                "basis": "cited"
+              },
+              {
                 "source_id": "analysis-v2",
-                "locator": "p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6",
+                "locator": "p. 15, K2",
                 "basis": "reconstruction"
               }
             ]
@@ -531,8 +1335,14 @@
             "label": "Make the selected essential function depend on AI.",
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 33,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
                 "source_id": "analysis-v2",
-                "locator": "p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6",
+                "locator": "p. 15, K2",
                 "basis": "reconstruction"
               }
             ]
@@ -552,14 +1362,707 @@
             "label": "Keep that same essential function operable without AI.",
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 30,
+                "author": "robert",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 34,
+                "author": "robert",
+                "basis": "paraphrase"
+              },
+              {
                 "source_id": "analysis-v2",
-                "locator": "p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6",
+                "locator": "p. 15, K2",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k3-objective",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "objective",
+            "text": "Protect people’s rights and durable security.",
+            "label": "Protect people’s rights and durable security.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 23,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 21,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 16, K3",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k3-deterrence",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "Prevent coercion, attack or exploitation of restraint.",
+            "label": "Prevent coercion, attack or exploitation of restraint.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 23,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 25,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 16, K3",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k3-deescalation",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "Reduce escalation and collective exposure to catastrophic weapons.",
+            "label": "Reduce escalation and collective exposure to catastrophic weapons.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 21,
+                "author": "robert",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 24,
+                "author": "robert",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 23,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 16, K3",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k3-expand",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "Continue expanding the contested military capability to deter rivals.",
+            "label": "Continue expanding the contested military capability to deter rivals.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 25,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 16, K3",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k3-restrain",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "Restrain expansion of that same capability through reciprocal limits.",
+            "label": "Restrain expansion of that same capability through reciprocal limits.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 21,
+                "author": "robert",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 24,
+                "author": "robert",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 23,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 26,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 16, K3",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k4-objective",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "objective",
+            "text": "Sustain human flourishing and essential services over time.",
+            "label": "Sustain human flourishing and essential services over time.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 9,
+                "author": "robert",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "carbon-pulse",
+                "locator": "useful energy services",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 17, K4",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k4-provision",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "Maintain livelihoods and services under existing economic dependencies.",
+            "label": "Maintain livelihoods and services under existing economic dependencies.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 30,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "sections 4–6",
+                "basis": "cited"
+              },
+              {
+                "source_id": "leverage",
+                "locator": "sections 1 and 5",
+                "basis": "cited"
+              },
+              {
+                "source_id": "carbon-pulse",
+                "locator": "growth and energy services",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 17, K4",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k4-limits",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "Keep material demand and ecological damage within viable conditions.",
+            "label": "Keep material demand and ecological damage within viable conditions.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 9,
+                "author": "robert",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 8,
+                "author": "robert",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "carbon-pulse",
+                "locator": "ecological limits",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 17, K4",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k4-throughput",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "Increase material throughput to maintain those services and commitments.",
+            "label": "Increase material throughput to maintain those services and commitments.",
+            "source_refs": [
+              {
+                "source_id": "leverage",
+                "locator": "sections 1 and 4",
+                "basis": "cited"
+              },
+              {
+                "source_id": "carbon-pulse",
+                "locator": "growth and energy services",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 17, K4",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k4-constrain",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "Constrain that same throughput to protect their ecological basis.",
+            "label": "Constrain that same throughput to protect their ecological basis.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 34,
+                "author": "robert",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 9,
+                "author": "robert",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 30,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 17, K4",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k5-objective",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "objective",
+            "text": "Provide a durable service that genuinely supports human agency.",
+            "label": "Provide a durable service that genuinely supports human agency.",
+            "source_refs": [
+              {
+                "source_id": "last-first",
+                "locator": "sections 3–6",
+                "basis": "cited"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "section 9",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 18, K5",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k5-continuity",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "Secure the resources and continuity needed to maintain the service.",
+            "label": "Secure the resources and continuity needed to maintain the service.",
+            "source_refs": [
+              {
+                "source_id": "last-first",
+                "locator": "sections 3–6",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 18, K5",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k5-care",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "Protect truthful inquiry, voluntary participation and non-instrumental care.",
+            "label": "Protect truthful inquiry, voluntary participation and non-instrumental care.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 19,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "last-first",
+                "locator": "sections 3–6",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 18, K5",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k5-engineer",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "Engineer attachment and user responses to secure the provider’s required returns.",
+            "label": "Engineer attachment and user responses to secure the provider’s required returns.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 13,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "last-first",
+                "locator": "section 6",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 18, K5",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k5-free",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "Allow those same responses to remain freely chosen, including disagreement or exit.",
+            "label": "Allow those same responses to remain freely chosen, including disagreement or exit.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 19,
+                "author": "robert",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "last-first",
+                "locator": "sections 3–6",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 18, K5",
                 "basis": "reconstruction"
               }
             ]
           }
         ],
         "links": [
+          {
+            "id": "g2-c-k1-rel-viability",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k1-viability"
+            ],
+            "to": "g2-c-k1-objective",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 30,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 14, K1",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k1-rel-control",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k1-control"
+            ],
+            "to": "g2-c-k1-objective",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 14, K1",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k1-rel-concentrate",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k1-concentrate"
+            ],
+            "to": "g2-c-k1-viability",
+            "relation": "necessary_for",
+            "assumptions": [
+              {
+                "text": "The required coordination and expertise are obtainable only, or at substantially lower viable cost, through concentrated authority.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 32,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 14, K1, B to D",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k1-rel-distribute",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k1-distribute"
+            ],
+            "to": "g2-c-k1-control",
+            "relation": "necessary_for",
+            "assumptions": [
+              {
+                "text": "Members cannot retain substantive control if those decisions are transferred to managers or central bodies.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 14, K1, C to D prime",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k1-rel-conflict",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k1-concentrate"
+            ],
+            "to": "g2-c-k1-distribute",
+            "relation": "conflicts_with",
+            "assumptions": [
+              {
+                "text": "The same decisions at the same scale and time must be either centrally controlled or genuinely controlled by members; no workable division or accountable delegation is available.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 30,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 14, K1, D conflicts with D prime",
+                "basis": "reconstruction"
+              }
+            ]
+          },
           {
             "id": "g2-c-rel-capability",
             "status": "proposed",
@@ -577,8 +2080,14 @@
             "relation": "necessary_for",
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 33,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
                 "source_id": "analysis-v2",
-                "locator": "p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6",
+                "locator": "p. 15, K2",
                 "basis": "reconstruction"
               }
             ]
@@ -600,8 +2109,14 @@
             "relation": "necessary_for",
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 34,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
                 "source_id": "analysis-v2",
-                "locator": "p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6",
+                "locator": "p. 15, K2",
                 "basis": "reconstruction"
               }
             ]
@@ -629,8 +2144,20 @@
             ],
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 20,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 33,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
                 "source_id": "analysis-v2",
-                "locator": "p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6",
+                "locator": "p. 15, K2, B to D",
                 "basis": "reconstruction"
               }
             ]
@@ -658,8 +2185,14 @@
             ],
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 30,
+                "author": "robert",
+                "basis": "paraphrase"
+              },
+              {
                 "source_id": "analysis-v2",
-                "locator": "p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6",
+                "locator": "p. 15, K2, C to D prime",
                 "basis": "reconstruction"
               }
             ]
@@ -687,8 +2220,510 @@
             ],
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 33,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 30,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
                 "source_id": "analysis-v2",
-                "locator": "p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6",
+                "locator": "p. 15, K2, D conflicts with D prime",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k3-rel-deterrence",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k3-deterrence"
+            ],
+            "to": "g2-c-k3-objective",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 23,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 16, K3",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k3-rel-deescalation",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k3-deescalation"
+            ],
+            "to": "g2-c-k3-objective",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 21,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 16, K3",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k3-rel-expand",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k3-expand"
+            ],
+            "to": "g2-c-k3-deterrence",
+            "relation": "necessary_for",
+            "assumptions": [
+              {
+                "text": "Superior or matching relative destructive capacity is the only credible protection.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 25,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 16, K3, B to D",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k3-rel-restrain",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k3-restrain"
+            ],
+            "to": "g2-c-k3-deescalation",
+            "relation": "necessary_for",
+            "assumptions": [
+              {
+                "text": "Unchecked competitive accumulation increases mutual insecurity.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 23,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 16, K3, C to D prime",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k3-rel-conflict",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k3-expand"
+            ],
+            "to": "g2-c-k3-restrain",
+            "relation": "conflicts_with",
+            "assumptions": [
+              {
+                "text": "Reciprocal restraints cannot be verified, enforced or maintained against powerful defectors while protecting weaker parties.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 26,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 25,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 16, K3, D conflicts with D prime",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k4-rel-provision",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k4-provision"
+            ],
+            "to": "g2-c-k4-objective",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 17, K4",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k4-rel-limits",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k4-limits"
+            ],
+            "to": "g2-c-k4-objective",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 9,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 17, K4",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k4-rel-throughput",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k4-throughput"
+            ],
+            "to": "g2-c-k4-provision",
+            "relation": "necessary_for",
+            "assumptions": [
+              {
+                "text": "Services, employment, finance or welfare commitments cannot remain viable without continued material expansion.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "leverage",
+                "locator": "sections 1 and 4",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 17, K4, B to D",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k4-rel-constrain",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k4-constrain"
+            ],
+            "to": "g2-c-k4-limits",
+            "relation": "necessary_for",
+            "assumptions": [
+              {
+                "text": "Demand and impacts exceed the relevant ecological limits; efficiency alone does not control total demand.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 34,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 17, K4, C to D prime",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k4-rel-conflict",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k4-throughput"
+            ],
+            "to": "g2-c-k4-constrain",
+            "relation": "conflicts_with",
+            "assumptions": [
+              {
+                "text": "Service redesign, distributional changes, sufficiency and alternative energy or material configurations cannot meet needs within the limits in time.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 34,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 33,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 17, K4, D conflicts with D prime",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k5-rel-continuity",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k5-continuity"
+            ],
+            "to": "g2-c-k5-objective",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "last-first",
+                "locator": "sections 3–6",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 18, K5",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k5-rel-care",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k5-care"
+            ],
+            "to": "g2-c-k5-objective",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "last-first",
+                "locator": "sections 3–6",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 18, K5",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k5-rel-engineer",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k5-engineer"
+            ],
+            "to": "g2-c-k5-continuity",
+            "relation": "necessary_for",
+            "assumptions": [
+              {
+                "text": "Financial or institutional continuity requires manipulating engagement, attachment or compliance.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "last-first",
+                "locator": "section 6",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 18, K5, B to D",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k5-rel-free",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k5-free"
+            ],
+            "to": "g2-c-k5-care",
+            "relation": "necessary_for",
+            "assumptions": [
+              {
+                "text": "Justified and generative trust require meaningful agency and correction, rather than manufactured confidence alone.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 19,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 18, K5, C to D prime",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k5-rel-conflict",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k5-engineer"
+            ],
+            "to": "g2-c-k5-free",
+            "relation": "conflicts_with",
+            "assumptions": [
+              {
+                "text": "No funding, ownership or accountability arrangement can sustain the service through benefits people can freely recognise and choose.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "last-first",
+                "locator": "sections 3–6",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 18, K5, D conflicts with D prime",
                 "basis": "reconstruction"
               }
             ]
@@ -696,15 +2731,134 @@
         ],
         "backlog": [
           {
+            "ref": "g2-c-k1-rel-concentrate",
+            "work": "examine_assumption",
+            "label": "Can coordination and expertise be had without concentrating authority?",
+            "note": "The analysis names conflict guidance, local AI, federation and accountable governance as candidate ways through. Leif hopes widely available conflict competence could reduce reliance on hierarchical intervention; none of these routes has been tested.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 14, K1, candidate injections I02, I03, I06 and I10",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
             "ref": "g2-c-rel-depend",
             "work": "examine_assumption",
             "label": "Does this function actually require AI to remain viable?",
-            "note": "Retain non-AI and optional-AI comparators. The stronger claim is reported in the analyses, not attributed here as a verified commitment by Leif or Robert."
+            "note": "Leif argues that communities may have no viable alternative to building AI in; Robert holds that relying on AI as a core social technology is asking for trouble, and Leif has asked him to say where he places that limit. Keep non-AI and optional-AI comparators. Neither has reviewed this wording.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 33,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 30,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 34,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 36,
+                "author": "leif",
+                "basis": "related"
+              }
+            ]
           },
           {
             "ref": "g2-c-rel-conflict",
             "work": "examine_assumption",
             "label": "Test an exit and a fallback before treating AI dependence as unavoidable."
+          },
+          {
+            "ref": "g2-c-k3-rel-conflict",
+            "work": "examine_assumption",
+            "label": "Can reciprocal limits be enforced against powerful defectors?",
+            "note": "Leif asks why the League of Nations and the United Nations failed to prevent major wars, and what would make rules hold when powerful actors find them inconvenient. Robert expects the arms race may worsen before it improves, and looks to a coalition of middle powers for leverage.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 26,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 25,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 16, K3",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "ref": "g2-c-k4-rel-throughput",
+            "work": "examine_assumption",
+            "label": "Can essential services be kept without growing material throughput?",
+            "note": "Leif hopes AI can speed up the development of alternative energy and materials. Robert prefers Nate Hagens’s Great Simplification and hedging against bets on AI. Both are candidate ways through; neither has been tested.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 33,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 34,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 17, K4",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "ref": "g2-c-k5-rel-engineer",
+            "work": "examine_assumption",
+            "label": "Can a service be funded without engineering attachment?",
+            "note": "Leif’s essay contrasts institutions that earn trust with those that depend on manipulation. Robert accepts AI only if people stay free to take it or leave it.",
+            "source_refs": [
+              {
+                "source_id": "last-first",
+                "locator": "sections 3–6",
+                "basis": "cited"
+              },
+              {
+                "source_id": "forum",
+                "post": 19,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 18, K5",
+                "basis": "reconstruction"
+              }
+            ]
           }
         ]
       },
@@ -724,6 +2878,36 @@
             "text": "Test member-controlled AI conflict guidance with voluntary use, human support, a workable exit and competence checked without AI.",
             "label": "Test voluntary, member-controlled AI conflict guidance with an exit and independent competence.",
             "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 13,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 20,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 30,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 19,
+                "author": "robert",
+                "basis": "related"
+              },
               {
                 "source_id": "analysis-v2",
                 "locator": "pp. 18–19, I02 and I03; p. 42, T2 and T3",
@@ -751,6 +2935,17 @@
             "label": "Members establish confidentiality, fair grievance handling and independent comparison.",
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 20,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "section 9",
+                "basis": "cited"
+              },
+              {
                 "source_id": "analysis-v2",
                 "locator": "pp. 35–36, P03, P04 and P08; p. 42, T2",
                 "basis": "reconstruction"
@@ -772,6 +2967,17 @@
             "label": "Conflict costs and needless hierarchy fall while fair treatment, competence and influence remain.",
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "section 9",
+                "basis": "cited"
+              },
+              {
                 "source_id": "analysis-v2",
                 "locator": "p. 42, T2 prediction",
                 "basis": "reconstruction"
@@ -792,6 +2998,17 @@
             "text": "Conflict guidance may suppress justified grievances even when satisfaction improves.",
             "label": "Conflict guidance may suppress justified grievances even when satisfaction improves.",
             "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 20,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "section 9",
+                "basis": "cited"
+              },
               {
                 "source_id": "analysis-v2",
                 "locator": "p. 42, T2 defeating results and protected conditions",
@@ -830,6 +3047,12 @@
             ],
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
                 "source_id": "analysis-v2",
                 "locator": "p. 42, T2; combined trial design is an AI reconstruction",
                 "basis": "inference"
@@ -858,6 +3081,11 @@
               }
             ],
             "source_refs": [
+              {
+                "source_id": "paradox",
+                "locator": "section 9",
+                "basis": "cited"
+              },
               {
                 "source_id": "analysis-v2",
                 "locator": "p. 42, T2; risk route reconstructed from the cautions",
@@ -904,6 +3132,24 @@
             "label": "A bounded comparative trial produces reviewable observations of benefits, harms and control.",
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 9,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 18,
+                "author": "robert",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 20,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
                 "source_id": "analysis-v2",
                 "locator": "pp. 35–36, P03–P09; p. 42, T2",
                 "basis": "reconstruction"
@@ -925,6 +3171,18 @@
             "label": "Select a willing host and one function, with actual workflow and resource needs documented.",
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 17,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 23,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
                 "source_id": "analysis-v2",
                 "locator": "p. 35, P01–P02; p. 45, A1–A2",
                 "basis": "reconstruction"
@@ -945,6 +3203,18 @@
             "text": "Affected people authorise a trial specification covering comparisons, measures, protections, responsibilities, resources and fallback.",
             "label": "Affected people authorise a comparative trial with measures, protections, resources and fallback.",
             "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 20,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 23,
+                "author": "leif",
+                "basis": "related"
+              },
               {
                 "source_id": "analysis-v2",
                 "locator": "pp. 35–36, P03–P08; p. 45, A3–A4",
@@ -1077,6 +3347,18 @@
             "label": "Select one willing host and one function, and confirm what is already operating.",
             "source_refs": [
               {
+                "source_id": "forum",
+                "post": 17,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 13,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
                 "source_id": "analysis-v2",
                 "locator": "p. 45, A1",
                 "basis": "reconstruction"
@@ -1192,21 +3474,387 @@
             "note": "Selected and paraphrased by the AI from the supplied analyses. Review the sources and assumptions before relying on the map."
           }
         ]
+      },
+      {
+        "release_id": "2026-10-22.2",
+        "date": "2026-10-22",
+        "title": "Credits and all five conflicts",
+        "summary": "Every statement and connection now credits the forum posts or essays it draws on, linked to each post, and four more conflicts from the analysis join the first. Everything remains proposed; none of the people credited has reviewed the wording.",
+        "changes": [
+          {
+            "type": "added",
+            "refs": [
+              "g2-c-k1-objective",
+              "g2-c-k1-viability",
+              "g2-c-k1-control",
+              "g2-c-k1-concentrate",
+              "g2-c-k1-distribute",
+              "g2-c-k3-objective",
+              "g2-c-k3-deterrence",
+              "g2-c-k3-deescalation",
+              "g2-c-k3-expand",
+              "g2-c-k3-restrain",
+              "g2-c-k4-objective",
+              "g2-c-k4-provision",
+              "g2-c-k4-limits",
+              "g2-c-k4-throughput",
+              "g2-c-k4-constrain",
+              "g2-c-k5-objective",
+              "g2-c-k5-continuity",
+              "g2-c-k5-care",
+              "g2-c-k5-engineer",
+              "g2-c-k5-free",
+              "g2-c-k1-rel-viability",
+              "g2-c-k1-rel-control",
+              "g2-c-k1-rel-concentrate",
+              "g2-c-k1-rel-distribute",
+              "g2-c-k1-rel-conflict",
+              "g2-c-k3-rel-deterrence",
+              "g2-c-k3-rel-deescalation",
+              "g2-c-k3-rel-expand",
+              "g2-c-k3-rel-restrain",
+              "g2-c-k3-rel-conflict",
+              "g2-c-k4-rel-provision",
+              "g2-c-k4-rel-limits",
+              "g2-c-k4-rel-throughput",
+              "g2-c-k4-rel-constrain",
+              "g2-c-k4-rel-conflict",
+              "g2-c-k5-rel-continuity",
+              "g2-c-k5-rel-care",
+              "g2-c-k5-rel-engineer",
+              "g2-c-k5-rel-free",
+              "g2-c-k5-rel-conflict"
+            ],
+            "note": "Four conflicts from the analysis, with its assumptions to test."
+          },
+          {
+            "type": "credited",
+            "refs": [
+              "g2-g-goal",
+              "g2-g-capability",
+              "g2-g-control",
+              "g2-g-future",
+              "g2-g-rel-capability",
+              "g2-g-rel-control",
+              "g2-g-rel-future",
+              "g2-r-load",
+              "g2-r-coordination",
+              "g2-r-centralisation",
+              "g2-r-rel-centralisation",
+              "g2-c-objective",
+              "g2-c-capability",
+              "g2-c-continuity",
+              "g2-c-depend",
+              "g2-c-optional",
+              "g2-c-rel-capability",
+              "g2-c-rel-continuity",
+              "g2-c-rel-depend",
+              "g2-c-rel-optional",
+              "g2-c-rel-conflict",
+              "g2-f-guidance",
+              "g2-f-protections",
+              "g2-f-benefit",
+              "g2-f-harm",
+              "g2-f-rel-benefit",
+              "g2-f-rel-harm",
+              "g2-p-trial",
+              "g2-p-case",
+              "g2-p-protocol",
+              "g2-p-gap",
+              "g2-p-rel-case",
+              "g2-p-rel-trial",
+              "g2-p-rel-gap",
+              "g2-t-select",
+              "g2-t-case",
+              "g2-t-rel-case"
+            ],
+            "note": "Credited to the forum posts and essays it draws on."
+          }
+        ]
       }
     ],
     "publication_kind": "source_reconstruction",
+    "authors": {
+      "leif": {
+        "name": "Leif Eriksson",
+        "role": "Opened the thread and shared the five essays it discusses"
+      },
+      "robert": {
+        "name": "Robert Bunge",
+        "role": "Took part in the thread"
+      },
+      "justin": {
+        "name": "Justin",
+        "role": "Took part in the thread"
+      },
+      "rufus": {
+        "name": "Rufus Pollock",
+        "role": "Took part in the thread"
+      }
+    },
     "sources": [
+      {
+        "id": "forum",
+        "title": "What Would Make a Second Renaissance Possible? · Second Renaissance Forum · posts 1–36, 16–22 October 2026",
+        "description": "The public forum thread this map draws on, opened by Leif Eriksson. Its 36 posts were checked against the public topic on 22 October 2026, and each credit links to the post it names. The paraphrases are the AI’s; a credit says where an idea comes from, not that its author agrees with the wording, and none of the people credited has reviewed it.",
+        "url": "https://forum.secondrenaissance.net/t/what-would-make-a-second-renaissance-possible/909",
+        "posts": {
+          "1": {
+            "author": "leif",
+            "date": "2026-10-16"
+          },
+          "2": {
+            "author": "robert",
+            "date": "2026-10-16"
+          },
+          "3": {
+            "author": "leif",
+            "date": "2026-10-16"
+          },
+          "4": {
+            "author": "leif",
+            "date": "2026-10-16"
+          },
+          "5": {
+            "author": "robert",
+            "date": "2026-10-16"
+          },
+          "6": {
+            "author": "robert",
+            "date": "2026-10-17"
+          },
+          "7": {
+            "author": "leif",
+            "date": "2026-10-17"
+          },
+          "8": {
+            "author": "robert",
+            "date": "2026-10-17"
+          },
+          "9": {
+            "author": "robert",
+            "date": "2026-10-17"
+          },
+          "10": {
+            "author": "rufus",
+            "date": "2026-10-17"
+          },
+          "11": {
+            "author": "leif",
+            "date": "2026-10-17"
+          },
+          "12": {
+            "author": "robert",
+            "date": "2026-10-17"
+          },
+          "13": {
+            "author": "leif",
+            "date": "2026-10-18"
+          },
+          "14": {
+            "author": "robert",
+            "date": "2026-10-18"
+          },
+          "15": {
+            "author": "leif",
+            "date": "2026-10-18"
+          },
+          "16": {
+            "author": "robert",
+            "date": "2026-10-18"
+          },
+          "17": {
+            "author": "leif",
+            "date": "2026-10-19"
+          },
+          "18": {
+            "author": "robert",
+            "date": "2026-10-19"
+          },
+          "19": {
+            "author": "robert",
+            "date": "2026-10-19"
+          },
+          "20": {
+            "author": "leif",
+            "date": "2026-10-20"
+          },
+          "21": {
+            "author": "robert",
+            "date": "2026-10-20"
+          },
+          "22": {
+            "author": "robert",
+            "date": "2026-10-20"
+          },
+          "23": {
+            "author": "leif",
+            "date": "2026-10-20"
+          },
+          "24": {
+            "author": "robert",
+            "date": "2026-10-21"
+          },
+          "25": {
+            "author": "robert",
+            "date": "2026-10-21"
+          },
+          "26": {
+            "author": "leif",
+            "date": "2026-10-21"
+          },
+          "27": {
+            "author": "robert",
+            "date": "2026-10-21"
+          },
+          "28": {
+            "author": "robert",
+            "date": "2026-10-21"
+          },
+          "29": {
+            "author": "leif",
+            "date": "2026-10-21"
+          },
+          "30": {
+            "author": "robert",
+            "date": "2026-10-21"
+          },
+          "31": {
+            "author": "justin",
+            "date": "2026-10-21"
+          },
+          "32": {
+            "author": "leif",
+            "date": "2026-10-21"
+          },
+          "33": {
+            "author": "leif",
+            "date": "2026-10-22"
+          },
+          "34": {
+            "author": "robert",
+            "date": "2026-10-22"
+          },
+          "35": {
+            "author": "robert",
+            "date": "2026-10-22"
+          },
+          "36": {
+            "author": "leif",
+            "date": "2026-10-22"
+          }
+        }
+      },
+      {
+        "id": "bindings",
+        "title": "Bindings and the Captive Mind: From the Hand Axe to the Awakening of AI · manuscript draft",
+        "description": "Leif Eriksson’s book manuscript, shared as a draft in the thread. It was not read here: credits to it rest on the chapter and section references in the supplied analysis.",
+        "author": "leif",
+        "shared_in_post": 11
+      },
+      {
+        "id": "last-first",
+        "title": "The Last Shall Be First? Artificial Intelligence, the Selection of Trustworthy Institutions, and the Possibility of a New Civilizational Path · essay",
+        "description": "An essay by Leif Eriksson, shared in the thread. It was not read here: credits to it rest on the section references in the supplied analysis.",
+        "author": "leif",
+        "shared_in_post": 13
+      },
+      {
+        "id": "paradox",
+        "title": "The Countercurrent’s Paradox of Success · essay",
+        "description": "An essay by Leif Eriksson comparing Swedish, Finnish and British consumer cooperatives, shared in the thread. It was not read here: credits to it rest on the section references in the supplied analysis.",
+        "author": "leif",
+        "shared_in_post": 29
+      },
+      {
+        "id": "leverage",
+        "title": "Where Is the Deepest Leverage Point? · essay",
+        "description": "An essay by Leif Eriksson, shared in the thread. It was not read here: credits to it rest on the section references in the supplied analysis.",
+        "author": "leif",
+        "shared_in_post": 33
+      },
+      {
+        "id": "carbon-pulse",
+        "title": "The Carbon Pulse · essay",
+        "description": "An essay by Leif Eriksson, shared in the thread. It was not read here: credits to it rest on the topics the supplied analysis cites.",
+        "author": "leif",
+        "shared_in_post": 33
+      },
       {
         "id": "analysis-v2",
         "title": "Second Renaissance Causal and Prerequisite Trees · version 2 · 22 October 2026",
-        "description": "Supplied 48-page analysis. Page numbers and identifiers on each item refer to this document. It reconstructs an expanded forum discussion (posts 1–36) and five documents attributed to Leif Eriksson: Bindings and the Captive Mind; The Last Shall Be First; The Countercurrent’s Paradox of Success; Where Is the Deepest Leverage Point; and The Carbon Pulse. These primary sources were not supplied separately or independently checked here. A locator is an audit trail into the supplied analysis, not verification of the original claim or the participants’ agreement."
+        "description": "Supplied 48-page analysis of the thread and the five essays. Page numbers and identifiers on each item refer to this document. Its reconstructions and inferences are labelled as such; it does not establish the participants’ agreement or verify the essays’ historical claims."
       },
       {
         "id": "analysis-v1",
         "title": "Second Renaissance thread: thinking-process trees · supplied text · 22 October 2026",
-        "description": "Supplied earlier analysis and presentation notes, based on a reported 32-post forum thread. Its throughput and governance-capacity proposals are hypotheses for a bounded case. The later PDF broadens the programme and distinguishes local improvements from a durable change in institutional selection. The draft introductory forum post was not sent. No original forum URL or manuscript excerpt is published as if independently verified."
+        "description": "Supplied earlier analysis and presentation notes, based on a reported 32-post version of the thread. Its throughput and governance-capacity proposals are hypotheses for a bounded case. The later analysis broadens the programme and distinguishes local improvements from a durable change in institutional selection. The draft introductory forum post it contains was not sent."
       }
-    ]
+    ],
+    "views": {
+      "conflict": [
+        {
+          "id": "k1",
+          "title": "Institutional strength and democratic integrity",
+          "summary": "A cooperative needs enough capacity to survive, but concentrating authority to get it erodes the member control that made it worth building.",
+          "nodes": [
+            "g2-c-k1-objective",
+            "g2-c-k1-viability",
+            "g2-c-k1-control",
+            "g2-c-k1-concentrate",
+            "g2-c-k1-distribute"
+          ]
+        },
+        {
+          "id": "k2",
+          "title": "AI capability and resilient autonomy",
+          "summary": "A community may need AI to keep up with rivals who use it, yet its essential functions must keep working when AI, power or a provider fails.",
+          "nodes": [
+            "g2-c-objective",
+            "g2-c-capability",
+            "g2-c-continuity",
+            "g2-c-depend",
+            "g2-c-optional"
+          ]
+        },
+        {
+          "id": "k3",
+          "title": "Unilateral protection and common security",
+          "summary": "Deterrence seems to demand more of a contested capability, while shared survival demands reciprocal limits on that same capability.",
+          "nodes": [
+            "g2-c-k3-objective",
+            "g2-c-k3-deterrence",
+            "g2-c-k3-deescalation",
+            "g2-c-k3-expand",
+            "g2-c-k3-restrain"
+          ]
+        },
+        {
+          "id": "k4",
+          "title": "Present provision and ecological viability",
+          "summary": "Essential services seem to depend on growing material throughput, while ecological limits require constraining it.",
+          "nodes": [
+            "g2-c-k4-objective",
+            "g2-c-k4-provision",
+            "g2-c-k4-limits",
+            "g2-c-k4-throughput",
+            "g2-c-k4-constrain"
+          ]
+        },
+        {
+          "id": "k5",
+          "title": "Controlled engagement and trustworthy relationships",
+          "summary": "A service needs funding to last, but engineering people’s attachment to secure it undermines the free choice that trust depends on.",
+          "nodes": [
+            "g2-c-k5-objective",
+            "g2-c-k5-continuity",
+            "g2-c-k5-care",
+            "g2-c-k5-engineer",
+            "g2-c-k5-free"
+          ]
+        }
+      ]
+    }
   },
-  "snapshot_sha256": "ed1daba85fa915e270eaa452fb572de42dea16d64c1b6c3b15ed30fa32789762"
+  "snapshot_sha256": "522c74820b2e7f03effa90ec9380c2770d262f13850bf9ccf176ed63adbb3fe8"
 }

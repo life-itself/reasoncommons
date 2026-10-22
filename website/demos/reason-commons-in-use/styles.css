@@ -103,6 +103,7 @@ a.card:hover{color:inherit;border-color:var(--green-line);border-left-color:var(
 .kind{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--role,var(--muted))}
 .role-goal .kind,.role-objective .kind{color:var(--dark)}
 .card-text{font-size:17px;font-weight:500;line-height:1.4;color:var(--ink);overflow-wrap:anywhere}
+.card-credit{font-size:14px;line-height:1.4;color:var(--ink-2)}
 .card-foot{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:8px;margin-top:auto}
 .cards{display:grid;gap:12px}
 .cards-grid{grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
@@ -186,6 +187,8 @@ p.ch-title{font-size:30px}
 .gh-main .eyebrow{color:var(--on-dark-2);margin:0}
 .gh-text{font-size:clamp(25px,2.6vw,33px);line-height:1.25;font-weight:500;letter-spacing:-.01em}
 .gh-by{display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--on-dark-2);font-size:15px}
+.gh-credit{color:var(--on-dark-2);font-size:15px;margin-top:-8px}
+.gh-credit a{color:#cfe5d6}
 .gh-main .chip-accepted{background:transparent;color:#cfe5d6;border-color:rgba(207,229,214,.5)}
 .gh-main .text-link{color:#cfe5d6;margin-top:auto}
 .gh-side{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:22px;display:flex;flex-direction:column;gap:16px}
@@ -206,6 +209,27 @@ p.ch-title{font-size:30px}
 .ov-chosen .eyebrow{color:var(--green-ink);margin:0 0 6px}
 .ov-chosen p:not(.eyebrow){color:var(--ink-2);margin-bottom:10px}
 .ov-chosen .cards{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+/* Titled parts of a tree, such as each conflict, and conflicts in brief on the overview */
+.tvs{display:grid;gap:44px}
+.tv{display:grid;gap:14px;min-width:0}
+.tv+.tv{border-top:1px solid var(--line);padding-top:34px}
+.tv-head{max-width:780px}
+.tv-head .eyebrow{margin-bottom:4px}
+.tv-head h2{font-size:28px;margin-bottom:6px}
+.tv-head p:not(.eyebrow){color:var(--ink-2)}
+.tv-credit{font-size:15px;margin-top:6px}
+.cloud-rows{display:grid;gap:16px;margin-top:14px}
+.cloud-row{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px 20px;display:grid;gap:12px}
+.cr-head h3{font-size:20px;margin-bottom:4px}
+.cr-head h3 a{color:var(--ink);text-decoration:none}
+.cr-head h3 a:hover{color:var(--green)}
+.cr-head p{color:var(--ink-2);font-size:16px}
+.cr-sides{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:stretch}
+.cr-vs{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--clay);text-align:center;align-self:center}
+@media (max-width:760px){
+  .cr-sides{grid-template-columns:minmax(0,1fr)}
+  .tv-head h2{font-size:24px}
+}
 
 /* Diagrams */
 .dg{margin:0;min-width:0}
@@ -225,6 +249,8 @@ p.ch-title{font-size:30px}
 .rc-diagram .role-goal .n-box,.rc-diagram .role-objective .n-box{fill:var(--dark);stroke:var(--dark)}
 .rc-diagram .role-goal .n-text,.rc-diagram .role-objective .n-text{fill:var(--on-dark)}
 .rc-diagram .role-goal .n-kind,.rc-diagram .role-objective .n-kind{fill:var(--on-dark-2)}
+.rc-diagram .n-credit{font-size:12px;font-weight:400;fill:var(--muted)}
+.rc-diagram .role-goal .n-credit,.rc-diagram .role-objective .n-credit{fill:var(--on-dark-2)}
 .rc-diagram .role-goal .n-check,.rc-diagram .role-objective .n-check{stroke:#a9d3b6}
 .rc-diagram :is(.role-critical_success_factor,.role-need,.role-desirable_effect,.role-expected_effect,.role-intermediate_objective) .n-box{fill:var(--green-pale);stroke:var(--green-line)}
 .rc-diagram :is(.role-critical_success_factor,.role-need,.role-desirable_effect,.role-expected_effect,.role-intermediate_objective) .n-kind{fill:var(--green-ink)}
@@ -249,7 +275,10 @@ p.ch-title{font-size:30px}
 .rc-diagram .e.is-disputed .e-line{stroke:var(--clay);stroke-dasharray:2 3;stroke-width:2}
 .rc-diagram .e.is-disputed .e-head{fill:var(--clay)}
 .rc-diagram .e-down .e-line{stroke-dasharray:1.5 4;stroke-linecap:round;stroke-width:2}
-.rc-diagram .e-conflict .e-line{stroke:var(--clay);stroke-width:2.2;stroke-dasharray:none}
+/* A conflict reads as a conflict at any standing: clay and heavier than other lines; its dash still shows the standing. */
+.rc-diagram .e.e-conflict .e-line{stroke:var(--clay);stroke-width:2.4;stroke-dasharray:none}
+.rc-diagram .e.e-conflict.is-proposed .e-line{stroke-dasharray:9 3}
+.rc-diagram .e.e-conflict.is-disputed .e-line{stroke-dasharray:2 3}
 .rc-diagram a.e:hover .e-line,.rc-diagram a.e:focus-visible .e-line,.rc-diagram .e.is-focus .e-line{stroke-width:3}
 .rc-diagram a.e:focus-visible{outline:none}
 .rc-diagram .e-tag rect{fill:var(--clay-pale);stroke:var(--clay-line)}
@@ -334,6 +363,7 @@ p.ch-title{font-size:30px}
 .o-item:hover{border-color:var(--green-line);border-left-color:var(--role)}
 .o-kind{display:block;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--role,var(--muted))}
 .o-text{display:block;font-size:17px;font-weight:500;line-height:1.4}
+.o-credit{display:block;font-size:14px;color:var(--muted);margin-top:3px}
 .o-rel{display:inline-block;font-size:14px;font-weight:700;color:var(--green);text-decoration:none;margin:2px 0}
 .o-rel.is-proposed{color:var(--amber)}
 .o-rel.is-disputed{color:var(--clay)}
@@ -415,6 +445,7 @@ p.ch-title{font-size:30px}
 .qc:hover{border-color:var(--green-line);color:inherit}
 .qc-task{font-weight:700;font-size:17px;line-height:1.35}
 .qc-note{font-size:15px;color:var(--ink-2)}
+.qc-credit{display:block;font-size:14px;color:var(--muted);margin-top:4px}
 .qc-about{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;background:var(--paper);border-radius:8px;padding:8px 10px}
 .qc-text{width:100%;font-size:15px;font-weight:500}
 .qc-where{font-size:13px;color:var(--muted)}
@@ -473,6 +504,7 @@ table{border-collapse:collapse;width:100%}
 .chg-revised .chg-type{background:var(--amber-pale);color:var(--amber)}
 .chg-disputed .chg-type{background:var(--clay-pale);color:var(--clay)}
 .chg-report .chg-type{background:var(--blue-pale);color:var(--blue)}
+.chg-credited .chg-type{background:var(--paper);color:var(--ink-2);border:1px solid var(--line-2)}
 .chg p{color:var(--ink-2)}
 .ch-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .ch-links a{font-size:14px;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px 10px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}

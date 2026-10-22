@@ -369,8 +369,8 @@ class ReconstructionTests(unittest.TestCase):
         state = helper.load(build.HERE / self.record["entry"]["source"])
         helper.validate(state)
         self.assertEqual(build.project_reconstruction(state, self.registry), self.data)
-        self.assertEqual(sum(len(t["nodes"]) for t in self.data["trees"].values()), 22)
-        self.assertEqual(sum(len(t["links"]) for t in self.data["trees"].values()), 15)
+        self.assertEqual(sum(len(t["nodes"]) for t in self.data["trees"].values()), 42)
+        self.assertEqual(sum(len(t["links"]) for t in self.data["trees"].values()), 35)
 
     def test_existing_reviewed_snapshots_remain_byte_for_byte_the_same(self):
         expected = {"real": "994c61a3deda57223fb20a363897d00c999bdf3244294d2601ee1fe100c39cfd",
@@ -427,13 +427,15 @@ class ReconstructionTests(unittest.TestCase):
                 self.assertIn("participants have not endorsed", value, name)
                 self.assertNotIn("Fictional example", value, name)
         items = self.outputs["gandhi-2-0/items.html"]
+        forum = next(s for s in self.data["sources"] if "posts" in s)
         for tree in self.data["trees"].values():
             for item in tree["nodes"] + tree["links"]:
-                for ref in item["source_refs"]:
-                    self.assertIn(pages.esc(ref["locator"]), items)
-        for ident in ("analysis-v1", "analysis-v2"):
-            self.assertIn(f'id="source-{ident}"', self.outputs["gandhi-2-0/about.html"])
-        self.assertIn("AI inference", items)
+                for ref in item["source_refs"]:  # A forum credit links its post; anything else names its locator.
+                    self.assertIn(pages.esc(f'{forum["url"]}/{ref["post"]}') if "post" in ref else pages.esc(ref["locator"]), items)
+        for source in self.data["sources"]:
+            self.assertIn(f'id="source-{source["id"]}"', self.outputs["gandhi-2-0/about.html"])
+        self.assertIn("Inferred by the AI", items)
+        self.assertIn("Paraphrased by the AI from this post", items)
 
     def test_overview_and_briefs_keep_the_trial_and_participation_provisional(self):
         overview = self.outputs["gandhi-2-0/index.html"]
@@ -443,7 +445,7 @@ class ReconstructionTests(unittest.TestCase):
         c = pages.Commons(build.normalize(self.record))
         for ident in c.order:
             brief = pages.brief(c, ident, self.site)
-            self.assertIn("Source locators:", brief)
+            self.assertIn("Sources:", brief)
             self.assertIn("participants have not endorsed", brief)
             self.assertIn("Copying this brief submits nothing", brief)
         self.assertNotIn("gandhi-2-0/learning.html", self.outputs)
@@ -454,7 +456,7 @@ class ReconstructionTests(unittest.TestCase):
         payload = '<img src=x onerror="alert(1)">'
         data["sources"][0]["title"] = payload
         registry["sources"][0]["title"] = payload
-        data["trees"]["goal"]["nodes"][0]["source_refs"][0]["locator"] = payload
+        data["trees"]["goal"]["nodes"][0]["source_refs"][-1]["locator"] = payload  # The analysis locator, after the forum credits.
         build.validate_reconstruction(data, registry)
         c = pages.Commons(build.normalize({**self.record, "data": data, "registry": registry}))
         for rendered in (pages.about_page(c, self.site), pages.items_page(c, self.site)):
@@ -462,9 +464,86 @@ class ReconstructionTests(unittest.TestCase):
             self.assertIn(pages.esc(payload), rendered)
 
     def test_conflict_outline_names_the_conflict_instead_of_implying_a_sequence(self):
-        for file in ("gandhi-2-0/index.html", "gandhi-2-0/conflict.html"):
+        clashes = [l["id"] for l in self.data["trees"]["conflict"]["links"] if l["relation"] == "conflicts_with"]
+        self.assertEqual(len(clashes), 5)
+        for file, expected in (("gandhi-2-0/index.html", clashes[:1]), ("gandhi-2-0/conflict.html", clashes)):
             self.assertNotIn('class="o-then">then', self.outputs[file])
-            self.assertIn('href="items.html#g2-c-rel-conflict">conflicts with</a>', self.outputs[file])
+            for ident in expected:
+                self.assertIn(f'href="items.html#{ident}">conflicts with</a>', self.outputs[file])
+
+    def broken(self, change, registry_too=False):
+        """Validate a copy of the release after one change, expecting refusal."""
+        data, registry = deepcopy(self.data), deepcopy(self.registry)
+        change(data)
+        if registry_too:
+            change(registry)
+        return lambda: build.validate_reconstruction(data, registry)
+
+    def ref(self, data, ident, source_id):
+        item = next(i for t in data["trees"].values() for i in t["nodes"] + t["links"] if i["id"] == ident)
+        return next(r for r in item["source_refs"] if r["source_id"] == source_id)
+
+    def test_a_credit_must_name_the_author_of_the_cited_post(self):
+        self.assertEqual(self.ref(self.data, "g2-c-optional", "forum"), {"source_id": "forum", "post": 30, "author": "robert", "basis": "paraphrase"})
+        swap = self.broken(lambda d: self.ref(d, "g2-c-optional", "forum").update(author="leif"))
+        self.assertRaisesRegex(ValueError, "author of post 30", swap)
+
+    def test_credits_need_a_real_post_or_locator_and_a_basis_that_fits_the_source(self):
+        for change in (lambda r: r.update(post=99), lambda r: r.update(post="30"), lambda r: r.update(basis="cited"),
+                       lambda r: r.update(quote="Words lifted from the post"), lambda r: r.pop("author")):
+            check = self.broken(lambda d, change=change: change(self.ref(d, "g2-c-optional", "forum")))
+            self.assertRaisesRegex(ValueError, "source locator", check)
+        essay = self.broken(lambda d: self.ref(d, "g2-c-k5-objective", "last-first").update(basis="paraphrase"))
+        self.assertRaisesRegex(ValueError, "source locator", essay)
+
+    def test_a_document_must_be_shared_in_a_post_by_its_author(self):
+        def move(record):
+            next(s for s in record["sources"] if s["id"] == "paradox")["shared_in_post"] = 30  # Robert's post.
+        self.assertRaisesRegex(ValueError, "shared in a post by its author", self.broken(move, registry_too=True))
+
+    def test_views_cover_every_statement_and_never_split_a_conflict(self):
+        def drop(record):
+            record["views"]["conflict"][0]["nodes"].remove("g2-c-k1-distribute")
+        self.assertRaisesRegex(ValueError, "splits the connection", self.broken(drop, registry_too=True))
+        def lose(record):
+            del record["views"]["conflict"][4]
+        self.assertRaisesRegex(ValueError, "must appear in a view", self.broken(lose, registry_too=True))
+
+    def test_all_five_conflicts_draw_as_clouds_with_credit_lines_that_fit(self):
+        c = pages.Commons(build.normalize(self.record))
+        tree = c.trees["conflict"]
+        for view in c.views["conflict"]:
+            nodes = {n["id"]: n for n in tree["nodes"] if n["id"] in view["nodes"]}
+            links = [l for l in tree["links"] if l["to"] in nodes]
+            self.assertIsNotNone(diagrams.cloud_roles(nodes, links), view["id"])
+            shape = diagrams.geometry(tree, view["nodes"], links, lambda k: pages.kind_label("conflict", k))
+            for placed in shape["nodes"].values():
+                self.assertTrue(placed["credit"])
+                for line in placed["credit"]:
+                    self.assertLessEqual(diagrams.text_width(line, diagrams.CREDIT_SIZE, diagrams.CREDIT_WEIGHT), placed["w"] - 2 * diagrams.PAD_X)
+            self.assertIn(f'id="view-{view["id"]}"', self.outputs["gandhi-2-0/conflict.html"])
+        page = self.outputs["gandhi-2-0/conflict.html"]
+        self.assertEqual(page.count("e-conflict"), 5)
+        self.assertIn('class="n-credit"', page)
+        self.assertIn("From Robert Bunge", page)
+
+    def test_every_credited_post_is_linked_and_people_are_counted(self):
+        forum = next(s for s in self.data["sources"] if "posts" in s)
+        cited = {r["post"] for t in self.data["trees"].values() for i in t["nodes"] + t["links"] for r in i["source_refs"] if "post" in r}
+        items = self.outputs["gandhi-2-0/items.html"]
+        for post in cited:
+            self.assertIn(f'href="{forum["url"]}/{post}"', items)
+        overview = self.outputs["gandhi-2-0/index.html"]
+        self.assertIn('id="credits"', overview)
+        for name in ("Leif Eriksson", "Robert Bunge", "The supplied analysis alone"):
+            self.assertIn(name, overview)
+        self.assertNotIn(">Justin<", overview)  # Listed as a thread author, but nothing in this release draws on his post.
+
+    def test_conflict_line_is_styled_apart_from_proposed_lines(self):
+        css = self.outputs["styles.css"]
+        proposed = css.index(".rc-diagram .e.is-proposed .e-line{")
+        conflict = css.index(".rc-diagram .e.e-conflict .e-line{stroke:var(--clay)")
+        self.assertGreater(conflict, proposed)  # Equal specificity, so the later rule wins.
 
     def test_release_is_readable_without_a_download_or_script(self):
         about = self.outputs["gandhi-2-0/about.html"]
