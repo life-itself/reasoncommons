@@ -30,6 +30,7 @@ STANDINGS = {"accepted": "Accepted for now", "proposed": "Proposed", "disputed":
 NODE_W, GOAL_W, PAD_X, PAD = 214, 260, 14, 18
 TEXT_SIZE, TEXT_WEIGHT, LINE = 15, 500, 19.5
 KIND_SIZE, KIND_TRACK = 10, 1.1
+CREDIT_SIZE, CREDIT_WEIGHT, CREDIT_LINE = 12, 400, 15.5  # Who an idea comes from, beneath a reconstruction's statement.
 H_GAP = 26
 
 
@@ -68,7 +69,9 @@ def shown(node):
 def box(node, kind_label, width=None):
     width = width or (GOAL_W if node["kind"] == "goal" else NODE_W)
     lines = wrap(shown(node), width - 2 * PAD_X)
-    return {"w": width, "h": round(40 + (len(lines) - 1) * LINE + 15), "lines": lines, "kind_label": kind_label}
+    credit = wrap(node["credit"], width - 2 * PAD_X, CREDIT_SIZE, CREDIT_WEIGHT) if node.get("credit") else []
+    extra = 8 + len(credit) * CREDIT_LINE if credit else 0
+    return {"w": width, "h": round(40 + (len(lines) - 1) * LINE + 15 + extra), "lines": lines, "credit": credit, "kind_label": kind_label}
 
 
 # ---------------------------------------------------------------- geometry helpers
@@ -529,7 +532,7 @@ def node_svg(node, placed, href, focus=False, tree_label=""):
     x, y, w, h = placed["x"], placed["y"], placed["w"], placed["h"]
     classes = f'n role-{node["kind"]} is-{node["status"]}' + (" is-focus" if focus else "")
     standing = STANDINGS[node["status"]]
-    label = f'{placed["kind_label"]}, {standing.lower()}: {node["text"]}'
+    label = f'{placed["kind_label"]}, {standing.lower()}: {node["text"]}' + (f' {node["credit"]}.' if node.get("credit") else "")
     kind = placed["kind_label"].upper()
     kind_room = w - 2 * PAD_X - (16 if node["status"] == "accepted" else text_width(STANDINGS[node["status"]].upper(), KIND_SIZE, 700, KIND_TRACK) + 8)
     if text_width(kind, KIND_SIZE, 700, KIND_TRACK) > kind_room:
@@ -537,11 +540,16 @@ def node_svg(node, placed, href, focus=False, tree_label=""):
             kind = kind[:-1].rstrip()
         kind += "…"
     lines = "".join(f'<tspan x="{x + PAD_X:g}" dy="{0 if i == 0 else LINE:g}">{esc(line)}</tspan>' for i, line in enumerate(placed["lines"]))
+    credit = ""
+    if placed.get("credit"):  # Baselines start one credit line below the statement's last line, after a small gap.
+        top = y + 40 + (len(placed["lines"]) - 1) * LINE + 7 + CREDIT_LINE
+        spans = "".join(f'<tspan x="{x + PAD_X:g}" dy="{0 if i == 0 else CREDIT_LINE:g}">{esc(line)}</tspan>' for i, line in enumerate(placed["credit"]))
+        credit = f'<text class="n-credit" x="{x + PAD_X:g}" y="{top:g}">{spans}</text>'
     focus_ring = f'<rect class="n-ring" x="{x - 5:g}" y="{y - 5:g}" width="{w + 10:g}" height="{h + 10:g}" rx="13"/>' if focus else ""
     return (f'<a class="{classes}" href="{esc(href)}" data-id="{esc(node["id"])}" aria-label="{esc(label)}">{focus_ring}'
             f'<rect class="n-box" x="{x:g}" y="{y:g}" width="{w:g}" height="{h:g}" rx="9"/>'
             f'<text class="n-kind" x="{x + PAD_X:g}" y="{y + 20:g}">{esc(kind)}</text>{_standing(node, x, y + 20, w)}'
-            f'<text class="n-text" x="{x + PAD_X:g}" y="{y + 40:g}">{lines}</text></a>')
+            f'<text class="n-text" x="{x + PAD_X:g}" y="{y + 40:g}">{lines}</text>{credit}</a>')
 
 
 def svg(shape, nodes, href, title, focus=None, css=""):
@@ -690,8 +698,9 @@ def outline(tree, ids, links, href, kind_label):
     def line(ident, prefix=""):
         node = nodes[ident]
         badge = "" if node["status"] == "accepted" else f' <span class="chip chip-{node["status"]}">{STANDINGS[node["status"]]}</span>'
+        credit = f'<span class="o-credit">{esc(node["credit"])}</span>' if node.get("credit") else ""
         return (f'{prefix}<a class="o-item role-{node["kind"]}" href="{esc(href(ident))}"><span class="o-kind">{esc(kind_label(node["kind"]))}</span>'
-                f'<span class="o-text">{esc(node["text"])}</span></a>{badge}')
+                f'<span class="o-text">{esc(node["text"])}</span>{credit}</a>{badge}')
 
     def branch(ident, depth=0):
         if ident in shown_once:

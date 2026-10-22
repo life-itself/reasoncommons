@@ -60,8 +60,13 @@ VERDICTS = {"observed": "Observed", "not_observed": "Not observed", "unclear": "
 READINESS = {"experienced": "Has experienced the change", "not_yet": "Not yet experienced", "cannot_assess": "Cannot assess"}
 WORK_GROUPS = [("Explain or connect", {"connect_or_explain"}), ("Check an assumption", {"examine_assumption"}),
                ("Examine a challenge", {"resolve_challenge"}), ("Find out what happens", {"review_feedback", "test_causality"})]
-CHANGE_WORDS = {"added": "Added", "revised": "Reworded", "disputed": "Disputed", "accepted": "Accepted", "removed": "Removed", "report": "Reports"}
+CHANGE_WORDS = {"added": "Added", "revised": "Reworded", "disputed": "Disputed", "accepted": "Accepted", "removed": "Removed", "report": "Reports", "credited": "Credited"}
 TRACE_WORDS = {"addresses": "Meant to address", "derived_from": "Developed from", "implements": "Puts into practice"}
+BASIS_WORDS = {"paraphrase": "Paraphrased by the AI from this post.", "related": "Makes a related point; the statement goes beyond it.",
+               "cited": "Cited by the supplied analysis; the essay itself has not been checked here.",
+               "reconstruction": "Reconstructed by the supplied analysis.", "inference": "Inferred by the AI; the sources do not state it."}
+CREDIT_CAVEAT = "A credit says where an idea comes from, not that its author agrees with this wording. None of the people credited has reviewed it."
+VIEW_NOUNS = {"conflict": "Conflict"}
 
 
 def esc(value):
@@ -109,6 +114,12 @@ class Commons:
         for tree in self.trees.values():
             for task in tree["backlog"]:
                 self.backlog[task["ref"]].append(task)
+        self.source_by_id = {s["id"]: s for s in self.sources}
+        self.forum = next((s for s in self.sources if "posts" in s), None)
+        if self.is_reconstruction:  # Diagram boxes carry a short credit line beneath the statement.
+            for tree in self.trees.values():
+                for node in tree["nodes"]:
+                    node["credit"] = credit_line(self, node["source_refs"], numbers=False)
 
     def is_link(self, ident):
         return "relation" in self.items[ident]
@@ -178,10 +189,114 @@ def endorsement(item):
 def card(c, ident, tree=None, extra=""):
     item = c.items[ident]
     tree = tree or c.tree_of[ident]
+    credit = f'<span class="card-credit">{esc(credit_line(c, item["source_refs"]))}</span>' if c.is_reconstruction else ""
     return (f'<a class="card role-{item["kind"]} is-{item["status"]}" href="items.html#{ident}">'
             f'<span class="card-top"><span class="kind">{esc(kind_label(tree, item["kind"]))}</span>{chip(item["status"])}</span>'
-            f'<span class="card-text">{esc(item["text"])}</span>{extra}'
+            f'<span class="card-text">{esc(item["text"])}</span>{credit}{extra}'
             f'<span class="card-foot">{esc(endorsement(item))}</span></a>')
+
+
+# ---------------------------------------------------------------- credits in a source reconstruction
+
+def post_url(c, number):
+    return f'{c.forum["url"]}/{number}'
+
+
+def credit_people(c, refs):
+    """Whose ideas an item draws on: people credited directly (paraphrased posts, cited essays), then those whose posts make a related point."""
+    people = {}
+    for ref in refs:
+        source = c.source_by_id[ref["source_id"]]
+        if "posts" in source:
+            entry = people.setdefault(ref["author"], {"posts": [], "related": [], "essays": []})
+            entry["posts" if ref["basis"] == "paraphrase" else "related"].append(ref["post"])
+        elif "author" in source:
+            people.setdefault(source["author"], {"posts": [], "related": [], "essays": []})["essays"].append(source["id"])
+    direct = {a: e for a, e in people.items() if e["posts"] or e["essays"]}
+    return direct, {a: e for a, e in people.items() if a not in direct}
+
+
+def credit_line(c, refs, numbers=True, link=False):
+    """Plain text for cards and diagram boxes, which are links themselves; with link=True, escaped HTML linking each post."""
+    direct, related = credit_people(c, refs)
+    text = esc if link else str
+
+    def number(n):
+        return f'<a href="{esc(post_url(c, n))}">{n}</a>' if link else str(n)
+
+    def named(group, key):
+        parts = []
+        for author, entry in group.items():
+            detail = []
+            if numbers and entry[key]:
+                detail.append(("post " if len(entry[key]) == 1 else "posts ") + ", ".join(number(n) for n in entry[key]))
+            if numbers and key == "posts" and entry["essays"]:
+                detail.append("essay" if len(entry["essays"]) == 1 else "essays")
+            parts.append(text(c.authors[author]["name"]) + (f" ({'; '.join(detail)})" if detail else ""))
+        return " · ".join(parts)
+    if direct:
+        return "From " + named(direct, "posts") + (f" · related: {named(related, 'related')}" if related and numbers else "")
+    if related:
+        return "Related: " + named(related, "related")
+    return "From the supplied analysis"
+
+
+def linked_people(c, refs, link=True):
+    """Every person an item or group of items draws on, each post linked to the forum (or plain text inside a link)."""
+    direct, related = credit_people(c, refs)
+    parts = []
+    for author, entry in {**direct, **related}.items():
+        posts = sorted(set(entry["posts"] + entry["related"]))
+        numbers = ", ".join(f'<a href="{esc(post_url(c, n))}">{n}</a>' if link else str(n) for n in posts)
+        detail = ([("post " if len(posts) == 1 else "posts ") + numbers] if posts else []) + (["essay" if len(entry["essays"]) == 1 else "essays"] if entry["essays"] else [])
+        name = esc(c.authors[author]["name"]) if link else c.authors[author]["name"]
+        parts.append(f'{name} ({"; ".join(detail)})')
+    return names(parts) if parts else "the supplied analysis"
+
+
+def source_row(c, ref):
+    source = c.source_by_id[ref["source_id"]]
+    if "posts" in source:
+        post = source["posts"][str(ref["post"])]
+        where = f'<a href="{esc(post_url(c, ref["post"]))}">{esc(c.authors[ref["author"]]["name"])}, post {ref["post"]}</a> · {day(post["date"])}'
+    elif "author" in source:
+        where = (f'{esc(c.authors[source["author"]]["name"])}, <a href="about.html#source-{esc(source["id"])}">{esc(source["title"].split(" · ")[0])}</a> · {esc(ref["locator"])} · '
+                 f'shared in <a href="{esc(post_url(c, source["shared_in_post"]))}">post {source["shared_in_post"]}</a>')
+    else:
+        where = f'<a href="about.html#source-{esc(source["id"])}">{esc(source["title"])}</a> · {esc(ref["locator"])}'
+    return f'<li><p>{where}</p><p class="muted">{BASIS_WORDS[ref["basis"]]}</p></li>'
+
+
+def source_brief(c, ref):
+    source = c.source_by_id[ref["source_id"]]
+    if "posts" in source:
+        return f'{c.authors[ref["author"]]["name"]}, post {ref["post"]} ({ref["basis"]}): {post_url(c, ref["post"])}'
+    if "author" in source:
+        return f'{c.authors[source["author"]]["name"]}, {source["title"].split(" · ")[0]}, {ref["locator"]} (cited by the analysis; shared in post {source["shared_in_post"]})'
+    return f'{source["id"]}: {ref["locator"]} ({ref["basis"]})'
+
+
+def credits_table(c):
+    """Whose ideas the map draws on, counted from the credits on each item; the AI selected and worded all of them."""
+    direct_n, related_n, analysis_only = defaultdict(lambda: [0, 0]), defaultdict(lambda: [0, 0]), [0, 0]
+    for tree in c.trees.values():
+        for index, key in ((0, "nodes"), (1, "links")):
+            for item in tree[key]:
+                direct, related = credit_people(c, item["source_refs"])
+                for author in direct:
+                    direct_n[author][index] += 1
+                for author in related:
+                    related_n[author][index] += 1
+                if not direct and not related:
+                    analysis_only[index] += 1
+    rows = [f'<tr><th scope="row">{esc(person["name"])}<span>{esc(person["role"])}</span></th><td>{direct_n[key][0]} · {direct_n[key][1]}</td><td>{related_n[key][0]} · {related_n[key][1]}</td></tr>'
+            for key, person in c.authors.items() if key in direct_n or key in related_n]
+    statements, connections = c.counts()
+    rows.append(f'<tr><th scope="row">The supplied analysis alone<span>No post or essay is credited</span></th><td>{analysis_only[0]} · {analysis_only[1]}</td><td>—</td></tr>')
+    rows.append(f'<tr><th scope="row">AI assistant<span>Selected, worded and connected every item; it cannot accept anything</span></th><td colspan="2">all {statements} · {connections}</td></tr>')
+    return (f'<div class="table-wrap"><table class="people credits"><thead><tr><th scope="col">Whose ideas</th><th scope="col">Drawn from their posts or essays<br><span>statements · connections</span></th>'
+            f'<th scope="col">Related points only<br><span>statements · connections</span></th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>'
+            f'<p class="fine">{esc(CREDIT_CAVEAT)}</p>')
 
 
 def figure(svg, label, caption="", width=None):
@@ -258,15 +373,16 @@ def brief(c, ident, site):
         closing = ("Use the reason-commons skill if you have it, and treat this as practice: there is no shared record behind this example. "
                    "Help me work out a question, an observation or a challenge, and keep it as a draft. Copying this brief submits nothing.")
     elif c.is_reconstruction:
-        opening = f"I'm reading Gandhi 2.0, a proposed AI reconstruction from supplied analyses of a real discussion, and want to develop a contribution about one {noun}. The original participants have not endorsed this map."
-        closing = ("Use the reason-commons skill if available. Check the cited analysis and, if accessible, the original passage before attributing the claim to a participant. "
+        opening = (f"I'm reading Gandhi 2.0, a proposed AI reconstruction from a public forum thread and analyses of it, and want to develop a contribution about one {noun}. "
+                   "The original participants have not endorsed this map, and none of the people credited has reviewed its wording.")
+        closing = ("Use the reason-commons skill if available. Read the credited posts before attributing the claim to a participant: the wording is the AI's paraphrase, not theirs. "
                    "Help me develop a question, correction or challenge as a draft; don't treat my interest as endorsement or invent a trial commitment. Copying this brief submits nothing.")
     else:
         opening = f"I'm reading a commons on the Reason Commons demonstration site and want to develop a contribution about one {noun}."
         closing = ("Use the reason-commons skill if you have it. First establish who I am and whether I can reach the current working record, "
                    "and check whether this item has changed since this release before proposing anything. Help me work out a question, an observation "
                    "or a challenge; don't assume I endorse the item. If I can't reach the shared record, help me keep a draft. Copying this brief submits nothing.")
-    locators = "" if not c.is_reconstruction else "\nSource locators: " + "; ".join(f'{ref["source_id"]}: {ref["locator"]} ({ref["basis"]})' for ref in item["source_refs"])
+    locators = "" if not c.is_reconstruction else "\nSources: " + "; ".join(source_brief(c, ref) for ref in item["source_refs"])
     return (f"{opening}\n\nCommons: {c.title}\nRelease: {c.release_id}, published {day(c.date)}\nQuestion: {TREES[name]['question']}\n"
             f"Item: {ident} ({c.kind_of(ident)})\nStanding in this release: {standing}{locators}\n\n{wording}\n\nPublic page: {url}\n\n{closing}")
 
@@ -284,7 +400,7 @@ def shell(*, title, description, depth, body, nav=None, c=None, page="", head=""
                   f'to show everything a commons can hold. <a href="{up}reason-commons/index.html">See a real commons →</a></div></div>')
     elif c and c.is_reconstruction:
         banner = ('<div class="reconstruction-banner" role="note"><div class="wrap"><strong>Source reconstruction · Proposed.</strong> '
-                  'Prepared by AI from supplied analyses. The discussion participants have not endorsed this map. '
+                  'Prepared by AI from a public forum thread and analyses of it, with each idea credited to the posts it comes from. The discussion participants have not endorsed this map. '
                   '<a href="about.html#sources">Sources and limits →</a></div></div>')
     return f"""<!doctype html>
 <html lang="en">
@@ -457,24 +573,71 @@ def reconstruction_outline(c, name, ids, links):
     return rendered
 
 
+def assumption_list(notes):
+    items = "".join(f'<li><span class="m-n">{i}</span><div><p>{esc(a["text"])}</p><p class="muted">Assumed by {esc(a["by"])} under <a href="items.html#{l["id"]}">{esc(diagrams.RELATIONS.get(l["relation"], l["relation"]))}</a>'
+                    f'{" · this connection is disputed" if l["status"] == "disputed" else ""}</p></div></li>'
+                    for i, l in enumerate(notes, 1) for a in l["assumptions"][:1])
+    return f'<div class="assumptions"><h3>Assumptions under the arrows</h3><ol>{items}</ol></div>' if items else ""
+
+
+def toggled(diagram, outline, label="Show as"):
+    return (f'<div class="view-toggle" role="group" aria-label="{esc(label)}" hidden><button type="button" data-view="diagram" aria-pressed="true">Diagram</button>'
+            f'<button type="button" data-view="outline" aria-pressed="false">Outline</button></div>'
+            f'<div class="views" data-views><div class="view view-diagram" data-view-panel="diagram">{diagram}</div>'
+            f'<div class="view view-outline" data-view-panel="outline"><h3 class="sr-only">Outline</h3>{outline}</div></div>')
+
+
+def view_body(c, name, view, caption="", label="Show as"):
+    """One titled part of a tree: its diagram with numbered assumptions, or the same topology as an outline."""
+    tree = c.trees[name]
+    members = set(view["nodes"])
+    links = [l for l in tree["links"] if l["to"] in members]  # Views never split a joint condition or a pair of positions.
+    shape = diagrams.geometry(tree, view["nodes"], links, lambda k: kind_label(name, k))
+    notes = diagrams.number_markers(shape)
+    svg = diagrams.svg(shape, {n["id"]: n for n in tree["nodes"]}, c.href, f'{view["title"]}: {plural(len(view["nodes"]), "statement")}')
+    diagram = f'<div class="dg-set">{figure(svg, "Diagram: " + view["title"] + ". Scrolls sideways when it is wider than the screen.", caption, width=shape["w"])}</div>' + assumption_list(notes)
+    outline = reconstruction_outline(c, name, view["nodes"], links) if c.is_reconstruction else diagrams.outline(tree, view["nodes"], links, c.href, lambda k: kind_label(name, k))
+    return toggled(diagram, outline, label), links
+
+
+def view_section(c, name, view, eyebrow):
+    body, links = view_body(c, name, view)
+    credit = ""
+    if c.is_reconstruction:
+        refs = [r for ident in view["nodes"] + [l["id"] for l in links] for r in c.items[ident]["source_refs"]]
+        credit = f'<p class="tv-credit">Draws on {linked_people(c, refs)}.</p>'
+    ident = esc(view["id"])
+    return (f'<section class="tv" id="view-{ident}" aria-labelledby="view-{ident}-title"><div class="tv-head"><p class="eyebrow">{esc(eyebrow)}</p>'
+            f'<h2 id="view-{ident}-title">{esc(view["title"])}</h2><p>{esc(view["summary"])}</p>{credit}</div>{body}</section>')
+
+
+def cloud_row(c, view):
+    """A conflict in brief: its two positions side by side, each with the people it comes from."""
+    members = set(view["nodes"])
+    clash = next((l for l in c.trees["conflict"]["links"] if l["relation"] == "conflicts_with" and l["to"] in members), None)
+    positions = clash["from"] + [clash["to"]] if clash else [i for i in view["nodes"] if c.items[i]["kind"] == "prerequisite"]
+    sides = '<span class="cr-vs">conflicts with</span>'.join(card(c, i, "conflict") for i in positions)
+    return (f'<article class="cloud-row"><div class="cr-head"><h3><a href="conflict.html#view-{esc(view["id"])}">{esc(view["title"])}</a></h3><p>{esc(view["summary"])}</p></div>'
+            f'<div class="cr-sides">{sides}</div></article>')
+
+
 def reconstruction_overview(c, site):
     goal = next(n for n in c.trees["goal"]["nodes"] if n["kind"] == "goal")
     statements, connections = c.counts()
     conditions = "".join(card(c, ident) for ident in ("g2-g-capability", "g2-g-control", "g2-g-future"))
-    _, shapes, _ = c.shapes("conflict")
-    cloud = "".join(figure(diagrams.svg(s, {n["id"]: n for n in c.trees["conflict"]["nodes"]}, c.href, "AI capability and resilient autonomy: a proposed conflict"), "Proposed conflict: AI capability and resilient autonomy", "The dashed connections are proposed. The two positions concern the same essential function; inspect each connection to question its assumption.") for s in shapes)
-    tree = c.trees["conflict"]
-    outline = reconstruction_outline(c, "conflict", [n["id"] for n in tree["nodes"]], tree["links"])
-    cloud = ('<div class="view-toggle" role="group" aria-label="Show conflict as" hidden><button type="button" data-view="diagram" aria-pressed="true">Diagram</button><button type="button" data-view="outline" aria-pressed="false">Outline</button></div>'
-             f'<div class="views" data-views><div class="view view-diagram">{cloud}</div><div class="view view-outline">{outline}</div></div>')
+    clouds = c.views["conflict"]
+    featured, _ = view_body(c, "conflict", clouds[0], "Each position is held to meet the need beside it. Inspect a connection to question its assumption.", "Show conflict as")
+    others = "".join(cloud_row(c, view) for view in clouds[1:])
     body = commons_head(c, "overview") + f'''<div class="wrap overview">
-<section class="goal-hero"><div class="gh-main"><p class="eyebrow">The proposed goal</p><p class="gh-text">{esc(goal["text"])}</p><p class="gh-by">{chip("proposed")} <span>Reconstructed by AI; awaiting participant review</span></p><a class="text-link" href="items.html#{goal["id"]}">Inspect the goal →</a></div><div class="gh-side"><p class="eyebrow">From a conversation to a shared question</p><p>{esc(c.description)}</p><p class="gh-count"><b>{statements}</b> proposed statements<br><b>{connections}</b> proposed connections</p><a class="text-link" href="about.html#sources">Where this map comes from →</a></div></section>
+<section class="goal-hero"><div class="gh-main"><p class="eyebrow">The proposed goal</p><p class="gh-text">{esc(goal["text"])}</p><p class="gh-by">{chip("proposed")} <span>Reconstructed by AI; awaiting participant review</span></p><p class="gh-credit">{credit_line(c, goal["source_refs"], link=True)}</p><a class="text-link" href="items.html#{goal["id"]}">Inspect the goal →</a></div><div class="gh-side"><p class="eyebrow">From a conversation to a shared question</p><p>{esc(c.description)}</p><p class="gh-count"><b>{statements}</b> proposed statements<br><b>{connections}</b> proposed connections</p><a class="text-link" href="#credits">Whose ideas these are →</a><a class="text-link" href="about.html#sources">Where this map comes from →</a></div></section>
 <section class="ov"><div class="ov-head"><p class="eyebrow">A place to begin</p><h2>What seems to be shared</h2><p>The analyses report overlapping concerns: useful capabilities, meaningful control and preserving the possibility of a future. These are candidate starting points for review.</p></div><div class="cards cards-grid">{conditions}</div><a class="text-link" href="goal.html">The goal and its proposed conditions →</a></section>
-<section class="ov"><div class="ov-head"><p class="eyebrow">Pulling apart</p><h2>Useful capacity, without becoming captive</h2><p>A community needs enough capability to endure. It also needs to keep essential functions running when a provider, power supply or AI fails. Does that really require choosing between dependence on AI and doing without it?</p></div>{cloud}<a class="text-link" href="conflict.html">Inspect the conflict and its assumptions →</a></section>
-<section class="ov"><div class="ov-head"><p class="eyebrow">A possible change</p><h2>Try conflict guidance that members can question and leave</h2><p>The proposal is to test useful guidance while members retain control, access to human help and competence without the tool. Confidentiality, fair grievance handling and independent comparison are part of the design.</p></div><div class="cards cards-grid">{card(c, "g2-f-guidance")}{card(c, "g2-f-protections")}</div><a class="text-link" href="change.html">The proposed change and its effects →</a></section>
+<section class="ov"><div class="ov-head"><p class="eyebrow">Pulling apart · {plural(len(clouds), "conflict")}</p><h2>Where needs pull two ways</h2><p>The analysis finds {len(clouds)} conflicts in the discussion. The first sits behind the problem of central intervention: a cooperative needs enough capacity to survive, but concentrating authority to get it erodes the member control that made it worth building.</p></div>{featured}<a class="text-link" href="conflict.html#view-{esc(clouds[0]["id"])}">Inspect this conflict and its assumptions →</a>
+<div class="cloud-rows">{others}</div><a class="text-link" href="conflict.html">All {len(clouds)} conflicts, with their assumptions →</a></section>
+<section class="ov"><div class="ov-head"><p class="eyebrow">A possible change</p><h2>Try conflict guidance that members can question and leave</h2><p>The proposal is to test useful guidance while members retain control, access to human help and competence without the tool. It is one candidate way through the first conflict: if members can work through disagreements themselves, less authority needs to move upward. Confidentiality, fair grievance handling and independent comparison are part of the design.</p></div><div class="cards cards-grid">{card(c, "g2-f-guidance")}{card(c, "g2-f-protections")}</div><a class="text-link" href="change.html">The proposed change and its effects →</a></section>
 <section class="ov"><div class="ov-head"><p class="eyebrow">The question to test</p><h2>What would change our minds?</h2><p>Do destructive conflict costs and unnecessary escalation fall, while fair treatment, independent competence and member influence remain? Compare AI guidance with optional-AI and human approaches.</p></div><div class="cards cards-grid">{card(c, "g2-f-benefit")}{card(c, "g2-f-harm")}</div><p>Fewer complaints or higher satisfaction would not settle it. Costs may have moved elsewhere, or justified grievances may have been silenced. Agree the comparison and the results that would defeat the claim before starting.</p><p>A local success would still leave a larger question open: do small democratic groups gain enough relative to hierarchies to change which institutions survive? The supplied analyses do not establish that step.</p><a class="text-link" href="items.html#g2-f-rel-benefit">Inspect the prediction and what remains untested →</a></section>
 <section class="ov"><div class="ov-head"><p class="eyebrow">First step · Unassigned</p><h2>Choose one willing host and one function</h2><p>No trial is recorded here. The first task is to establish a bounded case, check what already operates, and agree measures, protections, responsibilities and resources with the people affected. A missing detail in an analysis does not prove that a host lacks it.</p></div><div class="cards cards-grid">{card(c, "g2-t-select")}{card(c, "g2-p-protocol")}</div><a class="text-link" href="prerequisites.html">What has to happen first →</a></section>
 <section class="ov"><div class="ov-head"><p class="eyebrow">The wider picture</p><h2>One entry point into a broader programme</h2><p>The sources also explore reflective development, trustworthy governance, model adaptation, voice participation, federation, material services and security. Conflict guidance is one possible starting point. No single global constraint has been established.</p></div>{strip(c)}<p><a class="text-link" href="map.html">Explore all six views →</a></p><p><a class="text-link" href="questions.html">Review the open questions →</a></p></section>
+<section class="ov" id="credits"><div class="ov-head"><p class="eyebrow">People</p><h2>Whose ideas these are</h2><p>Each statement and connection credits the forum posts or essays it draws on. Open any statement to follow the links to the posts themselves.</p></div>{credits_table(c)}<a class="text-link" href="about.html#sources">The thread, the essays and the analyses →</a></section>
 </div>'''
     return shell(title=f"{c.name} · Reason Commons", description=c.summary, depth=1, body=body, nav="commons", c=c, page="overview")
 
@@ -604,10 +767,7 @@ def tree_page(c, name, site):
         svg = diagrams.svg(shape, nodes, c.href, f'{info["question"]}: {plural(len(shape["nodes"]), "statement")}')
         figures.append(figure(svg, f'Diagram: {info["question"]} Scrolls sideways when it is wider than the screen.', width=shape["w"]))
         if notes:
-            items = "".join(f'<li><span class="m-n">{i}</span><div><p>{esc(a["text"])}</p><p class="muted">Assumed by {esc(a["by"])} under <a href="items.html#{l["id"]}">{esc(diagrams.RELATIONS.get(l["relation"], l["relation"]))}</a>'
-                            f'{" · this connection is disputed" if l["status"] == "disputed" else ""}</p></div></li>'
-                            for i, l in enumerate(notes, 1) for a in l["assumptions"][:1])
-            diagram_parts.append(f'<div class="assumptions"><h3>Assumptions under the arrows</h3><ol>{items}</ol></div>')
+            diagram_parts.append(assumption_list(notes))
         outline_parts.append(reconstruction_outline(c, name, piece["ids"], piece["links"]) if c.is_reconstruction else diagrams.outline(tree, piece["ids"], piece["links"], c.href, lambda k: kind_label(name, k)))
     if figures:
         diagram_parts.insert(0, f'<div class="dg-set">{"".join(figures)}</div>')
@@ -628,6 +788,9 @@ def tree_page(c, name, site):
              f'<div class="view view-outline" data-view-panel="outline"><h2 class="sr-only">Outline</h2>{"".join(outline_parts)}</div></div>')
     if not shapes:  # Nothing connected to draw: the role groups are the whole view.
         views = f'<div class="views">{"".join(diagram_parts)}</div>'
+    if c.views.get(name):  # Titled parts, each with its own diagram, assumptions and outline.
+        parts = c.views[name]
+        views = '<div class="tvs">' + "".join(view_section(c, name, view, f'{VIEW_NOUNS.get(name, "Part")} {i} of {len(parts)}') for i, view in enumerate(parts, 1)) + '</div>'
     open_count = len([i for i in tree["nodes"] + tree["links"] if c.backlog.get(i["id"]) or i["status"] == "disputed"])
     previous = TREE_ORDER[index - 1] if index else None
     following = TREE_ORDER[index + 1] if index + 1 < len(TREE_ORDER) else TREE_ORDER[0]
@@ -668,6 +831,11 @@ def item_detail(c, ident, site):
              '<p class="muted">Its sources and target are shown above, with the relation between them.</p>' if link else
              '<p class="muted">Not yet connected. No published connection leads into or out of this statement.</p>')
     facts = [("Contributed by", names(x["name"] for x in item["contributors"]))]
+    if c.is_reconstruction:
+        direct, related = credit_people(c, item["source_refs"])
+        facts.append(("Ideas from", names(c.authors[a]["name"] for a in direct) or "The supplied analysis"))
+        if related:
+            facts.append(("Related posts by", names(c.authors[a]["name"] for a in related)))
     if item["status"] == "accepted":
         facts.append(("Accepted for now by", names(item["accepted_by"])))
     elif item["status"] == "disputed":
@@ -688,9 +856,8 @@ def item_detail(c, ident, site):
         traces += '<div><dt>Referred to by</dt><dd>' + "".join(f'<a href="#{o}">{esc(c.short(o))}</a>' for o, _ in backrefs) + "</dd></div>"
     sections = []
     if c.is_reconstruction:
-        source_titles = {source["id"]: source["title"] for source in c.sources}
-        rows = "".join(f'<li><p><a href="about.html#source-{esc(ref["source_id"])}">{esc(source_titles[ref["source_id"]])}</a> · {esc(ref["locator"])}</p><p class="muted">{"AI inference" if ref["basis"] == "inference" else "AI reconstruction"} from the supplied analysis; the original passage has not been independently checked.</p></li>' for ref in item["source_refs"])
-        sections.append(f'<section class="d-sec d-sources"><h3>Sources and reconstruction</h3><ul class="notes">{rows}</ul></section>')
+        rows = "".join(source_row(c, ref) for ref in item["source_refs"])
+        sections.append(f'<section class="d-sec d-sources"><h3>Where this comes from</h3><ul class="notes">{rows}</ul><p class="fine">{esc(CREDIT_CAVEAT)}</p></section>')
     if not link:
         rels = [l for l in tree["links"] if ident in l["from"] or l["to"] == ident]
         if rels:
@@ -702,7 +869,8 @@ def item_detail(c, ident, site):
             rows = "".join(f'<li><p>{esc(a["text"])}</p><p class="muted">{"Assumed" if key == "assumptions" else "Raised"} by {esc(a["by"])}</p></li>' for a in item[key])
             sections.append(f'<section class="d-sec d-{key}"><h3>{title}</h3><ul class="notes">{rows}</ul></section>')
     if c.backlog.get(ident):
-        rows = "".join(f'<li><p>{esc(t.get("label") or t["work"].replace("_", " ").capitalize())}</p>' + (f'<p class="muted">{esc(t["note"])}</p>' if t.get("note") else "") + "</li>"
+        rows = "".join(f'<li><p>{esc(t.get("label") or t["work"].replace("_", " ").capitalize())}</p>' + (f'<p class="muted">{esc(t["note"])}</p>' if t.get("note") else "")
+                       + (f'<p class="muted">Draws on {linked_people(c, t["source_refs"])}.</p>' if t.get("source_refs") else "") + "</li>"
                        for t in c.backlog[ident])
         sections.append(f'<section class="d-sec d-open"><h3>Open questions</h3><ul class="notes">{rows}</ul></section>')
     learning = [(req, role) for req in c.feedback for role, group in (("about", [req["about"]]), ("benefit", req["benefits"]), ("reservation", req["reservations"])) for s in group if s["ref"] == ident]
@@ -751,7 +919,8 @@ def items_page(c, site):
         for item in tree["nodes"] + tree["links"]:
             ident = item["id"]
             link = c.is_link(ident)
-            searchable = " ".join([c.text(ident), c.kind_of(ident), STANDING[item["status"]], *item.get("accepted_by", []), *(x["name"] for x in item["contributors"])])
+            credited = [c.authors[a]["name"] for group in credit_people(c, item["source_refs"]) for a in group] if c.is_reconstruction else []
+            searchable = " ".join([c.text(ident), c.kind_of(ident), STANDING[item["status"]], *item.get("accepted_by", []), *(x["name"] for x in item["contributors"]), *credited])
             summary = (f'<a class="item-summary card role-{"link" if link else item["kind"]} is-{item["status"]}" href="#{ident}"><span class="card-top"><span class="kind">{esc(c.kind_of(ident))}</span>{chip(item["status"])}</span>'
                        f'<span class="card-text">{esc(c.text(ident))}</span><span class="card-foot">{esc(endorsement(item))}</span></a>')
             articles.append(f'<article class="item{" item-link" if link else ""}" id="{ident}" data-search="{esc(searchable.lower())}">{summary}{item_detail(c, ident, site)}</article>')
@@ -779,6 +948,8 @@ def question_board(c, limit=None):
                 tasks = [{"label": "A challenge waits for a response.", "work": "resolve_challenge"}]
             for task in tasks:
                 note = f'<span class="qc-note">{esc(task["note"])}</span>' if task.get("note") else ""
+                if task.get("source_refs"):  # The card is a link itself, so the credit is plain text here.
+                    note += f'<span class="qc-credit">Draws on {esc(linked_people(c, task["source_refs"], link=False))}</span>'
                 cards.append(f'<a class="qc" href="items.html#{ident}"><span class="qc-task">{esc(task.get("label") or task["work"].replace("_", " ").capitalize())}</span>{note}'
                              f'<span class="qc-about"><span class="kind">{esc(c.kind_of(ident))}</span>{chip(c.items[ident]["status"])}<span class="qc-text">{esc(c.short(ident))}</span></span>'
                              f'<span class="qc-where">{esc(TREES[c.tree_of[ident]]["question"])}</span></a>')
@@ -907,9 +1078,16 @@ def about_page(c, site):
                'The commons was written in the skill\'s own file format and checked with the skill\'s validator, to show what a published commons can hold. '
                'Nothing here describes a real school, street or person.</p></section>') if c.is_example else ""
     if c.is_reconstruction:
-        source_list = "".join(f'<article id="source-{esc(source["id"])}"><h3>{esc(source["title"])}</h3><p>{esc(source["description"])}</p></article>' for source in c.sources)
-        fiction = ('<section class="ov" id="sources"><h2>Sources and limits</h2><p>This is a proposed AI reconstruction from supplied analyses of a real discussion. Every item names its analysis, page or section, and whether its connection is an inference. The source authors and forum participants have not reviewed or endorsed this selection.</p>'
-                   + source_list + '<h3>The broader programme</h3><p>The later analysis covers reflective human development, trustworthy institutions, the Laboratory, Forge/model adaptation, Vocal Presence, federation, material and energy services, and enforceable security. It separates philosophical hypotheses from institutional mechanisms and distinguishes local success from a durable shift in institutional selection. This compact starting map leaves those branches as open review work.</p>'
+        def where(source):
+            if "posts" in source:
+                return f'<p><a href="{esc(source["url"])}">Read the thread ↗</a></p>'
+            if "author" in source:
+                return f'<p>Shared by {esc(c.authors[source["author"]]["name"])} in <a href="{esc(post_url(c, source["shared_in_post"]))}">post {source["shared_in_post"]}</a>.</p>'
+            return ""
+        source_list = "".join(f'<article id="source-{esc(source["id"])}"><h3>{esc(source["title"])}</h3><p>{esc(source["description"])}</p>{where(source)}</article>' for source in c.sources)
+        essays = sum(1 for s in c.sources if "author" in s)
+        fiction = (f'<section class="ov" id="sources"><h2>Sources and limits</h2><p>This is a proposed AI reconstruction from a public forum thread, {plural(essays, "essay")} shared in it and the supplied analyses of it. Every item credits the posts or essays it draws on, with links, and names the analysis page or section it comes from and whether a connection is an inference. The people credited have not reviewed or endorsed this selection.</p>'
+                   + source_list +'<h3>The broader programme</h3><p>The later analysis covers reflective human development, trustworthy institutions, the Laboratory, Forge/model adaptation, Vocal Presence, federation, material and energy services, and enforceable security. It separates philosophical hypotheses from institutional mechanisms and distinguishes local success from a durable shift in institutional selection. This compact starting map leaves those branches as open review work.</p>'
                    '<h3>What counts as progress?</h3><p>The earlier analysis proposes measuring practices adopted and retained in viable institutions that remain faithful to their purpose. The measures, system boundary, observation period and protected conditions still need agreement. Essays and conversation alone do not establish that outcome.</p></section>')
     excluded = ("Nothing is held back: the example's whole working file is published, apart from how each contribution was captured."
                 if c.is_example else
@@ -935,7 +1113,7 @@ def about_page(c, site):
 <p>{download}</p>
 <p class="fine">{"The release contains exactly what these pages show, as JSON." if c.is_reconstruction else "The download holds exactly what these pages show, as JSON."}</p>{release_text}</aside>
 </div>
-<section class="about-people"><h2>People</h2>{people_table(c)}</section>
+<section class="about-people">{f'<h2 id="credits">Whose ideas these are</h2>{credits_table(c)}' if c.is_reconstruction else ''}<h2>People</h2>{people_table(c)}</section>
 </div>"""
     return shell(title=f"About · {c.name} · Reason Commons", description="What this record is, and what it isn't.", depth=1, body=body, nav="commons", c=c, page="about")
 

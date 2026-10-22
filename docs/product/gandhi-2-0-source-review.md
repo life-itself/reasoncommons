@@ -1,8 +1,22 @@
 # Gandhi 2.0: sources and review
 
+## Release 2026-10-22.2: credits and all five conflicts
+
+Implemented under `gandhi-2-0-completeness-2026-10-22` revision 2, accepted by David Joseph with the exact typed reply `yes`. The acceptance receipt is retained in the private product repository. Approval to build this does not endorse any reasoning. It is step 1 of two: the causal tree, the full set of changes and risks, first steps and actions are a later proposal. Implementation bead: `reasoncommons-e39`.
+
+**What changed.** The four conflicts missing from the first release join the existing one: institutional strength and democratic integrity; unilateral protection and common security; present provision and ecological viability; and controlled engagement and trustworthy relationships. They add 20 proposed statements and 20 proposed connections carrying the analysis's 12 assumptions to test, attributed to the AI. The first sits behind the central-intervention problem, so it leads the conflict page and the overview, where the other four appear with their two positions side by side. All 42 statements and 35 connections now credit the forum posts or essays they draw on. Credits appear on cards, in diagram boxes and outlines, and on each item page, where every post is linked; the overview and About page count whose ideas the map draws on. Proposed conflict lines are now clay and heavier than other lines: the stylesheet's rule for proposed lines had been overriding the conflict style.
+
+**How credits were checked.** The supplied forum PDF (57 pages, SHA-256 `1dd8449b3ebad742c1bd396da0d65d52ec1a93117c6eed2abfc99a1366595eee`) is a print of the public topic. All 36 posts were read, and their numbers, authors and dates were taken from the topic's public JSON on 22 October 2026; each post's permalink is the topic URL plus its number. Credits start from the posts the analysis cites and were kept only where the post makes the point. Posts the analysis missed were added where they clearly do, such as Robert Bunge's posts 30 and 34 on keeping essential functions working without AI. A credit is a paraphrase when the statement restates the post, and related when the post makes a neighbouring point. Leif Eriksson is credited directly in 32 statements and 10 connections and for related points in 5 and 12; Robert Bunge directly in 11 and 1, and for related points in 13 and 11. Two statements and five connections credit only the analysis, and say so. Twenty distinct posts are cited.
+
+**Not checked.** The five essays Leif Eriksson shared in the thread were not opened; credits to them rest on the analysis's section references, and every essay credit says so. None of the people credited has reviewed the paraphrases. Nothing is quoted: the posts stay in their own context, one link away.
+
+**Publication checks.** Projection version 4 keeps version 3's limits (proposed only, the AI as sole contributor, no endorsers, feedback or invented history) and adds credited authors. It refuses a credit that names anyone other than the cited post's author, a missing or malformed post, a basis that does not fit its source, an essay not shared by its author, and a view that splits a joint condition or a pair of positions or leaves a statement out. All 53 publication, meaning, topology and layout tests pass, seven of them new for these rules, all five clouds and the conflict line. The two other commons' snapshots and generated pages are byte-identical. All 49 generated files pass the drift check; the website check passed 2,514 links and assets with no errors, and declared exports are current. The 375px phone check reports no overflow on the overview, conflict, statements and About pages. A browser review at desktop and phone widths confirmed titled clouds, credit lines that fit their boxes, linked posts on item pages, the distinct conflict line and no console errors. The post 30 permalink returns the post.
+
+## Release 2026-10-22.1: the first reconstruction
+
 Implemented under `gandhi-2-0-2026-10-22` revision 1, accepted by David Joseph with the exact typed reply `accept`. The acceptance receipt is retained in the private product repository. Approval to create this demonstration does not endorse any reasoning. Implementation bead: `reasoncommons-4v4`.
 
-## Reading boundary
+### Reading boundary
 
 The commons is a compact proposed AI reconstruction from two user-supplied analyses, not a transcript or participant-authored record. It contains exactly the approved 22 proposed statements and 15 proposed connections across six trees. Every statement and connection has a locator into a supplied analysis; inferred relationships are labelled. The original forum posts, five underlying documents and historical claims were not independently verified. The suggested introductory forum post in the supplied text was not sent.
 
@@ -10,13 +24,13 @@ The supplied PDF is *Second Renaissance Causal and Prerequisite Trees*, version 
 
 The public working file is [the Gandhi 2.0 YAML](../../ltp/gandhi-2-0/reason-commons.yaml). Its public registry is [the explicit publication selection](../../apps/reasoning-demo/commons/gandhi-2-0/publication.json). Source descriptions are part of the reviewed public projection. Source links in item views lead to those descriptions, with page, section and proposition references; they do not pretend to be verified direct links to unavailable primary passages.
 
-## What the first view says
+### What the first view says
 
 The overview opens with proposed common ground, then the capability/autonomy conflict, a possible conflict-guidance comparison, benefit and harm together, and one unassigned first action. It retains the wider programme as source notes and review backlog: reflective development, the Laboratory, Forge/model adaptation, Vocal Presence, federation, material services and security. Conflict guidance is one entry point. No measured global constraint is claimed, and the spiritual-root account remains a philosophical hypothesis.
 
 The initial hypotheses do not establish that AI is essential, that a local gain changes institutional selection, or that satisfaction proves just treatment. Open work includes optional-AI and human comparisons, competence without the tool, suppressed grievances, the relative gain for small democratic groups, and defining progress through viable practices retained without mission drift. No host, owner, budget, baseline, numerical target, trial date, feedback commitment or observed outcome is assigned. Local obstacles must be checked rather than inferred from missing document details.
 
-## Publication checks
+### Publication checks
 
 Projection 3 is restricted to explicitly labelled, proposed AI reconstruction, with source locators and no endorsers, feedback commitments, outcome reports or invented endorsement history. It reuses structural qualification checks without relaxing projection 1's accepted-only private-source boundary or projection 2's fictional-example restriction. The reviewed snapshots of both existing commons retain their original fingerprints. Their generated pages are unchanged; the shared directory, guide and stylesheet gain the new record and label.
 
@@ -24,7 +38,7 @@ All 46 publication, meaning, topology and layout tests pass. They include missin
 
 Chrome checks passed 33 states: all twelve new HTML pages and the directory at 1,440px and 375px, direct item inspection at both widths, and five script-free phone views. No page errors or document overflow remained. The repository's actual 375px DevTools phone checker also reports no overflow on the overview. Wide diagrams are contained, phone views start with an outline, and reconstruction tabs wrap. Desktop and phone overview, conflict, source-index and item-detail screenshots were inspected locally. Real participant review, independent primary-source verification and newcomer comprehension remain open.
 
-## Delivery
+### Delivery
 
 The new record is built at `/demos/reason-commons-in-use/gandhi-2-0/index.html`. The separate [temporary preview](https://g9q7zxkn-anon.flowershow.me/demos/reason-commons-in-use/gandhi-2-0/index.html) was published on 22 October and expires around 29 October unless claimed. Chrome confirmed the hosted desktop and 375px rendering, the corrected conflict wording and the exact stylesheet bytes. The preview contains only the public demo and navigation stubs; the saved preview target and production configuration are unchanged. Its claim token stays outside the repository. Flowershow serves HTML with `Content-Security-Policy: sandbox allow-scripts allow-popups`, which blocks downloads; the source page therefore offers the complete public release as readable, copyable JSON without requiring JavaScript. The generated JSON file is also retained in the repository. Production publication is not part of this implementation.
 

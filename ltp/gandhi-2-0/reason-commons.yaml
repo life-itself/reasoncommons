@@ -6,10 +6,10 @@ participants:
 active_tree: conflict
 import_context:
   recorded_on: '2026-10-22'
-  basis: Two supplied analyses of a Second Renaissance forum discussion and related essays; the underlying posts and manuscript have not been independently checked.
+  basis: The Second Renaissance Forum thread What Would Make a Second Renaissance Possible? (posts 1–36, checked against the public topic on 22 October 2026), five essays Leif Eriksson shared in it, and two supplied analyses of the thread. The essays were not read here; their credits rest on the section citations in the supplied analysis.
   standing: All nodes and links are proposed reconstructions. Approval to build the demonstration is not endorsement of this reasoning by David or by the discussion participants.
-  scope: A compact starting map, not a transcription of the entire programme. Conflict guidance is one possible entry point; reflection, model adaptation, voice participation, federation, material services and security remain in the review backlog.
-  attribution: The AI is responsible for this selection, paraphrasing and reconstruction. Source locators identify where to check the reported argument; they do not authenticate direct human authorship or agreement.
+  scope: Step 1 of a fuller import, accepted as gandhi-2-0-completeness-2026-10-22 revision 2. It holds the compact starting map and all five conflict clouds from the analysis. The causal tree, the full set of changes, risks, first steps and actions follow in a later step; until then reflection, model adaptation, voice participation, federation, material services and security remain in the review backlog.
+  attribution: Every statement and connection credits the forum posts or essays it draws on, and each forum credit names that post’s actual author. The AI is responsible for selecting, paraphrasing and connecting them and is the only contributor. A credit says where an idea comes from, not that its author agrees with this wording or structure; none of the people credited has reviewed it. Nothing is quoted.
 trees:
   goal:
     nodes:
@@ -19,28 +19,51 @@ trees:
       label: Humane institutions survive and spread while retaining autonomy and care within liveable limits.
       status: proposed
       contributions: &reconstruction [{by: assistant, attribution: assistant, mode: text}]
-      source_refs: [{source_id: analysis-v2, locator: 'p. 2, G0', basis: reconstruction}]
+      source_refs:
+      - {source_id: forum, post: 26, author: leif, basis: paraphrase}
+      - {source_id: forum, post: 20, author: leif, basis: related}
+      - {source_id: forum, post: 9, author: robert, basis: related}
+      - {source_id: forum, post: 27, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 2, G0', basis: reconstruction}
     - id: g2-g-capability
       kind: necessary_condition
       text: Communities can maintain useful material and organisational capabilities at viable cost.
       label: Communities maintain useful capabilities at viable cost.
       status: proposed
       contributions: *reconstruction
-      source_refs: [{source_id: analysis-v2, locator: 'p. 2, G3', basis: reconstruction}]
+      source_refs:
+      - {source_id: forum, post: 26, author: leif, basis: paraphrase}
+      - {source_id: forum, post: 32, author: leif, basis: related}
+      - {source_id: forum, post: 9, author: robert, basis: related}
+      - {source_id: paradox, locator: section 7, basis: cited}
+      - {source_id: carbon-pulse, locator: useful energy services, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 2, G3', basis: reconstruction}
     - id: g2-g-control
       kind: necessary_condition
       text: Members retain substantive control, justified trust and meaningful freedom to disagree or leave.
       label: Members retain control, justified trust and freedom to disagree or leave.
       status: proposed
       contributions: *reconstruction
-      source_refs: [{source_id: analysis-v2, locator: 'p. 2, G2, G4 and G5', basis: reconstruction}]
+      source_refs:
+      - {source_id: forum, post: 20, author: leif, basis: paraphrase}
+      - {source_id: forum, post: 29, author: leif, basis: paraphrase}
+      - {source_id: forum, post: 19, author: robert, basis: related}
+      - {source_id: forum, post: 28, author: robert, basis: related}
+      - {source_id: last-first, locator: sections 3–4, basis: cited}
+      - {source_id: paradox, locator: sections 8–9, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 2, G2, G4 and G5', basis: reconstruction}
     - id: g2-g-future
       kind: necessary_condition
       text: Ecological and catastrophic risks remain compatible with continued human life and collective agency.
       label: Ecological and catastrophic risks remain compatible with continued human agency.
       status: proposed
       contributions: *reconstruction
-      source_refs: [{source_id: analysis-v2, locator: 'p. 2, G1; pp. 42–43, T6 and T8', basis: reconstruction}]
+      source_refs:
+      - {source_id: forum, post: 26, author: leif, basis: paraphrase}
+      - {source_id: forum, post: 27, author: robert, basis: paraphrase}
+      - {source_id: forum, post: 21, author: robert, basis: related}
+      - {source_id: carbon-pulse, locator: ecological limits, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 2, G1; pp. 42–43, T6 and T8', basis: reconstruction}
     links:
     - id: g2-g-rel-capability
       from: [g2-g-capability]
@@ -48,21 +71,28 @@ trees:
       relation: necessary_for
       status: proposed
       contributions: *reconstruction
-      source_refs: [{source_id: analysis-v2, locator: 'p. 2, goal and necessary conditions', basis: reconstruction}]
+      source_refs:
+      - {source_id: forum, post: 26, author: leif, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 2, goal and necessary conditions', basis: reconstruction}
     - id: g2-g-rel-control
       from: [g2-g-control]
       to: g2-g-goal
       relation: necessary_for
       status: proposed
       contributions: *reconstruction
-      source_refs: [{source_id: analysis-v2, locator: 'p. 2, goal and necessary conditions', basis: reconstruction}]
+      source_refs:
+      - {source_id: forum, post: 29, author: leif, basis: related}
+      - {source_id: forum, post: 36, author: leif, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 2, goal and necessary conditions', basis: reconstruction}
     - id: g2-g-rel-future
       from: [g2-g-future]
       to: g2-g-goal
       relation: necessary_for
       status: proposed
       contributions: *reconstruction
-      source_refs: [{source_id: analysis-v2, locator: 'p. 2, goal and necessary conditions', basis: reconstruction}]
+      source_refs:
+      - {source_id: forum, post: 26, author: leif, basis: paraphrase}
+      - {source_id: analysis-v2, locator: 'p. 2, goal and necessary conditions', basis: reconstruction}
     backlog:
     - ref: g2-g-goal
       work: connect_or_explain
@@ -84,21 +114,31 @@ trees:
       label: Damaging disagreements can exceed a growing group's current conflict-handling capacity.
       status: proposed
       contributions: *reconstruction
-      source_refs: [{source_id: analysis-v2, locator: 'p. 10, R18, C18 and C15', basis: reconstruction}]
+      source_refs:
+      - {source_id: forum, post: 29, author: leif, basis: paraphrase}
+      - {source_id: paradox, locator: sections 8–9, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 10, R18, C18 and C15', basis: reconstruction}
     - id: g2-r-coordination
       kind: cause
       text: The group needs workable coordination to remain viable.
       label: The group needs workable coordination to remain viable.
       status: proposed
       contributions: *reconstruction
-      source_refs: [{source_id: analysis-v2, locator: 'pp. 9–10, C15 and R18; p. 14, K1', basis: reconstruction}]
+      source_refs:
+      - {source_id: forum, post: 30, author: robert, basis: related}
+      - {source_id: forum, post: 29, author: leif, basis: related}
+      - {source_id: paradox, locator: sections 2–6, basis: cited}
+      - {source_id: analysis-v2, locator: 'pp. 9–10, C15 and R18; p. 14, K1', basis: reconstruction}
     - id: g2-r-centralisation
       kind: undesirable_effect
       text: When members cannot resolve damaging disagreements, central intervention may become the practical response.
       label: Unresolved damaging disagreements may make central intervention the practical response.
       status: proposed
       contributions: *reconstruction
-      source_refs: [{source_id: analysis-v2, locator: 'p. 10, R18 and C16', basis: reconstruction}]
+      source_refs:
+      - {source_id: forum, post: 29, author: leif, basis: paraphrase}
+      - {source_id: paradox, locator: section 9, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 10, R18 and C16', basis: reconstruction}
     links:
     - id: g2-r-rel-centralisation
       from: [g2-r-load, g2-r-coordination]
@@ -106,7 +146,10 @@ trees:
       relation: contributes_to
       status: proposed
       contributions: *reconstruction
-      source_refs: [{source_id: analysis-v2, locator: 'p. 10, R18', basis: reconstruction}]
+      source_refs:
+      - {source_id: forum, post: 29, author: leif, basis: related}
+      - {source_id: paradox, locator: section 9, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 10, R18', basis: reconstruction}
       assumptions:
       - {by: assistant, text: 'Conflict-handling capacity is insufficient for the selected function, and effective member-controlled alternatives are not already available.'}
     backlog:
@@ -116,63 +159,344 @@ trees:
       note: Compare developmental capacity, coordination design, resources and external pressures. A reported historical mechanism is not a measured constraint at a selected host.
   conflict:
     nodes:
+    - id: g2-c-k1-objective
+      kind: objective
+      text: Sustain an effective emancipatory institution.
+      label: Sustain an effective emancipatory institution.
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 29, author: leif, basis: paraphrase}
+      - {source_id: forum, post: 36, author: leif, basis: related}
+      - {source_id: paradox, locator: sections 1–9, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 14, K1', basis: reconstruction}
+    - id: g2-c-k1-viability
+      kind: need
+      text: Acquire enough coordination, expertise and resources to remain viable.
+      label: Acquire enough coordination, expertise and resources to remain viable.
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 30, author: robert, basis: paraphrase}
+      - {source_id: paradox, locator: sections 2–6, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 14, K1', basis: reconstruction}
+    - id: g2-c-k1-control
+      kind: need
+      text: Preserve substantive member control and the institution’s emancipatory purpose.
+      label: Preserve substantive member control and the institution’s emancipatory purpose.
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 29, author: leif, basis: paraphrase}
+      - {source_id: paradox, locator: sections 1–6, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 14, K1', basis: reconstruction}
+    - id: g2-c-k1-concentrate
+      kind: prerequisite
+      text: Concentrate decision authority to obtain the required effectiveness.
+      label: Concentrate decision authority to obtain the required effectiveness.
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 32, author: leif, basis: paraphrase}
+      - {source_id: forum, post: 29, author: leif, basis: related}
+      - {source_id: forum, post: 30, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 14, K1', basis: reconstruction}
+    - id: g2-c-k1-distribute
+      kind: prerequisite
+      text: Keep that same authority distributed among members.
+      label: Keep that same authority distributed among members.
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 28, author: robert, basis: paraphrase}
+      - {source_id: forum, post: 29, author: leif, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 14, K1', basis: reconstruction}
     - id: g2-c-objective
       kind: objective
       text: Keep a community capable, independent and resilient.
       label: Keep a community capable, independent and resilient.
       status: proposed
       contributions: *reconstruction
-      source_refs: &cloud_source [{source_id: analysis-v2, locator: 'p. 15, K2; reported sources S1 posts 20, 30 and 33–36 and S6', basis: reconstruction}]
+      source_refs:
+      - {source_id: forum, post: 33, author: leif, basis: paraphrase}
+      - {source_id: forum, post: 28, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 15, K2', basis: reconstruction}
     - id: g2-c-capability
       kind: need
       text: Avoid being outperformed or subordinated by actors using advanced AI.
       label: Avoid being outperformed or subordinated by actors using advanced AI.
       status: proposed
       contributions: *reconstruction
-      source_refs: *cloud_source
+      source_refs:
+      - {source_id: forum, post: 20, author: leif, basis: paraphrase}
+      - {source_id: forum, post: 33, author: leif, basis: paraphrase}
+      - {source_id: analysis-v2, locator: 'p. 15, K2', basis: reconstruction}
     - id: g2-c-continuity
       kind: need
       text: Continue essential functions under provider, energy or AI failure.
       label: Continue essential functions under provider, energy or AI failure.
       status: proposed
       contributions: *reconstruction
-      source_refs: *cloud_source
+      source_refs:
+      - {source_id: forum, post: 30, author: robert, basis: paraphrase}
+      - {source_id: forum, post: 34, author: robert, basis: paraphrase}
+      - {source_id: carbon-pulse, locator: energy services and scarcity, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 15, K2', basis: reconstruction}
     - id: g2-c-depend
       kind: prerequisite
       text: Make the selected essential function depend on AI.
       label: Make the selected essential function depend on AI.
       status: proposed
       contributions: *reconstruction
-      source_refs: *cloud_source
+      source_refs:
+      - {source_id: forum, post: 33, author: leif, basis: paraphrase}
+      - {source_id: analysis-v2, locator: 'p. 15, K2', basis: reconstruction}
     - id: g2-c-optional
       kind: prerequisite
       text: Keep that same essential function operable without AI.
       label: Keep that same essential function operable without AI.
       status: proposed
       contributions: *reconstruction
-      source_refs: *cloud_source
+      source_refs:
+      - {source_id: forum, post: 30, author: robert, basis: paraphrase}
+      - {source_id: forum, post: 34, author: robert, basis: paraphrase}
+      - {source_id: analysis-v2, locator: 'p. 15, K2', basis: reconstruction}
+    - id: g2-c-k3-objective
+      kind: objective
+      text: Protect people’s rights and durable security.
+      label: Protect people’s rights and durable security.
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 23, author: leif, basis: paraphrase}
+      - {source_id: forum, post: 21, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 16, K3', basis: reconstruction}
+    - id: g2-c-k3-deterrence
+      kind: need
+      text: Prevent coercion, attack or exploitation of restraint.
+      label: Prevent coercion, attack or exploitation of restraint.
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 23, author: leif, basis: paraphrase}
+      - {source_id: forum, post: 25, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 16, K3', basis: reconstruction}
+    - id: g2-c-k3-deescalation
+      kind: need
+      text: Reduce escalation and collective exposure to catastrophic weapons.
+      label: Reduce escalation and collective exposure to catastrophic weapons.
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 21, author: robert, basis: paraphrase}
+      - {source_id: forum, post: 24, author: robert, basis: paraphrase}
+      - {source_id: forum, post: 23, author: leif, basis: paraphrase}
+      - {source_id: analysis-v2, locator: 'p. 16, K3', basis: reconstruction}
+    - id: g2-c-k3-expand
+      kind: prerequisite
+      text: Continue expanding the contested military capability to deter rivals.
+      label: Continue expanding the contested military capability to deter rivals.
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 25, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 16, K3', basis: reconstruction}
+    - id: g2-c-k3-restrain
+      kind: prerequisite
+      text: Restrain expansion of that same capability through reciprocal limits.
+      label: Restrain expansion of that same capability through reciprocal limits.
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 21, author: robert, basis: paraphrase}
+      - {source_id: forum, post: 24, author: robert, basis: paraphrase}
+      - {source_id: forum, post: 23, author: leif, basis: paraphrase}
+      - {source_id: forum, post: 26, author: leif, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 16, K3', basis: reconstruction}
+    - id: g2-c-k4-objective
+      kind: objective
+      text: Sustain human flourishing and essential services over time.
+      label: Sustain human flourishing and essential services over time.
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 9, author: robert, basis: paraphrase}
+      - {source_id: carbon-pulse, locator: useful energy services, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 17, K4', basis: reconstruction}
+    - id: g2-c-k4-provision
+      kind: need
+      text: Maintain livelihoods and services under existing economic dependencies.
+      label: Maintain livelihoods and services under existing economic dependencies.
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 30, author: robert, basis: related}
+      - {source_id: paradox, locator: sections 4–6, basis: cited}
+      - {source_id: leverage, locator: sections 1 and 5, basis: cited}
+      - {source_id: carbon-pulse, locator: growth and energy services, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 17, K4', basis: reconstruction}
+    - id: g2-c-k4-limits
+      kind: need
+      text: Keep material demand and ecological damage within viable conditions.
+      label: Keep material demand and ecological damage within viable conditions.
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 9, author: robert, basis: paraphrase}
+      - {source_id: forum, post: 8, author: robert, basis: paraphrase}
+      - {source_id: carbon-pulse, locator: ecological limits, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 17, K4', basis: reconstruction}
+    - id: g2-c-k4-throughput
+      kind: prerequisite
+      text: Increase material throughput to maintain those services and commitments.
+      label: Increase material throughput to maintain those services and commitments.
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: leverage, locator: sections 1 and 4, basis: cited}
+      - {source_id: carbon-pulse, locator: growth and energy services, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 17, K4', basis: reconstruction}
+    - id: g2-c-k4-constrain
+      kind: prerequisite
+      text: Constrain that same throughput to protect their ecological basis.
+      label: Constrain that same throughput to protect their ecological basis.
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 34, author: robert, basis: paraphrase}
+      - {source_id: forum, post: 9, author: robert, basis: paraphrase}
+      - {source_id: forum, post: 30, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 17, K4', basis: reconstruction}
+    - id: g2-c-k5-objective
+      kind: objective
+      text: Provide a durable service that genuinely supports human agency.
+      label: Provide a durable service that genuinely supports human agency.
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: last-first, locator: sections 3–6, basis: cited}
+      - {source_id: paradox, locator: section 9, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 18, K5', basis: reconstruction}
+    - id: g2-c-k5-continuity
+      kind: need
+      text: Secure the resources and continuity needed to maintain the service.
+      label: Secure the resources and continuity needed to maintain the service.
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: last-first, locator: sections 3–6, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 18, K5', basis: reconstruction}
+    - id: g2-c-k5-care
+      kind: need
+      text: Protect truthful inquiry, voluntary participation and non-instrumental care.
+      label: Protect truthful inquiry, voluntary participation and non-instrumental care.
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 19, author: robert, basis: related}
+      - {source_id: last-first, locator: sections 3–6, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 18, K5', basis: reconstruction}
+    - id: g2-c-k5-engineer
+      kind: prerequisite
+      text: Engineer attachment and user responses to secure the provider’s required returns.
+      label: Engineer attachment and user responses to secure the provider’s required returns.
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 13, author: leif, basis: related}
+      - {source_id: last-first, locator: section 6, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 18, K5', basis: reconstruction}
+    - id: g2-c-k5-free
+      kind: prerequisite
+      text: Allow those same responses to remain freely chosen, including disagreement or exit.
+      label: Allow those same responses to remain freely chosen, including disagreement or exit.
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 19, author: robert, basis: paraphrase}
+      - {source_id: last-first, locator: sections 3–6, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 18, K5', basis: reconstruction}
     links:
+    - id: g2-c-k1-rel-viability
+      from: [g2-c-k1-viability]
+      to: g2-c-k1-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 30, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 14, K1', basis: reconstruction}
+    - id: g2-c-k1-rel-control
+      from: [g2-c-k1-control]
+      to: g2-c-k1-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 29, author: leif, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 14, K1', basis: reconstruction}
+    - id: g2-c-k1-rel-concentrate
+      from: [g2-c-k1-concentrate]
+      to: g2-c-k1-viability
+      relation: necessary_for
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 32, author: leif, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 14, K1, B to D', basis: reconstruction}
+      assumptions:
+      - {by: assistant, text: 'The required coordination and expertise are obtainable only, or at substantially lower viable cost, through concentrated authority.'}
+    - id: g2-c-k1-rel-distribute
+      from: [g2-c-k1-distribute]
+      to: g2-c-k1-control
+      relation: necessary_for
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 29, author: leif, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 14, K1, C to D prime', basis: reconstruction}
+      assumptions:
+      - {by: assistant, text: 'Members cannot retain substantive control if those decisions are transferred to managers or central bodies.'}
+    - id: g2-c-k1-rel-conflict
+      from: [g2-c-k1-concentrate]
+      to: g2-c-k1-distribute
+      relation: conflicts_with
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 29, author: leif, basis: related}
+      - {source_id: forum, post: 30, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 14, K1, D conflicts with D prime', basis: reconstruction}
+      assumptions:
+      - {by: assistant, text: 'The same decisions at the same scale and time must be either centrally controlled or genuinely controlled by members; no workable division or accountable delegation is available.'}
     - id: g2-c-rel-capability
       from: [g2-c-capability]
       to: g2-c-objective
       relation: necessary_for
       status: proposed
       contributions: *reconstruction
-      source_refs: *cloud_source
+      source_refs:
+      - {source_id: forum, post: 33, author: leif, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 15, K2', basis: reconstruction}
     - id: g2-c-rel-continuity
       from: [g2-c-continuity]
       to: g2-c-objective
       relation: necessary_for
       status: proposed
       contributions: *reconstruction
-      source_refs: *cloud_source
+      source_refs:
+      - {source_id: forum, post: 34, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 15, K2', basis: reconstruction}
     - id: g2-c-rel-depend
       from: [g2-c-depend]
       to: g2-c-capability
       relation: necessary_for
       status: proposed
       contributions: *reconstruction
-      source_refs: *cloud_source
+      source_refs:
+      - {source_id: forum, post: 20, author: leif, basis: paraphrase}
+      - {source_id: forum, post: 33, author: leif, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 15, K2, B to D', basis: reconstruction}
       assumptions:
       - {by: assistant, text: 'AI provides a decisive advantage for this function, and a non-AI or optional-AI arrangement cannot meet the requirement.'}
     - id: g2-c-rel-optional
@@ -181,7 +505,9 @@ trees:
       relation: necessary_for
       status: proposed
       contributions: *reconstruction
-      source_refs: *cloud_source
+      source_refs:
+      - {source_id: forum, post: 30, author: robert, basis: paraphrase}
+      - {source_id: analysis-v2, locator: 'p. 15, K2, C to D prime', basis: reconstruction}
       assumptions:
       - {by: assistant, text: 'AI access cannot be made sufficiently dependable, locally controlled and replaceable for the selected essential function.'}
     - id: g2-c-rel-conflict
@@ -190,17 +516,210 @@ trees:
       relation: conflicts_with
       status: proposed
       contributions: *reconstruction
-      source_refs: *cloud_source
+      source_refs:
+      - {source_id: forum, post: 33, author: leif, basis: paraphrase}
+      - {source_id: forum, post: 30, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 15, K2, D conflicts with D prime', basis: reconstruction}
       assumptions:
       - {by: assistant, text: 'No tested fallback, bounded role or diversified architecture can reconcile these requirements for the same function at the same time.'}
+    - id: g2-c-k3-rel-deterrence
+      from: [g2-c-k3-deterrence]
+      to: g2-c-k3-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 23, author: leif, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 16, K3', basis: reconstruction}
+    - id: g2-c-k3-rel-deescalation
+      from: [g2-c-k3-deescalation]
+      to: g2-c-k3-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 21, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 16, K3', basis: reconstruction}
+    - id: g2-c-k3-rel-expand
+      from: [g2-c-k3-expand]
+      to: g2-c-k3-deterrence
+      relation: necessary_for
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 25, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 16, K3, B to D', basis: reconstruction}
+      assumptions:
+      - {by: assistant, text: 'Superior or matching relative destructive capacity is the only credible protection.'}
+    - id: g2-c-k3-rel-restrain
+      from: [g2-c-k3-restrain]
+      to: g2-c-k3-deescalation
+      relation: necessary_for
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 23, author: leif, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 16, K3, C to D prime', basis: reconstruction}
+      assumptions:
+      - {by: assistant, text: 'Unchecked competitive accumulation increases mutual insecurity.'}
+    - id: g2-c-k3-rel-conflict
+      from: [g2-c-k3-expand]
+      to: g2-c-k3-restrain
+      relation: conflicts_with
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 26, author: leif, basis: related}
+      - {source_id: forum, post: 25, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 16, K3, D conflicts with D prime', basis: reconstruction}
+      assumptions:
+      - {by: assistant, text: 'Reciprocal restraints cannot be verified, enforced or maintained against powerful defectors while protecting weaker parties.'}
+    - id: g2-c-k4-rel-provision
+      from: [g2-c-k4-provision]
+      to: g2-c-k4-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: analysis-v2, locator: 'p. 17, K4', basis: reconstruction}
+    - id: g2-c-k4-rel-limits
+      from: [g2-c-k4-limits]
+      to: g2-c-k4-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 9, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 17, K4', basis: reconstruction}
+    - id: g2-c-k4-rel-throughput
+      from: [g2-c-k4-throughput]
+      to: g2-c-k4-provision
+      relation: necessary_for
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: leverage, locator: sections 1 and 4, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 17, K4, B to D', basis: reconstruction}
+      assumptions:
+      - {by: assistant, text: 'Services, employment, finance or welfare commitments cannot remain viable without continued material expansion.'}
+    - id: g2-c-k4-rel-constrain
+      from: [g2-c-k4-constrain]
+      to: g2-c-k4-limits
+      relation: necessary_for
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 34, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 17, K4, C to D prime', basis: reconstruction}
+      assumptions:
+      - {by: assistant, text: 'Demand and impacts exceed the relevant ecological limits; efficiency alone does not control total demand.'}
+    - id: g2-c-k4-rel-conflict
+      from: [g2-c-k4-throughput]
+      to: g2-c-k4-constrain
+      relation: conflicts_with
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 34, author: robert, basis: related}
+      - {source_id: forum, post: 33, author: leif, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 17, K4, D conflicts with D prime', basis: reconstruction}
+      assumptions:
+      - {by: assistant, text: 'Service redesign, distributional changes, sufficiency and alternative energy or material configurations cannot meet needs within the limits in time.'}
+    - id: g2-c-k5-rel-continuity
+      from: [g2-c-k5-continuity]
+      to: g2-c-k5-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: last-first, locator: sections 3–6, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 18, K5', basis: reconstruction}
+    - id: g2-c-k5-rel-care
+      from: [g2-c-k5-care]
+      to: g2-c-k5-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: last-first, locator: sections 3–6, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 18, K5', basis: reconstruction}
+    - id: g2-c-k5-rel-engineer
+      from: [g2-c-k5-engineer]
+      to: g2-c-k5-continuity
+      relation: necessary_for
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: last-first, locator: section 6, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 18, K5, B to D', basis: reconstruction}
+      assumptions:
+      - {by: assistant, text: 'Financial or institutional continuity requires manipulating engagement, attachment or compliance.'}
+    - id: g2-c-k5-rel-free
+      from: [g2-c-k5-free]
+      to: g2-c-k5-care
+      relation: necessary_for
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: forum, post: 19, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 18, K5, C to D prime', basis: reconstruction}
+      assumptions:
+      - {by: assistant, text: 'Justified and generative trust require meaningful agency and correction, rather than manufactured confidence alone.'}
+    - id: g2-c-k5-rel-conflict
+      from: [g2-c-k5-engineer]
+      to: g2-c-k5-free
+      relation: conflicts_with
+      status: proposed
+      contributions: *reconstruction
+      source_refs:
+      - {source_id: last-first, locator: sections 3–6, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 18, K5, D conflicts with D prime', basis: reconstruction}
+      assumptions:
+      - {by: assistant, text: 'No funding, ownership or accountability arrangement can sustain the service through benefits people can freely recognise and choose.'}
     backlog:
+    - ref: g2-c-k1-rel-concentrate
+      work: examine_assumption
+      label: Can coordination and expertise be had without concentrating authority?
+      note: The analysis names conflict guidance, local AI, federation and accountable governance as candidate ways through. Leif hopes widely available conflict competence could reduce reliance on hierarchical intervention; none of these routes has been tested.
+      source_refs:
+      - {source_id: forum, post: 29, author: leif, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 14, K1, candidate injections I02, I03, I06 and I10', basis: reconstruction}
     - ref: g2-c-rel-depend
       work: examine_assumption
       label: Does this function actually require AI to remain viable?
-      note: Retain non-AI and optional-AI comparators. The stronger claim is reported in the analyses, not attributed here as a verified commitment by Leif or Robert.
+      note: Leif argues that communities may have no viable alternative to building AI in; Robert holds that relying on AI as a core social technology is asking for trouble, and Leif has asked him to say where he places that limit. Keep non-AI and optional-AI comparators. Neither has reviewed this wording.
+      source_refs:
+      - {source_id: forum, post: 33, author: leif, basis: related}
+      - {source_id: forum, post: 30, author: robert, basis: related}
+      - {source_id: forum, post: 34, author: robert, basis: related}
+      - {source_id: forum, post: 36, author: leif, basis: related}
     - ref: g2-c-rel-conflict
       work: examine_assumption
       label: Test an exit and a fallback before treating AI dependence as unavoidable.
+    - ref: g2-c-k3-rel-conflict
+      work: examine_assumption
+      label: Can reciprocal limits be enforced against powerful defectors?
+      note: Leif asks why the League of Nations and the United Nations failed to prevent major wars, and what would make rules hold when powerful actors find them inconvenient. Robert expects the arms race may worsen before it improves, and looks to a coalition of middle powers for leverage.
+      source_refs:
+      - {source_id: forum, post: 26, author: leif, basis: related}
+      - {source_id: forum, post: 25, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 16, K3', basis: reconstruction}
+    - ref: g2-c-k4-rel-throughput
+      work: examine_assumption
+      label: Can essential services be kept without growing material throughput?
+      note: Leif hopes AI can speed up the development of alternative energy and materials. Robert prefers Nate Hagens’s Great Simplification and hedging against bets on AI. Both are candidate ways through; neither has been tested.
+      source_refs:
+      - {source_id: forum, post: 33, author: leif, basis: related}
+      - {source_id: forum, post: 34, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 17, K4', basis: reconstruction}
+    - ref: g2-c-k5-rel-engineer
+      work: examine_assumption
+      label: Can a service be funded without engineering attachment?
+      note: Leif’s essay contrasts institutions that earn trust with those that depend on manipulation. Robert accepts AI only if people stay free to take it or leave it.
+      source_refs:
+      - {source_id: last-first, locator: sections 3–6, basis: cited}
+      - {source_id: forum, post: 19, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 18, K5', basis: reconstruction}
   future_reality:
     nodes:
     - id: g2-f-guidance
@@ -209,28 +728,45 @@ trees:
       label: Test voluntary, member-controlled AI conflict guidance with an exit and independent competence.
       status: proposed
       contributions: *reconstruction
-      source_refs: [{source_id: analysis-v2, locator: 'pp. 18–19, I02 and I03; p. 42, T2 and T3', basis: reconstruction}, {source_id: analysis-v1, locator: 'Injections I1–I3 and negative branches 4–5', basis: reconstruction}]
+      source_refs:
+      - {source_id: forum, post: 29, author: leif, basis: paraphrase}
+      - {source_id: forum, post: 13, author: leif, basis: related}
+      - {source_id: forum, post: 20, author: leif, basis: related}
+      - {source_id: forum, post: 30, author: robert, basis: related}
+      - {source_id: forum, post: 19, author: robert, basis: related}
+      - {source_id: analysis-v2, locator: 'pp. 18–19, I02 and I03; p. 42, T2 and T3', basis: reconstruction}
+      - {source_id: analysis-v1, locator: 'Injections I1–I3 and negative branches 4–5', basis: reconstruction}
     - id: g2-f-protections
       kind: injection
       text: Members establish confidentiality, fair grievance handling and independent comparison before live use.
       label: Members establish confidentiality, fair grievance handling and independent comparison.
       status: proposed
       contributions: *reconstruction
-      source_refs: [{source_id: analysis-v2, locator: 'pp. 35–36, P03, P04 and P08; p. 42, T2', basis: reconstruction}]
+      source_refs:
+      - {source_id: forum, post: 20, author: leif, basis: related}
+      - {source_id: paradox, locator: section 9, basis: cited}
+      - {source_id: analysis-v2, locator: 'pp. 35–36, P03, P04 and P08; p. 42, T2', basis: reconstruction}
     - id: g2-f-benefit
       kind: predicted_effect
       text: Destructive conflict costs and unnecessary hierarchical intervention fall while fair treatment, independent competence and member influence are retained.
       label: Conflict costs and needless hierarchy fall while fair treatment, competence and influence remain.
       status: proposed
       contributions: *reconstruction
-      source_refs: [{source_id: analysis-v2, locator: 'p. 42, T2 prediction', basis: reconstruction}]
+      source_refs:
+      - {source_id: forum, post: 29, author: leif, basis: paraphrase}
+      - {source_id: paradox, locator: section 9, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 42, T2 prediction', basis: reconstruction}
     - id: g2-f-harm
       kind: undesirable_effect
       text: Conflict guidance may suppress justified grievances even when satisfaction improves.
       label: Conflict guidance may suppress justified grievances even when satisfaction improves.
       status: proposed
       contributions: *reconstruction
-      source_refs: [{source_id: analysis-v2, locator: 'p. 42, T2 defeating results and protected conditions', basis: reconstruction}, {source_id: analysis-v1, locator: 'Negative branch 4, Domesticated conflict', basis: reconstruction}]
+      source_refs:
+      - {source_id: forum, post: 20, author: leif, basis: related}
+      - {source_id: paradox, locator: section 9, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 42, T2 defeating results and protected conditions', basis: reconstruction}
+      - {source_id: analysis-v1, locator: 'Negative branch 4, Domesticated conflict', basis: reconstruction}
     links:
     - id: g2-f-rel-benefit
       from: [g2-f-guidance, g2-f-protections]
@@ -238,7 +774,9 @@ trees:
       relation: contributes_to
       status: proposed
       contributions: *reconstruction
-      source_refs: [{source_id: analysis-v2, locator: 'p. 42, T2; combined trial design is an AI reconstruction', basis: inference}]
+      source_refs:
+      - {source_id: forum, post: 29, author: leif, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 42, T2; combined trial design is an AI reconstruction', basis: inference}
       assumptions:
       - {by: assistant, text: 'The guidance fits the selected workflow, protections operate in practice, and observed gains exceed those from attention or ordinary human facilitation alone.'}
     - id: g2-f-rel-harm
@@ -247,7 +785,9 @@ trees:
       relation: contributes_to
       status: proposed
       contributions: *reconstruction
-      source_refs: [{source_id: analysis-v2, locator: 'p. 42, T2; risk route reconstructed from the cautions', basis: inference}]
+      source_refs:
+      - {source_id: paradox, locator: section 9, basis: cited}
+      - {source_id: analysis-v2, locator: 'p. 42, T2; risk route reconstructed from the cautions', basis: inference}
       assumptions:
       - {by: assistant, text: 'The risk arises where guidance privileges agreement or management expectations over substantive fairness; it is not an inevitable effect of guidance.'}
     backlog:
@@ -271,21 +811,31 @@ trees:
       label: A bounded comparative trial produces reviewable observations of benefits, harms and control.
       status: proposed
       contributions: *reconstruction
-      source_refs: [{source_id: analysis-v2, locator: 'pp. 35–36, P03–P09; p. 42, T2', basis: reconstruction}]
+      source_refs:
+      - {source_id: forum, post: 9, author: robert, basis: related}
+      - {source_id: forum, post: 18, author: robert, basis: related}
+      - {source_id: forum, post: 20, author: leif, basis: related}
+      - {source_id: analysis-v2, locator: 'pp. 35–36, P03–P09; p. 42, T2', basis: reconstruction}
     - id: g2-p-case
       kind: intermediate_objective
       text: A willing host and one function are selected, with the actual workflow and resource requirements documented.
       label: Select a willing host and one function, with actual workflow and resource needs documented.
       status: proposed
       contributions: *reconstruction
-      source_refs: [{source_id: analysis-v2, locator: 'p. 35, P01–P02; p. 45, A1–A2', basis: reconstruction}]
+      source_refs:
+      - {source_id: forum, post: 17, author: leif, basis: related}
+      - {source_id: forum, post: 23, author: leif, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 35, P01–P02; p. 45, A1–A2', basis: reconstruction}
     - id: g2-p-protocol
       kind: intermediate_objective
       text: Affected people authorise a trial specification covering comparisons, measures, protections, responsibilities, resources and fallback.
       label: Affected people authorise a comparative trial with measures, protections, resources and fallback.
       status: proposed
       contributions: *reconstruction
-      source_refs: [{source_id: analysis-v2, locator: 'pp. 35–36, P03–P08; p. 45, A3–A4', basis: reconstruction}]
+      source_refs:
+      - {source_id: forum, post: 20, author: leif, basis: related}
+      - {source_id: forum, post: 23, author: leif, basis: related}
+      - {source_id: analysis-v2, locator: 'pp. 35–36, P03–P08; p. 45, A3–A4', basis: reconstruction}
     - id: g2-p-gap
       kind: obstacle
       text: The supplied record does not establish a confirmed operational case and authorised trial specification.
@@ -332,7 +882,10 @@ trees:
       label: Select one willing host and one function, and confirm what is already operating.
       status: proposed
       contributions: *reconstruction
-      source_refs: [{source_id: analysis-v2, locator: 'p. 45, A1', basis: reconstruction}]
+      source_refs:
+      - {source_id: forum, post: 17, author: leif, basis: related}
+      - {source_id: forum, post: 13, author: leif, basis: related}
+      - {source_id: analysis-v2, locator: 'p. 45, A1', basis: reconstruction}
     - id: g2-t-case
       kind: expected_effect
       text: The bounded case and its factual starting conditions are documented.
