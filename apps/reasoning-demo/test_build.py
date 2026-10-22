@@ -173,7 +173,8 @@ class SiteTests(unittest.TestCase):
         fonts = ["alegreya-sans-400.woff2", "alegreya-sans-500.woff2", "alegreya-sans-700.woff2", "alegreya-sans-400-italic.woff2", "OFL.txt"]
         expected = {"index.html", "how-it-works.html", "styles.css", "app.js", "reasoning.json", *(f"fonts/{f}" for f in fonts),
                     *(f"reason-commons/{p}.html" for p in pages_), "reason-commons/reasoning.json",
-                    *(f"example-willow-lane/{p}.html" for p in pages_ + ["questions", "learning"]), "example-willow-lane/reasoning.json"}
+                    *(f"example-willow-lane/{p}.html" for p in pages_ + ["questions", "learning"]), "example-willow-lane/reasoning.json",
+                    *(f"gandhi-2-0/{p}.html" for p in pages_ + ["questions"]), "gandhi-2-0/reasoning.json"}
         self.assertEqual(set(self.outputs), expected)
 
     def test_our_reviewed_snapshot_is_unchanged(self):
@@ -352,6 +353,125 @@ class ExampleTests(unittest.TestCase):
         registry["is_example"] = False
         with self.assertRaisesRegex(ValueError, "fictional example"):
             build.validate_v2(self.data, registry)
+
+
+class ReconstructionTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.site, cls.commons = build.load_site()
+        cls.record = next(c for c in cls.commons if c["entry"]["kind"] == "reconstruction")
+        cls.registry, cls.data = cls.record["registry"], cls.record["data"]
+        cls.outputs = build.build_files(cls.site, cls.commons)
+
+    @unittest.skipUnless(HAVE_YAML, "PyYAML is needed for the public working file")
+    def test_public_working_file_validates_and_matches_exactly(self):
+        helper = build.skill_helpers()
+        state = helper.load(build.HERE / self.record["entry"]["source"])
+        helper.validate(state)
+        self.assertEqual(build.project_reconstruction(state, self.registry), self.data)
+        self.assertEqual(sum(len(t["nodes"]) for t in self.data["trees"].values()), 22)
+        self.assertEqual(sum(len(t["links"]) for t in self.data["trees"].values()), 15)
+
+    def test_existing_reviewed_snapshots_remain_byte_for_byte_the_same(self):
+        expected = {"real": "994c61a3deda57223fb20a363897d00c999bdf3244294d2601ee1fe100c39cfd",
+                    "example": "f4319cd397cb6b7562f4399f7425d8613190a78aedf936304be63b0003597c1e"}
+        for record in self.commons:
+            if record["entry"]["kind"] in expected:
+                self.assertEqual(build.digest(record["data"]), expected[record["entry"]["kind"]])
+
+    def test_reconstruction_cannot_imply_endorsement_or_direct_human_authorship(self):
+        for change, expected in [({"status": "accepted", "accepted_by": ["David Joseph"]}, "remain proposed"),
+                                 ({"contributors": [{"name": "David Joseph", "role": "human"}]}, "participant authorship")]:
+            data = deepcopy(self.data)
+            data["trees"]["goal"]["nodes"][0].update(change)
+            with self.assertRaisesRegex(ValueError, expected):
+                build.validate_reconstruction(data, self.registry)
+
+    def test_every_item_requires_a_known_source_and_an_explicit_basis(self):
+        for refs in [[], [{"source_id": "invented", "locator": "p. 2", "basis": "reconstruction"}],
+                     [{"source_id": "analysis-v2", "locator": "", "basis": "inference"}],
+                     [{"source_id": "analysis-v2", "locator": "p. 2", "basis": "verified"}]]:
+            data = deepcopy(self.data)
+            data["trees"]["goal"]["nodes"][0]["source_refs"] = refs
+            with self.assertRaisesRegex(ValueError, "source locator"):
+                build.validate_reconstruction(data, self.registry)
+
+    def test_feedback_and_earlier_endorsement_cannot_be_invented(self):
+        data = deepcopy(self.data)
+        data["feedback"] = [{"reports": [{"text": "It worked"}]}]
+        with self.assertRaisesRegex(ValueError, "feedback commitments or reports"):
+            build.validate_reconstruction(data, self.registry)
+        data = deepcopy(self.data)
+        data["history"][0]["changes"][0]["type"] = "accepted"
+        with self.assertRaisesRegex(ValueError, "prior endorsement or results"):
+            build.validate_reconstruction(data, self.registry)
+
+    @unittest.skipUnless(HAVE_YAML, "PyYAML is needed for the public working file")
+    def test_only_selected_public_fields_cross_the_reconstruction_boundary(self):
+        state = build.skill_helpers().load(build.HERE / self.record["entry"]["source"])
+        state["change_acceptances"] = [{"source_text": "PRIVATE_CANARY"}]
+        for tree in state["trees"].values():
+            for item in tree["nodes"] + tree["links"]:
+                item.update(private_note="PRIVATE_CANARY", source={"path": "/PRIVATE_CANARY"})
+                item["contributions"][0]["note"] = "PRIVATE_CANARY"
+        self.assertNotIn("PRIVATE_CANARY", json.dumps(build.project_reconstruction(state, self.registry)))
+        data = deepcopy(self.data)
+        data["trees"]["goal"]["nodes"][0]["source"] = {"path": "/PRIVATE_CANARY"}
+        with self.assertRaisesRegex(ValueError, "Unreviewed public fields"):
+            build.validate_reconstruction(data, self.registry)
+
+    def test_every_reconstruction_page_is_labelled_and_sources_are_inspectable(self):
+        for name, value in self.outputs.items():
+            if name.startswith("gandhi-2-0/") and name.endswith(".html"):
+                self.assertIn('class="reconstruction-banner"', value, name)
+                self.assertIn("participants have not endorsed", value, name)
+                self.assertNotIn("Fictional example", value, name)
+        items = self.outputs["gandhi-2-0/items.html"]
+        for tree in self.data["trees"].values():
+            for item in tree["nodes"] + tree["links"]:
+                for ref in item["source_refs"]:
+                    self.assertIn(pages.esc(ref["locator"]), items)
+        for ident in ("analysis-v1", "analysis-v2"):
+            self.assertIn(f'id="source-{ident}"', self.outputs["gandhi-2-0/about.html"])
+        self.assertIn("AI inference", items)
+
+    def test_overview_and_briefs_keep_the_trial_and_participation_provisional(self):
+        overview = self.outputs["gandhi-2-0/index.html"]
+        for wording in ("First step · Unassigned", "No trial is recorded here", "What would change our minds?", "suppress"):
+            self.assertIn(wording, overview)
+        self.assertNotIn("The change chosen", overview)
+        c = pages.Commons(build.normalize(self.record))
+        for ident in c.order:
+            brief = pages.brief(c, ident, self.site)
+            self.assertIn("Source locators:", brief)
+            self.assertIn("participants have not endorsed", brief)
+            self.assertIn("Copying this brief submits nothing", brief)
+        self.assertNotIn("gandhi-2-0/learning.html", self.outputs)
+
+    def test_source_text_is_escaped_and_does_not_execute_markup(self):
+        registry = deepcopy(self.registry)
+        data = deepcopy(self.data)
+        payload = '<img src=x onerror="alert(1)">'
+        data["sources"][0]["title"] = payload
+        registry["sources"][0]["title"] = payload
+        data["trees"]["goal"]["nodes"][0]["source_refs"][0]["locator"] = payload
+        build.validate_reconstruction(data, registry)
+        c = pages.Commons(build.normalize({**self.record, "data": data, "registry": registry}))
+        for rendered in (pages.about_page(c, self.site), pages.items_page(c, self.site)):
+            self.assertNotIn(payload, rendered)
+            self.assertIn(pages.esc(payload), rendered)
+
+    def test_conflict_outline_names_the_conflict_instead_of_implying_a_sequence(self):
+        for file in ("gandhi-2-0/index.html", "gandhi-2-0/conflict.html"):
+            self.assertNotIn('class="o-then">then', self.outputs[file])
+            self.assertIn('href="items.html#g2-c-rel-conflict">conflicts with</a>', self.outputs[file])
+
+    def test_release_is_readable_without_a_download_or_script(self):
+        about = self.outputs["gandhi-2-0/about.html"]
+        self.assertIn('id="release-json"', about)
+        self.assertIn(pages.esc(build.normalize(self.record)["json"]), about)
+        self.assertIn("Read or copy this release", about)
+        self.assertNotIn(" download", about)
 
 
 if __name__ == '__main__':

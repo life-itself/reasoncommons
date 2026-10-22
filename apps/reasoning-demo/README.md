@@ -1,6 +1,6 @@
 # Reason Commons in use: a site of commons
 
-A static, read-only site at [`/demos/reason-commons-in-use/index.html`](../../website/demos/reason-commons-in-use/index.html) showing what a platform of commons could look like. A commons is a goal and the reasoning a group builds around it with the Reason Commons skill. The site lists two: ours, built from the accepted reasoning in Rufus and David's collaboration, and a clearly labelled fictional example, Willow Lane Primary, which shows everything a published commons can hold. Nothing on the site edits a commons; contributions start from a copyable brief taken to the reader's own AI.
+A static, read-only site at [`/demos/reason-commons-in-use/index.html`](../../website/demos/reason-commons-in-use/index.html) showing what a platform of commons could look like. A commons is a goal and the reasoning a group builds around it with the Reason Commons skill. The site lists accepted reasoning from Rufus and David's collaboration; Gandhi 2.0, a proposed source reconstruction from analyses of a Second Renaissance discussion; and a clearly labelled fictional example, Willow Lane Primary. Nothing on the site edits a commons; contributions start from a copyable brief taken to the reader's own AI.
 
 ## Pages
 
@@ -31,9 +31,9 @@ python3 scripts/check-website.py
 python3 -m http.server 8878 --bind 127.0.0.1 --directory website
 ```
 
-Open `http://127.0.0.1:8878/demos/reason-commons-in-use/index.html`. Every page is complete without JavaScript; `app.js` adds the diagram/outline switch, statement search, path highlighting and clipboard copying, and redirects the earlier `?view=…&tree=…&item=…` links to the new pages. `--check` compares all 36 generated files and fails on unexpected files in the published folder. With PyYAML installed it also re-projects the example from its working file and fails if the pinned snapshot has drifted.
+Open `http://127.0.0.1:8878/demos/reason-commons-in-use/index.html`. Every page is complete without JavaScript; `app.js` adds the diagram/outline switch, statement search, path highlighting and clipboard copying, and redirects the earlier `?view=…&tree=…&item=…` links to the new pages. `--check` compares all 49 generated files and fails on unexpected files in the published folder. With PyYAML installed it also re-projects the fictional example and source reconstruction from their public working files and fails if either pinned snapshot has drifted.
 
-## Two commons, two publication boundaries
+## Three records, three publication boundaries
 
 **Ours.** The authoritative collaboration record is in the private product repository and is never copied here. `publication.json` holds the reviewed allowlist of 50 statement IDs and 14 connection IDs, approved display names and the pinned accepted-only projection (projection version 1), unchanged from `accepted-reasoning-demo-2026-10-22` revision 1; the redesign was accepted as `commons-site-redesign-2026-10-22` revision 1. Routine builds and CI use the pinned projection, so they need no private access. For an authorized refresh:
 
@@ -49,11 +49,19 @@ The refresh validates the working state with the skill's validator, then exports
 python3 apps/reasoning-demo/build.py --refresh-example
 ```
 
+**Gandhi 2.0.** `ltp/gandhi-2-0/reason-commons.yaml` is a compact AI reconstruction from two supplied analyses, with 22 proposed statements, 15 proposed connections and source locators on every item. The original thread and source documents have not been independently checked. The registry at `commons/gandhi-2-0/publication.json` pins an explicit selection, reviewed source descriptions and the initial release. Projection version 3 permits only proposed AI reconstruction with no endorsers or feedback commitments/reports. It reuses the qualification checks without changing version 1's accepted-only boundary or version 2's fictional-example requirement. Every page has a source-reconstruction banner; inspect an item for its source locator and inference label. Original documents, local paths, approval receipts and unselected fields are not exported. Refresh after an authorised edit:
+
+```sh
+python3 apps/reasoning-demo/build.py --refresh-reconstruction
+```
+
+The opening view starts with candidate common ground, the AI-dependence conflict, a proposed comparison with its possible harm, and an unassigned first task. Other source branches remain open review work. There is no trial result, assigned host or participant endorsement. See [the source and review record](../../docs/product/gandhi-2-0-source-review.md).
+
 ## Meaning the site preserves
 
 - Standing is spelled out and shown by border style as well as colour: accepted for now (solid), proposed (dashed), disputed (dotted). Earlier acceptance of a disputed item is shown as history, never as current acceptance.
 - Contribution and acceptance are separate. AI-originated ideas are attributed to the AI; imported statements with no known author say so.
-- Trees without accepted connections show statements grouped by role with no arrows. No constraint, root cause, sequence or evidence rating is inferred from layout.
+- Our accepted-only record groups statements without accepted connections by role, with no arrows. Qualified public records draw proposed connections as proposed, including joint conditions. No constraint, root cause, sequence or evidence rating is inferred from layout.
 - Outcome verdicts keep their meaning: observed, not observed, unclear, not assessed and awaiting a report stay distinct, and no trial is called a success.
 - The example's people, places and reports are invented. Nothing in it is evidence about a real project.
 

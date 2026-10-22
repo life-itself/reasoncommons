@@ -257,13 +257,18 @@ def brief(c, ident, site):
         opening = f"This is the fictional example commons on the Reason Commons demonstration site; its people and reports are invented. I want to practise developing a contribution about one {noun}."
         closing = ("Use the reason-commons skill if you have it, and treat this as practice: there is no shared record behind this example. "
                    "Help me work out a question, an observation or a challenge, and keep it as a draft. Copying this brief submits nothing.")
+    elif c.is_reconstruction:
+        opening = f"I'm reading Gandhi 2.0, a proposed AI reconstruction from supplied analyses of a real discussion, and want to develop a contribution about one {noun}. The original participants have not endorsed this map."
+        closing = ("Use the reason-commons skill if available. Check the cited analysis and, if accessible, the original passage before attributing the claim to a participant. "
+                   "Help me develop a question, correction or challenge as a draft; don't treat my interest as endorsement or invent a trial commitment. Copying this brief submits nothing.")
     else:
         opening = f"I'm reading a commons on the Reason Commons demonstration site and want to develop a contribution about one {noun}."
         closing = ("Use the reason-commons skill if you have it. First establish who I am and whether I can reach the current working record, "
                    "and check whether this item has changed since this release before proposing anything. Help me work out a question, an observation "
                    "or a challenge; don't assume I endorse the item. If I can't reach the shared record, help me keep a draft. Copying this brief submits nothing.")
+    locators = "" if not c.is_reconstruction else "\nSource locators: " + "; ".join(f'{ref["source_id"]}: {ref["locator"]} ({ref["basis"]})' for ref in item["source_refs"])
     return (f"{opening}\n\nCommons: {c.title}\nRelease: {c.release_id}, published {day(c.date)}\nQuestion: {TREES[name]['question']}\n"
-            f"Item: {ident} ({c.kind_of(ident)})\nStanding in this release: {standing}\n\n{wording}\n\nPublic page: {url}\n\n{closing}")
+            f"Item: {ident} ({c.kind_of(ident)})\nStanding in this release: {standing}{locators}\n\n{wording}\n\nPublic page: {url}\n\n{closing}")
 
 
 # ---------------------------------------------------------------- page shell
@@ -277,6 +282,10 @@ def shell(*, title, description, depth, body, nav=None, c=None, page="", head=""
     if c and c.is_example:
         banner = (f'<div class="example-banner" role="note"><div class="wrap"><strong>Fictional example.</strong> The school, its people and their reports are invented, '
                   f'to show everything a commons can hold. <a href="{up}reason-commons/index.html">See a real commons →</a></div></div>')
+    elif c and c.is_reconstruction:
+        banner = ('<div class="reconstruction-banner" role="note"><div class="wrap"><strong>Source reconstruction · Proposed.</strong> '
+                  'Prepared by AI from supplied analyses. The discussion participants have not endorsed this map. '
+                  '<a href="about.html#sources">Sources and limits →</a></div></div>')
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -288,7 +297,7 @@ def shell(*, title, description, depth, body, nav=None, c=None, page="", head=""
 <link rel="stylesheet" href="{up}styles.css">
 <script src="{up}app.js" defer></script>{head}
 </head>
-<body class="page-{page}{' is-example' if c and c.is_example else ''}">
+<body class="page-{page}{' is-example' if c and c.is_example else ''}{' is-reconstruction' if c and c.is_reconstruction else ''}">
 <a class="skip" href="#main">Skip to content</a>
 {banner}<header class="site-head"><div class="wrap">
 <a class="brand" href="{up}index.html">{LOGO}<span>Reason Commons</span></a>
@@ -307,9 +316,15 @@ def shell(*, title, description, depth, body, nav=None, c=None, page="", head=""
 """
 
 
-def commons_head(c, tab, heading=None):
-    tag = ('<span class="tag tag-example">Fictional example</span>' if c.is_example
+def publication_tag(c):
+    if c.is_reconstruction:
+        return '<span class="tag tag-reconstruction">Source reconstruction · Proposed</span>'
+    return ('<span class="tag tag-example">Fictional example</span>' if c.is_example
            else '<span class="tag tag-real">Real commons</span>')
+
+
+def commons_head(c, tab, heading=None):
+    tag = publication_tag(c)
     statements, connections = c.counts()
     tabs = [("index.html", "Overview", "overview", ""), ("map.html", "Map", "map", "6 questions"),
             ("items.html", "Statements", "items", str(statements + connections))]
@@ -338,7 +353,7 @@ def home(site, commons):
         statements, connections = c.counts()
         mix = sorted({i["status"] for t in c.trees.values() for i in t["nodes"] + t["links"]}, key=list(STANDING).index)
         standing = "all accepted for now" if mix == ["accepted"] else ", ".join(STANDING[s].lower().replace(" for now", "") for s in mix)
-        tag = '<span class="tag tag-example">Fictional example</span>' if c.is_example else '<span class="tag tag-real">Real commons</span>'
+        tag = publication_tag(c)
         quote = f'<blockquote class="cc-goal"><span>The goal</span>{esc(goal["text"])}</blockquote>' if goal else ""
         cards.append(f'<article class="cc{" cc-example" if c.is_example else ""}">'
                      f'<div class="cc-head">{tag}<h3><a href="{c.slug}/index.html">{esc(c.name)}</a></h3><p class="cc-by">{esc(c.byline)}</p></div>'
@@ -351,7 +366,7 @@ def home(site, commons):
                  '<a class="button button-quiet" href="/skills">Get the skill <span aria-hidden="true">↗</span></a></article>')
     questions = "".join(f'<li><span class="q-n">{i}</span><span class="q-t">{esc(TREES[n]["question"])}</span><span class="q-a">{esc(TREES[n]["about"])}</span></li>'
                         for i, n in enumerate(TREE_ORDER, 1))
-    real = next(c for c in commons if not c.is_example)
+    real = next(c for c in commons if c.kind == "real")
     example = next((c for c in commons if c.is_example), None)
     body = f"""<section class="hero"><div class="wrap hero-grid">
 <div class="hero-copy">
@@ -363,7 +378,7 @@ def home(site, commons):
 <aside class="hero-path" aria-label="The six questions a commons answers"><p class="path-title">Every commons answers six questions</p><ol class="path">{questions}</ol><p class="path-foot">Each answer sets up the next.</p></aside>
 </div></section>
 <section class="band" id="commons" aria-labelledby="commons-heading"><div class="wrap">
-<div class="band-head"><h2 id="commons-heading">Commons on this site</h2><p>One real, one invented. Ours is the reasoning behind Reason Commons itself, kept by Rufus and David. The example shows everything a commons can hold, including disagreements and what happened when a change was tried.</p></div>
+<div class="band-head"><h2 id="commons-heading">Commons on this site</h2><p>Read accepted reasoning from our own collaboration, a proposed reconstruction from a Second Renaissance discussion, and an invented example that includes a trial and reports. Each record says where it comes from and who has accepted what.</p></div>
 <div class="cc-grid">{"".join(cards)}</div>
 </div></section>
 <section class="band band-steps" aria-labelledby="made-heading"><div class="wrap">
@@ -419,7 +434,7 @@ def how_it_works(site, commons):
 </div></section>
 <section class="band"><div class="wrap split">
 <div><h2>Who said what</h2><p>Each item records who contributed the idea and, separately, who accepted it. An idea suggested by the AI is attributed to the AI. Only named people can accept anything, and imported material whose author is unknown says so.</p></div>
-<div><h2>What gets published</h2><p>A group decides what to make public and publishes it as a release. Each release keeps earlier wording, so the Changes page can show how the thinking moved. The site is a snapshot, not a live feed: the working record stays with the group.</p></div>
+<div><h2>What gets published</h2><p>A group decides what to make public and publishes it as a release. Each release keeps earlier wording, so the Changes page can show how the thinking moved. The site is a snapshot, not a live feed: the working record stays with the group.</p><p>A <strong>source reconstruction</strong> is different: the AI has drafted a map from supplied material, and the original participants have not endorsed it. Its items stay proposed, with source locators and explicit inferences. Gandhi 2.0 is such a reconstruction.</p></div>
 </div></section>
 <section class="band band-cta"><div class="wrap split">
 <div><h2>Taking part</h2><p>Every statement page has a brief you can copy into your own AI. The skill then checks the current record before helping you develop an observation, a question or a challenge. Copying a brief submits nothing, and this site never edits a commons.</p></div>
@@ -431,7 +446,42 @@ def how_it_works(site, commons):
 
 # ---------------------------------------------------------------- overview
 
+def reconstruction_outline(c, name, ids, links):
+    tree = c.trees[name]
+    rendered = diagrams.outline(tree, ids, links, c.href, lambda kind: kind_label(name, kind))
+    for link in links:
+        if link["relation"] == "conflicts_with":
+            target = f'<a href="{esc(c.href(link["to"]))}">{esc(c.items[link["to"]]["text"])}</a>'
+            rendered = rendered.replace(f'<p class="o-then">then → {target}</p>',
+                                        f'<p class="o-then"><a class="o-rel is-{link["status"]}" href="{esc(c.href(link["id"]))}">conflicts with</a> {chip(link["status"])} {target}</p>')
+    return rendered
+
+
+def reconstruction_overview(c, site):
+    goal = next(n for n in c.trees["goal"]["nodes"] if n["kind"] == "goal")
+    statements, connections = c.counts()
+    conditions = "".join(card(c, ident) for ident in ("g2-g-capability", "g2-g-control", "g2-g-future"))
+    _, shapes, _ = c.shapes("conflict")
+    cloud = "".join(figure(diagrams.svg(s, {n["id"]: n for n in c.trees["conflict"]["nodes"]}, c.href, "AI capability and resilient autonomy: a proposed conflict"), "Proposed conflict: AI capability and resilient autonomy", "The dashed connections are proposed. The two positions concern the same essential function; inspect each connection to question its assumption.") for s in shapes)
+    tree = c.trees["conflict"]
+    outline = reconstruction_outline(c, "conflict", [n["id"] for n in tree["nodes"]], tree["links"])
+    cloud = ('<div class="view-toggle" role="group" aria-label="Show conflict as" hidden><button type="button" data-view="diagram" aria-pressed="true">Diagram</button><button type="button" data-view="outline" aria-pressed="false">Outline</button></div>'
+             f'<div class="views" data-views><div class="view view-diagram">{cloud}</div><div class="view view-outline">{outline}</div></div>')
+    body = commons_head(c, "overview") + f'''<div class="wrap overview">
+<section class="goal-hero"><div class="gh-main"><p class="eyebrow">The proposed goal</p><p class="gh-text">{esc(goal["text"])}</p><p class="gh-by">{chip("proposed")} <span>Reconstructed by AI; awaiting participant review</span></p><a class="text-link" href="items.html#{goal["id"]}">Inspect the goal →</a></div><div class="gh-side"><p class="eyebrow">From a conversation to a shared question</p><p>{esc(c.description)}</p><p class="gh-count"><b>{statements}</b> proposed statements<br><b>{connections}</b> proposed connections</p><a class="text-link" href="about.html#sources">Where this map comes from →</a></div></section>
+<section class="ov"><div class="ov-head"><p class="eyebrow">A place to begin</p><h2>What seems to be shared</h2><p>The analyses report overlapping concerns: useful capabilities, meaningful control and preserving the possibility of a future. These are candidate starting points for review.</p></div><div class="cards cards-grid">{conditions}</div><a class="text-link" href="goal.html">The goal and its proposed conditions →</a></section>
+<section class="ov"><div class="ov-head"><p class="eyebrow">Pulling apart</p><h2>Useful capacity, without becoming captive</h2><p>A community needs enough capability to endure. It also needs to keep essential functions running when a provider, power supply or AI fails. Does that really require choosing between dependence on AI and doing without it?</p></div>{cloud}<a class="text-link" href="conflict.html">Inspect the conflict and its assumptions →</a></section>
+<section class="ov"><div class="ov-head"><p class="eyebrow">A possible change</p><h2>Try conflict guidance that members can question and leave</h2><p>The proposal is to test useful guidance while members retain control, access to human help and competence without the tool. Confidentiality, fair grievance handling and independent comparison are part of the design.</p></div><div class="cards cards-grid">{card(c, "g2-f-guidance")}{card(c, "g2-f-protections")}</div><a class="text-link" href="change.html">The proposed change and its effects →</a></section>
+<section class="ov"><div class="ov-head"><p class="eyebrow">The question to test</p><h2>What would change our minds?</h2><p>Do destructive conflict costs and unnecessary escalation fall, while fair treatment, independent competence and member influence remain? Compare AI guidance with optional-AI and human approaches.</p></div><div class="cards cards-grid">{card(c, "g2-f-benefit")}{card(c, "g2-f-harm")}</div><p>Fewer complaints or higher satisfaction would not settle it. Costs may have moved elsewhere, or justified grievances may have been silenced. Agree the comparison and the results that would defeat the claim before starting.</p><p>A local success would still leave a larger question open: do small democratic groups gain enough relative to hierarchies to change which institutions survive? The supplied analyses do not establish that step.</p><a class="text-link" href="items.html#g2-f-rel-benefit">Inspect the prediction and what remains untested →</a></section>
+<section class="ov"><div class="ov-head"><p class="eyebrow">First step · Unassigned</p><h2>Choose one willing host and one function</h2><p>No trial is recorded here. The first task is to establish a bounded case, check what already operates, and agree measures, protections, responsibilities and resources with the people affected. A missing detail in an analysis does not prove that a host lacks it.</p></div><div class="cards cards-grid">{card(c, "g2-t-select")}{card(c, "g2-p-protocol")}</div><a class="text-link" href="prerequisites.html">What has to happen first →</a></section>
+<section class="ov"><div class="ov-head"><p class="eyebrow">The wider picture</p><h2>One entry point into a broader programme</h2><p>The sources also explore reflective development, trustworthy governance, model adaptation, voice participation, federation, material services and security. Conflict guidance is one possible starting point. No single global constraint has been established.</p></div>{strip(c)}<p><a class="text-link" href="map.html">Explore all six views →</a></p><p><a class="text-link" href="questions.html">Review the open questions →</a></p></section>
+</div>'''
+    return shell(title=f"{c.name} · Reason Commons", description=c.summary, depth=1, body=body, nav="commons", c=c, page="overview")
+
+
 def overview(c, site):
+    if c.is_reconstruction:
+        return reconstruction_overview(c, site)
     o = c.overview
     goal = next((n for n in c.trees["goal"]["nodes"] if n["kind"] == "goal"), None) if "goal" in c.trees else None
     statements, connections = c.counts()
@@ -558,7 +608,7 @@ def tree_page(c, name, site):
                             f'{" · this connection is disputed" if l["status"] == "disputed" else ""}</p></div></li>'
                             for i, l in enumerate(notes, 1) for a in l["assumptions"][:1])
             diagram_parts.append(f'<div class="assumptions"><h3>Assumptions under the arrows</h3><ol>{items}</ol></div>')
-        outline_parts.append(diagrams.outline(tree, piece["ids"], piece["links"], c.href, lambda k: kind_label(name, k)))
+        outline_parts.append(reconstruction_outline(c, name, piece["ids"], piece["links"]) if c.is_reconstruction else diagrams.outline(tree, piece["ids"], piece["links"], c.href, lambda k: kind_label(name, k)))
     if figures:
         diagram_parts.insert(0, f'<div class="dg-set">{"".join(figures)}</div>')
     if not pieces and shapes:  # Our conflict: five statements in their places, without arrows.
@@ -637,6 +687,10 @@ def item_detail(c, ident, site):
     if backrefs:
         traces += '<div><dt>Referred to by</dt><dd>' + "".join(f'<a href="#{o}">{esc(c.short(o))}</a>' for o, _ in backrefs) + "</dd></div>"
     sections = []
+    if c.is_reconstruction:
+        source_titles = {source["id"]: source["title"] for source in c.sources}
+        rows = "".join(f'<li><p><a href="about.html#source-{esc(ref["source_id"])}">{esc(source_titles[ref["source_id"]])}</a> · {esc(ref["locator"])}</p><p class="muted">{"AI inference" if ref["basis"] == "inference" else "AI reconstruction"} from the supplied analysis; the original passage has not been independently checked.</p></li>' for ref in item["source_refs"])
+        sections.append(f'<section class="d-sec d-sources"><h3>Sources and reconstruction</h3><ul class="notes">{rows}</ul></section>')
     if not link:
         rels = [l for l in tree["links"] if ident in l["from"] or l["to"] == ident]
         if rels:
@@ -666,8 +720,11 @@ def item_detail(c, ident, site):
     if history:
         sections.append(f'<section class="d-sec"><h3>History</h3><ul class="notes">{"".join(history)}</ul></section>')
     text = brief(c, ident, site)
+    instruction = ("This commons is invented, so there is no one to send anything to. Use the brief to practise with the skill." if c.is_example else
+                   "Copy the brief into your AI to draft a question or correction. Check the supplied analysis and original passage before attributing a view to anyone." if c.is_reconstruction else
+                   "Copy this brief into a conversation with your AI to develop a question, an observation or a challenge. The skill checks the current record first.")
     contribute = (f'<section class="d-sec d-brief"><h3>{"Practise a contribution" if c.is_example else "Bring a contribution to your AI"}</h3>'
-                  f'<p>{"This commons is invented, so there is no one to send anything to. Use the brief to practise with the skill." if c.is_example else "Copy this brief into a conversation with your AI to develop a question, an observation or a challenge. The skill checks the current record first."}</p>'
+                  f'<p>{instruction}</p>'
                   f'<div class="brief-actions"><button type="button" class="button" data-copy="brief-{ident}" hidden>Copy the brief</button><a class="text-link" href="/skills">Get the skill ↗</a><span class="copy-status" role="status"></span></div>'
                   f'<details><summary>Read the brief</summary><pre class="brief" id="brief-{ident}" tabindex="0">{esc(text)}</pre></details>'
                   f'<p class="fine">This page is read-only. Copying prepares text; it does not submit anything or give access to the shared record.</p></section>')
@@ -825,7 +882,7 @@ def changes_page(c, site):
         d, m = short_day(release["date"])
         entries.append(f'<article class="release"><div class="release-date"><b>{d}</b>{m}</div><div class="release-body"><p class="eyebrow">Release {esc(release["release_id"])}</p>'
                        f'<h2>{esc(release["title"])}</h2><p class="lede">{esc(release["summary"])}</p><ul class="chgs">{"".join(rows)}</ul></div></article>')
-    later = "" if c.is_example else ('<article class="release release-next"><div class="release-date"><b>…</b>Later</div><div class="release-body"><h2>The next release</h2>'
+    later = "" if c.is_example or c.is_reconstruction else ('<article class="release release-next"><div class="release-date"><b>…</b>Later</div><div class="release-body"><h2>The next release</h2>'
                                      '<p class="lede">When Rufus and David publish again, this page will show what was added, reworded or disputed, with the earlier wording kept.</p></div></article>')
     body = commons_head(c, "changes", heading=False) + f"""<div class="wrap narrow-left">
 <section class="page-intro"><h1>Changes</h1><p class="lede">How the published reasoning has changed, release by release. Earlier wording is kept.</p></section>
@@ -849,21 +906,34 @@ def about_page(c, site):
     fiction = ('<section class="about-fiction"><h2>This commons is invented</h2><p>Willow Lane Primary, Amara, Grace, Tomasz, Dev and Ruth, and everything they say and report, are fictional. '
                'The commons was written in the skill\'s own file format and checked with the skill\'s validator, to show what a published commons can hold. '
                'Nothing here describes a real school, street or person.</p></section>') if c.is_example else ""
+    if c.is_reconstruction:
+        source_list = "".join(f'<article id="source-{esc(source["id"])}"><h3>{esc(source["title"])}</h3><p>{esc(source["description"])}</p></article>' for source in c.sources)
+        fiction = ('<section class="ov" id="sources"><h2>Sources and limits</h2><p>This is a proposed AI reconstruction from supplied analyses of a real discussion. Every item names its analysis, page or section, and whether its connection is an inference. The source authors and forum participants have not reviewed or endorsed this selection.</p>'
+                   + source_list + '<h3>The broader programme</h3><p>The later analysis covers reflective human development, trustworthy institutions, the Laboratory, Forge/model adaptation, Vocal Presence, federation, material and energy services, and enforceable security. It separates philosophical hypotheses from institutional mechanisms and distinguishes local success from a durable shift in institutional selection. This compact starting map leaves those branches as open review work.</p>'
+                   '<h3>What counts as progress?</h3><p>The earlier analysis proposes measuring practices adopted and retained in viable institutions that remain faithful to their purpose. The measures, system boundary, observation period and protected conditions still need agreement. Essays and conversation alone do not establish that outcome.</p></section>')
     excluded = ("Nothing is held back: the example's whole working file is published, apart from how each contribution was captured."
                 if c.is_example else
                 "Proposed and disputed reasoning, open questions, assumptions and challenges, outcome reports, approval records and working notes stay in the working record. They are not published here.")
+    if c.is_reconstruction:
+        excluded = "The original forum posts, manuscript and source documents are not reproduced here. No participant endorsement, trial owner, budget, baseline, numerical target, feedback commitment or observed result is recorded. The map does not establish one global constraint."
+    download = '<a class="button button-quiet" href="reasoning.json" download>Download this release <span aria-hidden="true">↓</span></a>'
+    release_text = ""
+    if c.is_reconstruction:
+        # The host sandboxes HTML without allow-downloads; keep the release readable without scripts.
+        download = '<a class="button button-quiet" href="#release-json">Read or copy this release <span aria-hidden="true">↓</span></a>'
+        release_text = f'<details id="release-json"><summary>Read the release as JSON</summary><pre class="brief" tabindex="0">{esc(c.json)}</pre></details>'
     body = commons_head(c, "about", heading=False) + f"""<div class="wrap">
 <section class="page-intro"><h1>About this record</h1><p class="lede">{esc(c.scope)}</p></section>
 {fiction}
 <div class="about-grid">
 <section><h2>What “accepted for now” means</h2><p>Named people are willing to build on a statement or connection for now. It records their judgement at the time. It does not establish truth, and it does not mean everyone agrees: each item names exactly who accepted it.</p>
-<h2>Contributed is not the same as accepted</h2><p>Each item records who contributed the idea and, separately, who accepted it. Ideas suggested by the AI are attributed to the AI, and only people can accept anything.{"" if c.is_example else " Some statements were imported before contributors were recorded; they say so rather than guessing."}</p>
+<h2>Contributed is not the same as accepted</h2><p>Each item records who contributed the idea and, separately, who accepted it. Ideas suggested by the AI are attributed to the AI, and only people can accept anything.{"" if c.is_example or c.is_reconstruction else " Some statements were imported before contributors were recorded; they say so rather than guessing."}</p>
 <h2>What isn't here</h2><p>{esc(excluded)}</p>
 <h2>A snapshot, not a live feed</h2><p>This is release {esc(c.release_id)}, published {day(c.date)}. {"Earlier wording stays on the Changes page." if len(c.history) > 1 else "It is the first release, so there is no earlier wording to compare yet."}</p></section>
 <aside class="about-side"><p class="eyebrow">In this release</p><p class="big-count"><b>{statements}</b> statements <b>{connections}</b> connections</p>
 <div class="table-wrap"><table class="counts"><thead><tr><th scope="col">Question</th>{head}</tr></thead><tbody>{"".join(rows)}</tbody></table></div>
-<p><a class="button button-quiet" href="reasoning.json" download>Download this release <span aria-hidden="true">↓</span></a></p>
-<p class="fine">The download holds exactly what these pages show, as JSON.</p></aside>
+<p>{download}</p>
+<p class="fine">{"The release contains exactly what these pages show, as JSON." if c.is_reconstruction else "The download holds exactly what these pages show, as JSON."}</p>{release_text}</aside>
 </div>
 <section class="about-people"><h2>People</h2>{people_table(c)}</section>
 </div>"""

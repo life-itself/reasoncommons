@@ -287,6 +287,50 @@ def validate_v2(data, registry):
     require(data["history"] and data["history"][-1]["release_id"] == data["release_id"], "The latest history entry must be this release")
 
 
+# ---------------------------------------------------------------- projection 3: an unendorsed source reconstruction
+
+def project_reconstruction(state, registry):
+    """Reuse qualification checks without opening either existing publication boundary."""
+    require(registry.get("publication_kind") == "source_reconstruction", "Not a source reconstruction")
+    example_registry = {**registry, "is_example": True}
+    result = project_v2(state, example_registry)
+    result.pop("is_example")
+    result.update(projection_version=3, publication_kind="source_reconstruction", sources=deepcopy(registry["sources"]))
+    for name, tree in result["trees"].items():
+        for key in ("nodes", "links"):
+            indexed = {item["id"]: item for item in state["trees"][name][key]}
+            for item in tree[key]:
+                item["source_refs"] = deepcopy(indexed[item["id"]].get("source_refs", []))
+    validate_reconstruction(result, registry)
+    return result
+
+
+def validate_reconstruction(data, registry):
+    require(data.get("projection_version") == 3 and data.get("publication_kind") == registry.get("publication_kind") == "source_reconstruction", "Unsupported reconstruction publication")
+    require(set(data) == {"projection_version", "publication_kind", "release_id", "snapshot_date", "title", "people", "trees", "feedback", "history", "sources"}, "Unexpected reconstruction field")
+    require(data["sources"] == registry["sources"] and data["sources"], "Unreviewed reconstruction sources")
+    source_ids = set()
+    for source in data["sources"]:
+        require(set(source) == {"id", "title", "description"} and all(isinstance(v, str) and v.strip() for v in source.values()), "Invalid source description")
+        require(re.fullmatch(r"[a-z0-9-]+", source["id"]) and source["id"] not in source_ids, "Invalid/duplicate source ID")
+        source_ids.add(source["id"])
+    require(not data["feedback"] and not registry["feedback"], "A reconstruction cannot invent feedback commitments or reports")
+    qualified = deepcopy(data)
+    qualified.pop("publication_kind")
+    qualified.pop("sources")
+    qualified.update(projection_version=2, is_example=True)
+    for tree in qualified["trees"].values():
+        for item in tree["nodes"] + tree["links"]:
+            require(item.get("status") == "proposed" and not item.get("accepted_by"), "A reconstruction must remain proposed without endorsers")
+            require(item.get("contributors") == [ASSISTANT], "A reconstruction cannot imply direct participant authorship")
+            refs = item.pop("source_refs", [])
+            require(isinstance(refs, list) and refs, f"Missing source locator: {item['id']}")
+            for ref in refs:
+                require(set(ref) == {"source_id", "locator", "basis"} and ref["source_id"] in source_ids and isinstance(ref["locator"], str) and ref["locator"].strip() and ref["basis"] in {"reconstruction", "inference"}, f"Invalid source locator: {item['id']}")
+    require(all(change["type"] == "added" for release in data["history"] for change in release["changes"]), "Reconstruction history cannot invent prior endorsement or results")
+    validate_v2(qualified, {**registry, "is_example": True})
+
+
 # ---------------------------------------------------------------- site
 
 def load_site():
@@ -298,6 +342,9 @@ def load_site():
         if data.get("projection_version") == 1:
             require(entry["kind"] == "real", "Our accepted-only projection is the real commons")
             validate_projection(data, registry)
+        elif data.get("projection_version") == 3:
+            require(entry["kind"] == "reconstruction", "Only a labelled reconstruction uses projection 3")
+            validate_reconstruction(data, registry)
         else:
             require(entry["kind"] == "example", "Only the labelled example uses projection 2")
             validate_v2(data, registry)
@@ -325,7 +372,7 @@ def normalize(item):
         feedback = []
     else:
         people, history, feedback = data["people"], data["history"], data["feedback"]
-    return {**entry, "is_example": entry["kind"] == "example", "release_id": data["release_id"], "date": data["snapshot_date"],
+    return {**entry, "is_example": entry["kind"] == "example", "is_reconstruction": entry["kind"] == "reconstruction", "sources": data.get("sources", []), "release_id": data["release_id"], "date": data["snapshot_date"],
             "title": data["title"], "people": people, "trees": trees, "feedback": feedback, "history": history,
             "json": json.dumps(data, ensure_ascii=False, indent=2) + "\n"}
 
@@ -366,13 +413,24 @@ def refresh_example(entry, registry):
     return registry
 
 
+def refresh_reconstruction(entry, registry):
+    module = skill_helpers()
+    state = module.load(HERE / entry["source"])
+    module.validate(state)
+    registry = deepcopy(registry)
+    registry["snapshot"] = project_reconstruction(state, registry)
+    registry["snapshot_sha256"] = digest(registry["snapshot"])
+    return registry
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--refresh", type=Path, help="Explicit authorized working YAML; refresh only our selected public fields")
     parser.add_argument("--refresh-example", action="store_true", help="Re-project the fictional example from its public working file")
+    parser.add_argument("--refresh-reconstruction", action="store_true", help="Re-project the selected public source reconstruction")
     parser.add_argument("--check", action="store_true", help="Read-only check of the reviewed snapshots and generated files")
     args = parser.parse_args()
-    require(not ((args.refresh or args.refresh_example) and args.check), "Refresh and check are separate operations")
+    require(not ((args.refresh or args.refresh_example or args.refresh_reconstruction) and args.check), "Refresh and check are separate operations")
     site = read_json(HERE / "site.json")
     for entry in site["commons"]:
         path = HERE / entry["registry"]
@@ -380,12 +438,15 @@ def main():
             path.write_text(json.dumps(refresh(read_json(path), args.refresh), ensure_ascii=False, indent=2) + "\n")
         if entry["kind"] == "example" and args.refresh_example:
             path.write_text(json.dumps(refresh_example(entry, read_json(path)), ensure_ascii=False, indent=2) + "\n")
+        if entry["kind"] == "reconstruction" and args.refresh_reconstruction:
+            path.write_text(json.dumps(refresh_reconstruction(entry, read_json(path)), ensure_ascii=False, indent=2) + "\n")
     site, commons = load_site()
     if args.check:
         for c in commons:  # The example must still be exactly what its working file projects to.
-            if c["entry"]["kind"] == "example":
+            if c["entry"]["kind"] in {"example", "reconstruction"}:
                 try:
-                    fresh = refresh_example(c["entry"], c["registry"])["snapshot"]
+                    refresher = refresh_example if c["entry"]["kind"] == "example" else refresh_reconstruction
+                    fresh = refresher(c["entry"], c["registry"])["snapshot"]
                 except ModuleNotFoundError:
                     print("PyYAML unavailable: example working file not re-projected", file=sys.stderr)
                 else:
