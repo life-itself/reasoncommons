@@ -135,13 +135,20 @@ class Commons:
                     node["credit"] = credit_line(self, node["source_refs"], numbers=False)
                 if node.get("proposed_role"):  # A role someone might take on; nobody is assigned.
                     node["owner"] = f'Who: unassigned · proposed role: {node["proposed_role"]}'
+                elif self.supplied_documents and node["kind"] == "action":
+                    node["owner"] = "Who: unassigned"
 
     def is_link(self, ident):
         return "relation" in self.items[ident]
 
+    def kind_label(self, tree, kind):
+        if self.supplied_documents and kind == "existing_condition":
+            return "Illustrative condition"
+        return kind_label(tree, kind)
+
     def kind_of(self, ident):
         item = self.items[ident]
-        return "Connection" if self.is_link(ident) else kind_label(self.tree_of[ident], item["kind"])
+        return "Connection" if self.is_link(ident) else self.kind_label(self.tree_of[ident], item["kind"])
 
     def text(self, ident):
         item = self.items[ident]
@@ -169,7 +176,7 @@ class Commons:
     def shapes(self, name):
         """Diagram geometry for each connected part of a tree, and the statements with no connection."""
         tree = self.trees[name]
-        label = lambda kind: kind_label(name, kind)
+        label = lambda kind: self.kind_label(name, kind)
         pieces, loose = diagrams.components(tree)
         shapes = [diagrams.geometry(tree, p["ids"], p["links"], label) for p in pieces]
         cloud_only = not tree["links"] and name == "conflict" and diagrams.cloud_roles({n["id"]: n for n in tree["nodes"]}, [])
@@ -207,10 +214,10 @@ def card(c, ident, tree=None, extra=""):
     tree = tree or c.tree_of[ident]
     owner = f'<span class="card-owner">{esc(item["owner"])}</span>' if item.get("owner") else ""
     if c.is_reconstruction:
-        return (f'<a class="card role-{item["kind"]}" href="items.html#{ident}"><span class="card-top"><span class="kind">{esc(kind_label(tree, item["kind"]))}</span></span>'
+        return (f'<a class="card role-{item["kind"]}" href="items.html#{ident}"><span class="card-top"><span class="kind">{esc(c.kind_label(tree, item["kind"]))}</span></span>'
                 f'<span class="card-text">{esc(item["text"])}</span>{owner}<span class="card-credit">{esc(credit_line(c, item["source_refs"]))}</span>{extra}</a>')
     return (f'<a class="card role-{item["kind"]} is-{item["status"]}" href="items.html#{ident}">'
-            f'<span class="card-top"><span class="kind">{esc(kind_label(tree, item["kind"]))}</span>{chip(item["status"])}</span>'
+            f'<span class="card-top"><span class="kind">{esc(c.kind_label(tree, item["kind"]))}</span>{chip(item["status"])}</span>'
             f'<span class="card-text">{esc(item["text"])}</span>{owner}{extra}'
             f'<span class="card-foot">{esc(endorsement(item))}</span></a>')
 
@@ -355,7 +362,7 @@ def loose_groups(c, name, ids, heading=True):
     order = ROLE_ORDER[name] + ["observation"]
     blocks = []
     for kind in sorted(groups, key=lambda k: order.index(k) if k in order else 99):
-        label = kind_label(name, kind)
+        label = c.kind_label(name, kind)
         cards = "".join(card(c, i, name) for i in groups[kind])
         blocks.append(f'<div class="group"><h4>{esc(PLURALS.get(label, label))} <span>{len(groups[kind])}</span></h4><div class="cards">{cards}</div></div>')
     return f'<div class="groups">{"".join(blocks)}</div>'
@@ -370,7 +377,7 @@ def legend(c, name, shapes):
             kinds.append(node["kind"])
     order = ROLE_ORDER[name] + ["observation"]
     kinds.sort(key=lambda k: order.index(k) if k in order else 99)
-    parts = [f'<span class="lg role-{k}"><i></i>{esc(kind_label(name, k))}</span>' for k in kinds]
+    parts = [f'<span class="lg role-{k}"><i></i>{esc(c.kind_label(name, k))}</span>' for k in kinds]
     standings = set() if c.is_reconstruction else {i["status"] for i in tree["nodes"] + tree["links"]}
     for status in ("accepted", "proposed", "disputed"):
         if status in standings and len(standings) > 1 or status != "accepted" and status in standings:
@@ -397,7 +404,7 @@ def role_legend(c):
     labels = defaultdict(list)
     for name in TREE_ORDER:
         for node in c.trees.get(name, {"nodes": []})["nodes"]:
-            label = kind_label(name, node["kind"])
+            label = c.kind_label(name, node["kind"])
             if label not in labels[node["kind"]]:
                 labels[node["kind"]].append(label)
     parts = []
@@ -642,7 +649,7 @@ def how_it_works(site, commons):
 
 def reconstruction_outline(c, name, ids, links):
     tree = c.trees[name]
-    rendered = diagrams.outline(tree, ids, links, c.href, lambda kind: kind_label(name, kind), uniform=True)
+    rendered = diagrams.outline(tree, ids, links, c.href, lambda kind: c.kind_label(name, kind), uniform=True)
     for link in links:
         if link["relation"] == "conflicts_with":
             target = f'<a href="{esc(c.href(link["to"]))}">{esc(c.items[link["to"]]["text"])}</a>'
@@ -673,7 +680,7 @@ def view_body(c, name, view, caption="", label="Show as"):
     tree = c.trees[name]
     links, context = diagrams.view_context(tree, set(view["nodes"]))
     ids = view["nodes"] + context
-    shape = diagrams.geometry(tree, ids, links, lambda k: kind_label(name, k))
+    shape = diagrams.geometry(tree, ids, links, lambda k: c.kind_label(name, k))
     notes = diagrams.number_markers(shape)
     homes = {i: c.home_view[i] for i in context}
     href = lambda i: f'#view-{homes[i]["id"]}' if i in homes else c.href(i)
@@ -683,7 +690,7 @@ def view_body(c, name, view, caption="", label="Show as"):
         muted = "Muted boxes belong to other parts and are drawn so that statements acting together stay together; select one to go to its part."
         caption = f"{caption} {muted}".strip()
     diagram = f'<div class="dg-set">{figure(svg, "Diagram: " + view["title"] + ". Scrolls sideways when it is wider than the screen.", caption, width=shape["w"])}</div>' + assumption_list(notes)
-    outline = reconstruction_outline(c, name, ids, links) if c.is_reconstruction else diagrams.outline(tree, ids, links, c.href, lambda k: kind_label(name, k))
+    outline = reconstruction_outline(c, name, ids, links) if c.is_reconstruction else diagrams.outline(tree, ids, links, c.href, lambda k: c.kind_label(name, k))
     return toggled(diagram, outline, label), links
 
 
@@ -740,7 +747,7 @@ def spine(c, block):
     def end(ident):
         item = c.items[ident]
         name = c.tree_of[ident]
-        return (f'<a class="sp-end role-{item["kind"]}" href="items.html#{ident}"><span class="kind">{esc(kind_label(name, item["kind"]))} · {esc(TREES[name]["step"])}</span>'
+        return (f'<a class="sp-end role-{item["kind"]}" href="items.html#{ident}"><span class="kind">{esc(c.kind_label(name, item["kind"]))} · {esc(TREES[name]["step"])}</span>'
                 f'<span class="sp-text">{esc(c.short(ident))}</span></a>')
     rows = []
     for hop in block["hops"]:
@@ -924,7 +931,7 @@ def tree_page(c, name, site):
         figures.append(figure(svg, f'Diagram: {info["question"]} Scrolls sideways when it is wider than the screen.', width=shape["w"]))
         if notes:
             diagram_parts.append(assumption_list(notes))
-        outline_parts.append(reconstruction_outline(c, name, piece["ids"], piece["links"]) if c.is_reconstruction else diagrams.outline(tree, piece["ids"], piece["links"], c.href, lambda k: kind_label(name, k)))
+        outline_parts.append(reconstruction_outline(c, name, piece["ids"], piece["links"]) if c.is_reconstruction else diagrams.outline(tree, piece["ids"], piece["links"], c.href, lambda k: c.kind_label(name, k)))
     if figures:
         diagram_parts.insert(0, f'<div class="dg-set">{"".join(figures)}</div>')
     if not pieces and shapes:  # Our conflict: five statements in their places, without arrows.
@@ -990,7 +997,7 @@ def item_detail(c, ident, site):
     else:
         label = f'<p class="item-label">Shown in diagrams as: “{esc(item["label"])}”</p>' if item.get("label") and item["label"] != item["text"] else ""
         statement = f'<h2 class="item-statement">{esc(item["text"])}</h2>{label}'
-    near = "" if link else diagrams.neighbourhood(tree, ident, lambda k: kind_label(name, k), lambda i: f"#{i}", uniform=c.is_reconstruction)
+    near = "" if link else diagrams.neighbourhood(tree, ident, lambda k: c.kind_label(name, k), lambda i: f"#{i}", uniform=c.is_reconstruction)
     where = (figure(near, "Diagram: where this sits") if near else
              '<p class="muted">Its sources and target are shown above, with the relation between them.</p>' if link else
              '<p class="muted">Not yet connected. No published connection leads into or out of this statement.</p>')
@@ -1069,7 +1076,7 @@ def item_detail(c, ident, site):
     pager = ('<nav class="pager pager-item" aria-label="Neighbouring items">'
              + (f'<a class="pager-prev" href="#{prev_id}"><span>← Previous</span>{esc(c.short(prev_id))}</a>' if prev_id else "<span></span>")
              + (f'<a class="pager-next" href="#{next_id}"><span>Next →</span>{esc(c.short(next_id))}</a>' if next_id else "<span></span>") + "</nav>")
-    kind = f'Connection · {diagrams.RELATIONS.get(item["relation"], item["relation"])}' if link else kind_label(name, item["kind"])
+    kind = f'Connection · {diagrams.RELATIONS.get(item["relation"], item["relation"])}' if link else c.kind_label(name, item["kind"])
     return (f'<div class="item-detail"><nav class="item-crumbs" aria-label="Item"><a href="#statements">← All statements</a><a href="{info["slug"]}.html">{esc(info["question"])}</a></nav>'
             f'<div class="item-top"><span class="kind kind-{"link" if link else item["kind"]}">{esc(kind)}</span>{standing_chip(c, item["status"])}</div>{statement}'
             f'<div class="item-grid"><div class="item-where"><h3>Where it sits</h3>{where}</div><aside class="item-facts"><dl>{facts_html}{traces}</dl></aside></div>'
@@ -1270,13 +1277,14 @@ def about_page(c, site):
                    + source_list +'<h3>The broader programme</h3><p>The later analysis covers reflective human development, trustworthy institutions, the Laboratory, Forge/model adaptation, Vocal Presence, federation, material and energy services, and enforceable security. It separates philosophical hypotheses from institutional mechanisms and distinguishes local success from a durable shift in institutional selection. Those branches are now in the map as proposed changes with their risks, first steps and actions. Most of the first steps are the analysis’s own planning, so each obstacle carries a question to check at a host before relying on it.</p>'
                    '<h3>What counts as progress?</h3><p>The earlier analysis proposes measuring practices adopted and retained in viable institutions that remain faithful to their purpose. The measures, system boundary, observation period and protected conditions still need agreement. Essays and conversation alone do not establish that outcome.</p></section>')
         if c.supplied_documents:
-            fiction = ('<section class="ov" id="sources"><h2>Sources and limits</h2><p>This is a proposed AI reconstruction of Margeret Heath’s Being-Becoming With the World, Talk 1: Re-membering, using three supplied PDFs. Every statement and connection has a page reference and a labelled basis: paraphrase, reconstruction or inference. The author has not reviewed this selection or its connections.</p>'
+            fiction = ('<section class="ov" id="sources"><h2>Sources and limits</h2><p>This is a proposed AI reconstruction of Margeret Heath’s Being-Becoming With the World, Talk 1: Re-membering, using five original supplied PDFs. Margeret Heath is their sole author. The AI is responsible for this map’s selection, wording and connections. Every statement and connection has a source locator and a labelled basis: paraphrase, reconstruction or inference. The author has not reviewed this selection or its connections.</p>'
                        + source_list
                        + '<h3>Body, tools and a wider world</h3><p>The talks move from Bateson’s walking stick and embodied cognition through predictive processing, extended minds, shared timing and repair, to tools and environments that shape us in return. This commons selects the practical argument about tending those conditions. It is not a complete map of every thinker or argument in the talks.</p>'
                        '<h3>Evidence and philosophical commitments</h3><p>The script distinguishes evidence for coupling from the contested claim that a tool constitutes part of a mind, and from the author’s philosophical starting point in participation and process. The coupling–constitution objection and predictive-processing boundary debate remain open. The claim that all regulation is co-regulation is the author’s synthesis, not a result established here. The practical goal does not require agreement with that ontology.</p>'
-                       '<h3>Which document takes precedence?</h3><p>The spoken script with notes supplies the main qualifications: consent, freedom to step out, harm and repair, and the difference between cited work and Heath’s own extensions. The slides give the compact sequence; the extended passages retain longer versions and material parked for later talks. They are companion versions, not three independent bodies of evidence. Cultural concepts are situated in living traditions, not treated as interchangeable names for one idea.</p>'
-                       '<h3>What counts as progress?</h3><p>No actual group, baseline, trial owner or outcome is established. Before trying a practice, participants would need to agree how to judge benefit, pressure, safety and agency, including whether declining is possible in practice. Quietness or compliance alone would not settle those questions. Conflicts, prerequisites and assigned actions remain unestablished.</p>'
-                       '<h3>Reading the sources</h3><p>Page references use the supplied PDFs’ printed page numbers. The source bibliography and glossary referred to by the talks were not supplied, and cited studies have not been independently checked. Speaker directions and exercises are part of the source, not instructions carried out by this site or its reader.</p></section>')
+                       '<h3>Which document takes precedence?</h3><p>The spoken script with notes supplies the main qualifications: consent, freedom to step out, harm and repair, and the difference between cited work and Heath’s own extensions. The slides give the compact sequence; the extended passages retain longer versions and material parked for later talks. The glossary clarifies terms and the indexed bibliography identifies cited work and Heath’s own syntheses. These are companion documents, not independent bodies of evidence. Cultural concepts are situated in living traditions, not treated as interchangeable names for one idea.</p>'
+                       '<h3>Six views of a living process</h3><p>The goal, causal explanation, conflict, proposed changes, readiness conditions and action sequence are temporary analytical cuts through reciprocal processes. They preserve a feedback loop and attention to bodily, social and environmental timescales. The first application concerns a bounded somatic commons; further work at the scales of Body, We and World remains open.</p>'
+                       '<h3>What counts as progress?</h3><p>No willing group, baseline, trial owner or outcome is established. The conflict and readiness dependencies are proposed interpretations. Conditions in the action sequence are illustrative, not observations of an actual host. Before trying a practice, participants would need to agree how to judge support, learning, repair, agency and harmful effects, including whether declining is possible in practice. Quietness or compliance alone would not settle those questions. Privacy, consent and override remain safeguards to test, not guarantees.</p>'
+                       '<h3>Reading the sources</h3><p>Page references use the supplied PDFs’ printed page numbers. The glossary and indexed bibliography are supplied and credited above; cited studies have not been independently checked. Source-checking annotations in the bibliography belong to that document. Speaker directions and exercises are part of the source, not instructions carried out by this site or its reader.</p></section>')
     excluded = ("Nothing is held back: the example's whole working file is published, apart from how each contribution was captured."
                 if c.is_example else
                 "Proposed and disputed reasoning, open questions, assumptions and challenges, outcome reports, approval records and working notes stay in the working record. They are not published here.")

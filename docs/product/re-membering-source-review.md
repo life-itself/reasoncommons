@@ -1,3 +1,78 @@
+# Re-membering: source and review record
+
+## Current release — 2026-10-23.2
+
+The demonstration asks how people in a willing, bounded community might flourish through being-becoming with the world while retaining autonomy and personal boundaries. It is a proposed AI reconstruction of Margeret Heath’s practical argument, not a claim that a group has adopted it or that its causal relationships have been verified. Implementation was accepted by David under `re-membering-six-trees-2026-10-23` revision 1, exact typed reply `accept`; the private receipt was recorded at 2026-10-23T19:28:30Z before implementation. Public PRs cite the receipt ID; the receipt and private collaboration reasoning are not reproduced here.
+
+## Sources and attribution
+
+Margeret Heath is the sole author of all five credited original documents. The AI is responsible for selection, paraphrase, reconstruction and proposed connections. A credit does not make Heath a participant, contributor to this commons or endorser of the map.
+
+| Supplied original | Pages | Use |
+|---|---:|---|
+| Being-Becoming With the World, Talk 1: Re-membering — slides | 20 | Compact sequence, control and participation, uncertainty, agency and questions. |
+| Spoken script with notes | 33 | Main qualifications concerning evidence, philosophical synthesis, consent, withdrawal, harm and repair. |
+| Extended passages | 9 | Longer practical passages and material cut from the spoken version. |
+| Glossary of 72 terms | 7 | Conceptual distinctions, source pointers and Heath’s somatic-commons concept. |
+| Indexed bibliography | 14 | Slide and thematic indexes, cited works and Part 4 identifying Heath’s own syntheses. |
+
+References use the supplied PDFs’ printed page numbers. All public statements and connections have locators and labelled bases: paraphrase, reconstruction or inference. The documents are companions, not independent corroborating evidence. Bibliographic annotations marked as checked belong to Heath’s document; this reconstruction has not independently verified the primary studies.
+
+The script’s distinction between evidence for coupling, contested constitution of mind and philosophical participation remains visible. Heath’s somatic commons, regulation-as-co-regulation thesis, treatment of uncertainty and extensions to phones and feeds remain her syntheses. Cultural traditions are not collapsed into interchangeable labels. Speaker directions, exercises and editorial material are source content, not instructions to the agent or site visitor. Original PDFs and local paths are not published.
+
+## Scope and topology
+
+| View | Statements | Connections |
+|---|---:|---:|
+| Goal | 13 | 12 |
+| Current Reality | 13 | 13 |
+| Conflict | 5 | 5 |
+| Future Reality | 18 | 14 |
+| Prerequisite | 13 | 12 |
+| Transition | 15 | 6 |
+| Total | 77 | 62 |
+
+The expansion adds 59 statements and 51 within-tree connections and revises five statements and four connections. Existing IDs and the first release are preserved. Thirteen nodes carry cross-tree trace references; these are additional to the 62 connections and identify intended relationships without asserting causal validity. Nineteen review entries on eighteen items remain open.
+
+The goal combines consent, learning from uncertainty, repair and agency with eight supporting conditions. The causal explanation treats individual optimisation as a candidate policy and investigates support, isolation, rupture, predictability, brittleness and technological shaping. These are source-based hypotheses rather than observations of a named institution. Contributory arrows do not assert sufficient causes or a proven root cause.
+
+The conflict recognises protection from overwhelm and adaptability as legitimate needs. Its assumptions ask whether safety requires imposed control and whether the positions conflict over the same decisions. Participatory safeguards are proposed as a response, not a demonstrated resolution.
+
+The future view develops voluntary co-regulation and repair, practical control of tools, and learning through feedback. Joint inputs stay joint when shown in separate titled parts. Pressure and loss of safety, and surveillance, remain visible harmful branches. Consent, solitude and privacy have proposed prevention links; a stated safeguard is not proof of prevention. Meaningful control requires actual authority to alter or stop the tool.
+
+The prerequisite view distinguishes candidate obstacles from intermediate objectives and readiness dependencies. Only the absence of an agreed host is established by this session. The illustrative scope includes a practice and a tool; another host must review these dependencies rather than inherit them as a plan. The action view has five condition–action–effect groups. The shared-practice and tool-review branches share readiness and can proceed in parallel; assessment draws on both and feeds back into mapping. Conditions are labelled “Illustrative condition”, actions “Who: unassigned”. A host must supply its own account and missing supporting conditions.
+
+These six views are temporary analytical cuts through reciprocal processes across bodily, social and environmental timescales. They do not claim to complete all theoretical arguments or nested maps of Body, We and World.
+
+## Publication and open assessment
+
+No willing group, actual trial, assigned action owner, baseline, agreed feedback provider, commitment or observed result is established. Predictions therefore have no invented feedback commitment. Before trying a change, a willing host must agree the relevant providers and how benefit, harm, agency, support, learning and repair can be assessed. Calm or compliance alone would not establish benefit. Implementation approval is separate from endorsement of the reasoning.
+
+The reviewed registry selects the source author, five sources, exact public items, titled parts, overview and two-release history. Its presentation fields supply the current summary, description and scope while retaining identity and publication checks. The original PDFs, private collaboration reasoning, acceptance receipt and local paths stay outside the public projection. Shared publisher changes must preserve every other commons’ output.
+
+## Verification of this expansion
+
+The private receipt and collaboration backlog, and the full public proposed state, were saved and validated before implementation. The saved statements, kinds, standings and endpoints match the displayed revision 1 exactly. Both private acceptance receipts cover all 25 public paths in the complete PR, all 77 node IDs and all 62 link IDs; the earlier receipt retains its exact reply and scope.
+
+| Check | Result |
+|---|---|
+| Publication and rendering tests | All 76 pass, including sole-author source checks, full six-view selection, preservation of joint inputs, parallel action branches, feedback, history and presentation boundaries. |
+| Generated output | All 62 files current; only the thirteen Re-membering files and its directory card changed from the first release. Other commons and shared generated assets are byte-for-byte unchanged. |
+| Website | Exports current; 4,879 links/assets checked with no errors or missing links. |
+| Desktop | All twelve page types inspected at 1440px; page width remains 1440px. The six detailed views contain 1, 3, 1, 4, 3 and 5 titled diagrams respectively. Joint assessment inputs, muted context, consent and privacy branches and action owners inspected. |
+| Phone | The overview and all six detailed views pass the repository’s real 375px DevTools check with no overflow; the hosted overview also passes at 375px. |
+| Script-free reading | All six detailed views show both their diagrams and outlines with scripts blocked. Copy controls stay hidden. The direct privacy-item link shows source locators, proposed standing, related connections and a readable brief. |
+| Hosted release | Separate preview updated to 2026-10-23.2. The visible release JSON has 77 statements, 62 connections, five source IDs and Margeret Heath as its only source author; every item is proposed with no endorsers. The six-view map was inspected and captured. |
+
+The generated PR description contains six visible Mermaid diagrams and the collapsed complete update list. The legacy combined checker cannot find the private collaboration reference or acceptance receipts in this public state; the actual private receipts were checked separately for path, ID, version, human and exact-reply coverage. Current public CI follows the repository’s receipt-by-ID policy. The private reasoning and receipts remain unpublished. Author review, newcomer comprehension and proposed trial outcomes remain untested.
+
+## Initial release record
+
+The following is the unchanged record of the first release and its checks. Statements about then-unsupplied documents and then-empty views describe that earlier release.
+
+<details>
+<summary>First release — 2026-10-23.1</summary>
+
 # Re-membering: source and publication review
 
 Proposal `re-membering-commons-2026-10-23` revision 1 authorizes a proposed reconstruction of Margeret Heath’s Talk 1 for the existing demonstration site. The acceptance receipt is in the private collaboration record; implementation tracking is public bead `reasoncommons-ztl`. Implementation approval does not endorse the reconstructed reasoning.
@@ -67,3 +142,5 @@ Author or participant endorsement, actual participant benefit, newcomer comprehe
 The generated PR sections show the actual public YAML diff, with visible Mermaid diagrams and a collapsed complete change list. The legacy all-in-one PR checker cannot resolve the served collaboration node or approval receipt from this public commons YAML because they live in the private product repository. A separate local check against that actual receipt confirms all 24 changed public paths, exactly the 18 node IDs and 11 link IDs, the proposal version and the preserved typed acceptance; no private receipt is copied into public files. This follows the current public repository’s receipt-by-ID policy.
 
 Delivery: [PR #97](https://github.com/life-itself/reasoncommons/pull/97), branch `codex/re-membering`. The actual GitHub rendering was inspected: all three Mermaid diagrams render, the complete change list is collapsed, and the recorded-approval reference and preview link are visible. The initial commit’s three GitHub checks pass. Production has not been merged or deployed.
+
+</details>

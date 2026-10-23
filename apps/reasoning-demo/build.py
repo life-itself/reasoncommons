@@ -472,7 +472,10 @@ def load_site():
 
 def normalize(item):
     """One reading of either projection for the pages; nothing is added that the projection lacks."""
-    entry, data = item["entry"], item["data"]
+    presentation = item["registry"].get("presentation", {})
+    require(isinstance(presentation, dict) and set(presentation) <= {"summary", "description", "scope"}
+            and all(isinstance(v, str) and v.strip() for v in presentation.values()), "Invalid reviewed presentation")
+    entry, data = {**item["entry"], **presentation}, item["data"]
     trees = {}
     for name in pages.TREE_ORDER:
         if name not in data["trees"]:
