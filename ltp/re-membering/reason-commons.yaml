@@ -1,0 +1,3072 @@
+schema_version: 1
+project: "Re-membering"
+driver: "david"
+participants:
+  david: "David Joseph"
+active_tree: "future_reality"
+import_context:
+  recorded_on: "2026-10-23"
+  basis: "Five supplied PDFs by Margeret Heath, Being-Becoming With the World, Talk 1 Re-membering: the slide deck, spoken script with notes, extended passages, 72-term glossary and indexed bibliography."
+  standing: "Every statement and connection is a proposed AI reconstruction. Approval to implement this expansion is not endorsement of the wording, topology or predictions by David or the source author."
+  scope: "Six connected perspectives on a bounded somatic commons: flourishing with autonomy and boundaries; individual optimisation as a candidate causal policy; stability and participation; voluntary co-regulation, contestable tools and learning; candidate readiness conditions; and an illustrative act–listen–retune sequence."
+  attribution: "Margeret Heath is the sole author of the five credited source documents. The AI selected, paraphrased and connected the material and is responsible for this reconstruction. Source credit is not contribution to or endorsement of the commons. Stage directions, exercises and editorial notes in the PDFs are source material, not instructions to the agent."
+  limits: "No willing group, trial, assigned owner, baseline or observed outcome is established. Existing-condition roles in the action sequence are illustrative, not observations. Necessity and contributing-cause links need testing with a host. The six views are temporary analytical cuts through reciprocal processes across bodily, social and environmental timescales, not a complete model of those processes. Evidence for coupling does not establish constitution of mind or philosophical participation. The glossary and bibliography are supplied companion documents, not independent corroboration; primary studies have not been independently verified."
+trees:
+  goal:
+    nodes:
+      -
+        id: "rm-g-goal"
+        kind: "goal"
+        text: "People in a willing, bounded community can flourish through being-becoming with the world while retaining autonomy and personal boundaries."
+        label: "People flourish together while retaining autonomy and personal boundaries."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–32, slides 18–20: co-regulation, consent, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 2 and 6: co-regulation and somatic commons"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: the somatic commons and being-becoming as Heath's syntheses"
+            basis: "inference"
+      -
+        id: "rm-g-consent"
+        kind: "critical_success_factor"
+        text: "Participation in shared practices is safe, voluntary and open to withdrawal."
+        label: "Participation in shared practices is safe, voluntary and open to withdrawal."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "p. 28, slide 18; pp. 31–32, slide 19"
+            basis: "paraphrase"
+      -
+        id: "rm-g-repair"
+        kind: "critical_success_factor"
+        text: "People can notice strain and repair their shared rhythms."
+        label: "People can notice strain and repair their shared rhythms."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–28, slide 18; p. 32, slide 20"
+            basis: "paraphrase"
+          -
+            source_id: "extended-passages"
+            locator: "p. 7, The somatic commons"
+            basis: "paraphrase"
+      -
+        id: "rm-g-agency"
+        kind: "critical_success_factor"
+        text: "Tools and environments support purposes that people can question and change."
+        label: "Tools and environments support purposes that people can question and change."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes; p. 32, slide 20"
+            basis: "reconstruction"
+          -
+            source_id: "slides"
+            locator: "pp. 16 and 20"
+            basis: "reconstruction"
+      -
+        id: "rm-g-learning"
+        kind: "critical_success_factor"
+        text: "People can learn from uncertainty and revise how they act together."
+        status: "proposed"
+        label: "People can learn from uncertainty and revise how they act together."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 12–14, slides 9–10: exploration, uncertainty and learning"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 3, 5–7: expected uncertainty, requisite variety, unexpected uncertainty and volatility"
+            basis: "inference"
+      -
+        id: "rm-g-optout"
+        kind: "necessary_condition"
+        text: "Participants have informed, revocable consent and a trusted way to opt out."
+        status: "proposed"
+        label: "Consent is informed and revocable, with a trusted way to opt out."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–32, slides 18–20: co-regulation, consent, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 2 and 6: co-regulation and somatic commons"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: the somatic commons and being-becoming as Heath's syntheses"
+            basis: "inference"
+      -
+        id: "rm-g-company"
+        kind: "necessary_condition"
+        text: "People can access supportive company and protected solitude according to their needs."
+        status: "proposed"
+        label: "Supportive company and protected solitude are accessible."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–32, slides 18–20: co-regulation, consent, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 2 and 6: co-regulation and somatic commons"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: the somatic commons and being-becoming as Heath's syntheses"
+            basis: "inference"
+      -
+        id: "rm-g-feedback"
+        kind: "necessary_condition"
+        text: "People can attend to feedback across bodily, social and environmental timescales."
+        status: "proposed"
+        label: "People attend to feedback across relevant timescales."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 12–14, slides 9–10: exploration, uncertainty and learning"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 3, 5–7: expected uncertainty, requisite variety, unexpected uncertainty and volatility"
+            basis: "inference"
+      -
+        id: "rm-g-explore"
+        kind: "necessary_condition"
+        text: "People have permission to explore alternatives and revise shared expectations."
+        status: "proposed"
+        label: "People may explore alternatives and revise shared expectations."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 12–14, slides 9–10: exploration, uncertainty and learning"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 3, 5–7: expected uncertainty, requisite variety, unexpected uncertainty and volatility"
+            basis: "inference"
+      -
+        id: "rm-g-transparent"
+        kind: "necessary_condition"
+        text: "People can understand the purposes of tools that affect them and override their operation."
+        status: "proposed"
+        label: "Tool purposes are clear and people can override their operation."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: rules made by those affected, design and agency"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: Heath's own syntheses concerning the somatic commons and anticipatory tools"
+            basis: "inference"
+      -
+        id: "rm-g-governance"
+        kind: "necessary_condition"
+        text: "The people affected can govern changes to their shared environments."
+        status: "proposed"
+        label: "Affected people can govern changes to shared environments."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: rules made by those affected, design and agency"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: Heath's own syntheses concerning the somatic commons and anticipatory tools"
+            basis: "inference"
+      -
+        id: "rm-g-time"
+        kind: "necessary_condition"
+        text: "The community makes time available for listening and repair."
+        status: "proposed"
+        label: "Time is available for listening and repair."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–32, slides 18–20: co-regulation, consent, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 2 and 6: co-regulation and somatic commons"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: the somatic commons and being-becoming as Heath's syntheses"
+            basis: "inference"
+      -
+        id: "rm-g-harm"
+        kind: "necessary_condition"
+        text: "People can raise harm and obtain a response that can change the practice."
+        status: "proposed"
+        label: "Reports of harm can receive a response that changes the practice."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–32, slides 18–20: co-regulation, consent, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 2 and 6: co-regulation and somatic commons"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: the somatic commons and being-becoming as Heath's syntheses"
+            basis: "inference"
+    links:
+      -
+        id: "rm-gl-consent"
+        from: ["rm-g-consent"]
+        to: "rm-g-goal"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "p. 28, consent as part of the definition of a somatic commons"
+            basis: "inference"
+      -
+        id: "rm-gl-repair"
+        from: ["rm-g-repair"]
+        to: "rm-g-goal"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–28, rupture and repair"
+            basis: "inference"
+      -
+        id: "rm-gl-agency"
+        from: ["rm-g-agency"]
+        to: "rm-g-goal"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, design, ownership and whose purposes a tool serves"
+            basis: "inference"
+      -
+        id: "rm-gl-optout"
+        from: ["rm-g-optout"]
+        to: "rm-g-consent"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–32, slides 18–20: co-regulation, consent, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 2 and 6: co-regulation and somatic commons"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: the somatic commons and being-becoming as Heath's syntheses"
+            basis: "inference"
+      -
+        id: "rm-gl-company"
+        from: ["rm-g-company"]
+        to: "rm-g-consent"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–32, slides 18–20: co-regulation, consent, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 2 and 6: co-regulation and somatic commons"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: the somatic commons and being-becoming as Heath's syntheses"
+            basis: "inference"
+      -
+        id: "rm-gl-feedback"
+        from: ["rm-g-feedback"]
+        to: "rm-g-learning"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 12–14, slides 9–10: exploration, uncertainty and learning"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 3, 5–7: expected uncertainty, requisite variety, unexpected uncertainty and volatility"
+            basis: "inference"
+      -
+        id: "rm-gl-explore"
+        from: ["rm-g-explore"]
+        to: "rm-g-learning"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 12–14, slides 9–10: exploration, uncertainty and learning"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 3, 5–7: expected uncertainty, requisite variety, unexpected uncertainty and volatility"
+            basis: "inference"
+      -
+        id: "rm-gl-transparent"
+        from: ["rm-g-transparent"]
+        to: "rm-g-agency"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: rules made by those affected, design and agency"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: Heath's own syntheses concerning the somatic commons and anticipatory tools"
+            basis: "inference"
+      -
+        id: "rm-gl-governance"
+        from: ["rm-g-governance"]
+        to: "rm-g-agency"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: rules made by those affected, design and agency"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: Heath's own syntheses concerning the somatic commons and anticipatory tools"
+            basis: "inference"
+      -
+        id: "rm-gl-time"
+        from: ["rm-g-time"]
+        to: "rm-g-repair"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–32, slides 18–20: co-regulation, consent, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 2 and 6: co-regulation and somatic commons"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: the somatic commons and being-becoming as Heath's syntheses"
+            basis: "inference"
+      -
+        id: "rm-gl-harm"
+        from: ["rm-g-harm"]
+        to: "rm-g-repair"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–32, slides 18–20: co-regulation, consent, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 2 and 6: co-regulation and somatic commons"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: the somatic commons and being-becoming as Heath's syntheses"
+            basis: "inference"
+      -
+        id: "rm-gl-learning"
+        from: ["rm-g-learning"]
+        to: "rm-g-goal"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–32, slides 18–20: co-regulation, consent, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 2 and 6: co-regulation and somatic commons"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: the somatic commons and being-becoming as Heath's syntheses"
+            basis: "inference"
+    backlog:
+      -
+        ref: "rm-g-goal"
+        work: "clarify_group_and_setting"
+        label: "Choose whose shared conditions and which setting the goal concerns."
+        note: "Establish the willing group, situation and scope; no host is yet agreed."
+      -
+        ref: "rm-gl-repair"
+        work: "test_necessity"
+        label: "Test whether repair is necessary for the bounded goal."
+        note: "Review all twelve proposed necessity links, including autonomy, company and solitude, feedback, governance and repair."
+      -
+        ref: "rm-g-goal"
+        work: "examine_coupling_and_constitution"
+        label: "Separate evidence for coupling from claims about what constitutes a mind."
+        note: "Retain the distinction between empirical coupling, contested constitution and philosophical participation; use the glossary and bibliography to improve source tracing without claiming independent verification."
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 14–15, slide 11; pp. 18–22, slide 13"
+            basis: "reconstruction"
+  current_reality:
+    nodes:
+      -
+        id: "rm-r-machine"
+        kind: "cause"
+        text: "The body is treated as a private machine to optimise and repair alone."
+        label: "The body is treated as a private machine to optimise and repair alone."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "slides"
+            locator: "pp. 6 and 18"
+            basis: "paraphrase"
+          -
+            source_id: "spoken-script"
+            locator: "p. 27, slide 18"
+            basis: "paraphrase"
+      -
+        id: "rm-r-alone"
+        kind: "undesirable_effect"
+        text: "The burden of regulation is left to individuals despite their dependence on relationships and surroundings."
+        label: "Individuals carry a regulation burden shaped by relationships and surroundings."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–28, slide 18"
+            basis: "reconstruction"
+          -
+            source_id: "extended-passages"
+            locator: "pp. 6–7, The somatic commons"
+            basis: "reconstruction"
+      -
+        id: "rm-r-fixed"
+        kind: "cause"
+        text: "Institutions prioritise short-term predictability and fixed targets over responses from the wider system."
+        label: "Institutions favour predictability and targets over responses from the wider system."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 12–14, slides 4 and 9–10: lineal control, variation and uncertainty"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 4–5: lineal control, performative excess and requisite variety"
+            basis: "inference"
+      -
+        id: "rm-r-harm"
+        kind: "undesirable_effect"
+        text: "An intervention can meet its target while causing unintended harm elsewhere."
+        label: "An intervention can meet its target while causing unintended harm elsewhere."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6, slide 4 and performative excess notes"
+            basis: "paraphrase"
+      -
+        id: "rm-r-tools"
+        kind: "cause"
+        text: "Adaptive technologies anticipate people's needs without meaningful shared control of their purposes."
+        label: "Adaptive technologies anticipate needs without meaningful shared control."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18: extended allostatic control, agency and Heath's phones-and-feeds extension"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 12 and 14: White et al. and Heath's own extensions"
+            basis: "inference"
+      -
+        id: "rm-r-agency"
+        kind: "undesirable_effect"
+        text: "People’s capacity to choose and learn can be narrowed."
+        label: "People's capacity to choose and learn can be narrowed."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18; p. 32, slide 20"
+            basis: "reconstruction"
+          -
+            source_id: "slides"
+            locator: "pp. 16 and 20"
+            basis: "reconstruction"
+      -
+        id: "rm-r-policy"
+        kind: "cause"
+        text: "Regulation and wellbeing are treated primarily as matters of individual optimisation."
+        status: "proposed"
+        label: "Regulation and wellbeing are treated as individual optimisation problems."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 9–10 and 27–31, slides 6 and 18: private-machine framing, individual regulation and shared support"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: somatic commons and regulation as co-regulation are Heath's syntheses"
+            basis: "inference"
+      -
+        id: "rm-r-support"
+        kind: "cause"
+        text: "Collective support and repair receive less attention."
+        status: "proposed"
+        label: "Collective support and repair receive less attention."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 9–10 and 27–31, slides 6 and 18: private-machine framing, individual regulation and shared support"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: somatic commons and regulation as co-regulation are Heath's syntheses"
+            basis: "inference"
+      -
+        id: "rm-r-suppress"
+        kind: "cause"
+        text: "Surprise and variation are suppressed rather than explored."
+        status: "proposed"
+        label: "Surprise and variation are suppressed rather than explored."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 12–14, slides 4 and 9–10: lineal control, variation and uncertainty"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 4–5: lineal control, performative excess and requisite variety"
+            basis: "inference"
+      -
+        id: "rm-r-shaping"
+        kind: "cause"
+        text: "External systems increasingly shape people's attention and choices."
+        status: "proposed"
+        label: "External systems increasingly shape people's attention and choices."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18: extended allostatic control, agency and Heath's phones-and-feeds extension"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 12 and 14: White et al. and Heath's own extensions"
+            basis: "inference"
+      -
+        id: "rm-r-isolation"
+        kind: "undesirable_effect"
+        text: "People can become isolated and blamed for difficulties shaped by their relationships and surroundings."
+        status: "proposed"
+        label: "People can become isolated and blamed for difficulties shaped by their surroundings."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 9–10 and 27–31, slides 6 and 18: private-machine framing, individual regulation and shared support"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: somatic commons and regulation as co-regulation are Heath's syntheses"
+            basis: "inference"
+      -
+        id: "rm-r-rupture"
+        kind: "undesirable_effect"
+        text: "Strains and ruptures in relationships can remain unrepaired."
+        status: "proposed"
+        label: "Strains and ruptures in relationships can remain unrepaired."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 9–10 and 27–31, slides 6 and 18: private-machine framing, individual regulation and shared support"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: somatic commons and regulation as co-regulation are Heath's syntheses"
+            basis: "inference"
+      -
+        id: "rm-r-brittle"
+        kind: "undesirable_effect"
+        text: "Responses can become brittle when conditions change."
+        status: "proposed"
+        label: "Responses can become brittle when conditions change."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 12–14, slides 4 and 9–10: lineal control, variation and uncertainty"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 4–5: lineal control, performative excess and requisite variety"
+            basis: "inference"
+    links:
+      -
+        id: "rm-rl-alone"
+        from: ["rm-r-policy"]
+        to: "rm-r-alone"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 9–10 and 27–31, slides 6 and 18: private-machine framing, individual regulation and shared support"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: somatic commons and regulation as co-regulation are Heath's syntheses"
+            basis: "inference"
+      -
+        id: "rm-rl-harm"
+        from: ["rm-r-fixed"]
+        to: "rm-r-harm"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6, lineal control and performative excess"
+            basis: "inference"
+      -
+        id: "rm-rl-agency"
+        from: ["rm-r-shaping"]
+        to: "rm-r-agency"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18: extended allostatic control, agency and Heath's phones-and-feeds extension"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 12 and 14: White et al. and Heath's own extensions"
+            basis: "inference"
+      -
+        id: "rm-rl-policy"
+        from: ["rm-r-machine"]
+        to: "rm-r-policy"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 9–10 and 27–31, slides 6 and 18: private-machine framing, individual regulation and shared support"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: somatic commons and regulation as co-regulation are Heath's syntheses"
+            basis: "inference"
+        assumptions:
+          -
+            text: "This is a candidate explanatory bridge, not evidence that a philosophical framing causes a particular institution's policies; alternative causes and incentives require investigation."
+            by: "assistant"
+      -
+        id: "rm-rl-fixed"
+        from: ["rm-r-policy"]
+        to: "rm-r-fixed"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 12–14, slides 4 and 9–10: lineal control, variation and uncertainty"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 4–5: lineal control, performative excess and requisite variety"
+            basis: "inference"
+      -
+        id: "rm-rl-tools"
+        from: ["rm-r-policy"]
+        to: "rm-r-tools"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18: extended allostatic control, agency and Heath's phones-and-feeds extension"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 12 and 14: White et al. and Heath's own extensions"
+            basis: "inference"
+      -
+        id: "rm-rl-support"
+        from: ["rm-r-alone"]
+        to: "rm-r-support"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 9–10 and 27–31, slides 6 and 18: private-machine framing, individual regulation and shared support"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: somatic commons and regulation as co-regulation are Heath's syntheses"
+            basis: "inference"
+      -
+        id: "rm-rl-isolation"
+        from: ["rm-r-support"]
+        to: "rm-r-isolation"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 9–10 and 27–31, slides 6 and 18: private-machine framing, individual regulation and shared support"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: somatic commons and regulation as co-regulation are Heath's syntheses"
+            basis: "inference"
+      -
+        id: "rm-rl-rupture"
+        from: ["rm-r-support"]
+        to: "rm-r-rupture"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 9–10 and 27–31, slides 6 and 18: private-machine framing, individual regulation and shared support"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: somatic commons and regulation as co-regulation are Heath's syntheses"
+            basis: "inference"
+      -
+        id: "rm-rl-suppress"
+        from: ["rm-r-fixed"]
+        to: "rm-r-suppress"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 12–14, slides 4 and 9–10: lineal control, variation and uncertainty"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 4–5: lineal control, performative excess and requisite variety"
+            basis: "inference"
+      -
+        id: "rm-rl-brittle"
+        from: ["rm-r-suppress"]
+        to: "rm-r-brittle"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 12–14, slides 4 and 9–10: lineal control, variation and uncertainty"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 4–5: lineal control, performative excess and requisite variety"
+            basis: "inference"
+      -
+        id: "rm-rl-predict-shaping"
+        from: ["rm-r-fixed"]
+        to: "rm-r-shaping"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18: extended allostatic control, agency and Heath's phones-and-feeds extension"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 12 and 14: White et al. and Heath's own extensions"
+            basis: "inference"
+      -
+        id: "rm-rl-tool-shaping"
+        from: ["rm-r-tools"]
+        to: "rm-r-shaping"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18: extended allostatic control, agency and Heath's phones-and-feeds extension"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 12 and 14: White et al. and Heath's own extensions"
+            basis: "inference"
+    backlog:
+      -
+        ref: "rm-rl-harm"
+        work: "test_causality"
+        label: "Check the causal claims in a specific situation."
+        note: "Retain the wider-harm check; examine alternative explanations and missing conditions."
+      -
+        ref: "rm-rl-agency"
+        work: "distinguish_source_claim_from_extension"
+        label: "Distinguish the cited smart-home proposal from the phones-and-feeds extension."
+        note: "Retain Heath's extension to phones and feeds as her synthesis, and test the new mediating shaping step."
+      -
+        ref: "rm-r-policy"
+        work: "test_core_policy"
+        label: "Test individual optimisation as the core-policy hypothesis."
+        note: "Test whether individual optimisation is a useful core-policy hypothesis rather than an imposed explanation."
+      -
+        ref: "rm-r-isolation"
+        work: "ground_undesirable_effects"
+        label: "Ground the candidate problems and connections in one setting."
+        note: "Obtain concrete observations of isolation, unrepaired rupture, brittleness and agency loss from the same setting; examine all proposed contributory links."
+  conflict:
+    nodes:
+      -
+        id: "rm-c-objective"
+        kind: "objective"
+        text: "The community sustains viable, flourishing relationships."
+        status: "proposed"
+        label: "The community sustains viable, flourishing relationships."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 12–14, slides 9–10: steadiness, openness, exploration and adaptation"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–30, slide 18: safety, consent and governance"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 5–7: requisite variety, ultrastability and uncertainty"
+            basis: "inference"
+      -
+        id: "rm-c-protection"
+        kind: "need"
+        text: "People need sufficient stability and protection from overwhelm."
+        status: "proposed"
+        label: "People need stability and protection from overwhelm."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 12–14, slides 9–10: steadiness, openness, exploration and adaptation"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–30, slide 18: safety, consent and governance"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 5–7: requisite variety, ultrastability and uncertainty"
+            basis: "inference"
+      -
+        id: "rm-c-adaptation"
+        kind: "need"
+        text: "People need adaptability, agency and opportunities to learn."
+        status: "proposed"
+        label: "People need adaptability, agency and opportunities to learn."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 12–14, slides 9–10: steadiness, openness, exploration and adaptation"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–30, slide 18: safety, consent and governance"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 5–7: requisite variety, ultrastability and uncertainty"
+            basis: "inference"
+      -
+        id: "rm-c-impose"
+        kind: "prerequisite"
+        text: "Impose standardised individual regulation without participant control."
+        status: "proposed"
+        label: "Impose standardised individual regulation without shared control."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 12–14, slides 9–10: steadiness, openness, exploration and adaptation"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–30, slide 18: safety, consent and governance"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 5–7: requisite variety, ultrastability and uncertainty"
+            basis: "inference"
+      -
+        id: "rm-c-participate"
+        kind: "prerequisite"
+        text: "Let the affected people collectively shape and revise how regulation is organised."
+        status: "proposed"
+        label: "Affected people shape and revise how regulation is organised."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 12–14, slides 9–10: steadiness, openness, exploration and adaptation"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–30, slide 18: safety, consent and governance"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 5–7: requisite variety, ultrastability and uncertainty"
+            basis: "inference"
+    links:
+      -
+        id: "rm-cl-protection"
+        from: ["rm-c-protection"]
+        to: "rm-c-objective"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 12–14, slides 9–10: steadiness, openness, exploration and adaptation"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–30, slide 18: safety, consent and governance"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 5–7: requisite variety, ultrastability and uncertainty"
+            basis: "inference"
+      -
+        id: "rm-cl-adaptation"
+        from: ["rm-c-adaptation"]
+        to: "rm-c-objective"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 12–14, slides 9–10: steadiness, openness, exploration and adaptation"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–30, slide 18: safety, consent and governance"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 5–7: requisite variety, ultrastability and uncertainty"
+            basis: "inference"
+      -
+        id: "rm-cl-impose"
+        from: ["rm-c-impose"]
+        to: "rm-c-protection"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 12–14, slides 9–10: steadiness, openness, exploration and adaptation"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–30, slide 18: safety, consent and governance"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 5–7: requisite variety, ultrastability and uncertainty"
+            basis: "inference"
+        assumptions:
+          -
+            text: "Candidate assumption to challenge: adequate protection from overwhelm requires externally imposed individual regulation; reliable safeguards might instead be compatible with participant control."
+            by: "assistant"
+      -
+        id: "rm-cl-participate"
+        from: ["rm-c-participate"]
+        to: "rm-c-adaptation"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 12–14, slides 9–10: steadiness, openness, exploration and adaptation"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–30, slide 18: safety, consent and governance"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 5–7: requisite variety, ultrastability and uncertainty"
+            basis: "inference"
+        assumptions:
+          -
+            text: "Meaningful participant control is hypothesised to be necessary for agency and learning in this bounded case, rather than a universal claim about every form of adaptation."
+            by: "assistant"
+      -
+        id: "rm-cl-conflict"
+        from: ["rm-c-impose"]
+        to: "rm-c-participate"
+        relation: "conflicts_with"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 12–14, slides 9–10: steadiness, openness, exploration and adaptation"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–30, slide 18: safety, consent and governance"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 5–7: requisite variety, ultrastability and uncertainty"
+            basis: "inference"
+        assumptions:
+          -
+            text: "The positions conflict only where they allocate final control of the same decisions in incompatible ways; some standard safeguards and participatory arrangements may coexist."
+            by: "assistant"
+    backlog:
+      -
+        ref: "rm-cl-impose"
+        work: "test_safety_assumption"
+        label: "Test whether adequate safety requires imposed control."
+        note: "Challenge the assumption that sufficient safety requires imposed individual control; distinguish reliable safeguards from rigid control."
+      -
+        ref: "rm-cl-conflict"
+        work: "test_apparent_conflict"
+        label: "Check whether the positions conflict over the same decisions."
+        note: "Check whether the two positions conflict over the same decisions and whether participatory safeguards can meet both needs."
+  future_reality:
+    nodes:
+      -
+        id: "rm-f-practice"
+        kind: "injection"
+        text: "Offer shared rhythms of rest and meeting that participants can adapt or leave."
+        label: "Offer shared rhythms of rest and meeting that participants can adapt or leave."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "p. 28, slide 18; pp. 31–32, slide 19"
+            basis: "paraphrase"
+        addresses: ["rm-r-alone","rm-r-rupture"]
+      -
+        id: "rm-f-consent"
+        kind: "injection"
+        text: "Agree how people can decline participation, raise harm and seek repair before trying a shared practice."
+        label: "Agree how people can decline, raise harm and seek repair before a shared practice."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "p. 28, commons rules, consent and freedom to step out; pp. 31–32, optional practice"
+            basis: "reconstruction"
+      -
+        id: "rm-f-settle"
+        kind: "predicted_effect"
+        text: "Shared settling may help some participants feel more able to be with others."
+        label: "Shared settling may help some participants feel more able to be with others."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 31–32, slide 19"
+            basis: "reconstruction"
+          -
+            source_id: "slides"
+            locator: "p. 19"
+            basis: "reconstruction"
+      -
+        id: "rm-f-pressure"
+        kind: "undesirable_effect"
+        text: "A shared practice may create pressure to appear calm or make some participants feel less safe."
+        label: "A shared practice may create pressure or make some participants feel less safe."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "p. 28, no one owes the room calm and co-regulation can dysregulate; p. 31, safety, consent and trust"
+            basis: "reconstruction"
+      -
+        id: "rm-f-attune"
+        kind: "injection"
+        text: "Adjust actions by listening to responses from bodies, people and environments."
+        label: "Adjust actions by listening to bodies, people and environments."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 3–4, act, listen and retune; pp. 12–13, learning and uncertainty"
+            basis: "paraphrase"
+          -
+            source_id: "extended-passages"
+            locator: "p. 1, acting with the world"
+            basis: "paraphrase"
+        addresses: ["rm-r-fixed","rm-r-suppress","rm-r-brittle","rm-r-harm"]
+      -
+        id: "rm-f-learning"
+        kind: "predicted_effect"
+        text: "Feedback can change what is tried next instead of preserving a fixed target."
+        label: "Feedback can change what is tried next instead of preserving a fixed target."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 3–4, feedback loop; pp. 12–13, participation and uncertainty"
+            basis: "reconstruction"
+      -
+        id: "rm-f-tools"
+        kind: "injection"
+        text: "Make a selected tool's purposes and effects visible, contestable and reversible, with consent and user override."
+        label: "Make a tool visible, contestable and reversible, with consent and override."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 25–26 and 28–31, slides 16 and 18: whether tools widen choices, whose purposes they serve and agency"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 12 and 14: anticipatory technology and Heath's extensions"
+            basis: "inference"
+        addresses: ["rm-r-tools","rm-r-shaping","rm-r-agency"]
+      -
+        id: "rm-f-choice"
+        kind: "desirable_effect"
+        text: "People retain meaningful choices and agency over how tools regulate them."
+        label: "People retain meaningful choices and agency over tool regulation."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 25–26 and 28–31, slides 16 and 18: whether tools widen choices, whose purposes they serve and agency"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 12 and 14: anticipatory technology and Heath's extensions"
+            basis: "inference"
+      -
+        id: "rm-f-participation"
+        kind: "injection"
+        text: "Provide reliable safeguards while giving participants shared control, alternatives and a right to withdraw."
+        status: "proposed"
+        label: "Combine reliable safeguards with shared control, alternatives and withdrawal."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–32, slides 18–19: co-regulation, rupture, repair, consent and optional shared practice"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "p. 6: somatic commons"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: Heath's somatic-commons synthesis"
+            basis: "inference"
+        derived_from: ["rm-c-impose","rm-c-participate"]
+        addresses: ["rm-r-policy"]
+      -
+        id: "rm-f-support"
+        kind: "predicted_effect"
+        text: "People may gain safer opportunities for voluntary co-regulation."
+        status: "proposed"
+        label: "People may gain safer opportunities for voluntary co-regulation."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–32, slides 18–19: co-regulation, rupture, repair, consent and optional shared practice"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "p. 6: somatic commons"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: Heath's somatic-commons synthesis"
+            basis: "inference"
+      -
+        id: "rm-f-repair"
+        kind: "desirable_effect"
+        text: "The community may develop stronger relational support and capacity for repair."
+        status: "proposed"
+        label: "Relational support and capacity for repair may become stronger."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–32, slides 18–19: co-regulation, rupture, repair, consent and optional shared practice"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "p. 6: somatic commons"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: Heath's somatic-commons synthesis"
+            basis: "inference"
+      -
+        id: "rm-f-tool-control"
+        kind: "predicted_effect"
+        text: "People can see and change how the selected tool shapes their attention and routines."
+        status: "proposed"
+        label: "People can see and change how the tool shapes attention and routines."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 25–26 and 28–31, slides 16 and 18: whether tools widen choices, whose purposes they serve and agency"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 12 and 14: anticipatory technology and Heath's extensions"
+            basis: "inference"
+      -
+        id: "rm-f-variation"
+        kind: "predicted_effect"
+        text: "Variation and surprise can become sources of learning rather than errors to suppress."
+        status: "proposed"
+        label: "Variation and surprise can become sources of learning."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6, 12–14 and 32–33, slides 4, 9–10 and 20: acting, listening, uncertainty and retuning"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 2 and 5–7: dance of agency, requisite variety and uncertainty"
+            basis: "inference"
+      -
+        id: "rm-f-adaptability"
+        kind: "desirable_effect"
+        text: "People may become more able to adapt together under uncertainty."
+        status: "proposed"
+        label: "People may adapt together more readily under uncertainty."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6, 12–14 and 32–33, slides 4, 9–10 and 20: acting, listening, uncertainty and retuning"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 2 and 5–7: dance of agency, requisite variety and uncertainty"
+            basis: "inference"
+      -
+        id: "rm-f-lived"
+        kind: "desirable_effect"
+        text: "Being-with may become a lived practice that people can evaluate and revise."
+        status: "proposed"
+        label: "Being-with may become a lived practice that people evaluate and revise."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–32, slides 18–19: co-regulation, rupture, repair, consent and optional shared practice"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "p. 6: somatic commons"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: Heath's somatic-commons synthesis"
+            basis: "inference"
+      -
+        id: "rm-f-surveillance"
+        kind: "undesirable_effect"
+        text: "Adaptive tools may expose personal information or enable surveillance."
+        status: "proposed"
+        label: "Adaptive tools may expose personal information or enable surveillance."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 25–26 and 28–31, slides 16 and 18: whether tools widen choices, whose purposes they serve and agency"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 12 and 14: anticipatory technology and Heath's extensions"
+            basis: "inference"
+      -
+        id: "rm-f-privacy"
+        kind: "injection"
+        text: "Limit data collection and provide privacy protection, override and accountability for the selected tool."
+        status: "proposed"
+        label: "Limit data collection and provide privacy, override and accountability."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 25–26 and 28–31, slides 16 and 18: whether tools widen choices, whose purposes they serve and agency"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 12 and 14: anticipatory technology and Heath's extensions"
+            basis: "inference"
+      -
+        id: "rm-f-solitude"
+        kind: "injection"
+        text: "Protect solitude and allow people to decline shared practices without penalty."
+        status: "proposed"
+        label: "Protect solitude and declining participation without penalty."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–32, slides 18–19: co-regulation, rupture, repair, consent and optional shared practice"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "p. 6: somatic commons"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: Heath's somatic-commons synthesis"
+            basis: "inference"
+    links:
+      -
+        id: "rm-fl-settle"
+        from: ["rm-f-practice","rm-f-consent"]
+        to: "rm-f-settle"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "p. 28, consent and safety; pp. 31–32, optional shared practice"
+            basis: "inference"
+      -
+        id: "rm-fl-pressure"
+        from: ["rm-f-practice"]
+        to: "rm-f-pressure"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28 and 31, co-regulation can dysregulate and no one owes calm"
+            basis: "inference"
+      -
+        id: "rm-fl-protection"
+        from: ["rm-f-consent"]
+        to: "rm-f-pressure"
+        relation: "prevents"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "p. 28, safety, consent, commons rules and freedom to step out"
+            basis: "inference"
+        assumptions:
+          -
+            text: "The safeguard must work in practice without penalty, exclusion or hidden coercion. A stated rule does not guarantee prevention; remaining harm must be assessed."
+            by: "assistant"
+      -
+        id: "rm-fl-learning"
+        from: ["rm-f-variation"]
+        to: "rm-f-learning"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6, 12–14 and 32–33, slides 4, 9–10 and 20: acting, listening, uncertainty and retuning"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 2 and 5–7: dance of agency, requisite variety and uncertainty"
+            basis: "inference"
+      -
+        id: "rm-fl-choice"
+        from: ["rm-f-tool-control"]
+        to: "rm-f-choice"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 25–26 and 28–31, slides 16 and 18: whether tools widen choices, whose purposes they serve and agency"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 12 and 14: anticipatory technology and Heath's extensions"
+            basis: "inference"
+      -
+        id: "rm-fl-support"
+        from: ["rm-f-participation","rm-f-practice","rm-f-consent","rm-f-solitude"]
+        to: "rm-f-support"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–32, slides 18–19: co-regulation, rupture, repair, consent and optional shared practice"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "p. 6: somatic commons"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: Heath's somatic-commons synthesis"
+            basis: "inference"
+        assumptions:
+          -
+            text: "The arrangements must be usable, trusted and responsive to differing needs. Joint inputs propose a contributory route, not a guarantee or a claim that every case requires identical practices."
+            by: "assistant"
+      -
+        id: "rm-fl-repair"
+        from: ["rm-f-support"]
+        to: "rm-f-repair"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–32, slides 18–19: co-regulation, rupture, repair, consent and optional shared practice"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "p. 6: somatic commons"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: Heath's somatic-commons synthesis"
+            basis: "inference"
+      -
+        id: "rm-fl-tool-control"
+        from: ["rm-f-tools","rm-f-privacy"]
+        to: "rm-f-tool-control"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 25–26 and 28–31, slides 16 and 18: whether tools widen choices, whose purposes they serve and agency"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 12 and 14: anticipatory technology and Heath's extensions"
+            basis: "inference"
+        assumptions:
+          -
+            text: "Participants must have actual authority and access to change or stop the tool. Visibility or nominal override alone may leave control with its owner."
+            by: "assistant"
+      -
+        id: "rm-fl-variation"
+        from: ["rm-f-attune"]
+        to: "rm-f-variation"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6, 12–14 and 32–33, slides 4, 9–10 and 20: acting, listening, uncertainty and retuning"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 2 and 5–7: dance of agency, requisite variety and uncertainty"
+            basis: "inference"
+      -
+        id: "rm-fl-adaptability"
+        from: ["rm-f-learning"]
+        to: "rm-f-adaptability"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6, 12–14 and 32–33, slides 4, 9–10 and 20: acting, listening, uncertainty and retuning"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "pp. 2 and 5–7: dance of agency, requisite variety and uncertainty"
+            basis: "inference"
+      -
+        id: "rm-fl-lived"
+        from: ["rm-f-repair","rm-f-choice","rm-f-adaptability"]
+        to: "rm-f-lived"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–32, slides 18–19: co-regulation, rupture, repair, consent and optional shared practice"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "p. 6: somatic commons"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: Heath's somatic-commons synthesis"
+            basis: "inference"
+        assumptions:
+          -
+            text: "Relational support, meaningful choice and adaptability must be judged by affected participants; together they remain an incomplete hypothesis about flourishing."
+            by: "assistant"
+      -
+        id: "rm-fl-surveillance"
+        from: ["rm-f-tools"]
+        to: "rm-f-surveillance"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 25–26 and 28–31, slides 16 and 18: whether tools widen choices, whose purposes they serve and agency"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 12 and 14: anticipatory technology and Heath's extensions"
+            basis: "inference"
+      -
+        id: "rm-fl-privacy"
+        from: ["rm-f-privacy"]
+        to: "rm-f-surveillance"
+        relation: "prevents"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 25–26 and 28–31, slides 16 and 18: whether tools widen choices, whose purposes they serve and agency"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 12 and 14: anticipatory technology and Heath's extensions"
+            basis: "inference"
+        assumptions:
+          -
+            text: "The safeguard must work in practice without penalty, exclusion or hidden coercion. A stated rule does not guarantee prevention; remaining harm must be assessed."
+            by: "assistant"
+      -
+        id: "rm-fl-solitude"
+        from: ["rm-f-solitude"]
+        to: "rm-f-pressure"
+        relation: "prevents"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 27–32, slides 18–19: co-regulation, rupture, repair, consent and optional shared practice"
+            basis: "inference"
+          -
+            source_id: "glossary"
+            locator: "p. 6: somatic commons"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "pp. 13–14, Part 4: Heath's somatic-commons synthesis"
+            basis: "inference"
+        assumptions:
+          -
+            text: "The safeguard must work in practice without penalty, exclusion or hidden coercion. A stated rule does not guarantee prevention; remaining harm must be assessed."
+            by: "assistant"
+    backlog:
+      -
+        ref: "rm-f-settle"
+        work: "define_participant_assessment"
+        label: "Identify actual participants and how they would judge benefit and harm."
+        note: "Assess support, agency, learning and repair alongside harmful effects; calm or compliance alone is not evidence of benefit."
+      -
+        ref: "rm-f-pressure"
+        work: "examine_safety_and_withdrawal"
+        label: "Check whether declining and raising harm are possible in practice."
+        note: "Test whether withdrawal and protected solitude work without penalty and whether dysregulation or pressure persists."
+      -
+        ref: "rm-fl-protection"
+        work: "test_prevention"
+        label: "Check whether consent arrangements actually prevent pressure."
+        note: "Keep consent's protective effect unverified; stated rules may not prevent pressure."
+      -
+        ref: "rm-fl-choice"
+        work: "test_agency"
+        label: "Check whether assessing a tool changes choices and control."
+        note: "Test whether visibility and control produce meaningful choice, including authority to alter or stop the tool."
+      -
+        ref: "rm-f-practice"
+        work: "establish_conflict_prerequisites_and_actions"
+        label: "Establish conflicts, prerequisites and actions with a willing group."
+        note: "Review the newly reconstructed conflict, readiness dependencies and action logic; drafting them does not resolve this work."
+      -
+        ref: "rm-fl-privacy"
+        work: "test_prevention"
+        label: "Test whether the proposed safeguards prevent harm."
+        note: "Assess surveillance risks, actual privacy, override and accountability; do not treat safeguards as guarantees."
+  prerequisite:
+    nodes:
+      -
+        id: "rm-p-objective"
+        kind: "objective"
+        text: "A willing group can judge and revise a small voluntary shared practice and one tool's effect on agency."
+        status: "proposed"
+        label: "The group can judge and revise a practice and a tool's effects."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+      -
+        id: "rm-p-host-gap"
+        kind: "obstacle"
+        text: "No willing group and bounded situation have yet been agreed."
+        status: "proposed"
+        label: "No willing host or bounded situation has been agreed."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+      -
+        id: "rm-p-host"
+        kind: "intermediate_objective"
+        text: "A willing host group has agreed a bounded situation for the proposed pilot."
+        status: "proposed"
+        label: "A willing host agrees a bounded situation."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+      -
+        id: "rm-p-criteria-gap"
+        kind: "obstacle"
+        text: "The group may lack agreed meanings of flourishing, agency and harm."
+        status: "proposed"
+        label: "Shared meanings of flourishing, agency and harm may be missing."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+      -
+        id: "rm-p-criteria"
+        kind: "intermediate_objective"
+        text: "Participants have agreed observable criteria for flourishing, agency and harm."
+        status: "proposed"
+        label: "Participants agree observable criteria for benefit and harm."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+        implements: ["rm-f-participation"]
+      -
+        id: "rm-p-consent-gap"
+        kind: "obstacle"
+        text: "Participation may become coercive when consent and withdrawal arrangements are unclear."
+        status: "proposed"
+        label: "Unclear arrangements may make participation coercive."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+      -
+        id: "rm-p-consent"
+        kind: "intermediate_objective"
+        text: "Participants have usable consent, safety, withdrawal and harm-response arrangements."
+        status: "proposed"
+        label: "Consent, withdrawal and harm response are usable."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+        implements: ["rm-f-consent","rm-f-solitude"]
+      -
+        id: "rm-p-resources-gap"
+        kind: "obstacle"
+        text: "The group may lack protected time, space or roles for repair."
+        status: "proposed"
+        label: "Protected time, space or repair roles may be missing."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+      -
+        id: "rm-p-resources"
+        kind: "intermediate_objective"
+        text: "Time, space and repair roles are available for the bounded pilot."
+        status: "proposed"
+        label: "Time, space and repair roles are available."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+        implements: ["rm-f-practice"]
+      -
+        id: "rm-p-tools-gap"
+        kind: "obstacle"
+        text: "Existing tools may prevent participants from understanding or changing how they are regulated."
+        status: "proposed"
+        label: "Tools may resist participants' inspection or control."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+      -
+        id: "rm-p-tool-control"
+        kind: "intermediate_objective"
+        text: "The selected tool is visible, contestable and reversible for the participants."
+        status: "proposed"
+        label: "The selected tool is visible, contestable and reversible."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+        implements: ["rm-f-tools","rm-f-privacy"]
+      -
+        id: "rm-p-evidence-gap"
+        kind: "obstacle"
+        text: "The group may lack shared evidence about the benefits and harms of the proposed changes."
+        status: "proposed"
+        label: "Shared evidence of benefits and harms may be missing."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+      -
+        id: "rm-p-evidence"
+        kind: "intermediate_objective"
+        text: "Participants have assessed a bounded pilot together and revised what should happen next."
+        status: "proposed"
+        label: "Participants assess the pilot together and revise next steps."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+        implements: ["rm-f-attune"]
+    links:
+      -
+        id: "rm-pl-host"
+        from: ["rm-p-host"]
+        to: "rm-p-host-gap"
+        relation: "overcomes"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+      -
+        id: "rm-pl-criteria"
+        from: ["rm-p-criteria"]
+        to: "rm-p-criteria-gap"
+        relation: "overcomes"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+      -
+        id: "rm-pl-consent"
+        from: ["rm-p-consent"]
+        to: "rm-p-consent-gap"
+        relation: "overcomes"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+      -
+        id: "rm-pl-resources"
+        from: ["rm-p-resources"]
+        to: "rm-p-resources-gap"
+        relation: "overcomes"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+      -
+        id: "rm-pl-tools"
+        from: ["rm-p-tool-control"]
+        to: "rm-p-tools-gap"
+        relation: "overcomes"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+      -
+        id: "rm-pl-evidence"
+        from: ["rm-p-evidence"]
+        to: "rm-p-evidence-gap"
+        relation: "overcomes"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+      -
+        id: "rm-pl-host-criteria"
+        from: ["rm-p-host"]
+        to: "rm-p-criteria"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+        assumptions:
+          -
+            text: "Criteria adopted by a particular group require that willing group's involvement; preliminary drafting can occur before a host is agreed."
+            by: "assistant"
+      -
+        id: "rm-pl-criteria-consent"
+        from: ["rm-p-criteria"]
+        to: "rm-p-consent"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+        assumptions:
+          -
+            text: "Consent to this bounded pilot must be informed by its agreed purposes, observable effects and risks; general withdrawal rules may be prepared earlier."
+            by: "assistant"
+      -
+        id: "rm-pl-consent-evidence"
+        from: ["rm-p-consent"]
+        to: "rm-p-evidence"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+      -
+        id: "rm-pl-resources-evidence"
+        from: ["rm-p-resources"]
+        to: "rm-p-evidence"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+      -
+        id: "rm-pl-tools-evidence"
+        from: ["rm-p-tool-control"]
+        to: "rm-p-evidence"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+        assumptions:
+          -
+            text: "The illustrative pilot includes a tool as well as a shared practice. A host choosing a different scope must review this dependency."
+            by: "assistant"
+      -
+        id: "rm-pl-evidence-objective"
+        from: ["rm-p-evidence"]
+        to: "rm-p-objective"
+        relation: "necessary_for"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–33, slides 18–20 and notes: consent, governance, harm, repair and questions for practice"
+            basis: "inference"
+          -
+            source_id: "bibliography"
+            locator: "p. 13, Part 4: consent as part of Heath's definition of the somatic commons"
+            basis: "inference"
+    backlog:
+      -
+        ref: "rm-p-objective"
+        work: "validate_readiness"
+        label: "Confirm the host's obstacles and readiness dependencies."
+        note: "Confirm which candidate obstacles exist and which readiness dependencies hold for the willing host; clarify resources and scope."
+      -
+        ref: "rm-p-tool-control"
+        work: "establish_ownership_and_access"
+        label: "Establish who can change or stop the selected tool."
+        note: "Establish who can alter the chosen tool and whether meaningful override and reversibility are feasible."
+  transition:
+    nodes:
+      -
+        id: "rm-t-1-condition"
+        kind: "existing_condition"
+        text: "Stress is being discussed mainly as an individual's problem."
+        status: "proposed"
+        label: "Stress is discussed mainly as an individual problem."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+      -
+        id: "rm-t-map"
+        kind: "action"
+        text: "Map the relationships, tools and routines that regulate people in the chosen situation."
+        status: "proposed"
+        label: "Map the relationships, tools and routines that regulate people."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+      -
+        id: "rm-t-1-effect"
+        kind: "expected_effect"
+        text: "Participants have a shared picture of what regulates whom."
+        status: "proposed"
+        label: "Participants share a picture of what regulates whom."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+      -
+        id: "rm-t-2-condition"
+        kind: "existing_condition"
+        text: "The shared picture does not yet supply an agreed aim or participation arrangements."
+        status: "proposed"
+        label: "The picture lacks an agreed aim and participation arrangements."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+      -
+        id: "rm-t-agree"
+        kind: "action"
+        text: "Agree desired effects, observable criteria, consent and ways to opt out."
+        status: "proposed"
+        label: "Agree desired effects, criteria, consent and ways to opt out."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+        implements: ["rm-p-criteria","rm-p-consent"]
+      -
+        id: "rm-t-2-effect"
+        kind: "expected_effect"
+        text: "Participants have a bounded purpose and usable criteria for a voluntary pilot."
+        status: "proposed"
+        label: "The pilot has a bounded purpose and usable participation criteria."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+      -
+        id: "rm-t-3-condition"
+        kind: "existing_condition"
+        text: "The existing routines provide little protected opportunity for connection and repair."
+        status: "proposed"
+        label: "Routines leave little protected opportunity for connection and repair."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+      -
+        id: "rm-t-practice"
+        kind: "action"
+        text: "Offer one optional pause or check-in that participants can change or leave."
+        status: "proposed"
+        label: "Offer an optional pause or check-in that people can change or leave."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+        implements: ["rm-f-practice"]
+      -
+        id: "rm-t-3-effect"
+        kind: "expected_effect"
+        text: "Participants have a voluntary opportunity for attunement and a way to report strain."
+        status: "proposed"
+        label: "People have a voluntary chance to attune and a way to report strain."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+      -
+        id: "rm-t-4-condition"
+        kind: "existing_condition"
+        text: "A selected tool anticipates needs in ways participants cannot readily inspect or change."
+        status: "proposed"
+        label: "A tool anticipates needs in ways people cannot inspect or change."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+      -
+        id: "rm-t-audit"
+        kind: "action"
+        text: "Review that tool with participants and enable explanation, privacy protection and override."
+        status: "proposed"
+        label: "Review the tool and enable explanation, privacy and override."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+        implements: ["rm-p-tool-control"]
+      -
+        id: "rm-t-4-effect"
+        kind: "expected_effect"
+        text: "Participants have greater awareness and practical choice over the selected tool."
+        status: "proposed"
+        label: "People gain awareness and practical choice over the selected tool."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+      -
+        id: "rm-t-5-condition"
+        kind: "existing_condition"
+        text: "The benefits and harms of the proposed changes remain uncertain."
+        status: "proposed"
+        label: "Benefits and harms remain uncertain."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+      -
+        id: "rm-t-review"
+        kind: "action"
+        text: "Ask what helped, harmed or surprised participants, then revise or stop the changes."
+        status: "proposed"
+        label: "Ask what helped, harmed or surprised people, then revise or stop."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+        implements: ["rm-p-evidence"]
+      -
+        id: "rm-t-5-effect"
+        kind: "expected_effect"
+        text: "Participants can repeat an act–listen–retune cycle using their assessments."
+        status: "proposed"
+        label: "Participants can repeat an act–listen–retune cycle using assessments."
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+    links:
+      -
+        id: "rm-tl-map"
+        from: ["rm-t-1-condition","rm-t-map"]
+        to: "rm-t-1-effect"
+        relation: "produces"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+        assumptions:
+          -
+            text: "This is illustrative action logic, not an assigned plan or a verified causal claim. A host must confirm the current conditions, consent, resources, authority and missing supporting conditions."
+            by: "assistant"
+      -
+        id: "rm-tl-agree"
+        from: ["rm-t-1-effect","rm-t-2-condition","rm-t-agree"]
+        to: "rm-t-2-effect"
+        relation: "produces"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+        assumptions:
+          -
+            text: "This is illustrative action logic, not an assigned plan or a verified causal claim. A host must confirm the current conditions, consent, resources, authority and missing supporting conditions."
+            by: "assistant"
+      -
+        id: "rm-tl-practice"
+        from: ["rm-t-2-effect","rm-t-3-condition","rm-t-practice"]
+        to: "rm-t-3-effect"
+        relation: "produces"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+        assumptions:
+          -
+            text: "This is illustrative action logic, not an assigned plan or a verified causal claim. A host must confirm the current conditions, consent, resources, authority and missing supporting conditions."
+            by: "assistant"
+      -
+        id: "rm-tl-audit"
+        from: ["rm-t-2-effect","rm-t-4-condition","rm-t-audit"]
+        to: "rm-t-4-effect"
+        relation: "produces"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+        assumptions:
+          -
+            text: "This is illustrative action logic, not an assigned plan or a verified causal claim. A host must confirm the current conditions, consent, resources, authority and missing supporting conditions."
+            by: "assistant"
+      -
+        id: "rm-tl-review"
+        from: ["rm-t-3-effect","rm-t-4-effect","rm-t-5-condition","rm-t-review"]
+        to: "rm-t-5-effect"
+        relation: "produces"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+        assumptions:
+          -
+            text: "This is illustrative action logic, not an assigned plan or a verified causal claim. A host must confirm the current conditions, consent, resources, authority and missing supporting conditions."
+            by: "assistant"
+      -
+        id: "rm-tl-feedback"
+        from: ["rm-t-5-effect"]
+        to: "rm-t-map"
+        relation: "feeds_back_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 31–33, slides 4 and 19–20: act, listen, retune; optional practice and questions"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+        assumptions:
+          -
+            text: "Reassessment may prompt remapping or a changed scope; it does not imply that the original conditions recur."
+            by: "assistant"
+    backlog:
+      -
+        ref: "rm-t-map"
+        work: "ground_current_conditions"
+        label: "Replace illustrative conditions with the host's account."
+        note: "Replace illustrative current conditions with the host group's account and test missing supporting conditions."
+      -
+        ref: "rm-t-review"
+        work: "agree_owners_and_assessment"
+        label: "Agree owners, feedback providers and observation arrangements."
+        note: "Agree action owners, relevant feedback providers and how benefits, harms and surprises will be observed before any trial is called ready."

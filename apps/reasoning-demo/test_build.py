@@ -200,7 +200,8 @@ class SiteTests(unittest.TestCase):
         expected = {"index.html", "how-it-works.html", "styles.css", "app.js", "reasoning.json", *(f"fonts/{f}" for f in fonts),
                     *(f"reason-commons/{p}.html" for p in pages_), "reason-commons/reasoning.json",
                     *(f"example-willow-lane/{p}.html" for p in pages_ + ["questions", "learning"]), "example-willow-lane/reasoning.json",
-                    *(f"gandhi-2-0/{p}.html" for p in pages_ + ["questions"]), "gandhi-2-0/reasoning.json"}
+                    *(f"gandhi-2-0/{p}.html" for p in pages_ + ["questions"]), "gandhi-2-0/reasoning.json",
+                    *(f"re-membering/{p}.html" for p in pages_ + ["questions"]), "re-membering/reasoning.json"}
         self.assertEqual(set(self.outputs), expected)
 
     def test_our_reviewed_snapshot_is_unchanged(self):
@@ -241,7 +242,7 @@ class SiteTests(unittest.TestCase):
             label = lambda kind, name=name: pages.kind_label(name, kind)
             pieces, loose = diagrams.components(tree)
             shapes = [diagrams.geometry(tree, p["ids"], p["links"], label) for p in pieces]
-            if not tree["links"] and name == "conflict":
+            if tree["nodes"] and not tree["links"] and name == "conflict":
                 shapes.append(diagrams.geometry(tree, [n["id"] for n in tree["nodes"]], [], label))
             for shape in shapes:
                 boxes = list(shape["nodes"].values())
@@ -734,6 +735,171 @@ class ReconstructionTests(unittest.TestCase):
         self.assertIn(pages.esc(build.normalize(self.record)["json"]), about)
         self.assertIn("Read or copy this release", about)
         self.assertNotIn(" download", about)
+
+
+class SuppliedDocumentTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.site, cls.commons = build.load_site()
+        cls.record = next(c for c in cls.commons if c["entry"]["slug"] == "re-membering")
+        cls.registry, cls.data = cls.record["registry"], cls.record["data"]
+        cls.outputs = build.build_files(cls.site, cls.commons)
+        cls.normalized = pages.Commons(build.normalize(cls.record))
+
+    @unittest.skipUnless(HAVE_YAML, "PyYAML is needed for the public working file")
+    def test_approved_reconstruction_validates_and_matches_snapshot(self):
+        helper = build.skill_helpers()
+        state = helper.load(build.HERE / self.record["entry"]["source"])
+        helper.validate(state)
+        self.assertEqual(build.project_reconstruction(state, self.registry), self.data)
+        self.assertEqual(sum(len(t["nodes"]) for t in self.data["trees"].values()), 77)
+        self.assertEqual(sum(len(t["links"]) for t in self.data["trees"].values()), 62)
+        self.assertFalse(self.data["feedback"])
+        for tree in self.data["trees"].values():
+            for item in tree["nodes"] + tree["links"]:
+                self.assertEqual(item["status"], "proposed")
+                self.assertEqual(item["accepted_by"], [])
+                self.assertEqual(item["contributors"], [build.ASSISTANT])
+
+    def test_direct_document_author_must_exist_without_fabricating_a_forum(self):
+        self.assertEqual(len(self.data["sources"]), 5)
+        self.assertEqual(set(self.data["authors"]), {"heath"})
+        self.assertTrue(all(s["author"] == "heath" for s in self.data["sources"]))
+        self.assertTrue(all(s["kind"] == "supplied_document" and "shared_in_post" not in s for s in self.data["sources"]))
+        self.assertIsNone(self.normalized.forum)
+        data, registry = deepcopy(self.data), deepcopy(self.registry)
+        data["sources"][0]["author"] = registry["sources"][0]["author"] = "unknown"
+        with self.assertRaisesRegex(ValueError, "Unknown supplied document author"):
+            build.validate_reconstruction(data, registry)
+        data, registry = deepcopy(self.data), deepcopy(self.registry)
+        data["sources"][0]["shared_in_post"] = registry["sources"][0]["shared_in_post"] = 1
+        with self.assertRaisesRegex(ValueError, "Invalid source description"):
+            build.validate_reconstruction(data, registry)
+
+    def test_a_direct_pdf_cannot_be_mislabeled_as_unread_secondary_citation(self):
+        data = deepcopy(self.data)
+        data["trees"]["goal"]["nodes"][0]["source_refs"][0]["basis"] = "cited"
+        with self.assertRaisesRegex(ValueError, "Invalid source locator"):
+            build.validate_reconstruction(data, self.registry)
+
+    def test_pages_and_copyable_briefs_credit_heath_and_pdf_locators(self):
+        items = self.outputs["re-membering/items.html"]
+        for tree in self.data["trees"].values():
+            for item in tree["nodes"] + tree["links"]:
+                text = pages.brief(self.normalized, item["id"], self.site)
+                self.assertIn("I'm reading Re-membering", text)
+                self.assertIn("Margeret Heath", text)
+                self.assertIn("Copying this brief submits nothing", text)
+                self.assertNotIn("Gandhi", text)
+                self.assertNotIn("shared in post", text)
+                for ref in item["source_refs"]:
+                    self.assertIn(ref["locator"], text)
+                    self.assertIn(pages.esc(ref["locator"]), items)
+        self.assertIn("Paraphrased by the AI from this supplied document", items)
+        self.assertIn("Reconstructed by the AI from the supplied passage", items)
+        self.assertNotIn("Reconstructed by the supplied analysis", items)
+
+    def test_every_page_preserves_standing_and_the_correct_origin(self):
+        for name, value in self.outputs.items():
+            if name.startswith("re-membering/") and name.endswith(".html"):
+                self.assertIn("Everything here is proposed", value, name)
+                self.assertIn("The source author has not reviewed or endorsed it", value, name)
+                for wrong in ("Gandhi", "Second Renaissance Forum", "Fictional example", "shared in post", "Laboratory, Forge"):
+                    self.assertNotIn(wrong, value, (name, wrong))
+        about = self.outputs["re-membering/about.html"]
+        self.assertIn("companion documents, not independent bodies of evidence", about)
+        self.assertIn("coupling–constitution", about)
+        self.assertIn("cited studies have not been independently checked", about)
+        self.assertIn("Margeret Heath is their sole author", about)
+        self.assertNotIn("were not supplied", about)
+        self.assertEqual({s["id"] for s in self.data["sources"]}, {"slides", "spoken-script", "extended-passages", "glossary", "bibliography"})
+
+    def test_all_six_views_are_populated_without_claiming_an_actual_trial(self):
+        for tree, path, counts in (("goal", "goal", (13, 12)), ("current_reality", "in-the-way", (13, 13)),
+                                   ("conflict", "conflict", (5, 5)), ("future_reality", "change", (18, 14)),
+                                   ("prerequisite", "prerequisites", (13, 12)), ("transition", "actions", (15, 6))):
+            data = self.data["trees"][tree]
+            self.assertEqual((len(data["nodes"]), len(data["links"])), counts)
+            page = self.outputs[f"re-membering/{path}.html"]
+            self.assertIn('class="rc-diagram', page)
+            self.assertNotIn("Not established yet", page)
+        self.assertIn("illustrative, not observations", self.outputs["re-membering/about.html"])
+        self.assertIn("Who: unassigned", self.outputs["re-membering/actions.html"])
+        self.assertNotIn("Already true", self.outputs["re-membering/actions.html"])
+        self.assertIn("Illustrative condition", self.outputs["re-membering/actions.html"])
+        self.assertNotIn("re-membering/learning.html", self.outputs)
+
+    def test_parts_preserve_all_connections_and_whole_joint_conditions(self):
+        for name, tree in self.data["trees"].items():
+            drawn = set()
+            for view in self.data["views"][name]:
+                links, context = diagrams.view_context(tree, set(view["nodes"]))
+                visible = set(view["nodes"]) | set(context)
+                for link in links:
+                    drawn.add(link["id"])
+                    self.assertLessEqual(set(link["from"] + [link["to"]]), visible)
+            self.assertEqual(drawn, {link["id"] for link in tree["links"]}, name)
+
+    def test_action_branches_share_readiness_and_close_with_reassessment(self):
+        links = {l["id"]: l for l in self.data["trees"]["transition"]["links"]}
+        self.assertIn("rm-t-2-effect", links["rm-tl-practice"]["from"])
+        self.assertIn("rm-t-2-effect", links["rm-tl-audit"]["from"])
+        self.assertNotIn("rm-t-3-effect", links["rm-tl-audit"]["from"])
+        self.assertLessEqual({"rm-t-3-effect", "rm-t-4-effect"}, set(links["rm-tl-review"]["from"]))
+        self.assertEqual((links["rm-tl-feedback"]["relation"], links["rm-tl-feedback"]["to"]), ("feeds_back_to", "rm-t-map"))
+        page = self.outputs["re-membering/actions.html"]
+        self.assertIn('data-id="rm-tl-feedback"', page)
+        self.assertIn('e-loop', page)
+
+    def test_reviewed_current_copy_and_history_preserve_their_distinct_scopes(self):
+        current = self.outputs["re-membering/index.html"]
+        self.assertIn("77 proposed statements and 62 proposed connections", self.outputs["re-membering/about.html"])
+        self.assertIn("surveillance", current)
+        self.assertIn("in parallel", current)
+        self.assertEqual(self.data["history"][0]["release_id"], "2026-10-23.1")
+        self.assertIn("18 proposed statements", self.data["history"][0]["summary"])
+        self.assertEqual(self.data["release_id"], "2026-10-23.2")
+        before = {x["refs"][0]: x["before"] for x in self.data["history"][-1]["changes"] if "before" in x}
+        self.assertEqual(len(before), 5)
+        item = next(n for n in self.data["trees"]["goal"]["nodes"] if n["id"] == "rm-g-goal")
+        self.assertNotEqual(before["rm-g-goal"], item["text"])
+
+    def test_presentation_cannot_override_identity_or_source_boundaries(self):
+        record = deepcopy(self.record)
+        record["registry"]["presentation"]["kind"] = "real"
+        with self.assertRaisesRegex(ValueError, "Invalid reviewed presentation"):
+            build.normalize(record)
+
+    def test_benefit_requires_both_conditions_and_harm_remains_visible(self):
+        tree = self.data["trees"]["future_reality"]
+        joint = next(l for l in tree["links"] if l["id"] == "rm-fl-settle")
+        self.assertEqual(joint["from"], ["rm-f-practice", "rm-f-consent"])
+        data, registry = deepcopy(self.data), deepcopy(self.registry)
+        data["trees"]["future_reality"]["nodes"] = [n for n in tree["nodes"] if n["id"] != "rm-f-consent"]
+        registry["selection"]["future_reality"]["nodes"].remove("rm-f-consent")
+        with self.assertRaises(ValueError):
+            build.validate_reconstruction(data, registry)
+        page = self.outputs["re-membering/change.html"]
+        self.assertIn('data-id="rm-fl-protection"', page)
+        self.assertIn('class="e-bar"', page)
+        self.assertIn("pressure", self.outputs["re-membering/index.html"])
+        self.assertIn("some participants feel less safe", self.outputs["re-membering/index.html"])
+
+    @unittest.skipUnless(HAVE_YAML, "PyYAML is needed for the public working file")
+    def test_original_files_receipts_and_private_notes_do_not_cross_boundary(self):
+        state = build.skill_helpers().load(build.HERE / self.record["entry"]["source"])
+        state["change_acceptances"] = [{"source_text": "PRIVATE_CANARY"}]
+        state["import_context"]["path"] = "/Users/PRIVATE_CANARY.pdf"
+        for tree in state["trees"].values():
+            for item in tree["nodes"] + tree["links"]:
+                item["private_note"] = "PRIVATE_CANARY"
+        public = json.dumps(build.project_reconstruction(state, self.registry))
+        self.assertNotIn("PRIVATE_CANARY", public)
+        for name, value in self.outputs.items():
+            if name.startswith("re-membering/"):
+                self.assertNotIn("/Users/", value)
+                self.assertNotIn("change_acceptances", value)
+                self.assertNotIn("source_text", value)
 
 
 if __name__ == '__main__':

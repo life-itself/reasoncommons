@@ -292,10 +292,13 @@ def validate_v2(data, registry):
 
 # A forum credit names a post and its actual author; a document credit cites a section the analysis points to;
 # the analysis itself reconstructs or infers. Each kind of source admits only its own bases.
-REF_BASES = {"forum": {"paraphrase", "related"}, "document": {"cited"}, "analysis": {"reconstruction", "inference"}}
+REF_BASES = {"forum": {"paraphrase", "related"}, "document": {"cited"}, "analysis": {"reconstruction", "inference"},
+             "supplied_document": {"paraphrase", "reconstruction", "inference", "related"}}
 
 
 def source_kind(source):
+    if source.get("kind") == "supplied_document":
+        return "supplied_document"
     return "forum" if "posts" in source else "document" if "author" in source else "analysis"
 
 
@@ -390,13 +393,16 @@ def validate_reconstruction(data, registry):
     sources = {}
     for source in data["sources"]:
         kind = source_kind(source)
-        extra = {"url", "posts"} if kind == "forum" else {"author", "shared_in_post"} if kind == "document" else set()
+        extra = ({"url", "posts"} if kind == "forum" else {"author", "shared_in_post"} if kind == "document"
+                 else {"kind", "author"} if kind == "supplied_document" else set())
         require(set(source) == {"id", "title", "description"} | extra and all(isinstance(source[k], str) and source[k].strip() for k in ("id", "title", "description")), "Invalid source description")
         require(re.fullmatch(r"[a-z0-9-]+", source["id"]) and source["id"] not in sources, "Invalid/duplicate source ID")
         if kind == "forum":
             require(isinstance(source["url"], str) and source["url"].startswith("https://") and isinstance(source["posts"], dict) and source["posts"], "Invalid forum source")
             for number, post in source["posts"].items():
                 require(number.isdigit() and isinstance(post, dict) and set(post) == {"author", "date"} and post["author"] in authors and re.fullmatch(r"\d{4}-\d{2}-\d{2}", post["date"]), "Invalid forum post")
+        if kind == "supplied_document":
+            require(source["author"] in authors, f"Unknown supplied document author: {source['id']}")
         sources[source["id"]] = source
     forums = [s for s in sources.values() if source_kind(s) == "forum"]
     require(len(forums) <= 1, "A reconstruction cites one forum thread")
@@ -466,7 +472,10 @@ def load_site():
 
 def normalize(item):
     """One reading of either projection for the pages; nothing is added that the projection lacks."""
-    entry, data = item["entry"], item["data"]
+    presentation = item["registry"].get("presentation", {})
+    require(isinstance(presentation, dict) and set(presentation) <= {"summary", "description", "scope"}
+            and all(isinstance(v, str) and v.strip() for v in presentation.values()), "Invalid reviewed presentation")
+    entry, data = {**item["entry"], **presentation}, item["data"]
     trees = {}
     for name in pages.TREE_ORDER:
         if name not in data["trees"]:
