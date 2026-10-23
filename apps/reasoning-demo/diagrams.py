@@ -8,6 +8,7 @@ remedy's line ends in a bar at the risk it is meant to prevent.
 """
 from collections import defaultdict
 import html
+import math
 
 # Advance widths of the self-hosted Alegreya Sans Latin subset, in thousandths of an em,
 # measured in a browser, so wrapped SVG text cannot overflow its box. Kerning only narrows text.
@@ -269,7 +270,8 @@ def layered(nodes, links, boxes, order):
         for r in (range(top - 1, -1, -1) if downward else range(1, top + 1)):
             layer = layers[r]
             neighbours = up_n if downward else down_n
-            desired = [sum(x[n] for n in neighbours[e]) / len(neighbours[e]) if neighbours[e] else x[e] for e in layer]
+            # math.fsum rounds exactly, so positions do not depend on how a Python version sums floats.
+            desired = [math.fsum(x[n] for n in neighbours[e]) / len(neighbours[e]) if neighbours[e] else x[e] for e in layer]
             for element, value in zip(layer, pav(desired, [widths[e] for e in layer], gaps(layer))):
                 x[element] = value
     left = min(x[e] - widths[e] / 2 for e in x)
@@ -284,7 +286,7 @@ def layered(nodes, links, boxes, order):
         if len(link["from"]) < 2:
             continue
         below = [chains[(link["id"], s)][-2] for s in link["from"]]
-        junctions[link["id"]] = {"x": sum(x[e] for e in below) / len(below), "rank": rank[link["to"]], "link": link}
+        junctions[link["id"]] = {"x": math.fsum(x[e] for e in below) / len(below), "rank": rank[link["to"]], "link": link}
     top_slots, bottom_slots = defaultdict(list), defaultdict(list)
     for link in loops:  # Loops leave and enter at the right-hand end of a box's top edge.
         for source in link["from"]:
