@@ -3,7 +3,8 @@
 Every arrow comes from a published link. The sources of one link meet at an "and"
 junction before a single arrow into the target, so joint conditions never look like
 separate causes. Statements without a published connection are grouped by role and
-are never joined to anything.
+are never joined to anything. A feedback loop returns round the right-hand side, and a
+remedy's line ends in a bar at the risk it is meant to prevent.
 """
 from collections import defaultdict
 import html
@@ -22,9 +23,11 @@ assert all(len(row) == len(_CHARS) for row in WIDTHS.values())
 
 DOWNWARD = {"overcomes"}            # an intermediate step sits above the obstacle it overcomes
 LATERAL = {"precedes", "conflicts_with"}
+FEEDBACK = {"feeds_back_to"}        # a loop stays out of the ranking and returns round the right-hand side
+BARRED = {"prevents"}               # a remedy sits below the risk, and its line ends in a bar, not an arrow
 RELATIONS = {"necessary_for": "is needed for", "contributes_to": "contributes to", "causes": "causes",
              "produces": "produces", "overcomes": "overcomes", "precedes": "comes before",
-             "conflicts_with": "conflicts with"}
+             "conflicts_with": "conflicts with", "feeds_back_to": "feeds back to", "prevents": "is meant to prevent"}
 STANDINGS = {"accepted": "Accepted for now", "proposed": "Proposed", "disputed": "Disputed"}
 
 NODE_W, GOAL_W, PAD_X, PAD = 214, 260, 14, 18
@@ -32,6 +35,7 @@ TEXT_SIZE, TEXT_WEIGHT, LINE = 15, 500, 19.5
 KIND_SIZE, KIND_TRACK = 10, 1.1
 CREDIT_SIZE, CREDIT_WEIGHT, CREDIT_LINE = 12, 400, 15.5  # Who an idea comes from, beneath a reconstruction's statement.
 H_GAP = 26
+LANE_GAP, LOOP_TAG_W = 24, 74       # loop lanes beyond the right-hand edge, and the width of their "feeds back" tag
 
 
 def esc(value):
@@ -69,9 +73,10 @@ def shown(node):
 def box(node, kind_label, width=None):
     width = width or (GOAL_W if node["kind"] == "goal" else NODE_W)
     lines = wrap(shown(node), width - 2 * PAD_X)
+    owner = wrap(node["owner"], width - 2 * PAD_X, CREDIT_SIZE, 700) if node.get("owner") else []
     credit = wrap(node["credit"], width - 2 * PAD_X, CREDIT_SIZE, CREDIT_WEIGHT) if node.get("credit") else []
-    extra = 8 + len(credit) * CREDIT_LINE if credit else 0
-    return {"w": width, "h": round(40 + (len(lines) - 1) * LINE + 15 + extra), "lines": lines, "credit": credit, "kind_label": kind_label}
+    extra = 8 + (len(owner) + len(credit)) * CREDIT_LINE if owner or credit else 0
+    return {"w": width, "h": round(40 + (len(lines) - 1) * LINE + 15 + extra), "lines": lines, "owner": owner, "credit": credit, "kind_label": kind_label}
 
 
 # ---------------------------------------------------------------- geometry helpers
@@ -139,6 +144,15 @@ def arrowhead(points):
             f"L{x - dx * 8 + dy * 4.5:g},{y - dy * 8 - dx * 4.5:g}Z")
 
 
+def barhead(points):
+    """A short bar across the end of a line: the remedy stops at the risk rather than leading into it."""
+    points = clean(points)
+    (px, py), (x, y) = points[-2], points[-1]
+    dx, dy = (x > px) - (x < px), (y > py) - (y < py)
+    x, y = x - dx * 2, y - dy * 2
+    return f"M{x - dy * 7:g},{y - dx * 7:g}L{x + dy * 7:g},{y + dx * 7:g}"
+
+
 def longest_segment(points):
     points = clean(points)
     pairs = list(zip(points, points[1:]))
@@ -149,14 +163,17 @@ def longest_segment(points):
 # ---------------------------------------------------------------- layered layout
 
 def layered(nodes, links, boxes, order):
-    """Sugiyama-style layout read from the bottom up: sources below, targets above."""
+    """Sugiyama-style layout read from the bottom up: sources below, targets above.
+
+    Loops stay out of the ranking, so a published cycle needs no change of topology: each loop
+    leaves the top of its source, runs down a lane beyond the right-hand edge and enters the top of its target.
+    """
     ids = list(nodes)
     rank = {i: 0 for i in ids}
     ups, downs = defaultdict(set), defaultdict(set)
-    steps_of = {}
-    for link in links:
-        if link["relation"] in LATERAL:
-            continue
+    flow = [l for l in links if l["relation"] not in LATERAL | FEEDBACK]
+    loops = [l for l in links if l["relation"] in FEEDBACK]
+    for link in flow:
         for source in link["from"]:
             lower, upper = (link["to"], source) if link["relation"] in DOWNWARD else (source, link["to"])
             ups[lower].add(upper)
@@ -177,15 +194,17 @@ def layered(nodes, links, boxes, order):
     for i in ids:  # Sources sit just below their lowest target rather than at the bottom.
         if not downs[i] and ups[i]:
             rank[i] = min(rank[u] for u in ups[i]) - 1
+    for link in loops:  # A statement joined only by a loop sits just above what it feeds back to.
+        for source in link["from"]:
+            if not ups[source] and not downs[source]:
+                rank[source] = max(rank[source], rank[link["to"]] + 1)
 
     widths = {i: boxes[i]["w"] for i in ids}
     okey = {i: order[i] for i in ids}
     up_n, down_n = defaultdict(list), defaultdict(list)
     chains = {}
     dummy = 0
-    for link in links:
-        if link["relation"] in LATERAL:
-            continue
+    for link in flow:
         for source in link["from"]:
             lower, upper = (link["to"], source) if link["relation"] in DOWNWARD else (source, link["to"])
             chain = [lower]
@@ -256,18 +275,22 @@ def layered(nodes, links, boxes, order):
     left = min(x[e] - widths[e] / 2 for e in x)
     for element in x:
         x[element] += PAD - left
+    right = max(x[e] + widths[e] / 2 for e in x)
+    lanes = {link["id"]: right + LANE_GAP + 6 + k * LANE_GAP for k, link in enumerate(loops)}
 
     # Attachment slots: every connection touches the top of its lower element and the bottom of its upper one.
     junctions = {}
-    for link in links:
-        if link["relation"] in LATERAL or len(link["from"]) < 2:
+    for link in flow:
+        if len(link["from"]) < 2:
             continue
         below = [chains[(link["id"], s)][-2] for s in link["from"]]
         junctions[link["id"]] = {"x": sum(x[e] for e in below) / len(below), "rank": rank[link["to"]], "link": link}
     top_slots, bottom_slots = defaultdict(list), defaultdict(list)
-    for link in links:
-        if link["relation"] in LATERAL:
-            continue
+    for link in loops:  # Loops leave and enter at the right-hand end of a box's top edge.
+        for source in link["from"]:
+            top_slots[source].append((float("inf"), (link["id"], source, "~loop")))
+        top_slots[link["to"]].append((float("inf"), (link["id"], "~loop-in", None)))
+    for link in flow:
         junction = junctions.get(link["id"])
         for source in link["from"]:
             chain = chains[(link["id"], source)]
@@ -291,9 +314,14 @@ def layered(nodes, links, boxes, order):
 
     # Horizontal segments per gap, assigned to levels so nested elbows never cross.
     segments = defaultdict(list)  # (rank of upper layer, zone) -> [(lo, hi, key)]
-    for link in links:
-        if link["relation"] in LATERAL:
-            continue
+
+    def run_gap(element):  # A loop's horizontal run sits in the gap above a box, or in a margin above the top layer.
+        return (rank[element] + 1, "upper") if rank[element] < top else ("top", "upper")
+    for link in loops:
+        lane = lanes[link["id"]]
+        for element, key in [(s, (link["id"], s, "~loop")) for s in link["from"]] + [(link["to"], (link["id"], "~loop-in", None))]:
+            segments[run_gap(element)].append((attach_top[(element, key)], lane, key))
+    for link in flow:
         junction = junctions.get(link["id"])
         for source in link["from"]:
             chain = chains[(link["id"], source)]
@@ -327,7 +355,8 @@ def layered(nodes, links, boxes, order):
     # Vertical positions: tops aligned per layer, gaps sized for their levels and junctions.
     layer_h = {r: max([boxes[e]["h"] for e in layer if not e.startswith("~")] or [0]) for r, layer in layers.items()}
     has_junction = {j["rank"] for j in junctions.values()}
-    layer_top, gap_top, y = {}, {}, PAD
+    margin = counts[("top", "upper")]
+    layer_top, gap_top, y = {}, {}, PAD + (14 + (margin - 1) * 9 + 18 if margin else 0)
     for r in range(top, -1, -1):
         layer_top[r] = y
         y += layer_h[r]
@@ -352,14 +381,17 @@ def layered(nodes, links, boxes, order):
     def top_of(element):
         return layer_top[rank[element]]
 
+    def run_y(element, key):
+        gap = run_gap(element)
+        index = level.get((gap, key)) or 0
+        return PAD + 14 + index * 9 if gap[0] == "top" else level_y(gap[0], "upper", index)
+
     def bottom_of(element):
         return layer_top[rank[element]] + (boxes[element]["h"] if not element.startswith("~") else layer_h[rank[element]])
 
     placed_nodes = {i: {"x": x[i] - widths[i] / 2, "y": layer_top[rank[i]], **boxes[i]} for i in ids}
     paths, joins = [], []
-    for link in links:
-        if link["relation"] in LATERAL:
-            continue
+    for link in flow:
         junction = junctions.get(link["id"])
         for source in link["from"]:
             chain = chains[(link["id"], source)]
@@ -403,7 +435,27 @@ def layered(nodes, links, boxes, order):
         mid = (start[0] + end[0]) / 2
         points = [start, (mid, start[1]), (mid, end[1]), end]
         paths.append({"points": points, "link": link, "arrow": True, "lateral": True})
-    width = max(n["x"] + n["w"] for n in placed_nodes.values()) + PAD
+    for link in loops:
+        lane, target = lanes[link["id"]], link["to"]
+        key = (link["id"], "~loop-in", None)
+        tx, ty = attach_top[(target, key)], run_y(target, key)
+        arrival = [(lane, ty), (tx, ty), (tx, top_of(target))]
+        runs = []
+        for source in link["from"]:
+            key = (link["id"], source, "~loop")
+            sx, sy = attach_top[(source, key)], run_y(source, key)
+            runs.append(((sx, top_of(source)), (sx, sy), (lane, sy)))
+        if len(runs) == 1:
+            paths.append({"points": list(runs[0]) + arrival, "link": link, "arrow": True, "loop": True,
+                          "tag": (lane, (runs[0][2][1] + ty) / 2)})
+            continue
+        for run in runs:  # Joint sources meet at an "and" where the lane turns towards the target, from above or below.
+            side = 1 if run[2][1] < ty else -1
+            paths.append({"points": list(run) + [(lane, ty - side * 9)], "link": link, "arrow": False, "loop": True})
+        joins.append({"x": lane, "y": ty, "link": link})
+        far = max((r[2][1] for r in runs), key=lambda value: abs(value - ty))
+        paths.append({"points": [(lane - 17, ty)] + arrival[1:], "link": link, "arrow": True, "loop": True, "tag": (lane, (far + ty) / 2)})
+    width = max([n["x"] + n["w"] for n in placed_nodes.values()] + [lane + LOOP_TAG_W / 2 for lane in lanes.values()]) + PAD
     return {"w": round(width), "h": round(canvas_h), "nodes": placed_nodes, "paths": paths, "joins": joins, "markers": []}
 
 
@@ -479,6 +531,32 @@ def cloud(nodes, links, boxes, roles):
 
 # ---------------------------------------------------------------- tree analysis
 
+def view_context(tree, members):
+    """A titled part draws every connection into its own statements; sources from elsewhere join as muted context, so no joint condition is split."""
+    links = [l for l in tree["links"] if l["to"] in members]
+    context = [s for l in links for s in l["from"] if s not in members]
+    return links, list(dict.fromkeys(context))
+
+
+def path_between(tree, start, end):
+    """Statements passed through on the shortest chain of published causal links from start to end, or None."""
+    forward = defaultdict(set)
+    for link in tree["links"]:
+        if link["relation"] in ("contributes_to", "necessary_for", "produces"):
+            for source in link["from"]:
+                forward[source].add(link["to"])
+    queue, seen = [(start, [])], {start}
+    while queue:
+        current, route = queue.pop(0)
+        for following in sorted(forward[current]):
+            if following == end:
+                return route
+            if following not in seen:
+                seen.add(following)
+                queue.append((following, route + [following]))
+    return None
+
+
 def components(tree):
     """Connected pieces (with their links) in source order, and statements with no published link."""
     order = {n["id"]: i for i, n in enumerate(tree["nodes"])}
@@ -519,7 +597,9 @@ def geometry(tree, ids, links, kind_label):
 
 # ---------------------------------------------------------------- SVG
 
-def _standing(node, x, y, width):
+def _standing(node, x, y, width, uniform=False):
+    if uniform:  # One banner states the standing of everything in this commons.
+        return ""
     status = node["status"]
     if status == "accepted":
         cx = x + width - PAD_X - 9
@@ -528,42 +608,59 @@ def _standing(node, x, y, width):
     return f'<text class="n-standing" x="{x + width - PAD_X:g}" y="{y:g}" text-anchor="end">{esc(word)}</text>'
 
 
-def node_svg(node, placed, href, focus=False, tree_label=""):
+def node_svg(node, placed, href, focus=False, context=None, uniform=False):
+    """One statement as a link; `context` names the part a muted box belongs to when it is drawn only for context."""
     x, y, w, h = placed["x"], placed["y"], placed["w"], placed["h"]
-    classes = f'n role-{node["kind"]} is-{node["status"]}' + (" is-focus" if focus else "")
+    classes = f'n role-{node["kind"]}' + ("" if uniform else f' is-{node["status"]}') + (" is-focus" if focus else "") + (" is-context" if context else "")
     standing = STANDINGS[node["status"]]
-    label = f'{placed["kind_label"]}, {standing.lower()}: {node["text"]}' + (f' {node["credit"]}.' if node.get("credit") else "")
+    label = (f'{placed["kind_label"]}, {standing.lower()}: {node["text"]}' + (f' {node["owner"]}.' if node.get("owner") else "")
+             + (f' {node["credit"]}.' if node.get("credit") else "") + (f' Shown for context from {context}.' if context else ""))
     kind = placed["kind_label"].upper()
-    kind_room = w - 2 * PAD_X - (16 if node["status"] == "accepted" else text_width(STANDINGS[node["status"]].upper(), KIND_SIZE, 700, KIND_TRACK) + 8)
+    kind_room = w - 2 * PAD_X - (0 if uniform else 16 if node["status"] == "accepted" else text_width(STANDINGS[node["status"]].upper(), KIND_SIZE, 700, KIND_TRACK) + 8)
     if text_width(kind, KIND_SIZE, 700, KIND_TRACK) > kind_room:
         while kind and text_width(kind + "…", KIND_SIZE, 700, KIND_TRACK) > kind_room:
             kind = kind[:-1].rstrip()
         kind += "…"
     lines = "".join(f'<tspan x="{x + PAD_X:g}" dy="{0 if i == 0 else LINE:g}">{esc(line)}</tspan>' for i, line in enumerate(placed["lines"]))
-    credit = ""
-    if placed.get("credit"):  # Baselines start one credit line below the statement's last line, after a small gap.
-        top = y + 40 + (len(placed["lines"]) - 1) * LINE + 7 + CREDIT_LINE
-        spans = "".join(f'<tspan x="{x + PAD_X:g}" dy="{0 if i == 0 else CREDIT_LINE:g}">{esc(line)}</tspan>' for i, line in enumerate(placed["credit"]))
-        credit = f'<text class="n-credit" x="{x + PAD_X:g}" y="{top:g}">{spans}</text>'
+    notes, top = "", y + 40 + (len(placed["lines"]) - 1) * LINE + 7 + CREDIT_LINE
+    for css, rows in (("n-owner", placed.get("owner", [])), ("n-credit", placed.get("credit", []))):
+        if rows:  # Baselines start one note line below the statement's last line, after a small gap.
+            spans = "".join(f'<tspan x="{x + PAD_X:g}" dy="{0 if i == 0 else CREDIT_LINE:g}">{esc(line)}</tspan>' for i, line in enumerate(rows))
+            notes += f'<text class="{css}" x="{x + PAD_X:g}" y="{top:g}">{spans}</text>'
+            top += len(rows) * CREDIT_LINE
     focus_ring = f'<rect class="n-ring" x="{x - 5:g}" y="{y - 5:g}" width="{w + 10:g}" height="{h + 10:g}" rx="13"/>' if focus else ""
     return (f'<a class="{classes}" href="{esc(href)}" data-id="{esc(node["id"])}" aria-label="{esc(label)}">{focus_ring}'
             f'<rect class="n-box" x="{x:g}" y="{y:g}" width="{w:g}" height="{h:g}" rx="9"/>'
-            f'<text class="n-kind" x="{x + PAD_X:g}" y="{y + 20:g}">{esc(kind)}</text>{_standing(node, x, y + 20, w)}'
-            f'<text class="n-text" x="{x + PAD_X:g}" y="{y + 40:g}">{lines}</text>{credit}</a>')
+            f'<text class="n-kind" x="{x + PAD_X:g}" y="{y + 20:g}">{esc(kind)}</text>{_standing(node, x, y + 20, w, uniform)}'
+            f'<text class="n-text" x="{x + PAD_X:g}" y="{y + 40:g}">{lines}</text>{notes}</a>')
 
 
-def svg(shape, nodes, href, title, focus=None, css=""):
-    """A diagram whose statements and connections are links into the statement pages."""
+def svg(shape, nodes, href, title, focus=None, css="", context=None, uniform=False):
+    """A diagram whose statements and connections are links into the statement pages.
+
+    `context` maps muted boxes, drawn only so that a joint condition stays whole, to the part each belongs to;
+    `uniform` drops the per-box standing where one banner states the standing of everything.
+    """
+    context = context or {}
+    css = (css + " is-uniform" if uniform else css).strip()
     parts = [f'<svg class="rc-diagram {css}" viewBox="0 0 {shape["w"]} {shape["h"]}" width="{shape["w"]}" height="{shape["h"]}" role="group" aria-label="{esc(title)}">']
     for path in shape["paths"]:
         link = path["link"]
         d = rounded(path["points"]) if not path.get("zigzag") else "M" + "L".join(f"{px:g},{py:g}" for px, py in clean(path["points"]))
-        cls = f'e is-{link["status"]}' + (" e-conflict" if path.get("conflict") else "") + (" e-down" if link["relation"] in DOWNWARD else "")
+        cls = ("e" + ("" if uniform else f' is-{link["status"]}') + (" e-conflict" if path.get("conflict") else "") + (" e-down" if link["relation"] in DOWNWARD else "")
+               + (" e-loop" if link["relation"] in FEEDBACK else "") + (" e-prevent" if link["relation"] in BARRED else ""))
         cls += " is-focus" if focus == link["id"] else ""
         label = f'Connection, {STANDINGS[link["status"]].lower()}: {RELATIONS.get(link["relation"], link["relation"].replace("_", " "))}'
-        head = f'<path class="e-head" d="{arrowhead(path["points"])}"/>' if path["arrow"] else ""
+        if path["arrow"] and link["relation"] in BARRED:
+            head = f'<path class="e-bar" d="{barhead(path["points"])}"/>'
+        else:
+            head = f'<path class="e-head" d="{arrowhead(path["points"])}"/>' if path["arrow"] else ""
         tag = ""
-        if link["status"] == "disputed" and path["arrow"]:
+        if path.get("tag"):
+            tx, ty = path["tag"]
+            tag = (f'<g class="e-tag e-tag-loop"><rect x="{tx - LOOP_TAG_W / 2:g}" y="{ty - 9:g}" width="{LOOP_TAG_W}" height="18" rx="9"/>'
+                   f'<text x="{tx:g}" y="{ty + 4:g}" text-anchor="middle">feeds back</text></g>')
+        elif link["status"] == "disputed" and path["arrow"]:
             mx, my = longest_segment(path["points"])
             tag = f'<g class="e-tag"><rect x="{mx - 30:g}" y="{my - 9:g}" width="60" height="18" rx="9"/><text x="{mx:g}" y="{my + 4:g}" text-anchor="middle">disputed</text></g>'
         if path.get("lateral") and link["relation"] == "precedes":
@@ -573,10 +670,10 @@ def svg(shape, nodes, href, title, focus=None, css=""):
                      f'<path class="e-hit" d="{d}"/><path class="e-line" d="{d}"/>{head}{tag}</a>')
     for join in shape["joins"]:
         link = join["link"]
-        parts.append(f'<a class="j is-{link["status"]}" href="{esc(href(link["id"]))}" data-id="{esc(link["id"])}" aria-label="All of these together"><rect x="{join["x"] - 17:g}" y="{join["y"] - 9:g}" width="34" height="18" rx="9"/>'
+        parts.append(f'<a class="j{"" if uniform else " is-" + link["status"]}" href="{esc(href(link["id"]))}" data-id="{esc(link["id"])}" aria-label="All of these together"><rect x="{join["x"] - 17:g}" y="{join["y"] - 9:g}" width="34" height="18" rx="9"/>'
                      f'<text x="{join["x"]:g}" y="{join["y"] + 4:g}" text-anchor="middle">and</text></a>')
     for ident, placed in shape["nodes"].items():
-        parts.append(node_svg(nodes[ident], placed, href(ident), focus == ident))
+        parts.append(node_svg(nodes[ident], placed, href(ident), focus == ident, context.get(ident), uniform))
     for marker in shape.get("markers", []):
         number = marker.get("number")
         if number:
@@ -650,7 +747,7 @@ def number_markers(shape):
 
 # ---------------------------------------------------------------- neighbourhood
 
-def neighbourhood(tree, item_id, kind_label, href):
+def neighbourhood(tree, item_id, kind_label, href, uniform=False):
     """A small diagram centred on one statement or connection: only its own published links."""
     nodes = {n["id"]: n for n in tree["nodes"]}
     links = {l["id"]: l for l in tree["links"]}
@@ -669,22 +766,26 @@ def neighbourhood(tree, item_id, kind_label, href):
     sub = {i: nodes[i] for i in sorted(ids, key=order.get)}
     boxes = {i: box(sub[i], kind_label(sub[i]["kind"]), 196) for i in sub}
     shape = layered(sub, selected, boxes, order)
-    return svg(shape, sub, href, "Where this sits", focus=item_id, css="rc-near")
+    return svg(shape, sub, href, "Where this sits", focus=item_id, css="rc-near", uniform=uniform)
 
 
 # ---------------------------------------------------------------- outline
 
-def outline(tree, ids, links, href, kind_label):
+def outline(tree, ids, links, href, kind_label, uniform=False):
     """The same published topology as nested text, read from the final effect downwards."""
     nodes = {n["id"]: n for n in tree["nodes"]}
     order = {n["id"]: i for i, n in enumerate(tree["nodes"])}
     member = set(ids)
     incoming = defaultdict(list)
     has_parent = set()
-    lateral = defaultdict(list)
+    lateral, loops = defaultdict(list), defaultdict(list)
     for link in links:
         if link["relation"] in LATERAL:
             lateral[link["from"][0]].append(link)
+            continue
+        if link["relation"] in FEEDBACK:  # A loop is noted beside each source; it never makes a parent.
+            for source in link["from"]:
+                loops[source].append(link)
             continue
         if link["relation"] in DOWNWARD:
             incoming[link["from"][0]].append(("down", link))
@@ -695,12 +796,21 @@ def outline(tree, ids, links, href, kind_label):
     roots = sorted((i for i in member if i not in has_parent), key=order.get)
     shown_once = set()
 
+    def chip(status):
+        return "" if status == "accepted" or uniform else f' <span class="chip chip-{status}">{STANDINGS[status]}</span>'
+
+    def standing(item):
+        return "" if uniform else f' is-{item["status"]}'
+
+    def names_of(idents):
+        return "” and “".join(shown(nodes[i]) for i in idents)
+
     def line(ident, prefix=""):
         node = nodes[ident]
-        badge = "" if node["status"] == "accepted" else f' <span class="chip chip-{node["status"]}">{STANDINGS[node["status"]]}</span>'
+        owner = f'<span class="o-owner">{esc(node["owner"])}</span>' if node.get("owner") else ""
         credit = f'<span class="o-credit">{esc(node["credit"])}</span>' if node.get("credit") else ""
         return (f'{prefix}<a class="o-item role-{node["kind"]}" href="{esc(href(ident))}"><span class="o-kind">{esc(kind_label(node["kind"]))}</span>'
-                f'<span class="o-text">{esc(node["text"])}</span>{credit}</a>{badge}')
+                f'<span class="o-text">{esc(node["text"])}</span>{owner}{credit}</a>{chip(node["status"])}')
 
     def branch(ident, depth=0):
         if ident in shown_once:
@@ -709,11 +819,16 @@ def outline(tree, ids, links, href, kind_label):
         parts = [f"<li>{line(ident)}"]
         for link in lateral.get(ident, []):
             parts.append(f'<p class="o-then">then → <a href="{esc(href(link["to"]))}">{esc(nodes[link["to"]]["text"])}</a></p>')
+        for link in loops.get(ident, []):
+            together = [s for s in link["from"] if s != ident]
+            joint = f'with “{esc(names_of(together))}”, ' if together else ""
+            parts.append(f'<p class="o-then o-loop">↺ {joint}<a class="o-rel{standing(link)}" href="{esc(href(link["id"]))}">feeds back to</a>{chip(link["status"])} '
+                         f'<a href="{esc(href(link["to"]))}">{esc(nodes[link["to"]]["text"])}</a></p>')
         children = []
         for direction, link in sorted(incoming.get(ident, []), key=lambda e: order.get(e[1]["from"][0] if e[0] == "up" else e[1]["to"], 0)):
             relation = RELATIONS.get(link["relation"], link["relation"].replace("_", " "))
-            status = "" if link["status"] == "accepted" else f' <span class="chip chip-{link["status"]}">{STANDINGS[link["status"]]}</span>'
-            word = f'<a class="o-rel is-{link["status"]}" href="{esc(href(link["id"]))}">{"↓ " if direction == "down" else "↑ "}{esc(relation)}</a>{status}'
+            status = chip(link["status"])
+            word = f'<a class="o-rel{standing(link)}" href="{esc(href(link["id"]))}">{"↓ " if direction == "down" else "↑ "}{esc(relation)}</a>{status}'
             if direction == "down":
                 children.append(f'<li class="o-link">{word}<ul>{branch(link["to"], depth + 1)}</ul></li>')
             elif len(link["from"]) > 1:

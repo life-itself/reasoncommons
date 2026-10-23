@@ -40,13 +40,13 @@ TREES = {
 KIND_LABELS = {"goal": "Goal", "critical_success_factor": "Success factor", "necessary_condition": "Condition",
                "undesirable_effect": "Problem", "cause": "Cause", "observation": "Observation", "objective": "Objective",
                "need": "Need", "prerequisite": "Position", "injection": "Change", "existing_condition": "Already true",
-               "predicted_effect": "Expected effect", "desirable_effect": "Desired effect", "obstacle": "Obstacle",
+               "predicted_effect": "Predicted effect", "desirable_effect": "Desired effect", "obstacle": "Obstacle",
                "intermediate_objective": "Step", "action": "Action", "expected_effect": "Expected effect"}
 SPECIAL_KINDS = {("future_reality", "undesirable_effect"): "Possible harm", ("conflict", "objective"): "Shared objective"}
 PLURALS = {"Goal": "Goals", "Success factor": "Success factors", "Condition": "Conditions", "Problem": "Problems",
            "Cause": "Causes", "Observation": "Observations", "Objective": "Objectives", "Shared objective": "Shared objectives",
            "Need": "Needs", "Position": "Positions", "Change": "Changes", "Already true": "Already true",
-           "Expected effect": "Expected effects", "Desired effect": "Desired effects", "Possible harm": "Possible harms",
+           "Expected effect": "Expected effects", "Predicted effect": "Predicted effects", "Desired effect": "Desired effects", "Possible harm": "Possible harms",
            "Obstacle": "Obstacles", "Step": "Steps", "Action": "Actions"}
 ROLE_ORDER = {"goal": ["goal", "critical_success_factor", "necessary_condition"],
               "current_reality": ["undesirable_effect", "cause"],
@@ -59,14 +59,21 @@ VERDICTS = {"observed": "Observed", "not_observed": "Not observed", "unclear": "
             "unavailable": "Unavailable", "awaiting": "Awaiting report"}
 READINESS = {"experienced": "Has experienced the change", "not_yet": "Not yet experienced", "cannot_assess": "Cannot assess"}
 WORK_GROUPS = [("Explain or connect", {"connect_or_explain"}), ("Check an assumption", {"examine_assumption"}),
-               ("Examine a challenge", {"resolve_challenge"}), ("Find out what happens", {"review_feedback", "test_causality"})]
+               ("Examine a challenge", {"resolve_challenge"}), ("Find out what happens", {"review_feedback", "test_causality"}),
+               ("Check at the host", {"check_locally"})]
 CHANGE_WORDS = {"added": "Added", "revised": "Reworded", "disputed": "Disputed", "accepted": "Accepted", "removed": "Removed", "report": "Reports", "credited": "Credited"}
 TRACE_WORDS = {"addresses": "Meant to address", "derived_from": "Developed from", "implements": "Puts into practice"}
+TRACE_BACK = {"addresses": "Addressed by", "derived_from": "Developed into", "implements": "Put into practice by"}
+HOP_WORDS = {"addresses": "is meant to address", "derived_from": "was developed from", "implements": "puts into practice"}
 BASIS_WORDS = {"paraphrase": "Paraphrased by the AI from this post.", "related": "Makes a related point; the statement goes beyond it.",
                "cited": "Cited by the supplied analysis; the essay itself has not been checked here.",
                "reconstruction": "Reconstructed by the supplied analysis.", "inference": "Inferred by the AI; the sources do not state it."}
 CREDIT_CAVEAT = "A credit says where an idea comes from, not that its author agrees with this wording. None of the people credited has reviewed it."
-VIEW_NOUNS = {"conflict": "Conflict"}
+VIEW_NOUNS = {"conflict": "Conflict", "transition": "Action"}
+# Colour families shared by cards, diagrams and legends (see styles.css), in the order the map legend lists them.
+FAMILIES = [["goal", "objective"], ["critical_success_factor", "need", "desirable_effect", "expected_effect", "intermediate_objective"],
+            ["undesirable_effect", "obstacle"], ["injection"], ["prerequisite", "action"],
+            ["cause", "necessary_condition", "predicted_effect", "existing_condition", "observation"]]
 
 
 def esc(value):
@@ -116,10 +123,17 @@ class Commons:
                 self.backlog[task["ref"]].append(task)
         self.source_by_id = {s["id"]: s for s in self.sources}
         self.forum = next((s for s in self.sources if "posts" in s), None)
-        if self.is_reconstruction:  # Diagram boxes carry a short credit line beneath the statement.
-            for tree in self.trees.values():
-                for node in tree["nodes"]:
+        self.home_view = {}  # A statement can appear in several parts, as in the source's own sub-trees; context links go to the first.
+        for views in self.views.values():
+            for view in views:
+                for ident in view["nodes"]:
+                    self.home_view.setdefault(ident, view)
+        for tree in self.trees.values():
+            for node in tree["nodes"]:
+                if self.is_reconstruction:  # Diagram boxes carry a short credit line beneath the statement.
                     node["credit"] = credit_line(self, node["source_refs"], numbers=False)
+                if node.get("proposed_role"):  # A role someone might take on; nobody is assigned.
+                    node["owner"] = f'Who: unassigned · proposed role: {node["proposed_role"]}'
 
     def is_link(self, ident):
         return "relation" in self.items[ident]
@@ -187,13 +201,26 @@ def endorsement(item):
 
 
 def card(c, ident, tree=None, extra=""):
+    """A statement as a link. In a reconstruction one banner states that everything is proposed, so a card shows its credit instead."""
     item = c.items[ident]
     tree = tree or c.tree_of[ident]
-    credit = f'<span class="card-credit">{esc(credit_line(c, item["source_refs"]))}</span>' if c.is_reconstruction else ""
+    owner = f'<span class="card-owner">{esc(item["owner"])}</span>' if item.get("owner") else ""
+    if c.is_reconstruction:
+        return (f'<a class="card role-{item["kind"]}" href="items.html#{ident}"><span class="card-top"><span class="kind">{esc(kind_label(tree, item["kind"]))}</span></span>'
+                f'<span class="card-text">{esc(item["text"])}</span>{owner}<span class="card-credit">{esc(credit_line(c, item["source_refs"]))}</span>{extra}</a>')
     return (f'<a class="card role-{item["kind"]} is-{item["status"]}" href="items.html#{ident}">'
             f'<span class="card-top"><span class="kind">{esc(kind_label(tree, item["kind"]))}</span>{chip(item["status"])}</span>'
-            f'<span class="card-text">{esc(item["text"])}</span>{credit}{extra}'
+            f'<span class="card-text">{esc(item["text"])}</span>{owner}{extra}'
             f'<span class="card-foot">{esc(endorsement(item))}</span></a>')
+
+
+def standing_chip(c, status):
+    return "" if c.is_reconstruction else chip(status)
+
+
+def standing_class(c, status):
+    """Standing shown by border or colour, except where one banner states it for everything."""
+    return "" if c.is_reconstruction else f" is-{status}"
 
 
 # ---------------------------------------------------------------- credits in a source reconstruction
@@ -319,6 +346,7 @@ def loose_groups(c, name, ids, heading=True):
 
 
 def legend(c, name, shapes):
+    """The key for one question's diagrams: roles present, then standings and kinds of line."""
     tree = c.trees[name]
     kinds = []
     for node in tree["nodes"]:
@@ -327,7 +355,7 @@ def legend(c, name, shapes):
     order = ROLE_ORDER[name] + ["observation"]
     kinds.sort(key=lambda k: order.index(k) if k in order else 99)
     parts = [f'<span class="lg role-{k}"><i></i>{esc(kind_label(name, k))}</span>' for k in kinds]
-    standings = {i["status"] for i in tree["nodes"] + tree["links"]}
+    standings = set() if c.is_reconstruction else {i["status"] for i in tree["nodes"] + tree["links"]}
     for status in ("accepted", "proposed", "disputed"):
         if status in standings and len(standings) > 1 or status != "accepted" and status in standings:
             parts.append(f'<span class="lg lg-{status}"><i></i>{STANDING[status]}</span>')
@@ -339,7 +367,31 @@ def legend(c, name, shapes):
         parts.append('<span class="lg lg-then"><i></i>Comes before</span>')
     if any(l["relation"] == "conflicts_with" for l in tree["links"]):
         parts.append('<span class="lg lg-clash"><i></i>Conflict</span>')
+    if any(l["relation"] in diagrams.BARRED for l in tree["links"]):
+        parts.append('<span class="lg lg-prevent"><i></i>Is meant to prevent</span>')
+    if any(l["relation"] in diagrams.FEEDBACK for l in tree["links"]):
+        parts.append('<span class="lg lg-loop"><i></i>Feeds back</span>')
+    if any(diagrams.view_context(tree, set(v["nodes"]))[1] for v in c.views.get(name, [])):
+        parts.append('<span class="lg lg-context"><i></i>From another part</span>')
     return f'<div class="legend" aria-label="Key">{"".join(parts)}</div>'
+
+
+def role_legend(c):
+    """What the colours mean on every diagram in this commons: one swatch per colour, naming the roles that use it."""
+    labels = defaultdict(list)
+    for name in TREE_ORDER:
+        for node in c.trees.get(name, {"nodes": []})["nodes"]:
+            label = kind_label(name, node["kind"])
+            if label not in labels[node["kind"]]:
+                labels[node["kind"]].append(label)
+    parts = []
+    for family in FAMILIES:
+        present = [k for k in family if labels.get(k)]
+        if present:
+            words = [PLURALS.get(label, label) for k in present for label in labels[k]]
+            words = list(dict.fromkeys([words[0]] + [w[0].lower() + w[1:] for w in words[1:]]))
+            parts.append(f'<span class="lg role-{present[0]}"><i></i>{esc(names(words))}</span>')
+    return f'<div class="legend legend-roles" aria-label="Colours">{"".join(parts)}</div>'
 
 
 def strip(c, prefix=""):
@@ -399,8 +451,8 @@ def shell(*, title, description, depth, body, nav=None, c=None, page="", head=""
         banner = (f'<div class="example-banner" role="note"><div class="wrap"><strong>Fictional example.</strong> The school, its people and their reports are invented, '
                   f'to show everything a commons can hold. <a href="{up}reason-commons/index.html">See a real commons →</a></div></div>')
     elif c and c.is_reconstruction:
-        banner = ('<div class="reconstruction-banner" role="note"><div class="wrap"><strong>Source reconstruction · Proposed.</strong> '
-                  'Prepared by AI from a public forum thread and analyses of it, with each idea credited to the posts it comes from. The discussion participants have not endorsed this map. '
+        banner = ('<div class="reconstruction-banner" role="note"><div class="wrap"><strong>Source reconstruction · Everything here is proposed.</strong> '
+                  'An AI prepared this map from a public forum thread and analyses of it, and credits each idea to the posts it comes from. None of the discussion’s participants has endorsed it. '
                   '<a href="about.html#sources">Sources and limits →</a></div></div>')
     return f"""<!doctype html>
 <html lang="en">
@@ -443,7 +495,7 @@ def commons_head(c, tab, heading=None):
     tag = publication_tag(c)
     statements, connections = c.counts()
     tabs = [("index.html", "Overview", "overview", ""), ("map.html", "Map", "map", "6 questions"),
-            ("items.html", "Statements", "items", str(statements + connections))]
+            ("items.html", "Statements", "items", f"{statements} · {connections}")]
     if c.open_items():
         tabs.append(("questions.html", "Open questions", "questions", str(len(c.open_items()))))
     if c.feedback:
@@ -564,12 +616,12 @@ def how_it_works(site, commons):
 
 def reconstruction_outline(c, name, ids, links):
     tree = c.trees[name]
-    rendered = diagrams.outline(tree, ids, links, c.href, lambda kind: kind_label(name, kind))
+    rendered = diagrams.outline(tree, ids, links, c.href, lambda kind: kind_label(name, kind), uniform=True)
     for link in links:
         if link["relation"] == "conflicts_with":
             target = f'<a href="{esc(c.href(link["to"]))}">{esc(c.items[link["to"]]["text"])}</a>'
             rendered = rendered.replace(f'<p class="o-then">then → {target}</p>',
-                                        f'<p class="o-then"><a class="o-rel is-{link["status"]}" href="{esc(c.href(link["id"]))}">conflicts with</a> {chip(link["status"])} {target}</p>')
+                                        f'<p class="o-then"><a class="o-rel" href="{esc(c.href(link["id"]))}">conflicts with</a> {target}</p>')
     return rendered
 
 
@@ -588,16 +640,52 @@ def toggled(diagram, outline, label="Show as"):
 
 
 def view_body(c, name, view, caption="", label="Show as"):
-    """One titled part of a tree: its diagram with numbered assumptions, or the same topology as an outline."""
+    """One titled part of a tree: its diagram with numbered assumptions, or the same topology as an outline.
+
+    Every connection into the part is drawn, so a source that belongs to another part joins as a muted box linking to that part.
+    """
     tree = c.trees[name]
-    members = set(view["nodes"])
-    links = [l for l in tree["links"] if l["to"] in members]  # Views never split a joint condition or a pair of positions.
-    shape = diagrams.geometry(tree, view["nodes"], links, lambda k: kind_label(name, k))
+    links, context = diagrams.view_context(tree, set(view["nodes"]))
+    ids = view["nodes"] + context
+    shape = diagrams.geometry(tree, ids, links, lambda k: kind_label(name, k))
     notes = diagrams.number_markers(shape)
-    svg = diagrams.svg(shape, {n["id"]: n for n in tree["nodes"]}, c.href, f'{view["title"]}: {plural(len(view["nodes"]), "statement")}')
+    homes = {i: c.home_view[i] for i in context}
+    href = lambda i: f'#view-{homes[i]["id"]}' if i in homes else c.href(i)
+    svg = diagrams.svg(shape, {n["id"]: n for n in tree["nodes"]}, href, f'{view["title"]}: {plural(len(view["nodes"]), "statement")}',
+                       context={i: f'“{v["title"]}”' for i, v in homes.items()}, uniform=c.is_reconstruction)
+    if context:
+        muted = "Muted boxes belong to other parts and are drawn so that statements acting together stay together; select one to go to its part."
+        caption = f"{caption} {muted}".strip()
     diagram = f'<div class="dg-set">{figure(svg, "Diagram: " + view["title"] + ". Scrolls sideways when it is wider than the screen.", caption, width=shape["w"])}</div>' + assumption_list(notes)
-    outline = reconstruction_outline(c, name, view["nodes"], links) if c.is_reconstruction else diagrams.outline(tree, view["nodes"], links, c.href, lambda k: kind_label(name, k))
+    outline = reconstruction_outline(c, name, ids, links) if c.is_reconstruction else diagrams.outline(tree, ids, links, c.href, lambda k: kind_label(name, k))
     return toggled(diagram, outline, label), links
+
+
+def beyond(c, name, view):
+    """Where a part leads: connections onward to other parts of this question, and references to and from the other questions."""
+    members = set(view["nodes"])
+    rows = []
+    for link in c.trees[name]["links"]:
+        if link["to"] not in members and members & set(link["from"]):
+            home = c.home_view[link["to"]]
+            sources = [s for s in link["from"] if s in members]
+            rows.append(f'<li><a href="{c.href(sources[0])}">{esc(c.short(sources[0]))}</a> <a class="tv-rel" href="{c.href(link["id"])}">{esc(diagrams.RELATIONS.get(link["relation"], link["relation"]))}</a> '
+                        f'<a href="#view-{esc(home["id"])}">{esc(c.short(link["to"]))}</a> <span class="muted">in “{esc(home["title"])}”</span></li>')
+    for ident in view["nodes"]:
+        for key, word in TRACE_WORDS.items():
+            for ref in c.items[ident].get(key, []):
+                rows.append(f'<li><a href="{c.href(ident)}">{esc(c.short(ident))}</a> <span class="tv-rel">{esc(HOP_WORDS[key])}</span> '
+                            f'<a href="{c.href(ref)}">{esc(c.short(ref))}</a> <span class="muted">{esc(TREES[c.tree_of[ref]]["step"])}</span></li>')
+        for other in c.order:
+            if c.tree_of[other] != name and not c.is_link(other):
+                for key, word in TRACE_BACK.items():
+                    if ident in c.items[other].get(key, []):
+                        rows.append(f'<li><a href="{c.href(ident)}">{esc(c.short(ident))}</a> <span class="tv-rel">{esc(word.lower())}</span> '
+                                    f'<a href="{c.href(other)}">{esc(c.short(other))}</a> <span class="muted">{esc(TREES[c.tree_of[other]]["step"])}</span></li>')
+    if not rows:
+        return ""
+    return f'<details class="tv-more"><summary>Beyond this part · {plural(len(rows), "link")}</summary><ul class="tv-links">{"".join(rows)}</ul></details>'
+
 
 
 def view_section(c, name, view, eyebrow):
@@ -608,7 +696,7 @@ def view_section(c, name, view, eyebrow):
         credit = f'<p class="tv-credit">Draws on {linked_people(c, refs)}.</p>'
     ident = esc(view["id"])
     return (f'<section class="tv" id="view-{ident}" aria-labelledby="view-{ident}-title"><div class="tv-head"><p class="eyebrow">{esc(eyebrow)}</p>'
-            f'<h2 id="view-{ident}-title">{esc(view["title"])}</h2><p>{esc(view["summary"])}</p>{credit}</div>{body}</section>')
+            f'<h2 id="view-{ident}-title">{esc(view["title"])}</h2><p>{esc(view["summary"])}</p>{credit}</div>{body}{beyond(c, name, view)}</section>')
 
 
 def cloud_row(c, view):
@@ -621,24 +709,64 @@ def cloud_row(c, view):
             f'<div class="cr-sides">{sides}</div></article>')
 
 
+def spine(c, block):
+    """One path through the reasoning, each row a published connection, chain of connections or reference between the questions."""
+    def end(ident):
+        item = c.items[ident]
+        name = c.tree_of[ident]
+        return (f'<a class="sp-end role-{item["kind"]}" href="items.html#{ident}"><span class="kind">{esc(kind_label(name, item["kind"]))} · {esc(TREES[name]["step"])}</span>'
+                f'<span class="sp-text">{esc(c.short(ident))}</span></a>')
+    rows = []
+    for hop in block["hops"]:
+        start, finish = hop["from"], hop["to"]
+        if hop["via"] in HOP_WORDS:
+            relation, note = f'<a class="sp-word" href="items.html#{start}">{esc(HOP_WORDS[hop["via"]])}</a>', "Between questions"
+        else:
+            tree = c.trees[c.tree_of[start]]
+            between = diagrams.path_between(tree, start, finish)
+            step = next(l for l in tree["links"] if (between[0] if between else finish) == l["to"] and start in l["from"])
+            relation = f'<a class="sp-word" href="items.html#{step["id"]}">{esc(diagrams.RELATIONS.get(step["relation"], step["relation"]))}</a>'
+            if between:
+                note = f'By way of “{esc(c.short(between[0]))}”' if len(between) == 1 else f"By way of {len(between)} further effects"
+            else:
+                others = len(step["from"]) - 1
+                note = f"Together with {plural(others, 'other statement')}" if others else "Directly"
+        rows.append(f'<li class="sp-row">{end(start)}<span class="sp-rel">{relation}<span class="sp-note">{note}</span></span>{end(finish)}</li>')
+    return f'<ol class="spine">{"".join(rows)}</ol>'
+
+
 def reconstruction_overview(c, site):
+    """The overview of a source reconstruction, built from its reviewed overview blocks."""
     goal = next(n for n in c.trees["goal"]["nodes"] if n["kind"] == "goal")
     statements, connections = c.counts()
-    conditions = "".join(card(c, ident) for ident in ("g2-g-capability", "g2-g-control", "g2-g-future"))
-    clouds = c.views["conflict"]
-    featured, _ = view_body(c, "conflict", clouds[0], "Each position is held to meet the need beside it. Inspect a connection to question its assumption.", "Show conflict as")
-    others = "".join(cloud_row(c, view) for view in clouds[1:])
-    body = commons_head(c, "overview") + f'''<div class="wrap overview">
-<section class="goal-hero"><div class="gh-main"><p class="eyebrow">The proposed goal</p><p class="gh-text">{esc(goal["text"])}</p><p class="gh-by">{chip("proposed")} <span>Reconstructed by AI; awaiting participant review</span></p><p class="gh-credit">{credit_line(c, goal["source_refs"], link=True)}</p><a class="text-link" href="items.html#{goal["id"]}">Inspect the goal →</a></div><div class="gh-side"><p class="eyebrow">From a conversation to a shared question</p><p>{esc(c.description)}</p><p class="gh-count"><b>{statements}</b> proposed statements<br><b>{connections}</b> proposed connections</p><a class="text-link" href="#credits">Whose ideas these are →</a><a class="text-link" href="about.html#sources">Where this map comes from →</a></div></section>
-<section class="ov"><div class="ov-head"><p class="eyebrow">A place to begin</p><h2>What seems to be shared</h2><p>The analyses report overlapping concerns: useful capabilities, meaningful control and preserving the possibility of a future. These are candidate starting points for review.</p></div><div class="cards cards-grid">{conditions}</div><a class="text-link" href="goal.html">The goal and its proposed conditions →</a></section>
-<section class="ov"><div class="ov-head"><p class="eyebrow">Pulling apart · {plural(len(clouds), "conflict")}</p><h2>Where needs pull two ways</h2><p>The analysis finds {len(clouds)} conflicts in the discussion. The first sits behind the problem of central intervention: a cooperative needs enough capacity to survive, but concentrating authority to get it erodes the member control that made it worth building.</p></div>{featured}<a class="text-link" href="conflict.html#view-{esc(clouds[0]["id"])}">Inspect this conflict and its assumptions →</a>
-<div class="cloud-rows">{others}</div><a class="text-link" href="conflict.html">All {len(clouds)} conflicts, with their assumptions →</a></section>
-<section class="ov"><div class="ov-head"><p class="eyebrow">A possible change</p><h2>Try conflict guidance that members can question and leave</h2><p>The proposal is to test useful guidance while members retain control, access to human help and competence without the tool. It is one candidate way through the first conflict: if members can work through disagreements themselves, less authority needs to move upward. Confidentiality, fair grievance handling and independent comparison are part of the design.</p></div><div class="cards cards-grid">{card(c, "g2-f-guidance")}{card(c, "g2-f-protections")}</div><a class="text-link" href="change.html">The proposed change and its effects →</a></section>
-<section class="ov"><div class="ov-head"><p class="eyebrow">The question to test</p><h2>What would change our minds?</h2><p>Do destructive conflict costs and unnecessary escalation fall, while fair treatment, independent competence and member influence remain? Compare AI guidance with optional-AI and human approaches.</p></div><div class="cards cards-grid">{card(c, "g2-f-benefit")}{card(c, "g2-f-harm")}</div><p>Fewer complaints or higher satisfaction would not settle it. Costs may have moved elsewhere, or justified grievances may have been silenced. Agree the comparison and the results that would defeat the claim before starting.</p><p>A local success would still leave a larger question open: do small democratic groups gain enough relative to hierarchies to change which institutions survive? The supplied analyses do not establish that step.</p><a class="text-link" href="items.html#g2-f-rel-benefit">Inspect the prediction and what remains untested →</a></section>
-<section class="ov"><div class="ov-head"><p class="eyebrow">First step · Unassigned</p><h2>Choose one willing host and one function</h2><p>No trial is recorded here. The first task is to establish a bounded case, check what already operates, and agree measures, protections, responsibilities and resources with the people affected. A missing detail in an analysis does not prove that a host lacks it.</p></div><div class="cards cards-grid">{card(c, "g2-t-select")}{card(c, "g2-p-protocol")}</div><a class="text-link" href="prerequisites.html">What has to happen first →</a></section>
-<section class="ov"><div class="ov-head"><p class="eyebrow">The wider picture</p><h2>One entry point into a broader programme</h2><p>The sources also explore reflective development, trustworthy governance, model adaptation, voice participation, federation, material services and security. Conflict guidance is one possible starting point. No single global constraint has been established.</p></div>{strip(c)}<p><a class="text-link" href="map.html">Explore all six views →</a></p><p><a class="text-link" href="questions.html">Review the open questions →</a></p></section>
-<section class="ov" id="credits"><div class="ov-head"><p class="eyebrow">People</p><h2>Whose ideas these are</h2><p>Each statement and connection credits the forum posts or essays it draws on. Open any statement to follow the links to the posts themselves.</p></div>{credits_table(c)}<a class="text-link" href="about.html#sources">The thread, the essays and the analyses →</a></section>
-</div>'''
+    clouds = c.views.get("conflict", [])
+    sections = []
+    for block in c.overview_blocks:
+        kind = block["type"]
+        head = f'<div class="ov-head"><p class="eyebrow">{esc(block["eyebrow"])}</p><h2>{esc(block["title"])}</h2><p>{esc(block["text"])}</p></div>'
+        if kind == "cards":
+            href, words = block["link"]
+            body = f'<div class="cards cards-grid">{"".join(card(c, i) for i in block["ids"])}</div><a class="text-link" href="{esc(href)}">{esc(words)}</a>'
+        elif kind == "spine":
+            body = spine(c, block)
+        elif kind == "clouds":
+            featured = next(v for v in clouds if v["id"] == block["featured"])
+            shown, _ = view_body(c, "conflict", featured, "Each position is held to meet the need beside it. Inspect a connection to question its assumption.", "Show conflict as")
+            others = "".join(cloud_row(c, v) for v in clouds if v is not featured)
+            body = (f'{shown}<a class="text-link" href="conflict.html#view-{esc(featured["id"])}">Inspect this conflict and its assumptions →</a>'
+                    f'<div class="cloud-rows">{others}</div><a class="text-link" href="conflict.html">All {plural(len(clouds), "conflict")}, with their assumptions →</a>')
+        elif kind == "wider":
+            body = f'{strip(c)}<p><a class="text-link" href="map.html">Explore all six questions →</a></p><p><a class="text-link" href="questions.html">Review the open questions →</a></p>'
+        else:
+            body = f'{credits_table(c)}<a class="text-link" href="about.html#sources">The thread, the essays and the analyses →</a>'
+        anchor = ' id="credits"' if kind == "credits" else ""
+        sections.append(f'<section class="ov ov-{kind}"{anchor}>{head}{body}</section>')
+    hero = (f'<section class="goal-hero"><div class="gh-main"><p class="eyebrow">The proposed goal</p><p class="gh-text">{esc(goal["text"])}</p>'
+            f'<p class="gh-by"><span>Reconstructed by AI; awaiting participant review</span></p><p class="gh-credit">{credit_line(c, goal["source_refs"], link=True)}</p>'
+            f'<a class="text-link" href="items.html#{goal["id"]}">Inspect the goal →</a></div><div class="gh-side"><p class="eyebrow">From a conversation to a shared question</p>'
+            f'<p>{esc(c.description)}</p><p class="gh-count"><b>{statements}</b> proposed statements<br><b>{connections}</b> proposed connections</p>'
+            f'<a class="text-link" href="#credits">Whose ideas these are →</a><a class="text-link" href="about.html#sources">Where this map comes from →</a></div></section>')
+    body = commons_head(c, "overview") + f'<div class="wrap overview">{hero}{"".join(sections)}</div>'
     return shell(title=f"{c.name} · Reason Commons", description=c.summary, depth=1, body=body, nav="commons", c=c, page="overview")
 
 
@@ -750,7 +878,7 @@ def map_page(c, site):
     body = commons_head(c, "map", heading=False) + f"""<div class="wrap">
 <section class="page-intro"><h1>One goal, six questions</h1><p class="lede">Each question gets its own page, with a diagram drawn only from published connections. Each answer sets up the next one.</p></section>
 <div class="mq-grid">{"".join(cells)}</div>
-<p class="fine">Small diagrams show the real shape of each part: boxes are statements coloured by role, and lines are published connections. Loose boxes have no connection yet.</p>
+<section class="map-key"><h2>What the colours mean</h2><p>Small diagrams show the real shape of each part: boxes are statements coloured by their role, and lines are published connections. Loose boxes have no connection yet.</p>{role_legend(c)}</section>
 </div>"""
     return shell(title=f"Map · {c.name} · Reason Commons", description=f"The six questions of the {c.name} commons.", depth=1, body=body, nav="commons", c=c, page="map")
 
@@ -764,7 +892,7 @@ def tree_page(c, name, site):
     diagram_parts, outline_parts, figures = [], [], []
     for piece, shape in zip(pieces, shapes) if pieces else ():
         notes = diagrams.number_markers(shape)
-        svg = diagrams.svg(shape, nodes, c.href, f'{info["question"]}: {plural(len(shape["nodes"]), "statement")}')
+        svg = diagrams.svg(shape, nodes, c.href, f'{info["question"]}: {plural(len(shape["nodes"]), "statement")}', uniform=c.is_reconstruction)
         figures.append(figure(svg, f'Diagram: {info["question"]} Scrolls sideways when it is wider than the screen.', width=shape["w"]))
         if notes:
             diagram_parts.append(assumption_list(notes))
@@ -821,16 +949,18 @@ def item_detail(c, ident, site):
         sources = "".join(card(c, s, name) for s in item["from"])
         joint = '<p class="joint">All of these together</p>' if len(item["from"]) > 1 else ""
         statement = (f'<h2 class="sr-only">Connection: {esc(c.text(ident))}</h2><div class="conn">{joint}<div class="cards cards-stack">{sources}</div>'
-                     f'<p class="conn-rel is-{item["status"]}">{esc(diagrams.RELATIONS.get(item["relation"], item["relation"]))} <span aria-hidden="true">↓</span></p>'
+                     f'<p class="conn-rel{standing_class(c, item["status"])}">{esc(diagrams.RELATIONS.get(item["relation"], item["relation"]))} <span aria-hidden="true">↓</span></p>'
                      f'<div class="cards cards-stack">{card(c, item["to"], name)}</div></div>')
     else:
         label = f'<p class="item-label">Shown in diagrams as: “{esc(item["label"])}”</p>' if item.get("label") and item["label"] != item["text"] else ""
         statement = f'<h2 class="item-statement">{esc(item["text"])}</h2>{label}'
-    near = "" if link else diagrams.neighbourhood(tree, ident, lambda k: kind_label(name, k), lambda i: f"#{i}")
+    near = "" if link else diagrams.neighbourhood(tree, ident, lambda k: kind_label(name, k), lambda i: f"#{i}", uniform=c.is_reconstruction)
     where = (figure(near, "Diagram: where this sits") if near else
              '<p class="muted">Its sources and target are shown above, with the relation between them.</p>' if link else
              '<p class="muted">Not yet connected. No published connection leads into or out of this statement.</p>')
     facts = [("Contributed by", names(x["name"] for x in item["contributors"]))]
+    if item.get("proposed_role"):
+        facts += [("Who", "Unassigned"), ("Proposed role", item["proposed_role"])]
     if c.is_reconstruction:
         direct, related = credit_people(c, item["source_refs"])
         facts.append(("Ideas from", names(c.authors[a]["name"] for a in direct) or "The supplied analysis"))
@@ -861,7 +991,7 @@ def item_detail(c, ident, site):
     if not link:
         rels = [l for l in tree["links"] if ident in l["from"] or l["to"] == ident]
         if rels:
-            rows = "".join(f'<li><a href="#{l["id"]}"><span>{"Leads into" if l["to"] == ident else "Leads from here"} · {esc(diagrams.RELATIONS.get(l["relation"], l["relation"]))}{" · " + STANDING[l["status"]] if l["status"] != "accepted" else ""}</span>'
+            rows = "".join(f'<li><a href="#{l["id"]}"><span>{"Leads into" if l["to"] == ident else "Leads from here"} · {esc(diagrams.RELATIONS.get(l["relation"], l["relation"]))}{" · " + STANDING[l["status"]] if l["status"] != "accepted" and not c.is_reconstruction else ""}</span>'
                            f'{esc(names(c.items[s]["text"] for s in l["from"]) if l["to"] == ident else c.items[l["to"]]["text"])}</a></li>' for l in rels)
             sections.append(f'<section class="d-sec"><h3>Connections</h3><ul class="rel-list">{rows}</ul></section>')
     for key, title in (("assumptions", "Assumptions"), ("challenges", "Challenges")):
@@ -904,7 +1034,7 @@ def item_detail(c, ident, site):
              + (f'<a class="pager-next" href="#{next_id}"><span>Next →</span>{esc(c.short(next_id))}</a>' if next_id else "<span></span>") + "</nav>")
     kind = f'Connection · {diagrams.RELATIONS.get(item["relation"], item["relation"])}' if link else kind_label(name, item["kind"])
     return (f'<div class="item-detail"><nav class="item-crumbs" aria-label="Item"><a href="#statements">← All statements</a><a href="{info["slug"]}.html">{esc(info["question"])}</a></nav>'
-            f'<div class="item-top"><span class="kind kind-{"link" if link else item["kind"]}">{esc(kind)}</span>{chip(item["status"])}</div>{statement}'
+            f'<div class="item-top"><span class="kind kind-{"link" if link else item["kind"]}">{esc(kind)}</span>{standing_chip(c, item["status"])}</div>{statement}'
             f'<div class="item-grid"><div class="item-where"><h3>Where it sits</h3>{where}</div><aside class="item-facts"><dl>{facts_html}{traces}</dl></aside></div>'
             f'{"".join(sections)}{contribute}{pager}</div>')
 
@@ -921,8 +1051,10 @@ def items_page(c, site):
             link = c.is_link(ident)
             credited = [c.authors[a]["name"] for group in credit_people(c, item["source_refs"]) for a in group] if c.is_reconstruction else []
             searchable = " ".join([c.text(ident), c.kind_of(ident), STANDING[item["status"]], *item.get("accepted_by", []), *(x["name"] for x in item["contributors"]), *credited])
-            summary = (f'<a class="item-summary card role-{"link" if link else item["kind"]} is-{item["status"]}" href="#{ident}"><span class="card-top"><span class="kind">{esc(c.kind_of(ident))}</span>{chip(item["status"])}</span>'
-                       f'<span class="card-text">{esc(c.text(ident))}</span><span class="card-foot">{esc(endorsement(item))}</span></a>')
+            foot = (f'<span class="card-credit">{esc(credit_line(c, item["source_refs"]))}</span>' if c.is_reconstruction
+                    else f'<span class="card-foot">{esc(endorsement(item))}</span>')
+            summary = (f'<a class="item-summary card role-{"link" if link else item["kind"]}{standing_class(c, item["status"])}" href="#{ident}"><span class="card-top"><span class="kind">{esc(c.kind_of(ident))}</span>{standing_chip(c, item["status"])}</span>'
+                       f'<span class="card-text">{esc(c.text(ident))}</span>{foot}</a>')
             articles.append(f'<article class="item{" item-link" if link else ""}" id="{ident}" data-search="{esc(searchable.lower())}">{summary}{item_detail(c, ident, site)}</article>')
         groups.append(f'<section class="items-tree" aria-labelledby="t-{name}"><h2 class="items-tree-title" id="t-{name}"><span>Question {i}</span>{esc(TREES[name]["question"])} '
                       f'<a class="text-link" href="{TREES[name]["slug"]}.html">See the diagram →</a></h2><div class="items-list">{"".join(articles)}</div></section>')
@@ -951,7 +1083,7 @@ def question_board(c, limit=None):
                 if task.get("source_refs"):  # The card is a link itself, so the credit is plain text here.
                     note += f'<span class="qc-credit">Draws on {esc(linked_people(c, task["source_refs"], link=False))}</span>'
                 cards.append(f'<a class="qc" href="items.html#{ident}"><span class="qc-task">{esc(task.get("label") or task["work"].replace("_", " ").capitalize())}</span>{note}'
-                             f'<span class="qc-about"><span class="kind">{esc(c.kind_of(ident))}</span>{chip(c.items[ident]["status"])}<span class="qc-text">{esc(c.short(ident))}</span></span>'
+                             f'<span class="qc-about"><span class="kind">{esc(c.kind_of(ident))}</span>{standing_chip(c, c.items[ident]["status"])}<span class="qc-text">{esc(c.short(ident))}</span></span>'
                              f'<span class="qc-where">{esc(TREES[c.tree_of[ident]]["question"])}</span></a>')
                 used.add(ident)
         if cards:
@@ -1030,22 +1162,31 @@ def learning_page(c, site):
 # ---------------------------------------------------------------- changes and about
 
 def changes_page(c, site):
+    def change_link(ident):
+        standing = "" if c.is_reconstruction else f' class="is-{c.items[ident]["status"]}"'
+        return f'<a href="items.html#{ident}"{standing}>{esc(c.short(ident))}</a>'
     entries = []
+    retired = {r["id"]: r for r in c.retired}
     for release in reversed(c.history):
         rows = []
         for change in release["changes"]:
-            refs = change["refs"]
+            refs = [r for r in change["refs"] if r not in retired]
+            gone = [retired[r] for r in change["refs"] if r in retired]  # Removed items keep their wording here, never a live link.
             if change["type"] == "report":
                 links = "".join(f'<a href="learning.html#{r}">{esc(c.reports[r][1]["by"])}</a>' for r in refs)
             else:
-                links = "".join(f'<a href="items.html#{r}" class="is-{c.items[r]["status"]}">{esc(c.short(r))}</a>' for r in refs if not c.is_link(r))
+                links = "".join(change_link(r) for r in refs if not c.is_link(r))
                 hidden = len([r for r in refs if c.is_link(r)])
                 if hidden:
                     links += f'<span class="muted">and {plural(hidden, "connection")}</span>'
+                if gone and change["type"] != "removed":
+                    links += f'<span class="muted">and {plural(len(gone), "item")} since removed</span>'
             if len(refs) > 10:
                 links = f'<details><summary>{plural(len([r for r in refs if not c.is_link(r)]), "statement")} and {plural(len([r for r in refs if c.is_link(r)]), "connection")}</summary><div class="ch-links">{links}</div></details>'
             else:
-                links = f'<div class="ch-links">{links}</div>'
+                links = f'<div class="ch-links">{links}</div>' if refs else ""
+            if change["type"] == "removed":
+                links += "".join(f'<p class="before"><span>No longer published</span><s>{esc(g["text"])}</s></p>' for g in gone)
             before = (f'<p class="before"><span>Before</span><s>{esc(change["before"])}</s></p><p class="before after"><span>Now</span>{esc(c.items[refs[0]]["text"])}</p>'
                       if change.get("before") else "")
             note = f'<p>{esc(change["note"])}</p>' if change.get("note") else ""
@@ -1087,7 +1228,7 @@ def about_page(c, site):
         source_list = "".join(f'<article id="source-{esc(source["id"])}"><h3>{esc(source["title"])}</h3><p>{esc(source["description"])}</p>{where(source)}</article>' for source in c.sources)
         essays = sum(1 for s in c.sources if "author" in s)
         fiction = (f'<section class="ov" id="sources"><h2>Sources and limits</h2><p>This is a proposed AI reconstruction from a public forum thread, {plural(essays, "essay")} shared in it and the supplied analyses of it. Every item credits the posts or essays it draws on, with links, and names the analysis page or section it comes from and whether a connection is an inference. The people credited have not reviewed or endorsed this selection.</p>'
-                   + source_list +'<h3>The broader programme</h3><p>The later analysis covers reflective human development, trustworthy institutions, the Laboratory, Forge/model adaptation, Vocal Presence, federation, material and energy services, and enforceable security. It separates philosophical hypotheses from institutional mechanisms and distinguishes local success from a durable shift in institutional selection. This compact starting map leaves those branches as open review work.</p>'
+                   + source_list +'<h3>The broader programme</h3><p>The later analysis covers reflective human development, trustworthy institutions, the Laboratory, Forge/model adaptation, Vocal Presence, federation, material and energy services, and enforceable security. It separates philosophical hypotheses from institutional mechanisms and distinguishes local success from a durable shift in institutional selection. Those branches are now in the map as proposed changes with their risks, first steps and actions. Most of the first steps are the analysis’s own planning, so each obstacle carries a question to check at a host before relying on it.</p>'
                    '<h3>What counts as progress?</h3><p>The earlier analysis proposes measuring practices adopted and retained in viable institutions that remain faithful to their purpose. The measures, system boundary, observation period and protected conditions still need agreement. Essays and conversation alone do not establish that outcome.</p></section>')
     excluded = ("Nothing is held back: the example's whole working file is published, apart from how each contribution was captured."
                 if c.is_example else
