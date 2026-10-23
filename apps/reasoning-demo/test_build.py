@@ -408,8 +408,8 @@ class ReconstructionTests(unittest.TestCase):
         state = helper.load(build.HERE / self.record["entry"]["source"])
         helper.validate(state)
         self.assertEqual(build.project_reconstruction(state, self.registry), self.data)
-        self.assertEqual(sum(len(t["nodes"]) for t in self.data["trees"].values()), 233)
-        self.assertEqual(sum(len(t["links"]) for t in self.data["trees"].values()), 238)
+        self.assertEqual(sum(len(t["nodes"]) for t in self.data["trees"].values()), 241)
+        self.assertEqual(sum(len(t["links"]) for t in self.data["trees"].values()), 246)
 
     def test_existing_reviewed_snapshots_remain_byte_for_byte_the_same(self):
         expected = {"real": "994c61a3deda57223fb20a363897d00c999bdf3244294d2601ee1fe100c39cfd",
@@ -503,9 +503,19 @@ class ReconstructionTests(unittest.TestCase):
             self.assertNotIn(payload, rendered)
             self.assertIn(pages.esc(payload), rendered)
 
+    def test_goal_items_are_success_factors_and_selection_conditions_sit_under_the_fifth(self):
+        goal = self.data["trees"]["goal"]
+        kinds = {n["id"]: n["kind"] for n in goal["nodes"]}
+        self.assertEqual(sorted(i for i, k in kinds.items() if k == "critical_success_factor"),
+                         sorted(["g2-g-future", "g2-g-g2", "g2-g-capability", "g2-g-control", "g2-g-g5", "g2-g-g6"]))
+        under_g5 = {l["from"][0] for l in goal["links"] if l["to"] == "g2-g-g5"}
+        self.assertEqual(under_g5, {"g2-g-g5-between", "g2-g-g5-within"})
+        self.assertTrue(all(kinds[i] == "necessary_condition" for i in under_g5))
+        self.assertIn("Success factor", self.outputs["gandhi-2-0/goal.html"])
+
     def test_conflict_outline_names_the_conflict_instead_of_implying_a_sequence(self):
         clashes = [l["id"] for l in self.data["trees"]["conflict"]["links"] if l["relation"] == "conflicts_with"]
-        self.assertEqual(len(clashes), 5)
+        self.assertEqual(len(clashes), 6)
         for file, expected in (("gandhi-2-0/index.html", clashes[:1]), ("gandhi-2-0/conflict.html", clashes)):
             self.assertNotIn('class="o-then">then', self.outputs[file])
             for ident in expected:
@@ -682,7 +692,7 @@ class ReconstructionTests(unittest.TestCase):
         self.assertIn("chip-proposed", self.outputs["example-willow-lane/items.html"])
         self.assertIn("Check at the host", self.outputs["gandhi-2-0/questions.html"])
 
-    def test_all_five_conflicts_draw_as_clouds_with_credit_lines_that_fit(self):
+    def test_all_six_conflicts_draw_as_clouds_with_credit_lines_that_fit(self):
         c = pages.Commons(build.normalize(self.record))
         tree = c.trees["conflict"]
         for view in c.views["conflict"]:
@@ -696,7 +706,7 @@ class ReconstructionTests(unittest.TestCase):
                     self.assertLessEqual(diagrams.text_width(line, diagrams.CREDIT_SIZE, diagrams.CREDIT_WEIGHT), placed["w"] - 2 * diagrams.PAD_X)
             self.assertIn(f'id="view-{view["id"]}"', self.outputs["gandhi-2-0/conflict.html"])
         page = self.outputs["gandhi-2-0/conflict.html"]
-        self.assertEqual(page.count("e-conflict"), 5)
+        self.assertEqual(page.count("e-conflict"), 6)
         self.assertIn('class="n-credit"', page)
         self.assertIn("From Robert Bunge", page)
 
