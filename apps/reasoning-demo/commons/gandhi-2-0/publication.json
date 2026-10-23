@@ -2,7 +2,7 @@
   "registry_version": 1,
   "publication_kind": "source_reconstruction",
   "release": {
-    "release_id": "2026-10-23.1",
+    "release_id": "2026-10-23.2",
     "snapshot_date": "2026-10-23",
     "title": "Gandhi 2.0"
   },
@@ -39,7 +39,9 @@
         "g2-g-capability",
         "g2-g-control",
         "g2-g-g5",
-        "g2-g-g6"
+        "g2-g-g6",
+        "g2-g-g5-between",
+        "g2-g-g5-within"
       ],
       "links": [
         "g2-g-rel-future",
@@ -47,7 +49,9 @@
         "g2-g-rel-capability",
         "g2-g-rel-control",
         "g2-g-rel-g5",
-        "g2-g-rel-g6"
+        "g2-g-rel-g6",
+        "g2-g-rel-g5-between",
+        "g2-g-rel-g5-within"
       ]
     },
     "current_reality": {
@@ -159,7 +163,12 @@
         "g2-c-k5-continuity",
         "g2-c-k5-care",
         "g2-c-k5-engineer",
-        "g2-c-k5-free"
+        "g2-c-k5-free",
+        "g2-c-k6-objective",
+        "g2-c-k6-between",
+        "g2-c-k6-within",
+        "g2-c-k6-adapt",
+        "g2-c-k6-own"
       ],
       "links": [
         "g2-c-k1-rel-viability",
@@ -186,7 +195,12 @@
         "g2-c-k5-rel-care",
         "g2-c-k5-rel-engineer",
         "g2-c-k5-rel-free",
-        "g2-c-k5-rel-conflict"
+        "g2-c-k5-rel-conflict",
+        "g2-c-k6-rel-between",
+        "g2-c-k6-rel-within",
+        "g2-c-k6-rel-adapt",
+        "g2-c-k6-rel-own",
+        "g2-c-k6-rel-conflict"
       ]
     },
     "future_reality": {
@@ -201,6 +215,7 @@
         "g2-f-i08",
         "g2-f-i09",
         "g2-f-i10",
+        "g2-f-i11",
         "g2-f-e01",
         "g2-f-e02",
         "g2-f-e03",
@@ -284,6 +299,7 @@
         "g2-f-rel-f22",
         "g2-f-rel-f23",
         "g2-f-rel-f24",
+        "g2-f-rel-i11-e14",
         "g2-f-rel-n01-i01",
         "g2-f-rel-n01-i04",
         "g2-f-rel-n01-i05",
@@ -698,6 +714,18 @@
           "g2-c-k5-engineer",
           "g2-c-k5-free"
         ]
+      },
+      {
+        "id": "k6",
+        "title": "Success between institutions and integrity within",
+        "summary": "Surviving and gaining influence means building what the existing order rewards, but letting its pressures shape the institution erodes the values and relationships it exists for. Leif’s countercurrent’s paradox of success; it may lie behind four of the other five.",
+        "nodes": [
+          "g2-c-k6-objective",
+          "g2-c-k6-between",
+          "g2-c-k6-within",
+          "g2-c-k6-adapt",
+          "g2-c-k6-own"
+        ]
       }
     ],
     "future_reality": [
@@ -724,6 +752,7 @@
           "g2-f-i03",
           "g2-f-i06",
           "g2-f-i07",
+          "g2-f-i11",
           "g2-f-e06",
           "g2-f-e07",
           "g2-f-e09",
@@ -1067,7 +1096,7 @@
       "type": "cards",
       "eyebrow": "A place to begin",
       "title": "What has to be true",
-      "text": "The analysis names six conditions for the goal: a liveable future, reflective agency, useful capabilities, trustworthy institutions, keeping the mission while spreading, and learning without a metaphysical test. These are candidate starting points for review.",
+      "text": "The analysis names six success factors for the goal: a liveable future, reflective agency, useful capabilities, trustworthy institutions, keeping the mission while spreading, and learning without a metaphysical test. These are candidate starting points for review.",
       "ids": [
         "g2-g-future",
         "g2-g-g2",
@@ -1078,7 +1107,7 @@
       ],
       "link": [
         "goal.html",
-        "The goal and its six conditions →"
+        "The goal and its six success factors →"
       ]
     },
     {
@@ -1131,9 +1160,9 @@
     },
     {
       "type": "clouds",
-      "eyebrow": "Pulling apart · 5 conflicts",
+      "eyebrow": "Pulling apart · 6 conflicts",
       "title": "Where needs pull two ways",
-      "text": "The analysis finds five conflicts in the discussion. The first sits behind the problem of central intervention: a cooperative needs enough capacity to survive, but concentrating authority to get it erodes the member control that made it worth building.",
+      "text": "The analysis finds five conflicts in the discussion, and Leif’s countercurrent’s paradox of success adds a sixth that may lie behind four of them. The first sits behind the problem of central intervention: a cooperative needs enough capacity to survive, but concentrating authority to get it erodes the member control that made it worth building.",
       "featured": "k1"
     },
     {
@@ -1203,8 +1232,8 @@
   "sources": [
     {
       "id": "forum",
-      "title": "What Would Make a Second Renaissance Possible? · Second Renaissance Forum · posts 1–36, 16–22 October 2026",
-      "description": "The public forum thread this map draws on, opened by Leif Eriksson. Its 36 posts were checked against the public topic on 22 October 2026, and each credit links to the post it names. The paraphrases are the AI’s; a credit says where an idea comes from, not that its author agrees with the wording, and none of the people credited has reviewed it.",
+      "title": "What Would Make a Second Renaissance Possible? · Second Renaissance Forum · posts 1–36 and 38, 16–22 October 2026",
+      "description": "The public forum thread this map draws on, opened by Leif Eriksson. Its first 36 posts were checked against the public topic on 22 October 2026, and post 38, Leif Eriksson’s response to an earlier version of this map, against a print of the topic on 23 October 2026. Each credit links to the post it names. The paraphrases are the AI’s; a credit says where an idea comes from, not that its author agrees with the wording, and none of the people credited has reviewed it.",
       "url": "https://forum.secondrenaissance.net/t/what-would-make-a-second-renaissance-possible/909",
       "posts": {
         "1": {
@@ -1348,6 +1377,10 @@
           "date": "2026-10-22"
         },
         "36": {
+          "author": "leif",
+          "date": "2026-10-22"
+        },
+        "38": {
           "author": "leif",
           "date": "2026-10-22"
         }
@@ -2119,11 +2152,53 @@
           "note": "Replaced by the analysis’s chain of effects from guidance to coordination."
         }
       ]
+    },
+    {
+      "release_id": "2026-10-23.2",
+      "date": "2026-10-23",
+      "title": "The countercurrent’s paradox",
+      "summary": "A response to Leif Eriksson’s post 38. The goal’s six items become success factors, with selection between institutions and selection within them as conditions under the fifth. A sixth conflict sets surviving in the existing order against keeping its pressures from reshaping the institution, and a new change proposes altering the selection pressures themselves. All proposed.",
+      "changes": [
+        {
+          "type": "added",
+          "refs": [
+            "g2-g-g5-between",
+            "g2-g-g5-within",
+            "g2-g-rel-g5-between",
+            "g2-g-rel-g5-within",
+            "g2-c-k6-objective",
+            "g2-c-k6-between",
+            "g2-c-k6-within",
+            "g2-c-k6-adapt",
+            "g2-c-k6-own",
+            "g2-c-k6-rel-between",
+            "g2-c-k6-rel-within",
+            "g2-c-k6-rel-adapt",
+            "g2-c-k6-rel-own",
+            "g2-c-k6-rel-conflict",
+            "g2-f-i11",
+            "g2-f-rel-i11-e14"
+          ],
+          "note": "The countercurrent’s paradox and the change Leif proposes for it, from post 38."
+        },
+        {
+          "type": "revised",
+          "refs": [
+            "g2-g-future",
+            "g2-g-g2",
+            "g2-g-capability",
+            "g2-g-control",
+            "g2-g-g5",
+            "g2-g-g6"
+          ],
+          "note": "Now a success factor; the analysis calls these conditions."
+        }
+      ]
     }
   ],
   "snapshot": {
     "projection_version": 4,
-    "release_id": "2026-10-23.1",
+    "release_id": "2026-10-23.2",
     "snapshot_date": "2026-10-23",
     "title": "Gandhi 2.0",
     "people": [
@@ -2190,7 +2265,7 @@
                 "role": "assistant"
               }
             ],
-            "kind": "necessary_condition",
+            "kind": "critical_success_factor",
             "text": "Catastrophic military, technological and ecological risks remain within conditions compatible with continued human life and collective agency.",
             "label": "Catastrophic military, technological and ecological risks stay compatible with human agency.",
             "source_refs": [
@@ -2234,7 +2309,7 @@
                 "role": "assistant"
               }
             ],
-            "kind": "necessary_condition",
+            "kind": "critical_success_factor",
             "text": "People can examine assumptions, respond to disagreement and act with non-instrumental concern; they retain the ability to question both institutions and AI.",
             "label": "People can examine assumptions, handle disagreement and question both institutions and AI.",
             "source_refs": [
@@ -2288,7 +2363,7 @@
                 "role": "assistant"
               }
             ],
-            "kind": "necessary_condition",
+            "kind": "critical_success_factor",
             "text": "Communities can meet needs, coordinate, learn and maintain essential services at viable cost, without surrendering meaningful control.",
             "label": "Communities meet needs and keep essential services at viable cost without losing control.",
             "source_refs": [
@@ -2337,7 +2412,7 @@
                 "role": "assistant"
               }
             ],
-            "kind": "necessary_condition",
+            "kind": "critical_success_factor",
             "text": "Conduct is transparent, accountable and reciprocal; participation and disagreement have substantive influence, and coercion or deception do not substitute for justified trust.",
             "label": "Conduct is transparent, accountable and reciprocal, and disagreement has real influence.",
             "source_refs": [
@@ -2392,7 +2467,7 @@
                 "role": "assistant"
               }
             ],
-            "kind": "necessary_condition",
+            "kind": "critical_success_factor",
             "text": "Success between institutions coexists with democratic integrity within them; new sites can enact and sustain the practice.",
             "label": "Success between institutions coexists with democracy within them, and new sites can enact it.",
             "source_refs": [
@@ -2435,7 +2510,7 @@
                 "role": "assistant"
               }
             ],
-            "kind": "necessary_condition",
+            "kind": "critical_success_factor",
             "text": "Benefits, harms and costs are inspectable; alternative explanations can change the programme. The operational goals do not require agreement that AI is conscious.",
             "label": "Harms and costs are inspectable, evidence can change course, and no AI-consciousness test applies.",
             "source_refs": [
@@ -2477,6 +2552,82 @@
                 "source_id": "analysis-v2",
                 "locator": "p. 2, G6",
                 "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-g-g5-between",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "necessary_condition",
+            "text": "The institution survives and becomes influential in selection between institutions.",
+            "label": "The institution survives and gains influence in selection between institutions.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 38,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "sections 1–6 and 10",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 2, G5",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "g2-g-g5-within",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "necessary_condition",
+            "text": "Selection within the institution keeps reinforcing the values, relationships, practices and forms of power it exists for.",
+            "label": "Selection within keeps reinforcing the values and relationships it exists for.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 38,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "sections 1–6 and 10",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 2, G5",
+                "basis": "inference"
               }
             ]
           }
@@ -2641,6 +2792,64 @@
                 "source_id": "analysis-v2",
                 "locator": "p. 2, goal and necessary conditions",
                 "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-g-rel-g5-between",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-g-g5-between"
+            ],
+            "to": "g2-g-g5",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 38,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 2, G5",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "g2-g-rel-g5-within",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-g-g5-within"
+            ],
+            "to": "g2-g-g5",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 38,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 2, G5",
+                "basis": "inference"
               }
             ]
           }
@@ -6719,6 +6928,205 @@
                 "basis": "reconstruction"
               }
             ]
+          },
+          {
+            "id": "g2-c-k6-objective",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "objective",
+            "text": "Success between institutions coexists with democratic integrity within them.",
+            "label": "Success between institutions coexists with democratic integrity within them.",
+            "derived_from": [
+              "g2-g-g5"
+            ],
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 38,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "sections 1–6 and 10",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 2, G5; p. 7, C14–C17; p. 8, U03",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k6-between",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "Survive and become influential in selection between institutions.",
+            "label": "Survive and gain influence in selection between institutions.",
+            "derived_from": [
+              "g2-g-g5-between"
+            ],
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 38,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "sections 1–6 and 10",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 2, G5; p. 7, C14–C17; p. 8, U03",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k6-within",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "Keep selection within the institution reinforcing the values, relationships, practices and forms of power it exists for.",
+            "label": "Keep selection within reinforcing its own values and relationships.",
+            "derived_from": [
+              "g2-g-g5-within"
+            ],
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 38,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "sections 1–6 and 10",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 2, G5; p. 7, C14–C17; p. 8, U03",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k6-adapt",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "Develop the organisational capabilities the existing order rewards, and let its pressures shape how the institution grows.",
+            "label": "Build the capabilities the existing order rewards and grow by its pressures.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 38,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "sections 1–6 and 10",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 2, G5; p. 7, C14–C17; p. 8, U03",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k6-own",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "Keep those same pressures from deciding which internal values, relationships and forms of power are reinforced as it grows.",
+            "label": "Keep those pressures from deciding what is reinforced inside as it grows.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 38,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "sections 1–6 and 10",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 2, G5; p. 7, C14–C17; p. 8, U03",
+                "basis": "inference"
+              }
+            ]
           }
         ],
         "links": [
@@ -7555,6 +7963,198 @@
                 "basis": "reconstruction"
               }
             ]
+          },
+          {
+            "id": "g2-c-k6-rel-between",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k6-between"
+            ],
+            "to": "g2-c-k6-objective",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 38,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 7, C14–C17; p. 8, U03",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k6-rel-within",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k6-within"
+            ],
+            "to": "g2-c-k6-objective",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 38,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 7, C14–C17; p. 8, U03",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k6-rel-adapt",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k6-adapt"
+            ],
+            "to": "g2-c-k6-between",
+            "relation": "necessary_for",
+            "assumptions": [
+              {
+                "text": "Only the existing order's selection pressures decide which institutions survive and become influential.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 38,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 20,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 7, C14–C17; p. 8, U03",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k6-rel-own",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k6-own"
+            ],
+            "to": "g2-c-k6-within",
+            "relation": "necessary_for",
+            "assumptions": [
+              {
+                "text": "Capabilities adopted in order to compete reshape internal relationships, priorities and sense of what is possible.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 38,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "paradox",
+                "locator": "sections 1–6 and 10",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 7, C14–C17; p. 8, U03",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "g2-c-k6-rel-conflict",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-c-k6-adapt"
+            ],
+            "to": "g2-c-k6-own",
+            "relation": "conflicts_with",
+            "assumptions": [
+              {
+                "text": "The selection pressures are fixed: what wins between institutions does not reward what sustains emancipatory practice within them.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 38,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 20,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 26,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 7, C14–C17; p. 8, U03",
+                "basis": "inference"
+              }
+            ]
           }
         ],
         "backlog": [
@@ -7562,7 +8162,7 @@
             "ref": "g2-c-k1-rel-concentrate",
             "work": "examine_assumption",
             "label": "Can coordination and expertise be had without concentrating authority?",
-            "note": "The analysis names conflict guidance, local AI, federation and accountable governance as candidate ways through. Leif hopes widely available conflict competence could reduce reliance on hierarchical intervention; none of these routes has been tested.",
+            "note": "The analysis names conflict guidance, local AI, federation and accountable governance as candidate ways through. Leif hopes widely available conflict competence could reduce reliance on hierarchical intervention; none of these routes has been tested. In post 38 Leif describes such routes as ways for decentralised institutions to acquire the capabilities they need to survive, and places Gandhi 2.0's deeper hypothesis in changing the selection pressures themselves; see the conflict between success and integrity.",
             "source_refs": [
               {
                 "source_id": "forum",
@@ -7574,6 +8174,12 @@
                 "source_id": "analysis-v2",
                 "locator": "p. 14, K1, candidate injections I02, I03, I06 and I10",
                 "basis": "reconstruction"
+              },
+              {
+                "source_id": "forum",
+                "post": 38,
+                "author": "leif",
+                "basis": "related"
               }
             ]
           },
@@ -7685,6 +8291,46 @@
                 "source_id": "analysis-v2",
                 "locator": "p. 18, K5",
                 "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "ref": "g2-c-k6-objective",
+            "work": "connect_or_explain",
+            "label": "Check whether the authority, AI, throughput and attachment conflicts are cases of this one.",
+            "note": "If they are, this is the core conflict behind four of the five others. Ask Leif whether it captures the countercurrent's paradox of success before treating it as the core.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 38,
+                "author": "leif",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "ref": "g2-c-k6-rel-conflict",
+            "work": "examine_assumption",
+            "label": "Can the selection pressures themselves change, rather than only the institutions?",
+            "note": "Leif's deeper hypothesis, in posts 20, 26 and 38, is that human–AI collaboration and institutional design might change what lets institutions survive and spread. The change that would test it is the one about changing the selection pressures.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 20,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 26,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 38,
+                "author": "leif",
+                "basis": "related"
               }
             ]
           }
@@ -8238,6 +8884,64 @@
                 "source_id": "analysis-v2",
                 "locator": "p. 19, I10",
                 "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "g2-f-i11",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "injection",
+            "text": "Human–AI collaboration and institutional design change the selection pressures themselves, so that care, trust, shared power and non-domination become sources of organisational strength.",
+            "label": "Change the selection pressures so care, trust and shared power become strengths.",
+            "addresses": [
+              "g2-r-u02",
+              "g2-r-u03"
+            ],
+            "derived_from": [
+              "g2-c-k6-adapt",
+              "g2-c-k6-own"
+            ],
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 38,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 26,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 20,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 29,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "last-first",
+                "locator": "sections 4 and 9",
+                "basis": "cited"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 25, E12–E14; p. 46, open claims",
+                "basis": "inference"
               }
             ]
           },
@@ -11217,6 +11921,47 @@
             ]
           },
           {
+            "id": "g2-f-rel-i11-e14",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "g2-f-i11"
+            ],
+            "to": "g2-f-e14",
+            "relation": "contributes_to",
+            "assumptions": [
+              {
+                "text": "Changed pressures reward what the institution needs internally, so growth no longer brings assimilation.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 38,
+                "author": "leif",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "forum",
+                "post": 26,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "analysis-v2",
+                "locator": "p. 25, E14",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
             "id": "g2-f-rel-n01-i01",
             "status": "proposed",
             "accepted_by": [],
@@ -13294,6 +14039,26 @@
                 "source_id": "analysis-v2",
                 "locator": "p. 47, open claims",
                 "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "ref": "g2-f-i11",
+            "work": "examine_assumption",
+            "label": "Is this a change of its own, or the combined effect of the other ten?",
+            "note": "In post 26 Leif expects these developments, taken together, to begin changing the selection pressures; in post 38 he names AI, human–AI collaboration and institutional design. If it is their combined effect, it belongs among the effects rather than the changes.",
+            "source_refs": [
+              {
+                "source_id": "forum",
+                "post": 26,
+                "author": "leif",
+                "basis": "related"
+              },
+              {
+                "source_id": "forum",
+                "post": 38,
+                "author": "leif",
+                "basis": "related"
               }
             ]
           }
@@ -19166,6 +19931,48 @@
             "note": "Replaced by the analysis’s chain of effects from guidance to coordination."
           }
         ]
+      },
+      {
+        "release_id": "2026-10-23.2",
+        "date": "2026-10-23",
+        "title": "The countercurrent’s paradox",
+        "summary": "A response to Leif Eriksson’s post 38. The goal’s six items become success factors, with selection between institutions and selection within them as conditions under the fifth. A sixth conflict sets surviving in the existing order against keeping its pressures from reshaping the institution, and a new change proposes altering the selection pressures themselves. All proposed.",
+        "changes": [
+          {
+            "type": "added",
+            "refs": [
+              "g2-g-g5-between",
+              "g2-g-g5-within",
+              "g2-g-rel-g5-between",
+              "g2-g-rel-g5-within",
+              "g2-c-k6-objective",
+              "g2-c-k6-between",
+              "g2-c-k6-within",
+              "g2-c-k6-adapt",
+              "g2-c-k6-own",
+              "g2-c-k6-rel-between",
+              "g2-c-k6-rel-within",
+              "g2-c-k6-rel-adapt",
+              "g2-c-k6-rel-own",
+              "g2-c-k6-rel-conflict",
+              "g2-f-i11",
+              "g2-f-rel-i11-e14"
+            ],
+            "note": "The countercurrent’s paradox and the change Leif proposes for it, from post 38."
+          },
+          {
+            "type": "revised",
+            "refs": [
+              "g2-g-future",
+              "g2-g-g2",
+              "g2-g-capability",
+              "g2-g-control",
+              "g2-g-g5",
+              "g2-g-g6"
+            ],
+            "note": "Now a success factor; the analysis calls these conditions."
+          }
+        ]
       }
     ],
     "publication_kind": "source_reconstruction",
@@ -19190,8 +19997,8 @@
     "sources": [
       {
         "id": "forum",
-        "title": "What Would Make a Second Renaissance Possible? · Second Renaissance Forum · posts 1–36, 16–22 October 2026",
-        "description": "The public forum thread this map draws on, opened by Leif Eriksson. Its 36 posts were checked against the public topic on 22 October 2026, and each credit links to the post it names. The paraphrases are the AI’s; a credit says where an idea comes from, not that its author agrees with the wording, and none of the people credited has reviewed it.",
+        "title": "What Would Make a Second Renaissance Possible? · Second Renaissance Forum · posts 1–36 and 38, 16–22 October 2026",
+        "description": "The public forum thread this map draws on, opened by Leif Eriksson. Its first 36 posts were checked against the public topic on 22 October 2026, and post 38, Leif Eriksson’s response to an earlier version of this map, against a print of the topic on 23 October 2026. Each credit links to the post it names. The paraphrases are the AI’s; a credit says where an idea comes from, not that its author agrees with the wording, and none of the people credited has reviewed it.",
         "url": "https://forum.secondrenaissance.net/t/what-would-make-a-second-renaissance-possible/909",
         "posts": {
           "1": {
@@ -19335,6 +20142,10 @@
             "date": "2026-10-22"
           },
           "36": {
+            "author": "leif",
+            "date": "2026-10-22"
+          },
+          "38": {
             "author": "leif",
             "date": "2026-10-22"
           }
@@ -19545,6 +20356,18 @@
             "g2-c-k5-engineer",
             "g2-c-k5-free"
           ]
+        },
+        {
+          "id": "k6",
+          "title": "Success between institutions and integrity within",
+          "summary": "Surviving and gaining influence means building what the existing order rewards, but letting its pressures shape the institution erodes the values and relationships it exists for. Leif’s countercurrent’s paradox of success; it may lie behind four of the other five.",
+          "nodes": [
+            "g2-c-k6-objective",
+            "g2-c-k6-between",
+            "g2-c-k6-within",
+            "g2-c-k6-adapt",
+            "g2-c-k6-own"
+          ]
         }
       ],
       "future_reality": [
@@ -19571,6 +20394,7 @@
             "g2-f-i03",
             "g2-f-i06",
             "g2-f-i07",
+            "g2-f-i11",
             "g2-f-e06",
             "g2-f-e07",
             "g2-f-e09",
@@ -19914,7 +20738,7 @@
         "type": "cards",
         "eyebrow": "A place to begin",
         "title": "What has to be true",
-        "text": "The analysis names six conditions for the goal: a liveable future, reflective agency, useful capabilities, trustworthy institutions, keeping the mission while spreading, and learning without a metaphysical test. These are candidate starting points for review.",
+        "text": "The analysis names six success factors for the goal: a liveable future, reflective agency, useful capabilities, trustworthy institutions, keeping the mission while spreading, and learning without a metaphysical test. These are candidate starting points for review.",
         "ids": [
           "g2-g-future",
           "g2-g-g2",
@@ -19925,7 +20749,7 @@
         ],
         "link": [
           "goal.html",
-          "The goal and its six conditions →"
+          "The goal and its six success factors →"
         ]
       },
       {
@@ -19978,9 +20802,9 @@
       },
       {
         "type": "clouds",
-        "eyebrow": "Pulling apart · 5 conflicts",
+        "eyebrow": "Pulling apart · 6 conflicts",
         "title": "Where needs pull two ways",
-        "text": "The analysis finds five conflicts in the discussion. The first sits behind the problem of central intervention: a cooperative needs enough capacity to survive, but concentrating authority to get it erodes the member control that made it worth building.",
+        "text": "The analysis finds five conflicts in the discussion, and Leif’s countercurrent’s paradox of success adds a sixth that may lie behind four of them. The first sits behind the problem of central intervention: a cooperative needs enough capacity to survive, but concentrating authority to get it erodes the member control that made it worth building.",
         "featured": "k1"
       },
       {
@@ -20047,5 +20871,5 @@
       }
     ]
   },
-  "snapshot_sha256": "c69eacf370553fcfec8802043f5ba4308895ea264f8188e720fa7b30dcbdbc44"
+  "snapshot_sha256": "ff91caf3d00dfbcedf805826725ed040680868c905c65b83be16ebfcac5770ea"
 }
