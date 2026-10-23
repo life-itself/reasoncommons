@@ -634,17 +634,7 @@
         "title": "Why these effects matter for the goal",
         "summary": "Each problem can independently keep ethical insight from becoming a durable basis for collective life.",
         "nodes": [
-          "g2-r-u11",
-          "g2-r-u01",
-          "g2-r-u02",
-          "g2-r-u03",
-          "g2-r-u04",
-          "g2-r-u05",
-          "g2-r-u06",
-          "g2-r-u07",
-          "g2-r-u08",
-          "g2-r-u09",
-          "g2-r-u10"
+          "g2-r-u11"
         ]
       }
     ],
@@ -849,11 +839,7 @@
         "title": "How the changes reach the goal",
         "summary": "Four lines of change must hold together, at the relevant scale, for the goal to be reached; global sufficiency is not established.",
         "nodes": [
-          "g2-f-goal",
-          "g2-f-e02",
-          "g2-f-e14",
-          "g2-f-e16",
-          "g2-f-e18"
+          "g2-f-goal"
         ]
       }
     ],
@@ -19495,17 +19481,7 @@
           "title": "Why these effects matter for the goal",
           "summary": "Each problem can independently keep ethical insight from becoming a durable basis for collective life.",
           "nodes": [
-            "g2-r-u11",
-            "g2-r-u01",
-            "g2-r-u02",
-            "g2-r-u03",
-            "g2-r-u04",
-            "g2-r-u05",
-            "g2-r-u06",
-            "g2-r-u07",
-            "g2-r-u08",
-            "g2-r-u09",
-            "g2-r-u10"
+            "g2-r-u11"
           ]
         }
       ],
@@ -19710,11 +19686,7 @@
           "title": "How the changes reach the goal",
           "summary": "Four lines of change must hold together, at the relevant scale, for the goal to be reached; global sufficiency is not established.",
           "nodes": [
-            "g2-f-goal",
-            "g2-f-e02",
-            "g2-f-e14",
-            "g2-f-e16",
-            "g2-f-e18"
+            "g2-f-goal"
           ]
         }
       ],
@@ -20075,5 +20047,5 @@
       }
     ]
   },
-  "snapshot_sha256": "0f67d18878f0d2447e8812998a0b5013d205169d105158b596cad99401be6dd2"
+  "snapshot_sha256": "c69eacf370553fcfec8802043f5ba4308895ea264f8188e720fa7b30dcbdbc44"
 }
