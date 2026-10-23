@@ -2,7 +2,7 @@
 
 ## Current release — 2026-10-23.2
 
-The demonstration asks how people in a willing, bounded community might flourish through being-becoming with the world while retaining autonomy and personal boundaries. It is a proposed AI reconstruction of Margeret Heath’s practical argument, not a claim that a group has adopted it or that its causal relationships have been verified. Implementation was accepted by David under `re-membering-six-trees-2026-10-23` revision 1, exact typed reply `accept`; the private receipt was recorded at 2026-10-23T19:28:30Z before implementation. Public PRs cite the receipt ID; the receipt and private collaboration reasoning are not reproduced here.
+The demonstration asks how people in a willing, bounded community might flourish through being-becoming with the world while retaining autonomy and personal boundaries. It is a proposed AI reconstruction of Margeret Heath’s practical argument, not a claim that a group has adopted it or that its causal relationships have been verified. Implementation follows `re-membering-six-trees-2026-10-23` revision 1 and its prior recorded acceptance. Public records cite receipt IDs; the receipt and private collaboration reasoning are not reproduced here.
 
 ## Sources and attribution
 
@@ -64,7 +64,9 @@ The private receipt and collaboration backlog, and the full public proposed stat
 | Script-free reading | All six detailed views show both their diagrams and outlines with scripts blocked. Copy controls stay hidden. The direct privacy-item link shows source locators, proposed standing, related connections and a readable brief. |
 | Hosted release | Separate preview updated to 2026-10-23.2. The visible release JSON has 77 statements, 62 connections, five source IDs and Margeret Heath as its only source author; every item is proposed with no endorsers. The six-view map was inspected and captured. |
 
-The generated PR description contains six visible Mermaid diagrams and the collapsed complete update list. The legacy combined checker cannot find the private collaboration reference or acceptance receipts in this public state; the actual private receipts were checked separately for path, ID, version, human and exact-reply coverage. Current public CI follows the repository’s receipt-by-ID policy. The private reasoning and receipts remain unpublished. Author review, newcomer comprehension and proposed trial outcomes remain untested.
+The generated PR description contains six visible Mermaid diagrams and the collapsed complete update list. The actual GitHub rendering was inspected: all six diagrams render, their inspection controls are available and the complete list remains collapsed. All three GitHub checks pass for the implementation commit (`demo`, `tree-check`, `website-check`). The legacy combined checker cannot find the private collaboration reference or acceptance receipts in this public state; the actual private receipts were checked separately for path, ID, version, human and exact-reply coverage. Current public CI follows the repository’s receipt-by-ID policy. The private reasoning and receipts remain unpublished. Author review, newcomer comprehension and proposed trial outcomes remain untested.
+
+Delivery: [PR #97](https://github.com/life-itself/reasoncommons/pull/97), branch `codex/re-membering`, with the expanded [separate preview](https://a9m6l67v-anon.flowershow.me/demos/reason-commons-in-use/re-membering/index.html), expiring 30 October 2026. No merge or production deployment was performed.
 
 ## Initial release record
 
