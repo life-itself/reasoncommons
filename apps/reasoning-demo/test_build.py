@@ -1,4 +1,5 @@
 """Meaning, layout and publication-boundary checks; no private repository is needed."""
+from collections import defaultdict
 from copy import deepcopy
 from html.parser import HTMLParser
 import importlib.util
@@ -150,6 +151,31 @@ class DiagramTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "cycle"):
             draw(tree)
 
+    def test_a_feedback_loop_returns_round_the_right_instead_of_being_refused(self):
+        tree = {"name": "current_reality", "nodes": [{"id": i, "kind": "cause", "text": i, "status": "accepted"} for i in "abc"],
+                "links": [{"id": "ab", "from": ["a"], "to": "b", "relation": "contributes_to", "status": "accepted"},
+                          {"id": "bc", "from": ["b"], "to": "c", "relation": "contributes_to", "status": "accepted"},
+                          {"id": "ca", "from": ["c"], "to": "a", "relation": "feeds_back_to", "status": "accepted"}]}
+        pieces, shapes, loose, svg = draw(tree)
+        shape = shapes[0]
+        loop = next(p for p in shape["paths"] if p["link"]["id"] == "ca")
+        right = max(n["x"] + n["w"] for n in shape["nodes"].values())
+        self.assertGreater(max(x for x, y in loop["points"]), right)  # Round the side, never through the boxes.
+        self.assertLessEqual(max(x for x, y in loop["points"]), shape["w"])
+        self.assertEqual(loop["points"][0][1], shape["nodes"]["c"]["y"])  # Leaves the top of its source,
+        self.assertEqual(loop["points"][-1][1], shape["nodes"]["a"]["y"])  # and enters the top of its target.
+        self.assertIn("feeds back", svg)
+        self.assertEqual(svg.count('class="e-head"'), 3)
+
+    def test_a_remedy_ends_in_a_bar_not_an_arrow(self):
+        tree = {"name": "future_reality", "nodes": [{"id": "risk", "kind": "undesirable_effect", "text": "A risk.", "status": "proposed"},
+                                                     {"id": "fix", "kind": "injection", "text": "A remedy.", "status": "proposed"}],
+                "links": [{"id": "stop", "from": ["fix"], "to": "risk", "relation": "prevents", "status": "proposed"}]}
+        pieces, shapes, loose, svg = draw(tree)
+        self.assertEqual((svg.count('class="e-bar"'), svg.count('class="e-head"')), (1, 0))
+        self.assertIn("is meant to prevent", svg)
+        self.assertLess(shapes[0]["nodes"]["risk"]["y"], shapes[0]["nodes"]["fix"]["y"])
+
     def test_wrapping_never_exceeds_the_box(self):
         for line in diagrams.wrap("Supercalifragilisticexpialidocious-and-then-some " * 3, 120):
             self.assertLessEqual(diagrams.text_width(line, diagrams.TEXT_SIZE, diagrams.TEXT_WEIGHT), 120)
@@ -198,8 +224,9 @@ class SiteTests(unittest.TestCase):
             svg = "".join(diagrams.svg(diagrams.geometry(tree, p["ids"], p["links"], label), {n["id"]: n for n in tree["nodes"]}, lambda i: i, name) for p in pieces)
             drawn = set(re.findall(r'<a class="e [^"]*" href="[^"]*" data-id="([^"]+)"', svg))
             self.assertEqual(drawn, {l["id"] for l in tree["links"]}, (c["entry"]["slug"], name))
-            heads = sum(1 for l in tree["links"] if l["relation"] != "conflicts_with")
+            heads = sum(1 for l in tree["links"] if l["relation"] != "conflicts_with" and l["relation"] not in diagrams.BARRED)
             self.assertEqual(svg.count('class="e-head"'), heads, (c["entry"]["slug"], name))
+            self.assertEqual(svg.count('class="e-bar"'), sum(l["relation"] in diagrams.BARRED for l in tree["links"]), (c["entry"]["slug"], name))
             self.assertEqual(svg.count('<a class="j '), sum(len(l["from"]) > 1 for l in tree["links"]), (c["entry"]["slug"], name))
             self.assertEqual(set(loose) | {i for p in pieces for i in p["ids"]}, {n["id"] for n in tree["nodes"]})
 
@@ -303,8 +330,20 @@ class SiteTests(unittest.TestCase):
 
     def test_public_artifacts_exclude_internal_state_and_mock_content(self):
         text = "\n".join(v for v in self.outputs.values() if isinstance(v, str))
-        for forbidden in ("Calder", "1,284", "2,390", "change_acceptances", "feedback_requests", "/Users/", "driver_default", "funding/research/", "r-e-rufus-feedback-hard"):
+        prose = re.sub(r"<svg\b.*?</svg>", "", text, flags=re.S)  # Diagram coordinates can contain any run of digits.
+        for forbidden in ("1,284", "2,390"):
+            self.assertNotIn(forbidden, prose)
+        for forbidden in ("Calder", "change_acceptances", "feedback_requests", "/Users/", "driver_default", "funding/research/", "r-e-rufus-feedback-hard"):
             self.assertNotIn(forbidden, text)
+
+    def test_every_commons_counts_statements_and_connections_apart_and_explains_its_colours(self):
+        for c in self.commons:
+            normalized = build.normalize(c)
+            statements = sum(len(t["nodes"]) for t in normalized["trees"].values())
+            connections = sum(len(t["links"]) for t in normalized["trees"].values())
+            for page in ("index", "map", "items"):
+                self.assertIn(f'Statements <span>{statements} · {connections}</span>', self.outputs[f'{c["entry"]["slug"]}/{page}.html'])
+            self.assertIn('class="legend legend-roles"', self.outputs[f'{c["entry"]["slug"]}/map.html'])
 
 
 class ExampleTests(unittest.TestCase):
@@ -369,8 +408,8 @@ class ReconstructionTests(unittest.TestCase):
         state = helper.load(build.HERE / self.record["entry"]["source"])
         helper.validate(state)
         self.assertEqual(build.project_reconstruction(state, self.registry), self.data)
-        self.assertEqual(sum(len(t["nodes"]) for t in self.data["trees"].values()), 42)
-        self.assertEqual(sum(len(t["links"]) for t in self.data["trees"].values()), 35)
+        self.assertEqual(sum(len(t["nodes"]) for t in self.data["trees"].values()), 233)
+        self.assertEqual(sum(len(t["links"]) for t in self.data["trees"].values()), 238)
 
     def test_existing_reviewed_snapshots_remain_byte_for_byte_the_same(self):
         expected = {"real": "994c61a3deda57223fb20a363897d00c999bdf3244294d2601ee1fe100c39cfd",
@@ -424,7 +463,8 @@ class ReconstructionTests(unittest.TestCase):
         for name, value in self.outputs.items():
             if name.startswith("gandhi-2-0/") and name.endswith(".html"):
                 self.assertIn('class="reconstruction-banner"', value, name)
-                self.assertIn("participants have not endorsed", value, name)
+                self.assertIn("Everything here is proposed", value, name)
+                self.assertIn("None of the discussion’s participants has endorsed it", value, name)
                 self.assertNotIn("Fictional example", value, name)
         items = self.outputs["gandhi-2-0/items.html"]
         forum = next(s for s in self.data["sources"] if "posts" in s)
@@ -501,13 +541,146 @@ class ReconstructionTests(unittest.TestCase):
             next(s for s in record["sources"] if s["id"] == "paradox")["shared_in_post"] = 30  # Robert's post.
         self.assertRaisesRegex(ValueError, "shared in a post by its author", self.broken(move, registry_too=True))
 
-    def test_views_cover_every_statement_and_never_split_a_conflict(self):
-        def drop(record):
-            record["views"]["conflict"][0]["nodes"].remove("g2-c-k1-distribute")
-        self.assertRaisesRegex(ValueError, "splits the connection", self.broken(drop, registry_too=True))
+    def test_views_cover_every_statement(self):
         def lose(record):
             del record["views"]["conflict"][4]
         self.assertRaisesRegex(ValueError, "must appear in a view", self.broken(lose, registry_too=True))
+        def invent(record):
+            record["views"]["prerequisite"][0]["nodes"].append("g2-p-not-published")
+        self.assertRaisesRegex(ValueError, "names unpublished statements", self.broken(invent, registry_too=True))
+        self.assertEqual(set(self.data["views"]), set(self.data["trees"]) - {"goal"})
+
+    def test_every_part_draws_each_connection_with_all_its_sources(self):
+        for name, tree in self.data["trees"].items():
+            if name not in self.data["views"]:
+                continue
+            page = self.outputs[f'gandhi-2-0/{pages.TREES[name]["slug"]}.html']
+            drawn = set()
+            for section in re.findall(r'<section class="tv".*?</section>', page, flags=re.S):
+                svg = re.search(r'<svg class="rc-diagram.*?</svg>', section, flags=re.S).group(0)
+                nodes = set(re.findall(r'<a class="n [^"]*" href="[^"]*" data-id="([^"]+)"', svg))
+                for ident, ends in re.findall(r'<a class="e[^"]*" href="[^"]*" data-id="([^"]+)" data-ends="([^"]+)"', svg):
+                    self.assertLessEqual(set(ends.split()), nodes, ident)  # A joint condition is never split across parts.
+                    drawn.add(ident)
+            self.assertEqual(drawn, {l["id"] for l in tree["links"]}, name)
+        c = pages.Commons(build.normalize(self.record))
+        for name, views in c.views.items():
+            tree = c.trees[name]
+            for view in views:
+                links, context = diagrams.view_context(tree, set(view["nodes"]))
+                shape = diagrams.geometry(tree, view["nodes"] + context, links, lambda k: pages.kind_label(name, k))
+                boxes = list(shape["nodes"].values())
+                for i, a in enumerate(boxes):
+                    self.assertLessEqual(a["x"] + a["w"], shape["w"], view["id"])
+                    for b in boxes[i + 1:]:
+                        self.assertTrue(a["x"] + a["w"] <= b["x"] or b["x"] + b["w"] <= a["x"] or a["y"] + a["h"] <= b["y"] or b["y"] + b["h"] <= a["y"], view["id"])
+                self.assertTrue(all(x <= shape["w"] and y <= shape["h"] for p in shape["paths"] for x, y in p["points"]), view["id"])
+
+    def test_loops_close_only_through_the_three_feedback_links(self):
+        loops, closing = [], []
+        for name, tree in self.data["trees"].items():
+            onward = defaultdict(set)
+            for link in tree["links"]:
+                if link["relation"] in diagrams.FEEDBACK:
+                    loops.append(link)
+                elif link["relation"] not in diagrams.LATERAL:
+                    for source in link["from"]:
+                        lower, upper = (link["to"], source) if link["relation"] in diagrams.DOWNWARD else (source, link["to"])
+                        onward[lower].add(upper)
+
+            def reaches(start, goal):
+                seen, stack = set(), [start]
+                while stack:
+                    current = stack.pop()
+                    if current == goal:
+                        return True
+                    if current not in seen:
+                        seen.add(current)
+                        stack.extend(onward[current])
+                return False
+            for node in tree["nodes"]:  # Without the feedback links, nothing leads back to itself.
+                self.assertFalse(any(reaches(upper, node["id"]) for upper in onward[node["id"]]), node["id"])
+            # A loop closes when its target leads back to a source; a joint loop's other sources are conditions from outside it.
+            closing += [l["id"] for l in tree["links"] if l["relation"] in diagrams.FEEDBACK and any(reaches(l["to"], s) for s in l["from"])]
+        self.assertEqual([l["id"] for l in loops], ["g2-r-rel-r15", "g2-r-rel-r23", "g2-f-rel-f16"])
+        # R15 is the analysis's own "mission drift reinforces normalisation": labelled feedback that closes no published chain.
+        self.assertEqual(closing, ["g2-r-rel-r23", "g2-f-rel-f16"])
+        c = pages.Commons(build.normalize(self.record))
+        tree = c.trees["future_reality"]
+        view = next(v for v in c.views["future_reality"] if v["id"] == "trust-capacity-selection")
+        links, context = diagrams.view_context(tree, set(view["nodes"]))
+        shape = diagrams.geometry(tree, view["nodes"] + context, links, lambda k: pages.kind_label("future_reality", k))
+        joint = [p for p in shape["paths"] if p["link"]["id"] == "g2-f-rel-f16"]
+        self.assertEqual((len(joint), sum(p["arrow"] for p in joint)), (3, 1))  # Two sources meet at one "and", then one arrow.
+        self.assertEqual([j["link"]["id"] for j in shape["joins"]].count("g2-f-rel-f16"), 1)
+        right = max(n["x"] + n["w"] for n in shape["nodes"].values())
+        self.assertTrue(all(max(x for x, y in p["points"]) > right for p in joint))
+        self.assertEqual(next(p for p in joint if p["arrow"])["points"][-1][1], shape["nodes"]["g2-f-e10"]["y"])
+        page = self.outputs["gandhi-2-0/change.html"]
+        self.assertIn('class="e-tag e-tag-loop"', page)
+        self.assertIn("↺", page)  # The outline names the loop beside its source.
+
+    def test_every_remedy_ends_in_a_bar_at_its_own_risk(self):
+        tree = self.data["trees"]["future_reality"]
+        kinds = {n["id"]: n["kind"] for n in tree["nodes"]}
+        remedies = [l for l in tree["links"] if l["relation"] in diagrams.BARRED]
+        self.assertEqual((len(remedies), len({l["to"] for l in remedies})), (15, 15))
+        for link in remedies:
+            self.assertEqual(([kinds[s] for s in link["from"]], kinds[link["to"]]), (["injection"], "undesirable_effect"), link["id"])
+        page = self.outputs["gandhi-2-0/change.html"]
+        self.assertEqual(set(re.findall(r'<a class="e e-prevent" href="[^"]*" data-id="([^"]+)"', page)), {l["id"] for l in remedies})
+        self.assertIn("is meant to prevent", page)
+
+    def test_the_overview_path_uses_only_published_links_and_references(self):
+        overview = self.outputs["gandhi-2-0/index.html"]
+        spine = next(b for b in self.data["overview"] if b["type"] == "spine")
+        self.assertEqual(overview.count('class="sp-row"'), len(spine["hops"]))
+        for hop in spine["hops"]:
+            self.assertIn(f'href="items.html#{hop["to"]}"', overview)
+        guidance = next(n for n in self.data["trees"]["future_reality"]["nodes"] if n["id"] == "g2-f-guidance")
+        self.assertNotIn("g2-r-u01", guidance["addresses"])
+        def unreferenced(record):
+            next(b for b in record["overview"] if b["type"] == "spine")["hops"][0]["to"] = "g2-r-u01"
+        self.assertRaisesRegex(ValueError, "No published reference", self.broken(unreferenced, registry_too=True))
+        def across(record):
+            next(b for b in record["overview"] if b["type"] == "spine")["hops"][2]["to"] = "g2-p-case"
+        self.assertRaisesRegex(ValueError, "No published path", self.broken(across, registry_too=True))
+        dangling = self.broken(lambda d: next(n for t in d["trees"].values() for n in t["nodes"] if n["id"] == "g2-f-guidance")["addresses"].append("g2-r-missing"))
+        self.assertRaisesRegex(ValueError, "Unpublished trace", dangling)
+        self.assertIn("<dt>Meant to address</dt>", self.outputs["gandhi-2-0/items.html"])
+        self.assertIn("is meant to address", self.outputs["gandhi-2-0/change.html"])  # Each part lists its links beyond the part.
+
+    def test_a_removed_connection_stays_in_history_and_is_never_published(self):
+        gone = self.data["retired"][0]
+        changes = self.outputs["gandhi-2-0/changes.html"]
+        self.assertIn(pages.esc(gone["text"]), changes)
+        self.assertIn("No longer published", changes)
+        for name, value in self.outputs.items():
+            if name.startswith("gandhi-2-0/") and name.endswith(".html"):
+                self.assertNotIn(f'#{gone["id"]}"', value, name)
+        revive = self.broken(lambda r: r["retired"].append(dict(gone, id="g2-f-guidance")), registry_too=True)
+        self.assertRaisesRegex(ValueError, "retired item cannot be published", revive)
+        unretired = self.broken(lambda d: d["history"][-1]["changes"].append({"type": "removed", "refs": ["g2-f-guidance"]}))
+        self.assertRaisesRegex(ValueError, "Only retired items", unretired)
+
+    def test_each_action_shows_an_unassigned_owner_and_its_proposed_role(self):
+        actions = [n for n in self.data["trees"]["transition"]["nodes"] if n["kind"] == "action"]
+        self.assertEqual(len(actions), 8)
+        page = self.outputs["gandhi-2-0/actions.html"]
+        for action in actions:
+            self.assertIn(pages.esc(f'Who: unassigned · proposed role: {action["proposed_role"]}'), page)
+        self.assertIn("<dt>Proposed role</dt>", self.outputs["gandhi-2-0/items.html"])
+        assigned = self.broken(lambda d: d["trees"]["goal"]["nodes"][0].update(proposed_role="Someone"))
+        self.assertRaisesRegex(ValueError, "Only an action can carry a proposed role", assigned)
+
+    def test_one_banner_replaces_each_items_standing_in_this_commons_only(self):
+        for name, value in self.outputs.items():
+            if name.startswith("gandhi-2-0/") and name.endswith(".html"):
+                self.assertNotIn("chip-proposed", value, name)
+                self.assertNotIn('class="n-standing"', value, name)
+                self.assertIsNone(re.search(r'class="(?:n|e|card|item-summary card)\b[^"]*is-proposed', value), name)
+        self.assertIn("chip-proposed", self.outputs["example-willow-lane/items.html"])
+        self.assertIn("Check at the host", self.outputs["gandhi-2-0/questions.html"])
 
     def test_all_five_conflicts_draw_as_clouds_with_credit_lines_that_fit(self):
         c = pages.Commons(build.normalize(self.record))
@@ -535,9 +708,9 @@ class ReconstructionTests(unittest.TestCase):
             self.assertIn(f'href="{forum["url"]}/{post}"', items)
         overview = self.outputs["gandhi-2-0/index.html"]
         self.assertIn('id="credits"', overview)
-        for name in ("Leif Eriksson", "Robert Bunge", "The supplied analysis alone"):
-            self.assertIn(name, overview)
-        self.assertNotIn(">Justin<", overview)  # Listed as a thread author, but nothing in this release draws on his post.
+        for name in ("Leif Eriksson", "Robert Bunge", "Justin", "The supplied analysis alone"):
+            self.assertIn(name, overview)  # Justin's collapse thesis arrives with the alternatives.
+        self.assertIn(f'href="{forum["url"]}/31"', items)
 
     def test_conflict_line_is_styled_apart_from_proposed_lines(self):
         css = self.outputs["styles.css"]

@@ -171,7 +171,7 @@ def person(who, people):
     return people[who]
 
 
-def project_v2(state, registry):
+def project_v2(state, registry, check=True):
     """A selection that keeps standings, qualifications, open work, outcome reports and history."""
     require(state.get("schema_version") == 1, "Unsupported working-state version")
     people = registry["people"]
@@ -222,7 +222,8 @@ def project_v2(state, registry):
                               "text": r["text"], "evidence_type": r["evidence_type"], "outcomes": deepcopy(r["outcomes"])}
                              for r in request["reports"]]
         result["feedback"].append(public)
-    validate_v2(result, registry)
+    if check:  # A reconstruction checks its own copy, once retired items are set aside.
+        validate_v2(result, registry)
     return result
 
 
@@ -302,16 +303,19 @@ def project_reconstruction(state, registry):
     """Reuse qualification checks without opening either existing publication boundary."""
     require(registry.get("publication_kind") == "source_reconstruction", "Not a source reconstruction")
     example_registry = {**registry, "is_example": True}
-    result = project_v2(state, example_registry)
+    result = project_v2(state, example_registry, check=False)
     result.pop("is_example")
     result.update(projection_version=4, publication_kind="source_reconstruction", authors=deepcopy(registry["authors"]),
-                  sources=deepcopy(registry["sources"]), views=deepcopy(registry.get("views", {})))
+                  sources=deepcopy(registry["sources"]), views=deepcopy(registry.get("views", {})),
+                  overview=deepcopy(registry.get("overview", [])), retired=deepcopy(registry.get("retired", [])))
     for name, tree in result["trees"].items():
         source = state["trees"][name]
         for key in ("nodes", "links"):
             indexed = {item["id"]: item for item in source[key]}
             for item in tree[key]:
                 item["source_refs"] = deepcopy(indexed[item["id"]].get("source_refs", []))
+                if indexed[item["id"]].get("proposed_role"):
+                    item["proposed_role"] = indexed[item["id"]]["proposed_role"]
         chosen = {i["id"] for i in tree["nodes"] + tree["links"]}
         for public, task in zip(tree["backlog"], [t for t in source.get("backlog", []) if t["ref"] in chosen]):
             if task.get("source_refs"):
@@ -344,17 +348,40 @@ def validate_views(data):
             require(all(isinstance(view[k], str) and view[k].strip() for k in ("title", "summary")), f"Invalid view in {name}")
             members = set(view["nodes"])
             require(view["nodes"] and len(members) == len(view["nodes"]) and members <= node_ids, f"View {view['id']} names unpublished statements")
-            for link in tree["links"]:  # Joint conditions and paired positions are never split across views.
-                if link["to"] in members or (link["relation"] in diagrams.LATERAL and members & set(link["from"])):
-                    require(set(link["from"] + [link["to"]]) <= members, f"View {view['id']} splits the connection {link['id']}")
             seen.add(view["id"])
             covered |= members
-        require(covered == node_ids, f"Every statement in {name} must appear in a view")
+        require(covered == node_ids, f"Every statement in {name} must appear in a view")  # So every connection is drawn where its target is.
+
+
+OVERVIEW_BLOCKS = {"cards": {"eyebrow", "title", "text", "ids", "link"}, "spine": {"eyebrow", "title", "text", "hops"},
+                   "clouds": {"eyebrow", "title", "text", "featured"}, "wider": {"eyebrow", "title", "text"}, "credits": {"eyebrow", "title", "text"}}
+TRACE_HOPS = {"addresses", "derived_from", "implements"}
+
+
+def validate_overview(data, items, tree_of):
+    require(isinstance(data["overview"], list), "Invalid overview")
+    for block in data["overview"]:
+        kind = block.get("type") if isinstance(block, dict) else None
+        require(kind in OVERVIEW_BLOCKS and set(block) == OVERVIEW_BLOCKS[kind] | {"type"}, "Invalid overview block")
+        require(all(isinstance(block[k], str) and block[k].strip() for k in ("eyebrow", "title", "text")), "Invalid overview copy")
+        if kind == "cards":
+            require(block["ids"] and all(i in items for i in block["ids"]), "Overview names unpublished items")
+            require(isinstance(block["link"], list) and len(block["link"]) == 2 and all(isinstance(x, str) and x for x in block["link"]), "Invalid overview link")
+        if kind == "clouds":
+            require(block["featured"] in {v["id"] for v in data["views"].get("conflict", [])}, "The featured conflict must be a conflict view")
+        if kind == "spine":  # Every step of the path is a published link or cross-tree reference.
+            for hop in block["hops"]:
+                require(set(hop) == {"from", "to", "via"} and hop["from"] in items and hop["to"] in items, "Invalid path step")
+                if hop["via"] in TRACE_HOPS:
+                    require(hop["to"] in items[hop["from"]].get(hop["via"], []), f"No published reference from {hop['from']} to {hop['to']}")
+                else:
+                    require(hop["via"] == "path" and tree_of[hop["from"]] == tree_of[hop["to"]]
+                            and diagrams.path_between(data["trees"][tree_of[hop["from"]]], hop["from"], hop["to"]) is not None, f"No published path from {hop['from']} to {hop['to']}")
 
 
 def validate_reconstruction(data, registry):
     require(data.get("projection_version") == 4 and data.get("publication_kind") == registry.get("publication_kind") == "source_reconstruction", "Unsupported reconstruction publication")
-    require(set(data) == {"projection_version", "publication_kind", "release_id", "snapshot_date", "title", "people", "authors", "trees", "feedback", "history", "sources", "views"}, "Unexpected reconstruction field")
+    require(set(data) == {"projection_version", "publication_kind", "release_id", "snapshot_date", "title", "people", "authors", "trees", "feedback", "history", "sources", "views", "overview", "retired"}, "Unexpected reconstruction field")
     authors = data["authors"]
     require(authors == registry["authors"] and isinstance(authors, dict) and authors, "Unreviewed reconstruction authors")
     for key, person in authors.items():
@@ -380,9 +407,19 @@ def validate_reconstruction(data, registry):
                     f"A document must be shared in a post by its author: {source['id']}")
     require(data["views"] == registry.get("views", {}) and isinstance(data["views"], dict), "Unreviewed views")
     validate_views(data)
+    items = {i["id"]: i for t in data["trees"].values() for i in t["nodes"] + t["links"]}
+    tree_of = {i["id"]: name for name, t in data["trees"].items() for i in t["nodes"] + t["links"]}
+    require(data["overview"] == registry.get("overview", []), "Unreviewed overview")
+    validate_overview(data, items, tree_of)
+    require(data["retired"] == registry.get("retired", []) and isinstance(data["retired"], list), "Unreviewed retired items")
+    retired = set()
+    for gone in data["retired"]:  # Removed items stay nameable in history, never published as current.
+        require(isinstance(gone, dict) and set(gone) == {"id", "release_id", "text", "note"} and all(isinstance(v, str) and v.strip() for v in gone.values()), "Invalid retired item")
+        require(gone["id"] not in items and gone["id"] not in retired, f"A retired item cannot be published: {gone['id']}")
+        retired.add(gone["id"])
     require(not data["feedback"] and not registry["feedback"], "A reconstruction cannot invent feedback commitments or reports")
     qualified = deepcopy(data)
-    for field in ("publication_kind", "authors", "sources", "views"):
+    for field in ("publication_kind", "authors", "sources", "views", "overview", "retired"):
         qualified.pop(field)
     qualified.update(projection_version=2, is_example=True)
     for tree in qualified["trees"].values():
@@ -390,10 +427,18 @@ def validate_reconstruction(data, registry):
             require(item.get("status") == "proposed" and not item.get("accepted_by"), "A reconstruction must remain proposed without endorsers")
             require(item.get("contributors") == [ASSISTANT], "A reconstruction cannot imply direct participant authorship")
             validate_source_refs(item.pop("source_refs", []), sources, item["id"])
+            if "proposed_role" in item:  # A role someone might take on, never an assignment.
+                role = item.pop("proposed_role")
+                require(item.get("kind") == "action" and isinstance(role, str) and role.strip(), f"Only an action can carry a proposed role: {item['id']}")
         for task in tree["backlog"]:
             if "source_refs" in task:
                 validate_source_refs(task.pop("source_refs"), sources, f"open work on {task.get('ref')}")
-    require(all(change["type"] in {"added", "credited"} for release in data["history"] for change in release["changes"]), "Reconstruction history cannot invent prior endorsement or results")
+    require(all(change["type"] in {"added", "credited", "revised", "removed"} for release in data["history"] for change in release["changes"]), "Reconstruction history cannot invent prior endorsement or results")
+    for release in qualified["history"]:
+        for change in release["changes"]:
+            require(change["type"] != "removed" or set(change["refs"]) <= retired, "Only retired items can be recorded as removed")
+            change["refs"] = [ref for ref in change["refs"] if ref not in retired]
+        release["changes"] = [change for change in release["changes"] if change["refs"]]
     validate_v2(qualified, {**registry, "is_example": True})
 
 
@@ -439,7 +484,8 @@ def normalize(item):
     else:
         people, history, feedback = data["people"], data["history"], data["feedback"]
     return {**entry, "is_example": entry["kind"] == "example", "is_reconstruction": entry["kind"] == "reconstruction", "sources": data.get("sources", []),
-            "authors": data.get("authors", {}), "views": data.get("views", {}), "release_id": data["release_id"], "date": data["snapshot_date"],
+            "authors": data.get("authors", {}), "views": data.get("views", {}), "overview_blocks": data.get("overview", []), "retired": data.get("retired", []),
+            "release_id": data["release_id"], "date": data["snapshot_date"],
             "title": data["title"], "people": people, "trees": trees, "feedback": feedback, "history": history,
             "json": json.dumps(data, ensure_ascii=False, indent=2) + "\n"}
 
