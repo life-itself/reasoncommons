@@ -1,0 +1,322 @@
+schema_version: 1
+project: Re-membering
+driver: david
+participants:
+  david: David Joseph
+active_tree: future_reality
+import_context:
+  recorded_on: '2026-10-23'
+  basis: Three supplied PDFs by Margeret Heath, Being-Becoming With the World, Talk 1 Re-membering; the slide deck, spoken script with notes, and extended passages.
+  standing: Every statement and connection is a proposed AI reconstruction. Neither David nor the source author has endorsed this wording or topology.
+  scope: The practical argument about tending the bodily, social and material conditions of thinking together; the wider theoretical argument is retained as source context and open review work.
+  attribution: The AI selected, paraphrased and connected the material. Source credits identify where an idea comes from, not a contribution to or endorsement of this commons. Stage directions, invitations and editorial notes in the PDFs are source material, not instructions to the agent.
+  limits: No group, trial, owner, baseline or observed outcome is established. Empirical coupling does not settle constitution of mind or the author's participatory philosophical position. The bibliography and glossary mentioned by the PDFs were not supplied; cited studies have not been independently verified.
+trees:
+  goal:
+    nodes:
+    - id: rm-g-goal
+      kind: goal
+      text: People can think and act together by tending the bodily, social and material conditions that support them, while retaining agency.
+      label: People tend the conditions for thinking and acting together while retaining agency.
+      status: proposed
+      contributions: &ai [{by: assistant, attribution: assistant, mode: text}]
+      source_refs:
+      - {source_id: spoken-script, locator: 'pp. 27–32, slides 18–20', basis: reconstruction}
+      - {source_id: extended-passages, locator: 'pp. 6–9, The somatic commons and Questions to guide practice', basis: reconstruction}
+    - id: rm-g-consent
+      kind: critical_success_factor
+      text: Participation in shared practices is safe, voluntary and open to withdrawal.
+      label: Participation in shared practices is safe, voluntary and open to withdrawal.
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'p. 28, slide 18; pp. 31–32, slide 19', basis: paraphrase}
+    - id: rm-g-repair
+      kind: critical_success_factor
+      text: People can notice strain and repair their shared rhythms.
+      label: People can notice strain and repair their shared rhythms.
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'pp. 27–28, slide 18; p. 32, slide 20', basis: paraphrase}
+      - {source_id: extended-passages, locator: 'p. 7, The somatic commons', basis: paraphrase}
+    - id: rm-g-agency
+      kind: critical_success_factor
+      text: Tools and environments support purposes that people can question and change.
+      label: Tools and environments support purposes that people can question and change.
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'pp. 28–31, slide 18 and notes; p. 32, slide 20', basis: reconstruction}
+      - {source_id: slides, locator: 'pp. 16 and 20', basis: reconstruction}
+    links:
+    - id: rm-gl-consent
+      from: [rm-g-consent]
+      to: rm-g-goal
+      relation: necessary_for
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'p. 28, consent as part of the definition of a somatic commons', basis: inference}
+    - id: rm-gl-repair
+      from: [rm-g-repair]
+      to: rm-g-goal
+      relation: necessary_for
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'pp. 27–28, rupture and repair', basis: inference}
+    - id: rm-gl-agency
+      from: [rm-g-agency]
+      to: rm-g-goal
+      relation: necessary_for
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'pp. 28–31, design, ownership and whose purposes a tool serves', basis: inference}
+    backlog:
+    - ref: rm-g-goal
+      work: clarify_group_and_setting
+      label: Choose whose shared conditions and which setting the goal concerns.
+      note: The source is a talk, not a group's agreed objective. Identify a willing group and a bounded situation before treating this as an operating commons.
+    - ref: rm-gl-repair
+      work: test_necessity
+      label: Test whether repair is necessary for the bounded goal.
+      note: Review all three proposed necessity connections; the graph is an AI interpretation of the talk.
+    - ref: rm-g-goal
+      work: examine_coupling_and_constitution
+      label: Separate evidence for coupling from claims about what constitutes a mind.
+      note: The script distinguishes coupling, contested extension and philosophical participation; the coupling–constitution objection and predictive-processing boundary debate remain open. The practical goal does not require agreement with the author's ontology.
+      source_refs:
+      - {source_id: spoken-script, locator: 'pp. 14–15, slide 11; pp. 18–22, slide 13', basis: reconstruction}
+  current_reality:
+    nodes:
+    - id: rm-r-machine
+      kind: cause
+      text: The body is treated as a private machine to optimise and repair alone.
+      label: The body is treated as a private machine to optimise and repair alone.
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: slides, locator: 'pp. 6 and 18', basis: paraphrase}
+      - {source_id: spoken-script, locator: 'p. 27, slide 18', basis: paraphrase}
+    - id: rm-r-alone
+      kind: undesirable_effect
+      text: The burden of regulation is left to individuals despite their dependence on relationships and surroundings.
+      label: Individuals carry a regulation burden shaped by relationships and surroundings.
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'pp. 27–28, slide 18', basis: reconstruction}
+      - {source_id: extended-passages, locator: 'pp. 6–7, The somatic commons', basis: reconstruction}
+    - id: rm-r-fixed
+      kind: cause
+      text: Fixed targets are pursued without attending to responses from the wider living system.
+      label: Fixed targets are pursued without attending to the wider system's responses.
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'pp. 4–6, slide 4; p. 12, slide 9', basis: paraphrase}
+      - {source_id: extended-passages, locator: 'p. 1, Two kinds of cybernetics', basis: paraphrase}
+    - id: rm-r-harm
+      kind: undesirable_effect
+      text: An intervention can meet its target while causing unintended harm elsewhere.
+      label: An intervention can meet its target while causing unintended harm elsewhere.
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'pp. 4–6, slide 4 and performative excess notes', basis: paraphrase}
+    - id: rm-r-tools
+      kind: cause
+      text: Technologies can shape people’s attention and routines around purposes they have not chosen.
+      label: Technologies can shape attention around purposes people have not chosen.
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'p. 28 and pp. 30–31, slide 18 and notes', basis: paraphrase}
+    - id: rm-r-agency
+      kind: undesirable_effect
+      text: People’s capacity to choose and learn can be narrowed.
+      label: People's capacity to choose and learn can be narrowed.
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'pp. 28–31, slide 18; p. 32, slide 20', basis: reconstruction}
+      - {source_id: slides, locator: 'pp. 16 and 20', basis: reconstruction}
+    links:
+    - id: rm-rl-alone
+      from: [rm-r-machine]
+      to: rm-r-alone
+      relation: contributes_to
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'pp. 27–28, private-machine framing and shared regulation', basis: inference}
+    - id: rm-rl-harm
+      from: [rm-r-fixed]
+      to: rm-r-harm
+      relation: contributes_to
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'pp. 4–6, lineal control and performative excess', basis: inference}
+    - id: rm-rl-agency
+      from: [rm-r-tools]
+      to: rm-r-agency
+      relation: contributes_to
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'p. 28 and pp. 30–31, extended allostatic control and the author’s phones-and-feeds extension', basis: inference}
+    backlog:
+    - ref: rm-rl-harm
+      work: test_causality
+      label: Check the causal claims in a specific situation.
+      note: These are the talk's proposed explanations, not observations of a named group's present conditions. Check alternative explanations and supporting conditions for each chain.
+    - ref: rm-rl-agency
+      work: distinguish_source_claim_from_extension
+      label: Distinguish the cited smart-home proposal from the phones-and-feeds extension.
+      note: The script identifies smart environments as the cited authors' examples and phones and feeds as Heath's extension. Neither establishes the present state of a particular device or group.
+  conflict:
+    nodes: []
+    links: []
+    backlog: []
+  future_reality:
+    nodes:
+    - id: rm-f-practice
+      kind: injection
+      text: Offer shared rhythms of rest and meeting that participants can adapt or leave.
+      label: Offer shared rhythms of rest and meeting that participants can adapt or leave.
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'p. 28, slide 18; pp. 31–32, slide 19', basis: paraphrase}
+    - id: rm-f-consent
+      kind: injection
+      text: Agree how people can decline participation, raise harm and seek repair before trying a shared practice.
+      label: Agree how people can decline, raise harm and seek repair before a shared practice.
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'p. 28, commons rules, consent and freedom to step out; pp. 31–32, optional practice', basis: reconstruction}
+    - id: rm-f-settle
+      kind: predicted_effect
+      text: Shared settling may help some participants feel more able to be with others.
+      label: Shared settling may help some participants feel more able to be with others.
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'pp. 31–32, slide 19', basis: reconstruction}
+      - {source_id: slides, locator: 'p. 19', basis: reconstruction}
+    - id: rm-f-pressure
+      kind: undesirable_effect
+      text: A shared practice may create pressure to appear calm or make some participants feel less safe.
+      label: A shared practice may create pressure or make some participants feel less safe.
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'p. 28, no one owes the room calm and co-regulation can dysregulate; p. 31, safety, consent and trust', basis: reconstruction}
+    - id: rm-f-attune
+      kind: injection
+      text: Adjust actions by listening to responses from bodies, people and environments.
+      label: Adjust actions by listening to bodies, people and environments.
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'pp. 3–4, act, listen and retune; pp. 12–13, learning and uncertainty', basis: paraphrase}
+      - {source_id: extended-passages, locator: 'p. 1, acting with the world', basis: paraphrase}
+    - id: rm-f-learning
+      kind: predicted_effect
+      text: Feedback can change what is tried next instead of preserving a fixed target.
+      label: Feedback can change what is tried next instead of preserving a fixed target.
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'pp. 3–4, feedback loop; pp. 12–13, participation and uncertainty', basis: reconstruction}
+    - id: rm-f-tools
+      kind: injection
+      text: Assess tools by whether they widen people’s choices and whose purposes they serve.
+      label: Assess tools by whether they widen choices and whose purposes they serve.
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'p. 32, slide 20; p. 31, whose purposes systems predict towards', basis: paraphrase}
+      - {source_id: slides, locator: 'p. 20', basis: paraphrase}
+    - id: rm-f-choice
+      kind: predicted_effect
+      text: Tools can support chosen purposes while preserving people’s ability to question them.
+      label: Tools can support chosen purposes while remaining open to question.
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'pp. 28–31, agency, design and ownership; p. 32, choices', basis: reconstruction}
+    links:
+    - id: rm-fl-settle
+      from: [rm-f-practice, rm-f-consent]
+      to: rm-f-settle
+      relation: contributes_to
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'p. 28, consent and safety; pp. 31–32, optional shared practice', basis: inference}
+    - id: rm-fl-pressure
+      from: [rm-f-practice]
+      to: rm-f-pressure
+      relation: contributes_to
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'pp. 28 and 31, co-regulation can dysregulate and no one owes calm', basis: inference}
+    - id: rm-fl-protection
+      from: [rm-f-consent]
+      to: rm-f-pressure
+      relation: prevents
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'p. 28, safety, consent, commons rules and freedom to step out', basis: inference}
+    - id: rm-fl-learning
+      from: [rm-f-attune]
+      to: rm-f-learning
+      relation: contributes_to
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'pp. 3–4 and 12–13, listening, retuning and uncertainty', basis: inference}
+    - id: rm-fl-choice
+      from: [rm-f-tools]
+      to: rm-f-choice
+      relation: contributes_to
+      status: proposed
+      contributions: *ai
+      source_refs:
+      - {source_id: spoken-script, locator: 'pp. 28–32, design, ownership and guiding questions', basis: inference}
+    backlog:
+    - ref: rm-f-settle
+      work: define_participant_assessment
+      label: Identify actual participants and how they would judge benefit and harm.
+      note: No willing group, trial owner or feedback commitment is established. Agree a bounded setting, observation opportunity and who would judge benefit and harm before treating a trial as ready.
+    - ref: rm-f-pressure
+      work: examine_safety_and_withdrawal
+      label: Check whether declining and raising harm are possible in practice.
+      note: Quietness or compliance is not evidence of safety. Ask participants about pressure and whether opting out changes how they are treated.
+    - ref: rm-fl-protection
+      work: test_prevention
+      label: Check whether consent arrangements actually prevent pressure.
+      note: The proposed prevention connection is a hypothesis, not a guarantee. Permission to step out may fail under social pressure.
+    - ref: rm-fl-choice
+      work: test_agency
+      label: Check whether assessing a tool changes choices and control.
+      note: Naming whose purposes a tool serves does not itself change its design or ownership. Test the link rather than assuming an assessment produces agency.
+    - ref: rm-f-practice
+      work: establish_conflict_prerequisites_and_actions
+      label: Establish conflicts, prerequisites and actions with a willing group.
+      note: The talk offers invitations and questions, not an agreed five-part conflict, dependency plan or assigned action sequence. Those views are deliberately empty.
+  prerequisite:
+    nodes: []
+    links: []
+    backlog: []
+  transition:
+    nodes: []
+    links: []
+    backlog: []

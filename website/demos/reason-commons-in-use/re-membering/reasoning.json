@@ -1,0 +1,1014 @@
+{
+  "projection_version": 4,
+  "release_id": "2026-10-23.1",
+  "snapshot_date": "2026-10-23",
+  "title": "Re-membering",
+  "people": [
+    {
+      "name": "David Joseph",
+      "role": "Requested this reconstruction; has not endorsed its reasoning"
+    }
+  ],
+  "trees": {
+    "goal": {
+      "nodes": [
+        {
+          "id": "rm-g-goal",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "goal",
+          "text": "People can think and act together by tending the bodily, social and material conditions that support them, while retaining agency.",
+          "label": "People tend the conditions for thinking and acting together while retaining agency.",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "pp. 27–32, slides 18–20",
+              "basis": "reconstruction"
+            },
+            {
+              "source_id": "extended-passages",
+              "locator": "pp. 6–9, The somatic commons and Questions to guide practice",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "rm-g-consent",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "critical_success_factor",
+          "text": "Participation in shared practices is safe, voluntary and open to withdrawal.",
+          "label": "Participation in shared practices is safe, voluntary and open to withdrawal.",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "p. 28, slide 18; pp. 31–32, slide 19",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "rm-g-repair",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "critical_success_factor",
+          "text": "People can notice strain and repair their shared rhythms.",
+          "label": "People can notice strain and repair their shared rhythms.",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "pp. 27–28, slide 18; p. 32, slide 20",
+              "basis": "paraphrase"
+            },
+            {
+              "source_id": "extended-passages",
+              "locator": "p. 7, The somatic commons",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "rm-g-agency",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "critical_success_factor",
+          "text": "Tools and environments support purposes that people can question and change.",
+          "label": "Tools and environments support purposes that people can question and change.",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "pp. 28–31, slide 18 and notes; p. 32, slide 20",
+              "basis": "reconstruction"
+            },
+            {
+              "source_id": "slides",
+              "locator": "pp. 16 and 20",
+              "basis": "reconstruction"
+            }
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "rm-gl-consent",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "rm-g-consent"
+          ],
+          "to": "rm-g-goal",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "p. 28, consent as part of the definition of a somatic commons",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "rm-gl-repair",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "rm-g-repair"
+          ],
+          "to": "rm-g-goal",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "pp. 27–28, rupture and repair",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "rm-gl-agency",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "rm-g-agency"
+          ],
+          "to": "rm-g-goal",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "pp. 28–31, design, ownership and whose purposes a tool serves",
+              "basis": "inference"
+            }
+          ]
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "rm-g-goal",
+          "work": "clarify_group_and_setting",
+          "label": "Choose whose shared conditions and which setting the goal concerns.",
+          "note": "The source is a talk, not a group's agreed objective. Identify a willing group and a bounded situation before treating this as an operating commons."
+        },
+        {
+          "ref": "rm-gl-repair",
+          "work": "test_necessity",
+          "label": "Test whether repair is necessary for the bounded goal.",
+          "note": "Review all three proposed necessity connections; the graph is an AI interpretation of the talk."
+        },
+        {
+          "ref": "rm-g-goal",
+          "work": "examine_coupling_and_constitution",
+          "label": "Separate evidence for coupling from claims about what constitutes a mind.",
+          "note": "The script distinguishes coupling, contested extension and philosophical participation; the coupling–constitution objection and predictive-processing boundary debate remain open. The practical goal does not require agreement with the author's ontology.",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "pp. 14–15, slide 11; pp. 18–22, slide 13",
+              "basis": "reconstruction"
+            }
+          ]
+        }
+      ]
+    },
+    "current_reality": {
+      "nodes": [
+        {
+          "id": "rm-r-machine",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "cause",
+          "text": "The body is treated as a private machine to optimise and repair alone.",
+          "label": "The body is treated as a private machine to optimise and repair alone.",
+          "source_refs": [
+            {
+              "source_id": "slides",
+              "locator": "pp. 6 and 18",
+              "basis": "paraphrase"
+            },
+            {
+              "source_id": "spoken-script",
+              "locator": "p. 27, slide 18",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "rm-r-alone",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "undesirable_effect",
+          "text": "The burden of regulation is left to individuals despite their dependence on relationships and surroundings.",
+          "label": "Individuals carry a regulation burden shaped by relationships and surroundings.",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "pp. 27–28, slide 18",
+              "basis": "reconstruction"
+            },
+            {
+              "source_id": "extended-passages",
+              "locator": "pp. 6–7, The somatic commons",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "rm-r-fixed",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "cause",
+          "text": "Fixed targets are pursued without attending to responses from the wider living system.",
+          "label": "Fixed targets are pursued without attending to the wider system's responses.",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "pp. 4–6, slide 4; p. 12, slide 9",
+              "basis": "paraphrase"
+            },
+            {
+              "source_id": "extended-passages",
+              "locator": "p. 1, Two kinds of cybernetics",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "rm-r-harm",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "undesirable_effect",
+          "text": "An intervention can meet its target while causing unintended harm elsewhere.",
+          "label": "An intervention can meet its target while causing unintended harm elsewhere.",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "pp. 4–6, slide 4 and performative excess notes",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "rm-r-tools",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "cause",
+          "text": "Technologies can shape people’s attention and routines around purposes they have not chosen.",
+          "label": "Technologies can shape attention around purposes people have not chosen.",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "p. 28 and pp. 30–31, slide 18 and notes",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "rm-r-agency",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "undesirable_effect",
+          "text": "People’s capacity to choose and learn can be narrowed.",
+          "label": "People's capacity to choose and learn can be narrowed.",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "pp. 28–31, slide 18; p. 32, slide 20",
+              "basis": "reconstruction"
+            },
+            {
+              "source_id": "slides",
+              "locator": "pp. 16 and 20",
+              "basis": "reconstruction"
+            }
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "rm-rl-alone",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "rm-r-machine"
+          ],
+          "to": "rm-r-alone",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "pp. 27–28, private-machine framing and shared regulation",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "rm-rl-harm",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "rm-r-fixed"
+          ],
+          "to": "rm-r-harm",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "pp. 4–6, lineal control and performative excess",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "rm-rl-agency",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "rm-r-tools"
+          ],
+          "to": "rm-r-agency",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "p. 28 and pp. 30–31, extended allostatic control and the author’s phones-and-feeds extension",
+              "basis": "inference"
+            }
+          ]
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "rm-rl-harm",
+          "work": "test_causality",
+          "label": "Check the causal claims in a specific situation.",
+          "note": "These are the talk's proposed explanations, not observations of a named group's present conditions. Check alternative explanations and supporting conditions for each chain."
+        },
+        {
+          "ref": "rm-rl-agency",
+          "work": "distinguish_source_claim_from_extension",
+          "label": "Distinguish the cited smart-home proposal from the phones-and-feeds extension.",
+          "note": "The script identifies smart environments as the cited authors' examples and phones and feeds as Heath's extension. Neither establishes the present state of a particular device or group."
+        }
+      ]
+    },
+    "conflict": {
+      "nodes": [],
+      "links": [],
+      "backlog": []
+    },
+    "future_reality": {
+      "nodes": [
+        {
+          "id": "rm-f-practice",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "injection",
+          "text": "Offer shared rhythms of rest and meeting that participants can adapt or leave.",
+          "label": "Offer shared rhythms of rest and meeting that participants can adapt or leave.",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "p. 28, slide 18; pp. 31–32, slide 19",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "rm-f-consent",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "injection",
+          "text": "Agree how people can decline participation, raise harm and seek repair before trying a shared practice.",
+          "label": "Agree how people can decline, raise harm and seek repair before a shared practice.",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "p. 28, commons rules, consent and freedom to step out; pp. 31–32, optional practice",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "rm-f-settle",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "predicted_effect",
+          "text": "Shared settling may help some participants feel more able to be with others.",
+          "label": "Shared settling may help some participants feel more able to be with others.",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "pp. 31–32, slide 19",
+              "basis": "reconstruction"
+            },
+            {
+              "source_id": "slides",
+              "locator": "p. 19",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "rm-f-pressure",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "undesirable_effect",
+          "text": "A shared practice may create pressure to appear calm or make some participants feel less safe.",
+          "label": "A shared practice may create pressure or make some participants feel less safe.",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "p. 28, no one owes the room calm and co-regulation can dysregulate; p. 31, safety, consent and trust",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "rm-f-attune",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "injection",
+          "text": "Adjust actions by listening to responses from bodies, people and environments.",
+          "label": "Adjust actions by listening to bodies, people and environments.",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "pp. 3–4, act, listen and retune; pp. 12–13, learning and uncertainty",
+              "basis": "paraphrase"
+            },
+            {
+              "source_id": "extended-passages",
+              "locator": "p. 1, acting with the world",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "rm-f-learning",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "predicted_effect",
+          "text": "Feedback can change what is tried next instead of preserving a fixed target.",
+          "label": "Feedback can change what is tried next instead of preserving a fixed target.",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "pp. 3–4, feedback loop; pp. 12–13, participation and uncertainty",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "rm-f-tools",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "injection",
+          "text": "Assess tools by whether they widen people’s choices and whose purposes they serve.",
+          "label": "Assess tools by whether they widen choices and whose purposes they serve.",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "p. 32, slide 20; p. 31, whose purposes systems predict towards",
+              "basis": "paraphrase"
+            },
+            {
+              "source_id": "slides",
+              "locator": "p. 20",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "rm-f-choice",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "predicted_effect",
+          "text": "Tools can support chosen purposes while preserving people’s ability to question them.",
+          "label": "Tools can support chosen purposes while remaining open to question.",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "pp. 28–31, agency, design and ownership; p. 32, choices",
+              "basis": "reconstruction"
+            }
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "rm-fl-settle",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "rm-f-practice",
+            "rm-f-consent"
+          ],
+          "to": "rm-f-settle",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "p. 28, consent and safety; pp. 31–32, optional shared practice",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "rm-fl-pressure",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "rm-f-practice"
+          ],
+          "to": "rm-f-pressure",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "pp. 28 and 31, co-regulation can dysregulate and no one owes calm",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "rm-fl-protection",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "rm-f-consent"
+          ],
+          "to": "rm-f-pressure",
+          "relation": "prevents",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "p. 28, safety, consent, commons rules and freedom to step out",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "rm-fl-learning",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "rm-f-attune"
+          ],
+          "to": "rm-f-learning",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "pp. 3–4 and 12–13, listening, retuning and uncertainty",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "rm-fl-choice",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "rm-f-tools"
+          ],
+          "to": "rm-f-choice",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "spoken-script",
+              "locator": "pp. 28–32, design, ownership and guiding questions",
+              "basis": "inference"
+            }
+          ]
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "rm-f-settle",
+          "work": "define_participant_assessment",
+          "label": "Identify actual participants and how they would judge benefit and harm.",
+          "note": "No willing group, trial owner or feedback commitment is established. Agree a bounded setting, observation opportunity and who would judge benefit and harm before treating a trial as ready."
+        },
+        {
+          "ref": "rm-f-pressure",
+          "work": "examine_safety_and_withdrawal",
+          "label": "Check whether declining and raising harm are possible in practice.",
+          "note": "Quietness or compliance is not evidence of safety. Ask participants about pressure and whether opting out changes how they are treated."
+        },
+        {
+          "ref": "rm-fl-protection",
+          "work": "test_prevention",
+          "label": "Check whether consent arrangements actually prevent pressure.",
+          "note": "The proposed prevention connection is a hypothesis, not a guarantee. Permission to step out may fail under social pressure."
+        },
+        {
+          "ref": "rm-fl-choice",
+          "work": "test_agency",
+          "label": "Check whether assessing a tool changes choices and control.",
+          "note": "Naming whose purposes a tool serves does not itself change its design or ownership. Test the link rather than assuming an assessment produces agency."
+        },
+        {
+          "ref": "rm-f-practice",
+          "work": "establish_conflict_prerequisites_and_actions",
+          "label": "Establish conflicts, prerequisites and actions with a willing group.",
+          "note": "The talk offers invitations and questions, not an agreed five-part conflict, dependency plan or assigned action sequence. Those views are deliberately empty."
+        }
+      ]
+    },
+    "prerequisite": {
+      "nodes": [],
+      "links": [],
+      "backlog": []
+    },
+    "transition": {
+      "nodes": [],
+      "links": [],
+      "backlog": []
+    }
+  },
+  "feedback": [],
+  "history": [
+    {
+      "release_id": "2026-10-23.1",
+      "date": "2026-10-23",
+      "title": "First proposed reconstruction",
+      "summary": "The practical argument from three supplied companion documents, with 18 proposed statements, 11 proposed connections, page references and open review work. No participant endorsement, trial or outcome is recorded.",
+      "changes": [
+        {
+          "type": "added",
+          "refs": [
+            "rm-g-goal",
+            "rm-g-consent",
+            "rm-g-repair",
+            "rm-g-agency",
+            "rm-gl-consent",
+            "rm-gl-repair",
+            "rm-gl-agency",
+            "rm-r-machine",
+            "rm-r-alone",
+            "rm-r-fixed",
+            "rm-r-harm",
+            "rm-r-tools",
+            "rm-r-agency",
+            "rm-rl-alone",
+            "rm-rl-harm",
+            "rm-rl-agency",
+            "rm-f-practice",
+            "rm-f-consent",
+            "rm-f-settle",
+            "rm-f-pressure",
+            "rm-f-attune",
+            "rm-f-learning",
+            "rm-f-tools",
+            "rm-f-choice",
+            "rm-fl-settle",
+            "rm-fl-pressure",
+            "rm-fl-protection",
+            "rm-fl-learning",
+            "rm-fl-choice"
+          ],
+          "note": "AI reconstruction from the supplied slides, spoken script with notes and extended passages."
+        }
+      ]
+    }
+  ],
+  "publication_kind": "source_reconstruction",
+  "authors": {
+    "heath": {
+      "name": "Margeret Heath",
+      "role": "Author of Being-Becoming With the World, Talk 1: Re-membering; has not reviewed this map"
+    }
+  },
+  "sources": [
+    {
+      "id": "slides",
+      "kind": "supplied_document",
+      "author": "heath",
+      "title": "Being-Becoming With the World · Talk 1: Re-membering · slide deck",
+      "description": "Supplied 20-page slide deck by Margeret Heath, subtitled The extended mind and the body as somatic commons. Gives the compact sequence and distinguishes coupling, contested extension and philosophical participation. Page numbers refer to the supplied PDF. The PDF is not republished."
+    },
+    {
+      "id": "spoken-script",
+      "kind": "supplied_document",
+      "author": "heath",
+      "title": "Being-Becoming With the World · Talk 1: Re-membering · spoken script with notes",
+      "description": "Supplied 33-page spoken script and notes by Margeret Heath. The main source for qualifications about evidence, philosophical synthesis, consent, safety, repair and the difference between cited authors and Heath’s extensions. Speaker cues and invitations are source material. References use the printed PDF page numbers. The bibliography and glossary it mentions were not supplied, and cited studies were not independently checked."
+    },
+    {
+      "id": "extended-passages",
+      "kind": "supplied_document",
+      "author": "heath",
+      "title": "Being-Becoming With the World · Talk 1: Re-membering · extended passages",
+      "description": "Supplied nine-page companion by Margeret Heath containing longer versions trimmed for time and material parked for later talks. Read alongside the spoken script’s more explicit qualifications. This is a companion version of the same talk, not independent corroborating evidence. The original PDF is not republished."
+    }
+  ],
+  "views": {
+    "current_reality": [
+      {
+        "id": "private-machine",
+        "title": "A burden left to the individual",
+        "summary": "The talk questions a private-machine account of the body: relationships and surroundings shape regulation, while responsibility is left with the individual. This is a source argument, not a diagnosis of a named group.",
+        "nodes": [
+          "rm-r-machine",
+          "rm-r-alone"
+        ]
+      },
+      {
+        "id": "fixed-targets",
+        "title": "When a successful intervention harms its surroundings",
+        "summary": "A target can be met while the wider living system responds in unintended ways. The causal connection is an AI inference from the talk’s account of lineal control.",
+        "nodes": [
+          "rm-r-fixed",
+          "rm-r-harm"
+        ]
+      },
+      {
+        "id": "tools-and-purposes",
+        "title": "Whose purposes shape our attention?",
+        "summary": "Anticipatory environments can support people or narrow their agency. The script separates the cited smart-home proposal from Heath’s extension to phones and feeds.",
+        "nodes": [
+          "rm-r-tools",
+          "rm-r-agency"
+        ]
+      }
+    ],
+    "future_reality": [
+      {
+        "id": "shared-rhythms",
+        "title": "Offer a practice that people can leave",
+        "summary": "Shared rhythms and consent arrangements act together in the proposed benefit. Pressure and feeling less safe remain possible harms; an opt-out is not proof that pressure has been prevented.",
+        "nodes": [
+          "rm-f-practice",
+          "rm-f-consent",
+          "rm-f-settle",
+          "rm-f-pressure"
+        ]
+      },
+      {
+        "id": "listen-and-adjust",
+        "title": "Let responses change the next move",
+        "summary": "Listening and retuning may support learning. What counts as useful feedback and whether the response changes anything need testing in a bounded setting.",
+        "nodes": [
+          "rm-f-attune",
+          "rm-f-learning"
+        ]
+      },
+      {
+        "id": "choices-and-control",
+        "title": "Ask whether a tool widens choices",
+        "summary": "Assessment is meant to support chosen purposes, but naming a purpose does not itself change a tool’s design or ownership. The connection remains a hypothesis.",
+        "nodes": [
+          "rm-f-tools",
+          "rm-f-choice"
+        ]
+      }
+    ]
+  },
+  "overview": [
+    {
+      "type": "cards",
+      "eyebrow": "What has to be true",
+      "title": "Shared support with room to choose",
+      "text": "The proposed goal depends on voluntary participation, the ability to notice strain and repair, and tools whose purposes people can question. These conditions are an AI interpretation of the talk, awaiting review.",
+      "ids": [
+        "rm-g-consent",
+        "rm-g-repair",
+        "rm-g-agency"
+      ],
+      "link": [
+        "goal.html",
+        "Inspect the goal and its conditions →"
+      ]
+    },
+    {
+      "type": "cards",
+      "eyebrow": "What stands in the way",
+      "title": "The body as a private machine",
+      "text": "The talks ask what is lost when the body is treated as something to optimise alone. Two other proposed chains concern fixed targets with unintended harms, and technologies whose purposes users did not choose.",
+      "ids": [
+        "rm-r-machine",
+        "rm-r-alone"
+      ],
+      "link": [
+        "in-the-way.html",
+        "Read the three proposed explanations →"
+      ]
+    },
+    {
+      "type": "cards",
+      "eyebrow": "A possible change",
+      "title": "Arrive together, without owing the room your calm",
+      "text": "The script offers a short, optional settling practice. This map puts the invitation beside its conditions and risk: some may feel more able to be with others, while some may feel pressure or less safe. No practice has been tried or evaluated here.",
+      "ids": [
+        "rm-f-practice",
+        "rm-f-consent",
+        "rm-f-settle",
+        "rm-f-pressure"
+      ],
+      "link": [
+        "change.html#view-shared-rhythms",
+        "Inspect the joint condition, possible benefit and harm →"
+      ]
+    },
+    {
+      "type": "cards",
+      "eyebrow": "Beyond a single exercise",
+      "title": "Listen, retune, and question the tools",
+      "text": "The wider proposal is a way of attending: act, notice how bodies, people and environments respond, and change the next move. Ask whether the tools shaping the setting widen people’s choices and whose purposes they serve.",
+      "ids": [
+        "rm-f-attune",
+        "rm-f-tools"
+      ],
+      "link": [
+        "change.html",
+        "Explore the proposed changes and their effects →"
+      ]
+    },
+    {
+      "type": "wider",
+      "eyebrow": "The argument behind the practice",
+      "title": "Body, tools and a wider world",
+      "text": "The talk travels through embodied cognition, predictive processing and extended minds toward a somatic commons. It distinguishes evidence for coupling, contested extension and a philosophical commitment to participation. This practical reconstruction does not require agreement that tools constitute minds. A willing group, any conflict, prerequisites, assigned actions and participant assessment still need to be established."
+    },
+    {
+      "type": "credits",
+      "eyebrow": "Sources and interpretation",
+      "title": "Whose ideas these are",
+      "text": "The three supplied PDFs are by Margeret Heath. The AI selected, paraphrased and connected the material, and is responsible for this map. Every item has a page reference and a labelled basis; source credit is not author endorsement."
+    }
+  ],
+  "retired": []
+}
