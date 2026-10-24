@@ -34,10 +34,12 @@ The reviewed publisher admits a source-account block only first, only for suppli
 - Desktop opening, source explanation and reciprocal loop inspected at 1440px. The overview, all six detailed views and the source explanation pass the repository’s real 375px check without overflow.
 - With scripts blocked by a response policy, all six detailed views retain their diagrams and visible outlines, with inactive toggle controls hidden. The respective view counts are 1, 4, 1, 4, 3 and 5.
 - The separate hosted preview shows release `2026-10-24.1`, 82 statements and 66 connections. Its readable release JSON is structurally identical to the local reviewed public JSON.
+- The checker’s validation functions pass with the actual private collaboration context loaded locally: declared tree changes, receipt preservation and coverage, visible generated diagrams and collapsed list, and the expected-outcome explanation. They verify 19 public tree updates and all 23 changed public paths. The ordinary single-repository command cannot resolve private collaboration references or receipts; none was copied into the public state.
+- All five actual GitHub Mermaid diagrams render, their inspection controls work and the complete update list remains collapsed. All three GitHub checks pass for implementation commit `954a097`: demonstration, website and skill helpers.
 
 The revised account still awaits author review; reader comprehension, practical relevance and the predicted outcomes remain untested. No willing host, trial owner, observation period or feedback provider is invented. Prediction entries have no feedback commitment because no relevant provider has agreed to try and assess them.
 
-Delivery: branch `codex/heath-process-agency`; implementation bead `reasoncommons-eo9`. [Separate preview](https://a9m6l67v-anon.flowershow.me/demos/reason-commons-in-use/re-membering/index.html), expiring 30 October 2026. A new PR is being prepared; production is unchanged.
+Delivery: [PR #98](https://github.com/life-itself/reasoncommons/pull/98), branch `codex/heath-process-agency`; implementation bead `reasoncommons-eo9` complete. [Separate preview](https://a9m6l67v-anon.flowershow.me/demos/reason-commons-in-use/re-membering/index.html), expiring 30 October 2026. The private receipt, backlog and START HERE checkpoint are saved locally; production is unchanged.
 
 <details>
 <summary>Preserved review of release 2026-10-23.2 and the first release</summary>
