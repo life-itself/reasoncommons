@@ -69,6 +69,12 @@ BASIS_WORDS = {"paraphrase": "Paraphrased by the AI from this post.", "related":
                "cited": "Cited by the supplied analysis; the essay itself has not been checked here.",
                "reconstruction": "Reconstructed by the supplied analysis.", "inference": "Inferred by the AI; the sources do not state it."}
 CREDIT_CAVEAT = "A credit says where an idea comes from, not that its author agrees with this wording. None of the people credited has reviewed it."
+
+
+def credit_caveat(c):
+    if c.slug == "re-membering":
+        return "Source credit does not establish agreement with this wording. Heath commented on an earlier map; this revision awaits her review and endorsement."
+    return CREDIT_CAVEAT
 VIEW_NOUNS = {"conflict": "Conflict", "transition": "Action"}
 # Colour families shared by cards, diagrams and legends (see styles.css), in the order the map legend lists them.
 FAMILIES = [["goal", "objective"], ["critical_success_factor", "need", "desirable_effect", "expected_effect", "intermediate_objective"],
@@ -346,7 +352,7 @@ def credits_table(c):
     source_words = "Drawn from their supplied documents" if c.supplied_documents else "Drawn from their posts or essays"
     return (f'<div class="table-wrap"><table class="people credits"><thead><tr><th scope="col">Whose ideas</th><th scope="col">{source_words}<br><span>statements · connections</span></th>'
             f'<th scope="col">Related points only<br><span>statements · connections</span></th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>'
-            f'<p class="fine">{esc(CREDIT_CAVEAT)}</p>')
+            f'<p class="fine">{esc(credit_caveat(c))}</p>')
 
 
 def figure(svg, label, caption="", width=None):
@@ -480,8 +486,11 @@ def shell(*, title, description, depth, body, nav=None, c=None, page="", head=""
         banner = (f'<div class="example-banner" role="note"><div class="wrap"><strong>Fictional example.</strong> The school, its people and their reports are invented, '
                   f'to show everything a commons can hold. <a href="{up}reason-commons/index.html">See a real commons →</a></div></div>')
     elif c and c.supplied_documents:
+        review = ('The source author commented on an earlier map; this revision awaits review and endorsement. '
+                  if c.slug == "re-membering" else
+                  'The source author has not reviewed or endorsed it. ')
         banner = ('<div class="reconstruction-banner" role="note"><div class="wrap"><strong>Source reconstruction · Everything here is proposed.</strong> '
-                  'An AI prepared this map from supplied documents, with page references on every statement and connection. The source author has not reviewed or endorsed it. '
+                  'An AI prepared this map from supplied documents, with page references on every statement and connection. ' + review +
                   '<a href="about.html#sources">Sources and limits →</a></div></div>')
     elif c and c.is_reconstruction:
         banner = ('<div class="reconstruction-banner" role="note"><div class="wrap"><strong>Source reconstruction · Everything here is proposed.</strong> '
@@ -774,10 +783,11 @@ def reconstruction_overview(c, site):
     statements, connections = c.counts()
     clouds = c.views.get("conflict", [])
     sections = []
+    account = ""
     for block in c.overview_blocks:
         kind = block["type"]
         head = f'<div class="ov-head"><p class="eyebrow">{esc(block["eyebrow"])}</p><h2>{esc(block["title"])}</h2><p>{esc(block["text"])}</p></div>'
-        if kind == "cards":
+        if kind in {"cards", "account"}:
             href, words = block["link"]
             body = f'<div class="cards cards-grid">{"".join(card(c, i) for i in block["ids"])}</div><a class="text-link" href="{esc(href)}">{esc(words)}</a>'
         elif kind == "spine":
@@ -794,14 +804,18 @@ def reconstruction_overview(c, site):
             source_link = "The supplied talks and their limits →" if c.supplied_documents else "The thread, the essays and the analyses →"
             body = f'{credits_table(c)}<a class="text-link" href="about.html#sources">{source_link}</a>'
         anchor = ' id="credits"' if kind == "credits" else ""
+        if kind == "account":
+            account = f'<section class="ov ov-cards" id="source-account">{head}{body}</section>'
+            continue
         sections.append(f'<section class="ov ov-{kind}"{anchor}>{head}{body}</section>')
     origin = "From the talks to a shared question" if c.supplied_documents else "From a conversation to a shared question"
-    hero = (f'<section class="goal-hero"><div class="gh-main"><p class="eyebrow">The proposed goal</p><p class="gh-text">{esc(goal["text"])}</p>'
+    goal_heading = "One possible practical application" if account else "The proposed goal"
+    hero = (f'<section class="goal-hero"><div class="gh-main"><p class="eyebrow">{goal_heading}</p><p class="gh-text">{esc(goal["text"])}</p>'
             f'<p class="gh-by"><span>Reconstructed by AI; awaiting participant review</span></p><p class="gh-credit">{credit_line(c, goal["source_refs"], link=True)}</p>'
             f'<a class="text-link" href="items.html#{goal["id"]}">Inspect the goal →</a></div><div class="gh-side"><p class="eyebrow">{origin}</p>'
             f'<p>{esc(c.description)}</p><p class="gh-count"><b>{statements}</b> proposed statements<br><b>{connections}</b> proposed connections</p>'
             f'<a class="text-link" href="#credits">Whose ideas these are →</a><a class="text-link" href="about.html#sources">Where this map comes from →</a></div></section>')
-    body = commons_head(c, "overview") + f'<div class="wrap overview">{hero}{"".join(sections)}</div>'
+    body = commons_head(c, "overview") + f'<div class="wrap overview">{account}{hero}{"".join(sections)}</div>'
     return shell(title=f"{c.name} · Reason Commons", description=c.summary, depth=1, body=body, nav="commons", c=c, page="overview")
 
 
@@ -1030,7 +1044,7 @@ def item_detail(c, ident, site):
     sections = []
     if c.is_reconstruction:
         rows = "".join(source_row(c, ref) for ref in item["source_refs"])
-        sections.append(f'<section class="d-sec d-sources"><h3>Where this comes from</h3><ul class="notes">{rows}</ul><p class="fine">{esc(CREDIT_CAVEAT)}</p></section>')
+        sections.append(f'<section class="d-sec d-sources"><h3>Where this comes from</h3><ul class="notes">{rows}</ul><p class="fine">{esc(credit_caveat(c))}</p></section>')
     if not link:
         rels = [l for l in tree["links"] if ident in l["from"] or l["to"] == ident]
         if rels:
@@ -1277,13 +1291,16 @@ def about_page(c, site):
                    + source_list +'<h3>The broader programme</h3><p>The later analysis covers reflective human development, trustworthy institutions, the Laboratory, Forge/model adaptation, Vocal Presence, federation, material and energy services, and enforceable security. It separates philosophical hypotheses from institutional mechanisms and distinguishes local success from a durable shift in institutional selection. Those branches are now in the map as proposed changes with their risks, first steps and actions. Most of the first steps are the analysis’s own planning, so each obstacle carries a question to check at a host before relying on it.</p>'
                    '<h3>What counts as progress?</h3><p>The earlier analysis proposes measuring practices adopted and retained in viable institutions that remain faithful to their purpose. The measures, system boundary, observation period and protected conditions still need agreement. Essays and conversation alone do not establish that outcome.</p></section>')
         if c.supplied_documents:
-            fiction = ('<section class="ov" id="sources"><h2>Sources and limits</h2><p>This is a proposed AI reconstruction of Margeret Heath’s Being-Becoming With the World, Talk 1: Re-membering, using five original supplied PDFs. Margeret Heath is their sole author. The AI is responsible for this map’s selection, wording and connections. Every statement and connection has a source locator and a labelled basis: paraphrase, reconstruction or inference. The author has not reviewed this selection or its connections.</p>'
+            fiction = ('<section class="ov" id="sources"><h2>Sources and limits</h2><p>This is a proposed AI reconstruction of Margeret Heath’s Being-Becoming With the World, Talk 1: Re-membering, using five original supplied PDFs. Margeret Heath is their sole author. The AI is responsible for this map’s selection, wording and connections. Every statement and connection has a source locator and a labelled basis: paraphrase, reconstruction or inference. Heath has commented on an earlier map; the wording and connections in this revision await her review and endorsement.</p>'
                        + source_list
-                       + '<h3>Body, tools and a wider world</h3><p>The talks move from Bateson’s walking stick and embodied cognition through predictive processing, extended minds, shared timing and repair, to tools and environments that shape us in return. This commons selects the practical argument about tending those conditions. It is not a complete map of every thinker or argument in the talks.</p>'
-                       '<h3>Evidence and philosophical commitments</h3><p>The script distinguishes evidence for coupling from the contested claim that a tool constitutes part of a mind, and from the author’s philosophical starting point in participation and process. The coupling–constitution objection and predictive-processing boundary debate remain open. The claim that all regulation is co-regulation is the author’s synthesis, not a result established here. The practical goal does not require agreement with that ontology.</p>'
+                       + '<h3 id="process-account">Selves and capacities taking shape through relating</h3><p>Heath begins with ongoing bodily, social and material relations. In her process account, selves and their boundaries take shape through those relations; bodies, tools and environments help constitute what someone can perceive and do. The source-account observations preserve that philosophical starting point, distinct from the causal hypotheses in the practical application. See the spoken script, pp. 19–22 and 26, and <a href="items.html#rm-r-process">inspect the attributed claim and its sources</a>.</p>'
+                       '<h3>Following the songline</h3><p>The talk walks a route through a stick, a doorway, a hammer, a living cell, coordinated movement, a ship’s bridge, a notebook and a river. Each encounter changes the account of where thinking happens. Heath offers this modern songline in tribute to Aboriginal songlines, not as one of them (spoken script, pp. 7–8). Returning to land, memory boards and song, she describes remembering as an activity sustained through bodies, places and practices, with consequences when those relationships are damaged (pp. 24–25).</p>'
+                       '<h3>Two movements of enmindment</h3><p>Heath distinguishes attuning to a world with tendencies of its own from articulating forms that shape us in return. Her examples are a river whose flow calls for adjustment and a raked garden whose making also changes the maker. Together they describe reciprocal human and nonhuman agency, extending beyond permission or control (spoken script, pp. 4–6 and 26). <a href="items.html#rm-r-agencies">Inspect the account of agency →</a></p>'
+                       '<h3>Uncertainty and bringing forth</h3><p>Some surprise can open new meanings, capacities and possibilities, including changes in what participants seek together. Heath calls this poiesis, or bringing forth (spoken script, pp. 19–23). The practical map therefore asks whether interaction changes purposes as well as the next action. It does not assume that all surprise is beneficial: novelty can also overwhelm or harm. <a href="items.html#rm-r-poiesis">Inspect the attributed claim →</a></p>'
+                       '<h3>Evidence and philosophical commitments</h3><p>The script distinguishes evidence for coupling from the contested claim that a tool constitutes part of a mind, and from the author’s philosophical starting point in participation and process. The coupling–constitution objection and predictive-processing boundary debate remain open. The claim that all regulation is co-regulation is the author’s synthesis, not a result established here. Exploring a practical hypothesis does not establish the ontology; the philosophical claims remain visible for examination in their own right.</p>'
                        '<h3>Which document takes precedence?</h3><p>The spoken script with notes supplies the main qualifications: consent, freedom to step out, harm and repair, and the difference between cited work and Heath’s own extensions. The slides give the compact sequence; the extended passages retain longer versions and material parked for later talks. The glossary clarifies terms and the indexed bibliography identifies cited work and Heath’s own syntheses. These are companion documents, not independent bodies of evidence. Cultural concepts are situated in living traditions, not treated as interchangeable names for one idea.</p>'
-                       '<h3>Six views of a living process</h3><p>The goal, causal explanation, conflict, proposed changes, readiness conditions and action sequence are temporary analytical cuts through reciprocal processes. They preserve a feedback loop and attention to bodily, social and environmental timescales. The first application concerns a bounded somatic commons; further work at the scales of Body, We and World remains open.</p>'
-                       '<h3>What counts as progress?</h3><p>No willing group, baseline, trial owner or outcome is established. The conflict and readiness dependencies are proposed interpretations. Conditions in the action sequence are illustrative, not observations of an actual host. Before trying a practice, participants would need to agree how to judge support, learning, repair, agency and harmful effects, including whether declining is possible in practice. Quietness or compliance alone would not settle those questions. Privacy, consent and override remain safeguards to test, not guarantees.</p>'
+                       '<h3>From the account to one practical application</h3><p>The goal, causal explanation, conflict, proposed changes, readiness conditions and action sequence explore a bounded somatic commons. They are the AI’s selected application of the talks, with a reciprocal process loop and attention to bodily, social and environmental timescales. They do not complete the wider account of Body, We and World. The conflict between imposed regulation and collective participation is a candidate dilemma for this application; whether it captures Heath’s emphasis remains an open review question.</p>'
+                       '<h3>What counts as progress?</h3><p>No willing group, baseline, trial owner or outcome is established. The conflict and readiness dependencies are proposed interpretations. Conditions in the action sequence are illustrative, not observations of an actual host. Before trying a practice, participants would need to agree how to judge support, learning, repair, agency and harmful effects, including whether declining is possible in practice. Assessment also asks what changed in participants’ capacities, purposes and available possibilities. Quietness or compliance alone would not settle those questions. Privacy, consent and override remain safeguards to test, not guarantees.</p>'
                        '<h3>Reading the sources</h3><p>Page references use the supplied PDFs’ printed page numbers. The glossary and indexed bibliography are supplied and credited above; cited studies have not been independently checked. Source-checking annotations in the bibliography belong to that document. Speaker directions and exercises are part of the source, not instructions carried out by this site or its reader.</p></section>')
     excluded = ("Nothing is held back: the example's whole working file is published, apart from how each contribution was captured."
                 if c.is_example else

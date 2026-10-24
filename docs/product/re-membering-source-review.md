@@ -1,3 +1,47 @@
+# Re-membering: process, agency and uncertainty
+
+Release `2026-10-24.1` implements `re-membering-process-agency-2026-10-24` revision 1, accepted by David with the exact typed reply `accept`. The receipt was saved and validated in the private collaboration record before the public reasoning and implementation. The public record cites its ID only. Implementation approval does not endorse the reasoning.
+
+## What the revision changes
+
+Heath’s account now precedes the AI’s selected application to a bounded somatic commons. Three attributed observations preserve her process account of selves and boundaries, reciprocal human and nonhuman agency, and some uncertain encounters as bringing forth new meanings and possibilities. They are observations about her philosophical position, with no invented causal arrows between them. The source explanation follows the songline and distinguishes attuning from articulating as movements of enmindment, with spoken-script page references.
+
+The practical learning view adds a proposed coordination–capacity loop: reciprocal adjustment may generate coordination, coordination may reshape capacities and expectations, and those changes may alter subsequent participation and learning. These connections are AI inferences from the source, not proof of the ontology or an observed effect. Some uncertainty may open possibilities; novelty can also overwhelm or harm. Initial inquiry traces one activity over time, and assessment can reconsider capacities and purposes as well as actions.
+
+The existing conflict remains a candidate dilemma for this application. Its fidelity to Heath’s emphasis is explicitly open for review. Consent, withdrawal, repair, privacy and practical control remain visible. Author-credit wording acknowledges comments on an earlier map while keeping the current wording and connections unendorsed. Private messages are not reproduced.
+
+## Reasoning and publication
+
+| View | Statements | Connections |
+|---|---:|---:|
+| Goal | 13 | 12 |
+| Current Reality | 16 | 13 |
+| Conflict | 5 | 5 |
+| Future Reality | 20 | 18 |
+| Prerequisite | 13 | 12 |
+| Transition | 15 | 6 |
+| Total | 82 | 66 |
+
+The accepted scope adds five statements and four connections, revises nine full statements and one goal label, adds two review entries and extends four. All reasoning remains proposed, attributed to the AI, with no human endorsers or feedback commitments. Twenty-one review entries are grouped by twenty referenced items in the questions view. The five credited PDFs remain companion documents by Margeret Heath; the existing distinctions between coupling evidence, contested constitution and philosophical participation remain explicit.
+
+The reviewed publisher admits a source-account block only first, only for supplied documents and only for observation items. The overview places it before the practical goal. The prior releases and all their wording remain intact. The original PDFs, private collaboration record, receipts, messages and local paths are outside the public projection.
+
+## Verification
+
+- The private receipt and public intended reasoning were saved and validated before implementation. The added and revised statements and endpoints match the displayed proposal; all earlier acceptance receipts are preserved.
+- All 79 publication and rendering tests pass, including source-account ordering, rejection of a practical prediction as an author-account observation, full view coverage, joint conditions, inferred feedback and visibility of harmful uncertainty.
+- All 62 generated files are current; website exports are current and 4,916 links/assets pass with no errors or missing links. Only the thirteen Re-membering outputs and its directory card change; other commons and shared generated assets are unchanged.
+- Desktop opening, source explanation and reciprocal loop inspected at 1440px. The overview, all six detailed views and the source explanation pass the repository’s real 375px check without overflow.
+- With scripts blocked by a response policy, all six detailed views retain their diagrams and visible outlines, with inactive toggle controls hidden. The respective view counts are 1, 4, 1, 4, 3 and 5.
+- The separate hosted preview shows release `2026-10-24.1`, 82 statements and 66 connections. Its readable release JSON is structurally identical to the local reviewed public JSON.
+
+The revised account still awaits author review; reader comprehension, practical relevance and the predicted outcomes remain untested. No willing host, trial owner, observation period or feedback provider is invented. Prediction entries have no feedback commitment because no relevant provider has agreed to try and assess them.
+
+Delivery: branch `codex/heath-process-agency`; implementation bead `reasoncommons-eo9`. [Separate preview](https://a9m6l67v-anon.flowershow.me/demos/reason-commons-in-use/re-membering/index.html), expiring 30 October 2026. A new PR is being prepared; production is unchanged.
+
+<details>
+<summary>Preserved review of release 2026-10-23.2 and the first release</summary>
+
 # Re-membering: source and review record
 
 ## Current release — 2026-10-23.2
@@ -144,5 +188,7 @@ Author or participant endorsement, actual participant benefit, newcomer comprehe
 The generated PR sections show the actual public YAML diff, with visible Mermaid diagrams and a collapsed complete change list. The legacy all-in-one PR checker cannot resolve the served collaboration node or approval receipt from this public commons YAML because they live in the private product repository. A separate local check against that actual receipt confirms all 24 changed public paths, exactly the 18 node IDs and 11 link IDs, the proposal version and the preserved typed acceptance; no private receipt is copied into public files. This follows the current public repository’s receipt-by-ID policy.
 
 Delivery: [PR #97](https://github.com/life-itself/reasoncommons/pull/97), branch `codex/re-membering`. The actual GitHub rendering was inspected: all three Mermaid diagrams render, the complete change list is collapsed, and the recorded-approval reference and preview link are visible. The initial commit’s three GitHub checks pass. Production has not been merged or deployed.
+
+</details>
 
 </details>
