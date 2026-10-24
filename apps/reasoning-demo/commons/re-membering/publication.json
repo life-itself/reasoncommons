@@ -2,8 +2,8 @@
   "registry_version": 1,
   "publication_kind": "source_reconstruction",
   "release": {
-    "release_id": "2026-10-23.2",
-    "snapshot_date": "2026-10-23",
+    "release_id": "2026-10-24.1",
+    "snapshot_date": "2026-10-24",
     "title": "Re-membering"
   },
   "people": {
@@ -15,7 +15,7 @@
   "authors": {
     "heath": {
       "name": "Margeret Heath",
-      "role": "Sole author of the five credited Being-Becoming With the World, Talk 1: Re-membering documents; has not reviewed this map"
+      "role": "Sole author of the five credited Being-Becoming With the World, Talk 1: Re-membering documents; commented on an earlier map; has not endorsed this reconstruction"
     }
   },
   "selection": {
@@ -64,7 +64,10 @@
         "rm-r-shaping",
         "rm-r-isolation",
         "rm-r-rupture",
-        "rm-r-brittle"
+        "rm-r-brittle",
+        "rm-r-process",
+        "rm-r-agencies",
+        "rm-r-poiesis"
       ],
       "links": [
         "rm-rl-alone",
@@ -117,7 +120,9 @@
         "rm-f-lived",
         "rm-f-surveillance",
         "rm-f-privacy",
-        "rm-f-solitude"
+        "rm-f-solitude",
+        "rm-f-coordination",
+        "rm-f-capacities"
       ],
       "links": [
         "rm-fl-settle",
@@ -133,7 +138,11 @@
         "rm-fl-lived",
         "rm-fl-surveillance",
         "rm-fl-privacy",
-        "rm-fl-solitude"
+        "rm-fl-solitude",
+        "rm-fl-coordination",
+        "rm-fl-capacities",
+        "rm-fl-retuning",
+        "rm-fl-capacity-learning"
       ]
     },
     "prerequisite": {
@@ -258,6 +267,16 @@
     ],
     "current_reality": [
       {
+        "id": "process-account",
+        "title": "Heath’s account of process and reciprocal agency",
+        "summary": "Three attributed observations reconstruct the philosophical starting point. They have no causal connections: the practical application does not establish these claims, and the AI’s formulations await author review.",
+        "nodes": [
+          "rm-r-process",
+          "rm-r-agencies",
+          "rm-r-poiesis"
+        ]
+      },
+      {
         "id": "individual-burden",
         "title": "When regulation becomes an individual problem",
         "summary": "A private-machine framing is connected to a candidate policy of individual optimisation, reduced collective support and possible isolation or unrepaired rupture. These are source-based hypotheses, not observations of a named group.",
@@ -336,13 +355,15 @@
       },
       {
         "id": "listen-and-adjust",
-        "title": "Learn from variation and revise the next move",
-        "summary": "Listening and retuning may turn surprise into learning and support adaptation. Relevant feedback may arrive across bodily, social and environmental timescales; useful uncertainty is not the same as overwhelming people.",
+        "title": "How interaction can change capacities and purposes",
+        "summary": "Reciprocal adjustments may generate coordination that changes capacities, expectations and subsequent participation. Some surprise may open new meanings or purposes. Novelty can also overwhelm or harm; this is not a recommendation to increase uncertainty. The loop is an AI inference to examine in a concrete activity; timing and power remain open.",
         "nodes": [
           "rm-f-attune",
           "rm-f-variation",
           "rm-f-learning",
-          "rm-f-adaptability"
+          "rm-f-adaptability",
+          "rm-f-coordination",
+          "rm-f-capacities"
         ]
       },
       {
@@ -393,8 +414,8 @@
     "transition": [
       {
         "id": "map-relations",
-        "title": "Map what regulates whom",
-        "summary": "Illustrative condition and action, not an observation or assigned task. A willing host would identify its relationships, tools and routines. Later assessments feed back into this inquiry without assuming that the original problem recurs.",
+        "title": "Trace one activity through time",
+        "summary": "Trace how bodies, others, tools and places shape attention, coordination and available possibilities over time. The condition is illustrative, not an observation of a host; later assessment feeds back into this inquiry.",
         "nodes": [
           "rm-t-1-condition",
           "rm-t-map",
@@ -433,8 +454,8 @@
       },
       {
         "id": "listen-retune",
-        "title": "Listen to benefits, harms and surprises, then retune",
-        "summary": "The illustrative branches come together for assessment. Ask what helped, harmed or surprised people and revise or stop; the cycle has no assigned owner, agreed feedback provider or recorded result.",
+        "title": "Review changes in capacities and purposes",
+        "summary": "The illustrative branches come together to ask what helped, harmed or surprised people, and what changed in their capacities or purposes. Continue, revise or stop, including reconsidering the shared purpose. No owner, feedback provider or result is assigned.",
         "nodes": [
           "rm-t-5-condition",
           "rm-t-review",
@@ -444,6 +465,21 @@
     ]
   },
   "overview": [
+    {
+      "type": "account",
+      "eyebrow": "Heath’s starting point",
+      "title": "Becoming through relationship",
+      "text": "Heath describes selves and capacities taking shape through ongoing relations among bodies, others, tools and environments. Agency unfolds through reciprocal activity; some uncertainty can bring forth new meanings and possibilities. These cards reconstruct her account, before the AI’s proposed practical application.",
+      "ids": [
+        "rm-r-process",
+        "rm-r-agencies",
+        "rm-r-poiesis"
+      ],
+      "link": [
+        "about.html#process-account",
+        "Follow the songline, enmindment and their sources →"
+      ]
+    },
     {
       "type": "cards",
       "eyebrow": "What has to be true",
@@ -480,19 +516,21 @@
     {
       "type": "clouds",
       "eyebrow": "The tension behind the choices",
-      "title": "Enough safety and enough openness",
-      "text": "Protection from overwhelm and the ability to adapt are both legitimate needs. The proposed conflict asks whether sufficient safety really requires imposed individual regulation. Participatory safeguards are a possible response to that assumption.",
+      "title": "A candidate tension in this application",
+      "text": "Protection from overwhelm and the ability to adapt are both legitimate needs. The AI’s proposed dilemma asks whether sufficient safety requires imposed individual regulation. Its usefulness for a particular group, and its fidelity to Heath’s emphasis, remain open for review.",
       "featured": "stability-and-participation"
     },
     {
       "type": "cards",
       "eyebrow": "What could change",
-      "title": "Support, choice and learning together",
-      "text": "Offer practices people can adapt or leave; make one tool contestable and reversible; act, listen and retune. These routes contribute jointly to a lived, revisable practice. Pressure to appear calm and surveillance remain possible harms; safeguards need to work in practice.",
+      "title": "Let interaction develop capacities and purposes",
+      "text": "Offer practices people can adapt or leave; make one tool contestable and reversible; act, listen and retune. Reciprocal coordination may change capacities and what participants seek together. Pressure to appear calm and surveillance remain possible harms; safeguards need to work in practice.",
       "ids": [
+        "rm-f-attune",
+        "rm-f-coordination",
+        "rm-f-capacities",
         "rm-f-participation",
         "rm-f-tools",
-        "rm-f-attune",
         "rm-f-pressure",
         "rm-f-surveillance"
       ],
@@ -520,8 +558,8 @@
     {
       "type": "cards",
       "eyebrow": "How the proposal could be tried",
-      "title": "Map, agree, try, listen and retune",
-      "text": "An illustrative sequence maps the setting and agrees a bounded purpose. A voluntary practice and a tool review can then proceed in parallel. Participants assess what helped, harmed or surprised them and revise or stop. No host, trial or owner is assigned.",
+      "title": "Trace, agree, try and reconsider together",
+      "text": "An illustrative sequence traces one activity over time and agrees an initial bounded purpose. A voluntary practice and a tool review can proceed in parallel. Participants assess benefits, harms, surprises and changes in their capacities or purposes, then continue, revise or stop. No host, trial or owner is assigned.",
       "ids": [
         "rm-t-map",
         "rm-t-agree",
@@ -537,8 +575,8 @@
     {
       "type": "wider",
       "eyebrow": "The argument behind the practice",
-      "title": "Body, relationships and a wider world",
-      "text": "Heath’s talk moves through embodied cognition, predictive processing, extended minds and shared timing toward the somatic commons. Evidence for coupling, contested constitution of mind and philosophical participation remain distinct. These six views are temporary analytical cuts through reciprocal processes across timescales; they are the first bounded application, not eighteen completed maps of Body, We and World."
+      "title": "A source account and one possible application",
+      "text": "Heath’s account of process, extended mind, timing and enmindment comes first. The six questions then explore one selected application to a bounded somatic commons. Evidence for coupling, contested constitution and philosophical participation remain distinct; neither the practical map nor its feedback loop establishes the ontology."
     },
     {
       "type": "credits",
@@ -785,12 +823,136 @@
           "note": "Preserved and revised the ten existing review entries and added nine. All reasoning remains proposed; no willing host, trial, assigned action owner, feedback commitment or outcome is established."
         }
       ]
+    },
+    {
+      "release_id": "2026-10-24.1",
+      "date": "2026-10-24",
+      "title": "Process, agency and uncertainty before the application",
+      "summary": "Rebalanced to 82 proposed statements and 66 proposed connections: the source account precedes the application, a reciprocal process loop makes emerging capacities visible, and assessment can revise purposes as well as actions. Earlier releases remain preserved.",
+      "changes": [
+        {
+          "type": "added",
+          "refs": [
+            "rm-r-process",
+            "rm-r-agencies",
+            "rm-r-poiesis",
+            "rm-f-coordination",
+            "rm-f-capacities",
+            "rm-fl-coordination",
+            "rm-fl-capacities",
+            "rm-fl-retuning",
+            "rm-fl-capacity-learning"
+          ],
+          "note": "Added three attributed source-account observations and two predicted process effects, with a reciprocal coordination–capacity loop and a connection to learning. All remain proposed AI reconstructions or inferences."
+        },
+        {
+          "type": "revised",
+          "refs": [
+            "rm-g-learning"
+          ],
+          "before": "People can learn from uncertainty and revise how they act together.",
+          "note": "Revised to make reciprocal process, emerging capacities and revisable purposes explicit."
+        },
+        {
+          "type": "revised",
+          "refs": [
+            "rm-g-explore"
+          ],
+          "before": "People have permission to explore alternatives and revise shared expectations.",
+          "note": "Revised to make reciprocal process, emerging capacities and revisable purposes explicit."
+        },
+        {
+          "type": "revised",
+          "refs": [
+            "rm-f-attune"
+          ],
+          "before": "Adjust actions by listening to responses from bodies, people and environments.",
+          "note": "Revised to make reciprocal process, emerging capacities and revisable purposes explicit."
+        },
+        {
+          "type": "revised",
+          "refs": [
+            "rm-f-variation"
+          ],
+          "before": "Variation and surprise can become sources of learning rather than errors to suppress.",
+          "note": "Revised to make reciprocal process, emerging capacities and revisable purposes explicit."
+        },
+        {
+          "type": "revised",
+          "refs": [
+            "rm-f-learning"
+          ],
+          "before": "Feedback can change what is tried next instead of preserving a fixed target.",
+          "note": "Revised to make reciprocal process, emerging capacities and revisable purposes explicit."
+        },
+        {
+          "type": "revised",
+          "refs": [
+            "rm-t-map"
+          ],
+          "before": "Map the relationships, tools and routines that regulate people in the chosen situation.",
+          "note": "Revised to make reciprocal process, emerging capacities and revisable purposes explicit."
+        },
+        {
+          "type": "revised",
+          "refs": [
+            "rm-t-1-effect"
+          ],
+          "before": "Participants have a shared picture of what regulates whom.",
+          "note": "Revised to make reciprocal process, emerging capacities and revisable purposes explicit."
+        },
+        {
+          "type": "revised",
+          "refs": [
+            "rm-t-review"
+          ],
+          "before": "Ask what helped, harmed or surprised participants, then revise or stop the changes.",
+          "note": "Revised to make reciprocal process, emerging capacities and revisable purposes explicit."
+        },
+        {
+          "type": "revised",
+          "refs": [
+            "rm-t-5-effect"
+          ],
+          "before": "Participants can repeat an act–listen–retune cycle using their assessments.",
+          "note": "Revised to make reciprocal process, emerging capacities and revisable purposes explicit."
+        },
+        {
+          "type": "revised",
+          "refs": [
+            "rm-g-goal"
+          ],
+          "before": "People flourish together while retaining autonomy and personal boundaries.",
+          "note": "Diagram label only: restored being-becoming to the displayed goal; the full statement is unchanged."
+        },
+        {
+          "type": "revised",
+          "refs": [
+            "rm-r-process",
+            "rm-fl-coordination",
+            "rm-g-goal",
+            "rm-cl-conflict",
+            "rm-f-settle",
+            "rm-t-review"
+          ],
+          "note": "Added two review entries and extended four. The source account, timing, practical relevance, conflict reconstruction and assessment of capacities and purposes remain open. Novelty can also overwhelm or harm."
+        },
+        {
+          "type": "credited",
+          "refs": [
+            "rm-r-process",
+            "rm-r-agencies",
+            "rm-r-poiesis"
+          ],
+          "note": "Acknowledged author feedback on an earlier map while retaining AI attribution and unendorsed standing for this revision. Private messages are not reproduced."
+        }
+      ]
     }
   ],
   "snapshot": {
     "projection_version": 4,
-    "release_id": "2026-10-23.2",
-    "snapshot_date": "2026-10-23",
+    "release_id": "2026-10-24.1",
+    "snapshot_date": "2026-10-24",
     "title": "Re-membering",
     "people": [
       {
@@ -813,7 +975,7 @@
             ],
             "kind": "goal",
             "text": "People in a willing, bounded community can flourish through being-becoming with the world while retaining autonomy and personal boundaries.",
-            "label": "People flourish together while retaining autonomy and personal boundaries.",
+            "label": "People flourish through being-becoming with the world, with autonomy and boundaries.",
             "source_refs": [
               {
                 "source_id": "spoken-script",
@@ -916,8 +1078,8 @@
               }
             ],
             "kind": "critical_success_factor",
-            "text": "People can learn from uncertainty and revise how they act together.",
-            "label": "People can learn from uncertainty and revise how they act together.",
+            "text": "People can let encounters with uncertainty reshape their capacities, shared purposes and ways of acting together.",
+            "label": "Uncertain encounters can reshape capacities, purposes and shared action.",
             "source_refs": [
               {
                 "source_id": "spoken-script",
@@ -927,6 +1089,11 @@
               {
                 "source_id": "glossary",
                 "locator": "pp. 3, 5–7: expected uncertainty, requisite variety, unexpected uncertainty and volatility",
+                "basis": "inference"
+              },
+              {
+                "source_id": "spoken-script",
+                "locator": "pp. 19–24 and 26: reciprocal process, new possibilities, timing and capacities",
                 "basis": "inference"
               }
             ]
@@ -1030,8 +1197,8 @@
               }
             ],
             "kind": "necessary_condition",
-            "text": "People have permission to explore alternatives and revise shared expectations.",
-            "label": "People may explore alternatives and revise shared expectations.",
+            "text": "People can explore alternatives and renegotiate shared expectations as their situation changes.",
+            "label": "People can explore alternatives and renegotiate shared expectations.",
             "source_refs": [
               {
                 "source_id": "spoken-script",
@@ -1041,6 +1208,11 @@
               {
                 "source_id": "glossary",
                 "locator": "pp. 3, 5–7: expected uncertainty, requisite variety, unexpected uncertainty and volatility",
+                "basis": "inference"
+              },
+              {
+                "source_id": "spoken-script",
+                "locator": "pp. 19–24 and 26: reciprocal process, new possibilities, timing and capacities",
                 "basis": "inference"
               }
             ]
@@ -1525,7 +1697,7 @@
             "ref": "rm-g-goal",
             "work": "examine_coupling_and_constitution",
             "label": "Separate evidence for coupling from claims about what constitutes a mind.",
-            "note": "Retain the distinction between empirical coupling, contested constitution and philosophical participation; use the glossary and bibliography to improve source tracing without claiming independent verification.",
+            "note": "Retain the distinction between empirical coupling, contested constitution and philosophical participation; use the glossary and bibliography to improve source tracing without claiming independent verification. Review the source-first account of process and enmindment; retain the distinction between empirical coupling, contested constitution and philosophical participation.",
             "source_refs": [
               {
                 "source_id": "spoken-script",
@@ -1868,6 +2040,69 @@
                 "source_id": "glossary",
                 "locator": "pp. 4–5: lineal control, performative excess and requisite variety",
                 "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "rm-r-process",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "observation",
+            "text": "Heath’s process account treats selves and their boundaries as continually formed through bodily, social and material relations.",
+            "label": "Heath treats selves and boundaries as formed through ongoing relations.",
+            "source_refs": [
+              {
+                "source_id": "spoken-script",
+                "locator": "pp. 19–22 and 26: process, individuation and boundaries",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "rm-r-agencies",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "observation",
+            "text": "Heath presents agency as emerging through reciprocal human and nonhuman activity and response, with no participant fully controlling the unfolding.",
+            "label": "Heath presents agency as reciprocal human and nonhuman activity and response.",
+            "source_refs": [
+              {
+                "source_id": "spoken-script",
+                "locator": "pp. 4–6 and 23–26: dance of agency, timing and enmindment",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "rm-r-poiesis",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "observation",
+            "text": "Heath treats some encounters with uncertainty as opportunities to bring forth new meanings and possibilities, changing participants and their world.",
+            "label": "Heath treats some uncertain encounters as bringing forth meanings and possibilities.",
+            "source_refs": [
+              {
+                "source_id": "spoken-script",
+                "locator": "pp. 19–23 and 26: prediction error, poiesis and reciprocal becoming",
+                "basis": "reconstruction"
               }
             ]
           }
@@ -2263,6 +2498,12 @@
             "work": "ground_undesirable_effects",
             "label": "Ground the candidate problems and connections in one setting.",
             "note": "Obtain concrete observations of isolation, unrepaired rupture, brittleness and agency loss from the same setting; examine all proposed contributory links."
+          },
+          {
+            "ref": "rm-r-process",
+            "work": "review_author_account",
+            "label": "Review the source account and its narrative route against Heath’s emphasis.",
+            "note": "Review the three source-account observations and the songline, enmindment and process distinctions; the formulations are AI reconstructions, not author endorsements."
           }
         ]
       },
@@ -2620,7 +2861,7 @@
             "ref": "rm-cl-conflict",
             "work": "test_apparent_conflict",
             "label": "Check whether the positions conflict over the same decisions.",
-            "note": "Check whether the two positions conflict over the same decisions and whether participatory safeguards can meet both needs."
+            "note": "Check whether the two positions conflict over the same decisions and whether participatory safeguards can meet both needs. Review whether this is a useful application-specific conflict and whether it reflects Heath’s emphasis; do not present imposed regulation versus participation as her established central dilemma."
           }
         ]
       },
@@ -2730,8 +2971,8 @@
               }
             ],
             "kind": "injection",
-            "text": "Adjust actions by listening to responses from bodies, people and environments.",
-            "label": "Adjust actions by listening to bodies, people and environments.",
+            "text": "Engage in a shared activity by noticing how bodies, other people, tools and environments respond, and adjusting together.",
+            "label": "Notice how bodies, others, tools and environments respond, and adjust together.",
             "addresses": [
               "rm-r-fixed",
               "rm-r-suppress",
@@ -2748,6 +2989,11 @@
                 "source_id": "extended-passages",
                 "locator": "p. 1, acting with the world",
                 "basis": "paraphrase"
+              },
+              {
+                "source_id": "spoken-script",
+                "locator": "pp. 19–24 and 26: reciprocal process, new possibilities, timing and capacities",
+                "basis": "inference"
               }
             ]
           },
@@ -2762,13 +3008,18 @@
               }
             ],
             "kind": "predicted_effect",
-            "text": "Feedback can change what is tried next instead of preserving a fixed target.",
-            "label": "Feedback can change what is tried next instead of preserving a fixed target.",
+            "text": "Participants may revise what they notice, value and try as their interactions develop.",
+            "label": "Interaction may change what participants notice, value and try.",
             "source_refs": [
               {
                 "source_id": "spoken-script",
                 "locator": "pp. 3–4, feedback loop; pp. 12–13, participation and uncertainty",
                 "basis": "reconstruction"
+              },
+              {
+                "source_id": "spoken-script",
+                "locator": "pp. 19–24 and 26: reciprocal process, new possibilities, timing and capacities",
+                "basis": "inference"
               }
             ]
           },
@@ -2966,8 +3217,14 @@
               }
             ],
             "kind": "predicted_effect",
-            "text": "Variation and surprise can become sources of learning rather than errors to suppress.",
-            "label": "Variation and surprise can become sources of learning.",
+            "text": "Attending to some surprises may reveal new possibilities for relating and acting, including reasons to reconsider shared purposes.",
+            "label": "Some surprises may open new possibilities and shared purposes.",
+            "assumptions": [
+              {
+                "text": "Some surprise can be generative, but novelty can also overwhelm or harm; neither benefit nor an instruction to increase uncertainty follows from the source account.",
+                "by": "AI assistant"
+              }
+            ],
             "source_refs": [
               {
                 "source_id": "spoken-script",
@@ -2977,6 +3234,11 @@
               {
                 "source_id": "glossary",
                 "locator": "pp. 2 and 5–7: dance of agency, requisite variety and uncertainty",
+                "basis": "inference"
+              },
+              {
+                "source_id": "spoken-script",
+                "locator": "pp. 19–24 and 26: reciprocal process, new possibilities, timing and capacities",
                 "basis": "inference"
               }
             ]
@@ -3117,6 +3379,48 @@
               {
                 "source_id": "bibliography",
                 "locator": "pp. 13–14, Part 4: Heath's somatic-commons synthesis",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "rm-f-coordination",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "predicted_effect",
+            "text": "Reciprocal adjustments may produce patterns of coordination that no participant specified alone.",
+            "label": "Reciprocal adjustments may produce unplanned shared coordination.",
+            "source_refs": [
+              {
+                "source_id": "spoken-script",
+                "locator": "pp. 19–24 and 26: participatory sense-making, timing and reciprocal becoming",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "rm-f-capacities",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "predicted_effect",
+            "text": "Emerging coordination may reshape participants’ capacities, expectations and ways of relating to their surroundings.",
+            "label": "Emerging coordination may reshape capacities, expectations and relations.",
+            "source_refs": [
+              {
+                "source_id": "spoken-script",
+                "locator": "pp. 19–24 and 26: participatory sense-making, timing and reciprocal becoming",
                 "basis": "inference"
               }
             ]
@@ -3562,6 +3866,98 @@
                 "basis": "inference"
               }
             ]
+          },
+          {
+            "id": "rm-fl-coordination",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "rm-f-attune"
+            ],
+            "to": "rm-f-coordination",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "spoken-script",
+                "locator": "pp. 19–24 and 26: participatory sense-making, timing and reciprocal becoming",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "rm-fl-capacities",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "rm-f-coordination"
+            ],
+            "to": "rm-f-capacities",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "spoken-script",
+                "locator": "pp. 19–24 and 26: participatory sense-making, timing and reciprocal becoming",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "rm-fl-retuning",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "rm-f-capacities"
+            ],
+            "to": "rm-f-attune",
+            "relation": "feeds_back_to",
+            "source_refs": [
+              {
+                "source_id": "spoken-script",
+                "locator": "pp. 19–24 and 26: participatory sense-making, timing and reciprocal becoming",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "rm-fl-capacity-learning",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "rm-f-capacities"
+            ],
+            "to": "rm-f-learning",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "spoken-script",
+                "locator": "pp. 19–24 and 26: participatory sense-making, timing and reciprocal becoming",
+                "basis": "inference"
+              }
+            ]
           }
         ],
         "backlog": [
@@ -3569,7 +3965,7 @@
             "ref": "rm-f-settle",
             "work": "define_participant_assessment",
             "label": "Identify actual participants and how they would judge benefit and harm.",
-            "note": "Assess support, agency, learning and repair alongside harmful effects; calm or compliance alone is not evidence of benefit."
+            "note": "Assess support, agency, learning and repair alongside harmful effects; calm or compliance alone is not evidence of benefit. Include changes in capacities, purposes and available possibilities alongside benefit, harm, support and repair; preserve uncertainty and the right to decline."
           },
           {
             "ref": "rm-f-pressure",
@@ -3600,6 +3996,12 @@
             "work": "test_prevention",
             "label": "Test whether the proposed safeguards prevent harm.",
             "note": "Assess surveillance risks, actual privacy, override and accountability; do not treat safeguards as guarantees."
+          },
+          {
+            "ref": "rm-fl-coordination",
+            "work": "ground_reciprocal_process",
+            "label": "Ground the reciprocal loop in one concrete activity and its timing.",
+            "note": "Trace a source episode and then a willing host’s own account, including timing, reciprocal changes and power. Check whether the process changes the practical recommendation; no causal effect is established by drawing the loop."
           }
         ]
       },
@@ -4371,8 +4773,8 @@
               }
             ],
             "kind": "action",
-            "text": "Map the relationships, tools and routines that regulate people in the chosen situation.",
-            "label": "Map the relationships, tools and routines that regulate people.",
+            "text": "Trace one concrete activity over time: how bodies, others, tools and places shape attention, coordination and possibilities for action.",
+            "label": "Trace how one activity changes attention, coordination and possibilities.",
             "source_refs": [
               {
                 "source_id": "spoken-script",
@@ -4382,6 +4784,11 @@
               {
                 "source_id": "spoken-script",
                 "locator": "pp. 28–31, slide 18 and notes: consent, tools, agency and governance",
+                "basis": "inference"
+              },
+              {
+                "source_id": "spoken-script",
+                "locator": "pp. 19–24 and 26: reciprocal process, new possibilities, timing and capacities",
                 "basis": "inference"
               }
             ]
@@ -4397,8 +4804,8 @@
               }
             ],
             "kind": "expected_effect",
-            "text": "Participants have a shared picture of what regulates whom.",
-            "label": "Participants share a picture of what regulates whom.",
+            "text": "Participants have an initial account of reciprocal influences, timing and changing capacities in the chosen activity.",
+            "label": "Participants have an initial account of reciprocal influences and changing capacities.",
             "source_refs": [
               {
                 "source_id": "spoken-script",
@@ -4408,6 +4815,11 @@
               {
                 "source_id": "spoken-script",
                 "locator": "pp. 28–31, slide 18 and notes: consent, tools, agency and governance",
+                "basis": "inference"
+              },
+              {
+                "source_id": "spoken-script",
+                "locator": "pp. 19–24 and 26: reciprocal process, new possibilities, timing and capacities",
                 "basis": "inference"
               }
             ]
@@ -4693,8 +5105,8 @@
               }
             ],
             "kind": "action",
-            "text": "Ask what helped, harmed or surprised participants, then revise or stop the changes.",
-            "label": "Ask what helped, harmed or surprised people, then revise or stop.",
+            "text": "Ask what helped, harmed or surprised participants, what changed in their capacities or purposes, and whether to continue, revise or stop.",
+            "label": "Review benefits, harms, surprises and changes in capacities or purposes.",
             "implements": [
               "rm-p-evidence"
             ],
@@ -4707,6 +5119,11 @@
               {
                 "source_id": "spoken-script",
                 "locator": "pp. 28–31, slide 18 and notes: consent, tools, agency and governance",
+                "basis": "inference"
+              },
+              {
+                "source_id": "spoken-script",
+                "locator": "pp. 19–24 and 26: reciprocal process, new possibilities, timing and capacities",
                 "basis": "inference"
               }
             ]
@@ -4722,8 +5139,8 @@
               }
             ],
             "kind": "expected_effect",
-            "text": "Participants can repeat an act–listen–retune cycle using their assessments.",
-            "label": "Participants can repeat an act–listen–retune cycle using assessments.",
+            "text": "Participants can repeat an act–listen–retune cycle that can revise both the shared activity and its purposes.",
+            "label": "Participants can repeat a cycle that can revise shared activity and its purposes.",
             "source_refs": [
               {
                 "source_id": "spoken-script",
@@ -4733,6 +5150,11 @@
               {
                 "source_id": "spoken-script",
                 "locator": "pp. 28–31, slide 18 and notes: consent, tools, agency and governance",
+                "basis": "inference"
+              },
+              {
+                "source_id": "spoken-script",
+                "locator": "pp. 19–24 and 26: reciprocal process, new possibilities, timing and capacities",
                 "basis": "inference"
               }
             ]
@@ -4965,7 +5387,7 @@
             "ref": "rm-t-review",
             "work": "agree_owners_and_assessment",
             "label": "Agree owners, feedback providers and observation arrangements.",
-            "note": "Agree action owners, relevant feedback providers and how benefits, harms and surprises will be observed before any trial is called ready."
+            "note": "Agree action owners, relevant feedback providers and how benefits, harms and surprises will be observed before any trial is called ready. Include changes in purposes and capacities when agreeing an observation window and assessment; no assessor, owner or commitment is assigned by this reconstruction."
           }
         ]
       }
@@ -5208,13 +5630,137 @@
             "note": "Preserved and revised the ten existing review entries and added nine. All reasoning remains proposed; no willing host, trial, assigned action owner, feedback commitment or outcome is established."
           }
         ]
+      },
+      {
+        "release_id": "2026-10-24.1",
+        "date": "2026-10-24",
+        "title": "Process, agency and uncertainty before the application",
+        "summary": "Rebalanced to 82 proposed statements and 66 proposed connections: the source account precedes the application, a reciprocal process loop makes emerging capacities visible, and assessment can revise purposes as well as actions. Earlier releases remain preserved.",
+        "changes": [
+          {
+            "type": "added",
+            "refs": [
+              "rm-r-process",
+              "rm-r-agencies",
+              "rm-r-poiesis",
+              "rm-f-coordination",
+              "rm-f-capacities",
+              "rm-fl-coordination",
+              "rm-fl-capacities",
+              "rm-fl-retuning",
+              "rm-fl-capacity-learning"
+            ],
+            "note": "Added three attributed source-account observations and two predicted process effects, with a reciprocal coordination–capacity loop and a connection to learning. All remain proposed AI reconstructions or inferences."
+          },
+          {
+            "type": "revised",
+            "refs": [
+              "rm-g-learning"
+            ],
+            "before": "People can learn from uncertainty and revise how they act together.",
+            "note": "Revised to make reciprocal process, emerging capacities and revisable purposes explicit."
+          },
+          {
+            "type": "revised",
+            "refs": [
+              "rm-g-explore"
+            ],
+            "before": "People have permission to explore alternatives and revise shared expectations.",
+            "note": "Revised to make reciprocal process, emerging capacities and revisable purposes explicit."
+          },
+          {
+            "type": "revised",
+            "refs": [
+              "rm-f-attune"
+            ],
+            "before": "Adjust actions by listening to responses from bodies, people and environments.",
+            "note": "Revised to make reciprocal process, emerging capacities and revisable purposes explicit."
+          },
+          {
+            "type": "revised",
+            "refs": [
+              "rm-f-variation"
+            ],
+            "before": "Variation and surprise can become sources of learning rather than errors to suppress.",
+            "note": "Revised to make reciprocal process, emerging capacities and revisable purposes explicit."
+          },
+          {
+            "type": "revised",
+            "refs": [
+              "rm-f-learning"
+            ],
+            "before": "Feedback can change what is tried next instead of preserving a fixed target.",
+            "note": "Revised to make reciprocal process, emerging capacities and revisable purposes explicit."
+          },
+          {
+            "type": "revised",
+            "refs": [
+              "rm-t-map"
+            ],
+            "before": "Map the relationships, tools and routines that regulate people in the chosen situation.",
+            "note": "Revised to make reciprocal process, emerging capacities and revisable purposes explicit."
+          },
+          {
+            "type": "revised",
+            "refs": [
+              "rm-t-1-effect"
+            ],
+            "before": "Participants have a shared picture of what regulates whom.",
+            "note": "Revised to make reciprocal process, emerging capacities and revisable purposes explicit."
+          },
+          {
+            "type": "revised",
+            "refs": [
+              "rm-t-review"
+            ],
+            "before": "Ask what helped, harmed or surprised participants, then revise or stop the changes.",
+            "note": "Revised to make reciprocal process, emerging capacities and revisable purposes explicit."
+          },
+          {
+            "type": "revised",
+            "refs": [
+              "rm-t-5-effect"
+            ],
+            "before": "Participants can repeat an act–listen–retune cycle using their assessments.",
+            "note": "Revised to make reciprocal process, emerging capacities and revisable purposes explicit."
+          },
+          {
+            "type": "revised",
+            "refs": [
+              "rm-g-goal"
+            ],
+            "before": "People flourish together while retaining autonomy and personal boundaries.",
+            "note": "Diagram label only: restored being-becoming to the displayed goal; the full statement is unchanged."
+          },
+          {
+            "type": "revised",
+            "refs": [
+              "rm-r-process",
+              "rm-fl-coordination",
+              "rm-g-goal",
+              "rm-cl-conflict",
+              "rm-f-settle",
+              "rm-t-review"
+            ],
+            "note": "Added two review entries and extended four. The source account, timing, practical relevance, conflict reconstruction and assessment of capacities and purposes remain open. Novelty can also overwhelm or harm."
+          },
+          {
+            "type": "credited",
+            "refs": [
+              "rm-r-process",
+              "rm-r-agencies",
+              "rm-r-poiesis"
+            ],
+            "note": "Acknowledged author feedback on an earlier map while retaining AI attribution and unendorsed standing for this revision. Private messages are not reproduced."
+          }
+        ]
       }
     ],
     "publication_kind": "source_reconstruction",
     "authors": {
       "heath": {
         "name": "Margeret Heath",
-        "role": "Sole author of the five credited Being-Becoming With the World, Talk 1: Re-membering documents; has not reviewed this map"
+        "role": "Sole author of the five credited Being-Becoming With the World, Talk 1: Re-membering documents; commented on an earlier map; has not endorsed this reconstruction"
       }
     },
     "sources": [
@@ -5278,6 +5824,16 @@
         }
       ],
       "current_reality": [
+        {
+          "id": "process-account",
+          "title": "Heath’s account of process and reciprocal agency",
+          "summary": "Three attributed observations reconstruct the philosophical starting point. They have no causal connections: the practical application does not establish these claims, and the AI’s formulations await author review.",
+          "nodes": [
+            "rm-r-process",
+            "rm-r-agencies",
+            "rm-r-poiesis"
+          ]
+        },
         {
           "id": "individual-burden",
           "title": "When regulation becomes an individual problem",
@@ -5357,13 +5913,15 @@
         },
         {
           "id": "listen-and-adjust",
-          "title": "Learn from variation and revise the next move",
-          "summary": "Listening and retuning may turn surprise into learning and support adaptation. Relevant feedback may arrive across bodily, social and environmental timescales; useful uncertainty is not the same as overwhelming people.",
+          "title": "How interaction can change capacities and purposes",
+          "summary": "Reciprocal adjustments may generate coordination that changes capacities, expectations and subsequent participation. Some surprise may open new meanings or purposes. Novelty can also overwhelm or harm; this is not a recommendation to increase uncertainty. The loop is an AI inference to examine in a concrete activity; timing and power remain open.",
           "nodes": [
             "rm-f-attune",
             "rm-f-variation",
             "rm-f-learning",
-            "rm-f-adaptability"
+            "rm-f-adaptability",
+            "rm-f-coordination",
+            "rm-f-capacities"
           ]
         },
         {
@@ -5414,8 +5972,8 @@
       "transition": [
         {
           "id": "map-relations",
-          "title": "Map what regulates whom",
-          "summary": "Illustrative condition and action, not an observation or assigned task. A willing host would identify its relationships, tools and routines. Later assessments feed back into this inquiry without assuming that the original problem recurs.",
+          "title": "Trace one activity through time",
+          "summary": "Trace how bodies, others, tools and places shape attention, coordination and available possibilities over time. The condition is illustrative, not an observation of a host; later assessment feeds back into this inquiry.",
           "nodes": [
             "rm-t-1-condition",
             "rm-t-map",
@@ -5454,8 +6012,8 @@
         },
         {
           "id": "listen-retune",
-          "title": "Listen to benefits, harms and surprises, then retune",
-          "summary": "The illustrative branches come together for assessment. Ask what helped, harmed or surprised people and revise or stop; the cycle has no assigned owner, agreed feedback provider or recorded result.",
+          "title": "Review changes in capacities and purposes",
+          "summary": "The illustrative branches come together to ask what helped, harmed or surprised people, and what changed in their capacities or purposes. Continue, revise or stop, including reconsidering the shared purpose. No owner, feedback provider or result is assigned.",
           "nodes": [
             "rm-t-5-condition",
             "rm-t-review",
@@ -5465,6 +6023,21 @@
       ]
     },
     "overview": [
+      {
+        "type": "account",
+        "eyebrow": "Heath’s starting point",
+        "title": "Becoming through relationship",
+        "text": "Heath describes selves and capacities taking shape through ongoing relations among bodies, others, tools and environments. Agency unfolds through reciprocal activity; some uncertainty can bring forth new meanings and possibilities. These cards reconstruct her account, before the AI’s proposed practical application.",
+        "ids": [
+          "rm-r-process",
+          "rm-r-agencies",
+          "rm-r-poiesis"
+        ],
+        "link": [
+          "about.html#process-account",
+          "Follow the songline, enmindment and their sources →"
+        ]
+      },
       {
         "type": "cards",
         "eyebrow": "What has to be true",
@@ -5501,19 +6074,21 @@
       {
         "type": "clouds",
         "eyebrow": "The tension behind the choices",
-        "title": "Enough safety and enough openness",
-        "text": "Protection from overwhelm and the ability to adapt are both legitimate needs. The proposed conflict asks whether sufficient safety really requires imposed individual regulation. Participatory safeguards are a possible response to that assumption.",
+        "title": "A candidate tension in this application",
+        "text": "Protection from overwhelm and the ability to adapt are both legitimate needs. The AI’s proposed dilemma asks whether sufficient safety requires imposed individual regulation. Its usefulness for a particular group, and its fidelity to Heath’s emphasis, remain open for review.",
         "featured": "stability-and-participation"
       },
       {
         "type": "cards",
         "eyebrow": "What could change",
-        "title": "Support, choice and learning together",
-        "text": "Offer practices people can adapt or leave; make one tool contestable and reversible; act, listen and retune. These routes contribute jointly to a lived, revisable practice. Pressure to appear calm and surveillance remain possible harms; safeguards need to work in practice.",
+        "title": "Let interaction develop capacities and purposes",
+        "text": "Offer practices people can adapt or leave; make one tool contestable and reversible; act, listen and retune. Reciprocal coordination may change capacities and what participants seek together. Pressure to appear calm and surveillance remain possible harms; safeguards need to work in practice.",
         "ids": [
+          "rm-f-attune",
+          "rm-f-coordination",
+          "rm-f-capacities",
           "rm-f-participation",
           "rm-f-tools",
-          "rm-f-attune",
           "rm-f-pressure",
           "rm-f-surveillance"
         ],
@@ -5541,8 +6116,8 @@
       {
         "type": "cards",
         "eyebrow": "How the proposal could be tried",
-        "title": "Map, agree, try, listen and retune",
-        "text": "An illustrative sequence maps the setting and agrees a bounded purpose. A voluntary practice and a tool review can then proceed in parallel. Participants assess what helped, harmed or surprised them and revise or stop. No host, trial or owner is assigned.",
+        "title": "Trace, agree, try and reconsider together",
+        "text": "An illustrative sequence traces one activity over time and agrees an initial bounded purpose. A voluntary practice and a tool review can proceed in parallel. Participants assess benefits, harms, surprises and changes in their capacities or purposes, then continue, revise or stop. No host, trial or owner is assigned.",
         "ids": [
           "rm-t-map",
           "rm-t-agree",
@@ -5558,8 +6133,8 @@
       {
         "type": "wider",
         "eyebrow": "The argument behind the practice",
-        "title": "Body, relationships and a wider world",
-        "text": "Heath’s talk moves through embodied cognition, predictive processing, extended minds and shared timing toward the somatic commons. Evidence for coupling, contested constitution of mind and philosophical participation remain distinct. These six views are temporary analytical cuts through reciprocal processes across timescales; they are the first bounded application, not eighteen completed maps of Body, We and World."
+        "title": "A source account and one possible application",
+        "text": "Heath’s account of process, extended mind, timing and enmindment comes first. The six questions then explore one selected application to a bounded somatic commons. Evidence for coupling, contested constitution and philosophical participation remain distinct; neither the practical map nor its feedback loop establishes the ontology."
       },
       {
         "type": "credits",
@@ -5570,10 +6145,10 @@
     ],
     "retired": []
   },
-  "snapshot_sha256": "57adbb7203c5fbba6796d52fb0b78fb38adbafaf32e5d3a51179bb4ebc06ef6b",
+  "snapshot_sha256": "62483940c449795ea7cd3e2faa124e2580acfc5b7f033122185ccc84f5d5804e",
   "presentation": {
-    "summary": "How can people flourish together while retaining autonomy and boundaries? A proposed six-part map from Margeret Heath’s Re-membering and its companion documents.",
-    "description": "A fuller account of the somatic commons: individual control and its consequences, stability and participation, voluntary co-regulation, contestable tools, learning from uncertainty, readiness and a repeating act–listen–retune sequence.",
-    "scope": "77 proposed statements and 62 proposed connections reconstructed by the AI from five original PDFs by Margeret Heath: slides, spoken script with notes, extended passages, glossary and indexed bibliography. Every item has a source locator. The author and David have not endorsed the reasoning. Candidate conditions and actions are illustrative; no willing host, trial, assigned owner or observed outcome is established."
+    "summary": "How do our capacities and purposes develop through relating with the world? Heath’s account of process and agency, followed by one proposed practical application.",
+    "description": "A proposed application of reciprocal process to a bounded somatic commons: voluntary co-regulation, contestable tools, emerging capacities and revisable purposes, with a repeating act–listen–retune sequence.",
+    "scope": "82 proposed statements and 66 proposed connections reconstructed by the AI from five original PDFs by Margeret Heath: slides, spoken script with notes, extended passages, glossary and indexed bibliography. Every item has a source locator. Heath commented on an earlier map; this revision awaits review and endorsement. Candidate conditions and actions are illustrative; no willing host, trial, assigned owner or observed outcome is established."
   }
 }

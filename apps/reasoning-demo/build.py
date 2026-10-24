@@ -356,20 +356,26 @@ def validate_views(data):
         require(covered == node_ids, f"Every statement in {name} must appear in a view")  # So every connection is drawn where its target is.
 
 
-OVERVIEW_BLOCKS = {"cards": {"eyebrow", "title", "text", "ids", "link"}, "spine": {"eyebrow", "title", "text", "hops"},
+OVERVIEW_BLOCKS = {"account": {"eyebrow", "title", "text", "ids", "link"},
+                   "cards": {"eyebrow", "title", "text", "ids", "link"}, "spine": {"eyebrow", "title", "text", "hops"},
                    "clouds": {"eyebrow", "title", "text", "featured"}, "wider": {"eyebrow", "title", "text"}, "credits": {"eyebrow", "title", "text"}}
 TRACE_HOPS = {"addresses", "derived_from", "implements"}
 
 
 def validate_overview(data, items, tree_of):
     require(isinstance(data["overview"], list), "Invalid overview")
-    for block in data["overview"]:
+    for index, block in enumerate(data["overview"]):
         kind = block.get("type") if isinstance(block, dict) else None
         require(kind in OVERVIEW_BLOCKS and set(block) == OVERVIEW_BLOCKS[kind] | {"type"}, "Invalid overview block")
         require(all(isinstance(block[k], str) and block[k].strip() for k in ("eyebrow", "title", "text")), "Invalid overview copy")
-        if kind == "cards":
+        if kind in {"cards", "account"}:
             require(block["ids"] and all(i in items for i in block["ids"]), "Overview names unpublished items")
             require(isinstance(block["link"], list) and len(block["link"]) == 2 and all(isinstance(x, str) and x for x in block["link"]), "Invalid overview link")
+        if kind == "account":
+            require(index == 0 and all(source_kind(s) == "supplied_document" for s in data["sources"]),
+                    "A source account must come first and refer to supplied documents")
+            require(all(items[i].get("kind") == "observation" for i in block["ids"]),
+                    "A source account must identify attributed observations, not practical predictions")
         if kind == "clouds":
             require(block["featured"] in {v["id"] for v in data["views"].get("conflict", [])}, "The featured conflict must be a conflict view")
         if kind == "spine":  # Every step of the path is a published link or cross-tree reference.

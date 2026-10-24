@@ -752,8 +752,8 @@ class SuppliedDocumentTests(unittest.TestCase):
         state = helper.load(build.HERE / self.record["entry"]["source"])
         helper.validate(state)
         self.assertEqual(build.project_reconstruction(state, self.registry), self.data)
-        self.assertEqual(sum(len(t["nodes"]) for t in self.data["trees"].values()), 77)
-        self.assertEqual(sum(len(t["links"]) for t in self.data["trees"].values()), 62)
+        self.assertEqual(sum(len(t["nodes"]) for t in self.data["trees"].values()), 82)
+        self.assertEqual(sum(len(t["links"]) for t in self.data["trees"].values()), 66)
         self.assertFalse(self.data["feedback"])
         for tree in self.data["trees"].values():
             for item in tree["nodes"] + tree["links"]:
@@ -803,7 +803,7 @@ class SuppliedDocumentTests(unittest.TestCase):
         for name, value in self.outputs.items():
             if name.startswith("re-membering/") and name.endswith(".html"):
                 self.assertIn("Everything here is proposed", value, name)
-                self.assertIn("The source author has not reviewed or endorsed it", value, name)
+                self.assertIn("The source author commented on an earlier map; this revision awaits review and endorsement", value, name)
                 for wrong in ("Gandhi", "Second Renaissance Forum", "Fictional example", "shared in post", "Laboratory, Forge"):
                     self.assertNotIn(wrong, value, (name, wrong))
         about = self.outputs["re-membering/about.html"]
@@ -815,8 +815,8 @@ class SuppliedDocumentTests(unittest.TestCase):
         self.assertEqual({s["id"] for s in self.data["sources"]}, {"slides", "spoken-script", "extended-passages", "glossary", "bibliography"})
 
     def test_all_six_views_are_populated_without_claiming_an_actual_trial(self):
-        for tree, path, counts in (("goal", "goal", (13, 12)), ("current_reality", "in-the-way", (13, 13)),
-                                   ("conflict", "conflict", (5, 5)), ("future_reality", "change", (18, 14)),
+        for tree, path, counts in (("goal", "goal", (13, 12)), ("current_reality", "in-the-way", (16, 13)),
+                                   ("conflict", "conflict", (5, 5)), ("future_reality", "change", (20, 18)),
                                    ("prerequisite", "prerequisites", (13, 12)), ("transition", "actions", (15, 6))):
             data = self.data["trees"][tree]
             self.assertEqual((len(data["nodes"]), len(data["links"])), counts)
@@ -853,16 +853,61 @@ class SuppliedDocumentTests(unittest.TestCase):
 
     def test_reviewed_current_copy_and_history_preserve_their_distinct_scopes(self):
         current = self.outputs["re-membering/index.html"]
-        self.assertIn("77 proposed statements and 62 proposed connections", self.outputs["re-membering/about.html"])
+        self.assertIn("82 proposed statements and 66 proposed connections", self.outputs["re-membering/about.html"])
         self.assertIn("surveillance", current)
         self.assertIn("in parallel", current)
         self.assertEqual(self.data["history"][0]["release_id"], "2026-10-23.1")
         self.assertIn("18 proposed statements", self.data["history"][0]["summary"])
-        self.assertEqual(self.data["release_id"], "2026-10-23.2")
-        before = {x["refs"][0]: x["before"] for x in self.data["history"][-1]["changes"] if "before" in x}
+        self.assertEqual(self.data["release_id"], "2026-10-24.1")
+        self.assertEqual(self.data["history"][1]["release_id"], "2026-10-23.2")
+        before = {x["refs"][0]: x["before"] for x in self.data["history"][1]["changes"] if "before" in x}
         self.assertEqual(len(before), 5)
         item = next(n for n in self.data["trees"]["goal"]["nodes"] if n["id"] == "rm-g-goal")
         self.assertNotEqual(before["rm-g-goal"], item["text"])
+
+    def test_source_account_precedes_and_is_distinct_from_the_application(self):
+        overview = self.outputs["re-membering/index.html"]
+        self.assertLess(overview.index('id="source-account"'), overview.index("One possible practical application"))
+        self.assertIn('href="about.html#process-account"', overview)
+        self.assertIn("AI’s proposed practical application", overview)
+        source_ids = set(self.registry["overview"][0]["ids"])
+        tree = self.data["trees"]["current_reality"]
+        for node in tree["nodes"]:
+            if node["id"] in source_ids:
+                self.assertEqual(node["kind"], "observation")
+                self.assertTrue(node["text"].startswith("Heath"))
+        for link in tree["links"]:
+            self.assertFalse(source_ids & set(link["from"] + [link["to"]]))
+        about = self.outputs["re-membering/about.html"]
+        for text in ('id="process-account"', "Following the songline", "Two movements of enmindment",
+                     "pp. 7–8", "pp. 19–23", "philosophical starting point"):
+            self.assertIn(text, about)
+
+    def test_source_account_cannot_present_a_practical_prediction_as_the_authors_account(self):
+        data, registry = deepcopy(self.data), deepcopy(self.registry)
+        data["overview"][0]["ids"] = registry["overview"][0]["ids"] = ["rm-f-settle"]
+        with self.assertRaisesRegex(ValueError, "attributed observations"):
+            build.validate_reconstruction(data, registry)
+        data, registry = deepcopy(self.data), deepcopy(self.registry)
+        for record in (data, registry):
+            record["overview"][0], record["overview"][1] = record["overview"][1], record["overview"][0]
+        with self.assertRaisesRegex(ValueError, "source account must come first"):
+            build.validate_reconstruction(data, registry)
+
+    def test_reciprocal_process_is_an_unverified_loop_with_harmful_uncertainty_visible(self):
+        tree = self.data["trees"]["future_reality"]
+        links = {l["id"]: l for l in tree["links"]}
+        feedback = links["rm-fl-retuning"]
+        self.assertEqual((feedback["from"], feedback["to"], feedback["relation"]),
+                         (["rm-f-capacities"], "rm-f-attune", "feeds_back_to"))
+        for ident in ("rm-fl-coordination", "rm-fl-capacities", "rm-fl-retuning", "rm-fl-capacity-learning"):
+            self.assertEqual(links[ident]["status"], "proposed")
+            self.assertTrue(all(ref["basis"] == "inference" for ref in links[ident]["source_refs"]))
+        page = self.outputs["re-membering/change.html"]
+        self.assertIn('data-id="rm-fl-retuning"', page)
+        self.assertIn("Novelty can also overwhelm or harm", page)
+        self.assertIn("neither benefit nor an instruction to increase uncertainty", self.outputs["re-membering/items.html"])
+        self.assertIn("capacities or purposes", self.outputs["re-membering/actions.html"])
 
     def test_presentation_cannot_override_identity_or_source_boundaries(self):
         record = deepcopy(self.record)

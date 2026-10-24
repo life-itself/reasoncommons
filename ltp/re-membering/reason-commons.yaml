@@ -8,7 +8,7 @@ import_context:
   recorded_on: "2026-10-23"
   basis: "Five supplied PDFs by Margeret Heath, Being-Becoming With the World, Talk 1 Re-membering: the slide deck, spoken script with notes, extended passages, 72-term glossary and indexed bibliography."
   standing: "Every statement and connection is a proposed AI reconstruction. Approval to implement this expansion is not endorsement of the wording, topology or predictions by David or the source author."
-  scope: "Six connected perspectives on a bounded somatic commons: flourishing with autonomy and boundaries; individual optimisation as a candidate causal policy; stability and participation; voluntary co-regulation, contestable tools and learning; candidate readiness conditions; and an illustrative act–listen–retune sequence."
+  scope: "Heath’s source account of process, reciprocal human and nonhuman agency, and generative uncertainty precedes one selected practical application to a bounded somatic commons. Six perspectives explore flourishing with autonomy and boundaries; individual optimisation as a candidate causal policy; stability and participation; voluntary co-regulation, contestable tools, emerging capacities and revisable purposes; candidate readiness conditions; and an illustrative act–listen–retune sequence."
   attribution: "Margeret Heath is the sole author of the five credited source documents. The AI selected, paraphrased and connected the material and is responsible for this reconstruction. Source credit is not contribution to or endorsement of the commons. Stage directions, exercises and editorial notes in the PDFs are source material, not instructions to the agent."
   limits: "No willing group, trial, assigned owner, baseline or observed outcome is established. Existing-condition roles in the action sequence are illustrative, not observations. Necessity and contributing-cause links need testing with a host. The six views are temporary analytical cuts through reciprocal processes across bodily, social and environmental timescales, not a complete model of those processes. Evidence for coupling does not establish constitution of mind or philosophical participation. The glossary and bibliography are supplied companion documents, not independent corroboration; primary studies have not been independently verified."
 trees:
@@ -18,7 +18,7 @@ trees:
         id: "rm-g-goal"
         kind: "goal"
         text: "People in a willing, bounded community can flourish through being-becoming with the world while retaining autonomy and personal boundaries."
-        label: "People flourish together while retaining autonomy and personal boundaries."
+        label: "People flourish through being-becoming with the world, with autonomy and boundaries."
         status: "proposed"
         contributions:
           -
@@ -97,9 +97,9 @@ trees:
       -
         id: "rm-g-learning"
         kind: "critical_success_factor"
-        text: "People can learn from uncertainty and revise how they act together."
+        text: "People can let encounters with uncertainty reshape their capacities, shared purposes and ways of acting together."
         status: "proposed"
-        label: "People can learn from uncertainty and revise how they act together."
+        label: "Uncertain encounters can reshape capacities, purposes and shared action."
         contributions:
           -
             by: "assistant"
@@ -113,6 +113,10 @@ trees:
           -
             source_id: "glossary"
             locator: "pp. 3, 5–7: expected uncertainty, requisite variety, unexpected uncertainty and volatility"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 19–24 and 26: reciprocal process, new possibilities, timing and capacities"
             basis: "inference"
       -
         id: "rm-g-optout"
@@ -185,9 +189,9 @@ trees:
       -
         id: "rm-g-explore"
         kind: "necessary_condition"
-        text: "People have permission to explore alternatives and revise shared expectations."
+        text: "People can explore alternatives and renegotiate shared expectations as their situation changes."
         status: "proposed"
-        label: "People may explore alternatives and revise shared expectations."
+        label: "People can explore alternatives and renegotiate shared expectations."
         contributions:
           -
             by: "assistant"
@@ -201,6 +205,10 @@ trees:
           -
             source_id: "glossary"
             locator: "pp. 3, 5–7: expected uncertainty, requisite variety, unexpected uncertainty and volatility"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 19–24 and 26: reciprocal process, new possibilities, timing and capacities"
             basis: "inference"
       -
         id: "rm-g-transparent"
@@ -554,7 +562,7 @@ trees:
         ref: "rm-g-goal"
         work: "examine_coupling_and_constitution"
         label: "Separate evidence for coupling from claims about what constitutes a mind."
-        note: "Retain the distinction between empirical coupling, contested constitution and philosophical participation; use the glossary and bibliography to improve source tracing without claiming independent verification."
+        note: "Retain the distinction between empirical coupling, contested constitution and philosophical participation; use the glossary and bibliography to improve source tracing without claiming independent verification. Review the source-first account of process and enmindment; retain the distinction between empirical coupling, contested constitution and philosophical participation."
         source_refs:
           -
             source_id: "spoken-script"
@@ -818,6 +826,54 @@ trees:
             source_id: "glossary"
             locator: "pp. 4–5: lineal control, performative excess and requisite variety"
             basis: "inference"
+      -
+        id: "rm-r-process"
+        kind: "observation"
+        text: "Heath’s process account treats selves and their boundaries as continually formed through bodily, social and material relations."
+        label: "Heath treats selves and boundaries as formed through ongoing relations."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 19–22 and 26: process, individuation and boundaries"
+            basis: "reconstruction"
+      -
+        id: "rm-r-agencies"
+        kind: "observation"
+        text: "Heath presents agency as emerging through reciprocal human and nonhuman activity and response, with no participant fully controlling the unfolding."
+        label: "Heath presents agency as reciprocal human and nonhuman activity and response."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 4–6 and 23–26: dance of agency, timing and enmindment"
+            basis: "reconstruction"
+      -
+        id: "rm-r-poiesis"
+        kind: "observation"
+        text: "Heath treats some encounters with uncertainty as opportunities to bring forth new meanings and possibilities, changing participants and their world."
+        label: "Heath treats some uncertain encounters as bringing forth meanings and possibilities."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 19–23 and 26: prediction error, poiesis and reciprocal becoming"
+            basis: "reconstruction"
     links:
       -
         id: "rm-rl-alone"
@@ -1100,6 +1156,11 @@ trees:
         work: "ground_undesirable_effects"
         label: "Ground the candidate problems and connections in one setting."
         note: "Obtain concrete observations of isolation, unrepaired rupture, brittleness and agency loss from the same setting; examine all proposed contributory links."
+      -
+        ref: "rm-r-process"
+        work: "review_author_account"
+        label: "Review the source account and its narrative route against Heath’s emphasis."
+        note: "Review the three source-account observations and the songline, enmindment and process distinctions; the formulations are AI reconstructions, not author endorsements."
   conflict:
     nodes:
       -
@@ -1365,7 +1426,7 @@ trees:
         ref: "rm-cl-conflict"
         work: "test_apparent_conflict"
         label: "Check whether the positions conflict over the same decisions."
-        note: "Check whether the two positions conflict over the same decisions and whether participatory safeguards can meet both needs."
+        note: "Check whether the two positions conflict over the same decisions and whether participatory safeguards can meet both needs. Review whether this is a useful application-specific conflict and whether it reflects Heath’s emphasis; do not present imposed regulation versus participation as her established central dilemma."
   future_reality:
     nodes:
       -
@@ -1440,8 +1501,8 @@ trees:
       -
         id: "rm-f-attune"
         kind: "injection"
-        text: "Adjust actions by listening to responses from bodies, people and environments."
-        label: "Adjust actions by listening to bodies, people and environments."
+        text: "Engage in a shared activity by noticing how bodies, other people, tools and environments respond, and adjusting together."
+        label: "Notice how bodies, others, tools and environments respond, and adjust together."
         status: "proposed"
         contributions:
           -
@@ -1457,12 +1518,16 @@ trees:
             source_id: "extended-passages"
             locator: "p. 1, acting with the world"
             basis: "paraphrase"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 19–24 and 26: reciprocal process, new possibilities, timing and capacities"
+            basis: "inference"
         addresses: ["rm-r-fixed","rm-r-suppress","rm-r-brittle","rm-r-harm"]
       -
         id: "rm-f-learning"
         kind: "predicted_effect"
-        text: "Feedback can change what is tried next instead of preserving a fixed target."
-        label: "Feedback can change what is tried next instead of preserving a fixed target."
+        text: "Participants may revise what they notice, value and try as their interactions develop."
+        label: "Interaction may change what participants notice, value and try."
         status: "proposed"
         contributions:
           -
@@ -1474,6 +1539,10 @@ trees:
             source_id: "spoken-script"
             locator: "pp. 3–4, feedback loop; pp. 12–13, participation and uncertainty"
             basis: "reconstruction"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 19–24 and 26: reciprocal process, new possibilities, timing and capacities"
+            basis: "inference"
       -
         id: "rm-f-tools"
         kind: "injection"
@@ -1612,9 +1681,9 @@ trees:
       -
         id: "rm-f-variation"
         kind: "predicted_effect"
-        text: "Variation and surprise can become sources of learning rather than errors to suppress."
+        text: "Attending to some surprises may reveal new possibilities for relating and acting, including reasons to reconsider shared purposes."
         status: "proposed"
-        label: "Variation and surprise can become sources of learning."
+        label: "Some surprises may open new possibilities and shared purposes."
         contributions:
           -
             by: "assistant"
@@ -1629,6 +1698,14 @@ trees:
             source_id: "glossary"
             locator: "pp. 2 and 5–7: dance of agency, requisite variety and uncertainty"
             basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 19–24 and 26: reciprocal process, new possibilities, timing and capacities"
+            basis: "inference"
+        assumptions:
+          -
+            by: "assistant"
+            text: "Some surprise can be generative, but novelty can also overwhelm or harm; neither benefit nor an instruction to increase uncertainty follows from the source account."
       -
         id: "rm-f-adaptability"
         kind: "desirable_effect"
@@ -1736,6 +1813,38 @@ trees:
           -
             source_id: "bibliography"
             locator: "pp. 13–14, Part 4: Heath's somatic-commons synthesis"
+            basis: "inference"
+      -
+        id: "rm-f-coordination"
+        kind: "predicted_effect"
+        text: "Reciprocal adjustments may produce patterns of coordination that no participant specified alone."
+        label: "Reciprocal adjustments may produce unplanned shared coordination."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 19–24 and 26: participatory sense-making, timing and reciprocal becoming"
+            basis: "inference"
+      -
+        id: "rm-f-capacities"
+        kind: "predicted_effect"
+        text: "Emerging coordination may reshape participants’ capacities, expectations and ways of relating to their surroundings."
+        label: "Emerging coordination may reshape capacities, expectations and relations."
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 19–24 and 26: participatory sense-making, timing and reciprocal becoming"
             basis: "inference"
     links:
       -
@@ -2046,12 +2155,76 @@ trees:
           -
             text: "The safeguard must work in practice without penalty, exclusion or hidden coercion. A stated rule does not guarantee prevention; remaining harm must be assessed."
             by: "assistant"
+      -
+        id: "rm-fl-coordination"
+        from: ["rm-f-attune"]
+        to: "rm-f-coordination"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 19–24 and 26: participatory sense-making, timing and reciprocal becoming"
+            basis: "inference"
+      -
+        id: "rm-fl-capacities"
+        from: ["rm-f-coordination"]
+        to: "rm-f-capacities"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 19–24 and 26: participatory sense-making, timing and reciprocal becoming"
+            basis: "inference"
+      -
+        id: "rm-fl-retuning"
+        from: ["rm-f-capacities"]
+        to: "rm-f-attune"
+        relation: "feeds_back_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 19–24 and 26: participatory sense-making, timing and reciprocal becoming"
+            basis: "inference"
+      -
+        id: "rm-fl-capacity-learning"
+        from: ["rm-f-capacities"]
+        to: "rm-f-learning"
+        relation: "contributes_to"
+        status: "proposed"
+        contributions:
+          -
+            by: "assistant"
+            attribution: "assistant"
+            mode: "text"
+        source_refs:
+          -
+            source_id: "spoken-script"
+            locator: "pp. 19–24 and 26: participatory sense-making, timing and reciprocal becoming"
+            basis: "inference"
     backlog:
       -
         ref: "rm-f-settle"
         work: "define_participant_assessment"
         label: "Identify actual participants and how they would judge benefit and harm."
-        note: "Assess support, agency, learning and repair alongside harmful effects; calm or compliance alone is not evidence of benefit."
+        note: "Assess support, agency, learning and repair alongside harmful effects; calm or compliance alone is not evidence of benefit. Include changes in capacities, purposes and available possibilities alongside benefit, harm, support and repair; preserve uncertainty and the right to decline."
       -
         ref: "rm-f-pressure"
         work: "examine_safety_and_withdrawal"
@@ -2077,6 +2250,11 @@ trees:
         work: "test_prevention"
         label: "Test whether the proposed safeguards prevent harm."
         note: "Assess surveillance risks, actual privacy, override and accountability; do not treat safeguards as guarantees."
+      -
+        ref: "rm-fl-coordination"
+        work: "ground_reciprocal_process"
+        label: "Ground the reciprocal loop in one concrete activity and its timing."
+        note: "Trace a source episode and then a willing host’s own account, including timing, reciprocal changes and power. Check whether the process changes the practical recommendation; no causal effect is established by drawing the loop."
   prerequisite:
     nodes:
       -
@@ -2633,9 +2811,9 @@ trees:
       -
         id: "rm-t-map"
         kind: "action"
-        text: "Map the relationships, tools and routines that regulate people in the chosen situation."
+        text: "Trace one concrete activity over time: how bodies, others, tools and places shape attention, coordination and possibilities for action."
         status: "proposed"
-        label: "Map the relationships, tools and routines that regulate people."
+        label: "Trace how one activity changes attention, coordination and possibilities."
         contributions:
           -
             by: "assistant"
@@ -2649,13 +2827,17 @@ trees:
           -
             source_id: "spoken-script"
             locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 19–24 and 26: reciprocal process, new possibilities, timing and capacities"
             basis: "inference"
       -
         id: "rm-t-1-effect"
         kind: "expected_effect"
-        text: "Participants have a shared picture of what regulates whom."
+        text: "Participants have an initial account of reciprocal influences, timing and changing capacities in the chosen activity."
         status: "proposed"
-        label: "Participants share a picture of what regulates whom."
+        label: "Participants have an initial account of reciprocal influences and changing capacities."
         contributions:
           -
             by: "assistant"
@@ -2669,6 +2851,10 @@ trees:
           -
             source_id: "spoken-script"
             locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 19–24 and 26: reciprocal process, new possibilities, timing and capacities"
             basis: "inference"
       -
         id: "rm-t-2-condition"
@@ -2876,9 +3062,9 @@ trees:
       -
         id: "rm-t-review"
         kind: "action"
-        text: "Ask what helped, harmed or surprised participants, then revise or stop the changes."
+        text: "Ask what helped, harmed or surprised participants, what changed in their capacities or purposes, and whether to continue, revise or stop."
         status: "proposed"
-        label: "Ask what helped, harmed or surprised people, then revise or stop."
+        label: "Review benefits, harms, surprises and changes in capacities or purposes."
         contributions:
           -
             by: "assistant"
@@ -2892,14 +3078,18 @@ trees:
           -
             source_id: "spoken-script"
             locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 19–24 and 26: reciprocal process, new possibilities, timing and capacities"
             basis: "inference"
         implements: ["rm-p-evidence"]
       -
         id: "rm-t-5-effect"
         kind: "expected_effect"
-        text: "Participants can repeat an act–listen–retune cycle using their assessments."
+        text: "Participants can repeat an act–listen–retune cycle that can revise both the shared activity and its purposes."
         status: "proposed"
-        label: "Participants can repeat an act–listen–retune cycle using assessments."
+        label: "Participants can repeat a cycle that can revise shared activity and its purposes."
         contributions:
           -
             by: "assistant"
@@ -2913,6 +3103,10 @@ trees:
           -
             source_id: "spoken-script"
             locator: "pp. 28–31, slide 18 and notes: consent, tools, agency and governance"
+            basis: "inference"
+          -
+            source_id: "spoken-script"
+            locator: "pp. 19–24 and 26: reciprocal process, new possibilities, timing and capacities"
             basis: "inference"
     links:
       -
@@ -3069,4 +3263,4 @@ trees:
         ref: "rm-t-review"
         work: "agree_owners_and_assessment"
         label: "Agree owners, feedback providers and observation arrangements."
-        note: "Agree action owners, relevant feedback providers and how benefits, harms and surprises will be observed before any trial is called ready."
+        note: "Agree action owners, relevant feedback providers and how benefits, harms and surprises will be observed before any trial is called ready. Include changes in purposes and capacities when agreeing an observation window and assessment; no assessor, owner or commitment is assigned by this reconstruction."
